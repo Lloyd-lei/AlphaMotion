@@ -1,0 +1,64 @@
+# ---- Large data sources (download instructions in experiment/dataset/README.md) ----
+papers-docs/
+experiment/dataset/amass/
+experiment/dataset/100style/
+experiment/dataset/hy_motion/
+experiment/dataset/motionx/
+experiment/dataset/humanml3d/
+experiment/dataset/kimodo/
+experiment/dataset/__pycache__/
+experiment/dataset/*.npz
+
+# ---- Per-experiment caches (rebuild from data) ----
+experiment/stage1/runs/*.npz
+experiment/stage1/runs/reconstruction/
+experiment/stage1/runs/kimodo_export/
+experiment/stage1/runs/style_cluster/
+experiment/stage1/runs/pair_distance/
+
+# ---- Trained checkpoints (host on Releases / LFS separately if needed) ----
+*.pt
+*.ckpt
+*.bin
+
+# ---- Animations / large media ----
+*.gif
+*.mp4
+*.mov
+
+# ---- Generic archives ----
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.zip
+
+# ---- Python ----
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# ---- OS / editor ----
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
+.ipynb_checkpoints/
+
+# ---- Local secrets / config ----
+.env
+.env.*
+*.key
+*_secret*
+credentials.json
+
+# ---- Other Cursor / Claude session metadata ----
+.claude/
+.cursor*
+
+# ---- Misc ----
+*.log.gz
+nohup.out

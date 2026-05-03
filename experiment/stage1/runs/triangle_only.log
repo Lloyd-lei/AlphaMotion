@@ -1,0 +1,40 @@
+[triangle_only] 2.10M params, data [160/40] T=90 J=77 C=3
+[triangle_only] ep   1/30  train 1.1689  val 0.5543  val_kc 1.2261  t=3s  step=5
+[triangle_only] ep   2/30  train 0.7994  val 0.5888  val_kc 0.5927  t=6s  step=10
+[triangle_only] ep   3/30  train 0.5329  val 0.7415  val_kc 0.9312  t=9s  step=15
+[triangle_only] ep   4/30  train 0.5092  val 0.6540  val_kc 0.4647  t=12s  step=20
+[triangle_only] ep   5/30  train 0.4896  val 0.3900  val_kc 0.5569  t=15s  step=25
+[triangle_only] ep   6/30  train 0.3839  val 0.4707  val_kc 0.3955  t=17s  step=30
+[triangle_only] ep   7/30  train 0.3976  val 0.3543  val_kc 0.5089  t=20s  step=35
+[triangle_only] ep   8/30  train 0.3423  val 0.4256  val_kc 0.4468  t=23s  step=40
+[triangle_only] ep   9/30  train 0.3142  val 0.3337  val_kc 0.4298  t=26s  step=45
+[triangle_only] ep  10/30  train 0.2464  val 0.5902  val_kc 0.4682  t=29s  step=50
+[triangle_only] ep  11/30  train 0.3524  val 0.1977  val_kc 0.4706  t=32s  step=55
+[triangle_only] ep  12/30  train 0.2232  val 0.3737  val_kc 0.3253  t=35s  step=60
+[triangle_only] ep  13/30  train 0.2913  val 0.2919  val_kc 0.2806  t=38s  step=65
+[triangle_only] ep  14/30  train 0.2181  val 0.2380  val_kc 0.2614  t=41s  step=70
+[triangle_only] ep  15/30  train 0.2420  val 0.1718  val_kc 0.4663  t=44s  step=75
+[triangle_only] ep  16/30  train 0.3415  val 0.4315  val_kc 0.3331  t=47s  step=80
+[triangle_only] ep  17/30  train 0.3370  val 0.5098  val_kc 0.3907  t=50s  step=85
+[triangle_only] ep  18/30  train 0.3108  val 0.3590  val_kc 0.4835  t=53s  step=90
+[triangle_only] ep  19/30  train 0.2140  val 0.2031  val_kc 0.6860  t=56s  step=95
+[triangle_only] ep  20/30  train 0.2805  val 0.3661  val_kc 0.2181  t=58s  step=100
+[triangle_only] ep  21/30  train 0.4039  val 0.2317  val_kc 0.4811  t=61s  step=105
+[triangle_only] ep  22/30  train 0.2643  val 0.2532  val_kc 0.1378  t=64s  step=110
+[triangle_only] ep  23/30  train 0.2613  val 0.3094  val_kc 0.3134  t=67s  step=115
+[triangle_only] ep  24/30  train 0.2354  val 0.1061  val_kc 0.2057  t=70s  step=120
+[triangle_only] ep  25/30  train 0.1651  val 0.2660  val_kc 0.0998  t=73s  step=125
+[triangle_only] ep  26/30  train 0.1517  val 0.2597  val_kc 0.2107  t=76s  step=130
+[triangle_only] ep  27/30  train 0.2635  val 0.3618  val_kc 0.3888  t=78s  step=135
+[triangle_only] ep  28/30  train 0.1250  val 0.3774  val_kc 0.2668  t=81s  step=140
+[triangle_only] ep  29/30  train 0.1490  val 0.1830  val_kc 0.3221  t=84s  step=145
+[triangle_only] ep  30/30  train 0.1556  val 0.1918  val_kc 0.4651  t=85s  step=150
+
+[triangle_only] DONE in 85s
+[triangle_only] sample-efficiency (steps to reach val_loss):
+  val<=1.00: 5
+  val<=0.50: 25
+  val<=0.30: 55
+  val<=0.20: 55
+  val<=0.15: 120
+  val<=0.10: never

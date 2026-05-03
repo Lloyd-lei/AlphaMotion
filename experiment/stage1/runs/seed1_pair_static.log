@@ -1,0 +1,40 @@
+[pair_static] 1.99M params, data [160/40] T=90 J=77 C=3
+[pair_static] ep   1/30  train 1.4810  val 0.4390  val_kc 0.6457  t=3s  step=5
+[pair_static] ep   2/30  train 0.6043  val 0.5744  val_kc 0.7898  t=5s  step=10
+[pair_static] ep   3/30  train 0.5487  val 0.4912  val_kc 0.3461  t=7s  step=15
+[pair_static] ep   4/30  train 0.6440  val 0.3100  val_kc 0.5179  t=9s  step=20
+[pair_static] ep   5/30  train 0.4107  val 0.4542  val_kc 0.3316  t=12s  step=25
+[pair_static] ep   6/30  train 0.5921  val 0.4993  val_kc 0.2856  t=14s  step=30
+[pair_static] ep   7/30  train 0.3465  val 0.3052  val_kc 0.2897  t=16s  step=35
+[pair_static] ep   8/30  train 0.2621  val 0.3917  val_kc 0.2263  t=18s  step=40
+[pair_static] ep   9/30  train 0.2927  val 0.3310  val_kc 0.2458  t=21s  step=45
+[pair_static] ep  10/30  train 0.3561  val 0.2918  val_kc 0.3614  t=23s  step=50
+[pair_static] ep  11/30  train 0.2348  val 0.1796  val_kc 0.3233  t=25s  step=55
+[pair_static] ep  12/30  train 0.3200  val 0.3389  val_kc 0.3981  t=27s  step=60
+[pair_static] ep  13/30  train 0.3057  val 0.2953  val_kc 0.3470  t=30s  step=65
+[pair_static] ep  14/30  train 0.3060  val 0.2933  val_kc 0.1221  t=32s  step=70
+[pair_static] ep  15/30  train 0.1830  val 0.0968  val_kc 0.1539  t=34s  step=75
+[pair_static] ep  16/30  train 0.3022  val 0.1276  val_kc 0.3356  t=36s  step=80
+[pair_static] ep  17/30  train 0.3758  val 0.2024  val_kc 0.1405  t=39s  step=85
+[pair_static] ep  18/30  train 0.1199  val 0.2586  val_kc 0.4590  t=41s  step=90
+[pair_static] ep  19/30  train 0.2559  val 0.3152  val_kc 0.2032  t=43s  step=95
+[pair_static] ep  20/30  train 0.1755  val 0.1816  val_kc 0.1966  t=46s  step=100
+[pair_static] ep  21/30  train 0.1416  val 0.0980  val_kc 0.2394  t=48s  step=105
+[pair_static] ep  22/30  train 0.2092  val 0.2643  val_kc 0.2782  t=50s  step=110
+[pair_static] ep  23/30  train 0.2335  val 0.1699  val_kc 0.4462  t=53s  step=115
+[pair_static] ep  24/30  train 0.1972  val 0.1627  val_kc 0.1670  t=55s  step=120
+[pair_static] ep  25/30  train 0.3061  val 0.1599  val_kc 0.2704  t=57s  step=125
+[pair_static] ep  26/30  train 0.1819  val 0.2386  val_kc 0.1742  t=60s  step=130
+[pair_static] ep  27/30  train 0.1442  val 0.2910  val_kc 0.1175  t=62s  step=135
+[pair_static] ep  28/30  train 0.2151  val 0.1241  val_kc 0.0981  t=64s  step=140
+[pair_static] ep  29/30  train 0.2419  val 0.3074  val_kc 0.4627  t=66s  step=145
+[pair_static] ep  30/30  train 0.2299  val 0.3041  val_kc 0.0806  t=68s  step=150
+
+[pair_static] DONE in 68s
+[pair_static] sample-efficiency (steps to reach val_loss):
+  val<=1.00: 5
+  val<=0.50: 5
+  val<=0.30: 50
+  val<=0.20: 55
+  val<=0.15: 75
+  val<=0.10: 75

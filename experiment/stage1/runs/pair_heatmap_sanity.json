@@ -1,0 +1,41 @@
+{
+  "n_samples": 32,
+  "seeds": {
+    "A1": 0,
+    "A2": 42
+  },
+  "checkpoints": {
+    "full": "runs/full__mixed_fixed30/final.pt",
+    "opm_only": "runs/opm_only__mixed_fixed30/final.pt"
+  },
+  "stats": {
+    "A1": {
+      "min": 4.794898986816406,
+      "max": 16.26321792602539,
+      "std_over_mean": 0.16163530945777893
+    },
+    "A2": {
+      "min": 4.784523963928223,
+      "max": 17.178455352783203,
+      "std_over_mean": 0.17076189815998077
+    },
+    "B": {
+      "min": 5.509401321411133,
+      "max": 5.782419204711914,
+      "std_over_mean": 0.009231295436620712
+    },
+    "D": {
+      "min": 4.069619655609131,
+      "max": 9.519378662109375,
+      "std_over_mean": 0.11487186700105667
+    }
+  },
+  "correlations": {
+    "trained_seed0_vs_trained_seed42": 0.9936540825878194,
+    "trained_seed0_vs_untrained": 0.057290519860705935,
+    "trained_seed0_vs_opm_only": 0.07654805429016938,
+    "pair_init_TRAINED_vs_UNTRAINED": 0.2372343108901587,
+    "pair_init_TRAINED_vs_trained_final": 0.30958798023731016
+  },
+  "delta_seeds_pct_of_mean": 1.6952473353518023
+}

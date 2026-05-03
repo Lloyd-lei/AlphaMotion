@@ -1,0 +1,34 @@
+Mixed: train=9168  val_id=1145  val_subject=857  val_source=41
+[full] 2.18M params  train=9168  val_splits=['val_id', 'val_subject', 'val_source']  T=90 J=77  lambdas={'pos': 1.0, 'rot': 5.0, 'root': 1.0, 'fk': 0.5}
+[full] ep   1/30  train[tot=1.976 pos=0.309 rot=0.264 fk=0.262]  val_id[pos=0.204 rot=0.100 fk=0.121]  val_subject[pos=0.163 rot=0.104 fk=0.093]  val_source[pos=0.172 rot=0.222 fk=0.123]  t=179s
+[full] ep   2/30  train[tot=0.714 pos=0.190 rot=0.079 fk=0.075]  val_id[pos=0.205 rot=0.062 fk=0.075]  val_subject[pos=0.174 rot=0.050 fk=0.055]  val_source[pos=0.059 rot=0.219 fk=0.062]  t=359s
+[full] ep   3/30  train[tot=0.525 pos=0.162 rot=0.054 fk=0.054]  val_id[pos=0.195 rot=0.052 fk=0.051]  val_subject[pos=0.184 rot=0.040 fk=0.037]  val_source[pos=0.076 rot=0.197 fk=0.041]  t=539s
+[full] ep   4/30  train[tot=0.468 pos=0.158 rot=0.046 fk=0.044]  val_id[pos=0.191 rot=0.048 fk=0.048]  val_subject[pos=0.182 rot=0.038 fk=0.036]  val_source[pos=0.077 rot=0.200 fk=0.052]  t=718s
+[full] ep   5/30  train[tot=0.460 pos=0.168 rot=0.042 fk=0.042]  val_id[pos=0.117 rot=0.043 fk=0.034]  val_subject[pos=0.094 rot=0.036 fk=0.026]  val_source[pos=0.028 rot=0.184 fk=0.036]  t=898s
+[full] ep   6/30  train[tot=0.428 pos=0.155 rot=0.040 fk=0.037]  val_id[pos=0.169 rot=0.044 fk=0.041]  val_subject[pos=0.178 rot=0.034 fk=0.034]  val_source[pos=0.097 rot=0.185 fk=0.040]  t=1075s
+[full] ep   7/30  train[tot=0.408 pos=0.149 rot=0.039 fk=0.034]  val_id[pos=0.174 rot=0.038 fk=0.036]  val_subject[pos=0.141 rot=0.029 fk=0.027]  val_source[pos=0.167 rot=0.206 fk=0.041]  t=1255s
+[full] ep   8/30  train[tot=0.430 pos=0.171 rot=0.037 fk=0.036]  val_id[pos=0.119 rot=0.035 fk=0.029]  val_subject[pos=0.122 rot=0.028 fk=0.023]  val_source[pos=0.035 rot=0.219 fk=0.029]  t=1434s
+[full] ep   9/30  train[tot=0.384 pos=0.145 rot=0.036 fk=0.031]  val_id[pos=0.152 rot=0.037 fk=0.033]  val_subject[pos=0.124 rot=0.030 fk=0.022]  val_source[pos=0.092 rot=0.196 fk=0.041]  t=1614s
+[full] ep  10/30  train[tot=0.369 pos=0.141 rot=0.034 fk=0.029]  val_id[pos=0.140 rot=0.033 fk=0.028]  val_subject[pos=0.103 rot=0.027 fk=0.020]  val_source[pos=0.098 rot=0.194 fk=0.031]  t=1796s
+[full] ep  11/30  train[tot=0.340 pos=0.124 rot=0.033 fk=0.027]  val_id[pos=0.157 rot=0.033 fk=0.034]  val_subject[pos=0.108 rot=0.028 fk=0.021]  val_source[pos=0.123 rot=0.192 fk=0.035]  t=1975s
+[full] ep  12/30  train[tot=0.352 pos=0.134 rot=0.032 fk=0.028]  val_id[pos=0.161 rot=0.034 fk=0.031]  val_subject[pos=0.140 rot=0.027 fk=0.022]  val_source[pos=0.171 rot=0.209 fk=0.037]  t=2153s
+[full] ep  13/30  train[tot=0.366 pos=0.149 rot=0.032 fk=0.028]  val_id[pos=0.183 rot=0.032 fk=0.034]  val_subject[pos=0.179 rot=0.027 fk=0.025]  val_source[pos=0.014 rot=0.197 fk=0.027]  t=2332s
+[full] ep  14/30  train[tot=0.343 pos=0.134 rot=0.031 fk=0.027]  val_id[pos=0.177 rot=0.032 fk=0.030]  val_subject[pos=0.150 rot=0.026 fk=0.023]  val_source[pos=0.122 rot=0.193 fk=0.025]  t=2510s
+[full] ep  15/30  train[tot=0.328 pos=0.127 rot=0.030 fk=0.025]  val_id[pos=0.178 rot=0.031 fk=0.031]  val_subject[pos=0.132 rot=0.024 fk=0.020]  val_source[pos=0.013 rot=0.189 fk=0.020]  t=2690s
+[full] ep  16/30  train[tot=0.354 pos=0.149 rot=0.029 fk=0.027]  val_id[pos=0.106 rot=0.027 fk=0.019]  val_subject[pos=0.158 rot=0.024 fk=0.022]  val_source[pos=0.136 rot=0.209 fk=0.022]  t=2872s
+[full] ep  17/30  train[tot=0.314 pos=0.125 rot=0.028 fk=0.023]  val_id[pos=0.148 rot=0.029 fk=0.028]  val_subject[pos=0.098 rot=0.023 fk=0.017]  val_source[pos=0.008 rot=0.193 fk=0.017]  t=3051s
+[full] ep  18/30  train[tot=0.324 pos=0.132 rot=0.028 fk=0.024]  val_id[pos=0.157 rot=0.029 fk=0.026]  val_subject[pos=0.113 rot=0.023 fk=0.018]  val_source[pos=0.013 rot=0.180 fk=0.017]  t=3228s
+[full] ep  19/30  train[tot=0.341 pos=0.144 rot=0.028 fk=0.026]  val_id[pos=0.115 rot=0.028 fk=0.022]  val_subject[pos=0.104 rot=0.023 fk=0.017]  val_source[pos=0.136 rot=0.215 fk=0.023]  t=3406s
+[full] ep  20/30  train[tot=0.325 pos=0.138 rot=0.027 fk=0.023]  val_id[pos=0.130 rot=0.028 fk=0.023]  val_subject[pos=0.139 rot=0.023 fk=0.019]  val_source[pos=0.055 rot=0.195 fk=0.021]  t=3586s
+[full] ep  21/30  train[tot=0.302 pos=0.123 rot=0.027 fk=0.021]  val_id[pos=0.128 rot=0.030 fk=0.019]  val_subject[pos=0.126 rot=0.022 fk=0.018]  val_source[pos=0.057 rot=0.198 fk=0.019]  t=3768s
+[full] ep  22/30  train[tot=0.315 pos=0.133 rot=0.026 fk=0.023]  val_id[pos=0.150 rot=0.027 fk=0.026]  val_subject[pos=0.081 rot=0.021 fk=0.015]  val_source[pos=0.051 rot=0.183 fk=0.020]  t=3947s
+[full] ep  23/30  train[tot=0.303 pos=0.125 rot=0.026 fk=0.021]  val_id[pos=0.143 rot=0.026 fk=0.021]  val_subject[pos=0.095 rot=0.022 fk=0.015]  val_source[pos=0.054 rot=0.215 fk=0.019]  t=4125s
+[full] ep  24/30  train[tot=0.322 pos=0.139 rot=0.026 fk=0.023]  val_id[pos=0.171 rot=0.027 fk=0.029]  val_subject[pos=0.152 rot=0.022 fk=0.020]  val_source[pos=0.009 rot=0.197 fk=0.014]  t=4301s
+[full] ep  25/30  train[tot=0.322 pos=0.142 rot=0.025 fk=0.023]  val_id[pos=0.179 rot=0.025 fk=0.030]  val_subject[pos=0.062 rot=0.022 fk=0.012]  val_source[pos=0.053 rot=0.191 fk=0.020]  t=4479s
+[full] ep  26/30  train[tot=0.302 pos=0.128 rot=0.025 fk=0.022]  val_id[pos=0.115 rot=0.025 fk=0.021]  val_subject[pos=0.096 rot=0.021 fk=0.015]  val_source[pos=0.055 rot=0.196 fk=0.020]  t=4620s
+[full] ep  27/30  train[tot=0.307 pos=0.131 rot=0.025 fk=0.022]  val_id[pos=0.166 rot=0.024 fk=0.027]  val_subject[pos=0.099 rot=0.022 fk=0.016]  val_source[pos=0.056 rot=0.195 fk=0.019]  t=4709s
+[full] ep  28/30  train[tot=0.299 pos=0.127 rot=0.025 fk=0.021]  val_id[pos=0.169 rot=0.025 fk=0.028]  val_subject[pos=0.132 rot=0.022 fk=0.018]  val_source[pos=0.106 rot=0.196 fk=0.024]  t=4798s
+[full] ep  29/30  train[tot=0.279 pos=0.116 rot=0.024 fk=0.019]  val_id[pos=0.108 rot=0.026 fk=0.019]  val_subject[pos=0.133 rot=0.023 fk=0.018]  val_source[pos=0.053 rot=0.187 fk=0.019]  t=4887s
+[full] ep  30/30  train[tot=0.301 pos=0.128 rot=0.025 fk=0.021]  val_id[pos=0.127 rot=0.025 fk=0.022]  val_subject[pos=0.127 rot=0.020 fk=0.017]  val_source[pos=0.125 rot=0.200 fk=0.029]  t=4976s
+
+[full] DONE in 4976s  saved to runs/full__mixed_full30

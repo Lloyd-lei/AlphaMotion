@@ -1,0 +1,13 @@
+/home/arenalabs/Desktop/"be water, robot"/experiment/stage1/diagnose_stage15.py:364: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  fig.tight_layout()
+[01-02] Training curves saved
+[03] Pair heatmap saved
+[04] Per-joint error saved
+[05] Time profile saved
+[06] Mask mode saved
+[07-08] Style clustering saved
+[09] Source stratified:
+   amass        n=  647  pos=0.1637  rot=9.71°  fk=0.0233
+   kimodo       n=  186  pos=0.2654  rot=7.51°  fk=0.0513
+
+All diagnostics in runs/full__mixed_fixed30/diag/

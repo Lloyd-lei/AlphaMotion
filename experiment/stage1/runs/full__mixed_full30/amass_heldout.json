@@ -1,0 +1,17 @@
+{
+  "pos": 0.12198169741203033,
+  "rot": 0.02393310381070016,
+  "root": 0.03558559502781709,
+  "fk": 0.017523922210943604,
+  "total": 0.28599477157233255,
+  "rot_degrees": 8.863844839842933,
+  "n_clips": 2000,
+  "n_batches": 63,
+  "checkpoint": "runs/full__mixed_full30/final.pt",
+  "subsets": [
+    "cmu",
+    "bmlrub",
+    "kit",
+    "hdm05"
+  ]
+}

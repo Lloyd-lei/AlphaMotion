@@ -1,0 +1,11 @@
+Loading held-out AMASS:
+  cmu_soma77: took 500 / 10038
+  bmlrub_soma77: took 500 / 9054
+  kit_soma77: took 500 / 12623
+  hdm05_soma77: took 500 / 2778
+  TOTAL: 2000 clips from 4 subset(s)
+
+=== HELD-OUT AMASS eval (2000 clips) ===
+  pos=0.1222  rot=0.0233 rad²  (≈8.7°)  fk=0.0181  root=0.0309
+
+Saved runs/full__mixed_fixed30/amass_heldout.json

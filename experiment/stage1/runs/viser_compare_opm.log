@@ -1,0 +1,17 @@
+Loading dataset from ../dataset/mixed_soma77.npz ...
+  N=9356  T=90  J=77
+Loading [opm_only] from runs/opm_only__mixed_fixed30/final.pt ...
+╭────── viser (listening *:7862) ───────╮
+│             ╷                         │
+│   HTTP      │ http://localhost:7862   │
+│   Websocket │ ws://localhost:7862     │
+│             ╵                         │
+╰───────────────────────────────────────╯
+
+>>> viser_compare  model=opm_only  →  http://localhost:7862
+
+(viser) Connection opened (0, 1 total), 31 persistent messages
+(viser) Connection closed (0, 0 total)
+(viser) Connection opened (1, 1 total), 44 persistent messages
+(viser) Connection closed (1, 0 total)
+(viser) Connection opened (2, 1 total), 44 persistent messages

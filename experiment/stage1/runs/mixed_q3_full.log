@@ -1,0 +1,7 @@
+Mixed: train=9168  val_id=1145  val_subject=857  val_source=41
+[full] 2.18M params  train=9168  val_splits=['val_id', 'val_subject', 'val_source']  T=90 J=77  lambdas={'pos': 1.0, 'rot': 5.0, 'root': 1.0, 'fk': 0.5}
+[full] ep   1/3  train[tot=1.976 pos=0.309 rot=0.264 fk=0.262]  val_id[pos=0.204 rot=0.100 fk=0.121]  val_subject[pos=0.163 rot=0.104 fk=0.093]  val_source[pos=0.172 rot=0.222 fk=0.123]  t=178s
+[full] ep   2/3  train[tot=0.707 pos=0.187 rot=0.079 fk=0.074]  val_id[pos=0.206 rot=0.065 fk=0.075]  val_subject[pos=0.184 rot=0.050 fk=0.050]  val_source[pos=0.060 rot=0.228 fk=0.063]  t=358s
+[full] ep   3/3  train[tot=0.505 pos=0.152 rot=0.054 fk=0.052]  val_id[pos=0.187 rot=0.055 fk=0.056]  val_subject[pos=0.175 rot=0.042 fk=0.038]  val_source[pos=0.068 rot=0.200 fk=0.046]  t=499s
+
+[full] DONE in 499s  saved to runs/full__mixed_q3

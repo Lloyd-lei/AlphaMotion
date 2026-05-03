@@ -1,0 +1,8 @@
+[19:08:54] START diag opm_only
+[19:09:24] DONE diag opm_only
+[19:09:24] START diag full
+[19:09:55] DONE diag full
+[19:09:55] START amass opm_only
+[19:10:16] DONE amass opm_only
+[19:10:16] START amass full
+[19:10:35] DONE amass full ALL COMPLETE

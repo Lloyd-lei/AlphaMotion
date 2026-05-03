@@ -1,0 +1,17 @@
+Loading dataset from ../dataset/mixed_soma77.npz ...
+  N=9356  T=90  J=77
+Loading [full] from runs/full__mixed_fixed30/final.pt ...
+╭────── viser (listening *:7860) ───────╮
+│             ╷                         │
+│   HTTP      │ http://localhost:7860   │
+│   Websocket │ ws://localhost:7860     │
+│             ╵                         │
+╰───────────────────────────────────────╯
+
+>>> viser_compare  model=full  →  http://localhost:7860
+
+(viser) Connection opened (0, 1 total), 44 persistent messages
+(viser) Connection closed (0, 0 total)
+(viser) Connection opened (1, 1 total), 44 persistent messages
+(viser) Connection closed (1, 0 total)
+(viser) Connection opened (2, 1 total), 44 persistent messages

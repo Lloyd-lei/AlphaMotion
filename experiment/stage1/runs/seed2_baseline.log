@@ -1,0 +1,42 @@
+/home/arenalabs/miniconda3/envs/rot/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+[baseline] 2.40M params, data [160/40] T=90 J=77 C=3
+[baseline] ep   1/30  train 0.7162  val 1.2529  val_kc 0.8542  t=17s  step=5
+[baseline] ep   2/30  train 0.4222  val 1.0471  val_kc 0.6160  t=34s  step=10
+[baseline] ep   3/30  train 0.3985  val 0.9959  val_kc 0.5309  t=50s  step=15
+[baseline] ep   4/30  train 0.3761  val 0.8427  val_kc 0.9352  t=67s  step=20
+[baseline] ep   5/30  train 0.3735  val 0.8295  val_kc 1.0214  t=84s  step=25
+[baseline] ep   6/30  train 0.3595  val 1.0640  val_kc 1.0289  t=101s  step=30
+[baseline] ep   7/30  train 0.3702  val 0.6888  val_kc 0.4312  t=116s  step=35
+[baseline] ep   8/30  train 0.4601  val 0.8847  val_kc 0.4956  t=125s  step=40
+[baseline] ep   9/30  train 0.3706  val 0.7347  val_kc 1.2575  t=134s  step=45
+[baseline] ep  10/30  train 0.3503  val 0.8917  val_kc 2.1644  t=143s  step=50
+[baseline] ep  11/30  train 0.3375  val 0.7667  val_kc 1.0652  t=152s  step=55
+[baseline] ep  12/30  train 0.3468  val 0.9070  val_kc 0.7130  t=161s  step=60
+[baseline] ep  13/30  train 0.6317  val 0.8689  val_kc 0.8379  t=170s  step=65
+[baseline] ep  14/30  train 0.3402  val 0.8032  val_kc 0.7362  t=179s  step=70
+[baseline] ep  15/30  train 0.3729  val 0.8887  val_kc 0.7234  t=188s  step=75
+[baseline] ep  16/30  train 0.3315  val 0.7187  val_kc 0.9693  t=198s  step=80
+[baseline] ep  17/30  train 0.3792  val 0.8007  val_kc 2.0501  t=207s  step=85
+[baseline] ep  18/30  train 0.3504  val 0.8324  val_kc 0.5654  t=216s  step=90
+[baseline] ep  19/30  train 0.3486  val 0.8022  val_kc 0.6571  t=225s  step=95
+[baseline] ep  20/30  train 0.3867  val 0.7220  val_kc 1.1817  t=234s  step=100
+[baseline] ep  21/30  train 0.3888  val 0.8434  val_kc 0.7830  t=243s  step=105
+[baseline] ep  22/30  train 0.3346  val 0.7511  val_kc 1.0986  t=252s  step=110
+[baseline] ep  23/30  train 0.3400  val 0.8844  val_kc 0.4300  t=262s  step=115
+[baseline] ep  24/30  train 0.3608  val 0.8310  val_kc 1.4542  t=271s  step=120
+[baseline] ep  25/30  train 0.3355  val 0.7920  val_kc 0.8265  t=280s  step=125
+[baseline] ep  26/30  train 0.4705  val 1.0052  val_kc 0.8473  t=289s  step=130
+[baseline] ep  27/30  train 0.4514  val 0.8386  val_kc 0.5803  t=298s  step=135
+[baseline] ep  28/30  train 0.3295  val 0.8112  val_kc 0.6339  t=307s  step=140
+[baseline] ep  29/30  train 0.4248  val 0.7246  val_kc 0.6715  t=316s  step=145
+[baseline] ep  30/30  train 0.3588  val 0.6732  val_kc 0.4571  t=325s  step=150
+
+[baseline] DONE in 325s
+[baseline] sample-efficiency (steps to reach val_loss):
+  val<=1.00: 15
+  val<=0.50: never
+  val<=0.30: never
+  val<=0.20: never
+  val<=0.15: never
+  val<=0.10: never

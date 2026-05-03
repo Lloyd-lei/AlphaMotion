@@ -1,0 +1,40 @@
+[motionformer] 2.18M params, data [160/40] T=90 J=77 C=3
+[motionformer] ep   1/30  train 1.4612  val 0.8659  val_kc 1.1355  t=4s  step=5
+[motionformer] ep   2/30  train 0.9254  val 0.7801  val_kc 1.8843  t=8s  step=10
+[motionformer] ep   3/30  train 0.5606  val 0.4700  val_kc 0.5431  t=12s  step=15
+[motionformer] ep   4/30  train 0.4665  val 0.5267  val_kc 0.7221  t=15s  step=20
+[motionformer] ep   5/30  train 0.4357  val 0.4113  val_kc 0.5808  t=18s  step=25
+[motionformer] ep   6/30  train 0.4022  val 0.5815  val_kc 0.9379  t=22s  step=30
+[motionformer] ep   7/30  train 0.3138  val 0.3353  val_kc 0.8980  t=26s  step=35
+[motionformer] ep   8/30  train 0.4388  val 0.3241  val_kc 0.7668  t=30s  step=40
+[motionformer] ep   9/30  train 0.3282  val 0.3715  val_kc 0.2832  t=33s  step=45
+[motionformer] ep  10/30  train 0.2839  val 0.3388  val_kc 0.5262  t=37s  step=50
+[motionformer] ep  11/30  train 0.4740  val 0.2246  val_kc 0.3157  t=41s  step=55
+[motionformer] ep  12/30  train 0.2261  val 0.3083  val_kc 0.3696  t=44s  step=60
+[motionformer] ep  13/30  train 0.2727  val 0.2694  val_kc 0.7159  t=48s  step=65
+[motionformer] ep  14/30  train 0.2117  val 0.2116  val_kc 0.2667  t=51s  step=70
+[motionformer] ep  15/30  train 0.2504  val 0.2748  val_kc 0.4401  t=55s  step=75
+[motionformer] ep  16/30  train 0.2696  val 0.4859  val_kc 0.4503  t=59s  step=80
+[motionformer] ep  17/30  train 0.2363  val 0.3787  val_kc 0.1926  t=63s  step=85
+[motionformer] ep  18/30  train 0.3609  val 0.3748  val_kc 0.4885  t=67s  step=90
+[motionformer] ep  19/30  train 0.2536  val 0.2034  val_kc 0.5865  t=70s  step=95
+[motionformer] ep  20/30  train 0.2841  val 0.3680  val_kc 0.2065  t=74s  step=100
+[motionformer] ep  21/30  train 0.2670  val 0.2075  val_kc 0.2245  t=78s  step=105
+[motionformer] ep  22/30  train 0.2386  val 0.3263  val_kc 0.3463  t=82s  step=110
+[motionformer] ep  23/30  train 0.2181  val 0.2611  val_kc 0.2791  t=86s  step=115
+[motionformer] ep  24/30  train 0.3852  val 0.1323  val_kc 0.2794  t=90s  step=120
+[motionformer] ep  25/30  train 0.2004  val 0.2423  val_kc 0.3669  t=94s  step=125
+[motionformer] ep  26/30  train 0.1592  val 0.2580  val_kc 0.2249  t=98s  step=130
+[motionformer] ep  27/30  train 0.2628  val 0.3652  val_kc 0.2347  t=101s  step=135
+[motionformer] ep  28/30  train 0.1400  val 0.3558  val_kc 0.2054  t=105s  step=140
+[motionformer] ep  29/30  train 0.1686  val 0.1999  val_kc 0.3772  t=109s  step=145
+[motionformer] ep  30/30  train 0.1913  val 0.2436  val_kc 0.1726  t=112s  step=150
+
+[motionformer] DONE in 112s
+[motionformer] sample-efficiency (steps to reach val_loss):
+  val<=1.00: 5
+  val<=0.50: 15
+  val<=0.30: 55
+  val<=0.20: 120
+  val<=0.15: 120
+  val<=0.10: never
