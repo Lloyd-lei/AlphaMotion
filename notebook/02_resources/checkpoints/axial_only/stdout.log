@@ -1,0 +1,61 @@
+
+=== launched at 2026-05-06 17:13:27: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant axial_only --mode smoke ===
+[axial_only] starting fresh
+[axial_only] FM training 0→1000  bs=32  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+[axial_only] step     50/1000  total=12.9352  pos=0.9825 rot=0.8722 root=1.0818 fk=0.0372  step=394ms  eta=6.2min
+[axial_only] step    100/1000  total=7.0956  pos=0.5639 rot=0.3776 root=0.5178 fk=0.0218  step=286ms  eta=4.3min
+[axial_only] step    150/1000  total=6.0733  pos=0.4874 rot=0.2954 root=0.4364 fk=0.0153  step=317ms  eta=4.5min
+[axial_only] step    200/1000  total=5.7243  pos=0.4635 rot=0.2510 root=0.4075 fk=0.0119  step=387ms  eta=5.2min
+[axial_only] step    250/1000  total=5.0833  pos=0.4100 rot=0.2084 root=0.3771 fk=0.0105  step=380ms  eta=4.8min
+[axial_only] step    300/1000  total=4.6867  pos=0.3796 rot=0.1927 root=0.3396 fk=0.0095  step=383ms  eta=4.5min
+[axial_only] step    350/1000  total=4.5027  pos=0.3643 rot=0.1774 root=0.3330 fk=0.0081  step=388ms  eta=4.2min
+[axial_only] step    400/1000  total=4.3540  pos=0.3520 rot=0.1768 root=0.3199 fk=0.0086  step=380ms  eta=3.8min
+[axial_only] step    450/1000  total=3.9828  pos=0.3190 rot=0.1727 root=0.3016 fk=0.0082  step=380ms  eta=3.5min
+[axial_only] step    500/1000  total=3.4552  pos=0.2757 rot=0.1555 root=0.2632 fk=0.0082  step=387ms  eta=3.2min
+[axial_only] step    550/1000  total=3.8941  pos=0.3100 rot=0.1630 root=0.3073 fk=0.0081  step=379ms  eta=2.8min
+[axial_only] step    600/1000  total=3.3894  pos=0.2696 rot=0.1544 root=0.2616 fk=0.0079  step=382ms  eta=2.5min
+[axial_only] step    650/1000  total=3.4771  pos=0.2770 rot=0.1532 root=0.2697 fk=0.0073  step=387ms  eta=2.3min
+[axial_only] step    700/1000  total=3.0960  pos=0.2444 rot=0.1498 root=0.2443 fk=0.0068  step=380ms  eta=1.9min
+[axial_only] step    750/1000  total=2.9352  pos=0.2289 rot=0.1425 root=0.2448 fk=0.0069  step=380ms  eta=1.6min
+[axial_only] step    800/1000  total=2.8500  pos=0.2238 rot=0.1296 root=0.2351 fk=0.0059  step=387ms  eta=1.3min
+[axial_only] step    850/1000  total=2.7953  pos=0.2199 rot=0.1300 root=0.2266 fk=0.0067  step=382ms  eta=1.0min
+[axial_only] step    900/1000  total=2.7923  pos=0.2211 rot=0.1161 root=0.2263 fk=0.0064  step=381ms  eta=0.6min
+[axial_only] step    950/1000  total=2.5427  pos=0.1988 rot=0.1213 root=0.2109 fk=0.0061  step=326ms  eta=0.3min
+[axial_only] step   1000/1000  total=2.6116  pos=0.2042 rot=0.1205 root=0.2182 fk=0.0062  step=252ms  eta=0.0min
+[axial_only] done: step=1000/1000  ckpt=/home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/checkpoints/axial_only/latest.pt
+
+=== launched at 2026-05-07 05:25:40: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant axial_only --mode headline ===
+[axial_only] resumed from step 1000
+[axial_only] FM training 1000→30000  bs=64  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+[axial_only] step   1050/30000  total=2.3513  pos=0.1826 rot=0.1208 root=0.1960 fk=0.0060  step=543ms  eta=261.8min
+
+=== launched at 2026-05-07 05:26:37: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant axial_only --mode headline ===
+[axial_only] resumed from step 1000
+[axial_only] FM training 1000→30000  bs=32  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+[axial_only] OOM at batch=32 → batch=16 grad_accum=2 (retry 1/5)
+[axial_only] OOM at batch=16 → batch=8 grad_accum=4 (retry 2/5)
+[axial_only] step   1100/30000  total=2.3376  pos=0.1837 rot=0.1101 root=0.1899 fk=0.0056  step=690ms  eta=332.4min
+[axial_only] step   1150/30000  total=2.2830  pos=0.1794 rot=0.1082 root=0.1848 fk=0.0057  step=1022ms  eta=491.5min
+
+=== launched at 2026-05-07 05:28:35: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant axial_only --mode headline --no-resume ===
+Traceback (most recent call last):
+  File "/home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py", line 485, in <module>
+    main()
+  File "/home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py", line 471, in main
+    train_variant(
+  File "/home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py", line 146, in train_variant
+    pos_mean  = torch.from_numpy(base_ds.mean[0]).to(dev)         # [J, 3]
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.AcceleratorError: CUDA error: out of memory
+Search for `cudaErrorMemoryAllocation' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+
+=== launched at 2026-05-07 05:31:20: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant axial_only --mode headline --no-resume ===
+[axial_only] starting fresh
+[axial_only] FM training 0→30000  bs=32  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+[axial_only] step     50/30000  total=12.9352  pos=0.9825 rot=0.8722 root=1.0818 fk=0.0372  step=267ms  eta=133.0min
+[axial_only] step    100/30000  total=7.0956  pos=0.5639 rot=0.3776 root=0.5178 fk=0.0218  step=264ms  eta=131.3min
+[axial_only] step    150/30000  total=6.0733  pos=0.4874 rot=0.2954 root=0.4364 fk=0.0153  step=437ms  eta=217.2min

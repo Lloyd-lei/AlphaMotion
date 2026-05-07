@@ -1,0 +1,91 @@
+
+=== launched at 2026-05-06 17:12:52: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant pair_static --mode smoke ===
+[pair_static] starting fresh
+[pair_static] FM training 0→1000  bs=32  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+[pair_static] step     50/1000  total=14.5146  pos=1.1120 rot=1.0155 root=1.1492 fk=0.0404  step=408ms  eta=6.5min
+[pair_static] step    100/1000  total=6.5538  pos=0.5020 rot=0.4248 root=0.5294 fk=0.0249  step=270ms  eta=4.0min
+[pair_static] step    150/1000  total=5.2044  pos=0.3970 rot=0.3060 root=0.4469 fk=0.0175  step=380ms  eta=5.4min
+[pair_static] step    200/1000  total=4.8124  pos=0.3709 rot=0.2566 root=0.4105 fk=0.0129  step=310ms  eta=4.1min
+[pair_static] step    250/1000  total=4.2638  pos=0.3278 rot=0.2147 root=0.3741 fk=0.0115  step=326ms  eta=4.1min
+[pair_static] step    300/1000  total=3.8618  pos=0.2983 rot=0.1956 root=0.3313 fk=0.0101  step=393ms  eta=4.6min
+[pair_static] step    350/1000  total=3.7054  pos=0.2862 rot=0.1871 root=0.3185 fk=0.0096  step=400ms  eta=4.3min
+[pair_static] step    400/1000  total=3.5432  pos=0.2748 rot=0.1736 root=0.3014 fk=0.0094  step=396ms  eta=4.0min
+[pair_static] step    450/1000  total=3.2222  pos=0.2466 rot=0.1717 root=0.2829 fk=0.0094  step=393ms  eta=3.6min
+[pair_static] step    500/1000  total=2.8652  pos=0.2209 rot=0.1490 root=0.2450 fk=0.0086  step=398ms  eta=3.3min
+[pair_static] step    550/1000  total=3.3032  pos=0.2576 rot=0.1609 root=0.2752 fk=0.0078  step=396ms  eta=3.0min
+[pair_static] step    600/1000  total=2.9227  pos=0.2277 rot=0.1502 root=0.2399 fk=0.0076  step=393ms  eta=2.6min
+[pair_static] step    650/1000  total=3.0111  pos=0.2358 rot=0.1504 root=0.2437 fk=0.0078  step=400ms  eta=2.3min
+[pair_static] step    700/1000  total=2.6753  pos=0.2077 rot=0.1478 root=0.2180 fk=0.0074  step=395ms  eta=2.0min
+[pair_static] step    750/1000  total=2.4608  pos=0.1897 rot=0.1419 root=0.2029 fk=0.0079  step=392ms  eta=1.6min
+[pair_static] step    800/1000  total=2.5281  pos=0.1976 rot=0.1281 root=0.2058 fk=0.0063  step=398ms  eta=1.3min
+[pair_static] step    850/1000  total=2.4146  pos=0.1879 rot=0.1294 root=0.1957 fk=0.0073  step=395ms  eta=1.0min
+[pair_static] step    900/1000  total=2.4459  pos=0.1925 rot=0.1179 root=0.1944 fk=0.0070  step=393ms  eta=0.7min
+[pair_static] step    950/1000  total=2.1962  pos=0.1710 rot=0.1207 root=0.1765 fk=0.0062  step=401ms  eta=0.3min
+[pair_static] step   1000/1000  total=2.3060  pos=0.1802 rot=0.1195 root=0.1861 fk=0.0063  step=396ms  eta=0.0min
+[pair_static] done: step=1000/1000  ckpt=/home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/checkpoints/pair_static/latest.pt
+
+=== launched at 2026-05-07 05:20:05: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant pair_static --mode headline ===
+[pair_static] resumed from step 1000
+[pair_static] FM training 1000→30000  bs=64  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+[pair_static] OOM at batch=64 → batch=32 grad_accum=2 (retry 1/5)
+[pair_static] step   1050/30000  total=2.1770  pos=0.1705 rot=0.1151 root=0.1720 fk=0.0063  step=782ms  eta=377.1min
+[pair_static] step   1100/30000  total=2.1523  pos=0.1699 rot=0.1075 root=0.1671 fk=0.0058  step=764ms  eta=368.1min
+[pair_static] step   1150/30000  total=2.0726  pos=0.1622 rot=0.1159 root=0.1620 fk=0.0055  step=763ms  eta=367.0min
+[pair_static] step   1200/30000  total=2.0564  pos=0.1623 rot=0.1102 root=0.1562 fk=0.0054  step=778ms  eta=373.6min
+[pair_static] step   1250/30000  total=1.9325  pos=0.1503 rot=0.1101 root=0.1542 fk=0.0055  step=772ms  eta=369.8min
+[pair_static] step   1300/30000  total=2.0824  pos=0.1628 rot=0.1165 root=0.1633 fk=0.0056  step=773ms  eta=369.7min
+
+=== launched at 2026-05-07 05:26:37: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant pair_static --mode headline ===
+[pair_static] resumed from step 1000
+[pair_static] FM training 1000→30000  bs=32  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+[pair_static] OOM at batch=32 → batch=16 grad_accum=2 (retry 1/5)
+[pair_static] OOM at batch=16 → batch=8 grad_accum=4 (retry 2/5)
+[pair_static] OOM at batch=8 → batch=4 grad_accum=8 (retry 3/5)
+[pair_static] OOM at batch=4 → batch=2 grad_accum=16 (retry 4/5)
+Traceback (most recent call last):
+  File "/home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py", line 485, in <module>
+    main()
+  File "/home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py", line 471, in main
+    train_variant(
+  File "/home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py", line 267, in train_variant
+    out = model(x_pos_t, x_rot_t, x_root_t, t)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/arenalabs/Desktop/"be water, robot"/notebook/01_resources/scripts/motionformer.py", line 430, in forward
+    msa, pair = block(msa, pair)
+                ^^^^^^^^^^^^^^^^
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/arenalabs/Desktop/"be water, robot"/notebook/01_resources/scripts/motionformer.py", line 330, in forward
+    msa = msa + self.row_attn(msa, pair)
+          ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+torch.AcceleratorError: CUDA error: out of memory
+Search for `cudaErrorMemoryAllocation' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+
+=== launched at 2026-05-07 05:28:05: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant pair_static --mode headline --no-resume ===
+
+=== launched at 2026-05-07 05:28:07: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant pair_static --mode headline --no-resume ===
+[pair_static] starting fresh
+[pair_static] FM training 0→30000  bs=32  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+[pair_static] starting fresh
+[pair_static] FM training 0→30000  bs=32  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+[pair_static] OOM at batch=32 → batch=16 grad_accum=2 (retry 1/5)
+[pair_static] OOM at batch=16 → batch=8 grad_accum=4 (retry 2/5)
+[pair_static] OOM at batch=8 → batch=4 grad_accum=8 (retry 3/5)
+[pair_static] OOM at batch=4 → batch=2 grad_accum=16 (retry 4/5)
+[pair_static] step     50/30000  total=14.5146  pos=1.1120 rot=1.0155 root=1.1492 fk=0.0404  step=688ms  eta=343.4min
+[pair_static] step    100/30000  total=6.5538  pos=0.5020 rot=0.4248 root=0.5294 fk=0.0249  step=637ms  eta=317.5min
+[pair_static] step    150/30000  total=5.2044  pos=0.3970 rot=0.3060 root=0.4469 fk=0.0175  step=638ms  eta=317.4min

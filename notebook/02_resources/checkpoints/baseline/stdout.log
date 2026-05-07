@@ -1,0 +1,53 @@
+
+=== launched at 2026-05-06 17:14:07: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant baseline --mode smoke ===
+/home/arenalabs/miniconda3/envs/rot/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+[baseline] starting fresh
+[baseline] FM training 0→1000  bs=32  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+[baseline] step     50/1000  total=17.6890  pos=1.3683 rot=1.1338 root=1.3902 fk=0.0461  step=694ms  eta=11.0min
+[baseline] step    100/1000  total=12.5096  pos=0.9911 rot=0.8989 root=0.8197 fk=0.0302  step=686ms  eta=10.3min
+[baseline] step    150/1000  total=11.0855  pos=0.9146 rot=0.6391 root=0.6212 fk=0.0291  step=684ms  eta=9.7min
+[baseline] step    200/1000  total=10.0298  pos=0.8425 rot=0.4918 root=0.5278 fk=0.0288  step=691ms  eta=9.2min
+[baseline] step    250/1000  total=9.4331  pos=0.8014 rot=0.4468 root=0.4574 fk=0.0287  step=686ms  eta=8.6min
+[baseline] step    300/1000  total=8.7856  pos=0.7502 rot=0.4189 root=0.4050 fk=0.0274  step=686ms  eta=8.0min
+[baseline] step    350/1000  total=8.3190  pos=0.7124 rot=0.3936 root=0.3758 fk=0.0249  step=691ms  eta=7.5min
+[baseline] step    400/1000  total=8.3742  pos=0.7185 rot=0.3943 root=0.3721 fk=0.0252  step=686ms  eta=6.9min
+[baseline] step    450/1000  total=7.9101  pos=0.6760 rot=0.3748 root=0.3636 fk=0.0238  step=671ms  eta=6.1min
+[baseline] step    500/1000  total=7.4800  pos=0.6420 rot=0.3605 root=0.3263 fk=0.0236  step=403ms  eta=3.4min
+[baseline] step    550/1000  total=7.7016  pos=0.6583 rot=0.3640 root=0.3555 fk=0.0217  step=230ms  eta=1.7min
+[baseline] step    600/1000  total=7.0961  pos=0.6059 rot=0.3550 root=0.3212 fk=0.0199  step=230ms  eta=1.5min
+[baseline] step    650/1000  total=6.9299  pos=0.5874 rot=0.3544 root=0.3316 fk=0.0190  step=233ms  eta=1.4min
+[baseline] step    700/1000  total=6.1854  pos=0.5199 rot=0.3414 root=0.3060 fk=0.0168  step=229ms  eta=1.1min
+[baseline] step    750/1000  total=5.7214  pos=0.4763 rot=0.3297 root=0.2988 fk=0.0154  step=229ms  eta=1.0min
+[baseline] step    800/1000  total=5.0374  pos=0.4141 rot=0.2902 root=0.2899 fk=0.0134  step=233ms  eta=0.8min
+[baseline] step    850/1000  total=4.8251  pos=0.3945 rot=0.2920 root=0.2797 fk=0.0146  step=228ms  eta=0.6min
+[baseline] step    900/1000  total=4.5376  pos=0.3712 rot=0.2554 root=0.2717 fk=0.0134  step=228ms  eta=0.4min
+[baseline] step    950/1000  total=4.2489  pos=0.3445 rot=0.2618 root=0.2584 fk=0.0129  step=232ms  eta=0.2min
+[baseline] step   1000/1000  total=4.1764  pos=0.3375 rot=0.2510 root=0.2622 fk=0.0132  step=227ms  eta=0.0min
+[baseline] done: step=1000/1000  ckpt=/home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/checkpoints/baseline/latest.pt
+
+=== launched at 2026-05-07 05:25:40: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant baseline --mode headline ===
+/home/arenalabs/miniconda3/envs/rot/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+[baseline] resumed from step 1000
+[baseline] FM training 1000→30000  bs=64  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+
+=== launched at 2026-05-07 05:26:57: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant baseline --mode headline ===
+/home/arenalabs/miniconda3/envs/rot/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+[baseline] resumed from step 1000
+[baseline] FM training 1000→30000  bs=32  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+[baseline] OOM at batch=32 → batch=16 grad_accum=2 (retry 1/5)
+[baseline] OOM at batch=16 → batch=8 grad_accum=4 (retry 2/5)
+[baseline] OOM at batch=8 → batch=4 grad_accum=8 (retry 3/5)
+[baseline] OOM at batch=4 → batch=2 grad_accum=16 (retry 4/5)
+[baseline] OOM at batch=2 → batch=1 grad_accum=32 (retry 5/5)
+[baseline] FATAL: OOM at batch=1 exhausted retries; exiting
+[baseline] failed_oom: step=1000/30000  ckpt=/home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/checkpoints/baseline/latest.pt
+[baseline] step   1050/30000  total=3.7219  pos=0.2983 rot=0.2401 root=0.2369 fk=0.0125  step=1026ms  eta=495.2min
+
+=== launched at 2026-05-07 05:31:20: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant baseline --mode headline --no-resume ===
+/home/arenalabs/miniconda3/envs/rot/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+[baseline] starting fresh
+[baseline] FM training 0→30000  bs=32  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda

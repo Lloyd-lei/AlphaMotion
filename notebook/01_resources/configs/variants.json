@@ -1,0 +1,92 @@
+{
+  "full": {
+    "description": "Full MotionFormer: pair-first trunk + OPM + triangle refiner",
+    "model": {
+      "arch": "motionformer",
+      "hidden": 128,
+      "pair_hidden": 32,
+      "depth": 6,
+      "heads": 4,
+      "pair_heads": 4,
+      "opm_chunk": 16,
+      "tri_hidden": 16,
+      "use_pair": true,
+      "use_opm": true,
+      "use_triangle": true
+    }
+  },
+  "opm_only": {
+    "description": "OPM gateway only \u2014 distributed pair, no triangle shaping",
+    "model": {
+      "arch": "motionformer",
+      "hidden": 128,
+      "pair_hidden": 32,
+      "depth": 6,
+      "heads": 4,
+      "pair_heads": 4,
+      "opm_chunk": 16,
+      "tri_hidden": 16,
+      "use_pair": true,
+      "use_opm": true,
+      "use_triangle": false
+    }
+  },
+  "triangle_only": {
+    "description": "Triangle refiner only \u2014 no OPM gateway",
+    "model": {
+      "arch": "motionformer",
+      "hidden": 128,
+      "pair_hidden": 32,
+      "depth": 6,
+      "heads": 4,
+      "pair_heads": 4,
+      "opm_chunk": 16,
+      "tri_hidden": 16,
+      "use_pair": true,
+      "use_opm": false,
+      "use_triangle": true
+    }
+  },
+  "pair_static": {
+    "description": "Pair tensor present but never updated (static bias)",
+    "model": {
+      "arch": "motionformer",
+      "hidden": 128,
+      "pair_hidden": 32,
+      "depth": 6,
+      "heads": 4,
+      "pair_heads": 4,
+      "opm_chunk": 16,
+      "tri_hidden": 16,
+      "use_pair": true,
+      "use_opm": false,
+      "use_triangle": false
+    }
+  },
+  "axial_only": {
+    "description": "Axial attention only \u2014 no pair tensor at all",
+    "model": {
+      "arch": "motionformer",
+      "hidden": 128,
+      "pair_hidden": 32,
+      "depth": 6,
+      "heads": 4,
+      "pair_heads": 4,
+      "opm_chunk": 16,
+      "tri_hidden": 16,
+      "use_pair": false,
+      "use_opm": false,
+      "use_triangle": false
+    }
+  },
+  "baseline": {
+    "description": "Plain transformer baseline \u2014 no pair tensor, no Evoformer-style structure",
+    "model": {
+      "arch": "baseline",
+      "hidden": 128,
+      "depth": 12,
+      "heads": 4,
+      "ffn_mult": 4
+    }
+  }
+}

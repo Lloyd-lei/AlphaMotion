@@ -1,0 +1,57 @@
+{
+  "variant": "baseline",
+  "mode": "headline",
+  "regime": "flow_matching_v1",
+  "n_steps_target": 30000,
+  "log_every": 50,
+  "loss_weights": {
+    "pos": 10.0,
+    "rot": 1.0,
+    "root": 2.0,
+    "fk": 2.0
+  },
+  "fields": [
+    "step",
+    "loss",
+    "loss_pos",
+    "loss_rot",
+    "loss_root",
+    "loss_fk",
+    "step_ms",
+    "lr",
+    "gpu_mem_gb",
+    "wall_s",
+    "batch",
+    "grad_accum"
+  ],
+  "entries": [
+    {
+      "step": 50,
+      "loss": 17.688961,
+      "loss_pos": 1.368251,
+      "loss_rot": 1.133751,
+      "loss_root": 1.390236,
+      "loss_fk": 0.046113,
+      "step_ms": 468.09,
+      "lr": 0.0003,
+      "gpu_mem_gb": 0.123,
+      "wall_s": 23.4,
+      "batch": 32,
+      "grad_accum": 1
+    },
+    {
+      "step": 100,
+      "loss": 12.510104,
+      "loss_pos": 0.991134,
+      "loss_rot": 0.898911,
+      "loss_root": 0.819752,
+      "loss_fk": 0.030173,
+      "step_ms": 769.83,
+      "lr": 0.0003,
+      "gpu_mem_gb": 0.123,
+      "wall_s": 61.9,
+      "batch": 32,
+      "grad_accum": 1
+    }
+  ]
+}

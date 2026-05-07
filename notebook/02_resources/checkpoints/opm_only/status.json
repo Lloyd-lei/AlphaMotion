@@ -1,0 +1,33 @@
+{
+  "variant": "opm_only",
+  "mode": "headline",
+  "status": "running",
+  "step": 15500,
+  "n_steps": 30000,
+  "batch": 64,
+  "use_fp16": true,
+  "pid": 1218027,
+  "started_at": 1778157212.3693607,
+  "device": "cuda",
+  "loss_weights": {
+    "pos": 10.0,
+    "rot": 1.0,
+    "root": 2.0,
+    "fk": 2.0
+  },
+  "regime": "flow_matching_v1",
+  "last_update": 1778166252.1749022,
+  "loss_recent": 0.8064400100708008,
+  "loss_pos": 0.0656,
+  "loss_rot": 0.0297,
+  "loss_root": 0.0584,
+  "loss_fk": 0.0021,
+  "step_ms": 642.6,
+  "eta_s": 9317.1,
+  "gpu_mem_gb": 1.13,
+  "ckpt_path": "/home/arenalabs/Desktop/\"be water, robot\"/notebook/02_resources/checkpoints/opm_only/latest.pt",
+  "finished_at": 1778112767.6481287,
+  "oom_recovered": true,
+  "grad_accum": 2,
+  "oom_retries": 1
+}

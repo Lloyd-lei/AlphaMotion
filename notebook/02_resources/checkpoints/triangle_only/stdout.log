@@ -1,0 +1,47 @@
+
+=== launched at 2026-05-06 17:05:02: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant triangle_only --mode smoke ===
+[triangle_only] starting fresh
+[triangle_only] FM training 0→1000  bs=32  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+[triangle_only] step     50/1000  total=15.7276  pos=1.2290 rot=0.9789 root=1.1862 fk=0.0433  step=509ms  eta=8.1min
+[triangle_only] step    100/1000  total=6.6169  pos=0.5008 rot=0.4404 root=0.5590 fk=0.0254  step=502ms  eta=7.5min
+[triangle_only] step    150/1000  total=5.2261  pos=0.3988 rot=0.3016 root=0.4512 fk=0.0171  step=500ms  eta=7.1min
+[triangle_only] step    200/1000  total=4.8689  pos=0.3769 rot=0.2561 root=0.4088 fk=0.0132  step=506ms  eta=6.7min
+[triangle_only] step    250/1000  total=4.2575  pos=0.3292 rot=0.2128 root=0.3644 fk=0.0121  step=498ms  eta=6.2min
+[triangle_only] step    300/1000  total=3.7838  pos=0.2946 rot=0.1914 root=0.3128 fk=0.0105  step=494ms  eta=5.8min
+[triangle_only] step    350/1000  total=3.5938  pos=0.2813 rot=0.1751 root=0.2937 fk=0.0090  step=498ms  eta=5.4min
+[triangle_only] step    400/1000  total=3.5312  pos=0.2763 rot=0.1726 root=0.2886 fk=0.0092  step=495ms  eta=5.0min
+[triangle_only] step    450/1000  total=3.2911  pos=0.2544 rot=0.1721 root=0.2784 fk=0.0090  step=494ms  eta=4.5min
+[triangle_only] step    500/1000  total=2.8816  pos=0.2240 rot=0.1562 root=0.2335 fk=0.0094  step=501ms  eta=4.2min
+[triangle_only] step    550/1000  total=3.2070  pos=0.2520 rot=0.1658 root=0.2523 fk=0.0083  step=495ms  eta=3.7min
+[triangle_only] step    600/1000  total=2.9376  pos=0.2302 rot=0.1551 root=0.2323 fk=0.0080  step=494ms  eta=3.3min
+[triangle_only] step    650/1000  total=2.9703  pos=0.2347 rot=0.1502 root=0.2290 fk=0.0075  step=502ms  eta=2.9min
+[triangle_only] step    700/1000  total=2.6382  pos=0.2066 rot=0.1470 root=0.2052 fk=0.0072  step=494ms  eta=2.5min
+[triangle_only] step    750/1000  total=2.4286  pos=0.1890 rot=0.1395 root=0.1925 fk=0.0073  step=497ms  eta=2.1min
+[triangle_only] step    800/1000  total=2.4515  pos=0.1925 rot=0.1290 root=0.1921 fk=0.0064  step=503ms  eta=1.7min
+[triangle_only] step    850/1000  total=2.3885  pos=0.1867 rot=0.1303 root=0.1887 fk=0.0070  step=500ms  eta=1.2min
+[triangle_only] step    900/1000  total=2.4060  pos=0.1904 rot=0.1164 root=0.1861 fk=0.0067  step=493ms  eta=0.8min
+[triangle_only] step    950/1000  total=2.1772  pos=0.1707 rot=0.1230 root=0.1672 fk=0.0066  step=373ms  eta=0.3min
+[triangle_only] step   1000/1000  total=2.2901  pos=0.1799 rot=0.1235 root=0.1776 fk=0.0064  step=473ms  eta=0.0min
+[triangle_only] done: step=1000/1000  ckpt=/home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/checkpoints/triangle_only/latest.pt
+
+=== launched at 2026-05-07 05:19:50: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant triangle_only --mode headline ===
+[triangle_only] resumed from step 1000
+[triangle_only] FM training 1000→30000  bs=64  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+[triangle_only] OOM at batch=64 → batch=32 grad_accum=2 (retry 1/5)
+[triangle_only] OOM at batch=32 → batch=16 grad_accum=4 (retry 2/5)
+[triangle_only] OOM at batch=16 → batch=8 grad_accum=8 (retry 3/5)
+[triangle_only] OOM at batch=8 → batch=4 grad_accum=16 (retry 4/5)
+[triangle_only] OOM at batch=4 → batch=2 grad_accum=32 (retry 5/5)
+[triangle_only] FATAL: OOM at batch=2 exhausted retries; exiting
+[triangle_only] failed_oom: step=1000/30000  ckpt=/home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/checkpoints/triangle_only/latest.pt
+
+=== launched at 2026-05-07 05:26:12: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant triangle_only --mode headline ===
+[triangle_only] resumed from step 1000
+[triangle_only] FM training 1000→30000  bs=32  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+[triangle_only] OOM at batch=32 → batch=16 grad_accum=2 (retry 1/5)
+[triangle_only] OOM at batch=16 → batch=8 grad_accum=4 (retry 2/5)
+[triangle_only] OOM at batch=8 → batch=4 grad_accum=8 (retry 3/5)
+[triangle_only] OOM at batch=4 → batch=2 grad_accum=16 (retry 4/5)
+[triangle_only] OOM at batch=2 → batch=1 grad_accum=32 (retry 5/5)
+[triangle_only] FATAL: OOM at batch=1 exhausted retries; exiting
+[triangle_only] failed_oom: step=1000/30000  ckpt=/home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/checkpoints/triangle_only/latest.pt

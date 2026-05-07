@@ -1,13 +1,17 @@
-# ---- Large data sources (download instructions in experiment/dataset/README.md) ----
+# ---- Large data sources (download / regenerate via data/prepare_*.py) ----
 papers-docs/
-experiment/dataset/amass/
-experiment/dataset/100style/
-experiment/dataset/hy_motion/
-experiment/dataset/motionx/
-experiment/dataset/humanml3d/
-experiment/dataset/kimodo/
-experiment/dataset/__pycache__/
-experiment/dataset/*.npz
+data/100style/
+data/amass/
+data/hy_motion/
+data/humanml3d/
+data/kimodo/
+data/motionx/
+data/__pycache__/
+data/*.npz
+data/*.log
+
+# Whitelist: small committable .npz assets (skin model for mesh viz, ~530 KB)
+!notebook/01_resources/assets/*.npz
 
 # ---- Per-experiment caches (rebuild from data) ----
 experiment/stage1/runs/*.npz
@@ -25,6 +29,9 @@ experiment/stage1/runs/pair_distance/
 *.gif
 *.mp4
 *.mov
+
+# Whitelist: notebook experiment GIFs (small, <300 KB each)
+!notebook/**/*.gif
 
 # ---- Generic archives ----
 *.tar.gz
@@ -62,3 +69,4 @@ credentials.json
 # ---- Misc ----
 *.log.gz
 nohup.out
+experiment/kimodo/

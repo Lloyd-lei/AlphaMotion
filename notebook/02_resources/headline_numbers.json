@@ -1,0 +1,42 @@
+{
+  "claim1_full_mpjpe_A_eval": {
+    "value": 0.020084813237190247,
+    "source_cell": "\u00a72.1"
+  },
+  "claim1_opm_mpjpe_A_eval": {
+    "value": 0.02020016498863697,
+    "source_cell": "\u00a72.1"
+  },
+  "claim1_macro_full_A_eval": {
+    "value": 0.019842542457826913,
+    "source_cell": "\u00a72.2"
+  },
+  "claim2_modularity_full": {
+    "value": 0.0005033182174128611,
+    "source_cell": "\u00a73.3"
+  },
+  "claim2_modularity_opm": {
+    "value": -0.03046636501248685,
+    "source_cell": "\u00a73.3"
+  },
+  "claim2_modularity_triangle": {
+    "value": -0.06370190447437431,
+    "source_cell": "\u00a73.3"
+  },
+  "claim2_modularity_pair_static": {
+    "value": -0.01521414810480683,
+    "source_cell": "\u00a73.3"
+  },
+  "style_align_ARI_full": {
+    "value": 0.08165991623017463,
+    "source_cell": "\u00a75.3"
+  },
+  "style_align_NMI_full": {
+    "value": 0.23349044178185943,
+    "source_cell": "\u00a75.3"
+  },
+  "style_align_purity_full": {
+    "value": 0.5984848484848485,
+    "source_cell": "\u00a75.3"
+  }
+}

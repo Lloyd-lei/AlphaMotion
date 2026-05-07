@@ -1,0 +1,384 @@
+
+=== launched at 2026-05-06 17:05:02: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant full --mode smoke ===
+[full] starting fresh
+[full] FM training 0→1000  bs=32  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+[full] step     50/1000  total=15.2034  pos=1.1777 rot=1.0671 root=1.1414 fk=0.0380  step=556ms  eta=8.8min
+[full] step    100/1000  total=6.5780  pos=0.5030 rot=0.4265 root=0.5362 fk=0.0246  step=550ms  eta=8.2min
+[full] step    150/1000  total=5.0070  pos=0.3758 rot=0.3061 root=0.4541 fk=0.0173  step=545ms  eta=7.7min
+[full] step    200/1000  total=4.5663  pos=0.3434 rot=0.2573 root=0.4244 fk=0.0130  step=553ms  eta=7.4min
+[full] step    250/1000  total=4.0474  pos=0.3015 rot=0.2126 root=0.3977 fk=0.0120  step=542ms  eta=6.8min
+[full] step    300/1000  total=3.6751  pos=0.2755 rot=0.1952 root=0.3519 fk=0.0108  step=537ms  eta=6.3min
+[full] step    350/1000  total=3.5762  pos=0.2706 rot=0.1777 root=0.3369 fk=0.0095  step=545ms  eta=5.9min
+[full] step    400/1000  total=3.4061  pos=0.2586 rot=0.1723 root=0.3148 fk=0.0093  step=538ms  eta=5.4min
+[full] step    450/1000  total=3.1820  pos=0.2413 rot=0.1710 root=0.2903 fk=0.0089  step=538ms  eta=4.9min
+[full] step    500/1000  total=2.7899  pos=0.2120 rot=0.1516 root=0.2496 fk=0.0093  step=545ms  eta=4.5min
+[full] step    550/1000  total=3.2371  pos=0.2487 rot=0.1636 root=0.2845 fk=0.0085  step=538ms  eta=4.0min
+[full] step    600/1000  total=2.8772  pos=0.2197 rot=0.1597 root=0.2510 fk=0.0091  step=541ms  eta=3.6min
+[full] step    650/1000  total=2.9069  pos=0.2247 rot=0.1532 root=0.2454 fk=0.0082  step=546ms  eta=3.2min
+[full] step    700/1000  total=2.6469  pos=0.2021 rot=0.1535 root=0.2284 fk=0.0079  step=540ms  eta=2.7min
+[full] step    750/1000  total=2.4386  pos=0.1841 rot=0.1448 root=0.2187 fk=0.0078  step=541ms  eta=2.3min
+[full] step    800/1000  total=2.5789  pos=0.1989 rot=0.1296 root=0.2237 fk=0.0066  step=550ms  eta=1.8min
+[full] step    850/1000  total=2.3912  pos=0.1821 rot=0.1286 root=0.2133 fk=0.0075  step=489ms  eta=1.2min
+[full] step    900/1000  total=2.4651  pos=0.1914 rot=0.1149 root=0.2112 fk=0.0070  step=433ms  eta=0.7min
+[full] step    950/1000  total=2.2195  pos=0.1700 rot=0.1176 root=0.1945 fk=0.0064  step=429ms  eta=0.4min
+[full] step   1000/1000  total=2.3425  pos=0.1800 rot=0.1196 root=0.2050 fk=0.0065  step=517ms  eta=0.0min
+[full] done: step=1000/1000  ckpt=/home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/checkpoints/full/latest.pt
+
+=== launched at 2026-05-07 05:19:50: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant full --mode headline ===
+[full] resumed from step 1000
+[full] FM training 1000→30000  bs=64  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+[full] OOM at batch=64 → batch=32 grad_accum=2 (retry 1/5)
+[full] OOM at batch=32 → batch=16 grad_accum=4 (retry 2/5)
+[full] OOM at batch=16 → batch=8 grad_accum=8 (retry 3/5)
+
+=== launched at 2026-05-07 05:26:12: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant full --mode headline ===
+[full] resumed from step 1000
+[full] FM training 1000→30000  bs=32  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+[full] OOM at batch=32 → batch=16 grad_accum=2 (retry 1/5)
+[full] OOM at batch=16 → batch=8 grad_accum=4 (retry 2/5)
+[full] OOM at batch=8 → batch=4 grad_accum=8 (retry 3/5)
+Traceback (most recent call last):
+  File "/home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py", line 485, in <module>
+    main()
+  File "/home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py", line 471, in main
+    train_variant(
+  File "/home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py", line 255, in train_variant
+    x_pos_t  = (1 - t_pos)  * x_pos_0  + t_pos  * x_pos_1
+                ~~^~~~~~~
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/site-packages/torch/_tensor.py", line 45, in wrapped
+    return f(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/site-packages/torch/_tensor.py", line 1075, in __rsub__
+    return _C._VariableFunctions.rsub(self, other)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.AcceleratorError: CUDA error: out of memory
+Search for `cudaErrorMemoryAllocation' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+Exception in thread Thread-5 (_pin_memory_loop):
+Traceback (most recent call last):
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+
+=== launched at 2026-05-07 05:28:05: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant full --mode headline --no-resume ===
+
+=== launched at 2026-05-07 05:28:07: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant full --mode headline --no-resume ===
+[full] starting fresh
+[full] FM training 0→30000  bs=32  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+[full] starting fresh
+[full] FM training 0→30000  bs=32  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+Traceback (most recent call last):
+  File "/home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py", line 485, in <module>
+    main()
+  File "/home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py", line 471, in main
+    train_variant(
+  File "/home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py", line 255, in train_variant
+    x_pos_t  = (1 - t_pos)  * x_pos_0  + t_pos  * x_pos_1
+                ~~^~~~~~~
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/site-packages/torch/_tensor.py", line 45, in wrapped
+    return f(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/site-packages/torch/_tensor.py", line 1075, in __rsub__
+    return _C._VariableFunctions.rsub(self, other)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.AcceleratorError: CUDA error: out of memory
+Search for `cudaErrorMemoryAllocation' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+Exception in thread Thread-2 (_pin_memory_loop):
+Traceback (most recent call last):
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/site-packages/torch/utils/data/_utils/pin_memory.py", line 52, in _pin_memory_loop
+    do_one_step()
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/site-packages/torch/utils/data/_utils/pin_memory.py", line 28, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+         ^^^^^^^^^^^
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/multiprocessing/connection.py", line 526, in Client
+    deliver_challenge(c, authkey)
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/multiprocessing/connection.py", line 939, in deliver_challenge
+    response = connection.recv_bytes(256)        # reject large message
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/multiprocessing/connection.py", line 216, in recv_bytes
+    buf = self._recv_bytes(maxlength)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/arenalabs/miniconda3/envs/rot/lib/python3.12/multiprocessing/connection.py", line 395, in _recv
+    chunk = read(handle, remaining)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [Errno 104] Connection reset by peer
+[full] step     50/30000  total=15.2034  pos=1.1777 rot=1.0671 root=1.1414 fk=0.0380  step=901ms  eta=449.6min
+[full] step    100/30000  total=6.5780  pos=0.5030 rot=0.4265 root=0.5362 fk=0.0246  step=863ms  eta=430.1min
+[full] step    150/30000  total=5.0070  pos=0.3758 rot=0.3061 root=0.4541 fk=0.0173  step=864ms  eta=429.9min
+
+=== launched at 2026-05-07 05:31:44: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant full --mode headline ===
+[full] resumed from step 1000
+[full] FM training 1000→30000  bs=64  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+[full] OOM at batch=64 → batch=32 grad_accum=2 (retry 1/5)
+[full] OOM at batch=32 → batch=16 grad_accum=4 (retry 2/5)
+
+=== launched at 2026-05-07 05:33:21: /home/arenalabs/miniconda3/envs/rot/bin/python /home/arenalabs/Desktop/"be water, robot"/notebook/02_resources/scripts/train_runner.py --variant full --mode headline ===
+[full] resumed from step 1000
+[full] FM training 1000→30000  bs=64  fp16=True  weights pos=10.0 rot=1.0 root=2.0 fk=2.0  device=cuda
+[full] step   1050/30000  total=2.0270  pos=0.1547 rot=0.1145 root=0.1764 fk=0.0063  step=768ms  eta=370.3min
+[full] step   1100/30000  total=2.0609  pos=0.1595 rot=0.1066 root=0.1739 fk=0.0059  step=752ms  eta=362.3min
+[full] step   1150/30000  total=2.0094  pos=0.1552 rot=0.1052 root=0.1697 fk=0.0064  step=736ms  eta=353.8min
+[full] step   1200/30000  total=2.0015  pos=0.1554 rot=0.1061 root=0.1650 fk=0.0058  step=744ms  eta=357.0min
+[full] step   1250/30000  total=1.8479  pos=0.1421 rot=0.1035 root=0.1556 fk=0.0060  step=752ms  eta=360.3min
+[full] step   1300/30000  total=1.8762  pos=0.1460 rot=0.0994 root=0.1526 fk=0.0058  step=740ms  eta=353.7min
+[full] step   1350/30000  total=1.7886  pos=0.1377 rot=0.1034 root=0.1481 fk=0.0061  step=749ms  eta=357.8min
+[full] step   1400/30000  total=1.7336  pos=0.1346 rot=0.0981 root=0.1389 fk=0.0057  step=744ms  eta=354.8min
+[full] step   1450/30000  total=1.6941  pos=0.1316 rot=0.0941 root=0.1364 fk=0.0055  step=743ms  eta=353.6min
+[full] step   1500/30000  total=1.7279  pos=0.1348 rot=0.0954 root=0.1370 fk=0.0053  step=744ms  eta=353.4min
+[full] step   1550/30000  total=1.6495  pos=0.1286 rot=0.0944 root=0.1292 fk=0.0053  step=735ms  eta=348.5min
+[full] step   1600/30000  total=1.6550  pos=0.1291 rot=0.0934 root=0.1301 fk=0.0052  step=744ms  eta=352.0min
+[full] step   1650/30000  total=1.6626  pos=0.1306 rot=0.0880 root=0.1292 fk=0.0052  step=751ms  eta=354.9min
+[full] step   1700/30000  total=1.6193  pos=0.1262 rot=0.0915 root=0.1276 fk=0.0053  step=735ms  eta=346.6min
+[full] step   1750/30000  total=1.5281  pos=0.1189 rot=0.0880 root=0.1203 fk=0.0051  step=743ms  eta=349.8min
+[full] step   1800/30000  total=1.6008  pos=0.1249 rot=0.0874 root=0.1274 fk=0.0050  step=742ms  eta=348.9min
+[full] step   1850/30000  total=1.5078  pos=0.1174 rot=0.0891 root=0.1174 fk=0.0050  step=744ms  eta=348.9min
+[full] step   1900/30000  total=1.4991  pos=0.1171 rot=0.0882 root=0.1153 fk=0.0047  step=743ms  eta=348.0min
+[full] step   1950/30000  total=1.5017  pos=0.1184 rot=0.0815 root=0.1132 fk=0.0049  step=743ms  eta=347.1min
+[full] step   2000/30000  total=1.4289  pos=0.1105 rot=0.0868 root=0.1135 fk=0.0047  step=735ms  eta=343.1min
+[full] step   2050/30000  total=1.3777  pos=0.1085 rot=0.0780 root=0.1028 fk=0.0047  step=751ms  eta=349.9min
+[full] step   2100/30000  total=1.3729  pos=0.1076 rot=0.0792 root=0.1044 fk=0.0045  step=735ms  eta=342.0min
+[full] step   2150/30000  total=1.4798  pos=0.1157 rot=0.0819 root=0.1158 fk=0.0045  step=742ms  eta=344.6min
+[full] step   2200/30000  total=1.4344  pos=0.1126 rot=0.0810 root=0.1092 fk=0.0044  step=743ms  eta=344.0min
+[full] step   2250/30000  total=1.3813  pos=0.1081 rot=0.0795 root=0.1060 fk=0.0043  step=743ms  eta=343.6min
+[full] step   2300/30000  total=1.4364  pos=0.1128 rot=0.0802 root=0.1099 fk=0.0044  step=744ms  eta=343.5min
+[full] step   2350/30000  total=1.3752  pos=0.1074 rot=0.0800 root=0.1062 fk=0.0044  step=743ms  eta=342.3min
+[full] step   2400/30000  total=1.2727  pos=0.1003 rot=0.0766 root=0.0924 fk=0.0043  step=735ms  eta=338.0min
+[full] step   2450/30000  total=1.3415  pos=0.1054 rot=0.0795 root=0.1000 fk=0.0041  step=751ms  eta=345.0min
+[full] step   2500/30000  total=1.2699  pos=0.0994 rot=0.0782 root=0.0948 fk=0.0041  step=736ms  eta=337.4min
+[full] step   2550/30000  total=1.2743  pos=0.0996 rot=0.0754 root=0.0970 fk=0.0043  step=744ms  eta=340.6min
+[full] step   2600/30000  total=1.2588  pos=0.0981 rot=0.0766 root=0.0965 fk=0.0042  step=742ms  eta=339.0min
+[full] step   2650/30000  total=1.2913  pos=0.1010 rot=0.0741 root=0.0993 fk=0.0042  step=744ms  eta=339.0min
+[full] step   2700/30000  total=1.2942  pos=0.1016 rot=0.0732 root=0.0983 fk=0.0041  step=743ms  eta=338.1min
+[full] step   2750/30000  total=1.2738  pos=0.0997 rot=0.0707 root=0.0989 fk=0.0042  step=745ms  eta=338.2min
+[full] step   2800/30000  total=1.2267  pos=0.0954 rot=0.0764 root=0.0938 fk=0.0042  step=735ms  eta=333.1min
+[full] step   2850/30000  total=1.2029  pos=0.0941 rot=0.0693 root=0.0922 fk=0.0040  step=751ms  eta=339.8min
+[full] step   2900/30000  total=1.2245  pos=0.0959 rot=0.0697 root=0.0940 fk=0.0040  step=743ms  eta=335.4min
+[full] step   2950/30000  total=1.1987  pos=0.0947 rot=0.0690 root=0.0876 fk=0.0040  step=735ms  eta=331.6min
+[full] step   3000/30000  total=1.1503  pos=0.0908 rot=0.0684 root=0.0829 fk=0.0040  step=742ms  eta=333.9min
+[full] step   3050/30000  total=1.2392  pos=0.0971 rot=0.0715 root=0.0946 fk=0.0040  step=745ms  eta=334.5min
+[full] step   3100/30000  total=1.2104  pos=0.0953 rot=0.0681 root=0.0905 fk=0.0039  step=751ms  eta=336.9min
+[full] step   3150/30000  total=1.1302  pos=0.0887 rot=0.0685 root=0.0835 fk=0.0040  step=744ms  eta=333.1min
+[full] step   3200/30000  total=1.1994  pos=0.0949 rot=0.0673 root=0.0877 fk=0.0039  step=735ms  eta=328.4min
+[full] step   3250/30000  total=1.2384  pos=0.0981 rot=0.0670 root=0.0912 fk=0.0038  step=751ms  eta=334.9min
+[full] step   3300/30000  total=1.1663  pos=0.0923 rot=0.0670 root=0.0844 fk=0.0039  step=742ms  eta=330.2min
+[full] step   3350/30000  total=1.1743  pos=0.0940 rot=0.0621 root=0.0821 fk=0.0038  step=736ms  eta=326.8min
+[full] step   3400/30000  total=1.1945  pos=0.0952 rot=0.0637 root=0.0857 fk=0.0038  step=743ms  eta=329.4min
+[full] step   3450/30000  total=1.1840  pos=0.0938 rot=0.0651 root=0.0864 fk=0.0038  step=750ms  eta=332.1min
+[full] step   3500/30000  total=1.2199  pos=0.0963 rot=0.0677 root=0.0908 fk=0.0038  step=737ms  eta=325.3min
+[full] step   3550/30000  total=1.1261  pos=0.0884 rot=0.0641 root=0.0852 fk=0.0037  step=745ms  eta=328.4min
+[full] step   3600/30000  total=1.2434  pos=0.0981 rot=0.0640 root=0.0955 fk=0.0036  step=736ms  eta=323.7min
+[full] step   3650/30000  total=1.2192  pos=0.0972 rot=0.0624 root=0.0889 fk=0.0037  step=751ms  eta=329.9min
+[full] step   3700/30000  total=1.1274  pos=0.0895 rot=0.0643 root=0.0803 fk=0.0036  step=743ms  eta=325.8min
+[full] step   3750/30000  total=1.1314  pos=0.0897 rot=0.0629 root=0.0820 fk=0.0037  step=735ms  eta=321.7min
+[full] step   3800/30000  total=1.0838  pos=0.0869 rot=0.0562 root=0.0758 fk=0.0036  step=743ms  eta=324.3min
+[full] step   3850/30000  total=1.0925  pos=0.0866 rot=0.0588 root=0.0800 fk=0.0036  step=743ms  eta=323.7min
+[full] step   3900/30000  total=1.1077  pos=0.0884 rot=0.0611 root=0.0777 fk=0.0037  step=743ms  eta=323.4min
+[full] step   3950/30000  total=1.1160  pos=0.0886 rot=0.0608 root=0.0811 fk=0.0036  step=743ms  eta=322.6min
+[full] step   4000/30000  total=1.0866  pos=0.0862 rot=0.0613 root=0.0780 fk=0.0037  step=736ms  eta=318.7min
+[full] step   4050/30000  total=1.1000  pos=0.0871 rot=0.0602 root=0.0807 fk=0.0036  step=743ms  eta=321.1min
+[full] step   4100/30000  total=1.0842  pos=0.0862 rot=0.0594 root=0.0781 fk=0.0035  step=752ms  eta=324.5min
+[full] step   4150/30000  total=1.1263  pos=0.0897 rot=0.0558 root=0.0831 fk=0.0035  step=736ms  eta=317.0min
+[full] step   4200/30000  total=1.0980  pos=0.0873 rot=0.0556 root=0.0812 fk=0.0034  step=743ms  eta=319.5min
+[full] step   4250/30000  total=1.0278  pos=0.0811 rot=0.0614 root=0.0741 fk=0.0037  step=742ms  eta=318.6min
+[full] step   4300/30000  total=1.0745  pos=0.0848 rot=0.0604 root=0.0794 fk=0.0036  step=744ms  eta=318.5min
+[full] step   4350/30000  total=1.0708  pos=0.0854 rot=0.0589 root=0.0751 fk=0.0036  step=744ms  eta=318.0min
+[full] step   4400/30000  total=1.0633  pos=0.0836 rot=0.0559 root=0.0821 fk=0.0035  step=742ms  eta=316.7min
+[full] step   4450/30000  total=1.0523  pos=0.0837 rot=0.0600 root=0.0741 fk=0.0034  step=735ms  eta=313.0min
+[full] step   4500/30000  total=1.0865  pos=0.0872 rot=0.0582 root=0.0745 fk=0.0034  step=752ms  eta=319.4min
+[full] step   4550/30000  total=1.0884  pos=0.0869 rot=0.0580 root=0.0770 fk=0.0035  step=735ms  eta=311.6min
+[full] step   4600/30000  total=1.0378  pos=0.0829 rot=0.0557 root=0.0733 fk=0.0034  step=743ms  eta=314.6min
+[full] step   4650/30000  total=0.9665  pos=0.0772 rot=0.0541 root=0.0668 fk=0.0034  step=743ms  eta=313.9min
+[full] step   4700/30000  total=1.0129  pos=0.0804 rot=0.0527 root=0.0749 fk=0.0034  step=745ms  eta=314.1min
+[full] step   4750/30000  total=1.0909  pos=0.0869 rot=0.0561 root=0.0795 fk=0.0034  step=742ms  eta=312.3min
+[full] step   4800/30000  total=1.0447  pos=0.0832 rot=0.0566 root=0.0745 fk=0.0035  step=745ms  eta=313.0min
+[full] step   4850/30000  total=1.0824  pos=0.0861 rot=0.0547 root=0.0796 fk=0.0035  step=735ms  eta=308.2min
+[full] step   4900/30000  total=1.0893  pos=0.0872 rot=0.0548 root=0.0777 fk=0.0035  step=751ms  eta=314.3min
+[full] step   4950/30000  total=1.0182  pos=0.0820 rot=0.0536 root=0.0689 fk=0.0033  step=735ms  eta=306.9min
+[full] step   5000/30000  total=1.0988  pos=0.0883 rot=0.0506 root=0.0792 fk=0.0034  step=743ms  eta=309.5min
+[full] step   5050/30000  total=1.0238  pos=0.0820 rot=0.0518 root=0.0728 fk=0.0033  step=744ms  eta=309.2min
+[full] step   5100/30000  total=1.0136  pos=0.0813 rot=0.0507 root=0.0717 fk=0.0032  step=744ms  eta=308.7min
+[full] step   5150/30000  total=1.0267  pos=0.0824 rot=0.0517 root=0.0724 fk=0.0032  step=745ms  eta=308.4min
+[full] step   5200/30000  total=0.9928  pos=0.0796 rot=0.0503 root=0.0699 fk=0.0032  step=743ms  eta=307.0min
+[full] step   5250/30000  total=1.0654  pos=0.0854 rot=0.0534 root=0.0758 fk=0.0032  step=736ms  eta=303.6min
+[full] step   5300/30000  total=1.0464  pos=0.0843 rot=0.0501 root=0.0737 fk=0.0032  step=751ms  eta=309.2min
+[full] step   5350/30000  total=0.9667  pos=0.0776 rot=0.0479 root=0.0683 fk=0.0032  step=743ms  eta=305.4min
+[full] step   5400/30000  total=0.9615  pos=0.0772 rot=0.0467 root=0.0681 fk=0.0032  step=736ms  eta=301.7min
+[full] step   5450/30000  total=0.9184  pos=0.0735 rot=0.0466 root=0.0651 fk=0.0032  step=743ms  eta=303.9min
+[full] step   5500/30000  total=1.0951  pos=0.0873 rot=0.0515 root=0.0821 fk=0.0033  step=744ms  eta=303.8min
+[full] step   5550/30000  total=1.0301  pos=0.0822 rot=0.0518 root=0.0748 fk=0.0032  step=744ms  eta=303.1min
+[full] step   5600/30000  total=0.9861  pos=0.0792 rot=0.0479 root=0.0699 fk=0.0030  step=743ms  eta=302.0min
+[full] step   5650/30000  total=0.9460  pos=0.0759 rot=0.0469 root=0.0671 fk=0.0031  step=735ms  eta=298.4min
+[full] step   5700/30000  total=0.9967  pos=0.0804 rot=0.0477 root=0.0693 fk=0.0030  step=752ms  eta=304.4min
+[full] step   5750/30000  total=1.0637  pos=0.0854 rot=0.0488 root=0.0774 fk=0.0030  step=743ms  eta=300.4min
+[full] step   5800/30000  total=0.9965  pos=0.0803 rot=0.0490 root=0.0690 fk=0.0031  step=735ms  eta=296.3min
+[full] step   5850/30000  total=0.9522  pos=0.0763 rot=0.0488 root=0.0669 fk=0.0033  step=743ms  eta=299.2min
+[full] step   5900/30000  total=1.0325  pos=0.0823 rot=0.0514 root=0.0758 fk=0.0032  step=751ms  eta=301.5min
+[full] step   5950/30000  total=0.9955  pos=0.0802 rot=0.0494 root=0.0688 fk=0.0031  step=735ms  eta=294.7min
+[full] step   6000/30000  total=0.9841  pos=0.0789 rot=0.0484 root=0.0703 fk=0.0031  step=743ms  eta=297.0min
+[full] step   6050/30000  total=0.9275  pos=0.0745 rot=0.0483 root=0.0639 fk=0.0031  step=735ms  eta=293.5min
+[full] step   6100/30000  total=1.0089  pos=0.0811 rot=0.0464 root=0.0726 fk=0.0032  step=753ms  eta=300.0min
+[full] step   6150/30000  total=0.9491  pos=0.0767 rot=0.0451 root=0.0653 fk=0.0031  step=745ms  eta=296.1min
+[full] step   6200/30000  total=0.9763  pos=0.0784 rot=0.0452 root=0.0705 fk=0.0030  step=741ms  eta=294.0min
+[full] step   6250/30000  total=0.9877  pos=0.0795 rot=0.0471 root=0.0700 fk=0.0030  step=744ms  eta=294.3min
+[full] step   6300/30000  total=1.0739  pos=0.0869 rot=0.0464 root=0.0765 fk=0.0030  step=751ms  eta=296.7min
+[full] step   6350/30000  total=1.0046  pos=0.0814 rot=0.0446 root=0.0697 fk=0.0030  step=735ms  eta=289.7min
+[full] step   6400/30000  total=0.9730  pos=0.0784 rot=0.0451 root=0.0689 fk=0.0030  step=743ms  eta=292.1min
+[full] step   6450/30000  total=0.9302  pos=0.0748 rot=0.0456 root=0.0654 fk=0.0030  step=736ms  eta=288.8min
+[full] step   6500/30000  total=1.0309  pos=0.0826 rot=0.0449 root=0.0772 fk=0.0029  step=752ms  eta=294.4min
+[full] step   6550/30000  total=0.9571  pos=0.0772 rot=0.0448 root=0.0670 fk=0.0030  step=743ms  eta=290.4min
+[full] step   6600/30000  total=1.0132  pos=0.0814 rot=0.0456 root=0.0737 fk=0.0029  step=735ms  eta=286.8min
+[full] step   6650/30000  total=0.9544  pos=0.0772 rot=0.0440 root=0.0661 fk=0.0030  step=743ms  eta=289.1min
+[full] step   6700/30000  total=0.9309  pos=0.0752 rot=0.0431 root=0.0649 fk=0.0030  step=743ms  eta=288.4min
+[full] step   6750/30000  total=0.9818  pos=0.0789 rot=0.0459 root=0.0706 fk=0.0029  step=743ms  eta=288.0min
+[full] step   6800/30000  total=0.9603  pos=0.0773 rot=0.0455 root=0.0678 fk=0.0030  step=743ms  eta=287.1min
+[full] step   6850/30000  total=0.9198  pos=0.0735 rot=0.0446 root=0.0674 fk=0.0029  step=743ms  eta=286.7min
+[full] step   6900/30000  total=0.9086  pos=0.0734 rot=0.0426 root=0.0634 fk=0.0029  step=735ms  eta=283.0min
+[full] step   6950/30000  total=0.9436  pos=0.0765 rot=0.0415 root=0.0659 fk=0.0027  step=753ms  eta=289.5min
+[full] step   7000/30000  total=0.9159  pos=0.0733 rot=0.0439 root=0.0663 fk=0.0030  step=735ms  eta=281.7min
+[full] step   7050/30000  total=0.9474  pos=0.0764 rot=0.0438 root=0.0670 fk=0.0029  step=743ms  eta=284.3min
+[full] step   7100/30000  total=0.8989  pos=0.0725 rot=0.0419 root=0.0632 fk=0.0029  step=743ms  eta=283.7min
+[full] step   7150/30000  total=0.9019  pos=0.0727 rot=0.0425 root=0.0631 fk=0.0028  step=743ms  eta=283.1min
+[full] step   7200/30000  total=0.9714  pos=0.0785 rot=0.0420 root=0.0693 fk=0.0027  step=742ms  eta=282.1min
+[full] step   7250/30000  total=0.9427  pos=0.0762 rot=0.0420 root=0.0663 fk=0.0029  step=744ms  eta=282.0min
+[full] step   7300/30000  total=0.9135  pos=0.0737 rot=0.0402 root=0.0656 fk=0.0027  step=737ms  eta=278.7min
+[full] step   7350/30000  total=0.9224  pos=0.0747 rot=0.0404 root=0.0647 fk=0.0028  step=752ms  eta=283.8min
+[full] step   7400/30000  total=0.8719  pos=0.0706 rot=0.0414 root=0.0592 fk=0.0032  step=743ms  eta=279.8min
+[full] step   7450/30000  total=0.9121  pos=0.0739 rot=0.0431 root=0.0620 fk=0.0030  step=735ms  eta=276.4min
+[full] step   7500/30000  total=0.9377  pos=0.0760 rot=0.0424 root=0.0645 fk=0.0029  step=742ms  eta=278.3min
+[full] step   7550/30000  total=0.9632  pos=0.0778 rot=0.0408 root=0.0691 fk=0.0029  step=743ms  eta=278.1min
+[full] step   7600/30000  total=0.9800  pos=0.0800 rot=0.0407 root=0.0665 fk=0.0030  step=743ms  eta=277.2min
+[full] step   7650/30000  total=0.9503  pos=0.0775 rot=0.0407 root=0.0647 fk=0.0028  step=743ms  eta=276.8min
+[full] step   7700/30000  total=0.8777  pos=0.0716 rot=0.0388 root=0.0587 fk=0.0029  step=735ms  eta=273.1min
+[full] step   7750/30000  total=0.9062  pos=0.0730 rot=0.0399 root=0.0655 fk=0.0029  step=753ms  eta=279.1min
+[full] step   7800/30000  total=0.9478  pos=0.0770 rot=0.0384 root=0.0667 fk=0.0030  step=742ms  eta=274.5min
+[full] step   7850/30000  total=0.9089  pos=0.0734 rot=0.0406 root=0.0642 fk=0.0028  step=735ms  eta=271.3min
+[full] step   7900/30000  total=0.8377  pos=0.0678 rot=0.0377 root=0.0580 fk=0.0028  step=743ms  eta=273.5min
+[full] step   7950/30000  total=0.8930  pos=0.0729 rot=0.0367 root=0.0610 fk=0.0027  step=744ms  eta=273.5min
+[full] step   8000/30000  total=0.9172  pos=0.0743 rot=0.0405 root=0.0641 fk=0.0028  step=742ms  eta=272.0min
+[full] step   8050/30000  total=0.8461  pos=0.0685 rot=0.0376 root=0.0589 fk=0.0028  step=743ms  eta=271.6min
+[full] step   8100/30000  total=0.9223  pos=0.0749 rot=0.0403 root=0.0638 fk=0.0028  step=736ms  eta=268.6min
+[full] step   8150/30000  total=0.9115  pos=0.0741 rot=0.0395 root=0.0627 fk=0.0028  step=751ms  eta=273.4min
+[full] step   8200/30000  total=0.9353  pos=0.0757 rot=0.0420 root=0.0652 fk=0.0029  step=742ms  eta=269.6min
+[full] step   8250/30000  total=0.9105  pos=0.0741 rot=0.0392 root=0.0620 fk=0.0029  step=735ms  eta=266.5min
+[full] step   8300/30000  total=0.8929  pos=0.0718 rot=0.0408 root=0.0644 fk=0.0028  step=742ms  eta=268.5min
+[full] step   8350/30000  total=0.8907  pos=0.0722 rot=0.0361 root=0.0634 fk=0.0027  step=752ms  eta=271.2min
+[full] step   8400/30000  total=0.9367  pos=0.0760 rot=0.0384 root=0.0666 fk=0.0027  step=734ms  eta=264.4min
+[full] step   8450/30000  total=0.9068  pos=0.0736 rot=0.0380 root=0.0635 fk=0.0027  step=743ms  eta=267.0min
+[full] step   8500/30000  total=0.8240  pos=0.0672 rot=0.0350 root=0.0556 fk=0.0027  step=735ms  eta=263.3min
+[full] step   8550/30000  total=0.8768  pos=0.0713 rot=0.0380 root=0.0604 fk=0.0027  step=749ms  eta=267.8min
+[full] step   8600/30000  total=0.9071  pos=0.0738 rot=0.0387 root=0.0624 fk=0.0027  step=744ms  eta=265.3min
+[full] step   8650/30000  total=0.9480  pos=0.0769 rot=0.0379 root=0.0675 fk=0.0029  step=735ms  eta=261.5min
+[full] step   8700/30000  total=0.9372  pos=0.0759 rot=0.0405 root=0.0662 fk=0.0027  step=743ms  eta=263.8min
+[full] step   8750/30000  total=0.8776  pos=0.0711 rot=0.0390 root=0.0612 fk=0.0026  step=751ms  eta=265.9min
+[full] step   8800/30000  total=0.8610  pos=0.0707 rot=0.0355 root=0.0565 fk=0.0026  step=735ms  eta=259.8min
+[full] step   8850/30000  total=0.8763  pos=0.0714 rot=0.0383 root=0.0593 fk=0.0026  step=747ms  eta=263.3min
+[full] step   8900/30000  total=0.9014  pos=0.0735 rot=0.0363 root=0.0623 fk=0.0026  step=735ms  eta=258.6min
+[full] step   8950/30000  total=0.8943  pos=0.0729 rot=0.0371 root=0.0614 fk=0.0026  step=762ms  eta=267.4min
+[full] step   9000/30000  total=0.8495  pos=0.0694 rot=0.0350 root=0.0577 fk=0.0026  step=743ms  eta=260.1min
+[full] step   9050/30000  total=0.8773  pos=0.0719 rot=0.0367 root=0.0584 fk=0.0025  step=735ms  eta=256.6min
+[full] step   9100/30000  total=0.8540  pos=0.0694 rot=0.0359 root=0.0593 fk=0.0026  step=743ms  eta=258.8min
+[full] step   9150/30000  total=0.8336  pos=0.0678 rot=0.0364 root=0.0570 fk=0.0026  step=751ms  eta=261.0min
+[full] step   9200/30000  total=0.8976  pos=0.0729 rot=0.0376 root=0.0628 fk=0.0028  step=735ms  eta=254.9min
+[full] step   9250/30000  total=0.8541  pos=0.0688 rot=0.0386 root=0.0611 fk=0.0027  step=743ms  eta=256.9min
+[full] step   9300/30000  total=0.8589  pos=0.0703 rot=0.0363 root=0.0574 fk=0.0026  step=742ms  eta=256.1min
+[full] step   9350/30000  total=0.9232  pos=0.0746 rot=0.0383 root=0.0665 fk=0.0027  step=743ms  eta=255.9min
+[full] step   9400/30000  total=0.9045  pos=0.0729 rot=0.0349 root=0.0674 fk=0.0027  step=745ms  eta=255.6min
+[full] step   9450/30000  total=0.8970  pos=0.0729 rot=0.0357 root=0.0638 fk=0.0026  step=735ms  eta=251.6min
+[full] step   9500/30000  total=0.8575  pos=0.0700 rot=0.0332 root=0.0597 fk=0.0025  step=743ms  eta=253.9min
+[full] step   9550/30000  total=0.8542  pos=0.0698 rot=0.0355 root=0.0579 fk=0.0025  step=743ms  eta=253.2min
+[full] step   9600/30000  total=0.8628  pos=0.0707 rot=0.0350 root=0.0580 fk=0.0026  step=743ms  eta=252.8min
+[full] step   9650/30000  total=0.8527  pos=0.0695 rot=0.0350 root=0.0588 fk=0.0025  step=743ms  eta=251.9min
+[full] step   9700/30000  total=0.9140  pos=0.0744 rot=0.0380 root=0.0630 fk=0.0028  step=743ms  eta=251.4min
+[full] step   9750/30000  total=0.9322  pos=0.0763 rot=0.0363 root=0.0635 fk=0.0028  step=735ms  eta=248.2min
+[full] step   9800/30000  total=0.8699  pos=0.0709 rot=0.0370 root=0.0593 fk=0.0024  step=751ms  eta=253.0min
+[full] step   9850/30000  total=0.8808  pos=0.0718 rot=0.0346 root=0.0615 fk=0.0026  step=742ms  eta=249.3min
+[full] step   9900/30000  total=0.8939  pos=0.0727 rot=0.0355 root=0.0633 fk=0.0027  step=735ms  eta=246.3min
+[full] step   9950/30000  total=0.8908  pos=0.0722 rot=0.0340 root=0.0649 fk=0.0025  step=743ms  eta=248.2min
+[full] step  10000/30000  total=0.8189  pos=0.0671 rot=0.0337 root=0.0547 fk=0.0025  step=744ms  eta=248.0min
+[full] step  10050/30000  total=0.8566  pos=0.0700 rot=0.0321 root=0.0597 fk=0.0025  step=746ms  eta=247.9min
+[full] step  10100/30000  total=0.8854  pos=0.0720 rot=0.0355 root=0.0624 fk=0.0025  step=742ms  eta=246.0min
+[full] step  10150/30000  total=0.8851  pos=0.0721 rot=0.0360 root=0.0615 fk=0.0025  step=734ms  eta=243.0min
+[full] step  10200/30000  total=0.8579  pos=0.0696 rot=0.0334 root=0.0616 fk=0.0025  step=752ms  eta=248.2min
+[full] step  10250/30000  total=0.8832  pos=0.0720 rot=0.0334 root=0.0623 fk=0.0025  step=742ms  eta=244.4min
+[full] step  10300/30000  total=0.8214  pos=0.0670 rot=0.0342 root=0.0561 fk=0.0025  step=737ms  eta=241.9min
+[full] step  10350/30000  total=0.8740  pos=0.0710 rot=0.0350 root=0.0621 fk=0.0025  step=743ms  eta=243.3min
+[full] step  10400/30000  total=0.8474  pos=0.0697 rot=0.0333 root=0.0560 fk=0.0025  step=744ms  eta=243.0min
+[full] step  10450/30000  total=0.8239  pos=0.0667 rot=0.0326 root=0.0595 fk=0.0026  step=743ms  eta=242.1min
+[full] step  10500/30000  total=0.8079  pos=0.0660 rot=0.0341 root=0.0542 fk=0.0025  step=743ms  eta=241.5min
+[full] step  10550/30000  total=0.8396  pos=0.0684 rot=0.0338 root=0.0584 fk=0.0026  step=735ms  eta=238.4min
+[full] step  10600/30000  total=0.8466  pos=0.0686 rot=0.0333 root=0.0611 fk=0.0025  step=752ms  eta=243.0min
+[full] step  10650/30000  total=0.8435  pos=0.0693 rot=0.0330 root=0.0564 fk=0.0024  step=743ms  eta=239.5min
+[full] step  10700/30000  total=0.8209  pos=0.0674 rot=0.0340 root=0.0538 fk=0.0024  step=735ms  eta=236.5min
+[full] step  10750/30000  total=0.8781  pos=0.0718 rot=0.0335 root=0.0607 fk=0.0025  step=743ms  eta=238.5min
+[full] step  10800/30000  total=0.8530  pos=0.0694 rot=0.0324 root=0.0609 fk=0.0025  step=755ms  eta=241.4min
+[full] step  10850/30000  total=0.8357  pos=0.0687 rot=0.0316 root=0.0561 fk=0.0024  step=736ms  eta=234.8min
+[full] step  10900/30000  total=0.8499  pos=0.0688 rot=0.0346 root=0.0614 fk=0.0024  step=747ms  eta=237.8min
+[full] step  10950/30000  total=0.8317  pos=0.0678 rot=0.0337 root=0.0576 fk=0.0025  step=735ms  eta=233.3min
+[full] step  11000/30000  total=0.8326  pos=0.0683 rot=0.0316 root=0.0568 fk=0.0024  step=753ms  eta=238.6min
+[full] step  11050/30000  total=0.9010  pos=0.0738 rot=0.0330 root=0.0625 fk=0.0025  step=743ms  eta=234.7min
+[full] step  11100/30000  total=0.8643  pos=0.0703 rot=0.0337 root=0.0616 fk=0.0025  step=742ms  eta=233.8min
+[full] step  11150/30000  total=0.8726  pos=0.0712 rot=0.0347 root=0.0604 fk=0.0024  step=743ms  eta=233.4min
+[full] step  11200/30000  total=0.7754  pos=0.0636 rot=0.0324 root=0.0509 fk=0.0025  step=751ms  eta=235.3min
+[full] step  11250/30000  total=0.8339  pos=0.0685 rot=0.0337 root=0.0546 fk=0.0027  step=735ms  eta=229.8min
+[full] step  11300/30000  total=0.8226  pos=0.0673 rot=0.0335 root=0.0553 fk=0.0025  step=743ms  eta=231.4min
+[full] step  11350/30000  total=0.8335  pos=0.0675 rot=0.0317 root=0.0611 fk=0.0024  step=742ms  eta=230.7min
+[full] step  11400/30000  total=0.8684  pos=0.0710 rot=0.0326 root=0.0603 fk=0.0024  step=744ms  eta=230.7min
+[full] step  11450/30000  total=0.9043  pos=0.0738 rot=0.0313 root=0.0654 fk=0.0023  step=743ms  eta=229.7min
+[full] step  11500/30000  total=0.8395  pos=0.0685 rot=0.0324 root=0.0587 fk=0.0024  step=735ms  eta=226.7min
+[full] step  11550/30000  total=0.8542  pos=0.0695 rot=0.0330 root=0.0608 fk=0.0024  step=744ms  eta=228.6min
+[full] step  11600/30000  total=0.8758  pos=0.0719 rot=0.0314 root=0.0603 fk=0.0024  step=751ms  eta=230.4min
+[full] step  11650/30000  total=0.8816  pos=0.0718 rot=0.0336 root=0.0625 fk=0.0024  step=735ms  eta=224.7min
+[full] step  11700/30000  total=0.8984  pos=0.0733 rot=0.0348 root=0.0629 fk=0.0025  step=742ms  eta=226.3min
+[full] step  11750/30000  total=0.8503  pos=0.0698 rot=0.0310 root=0.0584 fk=0.0025  step=742ms  eta=225.8min
+[full] step  11800/30000  total=0.8560  pos=0.0697 rot=0.0325 root=0.0610 fk=0.0025  step=744ms  eta=225.8min
+[full] step  11850/30000  total=0.9626  pos=0.0781 rot=0.0357 root=0.0703 fk=0.0025  step=742ms  eta=224.6min
+[full] step  11900/30000  total=0.8217  pos=0.0675 rot=0.0329 root=0.0546 fk=0.0024  step=735ms  eta=221.7min
+[full] step  11950/30000  total=0.8011  pos=0.0658 rot=0.0328 root=0.0525 fk=0.0024  step=742ms  eta=223.3min
+[full] step  12000/30000  total=0.8568  pos=0.0701 rot=0.0302 root=0.0602 fk=0.0024  step=752ms  eta=225.5min
+[full] step  12050/30000  total=0.8048  pos=0.0661 rot=0.0313 root=0.0538 fk=0.0024  step=735ms  eta=220.0min
+[full] step  12100/30000  total=0.8607  pos=0.0704 rot=0.0320 root=0.0603 fk=0.0023  step=744ms  eta=221.9min
+[full] step  12150/30000  total=0.8720  pos=0.0712 rot=0.0329 root=0.0612 fk=0.0023  step=743ms  eta=221.1min
+[full] step  12200/30000  total=0.7631  pos=0.0625 rot=0.0327 root=0.0502 fk=0.0024  step=740ms  eta=219.6min
+[full] step  12250/30000  total=0.8063  pos=0.0661 rot=0.0311 root=0.0546 fk=0.0023  step=745ms  eta=220.3min
+[full] step  12300/30000  total=0.7641  pos=0.0624 rot=0.0315 root=0.0518 fk=0.0024  step=742ms  eta=219.0min
+[full] step  12350/30000  total=0.8700  pos=0.0715 rot=0.0310 root=0.0596 fk=0.0024  step=735ms  eta=216.2min
+[full] step  12400/30000  total=0.8108  pos=0.0662 rot=0.0303 root=0.0565 fk=0.0025  step=742ms  eta=217.8min
+[full] step  12450/30000  total=0.8348  pos=0.0678 rot=0.0318 root=0.0600 fk=0.0024  step=744ms  eta=217.5min
+[full] step  12500/30000  total=0.8501  pos=0.0694 rot=0.0324 root=0.0592 fk=0.0025  step=743ms  eta=216.6min
+[full] step  12550/30000  total=0.7772  pos=0.0634 rot=0.0335 root=0.0526 fk=0.0024  step=743ms  eta=216.0min
+[full] step  12600/30000  total=0.7952  pos=0.0655 rot=0.0310 root=0.0524 fk=0.0023  step=738ms  eta=213.9min
+[full] step  12650/30000  total=0.8036  pos=0.0654 rot=0.0324 root=0.0564 fk=0.0024  step=751ms  eta=217.1min
+[full] step  12700/30000  total=0.7916  pos=0.0646 rot=0.0296 root=0.0558 fk=0.0023  step=744ms  eta=214.5min
+[full] step  12750/30000  total=0.8320  pos=0.0678 rot=0.0313 root=0.0591 fk=0.0023  step=736ms  eta=211.6min
+[full] step  12800/30000  total=0.8568  pos=0.0701 rot=0.0320 root=0.0597 fk=0.0022  step=756ms  eta=216.8min
+[full] step  12850/30000  total=0.8929  pos=0.0723 rot=0.0334 root=0.0656 fk=0.0025  step=753ms  eta=215.1min
+[full] step  12900/30000  total=0.8030  pos=0.0660 rot=0.0297 root=0.0541 fk=0.0024  step=762ms  eta=217.2min
+[full] step  12950/30000  total=0.8244  pos=0.0672 rot=0.0334 root=0.0574 fk=0.0023  step=769ms  eta=218.6min
+[full] step  13000/30000  total=0.8873  pos=0.0721 rot=0.0348 root=0.0632 fk=0.0026  step=752ms  eta=213.1min
+[full] step  13050/30000  total=0.8708  pos=0.0718 rot=0.0313 root=0.0587 fk=0.0023  step=767ms  eta=216.6min
+[full] step  13100/30000  total=0.8428  pos=0.0692 rot=0.0301 root=0.0581 fk=0.0023  step=758ms  eta=213.4min
+[full] step  13150/30000  total=0.8298  pos=0.0681 rot=0.0310 root=0.0565 fk=0.0023  step=752ms  eta=211.2min

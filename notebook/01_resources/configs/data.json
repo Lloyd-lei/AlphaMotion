@@ -1,0 +1,24 @@
+{
+  "amass": {
+    "npz": "/home/arenalabs/Desktop/\"be water, robot\"/data/mixed_soma77.npz",
+    "split": "canonical",
+    "heldout_subjects_file": "/home/arenalabs/Desktop/\"be water, robot\"/data/splits.json"
+  },
+  "kimodo": {
+    "npz": "/home/arenalabs/Desktop/\"be water, robot\"/data/kimodo/kimodo_soma77.npz",
+    "ood_only": true
+  },
+  "skeleton": {
+    "name": "soma77",
+    "n_joints": 77
+  },
+  "sample": {
+    "T": 90,
+    "stride": 32,
+    "T_max": 256
+  },
+  "action_labels": {
+    "taxonomy": "12_family",
+    "show_other_warning": true
+  }
+}
