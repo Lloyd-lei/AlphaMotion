@@ -18,6 +18,20 @@ def rel_time_idx(T, K):
     return np.clip(np.round(np.linspace(0, T - 1, K)).astype(np.int64), 0, T - 1)
 
 
+def bvh_frame_time(path):
+    """Parse 'Frame Time: <dt>' from a BVH header. None if not found."""
+    with open(path) as f:
+        for line in f:
+            if line.lstrip().startswith("Frame Time"):
+                try:
+                    return float(line.split(":")[1])
+                except Exception:
+                    return None
+            if line.lstrip().startswith("Frames") or len(line) > 4000:
+                continue
+    return None
+
+
 def save_spec(spec, path):
     np.savez(path, name=spec.name, parents=spec.parents, rest_offsets=spec.rest_offsets,
              norm_bonelen=spec.norm_bonelen,
@@ -28,6 +42,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--n_files", type=int, default=1500)
     ap.add_argument("--frames_per_file", type=int, default=24)
+    ap.add_argument("--mode", choices=["frames", "fps"], default="frames",
+                    help="frames: fixed K/file (FIX-era). fps: uniform-dt resample (temporal modeling)")
+    ap.add_argument("--fps", type=float, default=30.0)
+    ap.add_argument("--max_frames", type=int, default=240)
     ap.add_argument("--out", default=f"{CACHE_ROOT}/cache_paired")
     args = ap.parse_args()
     os.makedirs(args.out, exist_ok=True)
@@ -49,6 +67,7 @@ def main():
     g1_skl = SkeletonG1(); g1_skl.load_from_xml(_DEFAULT_G1_XML)
     soma_spec = g1_spec = None
     soma_all, g1_all = [], []
+    sequences = []; start_row = 0                        # per-file frame ranges (temporal sampling)
     t0 = time.time()
     for i, (bvh, csv) in enumerate(pairs):
         try:
@@ -62,13 +81,22 @@ def main():
                 g1_spec = spec_from_bvh_skeleton(g1_skl, "g1_%d" % jr_g.shape[1]); g1_spec.order_root_first()
             if jr_s.shape[1] != soma_spec.J or jr_g.shape[1] != g1_spec.J:
                 continue
-            K = args.frames_per_file
+            if args.mode == "fps":
+                # uniform dt across the whole cache: K from the SOMA clip's true duration.
+                # G1 is the same motion (GMR retarget), so relative-time indexing stays aligned.
+                dt = bvh_frame_time(bvh) or (1.0 / 30.0)
+                K = int(round(jr_s.shape[0] * dt * args.fps))
+                K = max(2, min(K, args.max_frames))
+            else:
+                K = args.frames_per_file
             si = rel_time_idx(jr_s.shape[0], K)
             gi = rel_time_idx(jr_g.shape[0], K)          # same relative-time grid -> aligned
             l6s = matrix_to_rot6d(jr_s[si])              # [K,Js,6]
             l6g = matrix_to_rot6d(jr_g[gi])
             if torch.isnan(l6s).any() or torch.isnan(l6g).any():
                 continue
+            sequences.append({"name": os.path.basename(bvh)[:-4], "start": start_row, "len": int(K)})
+            start_row += int(K)
             soma_all.append(l6s); g1_all.append(l6g)
         except Exception as e:
             if i < 5:
@@ -83,8 +111,11 @@ def main():
     save_spec(soma_spec, f"{args.out}/soma77_spec.npz")
     save_spec(g1_spec, f"{args.out}/{g1_spec.name}_spec.npz")
     json.dump({"rows": int(soma.shape[0]), "soma_J": soma_spec.J, "g1_J": g1_spec.J,
-               "g1_name": g1_spec.name}, open(f"{args.out}/manifest.json", "w"), indent=2)
-    print("SAVED", args.out)
+               "g1_name": g1_spec.name, "mode": args.mode,
+               "fps": (args.fps if args.mode == "fps" else None)},
+              open(f"{args.out}/manifest.json", "w"), indent=2)
+    json.dump(sequences, open(f"{args.out}/sequences.json", "w"))
+    print("SAVED", args.out, f"({len(sequences)} sequences)")
 
 
 if __name__ == "__main__":

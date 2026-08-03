@@ -72,6 +72,24 @@ class FSQ(nn.Module):
         q = self.quantize(f)
         return self.proj_out(q), q
 
+    # --- discrete-interface helpers (AR-LM vocabulary; values consistent with forward) ---
+    def features(self, z_tokens):
+        """Pre-quantization continuous features [B,K,f] (the diffusion compute space)."""
+        return self.proj_in(z_tokens)
+
+    def ints(self, f):
+        """[...,f] features -> integer levels [1,...,f]. Leading dim = stage (1).
+        Offset = ceil(half): half is half-integer for even level counts, so adding
+        `half` then truncating with .long() would break the bijection."""
+        half = (self._levels - 1) / 2
+        return (torch.round(torch.tanh(f) * half) + torch.ceil(half)).long()[None]
+
+    def from_ints(self, ints):
+        """[1,...,f] integer levels -> decoder-ready z [...,d] (same values as forward's output)."""
+        half = (self._levels - 1) / 2
+        q = (ints[0].float() - torch.ceil(half)) / half
+        return self.proj_out(q)
+
 
 class ResidualFSQ(nn.Module):
     """Residual FSQ (RVQ-style, codebook-free). Stage k quantizes the residual left
@@ -108,6 +126,38 @@ class ResidualFSQ(nn.Module):
             residual = f - acc
             codes.append(q)
         return self.proj_out(acc), torch.stack(codes, 0)
+
+    # --- discrete-interface helpers (values consistent with forward's straight-through path) ---
+    def features(self, z_tokens):
+        """Pre-quantization continuous features [B,K,f] (the diffusion compute space)."""
+        return self.proj_in(z_tokens)
+
+    def _stage_ints(self, x, scale):
+        # offset = ceil(half): half-integer `half` (even level counts) + .long() truncation
+        # would break the int<->grid bijection
+        half = (self._levels - 1) / 2
+        xr = torch.round(torch.tanh(x * scale) * half)
+        return (xr + torch.ceil(half)).long(), xr / half / scale.clamp(min=1e-3)
+
+    def ints(self, f):
+        """[...,f] features -> integer levels per stage [S,...,f] in [0, levels_d)."""
+        acc = torch.zeros_like(f); residual = f; out = []
+        for k in range(self.n_stages):
+            scale = self.stage_scale[k].abs() + 1.0
+            ii, q = self._stage_ints(residual, scale)
+            out.append(ii)
+            acc = acc + q; residual = f - acc
+        return torch.stack(out, 0)
+
+    def from_ints(self, ints):
+        """[S,...,f] integer levels -> decoder-ready z [...,d]."""
+        half = (self._levels - 1) / 2
+        acc = None
+        for k in range(self.n_stages):
+            scale = self.stage_scale[k].abs() + 1.0
+            q = (ints[k].float() - torch.ceil(half)) / half / scale.clamp(min=1e-3)
+            acc = q if acc is None else acc + q
+        return self.proj_out(acc)
 
 
 class JointFeature(nn.Module):

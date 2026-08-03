@@ -46,12 +46,7 @@ class DualTranslator(nn.Module):
     def encode(self, x, g, joint_mask=None, return_codes=False):
         """joint_mask [B,J] bool (True = pose hidden -> mask token). return_codes: also
         return the quantized grid values (probe input: leakage / partial-obs stability)."""
-        h = self.inp(x)
-        if joint_mask is not None:
-            h = torch.where(joint_mask[..., None], self.mask_tok.expand_as(h), h)
-        h = h + self.jf(g["rest_off"], g["bonelen"], g["depth"], g.get("sem"))
-        for b in self.enc:
-            h = b(h, g["hop"], None)
+        h = self._trunk(x, g, joint_mask)
         B = h.shape[0]
         if self.single_codebook:
             z, cp = self.fsqp(self.poolp(self.qp[None].expand(B, -1, -1), h))
@@ -63,6 +58,36 @@ class DualTranslator(nn.Module):
         if return_codes:
             return zp, zr, (cp, cr)
         return zp, zr
+
+    def _trunk(self, x, g, joint_mask=None):
+        h = self.inp(x)
+        if joint_mask is not None:
+            h = torch.where(joint_mask[..., None], self.mask_tok.expand_as(h), h)
+        h = h + self.jf(g["rest_off"], g["bonelen"], g["depth"], g.get("sem"))
+        for b in self.enc:
+            h = b(h, g["hop"], None)
+        return h
+
+    def encode_features(self, x, g, joint_mask=None):
+        """Pre-quantization continuous features per stream: (fp, fr) each [B,K,f].
+        This is the diffusion compute space; FSQ rounding of these = the token interface."""
+        h = self._trunk(x, g, joint_mask)
+        B = h.shape[0]
+        fp = self.fsqp.features(self.poolp(self.qp[None].expand(B, -1, -1), h))
+        if self.single_codebook:
+            return fp, fp
+        fr = self.fsqr.features(self.poolr(self.qr[None].expand(B, -1, -1), h))
+        return fp, fr
+
+    def ints_from_features(self, fp, fr):
+        """(fp, fr) -> integer level tensors ([S,B,K,f], [S,B,K,f])."""
+        return self.fsqp.ints(fp), (self.fsqp if self.single_codebook else self.fsqr).ints(fr)
+
+    def decode_from_ints(self, ip, ir, g):
+        """Integer levels -> full-body (rot6d, pos) on target skeleton g."""
+        zp = self.fsqp.from_ints(ip)
+        zr = (self.fsqp if self.single_codebook else self.fsqr).from_ints(ir)
+        return self.decode(zp, zr, g)
 
     def decode(self, zp, zr, g):
         qp = self.jf(g["rest_off"], g["bonelen"], g["depth"], g.get("sem"))
