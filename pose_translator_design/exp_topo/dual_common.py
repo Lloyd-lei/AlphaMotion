@@ -18,15 +18,22 @@ from common import rot6d_to_matrix, geodesic_deg
 from model_dual import DualTranslator
 from train_ae import static_cond
 from train_global import build_global
-from train_translate import load_paired
 
 FINGER_KW = ("Hand", "Thumb", "Index", "Middle", "Ring", "Pinky", "Finger")
 
 
 def load_paired_data(cache, device):
-    """Load the paired cache -> per-embodiment dict. Consumes no RNG (see module doc)."""
-    paired, g1name = load_paired(cache)
-    names = ["soma77", g1name]
+    """Load a paired cache -> per-embodiment dict. Consumes no RNG (see module doc).
+    Manifest schema 2 lists N embodiments; legacy manifests imply [soma77, g1_name]."""
+    import json, numpy as np
+    from common import SkeletonSpec
+    man = json.load(open(f"{cache}/manifest.json"))
+    names = man.get("embodiments") or ["soma77", man["g1_name"]]
+    paired = {}
+    for name in names:
+        d = np.load(f"{cache}/{name}_spec.npz", allow_pickle=True)
+        spec = SkeletonSpec(str(d["name"]), d["parents"], d["rest_offsets"], list(d["joint_names"]))
+        paired[name] = (spec, torch.load(f"{cache}/{name}_paired_local6d.pt"))
     from semantics import build_name_embeddings, embed_matrix
     lut = build_name_embeddings(sum([list(paired[n][0].joint_names) for n in names], []), device=device)
     data = {}; N = None
@@ -109,9 +116,10 @@ def evaluate(model, data, names, combos, val_idx):
     with torch.no_grad():
         for src, tgt in combos:
             rot, pos = run_dir(model, data, src, tgt, val_idx)
-            out[f"{src[:4]}->{tgt[:4]}"] = {"rot": round(float(rot), 1), "pos_cm": round(float(pos * data[tgt]["reach"]), 2)}
+            # full names: [:4] truncation collided for soma77/soma_scaled/soma_nohand
+            out[f"{src}->{tgt}"] = {"rot": round(float(rot), 1), "pos_cm": round(float(pos * data[tgt]["reach"]), 2)}
         for name in names:                              # swing/twist breakdown (self-recon)
-            out[f"ST_{name[:4]}"] = swing_twist_report(model, data, name, val_idx)
+            out[f"ST_{name}"] = swing_twist_report(model, data, name, val_idx)
         # code alignment: how close are codes of the SAME motion across embodiments?
         zs = {n: model.encode(data[n]["pose"][val_idx], geom(data, n, len(val_idx))) for n in names}
         dists, scale = [], None
