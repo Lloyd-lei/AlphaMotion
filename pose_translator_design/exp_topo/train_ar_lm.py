@@ -71,7 +71,9 @@ def main():
     N = ints.shape[0]
     X = dequant(ints, levels).to(device)                          # [N,P] input rep
     Y = ints.reshape(N, -1).to(device)                            # [N,P] targets
-    P = X.shape[1]; L = int(levels.max().item())
+    # vocab = observed max + 1: fp32 tanh saturates to exactly 1.0, adding one extra
+    # saturation level beyond the nominal grid on even-level dims
+    P = X.shape[1]; L = int(Y.max().item()) + 1
     raw_bits = float(np.sum(np.log2(meta["levels"])) * meta["stages"] * meta["n_latent"] * 2)
 
     # sequence-level 90/10 split; windows never cross sequence boundaries
