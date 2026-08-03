@@ -45,6 +45,27 @@ def main():
     ev["n_val"] = int(len(val_idx))
     ev["state_dict_mismatch"] = bool(missing or unexpected)
 
+    # per-body-part translation error (lloyd 2026-08-03: aggregate error diluted a 74%
+    # leg deficit in b16s1 that was obvious in the GIF — legs are 12/30 joints)
+    LEG_KW = ("hip", "knee", "ankle", "leg", "foot", "toe")
+    ARM_KW = ("shoulder", "elbow", "wrist", "arm", "hand")
+    from dual_common import geom as _geom
+    with torch.no_grad():
+        parts = {}
+        for src, tgt in combos:
+            if src == tgt:
+                continue
+            spec = data[tgt]["spec"]
+            legm = torch.tensor([any(k in n.lower() for k in LEG_KW) for n in spec.joint_names], device=device)
+            armm = torch.tensor([any(k in n.lower() for k in ARM_KW) for n in spec.joint_names], device=device)
+            zp, zr = model.encode(data[src]["pose"][val_idx], _geom(data, src, len(val_idx)))
+            prot, ppos = model.decode(zp, zr, _geom(data, tgt, len(val_idx)))
+            err = (ppos - data[tgt]["pose"][val_idx][..., 6:9]).norm(dim=-1) * data[tgt]["reach"]
+            parts[f"{src}->{tgt}"] = {"legs_cm": round(float(err[:, legm].mean()), 2),
+                                      "arms_cm": round(float(err[:, armm].mean()), 2),
+                                      "other_cm": round(float(err[:, ~(legm | armm)].mean()), 2)}
+        ev["parts"] = parts
+
     if not args.no_probes:
         from probes import leakage_probe, partial_obs_stability
         ev["leakage"] = leakage_probe(model, data, names, tr_idx, val_idx)
