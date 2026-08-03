@@ -59,6 +59,7 @@ def build_model(cfg, device):
         n_latent=cfg.get("n_latent", 32),
         fsq_stages=cfg.get("fsq_stages", 2),
         fsq_levels=parse_fsq_levels(cfg.get("fsq_levels", "8,8,8,5,5,5")),
+        single_codebook=cfg.get("single_codebook", False),
     ).to(device)
     return model
 
@@ -70,10 +71,11 @@ def geom(data, name, B):
                 sem=data[name]["sem"][None].expand(B, -1, -1))
 
 
-def run_dir(model, data, src, tgt, idx):
-    """One direction src->tgt on rows idx. Returns (mean geodesic deg, mean pos in reach units)."""
+def run_dir(model, data, src, tgt, idx, joint_mask=None):
+    """One direction src->tgt on rows idx. Returns (mean geodesic deg, mean pos in reach units).
+    joint_mask [B,J_src]: E0b masked pretraining — encoder sees partial pose, loss stays full-body."""
     B = len(idx)
-    zp, zr = model.encode(data[src]["pose"][idx], geom(data, src, B))
+    zp, zr = model.encode(data[src]["pose"][idx], geom(data, src, B), joint_mask=joint_mask)
     prot, ppos = model.decode(zp, zr, geom(data, tgt, B))
     gt = data[tgt]["pose"][idx]
     rot = geodesic_deg(rot6d_to_matrix(prot), rot6d_to_matrix(gt[..., :6])).mean()

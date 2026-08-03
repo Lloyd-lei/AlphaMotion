@@ -21,6 +21,7 @@ def main():
     ap.add_argument("--run", required=True, help="run dir containing config.json + model.pt")
     ap.add_argument("--cache", default=None, help="override cache dir (default: from run config)")
     ap.add_argument("--out", default=None, help="output json (default: {run}/eval_dual.json)")
+    ap.add_argument("--no_probes", action="store_true", help="skip leakage/partial-obs probes")
     args = ap.parse_args()
     device = "cuda"
 
@@ -43,6 +44,11 @@ def main():
     ev = evaluate(model, data, names, combos, val_idx)
     ev["n_val"] = int(len(val_idx))
     ev["state_dict_mismatch"] = bool(missing or unexpected)
+
+    if not args.no_probes:
+        from probes import leakage_probe, partial_obs_stability
+        ev["leakage"] = leakage_probe(model, data, names, tr_idx, val_idx)
+        ev["partial_obs"] = partial_obs_stability(model, data, names, val_idx)
 
     out_path = args.out or f"{args.run}/eval_dual.json"
     json.dump(ev, open(out_path, "w"), indent=2)
