@@ -78,16 +78,22 @@ def geom(data, name, B):
                 sem=data[name]["sem"][None].expand(B, -1, -1))
 
 
-def run_dir(model, data, src, tgt, idx, joint_mask=None):
+def run_dir(model, data, src, tgt, idx, joint_mask=None, visible_boost=0.0):
     """One direction src->tgt on rows idx. Returns (mean geodesic deg, mean pos in reach units).
-    joint_mask [B,J_src]: E0b masked pretraining — encoder sees partial pose, loss stays full-body."""
+    joint_mask [B,J_src]: E0b masked pretraining — encoder sees partial pose, loss stays full-body.
+    visible_boost > 0 (same-skeleton directions only): upweight the VISIBLE joints' loss by
+    (1+boost) so the completion learns to honor given constraints, not just plausibility."""
     B = len(idx)
     zp, zr = model.encode(data[src]["pose"][idx], geom(data, src, B), joint_mask=joint_mask)
     prot, ppos = model.decode(zp, zr, geom(data, tgt, B))
     gt = data[tgt]["pose"][idx]
-    rot = geodesic_deg(rot6d_to_matrix(prot), rot6d_to_matrix(gt[..., :6])).mean()
-    pos = (ppos - gt[..., 6:9]).norm(dim=-1).mean()
-    return rot, pos
+    rot_j = geodesic_deg(rot6d_to_matrix(prot), rot6d_to_matrix(gt[..., :6]))   # [B,J]
+    pos_j = (ppos - gt[..., 6:9]).norm(dim=-1)                                  # [B,J]
+    if visible_boost > 0 and joint_mask is not None and src == tgt:
+        w = 1.0 + visible_boost * (~joint_mask).float()
+        w = w / w.mean()
+        return (rot_j * w).mean(), (pos_j * w).mean()
+    return rot_j.mean(), pos_j.mean()
 
 
 def swing_twist_report(model, data, name, idx):

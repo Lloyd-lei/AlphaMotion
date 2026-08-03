@@ -25,6 +25,7 @@ def main():
     ap.add_argument("--single_codebook", action="store_true")  # E0c: one shared FSQ, same total bits
     ap.add_argument("--mask_prob", type=float, default=0.0)  # E0b: per-sample prob of masked encoder input
     ap.add_argument("--mask_mix", default="rand:0.4,ee:0.3,root:0.3")
+    ap.add_argument("--visible_boost", type=float, default=0.0)  # upweight visible joints under mask (constraint honoring)
     ap.add_argument("--w_pos", type=float, default=5.0)
     ap.add_argument("--w_align", type=float, default=0.0)    # L2 same-motion code pull (collapses if strong)
     ap.add_argument("--w_contrast", type=float, default=0.0) # InfoNCE: same-motion attract, others repel (no collapse)
@@ -75,7 +76,7 @@ def main():
                 # per-sample: with prob mask_prob the encoder sees a partial pose; loss stays full-body
                 jm = sample_joint_mask(data[src]["spec"], args.bs, mask_mix, device=device)
                 jm &= (torch.rand(args.bs, 1, device=device) < args.mask_prob)
-            rot, pos = run_dir(model, data, src, tgt, sel, joint_mask=jm)
+            rot, pos = run_dir(model, data, src, tgt, sel, joint_mask=jm, visible_boost=args.visible_boost)
             ((rot / 30.0 + args.w_pos * pos) / len(step_combos)).backward()
         if args.w_align > 0 or args.w_contrast > 0:
             B = len(sel)
