@@ -62,12 +62,14 @@ def sample_joint_mask(spec, B, mix=None, device="cuda", generator=None):
         elif fam == "root":
             mask[rows] = True
         elif fam == "sparse":
-            mask[rows] = True                       # hide all, then reveal 1..3 random leaves
-            leaves = torch.where(leaf_mask(spec).to(device))[0]
-            for ri in torch.where(rows)[0].tolist():
-                k = int(torch.randint(1, 4, (1,), generator=generator, device=device))
-                pick = leaves[torch.randperm(len(leaves), generator=generator, device=device)[:k]]
-                mask[ri, pick] = False
+            # v2: hide all, reveal 1..3 random joints from the WHOLE body (not just leaves).
+            # v1 sampled tree leaves only — on soma77 those are fingertips, so a wrist
+            # constraint stayed out-of-distribution (demo: fingertip 2.65cm vs wrist 16.7cm).
+            # The product contract is "any joint can be a constraint": sample accordingly.
+            # Vectorized: rank random scores per row, reveal the k lowest-ranked joints.
+            k = torch.randint(1, 4, (n, 1), device=device, generator=generator)
+            rank = torch.rand(n, J, device=device, generator=generator).argsort(1).argsort(1)
+            mask[rows] = rank >= k
         else:
             raise ValueError(f"unknown mask family {fam}")
     mask[:, root] = False

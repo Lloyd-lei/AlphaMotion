@@ -30,7 +30,7 @@ def main():
     ap.add_argument("--w_contrast", type=float, default=0.0) # InfoNCE: same-motion attract, others repel (no collapse)
     ap.add_argument("--tau", type=float, default=0.1)
     ap.add_argument("--self_only", action="store_true")   # only reconstruction (soma->soma, g1->g1)
-    ap.add_argument("--holdout", default=None)            # E5: embodiment excluded from training, eval zero-shot
+    ap.add_argument("--holdout", default=None)            # E5: comma-separated embodiments excluded from training; first one gets zero-shot eval
     ap.add_argument("--combo_sample", type=int, default=0)  # E5: combos per step (0 = all; bounds N^2 growth)
     ap.add_argument("--eval_every", type=int, default=1000)
     ap.add_argument("--out", default=f"{CACHE_ROOT}/runs/D_dual")
@@ -45,12 +45,14 @@ def main():
     print(f"params {sum(p.numel() for p in model.parameters())/1e6:.2f}M dual-FSQ bits/frame={model.bits:.0f}")
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-4)
     sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, args.steps)
-    train_names = [n for n in names if n != args.holdout]
-    assert args.holdout is None or args.holdout in names, f"holdout {args.holdout} not in {names}"
+    holdouts = [h for h in (args.holdout or "").split(",") if h]
+    for h in holdouts:
+        assert h in names, f"holdout {h} not in {names}"
+    train_names = [n for n in names if n not in holdouts]
     combos = [(n, n) for n in train_names] if args.self_only else list(itertools.product(train_names, train_names))
     eval_combos = list(combos)
-    if args.holdout:                                     # zero-shot: self-recon + translation into holdout
-        eval_combos += [(args.holdout, args.holdout), (train_names[0], args.holdout)]
+    if holdouts:                                         # zero-shot: self-recon + translation into first holdout
+        eval_combos += [(holdouts[0], holdouts[0]), (train_names[0], holdouts[0])]
     combo_rng = np.random.default_rng(4)                 # own stream: torch RNG order untouched
     print("combos:", combos, "eval extra:", eval_combos[len(combos):])
 

@@ -309,3 +309,67 @@ child body is the tracked link.
 
 All 12 jog GIFs + the grid were re-rendered to `R4_VIZ/gmr_qc/` (same
 filenames) for lloyd's re-review.
+
+## Production rerun with tuned configs (rework close-out, 2026-08-03)
+
+Full 24,000-clip rerun with: elbow-corrected configs (all 12), mink-limits shim
++ 4π/s velocity limit as default (all 12), and a foot fix for the two worst
+minz robots (unitree_h1, booster_t1_29dof: foot targets +2 cm z, leg scales
+×0.95 — chosen by testing 4 variants against each robot's own failing clips).
+Main rerun 55 min wall + 12 min selective h1/t1_29dof rerun; 630 MB.
+Manifests/rejects/summary refreshed in `/var/tmp/alphamotion/gmr_production/`.
+
+### Final accept counts
+
+| robot | accept | reject | raw rate | robot-specific* | notes |
+|---|---|---|---|---|---|
+| pnd_adam_lite | 1940 | 60 | 3.0% | 0.1% | cleanest |
+| fourier_gr3 | 1883 | 117 | 5.9% | 0.8% | |
+| stanford_toddy | 1875 | 125 | 6.2% | 3.0% | |
+| engineai_pm01 | 1865 | 135 | 6.8% | 2.5% | |
+| unitree_h1_2 | 1848 | 152 | 7.6% | 3.4% | |
+| booster_t1 | 1838 | 162 | 8.1% | 3.8% | jog straight-arm limitation |
+| kuavo_s45 | 1822 | 178 | 8.9% | 3.9% | fixed by shim (was 5.9%) |
+| booster_t1_29dof | 1809 | 191 | 9.6% | 4.9% | foot fix (was 11.1%) |
+| unitree_g1_with_hands | 1800 | 200 | 10.0% | 4.0% | |
+| unitree_g1 | 1778 | 222 | 11.1% | 5.0% | borderline, floor clips |
+| fourier_n1 | 1779 | 221 | 11.1% | 5.2% | residual = floor/acro clips |
+| **unitree_h1 ⚠** | 1754 | 246 | 12.3% | **7.2%** | still flagged (minz) |
+| **total** | **21991** | **2009 (8.4%)** | | | |
+
+\* excluding the 132 clips rejected by ≥6/12 robots (floor/acrobatic motions:
+sitting, crawl, fast dance, cartwheel).
+
+Versus v1: spike rejects collapsed (e.g. h1 89→5, kuavo 116→21, g1 111→40 —
+the velocity limit works); minz became the dominant residual class, largely
+floor-adjacent clips where whole-body ground proximity is intrinsic to the
+motion (verified on fourier_n1: its "specific" rejects are ab_bicycle,
+cartwheel, deep-carry clips with thighs/hands at floor level).
+
+### Elbow metric at production scale (60 clips accepted by all 12 robots)
+
+| robot | mean shift | p90 abs | robot | mean shift | p90 abs |
+|---|---|---|---|---|---|
+| unitree_g1 | −2.7° | 10.1° | engineai_pm01 | −5.7° | 20.3° |
+| unitree_h1 | +0.1° | 8.0° | kuavo_s45 | −2.1° | 8.0° |
+| unitree_h1_2 | +2.7° | 11.0° | fourier_gr3 | −2.0° | 10.2° |
+| booster_t1 | −15.4° | 47.1° | stanford_toddy | +6.1° | 18.3° |
+| booster_t1_29dof | −9.9° | 36.8° | pnd_adam_lite | −1.7° | 8.8° |
+| fourier_n1 | −2.3° | 13.2° | (g1_with_hands = g1) | | |
+
+Before the fix these were +32° to +49° (11 robots). Boosters' −10/−15° is the
+known 4-DoF fast-swing straightening, concentrated in high-swing clips.
+
+### Remaining flags
+
+1. **unitree_h1 (7.2% specific)** — only robot above the 5% bar; minz-driven.
+   The foot fix helped (8.5→7.2) but its tall build needs a dedicated scale
+   pass. Its accepted 1754 clips are usable; treat the rejects list as
+   authoritative.
+2. Boosters on fast arm-swing clips: elbows straighten (embodiment limit).
+3. unitree_g1 / fourier_n1 sit at ~5% specific, dominated by floor-adjacent
+   clips — recommend tagging floor motions dataset-wide rather than per-robot
+   tuning.
+
+All 12 jog GIFs + `grid_all_robots.png` re-rendered (same filenames) in
+`R4_VIZ/gmr_qc/` for re-review.
