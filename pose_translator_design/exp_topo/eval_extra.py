@@ -1,5 +1,8 @@
 """Post-training eval: per-frame decode latency (real-time feasibility) +
-zero-shot reconstruction on a held-out topology."""
+zero-shot reconstruction on a held-out topology.
+
+LEGACY — TopoAE runs only (train_ae/train_global era). DualTranslator runs use
+eval_dual.py instead."""
 from __future__ import annotations
 import os, sys, json, time, argparse
 import numpy as np, torch
@@ -15,6 +18,7 @@ def main():
     ap.add_argument("--cache", default=f"{CACHE_ROOT}/cache_big")
     ap.add_argument("--run", default=f"{CACHE_ROOT}/runs/plain")
     ap.add_argument("--heldout", default="soma_nohand")
+    ap.add_argument("--skels_seen", nargs="+", default=["soma77", "g1_30"])  # was missing -> crashed at use site
     ap.add_argument("--d_model", type=int, default=256)
     ap.add_argument("--n_latent", type=int, default=8)
     ap.add_argument("--structured", action="store_true")
