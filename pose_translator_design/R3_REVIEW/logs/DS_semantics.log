@@ -1,0 +1,12 @@
+[soma77] J=78 rows=48000 reach=112.6cm sem=(78, 768)
+[g1_30] J=30 rows=48000 reach=65.5cm sem=(30, 768)
+params 17.68M dual-FSQ bits/frame=2044
+EVAL {"soma->soma": {"rot": 101.1, "pos_cm": 6.91}, "soma->g1_3": {"rot": 106.1, "pos_cm": 25.22}, "g1_3->soma": {"rot": 116.7, "pos_cm": 22.74}, "g1_3->g1_3": {"rot": 74.4, "pos_cm": 23.85}, "code_align_dist": 0.2892, "code_scale": 0.6917, "step": 1000}
+EVAL {"soma->soma": {"rot": 97.9, "pos_cm": 6.9}, "soma->g1_3": {"rot": 94.8, "pos_cm": 23.91}, "g1_3->soma": {"rot": 113.5, "pos_cm": 21.41}, "g1_3->g1_3": {"rot": 60.5, "pos_cm": 13.29}, "code_align_dist": 0.3209, "code_scale": 0.625, "step": 2000}
+EVAL {"soma->soma": {"rot": 95.6, "pos_cm": 5.19}, "soma->g1_3": {"rot": 86.7, "pos_cm": 22.09}, "g1_3->soma": {"rot": 112.1, "pos_cm": 19.14}, "g1_3->g1_3": {"rot": 49.1, "pos_cm": 6.72}, "code_align_dist": 0.3391, "code_scale": 0.7418, "step": 3000}
+EVAL {"soma->soma": {"rot": 93.9, "pos_cm": 4.06}, "soma->g1_3": {"rot": 84.8, "pos_cm": 21.22}, "g1_3->soma": {"rot": 111.4, "pos_cm": 18.03}, "g1_3->g1_3": {"rot": 44.3, "pos_cm": 5.63}, "code_align_dist": 0.368, "code_scale": 0.8008, "step": 4000}
+EVAL {"soma->soma": {"rot": 93.3, "pos_cm": 3.7}, "soma->g1_3": {"rot": 81.4, "pos_cm": 20.7}, "g1_3->soma": {"rot": 110.4, "pos_cm": 17.41}, "g1_3->g1_3": {"rot": 40.7, "pos_cm": 5.31}, "code_align_dist": 0.3914, "code_scale": 0.8523, "step": 5000}
+EVAL {"soma->soma": {"rot": 93.0, "pos_cm": 3.22}, "soma->g1_3": {"rot": 79.1, "pos_cm": 20.17}, "g1_3->soma": {"rot": 109.9, "pos_cm": 16.98}, "g1_3->g1_3": {"rot": 38.0, "pos_cm": 4.98}, "code_align_dist": 0.406, "code_scale": 0.8951, "step": 6000}
+EVAL {"soma->soma": {"rot": 92.8, "pos_cm": 3.0}, "soma->g1_3": {"rot": 77.6, "pos_cm": 19.83}, "g1_3->soma": {"rot": 109.7, "pos_cm": 16.8}, "g1_3->g1_3": {"rot": 36.6, "pos_cm": 4.6}, "code_align_dist": 0.4113, "code_scale": 0.9184, "step": 7000}
+EVAL {"soma->soma": {"rot": 92.8, "pos_cm": 2.97}, "soma->g1_3": {"rot": 77.4, "pos_cm": 19.77}, "g1_3->soma": {"rot": 109.6, "pos_cm": 16.72}, "g1_3->g1_3": {"rot": 36.4, "pos_cm": 4.55}, "code_align_dist": 0.4124, "code_scale": 0.9215, "step": 8000}
+DONE /var/tmp/alphamotion/topo_exp/cache_paired/../runs/DS_semantics

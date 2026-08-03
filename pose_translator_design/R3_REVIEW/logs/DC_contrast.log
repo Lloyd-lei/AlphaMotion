@@ -1,0 +1,5 @@
+[soma77] J=78 rows=48000 reach=112.6cm
+[g1_30] J=30 rows=48000 reach=65.5cm
+params 17.45M dual-FSQ bits/frame=2044
+EVAL {"soma->soma": {"rot": 95.4, "pos_cm": 8.72}, "soma->g1_3": {"rot": 98.7, "pos_cm": 24.42}, "g1_3->soma": {"rot": 115.1, "pos_cm": 22.81}, "g1_3->g1_3": {"rot": 52.7, "pos_cm": 13.24}, "code_align_dist": 0.2258, "code_scale": 0.4136, "step": 1000}
+EVAL {"soma->soma": {"rot": 93.6, "pos_cm": 4.75}, "soma->g1_3": {"rot": 92.6, "pos_cm": 23.0}, "g1_3->soma": {"rot": 112.8, "pos_cm": 19.98}, "g1_3->g1_3": {"rot": 40.6, "pos_cm": 6.36}, "code_align_dist": 0.3297, "code_scale": 0.6369, "step": 2000}

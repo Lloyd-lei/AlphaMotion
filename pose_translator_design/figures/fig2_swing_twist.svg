@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="460" viewBox="0 0 1300 460" font-family="Noto Sans CJK SC, Noto Sans, Arial, sans-serif">
+<rect x="0" y="0" width="1300" height="460" fill="white"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#374151"/></marker>
+<marker id="arrowThin" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4b5563"/></marker>
+</defs>
+<text x="650.0" y="40" font-size="19" text-anchor="middle" fill="#111827" font-weight="bold" font-style="normal">一根骨头的旋转 = Swing（摆动） × Twist（自转）</text>
+<rect x="80" y="90" width="400" height="330" rx="14" ry="14" fill="#fafafa" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="280.0" y="122" font-size="15" text-anchor="middle" fill="#111827" font-weight="bold" font-style="normal">静止姿态（参考骨方向）</text>
+<line x1="280.0" y1="160" x2="280.0" y2="340" stroke="#4b5563" stroke-width="7" stroke-linecap="round"/>
+<circle cx="280.0" cy="160" r="9" fill="#1f2937" stroke="white" stroke-width="1.5"/>
+<circle cx="280.0" cy="340" r="9" fill="#1f2937" stroke="white" stroke-width="1.5"/>
+<text x="280.0" y="360" font-size="12.3" text-anchor="middle" fill="#4b5563" font-weight="normal" font-style="normal">骨骼没有任何旋转时的样子</text>
+<rect x="540" y="90" width="400" height="330" rx="14" ry="14" fill="#fafafa" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="740.0" y="122" font-size="15" text-anchor="middle" fill="#059669" font-weight="bold" font-style="normal">Swing：转到观测方向</text>
+<line x1="740.0" y1="160" x2="795.0" y2="328" stroke="#4b5563" stroke-width="7" stroke-linecap="round"/>
+<circle cx="740.0" cy="160" r="9" fill="#1f2937" stroke="white" stroke-width="1.5"/>
+<circle cx="795.0" cy="328" r="9" fill="#1f2937" stroke="white" stroke-width="1.5"/>
+<path d="M 740.0 250 A 90 90 0 0 1 795.0 328" fill="none" stroke="#059669" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arrowThin)"/>
+<text x="740.0" y="360" font-size="12.3" text-anchor="middle" fill="#4b5563" font-weight="normal" font-style="normal">2 个自由度，由关节位置</text>
+<text x="740.0" y="377" font-size="12.3" text-anchor="middle" fill="#4b5563" font-weight="normal" font-style="normal">完全决定，可以直接算出来</text>
+<rect x="1000" y="90" width="400" height="330" rx="14" ry="14" fill="#fafafa" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="1200.0" y="122" font-size="15" text-anchor="middle" fill="#ea580c" font-weight="bold" font-style="normal">Twist：绕骨头自己转</text>
+<line x1="1200.0" y1="160" x2="1255.0" y2="328" stroke="#4b5563" stroke-width="7" stroke-linecap="round"/>
+<circle cx="1200.0" cy="160" r="9" fill="#1f2937" stroke="white" stroke-width="1.5"/>
+<circle cx="1255.0" cy="328" r="9" fill="#1f2937" stroke="white" stroke-width="1.5"/>
+<ellipse cx="1245.5" cy="244.0" rx="22" ry="9" fill="none" stroke="#ea580c" stroke-width="2.8" transform="rotate(-35 1245.5 244.0)"/>
+<path d="M 1265.5 238.0 l 10 -3 l -2 10 z" fill="#ea580c" transform="rotate(-35 1245.5 244.0)"/>
+<text x="1245.5" y="210.0" font-size="11.5" text-anchor="middle" fill="#ea580c" font-weight="normal" font-style="normal">转多少度都一样</text>
+<text x="1200.0" y="360" font-size="12.3" text-anchor="middle" fill="#4b5563" font-weight="normal" font-style="normal">1 个自由度，子关节位置</text>
+<text x="1200.0" y="377" font-size="12.3" text-anchor="middle" fill="#4b5563" font-weight="normal" font-style="normal">完全不变，位置信息看不出它</text>
+<text x="510" y="260" font-size="30" text-anchor="middle" fill="#4b5563" font-weight="bold" font-style="normal">×</text>
+<text x="970" y="260" font-size="30" text-anchor="middle" fill="#4b5563" font-weight="bold" font-style="normal">=</text>
+<text x="650.0" y="430" font-size="13.5" text-anchor="middle" fill="#111827" font-weight="normal" font-style="normal">实际做法：Swing 用公式直接算；Twist 才是真正需要网络去学（或建模成一个分布）的部分</text>
+</svg>

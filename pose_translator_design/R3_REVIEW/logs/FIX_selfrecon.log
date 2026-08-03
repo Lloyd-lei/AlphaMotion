@@ -1,0 +1,7 @@
+[soma77] J=78 rows=48000 reach=229.2cm sem=(78, 768)
+[g1_30] J=30 rows=48000 reach=79.9cm sem=(30, 768)
+params 17.68M dual-FSQ bits/frame=2044
+combos: [('soma77', 'soma77'), ('g1_30', 'g1_30')]
+EVAL {"soma->soma": {"rot": 11.7, "pos_cm": 14.55}, "g1_3->g1_3": {"rot": 12.9, "pos_cm": 7.72}, "ST_soma": {"full_rot": 18.3, "swing": 17.8, "twist_residual": 0.5}, "ST_g1_3": {"full_rot": 12.9, "swing": 15.8, "twist_residual": -2.9}, "code_align_dist": 0.5618, "code_scale": 0.6002, "step": 1000}
+EVAL {"soma->soma": {"rot": 7.6, "pos_cm": 12.64}, "g1_3->g1_3": {"rot": 6.5, "pos_cm": 5.26}, "ST_soma": {"full_rot": 13.3, "swing": 13.6, "twist_residual": -0.3}, "ST_g1_3": {"full_rot": 6.5, "swing": 11.1, "twist_residual": -4.6}, "code_align_dist": 0.5201, "code_scale": 0.5766, "step": 2000}
+EVAL {"soma->soma": {"rot": 5.7, "pos_cm": 7.21}, "g1_3->g1_3": {"rot": 4.9, "pos_cm": 2.47}, "ST_soma": {"full_rot": 10.1, "swing": 11.1, "twist_residual": -1.0}, "ST_g1_3": {"full_rot": 4.9, "swing": 9.9, "twist_residual": -5.0}, "code_align_dist": 0.5067, "code_scale": 0.5503, "step": 3000}
