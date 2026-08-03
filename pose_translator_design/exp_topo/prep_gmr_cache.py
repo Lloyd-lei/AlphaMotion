@@ -25,6 +25,19 @@ to ~4cm position error. Fix here:
 Verified per clip by the FK round-trip gate: fk_global(local6d, spec) positions must
 match MuJoCo positions to <0.1cm.
 
+AXIS CONVENTION (v2 fix): raw MuJoCo world frame is Z-up, but the human side
+(soma77 / g1_30, ardy graphics convention) is Y-up. v1 (cache_paired_13) mixed the
+two — robots rendered lying flat vs the standing human and cross-embodiment pairs
+carried a systematic ~90 deg frame rotation. v2 harmonizes EVERYTHING to Y-up by the
+fixed permutation AX = M_MJ2ARDY from g1_qpos.py ((x,y,z)_mj -> (y,z,x)_ardy),
+applied to all world-frame quantities BEFORE local extraction:
+    global rot  R' = AX @ R @ AX^T      (conjugation)
+    positions   p' = AX @ p
+    rest offset off' = AX @ off
+Local rotations derive from the conjugated globals, so the FK round-trip gate in the
+permuted frame is unchanged, and a NEW uprightness gate checks that on real data the
+topmost joint of every embodiment rises along axis 1 (Y), matching soma77.
+
 CPU only, multiprocessing (nice 10). No trainings started here.
 """
 from __future__ import annotations
@@ -38,7 +51,10 @@ from common import SkeletonSpec, matrix_to_rot6d, rot6d_to_matrix, fk_global, CA
 CM = 100.0
 GMR_PROD = "/var/tmp/alphamotion/gmr_production"
 SRC_CACHE = f"{CACHE_ROOT}/cache_paired_seq"
-OUT_DEFAULT = f"{CACHE_ROOT}/cache_paired_13"
+OUT_DEFAULT = f"{CACHE_ROOT}/cache_paired_13v2"
+# MuJoCo Z-up -> ardy Y-up axis permutation, identical to g1_qpos.M_MJ2ARDY:
+# v_ardy = AX @ v_mj, i.e. (x,y,z)_mj -> (y,z,x)_ardy.
+AX = np.array([[0., 1, 0], [0, 0, 1], [1, 0, 0]], np.float64)
 GMR_REPO = ('/home/arenalabs/Desktop/"be water, robot"/'
             "alpha_motion2/external/GMR")
 ARDY_G1_XML = ('/home/arenalabs/Desktop/"be water, robot"/'
@@ -152,6 +168,7 @@ def build_spec(model, name, keep):
         jnames.append(names[b])
     offsets = np.asarray(offsets, np.float32)
     offsets[0] = np.array([0.0, 0.0, float(model.body_pos[1][2] or 0.8) * CM], np.float32)
+    offsets = (offsets @ AX.T).astype(np.float32)   # Z-up -> Y-up (root -> (0,h,0))
     spec = SkeletonSpec(name, np.asarray(parents, np.int64), offsets, jnames)
     spec.order_root_first()
     return spec
@@ -179,6 +196,8 @@ def qpos_to_global(model, data, qpos_seq, keep, frame):
         mujoco.mj_kinematics(model, data)
         R[t] = data.xmat[fids].reshape(-1, 3, 3)
         P[t] = data.xpos[kids]
+    R = (AX[None, None] @ R @ AX.T[None, None]).astype(np.float32)  # Z-up -> Y-up
+    P = (P @ AX.T).astype(np.float32)
     P = (P - P[:, :1]) * CM
     return R, P
 
@@ -224,6 +243,25 @@ def process_chunk(task):
     np.save(out_npy, np.concatenate(parts, 0))
     return {"robot": robot, "chunk": chunk_id, "rows": rows, "fk_err_cm": fk_err,
             "bone_drift_cm": drift, "nan_frames": nan_frames, "npy": out_npy}
+
+
+def upright_check(out_dir, name, seqs, n_clips=5):
+    """Y-up gate: FK the stored local6d of the first clips; the topmost joint's mean
+    position (root-relative) must peak along axis 1 (Y), matching soma77's convention.
+    Returns dict incl. per-axis peak so a Z-up regression (axis 2) is unambiguous."""
+    d = np.load(f"{out_dir}/{name}_spec.npz", allow_pickle=True)
+    spec = SkeletonSpec(str(d["name"]), d["parents"], d["rest_offsets"],
+                        list(d["joint_names"]))
+    rows = sum(int(s["len"]) for s in seqs[:n_clips])
+    x = torch.load(f"{out_dir}/{name}_paired_local6d.pt")[:rows]
+    _, gp = fk_global(x, spec)                     # [T,J,3] root-relative, cm
+    m = gp.mean(0)                                 # [J,3] mean joint position
+    peak = m.max(0)                                # per-axis: highest mean coordinate
+    up_axis = int(peak.values.argmax())
+    j_top = int(peak.indices[up_axis])
+    return {"pass": up_axis == 1, "up_axis": up_axis,
+            "top_joint": spec.joint_names[j_top],
+            "peak_cm_xyz": [round(float(v), 1) for v in peak.values]}
 
 
 # ------------------------------------ main -------------------------------------
@@ -331,12 +369,19 @@ def main():
     disk = sum(os.path.getsize(f"{args.out}/{f}") for f in os.listdir(args.out))
     rng = np.random.default_rng(0)
     probe = new_seq[int(rng.integers(len(new_seq)))]
+    upright = {}
+    for name in emb:
+        upright[name] = upright_check(args.out, name, new_seq)
+        u = upright[name]
+        print(f"[upright] {name}: axis={u['up_axis']} top={u['top_joint']} "
+              f"peak_xyz={u['peak_cm_xyz']} {'OK' if u['pass'] else 'FAIL'}", flush=True)
     ok = all(s["fk_err_cm"] < FK_GATE_CM and s["nan_frames"] == 0
              and s["rows"] == n_rows for s in stats.values()) \
-        and all(h["nan_frames"] == 0 and h["rows"] == n_rows for h in human_stats.values())
+        and all(h["nan_frames"] == 0 and h["rows"] == n_rows for h in human_stats.values()) \
+        and all(u["pass"] for u in upright.values())
     val = {"pass": bool(ok), "fk_gate_cm": FK_GATE_CM, "clips": len(surviving),
            "rows": int(n_rows), "embodiments": emb, "robots": stats,
-           "human": human_stats, "probe_clip": probe,
+           "human": human_stats, "upright": upright, "probe_clip": probe,
            "disk_bytes": int(disk), "wall_s": round(time.time() - t0, 1)}
     json.dump(val, open(f"{args.out}/VALIDATION.json", "w"), indent=2)
     print(f"[validate] PASS={ok}  disk={disk/1e9:.2f}GB  wall={time.time()-t0:.0f}s")
