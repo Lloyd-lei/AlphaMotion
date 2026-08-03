@@ -4,15 +4,20 @@ joint's geometry/semantics conditioning stays visible — the skeleton is always
 known at deployment; only the pose observation is partial.
 
 Families (mirror the product surface):
-  rand  keep a random joint subset (keep ratio ~ U(0.2, 0.8))
-  ee    keep only root + kinematic-tree leaves (end effectors; topology-agnostic)
-  root  keep only the root
+  rand    keep a random joint subset (keep ratio ~ U(0.2, 0.8))
+  ee      keep only root + kinematic-tree leaves (end effectors; topology-agnostic)
+  root    keep only the root
+  sparse  keep only root + 1..3 random leaves — the "single-wrist SE3 constraint"
+          product case. Added 2026-08-03 after the demo showed root+wrist (2.5%
+          keep) was outside rand's 20-80% range: the mask family distribution IS
+          the product surface.
 Root is never masked (it anchors the global frame).
 """
 from __future__ import annotations
 import numpy as np, torch
 
 DEFAULT_MIX = {"rand": 0.4, "ee": 0.3, "root": 0.3}
+SPARSE_MIX = {"rand": 0.3, "ee": 0.25, "root": 0.15, "sparse": 0.3}
 
 
 def parse_mix(s):
@@ -56,6 +61,13 @@ def sample_joint_mask(spec, B, mix=None, device="cuda", generator=None):
             mask[rows] = hide[None].expand(n, -1)
         elif fam == "root":
             mask[rows] = True
+        elif fam == "sparse":
+            mask[rows] = True                       # hide all, then reveal 1..3 random leaves
+            leaves = torch.where(leaf_mask(spec).to(device))[0]
+            for ri in torch.where(rows)[0].tolist():
+                k = int(torch.randint(1, 4, (1,), generator=generator, device=device))
+                pick = leaves[torch.randperm(len(leaves), generator=generator, device=device)[:k]]
+                mask[ri, pick] = False
         else:
             raise ValueError(f"unknown mask family {fam}")
     mask[:, root] = False

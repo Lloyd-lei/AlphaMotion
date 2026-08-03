@@ -1,0 +1,1906 @@
+{
+  "berkeley_humanoid_lite": {
+    "robot": "berkeley_humanoid_lite",
+    "overall": "fail",
+    "motions": {
+      "walk": {
+        "n_frames": 180,
+        "nan": false,
+        "vel_max": 14.41,
+        "vel_p99": 3.95,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": -0.0826,
+        "foot_z_min": 0.0302,
+        "skate_mean_ms": 0.222,
+        "ee_links": {
+          "LeftHand": "arm_left_hand_link",
+          "RightHand": "arm_right_hand_link",
+          "LeftFootMod": "leg_left_ankle_roll",
+          "RightFootMod": "leg_right_ankle_roll"
+        },
+        "ee_err_mean": 0.0607,
+        "ee_err_max": 0.1359,
+        "t_ik_s": 0.81,
+        "flag": "fail"
+      },
+      "jog_stop": {
+        "n_frames": 149,
+        "nan": false,
+        "vel_max": 16.63,
+        "vel_p99": 5.29,
+        "spike_frames": 1,
+        "limit_violations": 0,
+        "min_body_z": -0.0722,
+        "foot_z_min": -0.0005,
+        "skate_mean_ms": 0.591,
+        "ee_links": {
+          "LeftHand": "arm_left_hand_link",
+          "RightHand": "arm_right_hand_link",
+          "LeftFootMod": "leg_left_ankle_roll",
+          "RightFootMod": "leg_right_ankle_roll"
+        },
+        "ee_err_mean": 0.11,
+        "ee_err_max": 0.3037,
+        "t_ik_s": 0.76,
+        "flag": "fail"
+      },
+      "jump": {
+        "n_frames": 50,
+        "nan": false,
+        "vel_max": 4.41,
+        "vel_p99": 2.47,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": -0.0535,
+        "foot_z_min": 0.0328,
+        "skate_mean_ms": 0.096,
+        "ee_links": {
+          "LeftHand": "arm_left_hand_link",
+          "RightHand": "arm_right_hand_link",
+          "LeftFootMod": "leg_left_ankle_roll",
+          "RightFootMod": "leg_right_ankle_roll"
+        },
+        "ee_err_mean": 0.0635,
+        "ee_err_max": 0.1429,
+        "t_ik_s": 0.18,
+        "flag": "fail"
+      },
+      "idle_turn": {
+        "n_frames": 279,
+        "nan": false,
+        "vel_max": 8.47,
+        "vel_p99": 1.36,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": -0.0501,
+        "foot_z_min": 0.0357,
+        "skate_mean_ms": 0.026,
+        "ee_links": {
+          "LeftHand": "arm_left_hand_link",
+          "RightHand": "arm_right_hand_link",
+          "LeftFootMod": "leg_left_ankle_roll",
+          "RightFootMod": "leg_right_ankle_roll"
+        },
+        "ee_err_mean": 0.0568,
+        "ee_err_max": 0.1293,
+        "t_ik_s": 0.82,
+        "flag": "fail"
+      },
+      "reach": {
+        "n_frames": 124,
+        "nan": false,
+        "vel_max": 10.05,
+        "vel_p99": 4.37,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": -0.0677,
+        "foot_z_min": 0.0073,
+        "skate_mean_ms": 0.022,
+        "ee_links": {
+          "LeftHand": "arm_left_hand_link",
+          "RightHand": "arm_right_hand_link",
+          "LeftFootMod": "leg_left_ankle_roll",
+          "RightFootMod": "leg_right_ankle_roll"
+        },
+        "ee_err_mean": 0.0814,
+        "ee_err_max": 0.3443,
+        "t_ik_s": 0.65,
+        "flag": "fail"
+      }
+    },
+    "t_total_s": 6.9
+  },
+  "booster_k1": {
+    "robot": "booster_k1",
+    "overall": "fail",
+    "motions": {
+      "walk": {
+        "n_frames": 180,
+        "nan": false,
+        "vel_max": 11.78,
+        "vel_p99": 5.07,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0385,
+        "foot_z_min": 0.0385,
+        "skate_mean_ms": 0.199,
+        "ee_links": {
+          "LeftForeArm": "left_hand_link",
+          "RightForeArm": "right_hand_link",
+          "LeftFootMod": "left_foot_link",
+          "RightFootMod": "right_foot_link"
+        },
+        "ee_err_mean": 0.0866,
+        "ee_err_max": 0.1975,
+        "t_ik_s": 1.06,
+        "flag": "fail"
+      },
+      "jog_stop": {
+        "n_frames": 149,
+        "nan": false,
+        "vel_max": 17.18,
+        "vel_p99": 6.36,
+        "spike_frames": 1,
+        "limit_violations": 0,
+        "min_body_z": 0.0376,
+        "foot_z_min": 0.0376,
+        "skate_mean_ms": 0.15,
+        "ee_links": {
+          "LeftForeArm": "left_hand_link",
+          "RightForeArm": "right_hand_link",
+          "LeftFootMod": "left_foot_link",
+          "RightFootMod": "right_foot_link"
+        },
+        "ee_err_mean": 0.098,
+        "ee_err_max": 0.3345,
+        "t_ik_s": 2.0,
+        "flag": "warn"
+      },
+      "jump": {
+        "n_frames": 50,
+        "nan": false,
+        "vel_max": 7.52,
+        "vel_p99": 4.7,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.046,
+        "foot_z_min": 0.046,
+        "skate_mean_ms": 0.052,
+        "ee_links": {
+          "LeftForeArm": "left_hand_link",
+          "RightForeArm": "right_hand_link",
+          "LeftFootMod": "left_foot_link",
+          "RightFootMod": "right_foot_link"
+        },
+        "ee_err_mean": 0.0775,
+        "ee_err_max": 0.1817,
+        "t_ik_s": 0.28,
+        "flag": "warn"
+      },
+      "idle_turn": {
+        "n_frames": 279,
+        "nan": false,
+        "vel_max": 5.37,
+        "vel_p99": 1.83,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0404,
+        "foot_z_min": 0.0404,
+        "skate_mean_ms": 0.026,
+        "ee_links": {
+          "LeftForeArm": "left_hand_link",
+          "RightForeArm": "right_hand_link",
+          "LeftFootMod": "left_foot_link",
+          "RightFootMod": "right_foot_link"
+        },
+        "ee_err_mean": 0.0807,
+        "ee_err_max": 0.188,
+        "t_ik_s": 1.36,
+        "flag": "pass"
+      },
+      "reach": {
+        "n_frames": 124,
+        "nan": false,
+        "vel_max": 12.1,
+        "vel_p99": 6.41,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0419,
+        "foot_z_min": 0.0419,
+        "skate_mean_ms": 0.018,
+        "ee_links": {
+          "LeftForeArm": "left_hand_link",
+          "RightForeArm": "right_hand_link",
+          "LeftFootMod": "left_foot_link",
+          "RightFootMod": "right_foot_link"
+        },
+        "ee_err_mean": 0.0773,
+        "ee_err_max": 0.259,
+        "t_ik_s": 0.73,
+        "flag": "pass"
+      }
+    },
+    "t_total_s": 6.5
+  },
+  "booster_t1": {
+    "robot": "booster_t1",
+    "overall": "warn",
+    "motions": {
+      "walk": {
+        "n_frames": 180,
+        "nan": false,
+        "vel_max": 11.49,
+        "vel_p99": 5.02,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.061,
+        "foot_z_min": 0.061,
+        "skate_mean_ms": 0.116,
+        "ee_links": {
+          "LeftForeArm": "left_hand_link",
+          "RightForeArm": "right_hand_link",
+          "LeftFootMod": "left_foot_link",
+          "RightFootMod": "right_foot_link"
+        },
+        "ee_err_mean": 0.0346,
+        "ee_err_max": 0.0775,
+        "t_ik_s": 1.4,
+        "flag": "warn"
+      },
+      "jog_stop": {
+        "n_frames": 149,
+        "nan": false,
+        "vel_max": 24.27,
+        "vel_p99": 7.95,
+        "spike_frames": 1,
+        "limit_violations": 0,
+        "min_body_z": 0.0354,
+        "foot_z_min": 0.0354,
+        "skate_mean_ms": 0.072,
+        "ee_links": {
+          "LeftForeArm": "left_hand_link",
+          "RightForeArm": "right_hand_link",
+          "LeftFootMod": "left_foot_link",
+          "RightFootMod": "right_foot_link"
+        },
+        "ee_err_mean": 0.0944,
+        "ee_err_max": 0.3066,
+        "t_ik_s": 1.72,
+        "flag": "warn"
+      },
+      "jump": {
+        "n_frames": 50,
+        "nan": false,
+        "vel_max": 8.94,
+        "vel_p99": 5.04,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0566,
+        "foot_z_min": 0.0566,
+        "skate_mean_ms": 0.032,
+        "ee_links": {
+          "LeftForeArm": "left_hand_link",
+          "RightForeArm": "right_hand_link",
+          "LeftFootMod": "left_foot_link",
+          "RightFootMod": "right_foot_link"
+        },
+        "ee_err_mean": 0.0328,
+        "ee_err_max": 0.0852,
+        "t_ik_s": 0.39,
+        "flag": "pass"
+      },
+      "idle_turn": {
+        "n_frames": 279,
+        "nan": false,
+        "vel_max": 5.73,
+        "vel_p99": 1.5,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0635,
+        "foot_z_min": 0.0635,
+        "skate_mean_ms": 0.029,
+        "ee_links": {
+          "LeftForeArm": "left_hand_link",
+          "RightForeArm": "right_hand_link",
+          "LeftFootMod": "left_foot_link",
+          "RightFootMod": "right_foot_link"
+        },
+        "ee_err_mean": 0.0346,
+        "ee_err_max": 0.0794,
+        "t_ik_s": 1.84,
+        "flag": "pass"
+      },
+      "reach": {
+        "n_frames": 124,
+        "nan": false,
+        "vel_max": 11.43,
+        "vel_p99": 6.99,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0272,
+        "foot_z_min": 0.0272,
+        "skate_mean_ms": 0.034,
+        "ee_links": {
+          "LeftForeArm": "left_hand_link",
+          "RightForeArm": "right_hand_link",
+          "LeftFootMod": "left_foot_link",
+          "RightFootMod": "right_foot_link"
+        },
+        "ee_err_mean": 0.0432,
+        "ee_err_max": 0.1563,
+        "t_ik_s": 1.02,
+        "flag": "pass"
+      }
+    },
+    "t_total_s": 7.6
+  },
+  "booster_t1_29dof": {
+    "robot": "booster_t1_29dof",
+    "overall": "warn",
+    "motions": {
+      "walk": {
+        "n_frames": 180,
+        "nan": false,
+        "vel_max": 11.94,
+        "vel_p99": 5.3,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.014,
+        "foot_z_min": 0.0369,
+        "skate_mean_ms": 0.128,
+        "ee_links": {
+          "LeftHand": "AL5",
+          "RightHand": "AR5",
+          "LeftFootMod": "left_foot_link",
+          "RightFootMod": "right_foot_link"
+        },
+        "ee_err_mean": 0.0799,
+        "ee_err_max": 0.1913,
+        "t_ik_s": 1.23,
+        "flag": "warn"
+      },
+      "jog_stop": {
+        "n_frames": 149,
+        "nan": false,
+        "vel_max": 21.99,
+        "vel_p99": 6.83,
+        "spike_frames": 1,
+        "limit_violations": 0,
+        "min_body_z": -0.0037,
+        "foot_z_min": 0.021,
+        "skate_mean_ms": 0.082,
+        "ee_links": {
+          "LeftHand": "AL5",
+          "RightHand": "AR5",
+          "LeftFootMod": "left_foot_link",
+          "RightFootMod": "right_foot_link"
+        },
+        "ee_err_mean": 0.1474,
+        "ee_err_max": 0.5034,
+        "t_ik_s": 2.16,
+        "flag": "warn"
+      },
+      "jump": {
+        "n_frames": 50,
+        "nan": false,
+        "vel_max": 8.95,
+        "vel_p99": 5.03,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0155,
+        "foot_z_min": 0.042,
+        "skate_mean_ms": 0.022,
+        "ee_links": {
+          "LeftHand": "AL5",
+          "RightHand": "AR5",
+          "LeftFootMod": "left_foot_link",
+          "RightFootMod": "right_foot_link"
+        },
+        "ee_err_mean": 0.0894,
+        "ee_err_max": 0.2013,
+        "t_ik_s": 0.39,
+        "flag": "pass"
+      },
+      "idle_turn": {
+        "n_frames": 279,
+        "nan": false,
+        "vel_max": 5.6,
+        "vel_p99": 1.84,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0181,
+        "foot_z_min": 0.0389,
+        "skate_mean_ms": 0.014,
+        "ee_links": {
+          "LeftHand": "AL5",
+          "RightHand": "AR5",
+          "LeftFootMod": "left_foot_link",
+          "RightFootMod": "right_foot_link"
+        },
+        "ee_err_mean": 0.0828,
+        "ee_err_max": 0.1901,
+        "t_ik_s": 1.85,
+        "flag": "pass"
+      },
+      "reach": {
+        "n_frames": 124,
+        "nan": false,
+        "vel_max": 12.07,
+        "vel_p99": 6.04,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0152,
+        "foot_z_min": 0.0316,
+        "skate_mean_ms": 0.011,
+        "ee_links": {
+          "LeftHand": "AL5",
+          "RightHand": "AR5",
+          "LeftFootMod": "left_foot_link",
+          "RightFootMod": "right_foot_link"
+        },
+        "ee_err_mean": 0.087,
+        "ee_err_max": 0.2582,
+        "t_ik_s": 1.13,
+        "flag": "pass"
+      }
+    },
+    "t_total_s": 8.0
+  },
+  "engineai_pm01": {
+    "robot": "engineai_pm01",
+    "overall": "warn",
+    "motions": {
+      "walk": {
+        "n_frames": 180,
+        "nan": false,
+        "vel_max": 12.21,
+        "vel_p99": 5.3,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.054,
+        "foot_z_min": 0.054,
+        "skate_mean_ms": 0.053,
+        "ee_links": {
+          "LeftHand": "LINK_ELBOW_END_L",
+          "RightHand": "LINK_ELBOW_END_R",
+          "LeftFootMod": "LINK_ANKLE_ROLL_L",
+          "RightFootMod": "LINK_ANKLE_ROLL_R"
+        },
+        "ee_err_mean": 0.0842,
+        "ee_err_max": 0.2034,
+        "t_ik_s": 1.36,
+        "flag": "warn"
+      },
+      "jog_stop": {
+        "n_frames": 149,
+        "nan": false,
+        "vel_max": 10.81,
+        "vel_p99": 7.26,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0554,
+        "foot_z_min": 0.0554,
+        "skate_mean_ms": 0.084,
+        "ee_links": {
+          "LeftHand": "LINK_ELBOW_END_L",
+          "RightHand": "LINK_ELBOW_END_R",
+          "LeftFootMod": "LINK_ANKLE_ROLL_L",
+          "RightFootMod": "LINK_ANKLE_ROLL_R"
+        },
+        "ee_err_mean": 0.0758,
+        "ee_err_max": 0.2217,
+        "t_ik_s": 1.57,
+        "flag": "warn"
+      },
+      "jump": {
+        "n_frames": 50,
+        "nan": false,
+        "vel_max": 9.22,
+        "vel_p99": 5.2,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0625,
+        "foot_z_min": 0.0625,
+        "skate_mean_ms": 0.031,
+        "ee_links": {
+          "LeftHand": "LINK_ELBOW_END_L",
+          "RightHand": "LINK_ELBOW_END_R",
+          "LeftFootMod": "LINK_ANKLE_ROLL_L",
+          "RightFootMod": "LINK_ANKLE_ROLL_R"
+        },
+        "ee_err_mean": 0.0981,
+        "ee_err_max": 0.2241,
+        "t_ik_s": 0.37,
+        "flag": "pass"
+      },
+      "idle_turn": {
+        "n_frames": 279,
+        "nan": false,
+        "vel_max": 5.45,
+        "vel_p99": 1.84,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0569,
+        "foot_z_min": 0.0569,
+        "skate_mean_ms": 0.014,
+        "ee_links": {
+          "LeftHand": "LINK_ELBOW_END_L",
+          "RightHand": "LINK_ELBOW_END_R",
+          "LeftFootMod": "LINK_ANKLE_ROLL_L",
+          "RightFootMod": "LINK_ANKLE_ROLL_R"
+        },
+        "ee_err_mean": 0.0859,
+        "ee_err_max": 0.1993,
+        "t_ik_s": 1.75,
+        "flag": "pass"
+      },
+      "reach": {
+        "n_frames": 124,
+        "nan": false,
+        "vel_max": 14.46,
+        "vel_p99": 5.97,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.053,
+        "foot_z_min": 0.053,
+        "skate_mean_ms": 0.014,
+        "ee_links": {
+          "LeftHand": "LINK_ELBOW_END_L",
+          "RightHand": "LINK_ELBOW_END_R",
+          "LeftFootMod": "LINK_ANKLE_ROLL_L",
+          "RightFootMod": "LINK_ANKLE_ROLL_R"
+        },
+        "ee_err_mean": 0.0988,
+        "ee_err_max": 0.3741,
+        "t_ik_s": 1.14,
+        "flag": "warn"
+      }
+    },
+    "t_total_s": 10.9
+  },
+  "fourier_gr3": {
+    "robot": "fourier_gr3",
+    "overall": "warn",
+    "motions": {
+      "walk": {
+        "n_frames": 180,
+        "nan": false,
+        "vel_max": 11.95,
+        "vel_p99": 4.73,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0736,
+        "foot_z_min": 0.0736,
+        "skate_mean_ms": 0.044,
+        "ee_links": {
+          "LeftHand": "left_end_effector_link",
+          "RightHand": "right_end_effector_link",
+          "LeftFootMod": "left_foot_roll_link",
+          "RightFootMod": "right_foot_roll_link"
+        },
+        "ee_err_mean": 0.1364,
+        "ee_err_max": 0.3085,
+        "t_ik_s": 1.3,
+        "flag": "warn"
+      },
+      "jog_stop": {
+        "n_frames": 149,
+        "nan": false,
+        "vel_max": 13.93,
+        "vel_p99": 8.25,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.065,
+        "foot_z_min": 0.065,
+        "skate_mean_ms": 0.038,
+        "ee_links": {
+          "LeftHand": "left_end_effector_link",
+          "RightHand": "right_end_effector_link",
+          "LeftFootMod": "left_foot_roll_link",
+          "RightFootMod": "right_foot_roll_link"
+        },
+        "ee_err_mean": 0.113,
+        "ee_err_max": 0.2904,
+        "t_ik_s": 1.67,
+        "flag": "warn"
+      },
+      "jump": {
+        "n_frames": 50,
+        "nan": false,
+        "vel_max": 10.26,
+        "vel_p99": 4.61,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0797,
+        "foot_z_min": 0.0797,
+        "skate_mean_ms": 0.028,
+        "ee_links": {
+          "LeftHand": "left_end_effector_link",
+          "RightHand": "right_end_effector_link",
+          "LeftFootMod": "left_foot_roll_link",
+          "RightFootMod": "right_foot_roll_link"
+        },
+        "ee_err_mean": 0.1312,
+        "ee_err_max": 0.2925,
+        "t_ik_s": 0.41,
+        "flag": "warn"
+      },
+      "idle_turn": {
+        "n_frames": 279,
+        "nan": false,
+        "vel_max": 6.42,
+        "vel_p99": 1.49,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0763,
+        "foot_z_min": 0.0763,
+        "skate_mean_ms": 0.014,
+        "ee_links": {
+          "LeftHand": "left_end_effector_link",
+          "RightHand": "right_end_effector_link",
+          "LeftFootMod": "left_foot_roll_link",
+          "RightFootMod": "right_foot_roll_link"
+        },
+        "ee_err_mean": 0.1385,
+        "ee_err_max": 0.2854,
+        "t_ik_s": 1.72,
+        "flag": "warn"
+      },
+      "reach": {
+        "n_frames": 124,
+        "nan": false,
+        "vel_max": 12.2,
+        "vel_p99": 6.3,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0638,
+        "foot_z_min": 0.0638,
+        "skate_mean_ms": 0.015,
+        "ee_links": {
+          "LeftHand": "left_end_effector_link",
+          "RightHand": "right_end_effector_link",
+          "LeftFootMod": "left_foot_roll_link",
+          "RightFootMod": "right_foot_roll_link"
+        },
+        "ee_err_mean": 0.1324,
+        "ee_err_max": 0.4471,
+        "t_ik_s": 1.02,
+        "flag": "warn"
+      }
+    },
+    "t_total_s": 8.2
+  },
+  "fourier_n1": {
+    "robot": "fourier_n1",
+    "overall": "warn",
+    "motions": {
+      "walk": {
+        "n_frames": 180,
+        "nan": false,
+        "vel_max": 11.14,
+        "vel_p99": 5.48,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.054,
+        "foot_z_min": 0.054,
+        "skate_mean_ms": 0.042,
+        "ee_links": {
+          "LeftHand": "left_end_effector_link",
+          "RightHand": "right_end_effector_link",
+          "LeftFootMod": "left_foot_pitch_link",
+          "RightFootMod": "right_foot_pitch_link"
+        },
+        "ee_err_mean": 0.0637,
+        "ee_err_max": 0.1734,
+        "t_ik_s": 1.25,
+        "flag": "pass"
+      },
+      "jog_stop": {
+        "n_frames": 149,
+        "nan": false,
+        "vel_max": 11.81,
+        "vel_p99": 8.01,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0577,
+        "foot_z_min": 0.0577,
+        "skate_mean_ms": 0.07,
+        "ee_links": {
+          "LeftHand": "left_end_effector_link",
+          "RightHand": "right_end_effector_link",
+          "LeftFootMod": "left_foot_pitch_link",
+          "RightFootMod": "right_foot_pitch_link"
+        },
+        "ee_err_mean": 0.0673,
+        "ee_err_max": 0.188,
+        "t_ik_s": 1.5,
+        "flag": "warn"
+      },
+      "jump": {
+        "n_frames": 50,
+        "nan": false,
+        "vel_max": 8.95,
+        "vel_p99": 4.75,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0623,
+        "foot_z_min": 0.0623,
+        "skate_mean_ms": 0.028,
+        "ee_links": {
+          "LeftHand": "left_end_effector_link",
+          "RightHand": "right_end_effector_link",
+          "LeftFootMod": "left_foot_pitch_link",
+          "RightFootMod": "right_foot_pitch_link"
+        },
+        "ee_err_mean": 0.0656,
+        "ee_err_max": 0.158,
+        "t_ik_s": 0.39,
+        "flag": "pass"
+      },
+      "idle_turn": {
+        "n_frames": 279,
+        "nan": false,
+        "vel_max": 6.17,
+        "vel_p99": 1.72,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0557,
+        "foot_z_min": 0.0557,
+        "skate_mean_ms": 0.014,
+        "ee_links": {
+          "LeftHand": "left_end_effector_link",
+          "RightHand": "right_end_effector_link",
+          "LeftFootMod": "left_foot_pitch_link",
+          "RightFootMod": "right_foot_pitch_link"
+        },
+        "ee_err_mean": 0.0595,
+        "ee_err_max": 0.1431,
+        "t_ik_s": 1.82,
+        "flag": "pass"
+      },
+      "reach": {
+        "n_frames": 124,
+        "nan": false,
+        "vel_max": 14.66,
+        "vel_p99": 6.2,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0465,
+        "foot_z_min": 0.0465,
+        "skate_mean_ms": 0.014,
+        "ee_links": {
+          "LeftHand": "left_end_effector_link",
+          "RightHand": "right_end_effector_link",
+          "LeftFootMod": "left_foot_pitch_link",
+          "RightFootMod": "right_foot_pitch_link"
+        },
+        "ee_err_mean": 0.0797,
+        "ee_err_max": 0.4556,
+        "t_ik_s": 1.03,
+        "flag": "warn"
+      }
+    },
+    "t_total_s": 9.8
+  },
+  "hightorque_hi": {
+    "robot": "hightorque_hi",
+    "overall": "fail",
+    "motions": {
+      "walk": {
+        "n_frames": 180,
+        "nan": false,
+        "vel_max": 13.92,
+        "vel_p99": 5.34,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0664,
+        "foot_z_min": 0.0687,
+        "skate_mean_ms": 0.083,
+        "ee_links": {
+          "LeftHand": "l_wrist_link",
+          "RightHand": "r_wrist_link",
+          "LeftFootMod": "l_ankle_roll_link",
+          "RightFootMod": "r_ankle_roll_link"
+        },
+        "ee_err_mean": 0.0841,
+        "ee_err_max": 0.1931,
+        "t_ik_s": 1.18,
+        "flag": "warn"
+      },
+      "jog_stop": {
+        "n_frames": 149,
+        "nan": false,
+        "vel_max": 16.63,
+        "vel_p99": 8.72,
+        "spike_frames": 1,
+        "limit_violations": 0,
+        "min_body_z": 0.0734,
+        "foot_z_min": 0.0788,
+        "skate_mean_ms": 0.197,
+        "ee_links": {
+          "LeftHand": "l_wrist_link",
+          "RightHand": "r_wrist_link",
+          "LeftFootMod": "l_ankle_roll_link",
+          "RightFootMod": "r_ankle_roll_link"
+        },
+        "ee_err_mean": 0.1003,
+        "ee_err_max": 0.2346,
+        "t_ik_s": 1.45,
+        "flag": "fail"
+      },
+      "jump": {
+        "n_frames": 50,
+        "nan": false,
+        "vel_max": 10.29,
+        "vel_p99": 6.3,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0819,
+        "foot_z_min": 0.0819,
+        "skate_mean_ms": 0.031,
+        "ee_links": {
+          "LeftHand": "l_wrist_link",
+          "RightHand": "r_wrist_link",
+          "LeftFootMod": "l_ankle_roll_link",
+          "RightFootMod": "r_ankle_roll_link"
+        },
+        "ee_err_mean": 0.0964,
+        "ee_err_max": 0.2152,
+        "t_ik_s": 0.38,
+        "flag": "pass"
+      },
+      "idle_turn": {
+        "n_frames": 279,
+        "nan": false,
+        "vel_max": 6.07,
+        "vel_p99": 1.85,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.077,
+        "foot_z_min": 0.077,
+        "skate_mean_ms": 0.014,
+        "ee_links": {
+          "LeftHand": "l_wrist_link",
+          "RightHand": "r_wrist_link",
+          "LeftFootMod": "l_ankle_roll_link",
+          "RightFootMod": "r_ankle_roll_link"
+        },
+        "ee_err_mean": 0.0845,
+        "ee_err_max": 0.1907,
+        "t_ik_s": 1.72,
+        "flag": "pass"
+      },
+      "reach": {
+        "n_frames": 124,
+        "nan": false,
+        "vel_max": 15.56,
+        "vel_p99": 7.1,
+        "spike_frames": 1,
+        "limit_violations": 0,
+        "min_body_z": 0.0781,
+        "foot_z_min": 0.0782,
+        "skate_mean_ms": 0.019,
+        "ee_links": {
+          "LeftHand": "l_wrist_link",
+          "RightHand": "r_wrist_link",
+          "LeftFootMod": "l_ankle_roll_link",
+          "RightFootMod": "r_ankle_roll_link"
+        },
+        "ee_err_mean": 0.0893,
+        "ee_err_max": 0.2215,
+        "t_ik_s": 1.21,
+        "flag": "warn"
+      }
+    },
+    "t_total_s": 7.1
+  },
+  "kuavo_s45": {
+    "robot": "kuavo_s45",
+    "overall": "warn",
+    "motions": {
+      "walk": {
+        "n_frames": 180,
+        "nan": false,
+        "vel_max": 12.06,
+        "vel_p99": 4.44,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0879,
+        "foot_z_min": 0.0879,
+        "skate_mean_ms": 0.057,
+        "ee_links": {
+          "LeftHand": "zarm_l7_link",
+          "RightHand": "zarm_r7_link",
+          "LeftFootMod": "leg_l6_link",
+          "RightFootMod": "leg_r6_link"
+        },
+        "ee_err_mean": 0.0808,
+        "ee_err_max": 0.2747,
+        "t_ik_s": 1.35,
+        "flag": "warn"
+      },
+      "jog_stop": {
+        "n_frames": 149,
+        "nan": false,
+        "vel_max": 14.26,
+        "vel_p99": 7.95,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0934,
+        "foot_z_min": 0.0934,
+        "skate_mean_ms": 0.085,
+        "ee_links": {
+          "LeftHand": "zarm_l7_link",
+          "RightHand": "zarm_r7_link",
+          "LeftFootMod": "leg_l6_link",
+          "RightFootMod": "leg_r6_link"
+        },
+        "ee_err_mean": 0.0791,
+        "ee_err_max": 0.2641,
+        "t_ik_s": 1.44,
+        "flag": "warn"
+      },
+      "jump": {
+        "n_frames": 50,
+        "nan": false,
+        "vel_max": 9.63,
+        "vel_p99": 4.91,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.1,
+        "foot_z_min": 0.1,
+        "skate_mean_ms": 0.035,
+        "ee_links": {
+          "LeftHand": "zarm_l7_link",
+          "RightHand": "zarm_r7_link",
+          "LeftFootMod": "leg_l6_link",
+          "RightFootMod": "leg_r6_link"
+        },
+        "ee_err_mean": 0.1001,
+        "ee_err_max": 0.2942,
+        "t_ik_s": 0.37,
+        "flag": "pass"
+      },
+      "idle_turn": {
+        "n_frames": 279,
+        "nan": false,
+        "vel_max": 10.7,
+        "vel_p99": 1.59,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0897,
+        "foot_z_min": 0.0897,
+        "skate_mean_ms": 0.009,
+        "ee_links": {
+          "LeftHand": "zarm_l7_link",
+          "RightHand": "zarm_r7_link",
+          "LeftFootMod": "leg_l6_link",
+          "RightFootMod": "leg_r6_link"
+        },
+        "ee_err_mean": 0.0749,
+        "ee_err_max": 0.2231,
+        "t_ik_s": 1.72,
+        "flag": "pass"
+      },
+      "reach": {
+        "n_frames": 124,
+        "nan": false,
+        "vel_max": 11.18,
+        "vel_p99": 6.05,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0851,
+        "foot_z_min": 0.0851,
+        "skate_mean_ms": 0.017,
+        "ee_links": {
+          "LeftHand": "zarm_l7_link",
+          "RightHand": "zarm_r7_link",
+          "LeftFootMod": "leg_l6_link",
+          "RightFootMod": "leg_r6_link"
+        },
+        "ee_err_mean": 0.1037,
+        "ee_err_max": 0.5845,
+        "t_ik_s": 1.22,
+        "flag": "pass"
+      }
+    },
+    "t_total_s": 8.0
+  },
+  "pal_talos": {
+    "robot": "pal_talos",
+    "overall": "fail",
+    "motions": {
+      "walk": {
+        "n_frames": 180,
+        "nan": false,
+        "vel_max": 17.52,
+        "vel_p99": 5.96,
+        "spike_frames": 2,
+        "limit_violations": 0,
+        "min_body_z": 0.1716,
+        "foot_z_min": 0.1716,
+        "skate_mean_ms": 0.084,
+        "ee_links": {
+          "LeftHand": "arm_left_7_link",
+          "RightHand": "arm_right_7_link",
+          "LeftFootMod": "leg_left_6_link",
+          "RightFootMod": "leg_right_6_link"
+        },
+        "ee_err_mean": 0.1147,
+        "ee_err_max": 0.4124,
+        "t_ik_s": 1.56,
+        "flag": "warn"
+      },
+      "jog_stop": {
+        "n_frames": 149,
+        "nan": false,
+        "vel_max": 29.88,
+        "vel_p99": 7.87,
+        "spike_frames": 11,
+        "limit_violations": 0,
+        "min_body_z": 0.1651,
+        "foot_z_min": 0.1651,
+        "skate_mean_ms": 0.118,
+        "ee_links": {
+          "LeftHand": "arm_left_7_link",
+          "RightHand": "arm_right_7_link",
+          "LeftFootMod": "leg_left_6_link",
+          "RightFootMod": "leg_right_6_link"
+        },
+        "ee_err_mean": 0.124,
+        "ee_err_max": 0.5111,
+        "t_ik_s": 1.75,
+        "flag": "fail"
+      },
+      "jump": {
+        "n_frames": 50,
+        "nan": false,
+        "vel_max": 12.15,
+        "vel_p99": 5.05,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.1829,
+        "foot_z_min": 0.1829,
+        "skate_mean_ms": 0.041,
+        "ee_links": {
+          "LeftHand": "arm_left_7_link",
+          "RightHand": "arm_right_7_link",
+          "LeftFootMod": "leg_left_6_link",
+          "RightFootMod": "leg_right_6_link"
+        },
+        "ee_err_mean": 0.1368,
+        "ee_err_max": 0.5061,
+        "t_ik_s": 0.39,
+        "flag": "warn"
+      },
+      "idle_turn": {
+        "n_frames": 279,
+        "nan": false,
+        "vel_max": 10.24,
+        "vel_p99": 2.85,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.1718,
+        "foot_z_min": 0.1718,
+        "skate_mean_ms": 0.017,
+        "ee_links": {
+          "LeftHand": "arm_left_7_link",
+          "RightHand": "arm_right_7_link",
+          "LeftFootMod": "leg_left_6_link",
+          "RightFootMod": "leg_right_6_link"
+        },
+        "ee_err_mean": 0.134,
+        "ee_err_max": 0.4811,
+        "t_ik_s": 1.95,
+        "flag": "warn"
+      },
+      "reach": {
+        "n_frames": 124,
+        "nan": false,
+        "vel_max": 30.12,
+        "vel_p99": 8.69,
+        "spike_frames": 4,
+        "limit_violations": 0,
+        "min_body_z": 0.159,
+        "foot_z_min": 0.159,
+        "skate_mean_ms": 0.018,
+        "ee_links": {
+          "LeftHand": "arm_left_7_link",
+          "RightHand": "arm_right_7_link",
+          "LeftFootMod": "leg_left_6_link",
+          "RightFootMod": "leg_right_6_link"
+        },
+        "ee_err_mean": 0.1493,
+        "ee_err_max": 0.3972,
+        "t_ik_s": 1.15,
+        "flag": "fail"
+      }
+    },
+    "t_total_s": 8.3
+  },
+  "pnd_adam_lite": {
+    "robot": "pnd_adam_lite",
+    "overall": "fail",
+    "motions": {
+      "walk": {
+        "n_frames": 180,
+        "nan": false,
+        "vel_max": 11.88,
+        "vel_p99": 3.54,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.1743,
+        "foot_z_min": 0.1743,
+        "skate_mean_ms": 0.082,
+        "ee_links": {
+          "LeftForeArm": "elbowLeft",
+          "RightForeArm": "elbowRight",
+          "LeftFootMod": "toeLeft",
+          "RightFootMod": "toeRight"
+        },
+        "ee_err_mean": 0.0862,
+        "ee_err_max": 0.1834,
+        "t_ik_s": 0.9,
+        "flag": "warn"
+      },
+      "jog_stop": {
+        "n_frames": 149,
+        "nan": false,
+        "vel_max": 29.43,
+        "vel_p99": 7.07,
+        "spike_frames": 1,
+        "limit_violations": 0,
+        "min_body_z": 0.1547,
+        "foot_z_min": 0.1547,
+        "skate_mean_ms": 0.143,
+        "ee_links": {
+          "LeftForeArm": "elbowLeft",
+          "RightForeArm": "elbowRight",
+          "LeftFootMod": "toeLeft",
+          "RightFootMod": "toeRight"
+        },
+        "ee_err_mean": 0.0924,
+        "ee_err_max": 0.2447,
+        "t_ik_s": 1.01,
+        "flag": "fail"
+      },
+      "jump": {
+        "n_frames": 50,
+        "nan": false,
+        "vel_max": 10.06,
+        "vel_p99": 3.77,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.1723,
+        "foot_z_min": 0.1723,
+        "skate_mean_ms": 0.036,
+        "ee_links": {
+          "LeftForeArm": "elbowLeft",
+          "RightForeArm": "elbowRight",
+          "LeftFootMod": "toeLeft",
+          "RightFootMod": "toeRight"
+        },
+        "ee_err_mean": 0.067,
+        "ee_err_max": 0.1695,
+        "t_ik_s": 0.28,
+        "flag": "pass"
+      },
+      "idle_turn": {
+        "n_frames": 279,
+        "nan": false,
+        "vel_max": 11.28,
+        "vel_p99": 1.37,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.1784,
+        "foot_z_min": 0.1784,
+        "skate_mean_ms": 0.02,
+        "ee_links": {
+          "LeftForeArm": "elbowLeft",
+          "RightForeArm": "elbowRight",
+          "LeftFootMod": "toeLeft",
+          "RightFootMod": "toeRight"
+        },
+        "ee_err_mean": 0.0903,
+        "ee_err_max": 0.1696,
+        "t_ik_s": 0.89,
+        "flag": "pass"
+      },
+      "reach": {
+        "n_frames": 124,
+        "nan": false,
+        "vel_max": 12.88,
+        "vel_p99": 5.61,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.1381,
+        "foot_z_min": 0.1381,
+        "skate_mean_ms": 0.067,
+        "ee_links": {
+          "LeftForeArm": "elbowLeft",
+          "RightForeArm": "elbowRight",
+          "LeftFootMod": "toeLeft",
+          "RightFootMod": "toeRight"
+        },
+        "ee_err_mean": 0.0848,
+        "ee_err_max": 0.3666,
+        "t_ik_s": 0.7,
+        "flag": "warn"
+      }
+    },
+    "t_total_s": 7.2
+  },
+  "stanford_toddy": {
+    "robot": "stanford_toddy",
+    "overall": "fail",
+    "motions": {
+      "walk": {
+        "n_frames": 180,
+        "nan": false,
+        "vel_max": 9.93,
+        "vel_p99": 5.01,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0214,
+        "foot_z_min": 0.0229,
+        "skate_mean_ms": 0.124,
+        "ee_links": {
+          "LeftHand": "hand",
+          "RightHand": "hand_2",
+          "LeftFootMod": "left_toe_link",
+          "RightFootMod": "right_toe_link"
+        },
+        "ee_err_mean": 0.0468,
+        "ee_err_max": 0.1524,
+        "t_ik_s": 1.85,
+        "flag": "warn"
+      },
+      "jog_stop": {
+        "n_frames": 149,
+        "nan": false,
+        "vel_max": 18.71,
+        "vel_p99": 7.92,
+        "spike_frames": 1,
+        "limit_violations": 0,
+        "min_body_z": 0.0253,
+        "foot_z_min": 0.0253,
+        "skate_mean_ms": 0.146,
+        "ee_links": {
+          "LeftHand": "hand",
+          "RightHand": "hand_2",
+          "LeftFootMod": "left_toe_link",
+          "RightFootMod": "right_toe_link"
+        },
+        "ee_err_mean": 0.0522,
+        "ee_err_max": 0.1564,
+        "t_ik_s": 2.22,
+        "flag": "warn"
+      },
+      "jump": {
+        "n_frames": 50,
+        "nan": false,
+        "vel_max": 7.38,
+        "vel_p99": 4.84,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0272,
+        "foot_z_min": 0.0272,
+        "skate_mean_ms": 0.031,
+        "ee_links": {
+          "LeftHand": "hand",
+          "RightHand": "hand_2",
+          "LeftFootMod": "left_toe_link",
+          "RightFootMod": "right_toe_link"
+        },
+        "ee_err_mean": 0.0492,
+        "ee_err_max": 0.1355,
+        "t_ik_s": 0.54,
+        "flag": "pass"
+      },
+      "idle_turn": {
+        "n_frames": 279,
+        "nan": false,
+        "vel_max": 7.25,
+        "vel_p99": 1.59,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0228,
+        "foot_z_min": 0.0228,
+        "skate_mean_ms": 0.022,
+        "ee_links": {
+          "LeftHand": "hand",
+          "RightHand": "hand_2",
+          "LeftFootMod": "left_toe_link",
+          "RightFootMod": "right_toe_link"
+        },
+        "ee_err_mean": 0.0424,
+        "ee_err_max": 0.1124,
+        "t_ik_s": 2.04,
+        "flag": "pass"
+      },
+      "reach": {
+        "n_frames": 124,
+        "nan": false,
+        "vel_max": 32.51,
+        "vel_p99": 8.94,
+        "spike_frames": 4,
+        "limit_violations": 0,
+        "min_body_z": 0.0187,
+        "foot_z_min": 0.0187,
+        "skate_mean_ms": 0.01,
+        "ee_links": {
+          "LeftHand": "hand",
+          "RightHand": "hand_2",
+          "LeftFootMod": "left_toe_link",
+          "RightFootMod": "right_toe_link"
+        },
+        "ee_err_mean": 0.0523,
+        "ee_err_max": 0.1875,
+        "t_ik_s": 1.55,
+        "flag": "fail"
+      }
+    },
+    "t_total_s": 10.4
+  },
+  "tienkung": {
+    "robot": "tienkung",
+    "overall": "fail",
+    "motions": {
+      "walk": {
+        "n_frames": 180,
+        "nan": false,
+        "vel_max": 20.97,
+        "vel_p99": 6.75,
+        "spike_frames": 2,
+        "limit_violations": 0,
+        "min_body_z": 0.0307,
+        "foot_z_min": 0.0307,
+        "skate_mean_ms": 0.063,
+        "ee_links": {
+          "LeftHand": "left_hand",
+          "RightHand": "right_hand",
+          "LeftFootMod": "ankle_roll_l_link",
+          "RightFootMod": "ankle_roll_r_link"
+        },
+        "ee_err_mean": 0.1164,
+        "ee_err_max": 0.2067,
+        "t_ik_s": 1.22,
+        "flag": "warn"
+      },
+      "jog_stop": {
+        "n_frames": 149,
+        "nan": false,
+        "vel_max": 27.97,
+        "vel_p99": 10.15,
+        "spike_frames": 3,
+        "limit_violations": 0,
+        "min_body_z": -0.0444,
+        "foot_z_min": -0.0444,
+        "skate_mean_ms": 0.195,
+        "ee_links": {
+          "LeftHand": "left_hand",
+          "RightHand": "right_hand",
+          "LeftFootMod": "ankle_roll_l_link",
+          "RightFootMod": "ankle_roll_r_link"
+        },
+        "ee_err_mean": 0.1432,
+        "ee_err_max": 0.2477,
+        "t_ik_s": 1.34,
+        "flag": "fail"
+      },
+      "jump": {
+        "n_frames": 50,
+        "nan": false,
+        "vel_max": 10.95,
+        "vel_p99": 5.56,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0371,
+        "foot_z_min": 0.0371,
+        "skate_mean_ms": 0.101,
+        "ee_links": {
+          "LeftHand": "left_hand",
+          "RightHand": "right_hand",
+          "LeftFootMod": "ankle_roll_l_link",
+          "RightFootMod": "ankle_roll_r_link"
+        },
+        "ee_err_mean": 0.1271,
+        "ee_err_max": 0.2221,
+        "t_ik_s": 0.34,
+        "flag": "warn"
+      },
+      "idle_turn": {
+        "n_frames": 279,
+        "nan": false,
+        "vel_max": 7.49,
+        "vel_p99": 2.11,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0326,
+        "foot_z_min": 0.0326,
+        "skate_mean_ms": 0.029,
+        "ee_links": {
+          "LeftHand": "left_hand",
+          "RightHand": "right_hand",
+          "LeftFootMod": "ankle_roll_l_link",
+          "RightFootMod": "ankle_roll_r_link"
+        },
+        "ee_err_mean": 0.1202,
+        "ee_err_max": 0.2005,
+        "t_ik_s": 1.59,
+        "flag": "warn"
+      },
+      "reach": {
+        "n_frames": 124,
+        "nan": false,
+        "vel_max": 14.6,
+        "vel_p99": 6.97,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0226,
+        "foot_z_min": 0.0226,
+        "skate_mean_ms": 0.122,
+        "ee_links": {
+          "LeftHand": "left_hand",
+          "RightHand": "right_hand",
+          "LeftFootMod": "ankle_roll_l_link",
+          "RightFootMod": "ankle_roll_r_link"
+        },
+        "ee_err_mean": 0.1316,
+        "ee_err_max": 0.3348,
+        "t_ik_s": 0.95,
+        "flag": "warn"
+      }
+    },
+    "t_total_s": 6.3
+  },
+  "unitree_g1": {
+    "robot": "unitree_g1",
+    "overall": "warn",
+    "motions": {
+      "walk": {
+        "n_frames": 180,
+        "nan": false,
+        "vel_max": 11.71,
+        "vel_p99": 3.92,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.096,
+        "foot_z_min": 0.1185,
+        "skate_mean_ms": 0.069,
+        "ee_links": {
+          "LeftHand": "left_wrist_yaw_link",
+          "RightHand": "right_wrist_yaw_link",
+          "LeftFootMod": "left_ankle_roll_link",
+          "RightFootMod": "right_ankle_roll_link"
+        },
+        "ee_err_mean": 0.122,
+        "ee_err_max": 0.2105,
+        "t_ik_s": 1.23,
+        "flag": "warn"
+      },
+      "jog_stop": {
+        "n_frames": 149,
+        "nan": false,
+        "vel_max": 12.19,
+        "vel_p99": 7.54,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0615,
+        "foot_z_min": 0.0861,
+        "skate_mean_ms": 0.137,
+        "ee_links": {
+          "LeftHand": "left_wrist_yaw_link",
+          "RightHand": "right_wrist_yaw_link",
+          "LeftFootMod": "left_ankle_roll_link",
+          "RightFootMod": "right_ankle_roll_link"
+        },
+        "ee_err_mean": 0.1029,
+        "ee_err_max": 0.2133,
+        "t_ik_s": 1.45,
+        "flag": "warn"
+      },
+      "jump": {
+        "n_frames": 50,
+        "nan": false,
+        "vel_max": 7.6,
+        "vel_p99": 4.47,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0822,
+        "foot_z_min": 0.1091,
+        "skate_mean_ms": 0.061,
+        "ee_links": {
+          "LeftHand": "left_wrist_yaw_link",
+          "RightHand": "right_wrist_yaw_link",
+          "LeftFootMod": "left_ankle_roll_link",
+          "RightFootMod": "right_ankle_roll_link"
+        },
+        "ee_err_mean": 0.1233,
+        "ee_err_max": 0.2118,
+        "t_ik_s": 0.37,
+        "flag": "warn"
+      },
+      "idle_turn": {
+        "n_frames": 279,
+        "nan": false,
+        "vel_max": 5.78,
+        "vel_p99": 1.33,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.1009,
+        "foot_z_min": 0.1217,
+        "skate_mean_ms": 0.02,
+        "ee_links": {
+          "LeftHand": "left_wrist_yaw_link",
+          "RightHand": "right_wrist_yaw_link",
+          "LeftFootMod": "left_ankle_roll_link",
+          "RightFootMod": "right_ankle_roll_link"
+        },
+        "ee_err_mean": 0.1262,
+        "ee_err_max": 0.2051,
+        "t_ik_s": 1.72,
+        "flag": "warn"
+      },
+      "reach": {
+        "n_frames": 124,
+        "nan": false,
+        "vel_max": 14.16,
+        "vel_p99": 7.22,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0502,
+        "foot_z_min": 0.073,
+        "skate_mean_ms": 0.057,
+        "ee_links": {
+          "LeftHand": "left_wrist_yaw_link",
+          "RightHand": "right_wrist_yaw_link",
+          "LeftFootMod": "left_ankle_roll_link",
+          "RightFootMod": "right_ankle_roll_link"
+        },
+        "ee_err_mean": 0.1283,
+        "ee_err_max": 0.3254,
+        "t_ik_s": 1.01,
+        "flag": "warn"
+      }
+    },
+    "t_total_s": 7.4
+  },
+  "unitree_g1_with_hands": {
+    "robot": "unitree_g1_with_hands",
+    "overall": "warn",
+    "motions": {
+      "walk": {
+        "n_frames": 180,
+        "nan": false,
+        "vel_max": 11.71,
+        "vel_p99": 3.22,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.096,
+        "foot_z_min": 0.1185,
+        "skate_mean_ms": 0.069,
+        "ee_links": {
+          "LeftHand": "left_wrist_yaw_link",
+          "RightHand": "right_wrist_yaw_link",
+          "LeftFootMod": "left_ankle_roll_link",
+          "RightFootMod": "right_ankle_roll_link"
+        },
+        "ee_err_mean": 0.122,
+        "ee_err_max": 0.2105,
+        "t_ik_s": 1.33,
+        "flag": "warn"
+      },
+      "jog_stop": {
+        "n_frames": 149,
+        "nan": false,
+        "vel_max": 12.19,
+        "vel_p99": 5.65,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0615,
+        "foot_z_min": 0.0861,
+        "skate_mean_ms": 0.137,
+        "ee_links": {
+          "LeftHand": "left_wrist_yaw_link",
+          "RightHand": "right_wrist_yaw_link",
+          "LeftFootMod": "left_ankle_roll_link",
+          "RightFootMod": "right_ankle_roll_link"
+        },
+        "ee_err_mean": 0.1029,
+        "ee_err_max": 0.2133,
+        "t_ik_s": 1.57,
+        "flag": "warn"
+      },
+      "jump": {
+        "n_frames": 50,
+        "nan": false,
+        "vel_max": 7.6,
+        "vel_p99": 3.93,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0822,
+        "foot_z_min": 0.1091,
+        "skate_mean_ms": 0.061,
+        "ee_links": {
+          "LeftHand": "left_wrist_yaw_link",
+          "RightHand": "right_wrist_yaw_link",
+          "LeftFootMod": "left_ankle_roll_link",
+          "RightFootMod": "right_ankle_roll_link"
+        },
+        "ee_err_mean": 0.1233,
+        "ee_err_max": 0.2118,
+        "t_ik_s": 0.4,
+        "flag": "warn"
+      },
+      "idle_turn": {
+        "n_frames": 279,
+        "nan": false,
+        "vel_max": 5.78,
+        "vel_p99": 1.06,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.1009,
+        "foot_z_min": 0.1217,
+        "skate_mean_ms": 0.02,
+        "ee_links": {
+          "LeftHand": "left_wrist_yaw_link",
+          "RightHand": "right_wrist_yaw_link",
+          "LeftFootMod": "left_ankle_roll_link",
+          "RightFootMod": "right_ankle_roll_link"
+        },
+        "ee_err_mean": 0.1262,
+        "ee_err_max": 0.2051,
+        "t_ik_s": 1.85,
+        "flag": "warn"
+      },
+      "reach": {
+        "n_frames": 124,
+        "nan": false,
+        "vel_max": 14.16,
+        "vel_p99": 6.12,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0502,
+        "foot_z_min": 0.073,
+        "skate_mean_ms": 0.057,
+        "ee_links": {
+          "LeftHand": "left_wrist_yaw_link",
+          "RightHand": "right_wrist_yaw_link",
+          "LeftFootMod": "left_ankle_roll_link",
+          "RightFootMod": "right_ankle_roll_link"
+        },
+        "ee_err_mean": 0.1283,
+        "ee_err_max": 0.3254,
+        "t_ik_s": 1.17,
+        "flag": "warn"
+      }
+    },
+    "t_total_s": 8.2
+  },
+  "unitree_h1": {
+    "robot": "unitree_h1",
+    "overall": "warn",
+    "motions": {
+      "walk": {
+        "n_frames": 180,
+        "nan": false,
+        "vel_max": 12.42,
+        "vel_p99": 5.75,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.1494,
+        "foot_z_min": 0.1494,
+        "skate_mean_ms": 0.05,
+        "ee_links": {
+          "LeftForeArm": "left_elbow_link",
+          "RightForeArm": "right_elbow_link",
+          "LeftFootMod": "left_ankle_link",
+          "RightFootMod": "right_ankle_link"
+        },
+        "ee_err_mean": 0.0711,
+        "ee_err_max": 0.1658,
+        "t_ik_s": 1.24,
+        "flag": "pass"
+      },
+      "jog_stop": {
+        "n_frames": 149,
+        "nan": false,
+        "vel_max": 13.51,
+        "vel_p99": 8.56,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.1188,
+        "foot_z_min": 0.1188,
+        "skate_mean_ms": 0.142,
+        "ee_links": {
+          "LeftForeArm": "left_elbow_link",
+          "RightForeArm": "right_elbow_link",
+          "LeftFootMod": "left_ankle_link",
+          "RightFootMod": "right_ankle_link"
+        },
+        "ee_err_mean": 0.0821,
+        "ee_err_max": 0.1987,
+        "t_ik_s": 1.14,
+        "flag": "warn"
+      },
+      "jump": {
+        "n_frames": 50,
+        "nan": false,
+        "vel_max": 9.68,
+        "vel_p99": 5.76,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.1571,
+        "foot_z_min": 0.1571,
+        "skate_mean_ms": 0.05,
+        "ee_links": {
+          "LeftForeArm": "left_elbow_link",
+          "RightForeArm": "right_elbow_link",
+          "LeftFootMod": "left_ankle_link",
+          "RightFootMod": "right_ankle_link"
+        },
+        "ee_err_mean": 0.0602,
+        "ee_err_max": 0.1569,
+        "t_ik_s": 0.33,
+        "flag": "pass"
+      },
+      "idle_turn": {
+        "n_frames": 279,
+        "nan": false,
+        "vel_max": 7.53,
+        "vel_p99": 1.69,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.1528,
+        "foot_z_min": 0.1528,
+        "skate_mean_ms": 0.01,
+        "ee_links": {
+          "LeftForeArm": "left_elbow_link",
+          "RightForeArm": "right_elbow_link",
+          "LeftFootMod": "left_ankle_link",
+          "RightFootMod": "right_ankle_link"
+        },
+        "ee_err_mean": 0.07,
+        "ee_err_max": 0.1409,
+        "t_ik_s": 1.54,
+        "flag": "pass"
+      },
+      "reach": {
+        "n_frames": 124,
+        "nan": false,
+        "vel_max": 13.0,
+        "vel_p99": 7.52,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.1234,
+        "foot_z_min": 0.1234,
+        "skate_mean_ms": 0.13,
+        "ee_links": {
+          "LeftForeArm": "left_elbow_link",
+          "RightForeArm": "right_elbow_link",
+          "LeftFootMod": "left_ankle_link",
+          "RightFootMod": "right_ankle_link"
+        },
+        "ee_err_mean": 0.0692,
+        "ee_err_max": 0.2605,
+        "t_ik_s": 0.95,
+        "flag": "warn"
+      }
+    },
+    "t_total_s": 6.5
+  },
+  "unitree_h1_2": {
+    "robot": "unitree_h1_2",
+    "overall": "warn",
+    "motions": {
+      "walk": {
+        "n_frames": 180,
+        "nan": false,
+        "vel_max": 11.74,
+        "vel_p99": 4.52,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.1016,
+        "foot_z_min": 0.1016,
+        "skate_mean_ms": 0.038,
+        "ee_links": {
+          "LeftForeArm": "left_elbow_link",
+          "RightForeArm": "right_elbow_link",
+          "LeftFootMod": "left_ankle_roll_link",
+          "RightFootMod": "right_ankle_roll_link"
+        },
+        "ee_err_mean": 0.0608,
+        "ee_err_max": 0.1225,
+        "t_ik_s": 1.29,
+        "flag": "pass"
+      },
+      "jog_stop": {
+        "n_frames": 149,
+        "nan": false,
+        "vel_max": 12.76,
+        "vel_p99": 7.95,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0878,
+        "foot_z_min": 0.0878,
+        "skate_mean_ms": 0.032,
+        "ee_links": {
+          "LeftForeArm": "left_elbow_link",
+          "RightForeArm": "right_elbow_link",
+          "LeftFootMod": "left_ankle_roll_link",
+          "RightFootMod": "right_ankle_roll_link"
+        },
+        "ee_err_mean": 0.0679,
+        "ee_err_max": 0.1762,
+        "t_ik_s": 1.26,
+        "flag": "warn"
+      },
+      "jump": {
+        "n_frames": 50,
+        "nan": false,
+        "vel_max": 8.95,
+        "vel_p99": 5.11,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.1072,
+        "foot_z_min": 0.1072,
+        "skate_mean_ms": 0.031,
+        "ee_links": {
+          "LeftForeArm": "left_elbow_link",
+          "RightForeArm": "right_elbow_link",
+          "LeftFootMod": "left_ankle_roll_link",
+          "RightFootMod": "right_ankle_roll_link"
+        },
+        "ee_err_mean": 0.0466,
+        "ee_err_max": 0.1061,
+        "t_ik_s": 0.34,
+        "flag": "pass"
+      },
+      "idle_turn": {
+        "n_frames": 279,
+        "nan": false,
+        "vel_max": 5.54,
+        "vel_p99": 1.5,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.1017,
+        "foot_z_min": 0.1017,
+        "skate_mean_ms": 0.006,
+        "ee_links": {
+          "LeftForeArm": "left_elbow_link",
+          "RightForeArm": "right_elbow_link",
+          "LeftFootMod": "left_ankle_roll_link",
+          "RightFootMod": "right_ankle_roll_link"
+        },
+        "ee_err_mean": 0.0589,
+        "ee_err_max": 0.1036,
+        "t_ik_s": 1.61,
+        "flag": "pass"
+      },
+      "reach": {
+        "n_frames": 124,
+        "nan": false,
+        "vel_max": 13.55,
+        "vel_p99": 6.38,
+        "spike_frames": 0,
+        "limit_violations": 0,
+        "min_body_z": 0.0734,
+        "foot_z_min": 0.0734,
+        "skate_mean_ms": 0.036,
+        "ee_links": {
+          "LeftForeArm": "left_elbow_link",
+          "RightForeArm": "right_elbow_link",
+          "LeftFootMod": "left_ankle_roll_link",
+          "RightFootMod": "right_ankle_roll_link"
+        },
+        "ee_err_mean": 0.0564,
+        "ee_err_max": 0.2245,
+        "t_ik_s": 0.99,
+        "flag": "warn"
+      }
+    },
+    "t_total_s": 7.2
+  }
+}
