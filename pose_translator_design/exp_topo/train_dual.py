@@ -51,7 +51,12 @@ def main():
         assert h in names, f"holdout {h} not in {names}"
     train_names = [n for n in names if n not in holdouts]
     combos = [(n, n) for n in train_names] if args.self_only else list(itertools.product(train_names, train_names))
-    eval_combos = list(combos)
+    if len(combos) <= 20:
+        eval_combos = list(combos)
+    else:
+        # big-N caches: full product eval (169 directions at n=13) costs more than training.
+        # Eval = all self-recon + soma-source cross translations; training combos unaffected.
+        eval_combos = [(n, n) for n in train_names] + [(train_names[0], t) for t in train_names[1:]]
     if holdouts:                                         # zero-shot: self-recon + translation into first holdout
         eval_combos += [(holdouts[0], holdouts[0]), (train_names[0], holdouts[0])]
     combo_rng = np.random.default_rng(4)                 # own stream: torch RNG order untouched

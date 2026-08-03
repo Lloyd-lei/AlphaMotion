@@ -48,9 +48,11 @@ def load_paired_data(cache, device):
     return data, names, N
 
 
-def split_indices(N):
-    """The FIX train/val split. Call order contract in module docstring."""
-    perm = torch.randperm(N); nval = max(128, N // 10)
+def split_indices(N, max_val=5000):
+    """The FIX train/val split. Call order contract in module docstring.
+    max_val caps eval size for big caches (251k rows -> 25k val OOMed the one-shot
+    eval encode); FIX-era caches (48k -> 4800) are below the cap, bitwise unchanged."""
+    perm = torch.randperm(N); nval = min(max(128, N // 10), max_val)
     return perm[:nval], perm[nval:]
 
 
