@@ -33,12 +33,12 @@ def dequant(ints, levels):
 
 
 class ARLM(nn.Module):
-    def __init__(self, in_dim, n_pos, n_lvl, d_model=256, layers=4, heads=8, max_w=256):
+    def __init__(self, in_dim, n_pos, n_lvl, d_model=256, layers=4, heads=8, max_w=256, dropout=0.0):
         super().__init__()
         self.inp = nn.Linear(in_dim, d_model)
         self.pos = nn.Parameter(torch.randn(max_w, d_model) * 0.02)
         layer = nn.TransformerEncoderLayer(d_model, heads, 4 * d_model, batch_first=True,
-                                           norm_first=True, activation="gelu", dropout=0.0)
+                                           norm_first=True, activation="gelu", dropout=dropout)
         self.tr = nn.TransformerEncoder(layer, layers)
         self.head = nn.Linear(d_model, n_pos * n_lvl)
         self.n_pos, self.n_lvl = n_pos, n_lvl
@@ -57,6 +57,7 @@ def main():
     ap.add_argument("--emb", default="soma77")
     ap.add_argument("--layers", type=int, default=4)
     ap.add_argument("--d_model", type=int, default=256)
+    ap.add_argument("--dropout", type=float, default=0.0)
     ap.add_argument("--window", type=int, default=32)
     ap.add_argument("--steps", type=int, default=4000)
     ap.add_argument("--bs", type=int, default=64)
@@ -94,7 +95,8 @@ def main():
             rows.append(np.arange(s["start"] + t0, s["start"] + t0 + args.window + 1))
         return torch.as_tensor(np.stack(rows), device=device)
 
-    model = ARLM(P, P, L, d_model=args.d_model, layers=args.layers, max_w=args.window + 1).to(device)
+    model = ARLM(P, P, L, d_model=args.d_model, layers=args.layers, max_w=args.window + 1,
+                 dropout=args.dropout).to(device)
     print(f"params {sum(p.numel() for p in model.parameters())/1e6:.2f}M")
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-4)
     sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, args.steps)
@@ -112,7 +114,7 @@ def main():
                 tot += float(ce); cnt += w.shape[0] * args.window
         return tot / cnt / math.log(2)                            # bits per frame (sum over P inside ce)
 
-    log = []; t0 = time.time()
+    log = []; t0 = time.time(); best_val = float("inf")
     for step in range(args.steps):
         w = sample_windows(tr_seqs, args.bs, gen)
         logits = model(X[w[:, :-1]])                              # predict frame t+1 codes
@@ -128,6 +130,10 @@ def main():
                   "raw_bits_per_frame": round(raw_bits, 1),
                   "sec": round(time.time() - t0)}
             model.train(); log.append(ev)
+            if ev["val_bits_per_frame"] < best_val:               # E1A overfit lesson: keep the best-val checkpoint
+                best_val = ev["val_bits_per_frame"]
+                torch.save(model.state_dict(), f"{args.out}/model_best.pt")
+                ev["best"] = True
             print("EVAL", json.dumps(ev)); json.dump(log, open(f"{args.out}/eval_log.json", "w"), indent=2)
     torch.save(model.state_dict(), f"{args.out}/model.pt")
     json.dump({**vars(args), "P": P, "L": L, "raw_bits": raw_bits}, open(f"{args.out}/config.json", "w"), indent=2)

@@ -33,6 +33,7 @@ def main():
     ap.add_argument("--self_only", action="store_true")   # only reconstruction (soma->soma, g1->g1)
     ap.add_argument("--holdout", default=None)            # E5: comma-separated embodiments excluded from training; first one gets zero-shot eval
     ap.add_argument("--combo_sample", type=int, default=0)  # E5: combos per step (0 = all; bounds N^2 growth)
+    ap.add_argument("--contrast_sample", type=int, default=0)  # InfoNCE embodiments per step (0 = all; bounds memory at large N)
     ap.add_argument("--eval_every", type=int, default=1000)
     ap.add_argument("--out", default=f"{CACHE_ROOT}/runs/D_dual")
     args = ap.parse_args()
@@ -85,8 +86,12 @@ def main():
             ((rot / 30.0 + args.w_pos * pos) / len(step_combos)).backward()
         if args.w_align > 0 or args.w_contrast > 0:
             B = len(sel)
-            zs = {n: model.encode(data[n]["pose"][sel], geom(data, n, B)) for n in train_names}
-            pairs = [(a, b) for i, a in enumerate(train_names) for b in train_names[i + 1:]]
+            cnames = train_names
+            if args.contrast_sample and args.contrast_sample < len(train_names):
+                pick = combo_rng.choice(len(train_names), args.contrast_sample, replace=False)
+                cnames = [train_names[i] for i in pick]
+            zs = {n: model.encode(data[n]["pose"][sel], geom(data, n, B)) for n in cnames}
+            pairs = [(a, b) for i, a in enumerate(cnames) for b in cnames[i + 1:]]
             extra = 0.0
             for a, b in pairs:                       # mean over unordered embodiment pairs
                 (zp_s, zr_s), (zp_g, zr_g) = zs[a], zs[b]
