@@ -9,11 +9,26 @@ import torch, torch.nn as nn
 from model import EncBlock, CrossBlock, FSQ, ResidualFSQ, JointFeature
 
 
+class JudgeHead(nn.Module):
+    """Per-embodiment sigmoid critics reading the quantized codes ("像不像我负责的具身").
+    Sits between codes and decoder; whether its gradients reach the backbone is the
+    caller's choice (detach or not) — that is the E14 experimental variable."""
+    def __init__(self, d_model, n_emb, hidden=256):
+        super().__init__()
+        self.net = nn.Sequential(nn.Linear(4 * d_model, hidden), nn.GELU(),
+                                 nn.Linear(hidden, n_emb))
+
+    def forward(self, zp, zr):                          # [B,K,d] x2 -> logits [B,n_emb]
+        h = torch.cat([zp.mean(1), zp.amax(1), zr.mean(1), zr.amax(1)], -1)
+        return self.net(h)
+
+
 class DualTranslator(nn.Module):
     def __init__(self, d_model=256, n_heads=8, enc_layers=4, dec_layers=4,
                  n_latent=32, fsq_stages=2, fsq_levels=(8, 8, 8, 5, 5, 5), use_sem=True,
-                 single_codebook=False):
+                 single_codebook=False, n_judges=0):
         super().__init__()
+        self.judge = JudgeHead(d_model, n_judges) if n_judges else None
         # use_sem=True: SigLIP joint-name semantics as cross-topology bridge; drop harmful index emb
         self.jf = JointFeature(d_model, use_index=not use_sem, use_sem=use_sem)
         self.inp = nn.Linear(9, d_model)                      # global 6D rot + root-rel pos

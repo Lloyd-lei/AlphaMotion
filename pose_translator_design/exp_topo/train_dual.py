@@ -34,6 +34,8 @@ def main():
     ap.add_argument("--holdout", default=None)            # E5: comma-separated embodiments excluded from training; first one gets zero-shot eval
     ap.add_argument("--combo_sample", type=int, default=0)  # E5: combos per step (0 = all; bounds N^2 growth)
     ap.add_argument("--contrast_sample", type=int, default=0)  # InfoNCE embodiments per step (0 = all; bounds memory at large N)
+    ap.add_argument("--judge_mode", choices=["off", "observe", "grad"], default="off")  # E14: sigmoid critics
+    ap.add_argument("--w_judge", type=float, default=0.1)
     ap.add_argument("--eval_every", type=int, default=1000)
     ap.add_argument("--out", default=f"{CACHE_ROOT}/runs/D_dual")
     args = ap.parse_args()
@@ -43,7 +45,11 @@ def main():
     data, names, N = load_paired_data(args.cache, device)
     val_idx, tr_idx = split_indices(N)
 
-    model = build_model(vars(args), device)
+    cfg = vars(args)
+    if args.judge_mode != "off":
+        cfg["n_judges"] = len(names)                     # judges cover ALL embodiments incl. holdouts
+    emb_idx = {n: i for i, n in enumerate(names)}
+    model = build_model(cfg, device)
     print(f"params {sum(p.numel() for p in model.parameters())/1e6:.2f}M dual-FSQ bits/frame={model.bits:.0f}")
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-4)
     sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, args.steps)
@@ -107,6 +113,16 @@ def main():
                     nce = 0.5 * (torch.nn.functional.cross_entropy(logits, labels) +
                                  torch.nn.functional.cross_entropy(logits.t(), labels))
                     extra = extra + args.w_contrast / len(pairs) * nce
+            if args.judge_mode != "off":             # E14 critics: same graph, single backward
+                jloss = 0.0
+                for n in cnames:
+                    zp_j, zr_j = zs[n]
+                    if args.judge_mode == "observe": # critics learn, backbone untouched
+                        zp_j, zr_j = zp_j.detach(), zr_j.detach()
+                    jl = model.judge(zp_j, zr_j)
+                    tgt = torch.zeros_like(jl); tgt[:, emb_idx[n]] = 1.0
+                    jloss = jloss + torch.nn.functional.binary_cross_entropy_with_logits(jl, tgt)
+                extra = extra + args.w_judge * jloss / len(cnames)
             extra.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
         opt.step(); sched.step()

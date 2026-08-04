@@ -69,6 +69,7 @@ def build_model(cfg, device):
         fsq_stages=cfg.get("fsq_stages", 2),
         fsq_levels=parse_fsq_levels(cfg.get("fsq_levels", "8,8,8,5,5,5")),
         single_codebook=cfg.get("single_codebook", False),
+        n_judges=cfg.get("n_judges", 0),
     ).to(device)
     return model
 
@@ -138,6 +139,15 @@ def evaluate(model, data, names, combos, val_idx):
         zp0, zr0 = zs[names[0]]
         out["code_align_dist"] = round(sum(dists) / max(len(dists), 1), 4)
         out["code_scale"] = round(float((zp0 ** 2).mean() + (zr0 ** 2).mean()), 4)
+        if getattr(model, "judge", None) is not None:    # E14: per-embodiment critic readout
+            sub = val_idx[:1024]; jr = {}
+            for n in names:
+                zp_j, zr_j = model.encode(data[n]["pose"][sub], geom(data, n, len(sub)))
+                act = torch.sigmoid(model.judge(zp_j, zr_j)).mean(0)
+                top = int(act.argmax())
+                jr[n] = {"self": round(float(act[names.index(n)]), 3),
+                         "top": [names[top], round(float(act[top]), 3)]}
+            out["judges"] = jr
     if was_training:
         model.train()
     return out
