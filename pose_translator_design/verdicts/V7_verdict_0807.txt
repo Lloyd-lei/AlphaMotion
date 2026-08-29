@@ -1,0 +1,147 @@
+==============================================================================================================
+V7 VERDICT — conditional JEPA vs per-frame masked FSQ, OAT ELIMINATED, 2026-08-07 07:13
+==============================================================================================================
+SETUP (identical in both arms unless stated):
+  * NO OAT. No prefix budgets, no ordered registers, every latent always
+    present. Justification: the prefix ladder measured 0.000-0.031 cm on
+    every arm ever run (V5c 0.017, N3a 0.031, V6_mae 0.000, V6_regar 0.019),
+    while ordered-prefix training spent 25% of every step in a crippled
+    1-register regime. The ladder rows below are an UNTRAINED diagnostic.
+  * BIT BUDGET 62.69 bit/s in BOTH arms, asserted before the first step:
+      jepa    = 8 path latents + 1 time register = 9 x 6x5 FSQ
+      maskfsq = 9 time-local group codes         = 9 x 6x5 FSQ
+    (a literal per-FRAME FSQ would be 418 bit/s = 6.7x arm 1; matching the
+     budget at 60 registers forces 2.09 bits/frame, a degenerate code. 9
+     contiguous groups of 7/6/7/7/6/7/7/6/7 frames is the fairest matched
+     configuration: identical register count, dims and levels, so the only
+     difference is WHERE the bits live.)
+  * Input: 6 key joints' 6D rotations PLUS velocity + SG(5,2) angular
+    acceleration residuals on every frame. NO JERK (R10: -11..-0.3 dB SNR).
+  * Loss: path integral + Riemann per-segment + velocity + multires + frame.
+  * Time-scale augmentation ON. 16 of 18 embodiments trained; both G1s held
+    out for the zero-shot row. pal_talos uses the FIXED alias spec.
+  * THE ONE LOSS ASYMMETRY, architecture-forced: the invariance pair is a
+    non-uniform WARP for jepa (a global path code should survive it) and a
+    pure frame-rate change for maskfsq (a time-local code stream cannot
+    survive a warp that moves content between its own groups; demanding it
+    would only force the codes to discard the content). Row (ii) must be
+    read with that in mind — it measures an architectural property.
+  * arm 1 additionally carries the JEPA latent-prediction term (--w_jepa),
+    which is what makes it a JEPA rather than a conditional VQ-VAE.
+==============================================================================================================
+metric                                             V7_jepa_0807    V7_maskfsq_0807  V6_mae_resid_0807           V5c_0806
+  bit budget [bit/s]                                      62.69              62.69              62.69              62.69
+  registers (path)                                            8                  9                  8                  8
+  registers (time)                                            1                  0                  1                  1
+  bodies trained                                             16                 16                  4                  4
+-- (i) PER-FAMILY MOTION ENERGY (energy ratio; 1.0 = GT, low = mean regression) --
+  walk                                                    0.939              0.955              0.839              0.828
+  run                                                     0.835              0.888              0.722              0.702
+  jacks                                                   0.891              0.916              0.628              0.654
+  dance                                                   0.815              0.853              0.556              0.542
+  kick                                                    0.844              0.892              0.538              0.574
+  punch                                                   0.563              0.553              0.689              0.661
+  jacks key pos [cm]                                      10.86              10.92              15.23              15.29
+  run key pos [cm]                                         9.92               9.81              13.31              13.68
+  kick key pos [cm]                                        7.93               7.69              12.69              12.10
+-- (ii) 2c WARP INVARIANCE [gate >= 0.9; oracle 0.9606 / control 0.0176] --
+  warp invariance (frac)                                  0.867              0.542              0.954              0.995
+  control (unrelated)                                     0.026              0.049              0.046              0.022
+  (trained against warps?)                                    1                  0                  1                  1
+-- (iii) CONTENT SHARE [gate >= 0.6; key cm <= 7.5] --
+  content share                                           0.612              0.623              0.133              0.583
+  registers buy [cm]                                      7.994             14.081              7.030              1.410
+  window-specific [cm]                                    4.894              8.772              0.932              0.822
+  key pos (all latents) [cm]                               6.39               5.99               7.61               7.66
+  key rot (all latents) [deg]                              10.0                9.1               12.7               13.5
+  energy ratio (all latents)                              0.918              0.939              0.813              0.805
+  tokens shuffled [cm]                                    11.28              14.76               8.54               8.48
+  tokens zeroed [cm]                                      14.38              20.07              14.64               9.07
+  straight line [cm]                                       9.00               9.00               9.00               9.00
+  [UNTRAINED prefix-ladder diagnostic — V7 never trained a prefix regime]
+  n1 latents [cm]                                         11.29              13.54               7.62               7.66
+  n2 latents [cm]                                          9.75              12.07               7.62               7.66
+  n4 latents [cm]                                          8.48               9.20               7.61               7.66
+  kNN body leakage                                        0.056              0.071              0.067              0.119
+-- (iv) ZERO-SHOT, HELD-OUT G1 (never sampled in training) --
+  unitree_g1_29dof key pos [cm]                            6.48               6.34               8.10               8.08
+  unitree_g1_29dof energy ratio                           0.893              0.931              0.806              0.752
+  unitree_g1_29dof content share                          0.520              0.505              0.113                  -
+  unitree_g1_29dof straight line [cm]                      7.41               7.41               7.41               7.41
+  unitree_g1_23dof key pos [cm]                            6.27               6.17               7.99               8.02
+  unitree_g1_23dof energy ratio                           0.897              0.944              0.809              0.755
+  unitree_g1_23dof content share                          0.539              0.484              0.113                  -
+  unitree_g1_23dof straight line [cm]                      7.36               7.36               7.36               7.36
+   [GT-free physeval, decoded G1, median over walk1_subject1,walk3_subject1,run1_subject2,dance1_subject1; GT_retarget floor slip50=0.017, V5c@0806 0.751]
+  foot slip p50 [m/s]                                     0.531              0.596              0.554              0.559
+  foot slip p95 [m/s]                                     1.082              1.030              0.978              1.020
+  torque over limit [%]                                   0.022              0.029              0.000              0.000
+  jerk p95 [rad/s^3]                                   2564.547           3266.485           3341.964           3226.920
+-- (v) TRANSITIONS: two families spliced at frame 30, SEAM HIDDEN --
+   [mush = both halves' energy collapses while the endpoints stay fine]
+  walk->kick
+    energy 1st half                                       1.043              1.045              0.864              0.842
+    energy 2nd half                                       0.876              0.904              0.723              0.705
+    key pos all [cm]                                      10.98               9.79              12.72              12.48
+    interp-only [cm]                                      12.80              12.80              12.80              12.80
+    key pos seam [cm]                                     15.83              14.75              18.09              18.17
+    arclen ratio                                          0.878              0.879              0.906              0.888
+    off-seam step ratio                                   1.077              1.043              1.096              1.078
+  run->stand
+    energy 1st half                                       0.802              0.927              0.687              0.699
+    energy 2nd half                                       0.951              1.039              0.860              0.888
+    key pos all [cm]                                      10.90               9.24              11.66              11.86
+    interp-only [cm]                                      11.12              11.12              11.12              11.12
+    key pos seam [cm]                                     16.54              14.36              17.08              17.61
+    arclen ratio                                          0.788              0.880              0.830              0.832
+    off-seam step ratio                                   0.910              0.995              0.956              0.958
+  walk->jacks
+    energy 1st half                                       1.106              1.070              0.802              0.830
+    energy 2nd half                                       0.897              0.960              0.665              0.642
+    key pos all [cm]                                      13.06              11.54              15.60              15.84
+    interp-only [cm]                                      15.35              15.35              15.35              15.35
+    key pos seam [cm]                                     19.11              16.62              21.40              21.89
+    arclen ratio                                          0.788              0.804              0.778              0.768
+    off-seam step ratio                                   0.922              0.906              0.898              0.892
+
+==============================================================================================================
+PLAIN VERDICT — V7_jepa vs V7_maskfsq, same 62.69 bit/s, same data, same losses
+==============================================================================================================
+(i) PER-FAMILY MOTION ENERGY (jacks/run/kick — where mean regression shows)
+  mean energy jacks/run/kick V7_jepa_0807 0.857   V7_maskfsq_0807 0.899   -> V7_maskfsq_0807
+  mean energy all 6 families V7_jepa_0807 0.814   V7_maskfsq_0807 0.843   -> V7_maskfsq_0807
+(ii) 2c WARP INVARIANCE  [see the caveat: only jepa was TRAINED against warps]
+  warp invariance            V7_jepa_0807 0.867   V7_maskfsq_0807 0.542   -> V7_jepa_0807
+(iii) CONTENT SHARE
+  content share              V7_jepa_0807 0.612   V7_maskfsq_0807 0.623   -> TIE
+  key pos (all latents) [cm] V7_jepa_0807 6.39   V7_maskfsq_0807 5.99   -> V7_maskfsq_0807
+(iv) ZERO-SHOT, HELD-OUT G1
+  g1_29dof key pos [cm]      V7_jepa_0807 6.48   V7_maskfsq_0807 6.34   -> V7_maskfsq_0807
+  g1_29dof energy ratio      V7_jepa_0807 0.893   V7_maskfsq_0807 0.931   -> V7_maskfsq_0807
+  g1 foot slip p50 [m/s]     V7_jepa_0807 0.531   V7_maskfsq_0807 0.596   -> V7_jepa_0807
+(v) TRANSITIONS (two families spliced, seam hidden)
+  mean half-window energy    V7_jepa_0807 0.946   V7_maskfsq_0807 0.991   -> V7_maskfsq_0807
+  mean arclen ratio (1.0 = GT) V7_jepa_0807 0.818   V7_maskfsq_0807 0.854   -> V7_maskfsq_0807
+  mean key pos over splice [cm] V7_jepa_0807 11.65   V7_maskfsq_0807 10.19   -> V7_maskfsq_0807
+
+  ROW WINNERS: energy=V7_maskfsq_0807, invariance=V7_jepa_0807, content=TIE, zeroshot=V7_maskfsq_0807, transitions=V7_maskfsq_0807
+  TALLY: V7_jepa_0807 1/5, V7_maskfsq_0807 3/5, ties 1/5
+  OVERALL: V7_maskfsq_0807
+  Caveat that must travel with row (ii): maskfsq's code stream is
+  time-local and was trained for frame-rate invariance, not warp
+  invariance, because a warp moves content between its own groups.
+  If jepa wins (ii) and loses everything else, (ii) is the price of the
+  factorization, not evidence that jepa is the better tokenizer.
+==============================================================================================================
+
+GATES (2c >= 0.90, content >= 0.6, key <= 7.5 cm):
+  V7_jepa_0807       2c 0.867 FAIL | content 0.612 PASS | key 6.39 PASS
+  V7_maskfsq_0807    2c 0.542 FAIL | content 0.623 PASS | key 5.99 PASS
+  V6_mae_resid_0807  2c 0.954 PASS | content 0.133 FAIL | key 7.61 FAIL
+  V5c_0806           2c 0.995 PASS | content 0.583 FAIL | key 7.66 FAIL
+
+FIGURES (look at these before believing any number above):
+  /var/tmp/alphamotion/topo_exp/runs/V7_figs/v7_transition.png
+  /var/tmp/alphamotion/topo_exp/runs/V7_figs/v7_family_energy.png
+  /var/tmp/alphamotion/topo_exp/runs/V7_figs/v7_curves.png
+==============================================================================================================

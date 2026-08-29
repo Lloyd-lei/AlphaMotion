@@ -1,0 +1,90 @@
+========================================================================================
+PART 1 — zero-shot families (bones-seed, PCA k=3) on 4 bodies
+========================================================================================
+[cluster 0] 158 clips, families seen inside: ['dance', 'jump', 'other', 'reach', 'run', 'sit', 'walk']
+  -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p1_c0_Idle_Right_001__A018.mp4
+  -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p1_c0_Jump_Left_002__A018.mp4
+  -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p1_c0_dance_basic_chaines_306_R_fast_002__A308.mp4
+[cluster 1] 290 clips, families seen inside: ['dance', 'jump', 'other', 'reach', 'run', 'sit', 'walk']
+  -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p1_c1_Step_Rotate_Reaction_Idle_0315_001__A017.mp4
+  -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p1_c1_big_heavy_two_hands_pick_up_behind_high_.mp4
+  -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p1_c1_box_jump_down_360_003__A359.mp4
+[cluster 2] 52 clips, families seen inside: ['other', 'reach', 'sit']
+  -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p1_c2_crutches_sit_down_R_001__A518.mp4
+  -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p1_c2_cellphone_talking_sitting_R_001__A427.mp4
+  -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p1_c2_cellphone_typing_sitting_one_hand_idle_R.mp4
+========================================================================================
+PART 3 — SE(3) constraint tiers on X2, sketch-through-encoder, NO refinement
+========================================================================================
+========================================================================================
+PART 4 — robot->robot transfer | clip ACCAD__Male1General_c3d__General_A5_-_Pick_Up_Box_stageii
+========================================================================================
+[unitree_g1_29dof -> PND Adam (trained)] wrist vs GT: mean 8.95cm p95 26.42cm -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p4_unitree_g1_29dof_to_PND.mp4
+[pnd_adam_lite -> AgiBot X2 (no data)] -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p4_pnd_adam_lite_to_AgiBot.mp4
+========================================================================================
+PART 3 — SE(3) constraint tiers on X2, sketch-through-encoder, NO refinement
+========================================================================================
+[martialGT | 1wrist] visible=1 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_martialGT_1wrist.mp4
+[martialGT | 2wrists] visible=2 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_martialGT_2wrists.mp4
+[martialGT | 2ankles] visible=2 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_martialGT_2ankles.mp4
+[martialGT | 6anchors] visible=6 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_martialGT_6anchors.mp4
+[handcircle | 1wrist] visible=1 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_handcircle_1wrist.mp4
+[handcircle | 2wrists] visible=2 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_handcircle_2wrists.mp4
+[handcircle | 2ankles] visible=2 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_handcircle_2ankles.mp4
+[handcircle | 6anchors] visible=6 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_handcircle_6anchors.mp4
+[rootsink | 1wrist] visible=1 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_rootsink_1wrist.mp4
+[rootsink | 2wrists] visible=2 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_rootsink_2wrists.mp4
+[rootsink | 2ankles] visible=2 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_rootsink_2ankles.mp4
+[rootsink | 6anchors] visible=6 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_rootsink_6anchors.mp4
+========================================================================================
+PART 2 — holdout GT deviation + visual gate | ACCAD__Female1Running_c3d__C14_-__run_turn_right__(90)_stageii
+========================================================================================
+[unitree_g1_29dof] FK dev vs GT: mean 8.18cm p95 23.90cm -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p2_unitree_g1_29dof_gt_vs_recon.mp4
+========================================================================================
+PART 1 — zero-shot families (bones-seed, PCA k=3) on 4 bodies
+========================================================================================
+[cluster 0] 158 clips, families seen inside: ['dance', 'jump', 'other', 'reach', 'run', 'sit', 'walk']
+  -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p1_c0_Idle_Right_001__A018.mp4
+  -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p1_c0_Jump_Left_002__A018.mp4
+  -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p1_c0_dance_basic_chaines_306_R_fast_002__A308.mp4
+[cluster 1] 290 clips, families seen inside: ['dance', 'jump', 'other', 'reach', 'run', 'sit', 'walk']
+  -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p1_c1_Step_Rotate_Reaction_Idle_0315_001__A017.mp4
+  -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p1_c1_big_heavy_two_hands_pick_up_behind_high_.mp4
+  -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p1_c1_box_jump_down_360_003__A359.mp4
+[cluster 2] 52 clips, families seen inside: ['other', 'reach', 'sit']
+  -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p1_c2_crutches_sit_down_R_001__A518.mp4
+  -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p1_c2_cellphone_talking_sitting_R_001__A427.mp4
+  -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p1_c2_cellphone_typing_sitting_one_hand_idle_R.mp4
+========================================================================================
+PART 2 — holdout GT deviation + visual gate | ACCAD__Female1Running_c3d__C14_-__run_turn_right__(90)_stageii
+========================================================================================
+========================================================================================
+PART 3 — SE(3) constraint tiers on X2, sketch-through-encoder, NO refinement
+========================================================================================
+========================================================================================
+PART 4 — robot->robot transfer | clip ACCAD__Male1General_c3d__General_A5_-_Pick_Up_Box_stageii
+========================================================================================
+========================================================================================
+PART 2 — holdout GT deviation + visual gate | ACCAD__Female1Running_c3d__C14_-__run_turn_right__(90)_stageii
+========================================================================================
+[unitree_g1_29dof] FK dev vs GT: mean 8.18cm p95 23.90cm -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p2_unitree_g1_29dof_gt_vs_recon.mp4
+========================================================================================
+PART 3 — SE(3) constraint tiers on X2, sketch-through-encoder, NO refinement
+========================================================================================
+[martialGT | 1wrist] visible=1 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_martialGT_1wrist.mp4
+[martialGT | 2wrists] visible=2 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_martialGT_2wrists.mp4
+[martialGT | 2ankles] visible=2 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_martialGT_2ankles.mp4
+[martialGT | 6anchors] visible=6 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_martialGT_6anchors.mp4
+[handcircle | 1wrist] visible=1 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_handcircle_1wrist.mp4
+[handcircle | 2wrists] visible=2 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_handcircle_2wrists.mp4
+[handcircle | 2ankles] visible=2 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_handcircle_2ankles.mp4
+[handcircle | 6anchors] visible=6 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_handcircle_6anchors.mp4
+[rootsink | 1wrist] visible=1 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_rootsink_1wrist.mp4
+[rootsink | 2wrists] visible=2 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_rootsink_2wrists.mp4
+[rootsink | 2ankles] visible=2 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_rootsink_2ankles.mp4
+[rootsink | 6anchors] visible=6 -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p3_rootsink_6anchors.mp4
+========================================================================================
+PART 4 — robot->robot transfer | clip ACCAD__Male1General_c3d__General_A5_-_Pick_Up_Box_stageii
+========================================================================================
+[unitree_g1_29dof -> PND Adam (trained)] wrist vs GT: mean 8.95cm p95 26.42cm -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p4_unitree_g1_29dof_to_PND.mp4
+[pnd_adam_lite -> AgiBot X2 (no data)] -> /home/arenalabs/Desktop/"be water, robot"/pose_translator_design/R4_VIZ/mp4/spatial5/PROD_c1_91k_dim20_tail_0810/p4_pnd_adam_lite_to_AgiBot.mp4

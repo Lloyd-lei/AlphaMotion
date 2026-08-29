@@ -1,0 +1,52 @@
+DECODER POST-TRAIN VERDICT (0811)
+run: PT_c1dec_arm_0811 (C1 warm-start, encoder+lattice FROZEN, decoder-only
+12.66M, arm_boost 2.0, tail_alpha 1.0, 20k steps, lr 1e-4)
+
+1 CODE INVARIANCE: PASS. 3 embodiments x 4096 frames x 2 streams, ints
+  bit-identical to C1. Zero-cascade mechanism PROVEN (downstream A3/B3/text
+  provably unaffected by decoder-side surgery).
+
+2 ARM ACCEPTANCE: FAILED. arm_p95 delta -0.1%..-2.0% (noise), legs flat.
+  20k dedicated steps with 3x arm weight moved nothing.
+
+3 ROOT CAUSE FOUND (readout probe, cross-embodiment variant):
+  codes -> HUMAN wrist:  p95 ~12cm   (info is in the codes)
+  codes -> G1-paired wrist: p95 ~30cm == decoder's own arm p95 (~30cm)
+  legs control: readout 25cm vs decoder 16.5cm (decoder beats probe = legs
+  learnable & learned; arms: decoder == probe = shared wall).
+  => The arm tail on the G1 ruler is a DATA WALL: human->G1 paired GT (GMR
+  arm retarget) contains ~30cm-p95 variance unpredictable from the human
+  motion. The decoder already sits at the ceiling the pairs permit. Neither
+  decoder post-train NOR an encoder retrain can buy arm accuracy on this
+  yardstick. (Corroborates: GMR arm params were the historic pain point;
+  eval-traps memory: suspect measurement first on anomalous numbers.)
+
+Consequences:
+- C1 remains Greenwich. PT checkpoint kept as evidence (identical codes).
+- The "spatial arm round" as planned (encoder retrain) is CANCELLED on this
+  evidence - it attacks the wrong wall.
+- Real levers: (a) GMR arm retarget surgery + re-pair, then decoder post-train
+  regains signal; (b) yardstick revision: arm acceptance on human-side or
+  multi-embodiment consensus instead of single noisy retarget.
+- Punch/text confusion is a separate issue (human arm info IS in codes at
+  12cm p95): suspect A3 32-token compression or alignment corpus size.
+
+ROUND 2 — WRIST-TARGETED HOT POST-TRAIN (PT_c1dec_wrist_0811)
+recipe: same frozen-encoder surgery, ee_boost=6 on wrist/hand POSITION only,
+arm_boost=2, lr 3e-4 (3x hotter), 30k steps.
+  CODE INVARIANCE: PASS again (3 embodiments x 4096 frames, bit-identical).
+  wrist p95 h->G1: 35.54 (C1) -> 35.41 (PT) = -0.4%. Arms -1.9%..+0.3%.
+  Legs pay up to +4.5% (booster_t1->unitree_h1). Net: NOT ACCEPTED.
+
+VERDICT ON THE 17% "RECOVERABLE" HEADROOM: refuted as a training-recipe target.
+Two post-trains (gentle 20k, hot 30k with a position-specific wrist term) both
+moved the wrist tail by <1%. The readout probe's 29.1cm ceiling is reachable by
+a free-form MLP on the codes but NOT by this decoder under this objective —
+i.e. the gap is not "the decoder is under-trained on arms", it is structural:
+the decoder must serve all embodiments through one shared conditional path,
+and the probe does not.
+Consequence: stop buying arm accuracy with decoder post-training. The remaining
+levers are upstream (GMR arm retarget / re-pairing) or a yardstick change
+(human-side or multi-embodiment-consensus arm acceptance), exactly as the
+first-round verdict said. Greenwich stays C1; both PT checkpoints kept as
+evidence that the frozen-lattice surgery is sound and cascade-free.

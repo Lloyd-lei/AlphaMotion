@@ -1,0 +1,36 @@
+================================================================================================
+SE(3) CONTROL CEILING — constraint density sweep
+================================================================================================
+commanded/free = geodesic deg vs the SAME model's all-visible decode
+(no GT robot motion exists for X2; the all-visible decode is the ceiling).
+viol = PRE-projection joint-limit violation: is the model even asking for
+something the robot can do. GT-free, the one that matters on hardware.
+------------------------------------------------------------------------------------------------
+OLD|pal_talos (GT, held out)|K=1   root+wrist_l+wrist_r+ankle_l+ankle_r+head+elbow_l+elbow_r+knee_l+knee_r+shoulder_l+shoulder_r cmd  12.55  free  46.70  viol  15.62%  worst 147.48
+OLD|pal_talos (GT, held out)|K=33  ALL                                                  cmd  45.24  free   0.00  viol  10.87%  worst 131.25
+PROD|pal_talos (GT, held out)|K=1  root+wrist_l+wrist_r+ankle_l+ankle_r+head+elbow_l+elbow_r+knee_l+knee_r+shoulder_l+shoulder_r cmd   8.19  free  49.00  viol   6.25%  worst 117.61
+PROD|pal_talos (GT, held out)|K=33 ALL                                                  cmd  47.36  free   0.00  viol  12.50%  worst 115.59
+OLD|unitree_g1_23dof (GT, held out)|K=1 root                                                 cmd   1.79  free  29.76  viol   0.00%  worst   0.00
+OLD|unitree_g1_23dof (GT, held out)|K=2 root+wrist_l+wrist_r                                 cmd  13.15  free  11.39  viol   6.90%  worst   9.11
+OLD|unitree_g1_23dof (GT, held out)|K=4 root+wrist_l+wrist_r+ankle_l+ankle_r                 cmd   8.31  free  12.06  viol   6.90%  worst   9.32
+OLD|unitree_g1_23dof (GT, held out)|K=7 root+wrist_l+wrist_r+ankle_l+ankle_r+head+elbow_l+elbow_r cmd   7.68  free  11.37  viol   6.90%  worst  10.21
+OLD|unitree_g1_23dof (GT, held out)|K=10 root+wrist_l+wrist_r+ankle_l+ankle_r+head+elbow_l+elbow_r+knee_l+knee_r+shoulder_l+shoulder_r cmd   8.13  free  12.85  viol   6.90%  worst   7.98
+OLD|unitree_g1_23dof (GT, held out)|K=36 ALL                                                  cmd   8.67  free   0.00  viol   6.90%  worst   9.98
+PROD|unitree_g1_23dof (GT, held out)|K=1 root                                                 cmd   3.63  free  12.48  viol   6.75%  worst   1.23
+PROD|unitree_g1_23dof (GT, held out)|K=2 root+wrist_l+wrist_r                                 cmd   5.67  free   9.24  viol   6.83%  worst   1.62
+PROD|unitree_g1_23dof (GT, held out)|K=4 root+wrist_l+wrist_r+ankle_l+ankle_r                 cmd   6.08  free  10.48  viol   6.90%  worst   7.42
+PROD|unitree_g1_23dof (GT, held out)|K=7 root+wrist_l+wrist_r+ankle_l+ankle_r+head+elbow_l+elbow_r cmd   5.89  free   9.05  viol   6.90%  worst   8.15
+PROD|unitree_g1_23dof (GT, held out)|K=10 root+wrist_l+wrist_r+ankle_l+ankle_r+head+elbow_l+elbow_r+knee_l+knee_r+shoulder_l+shoulder_r cmd   6.21  free   9.55  viol   6.90%  worst   8.10
+PROD|unitree_g1_23dof (GT, held out)|K=36 ALL                                                  cmd   8.79  free   0.00  viol   6.90%  worst   8.07
+OLD|unitree_g1_29dof (GT, held out)|K=1 root                                                 cmd  13.28  free  29.42  viol   0.00%  worst   0.00
+OLD|unitree_g1_29dof (GT, held out)|K=2 root+wrist_l+wrist_r                                 cmd  18.80  free  11.46  viol   6.90%  worst   9.11
+OLD|unitree_g1_29dof (GT, held out)|K=4 root+wrist_l+wrist_r+ankle_l+ankle_r                 cmd  11.60  free  12.02  viol   6.90%  worst   9.32
+OLD|unitree_g1_29dof (GT, held out)|K=7 root+wrist_l+wrist_r+ankle_l+ankle_r+head+elbow_l+elbow_r cmd  11.41  free  10.62  viol   6.90%  worst  10.21
+OLD|unitree_g1_29dof (GT, held out)|K=10 root+wrist_l+wrist_r+ankle_l+ankle_r+head+elbow_l+elbow_r+knee_l+knee_r+shoulder_l+shoulder_r cmd  11.40  free  11.98  viol   6.90%  worst   7.98
+OLD|unitree_g1_29dof (GT, held out)|K=36 ALL                                                  cmd   9.03  free   0.00  viol   6.90%  worst   9.98
+PROD|unitree_g1_29dof (GT, held out)|K=1 root                                                 cmd  14.54  free  12.88  viol   6.75%  worst   1.23
+PROD|unitree_g1_29dof (GT, held out)|K=2 root+wrist_l+wrist_r                                 cmd  15.12  free  11.59  viol   6.83%  worst   1.62
+PROD|unitree_g1_29dof (GT, held out)|K=4 root+wrist_l+wrist_r+ankle_l+ankle_r                 cmd   9.90  free  13.04  viol   6.90%  worst   7.42
+PROD|unitree_g1_29dof (GT, held out)|K=7 root+wrist_l+wrist_r+ankle_l+ankle_r+head+elbow_l+elbow_r cmd   8.86  free   9.96  viol   6.90%  worst   8.15
+PROD|unitree_g1_29dof (GT, held out)|K=10 root+wrist_l+wrist_r+ankle_l+ankle_r+head+elbow_l+elbow_r+knee_l+knee_r+shoulder_l+shoulder_r cmd   8.10  free  10.77  viol   6.90%  worst   8.10
+PROD|unitree_g1_29dof (GT, held out)|K=36 ALL                                                  cmd  10.71  free   0.00  viol   6.90%  worst   8.07

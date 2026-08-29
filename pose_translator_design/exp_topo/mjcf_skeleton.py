@@ -66,7 +66,11 @@ def spec_from_mjcf(model, name, merge_colocated=True, eps=1e-3):
         jnames.append(names[b])
     offsets = np.asarray(offsets, np.float32)
     if len(offsets):                                   # root bone: give it the standing height
-        offsets[0] = np.array([0.0, 0.0, float(model.body_pos[1][2] or 0.8) * CM], np.float32)
+        # measured sole->pelvis height, NOT the MJCF spawn z (same fix as
+        # prep_gmr_cache.build_spec; see LIMITS_AUDIT.md 5b). No current caller,
+        # kept in sync so the two builders cannot drift apart again.
+        import prep_gmr_cache as _PG
+        offsets[0] = np.array([0.0, 0.0, _PG.standing_height(model) * CM], np.float32)
     return SkeletonSpec(name, np.asarray(parents, np.int64), offsets, jnames), keep
 
 

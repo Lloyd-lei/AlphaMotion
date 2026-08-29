@@ -1,0 +1,10 @@
+====================================================================================================
+TRANSITION EXAM — splice at f30, seam hidden. accuracy AND smoothness.
+jerk = 3rd-diff RMS (lower=smoother). seam spike = max|a| at seam / median|a| off-seam.
+GT row calibrates the eye: a real transition has its own nonzero spike.
+====================================================================================================
+metric                                  GT          MSBA          JEPA
+key pos err [cm]                         —        11.938        13.759
+jerk RMS                             0.106         0.026         0.025
+seam accel spike                   131.831         1.334         1.296
+group-boundary jitter                    —         1.030             —

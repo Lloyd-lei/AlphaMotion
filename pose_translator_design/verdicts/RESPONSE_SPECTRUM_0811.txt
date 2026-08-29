@@ -1,0 +1,48 @@
+RESPONSE SPECTRUM (0811) — linear-response normal modes of the latent, and a
+shared-basis test.  Frozen Equator A3+B3 + Greenwich C1, zero training.
+
+Analogy stated honestly: no Hamiltonian, no unitary evolution, so "eigenstate"
+in the QM sense does not apply. What transfers is LINEAR RESPONSE. J is the
+central-difference Jacobian of (rendered motion) w.r.t. the 192 lattice coords,
+one lattice cell per step; SVD(J) gives the mode spectrum.
+
+E1 NORMAL MODES / GAUGE
+bridge          effective modes (participation ratio, of 192)   near-null dirs
+walk->kick                 5.2                                      114
+run->sit                   5.7                                       95
+dance->walk                3.4                                      134
+punch->jump                9.3                                       93
+jacks->run                 7.7                                       94
+sit->dance                 7.6                                       94
+  => THE HEADLINE: a 192-coordinate latent exposes only ~3-9 EFFECTIVE degrees
+  of freedom at any operating point, and roughly HALF the coordinates (93-134)
+  are near-null: the code changes, the body does not. That near-null half is a
+  GAUGE sector — redundancy the tokenizer carries for free. It explains, with a
+  mechanism, two earlier observations: (i) why a random 192-d push sometimes
+  scored rho=0.67 in the transfer control (random pushes have large components
+  in the few active modes), and (ii) why sampling diversity is modest even at
+  high temperature — most token variation is gauge and never reaches the body.
+
+E2 SHARED BASIS (the question the failed transfer test could not answer)
+  mean principal angle between top-8 response subspaces, cross-bridge: 69.0 deg
+  random-subspace control (200 draws):                       80.0 +- 1.0 deg
+  => 11 sigma below chance, but 69 deg is still far from aligned. Reading: the
+  bridges share a WEAK common subspace, not a common basis. Single-vector
+  transfer failed (previous verdict) and this explains why without rescuing it:
+  there is real shared structure, it is just small compared with the
+  bridge-specific part. Pairs are heterogeneous (60 deg walk->kick vs
+  jacks->run; 75 deg run->sit vs punch->jump), so any shared sector is partial.
+
+CONSEQUENCE FOR THE "EMERGENCE INTERPRETABILITY" QUESTION
+  There IS a compact, measurable structure: ~5 active modes + ~100 gauge
+  directions per operating point. That is a mechanism-level statement about the
+  representation, obtained without labels or training. What is NOT established:
+  that the active modes mean the same thing across contexts. Until the shared
+  subspace is much tighter than 69 deg, "we can read the emergence mechanism"
+  is not supported by this evidence.
+NEXT: (a) is the gauge sector the SAME set of coordinates across bridges? (a
+  fixed gauge would be a genuine invariant, and is a sharper test than the
+  active-mode alignment); (b) participation ratio vs temperature and vs n;
+  (c) project the corpus itself onto the active modes — do real motions live in
+  the same few dimensions?
+Figures: png/response_modes.png, png/response_subspace.png

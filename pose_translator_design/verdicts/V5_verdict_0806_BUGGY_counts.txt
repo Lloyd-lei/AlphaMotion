@@ -1,0 +1,126 @@
+============================================================================================================
+ARCH V5 TEMPORAL LAYER — VERDICT TABLE (spec ARCH_V5_TEMPORAL.md §7, all eight)
+generated 2026-08-06 11:47:55
+============================================================================================================
+
+RUNS
+  V5_pathint_0806              arm=pathint          params=8.31M  bits/s=62.69  steps=60000
+  V5_pathint_noaug_0806        arm=pathint_noaug    params=8.31M  bits/s=62.69  steps=60000
+  V5_baseline_frameCE_0806     arm=baseline_frameCE params=8.53M  bits/s=62.69  steps=60000
+
+------------------------------------------------------------------------------------------------------------
+2. PATH-TOKEN SPEED INVARIANCE   [acceptance > 0.95; current architecture 0.644; unrelated motion 0.246]
+  run                           2a resample  2b REFERENCE   control    verdict
+  V5_pathint_0806                     1.000         0.701     0.006       FAIL
+  V5_pathint_noaug_0806               0.994         0.550     0.022       FAIL
+  V5_baseline_frameCE_0806            0.986         0.198     0.092       FAIL
+  2a is high by construction (the path readout never sees the frame count); 2b is the real test.
+
+------------------------------------------------------------------------------------------------------------
+3. TIME-TOKEN DISTRIBUTION   [do gears emerge on their own, do they track speed]
+  run                           distinct   bits  gears@80%  top1 share  spearman vs speed
+  V5_pathint_0806                      5   2.17          4       0.336              0.792
+  V5_pathint_noaug_0806                5   2.22          4       0.312              0.578
+  V5_baseline_frameCE_0806             5   2.23          4       0.297             -0.035
+
+------------------------------------------------------------------------------------------------------------
+4. VOCABULARY SATURATION   [decaying new-token rate = the vocabulary is reused]
+  run                           distinct  rate first  rate last   decay  log-log slope  saturating
+  V5_pathint_0806                   3889       0.996      0.972   0.976          0.994       False
+  V5_pathint_noaug_0806             3900       0.996      0.976   0.980          0.995       False
+  V5_baseline_frameCE_0806          3910       0.996      0.981   0.985          0.996       False
+
+------------------------------------------------------------------------------------------------------------
+1. CODEBOOK UTILIZATION (V5's own tokens)
+  run                           path codes  repeat  path bits  of max  time codes  time bits
+  V5_pathint_0806                        5   0.995       2.30   111.5           5       2.17
+  V5_pathint_noaug_0806                  5   0.995       2.30   111.5           5       2.22
+  V5_baseline_frameCE_0806               5   0.995       2.29   111.5           5       2.22
+
+------------------------------------------------------------------------------------------------------------
+7. CROSS-EMBODIMENT LEAKAGE   [P1 = 0.141, chance = 0.167; must not regress]
+  run                           kNN body acc  chance   vs P1   verdict
+  V5_pathint_0806                      0.095   0.167  -0.046        OK
+  V5_pathint_noaug_0806                0.073   0.167  -0.068        OK
+  V5_baseline_frameCE_0806             0.094   0.167  -0.047        OK
+
+------------------------------------------------------------------------------------------------------------
+8. RECONSTRUCTION LADDER   [motion energy retention / key-joint error by OAT prefix]
+  V5_pathint_0806
+    row                 energy/GT  key pos cm  key rot deg   pathint
+    prefix1                 0.820        7.46         13.2    0.0557
+    prefix2                 0.820        7.46         13.2    0.0557
+    prefix4                 0.820        7.45         13.2    0.0557
+    prefix8                 0.820        7.45         13.2    0.0557
+    tokens_shuffled         0.819        7.99         14.5    0.0716   [another window's path token: anything this row already achieves is NOT window-specific content]
+    tokens_zeroed           0.782       10.65         21.5    0.3626   [path registers = 0: the endpoints alone]
+    straight_line           0.659        9.00          nan    0.7356   [zero temporal bits: just interpolate the endpoints]
+    GT_key_joints           1.000        0.00          0.0       nan   [the target itself]
+    frame_code_floor        0.962         nan          nan       nan   [GT key joints -> FROZEN spatial layer -> full body: the CEILING on any temporal layer (full-body motion energy, not key-joint)]
+    frame-code floor full-body energy: 5.834 cm (ceiling on any temporal layer)
+    >> IS THE CODEBOOK REAL? the path registers buy 3.20 cm over having none, but only 0.54 cm of that depends on WHICH window's token was used
+    >> content share = 0.17  <-- the tokens are largely a generic 'not zero' signal; the codebook is close to DECORATIVE and the headline error is mostly the endpoint conditioning
+
+  V5_pathint_noaug_0806
+    row                 energy/GT  key pos cm  key rot deg   pathint
+    prefix1                 0.849        6.93         11.6    0.0502
+    prefix2                 0.851        6.89         11.5    0.0497
+    prefix4                 0.852        6.89         11.5    0.0501
+    prefix8                 0.854        6.89         11.5    0.0504
+    tokens_shuffled         0.926        9.66         19.1    0.0936   [another window's path token: anything this row already achieves is NOT window-specific content]
+    tokens_zeroed           0.691        9.72         18.9    0.6068   [path registers = 0: the endpoints alone]
+    straight_line           0.659        9.00          nan    0.7356   [zero temporal bits: just interpolate the endpoints]
+    GT_key_joints           1.000        0.00          0.0       nan   [the target itself]
+    frame_code_floor        0.962         nan          nan       nan   [GT key joints -> FROZEN spatial layer -> full body: the CEILING on any temporal layer (full-body motion energy, not key-joint)]
+    frame-code floor full-body energy: 5.834 cm (ceiling on any temporal layer)
+    >> IS THE CODEBOOK REAL? the path registers buy 2.83 cm over having none, but only 2.77 cm of that depends on WHICH window's token was used
+    >> content share = 0.98  the bits really are carrying this window's motion
+
+  V5_baseline_frameCE_0806
+    row                 energy/GT  key pos cm  key rot deg   pathint
+    prefix1                 0.865        5.17          9.7    0.3033
+    prefix2                 0.875        4.92          9.2    0.2811
+    prefix4                 0.892        4.72          8.8    0.2391
+    prefix8                 0.901        4.63          8.6    0.2172
+    tokens_shuffled         0.900        8.44         18.1    0.3864   [another window's path token: anything this row already achieves is NOT window-specific content]
+    tokens_zeroed           0.893       10.40         20.8    1.0754   [path registers = 0: the endpoints alone]
+    straight_line           0.659        9.00          nan    0.7356   [zero temporal bits: just interpolate the endpoints]
+    GT_key_joints           1.000        0.00          0.0       nan   [the target itself]
+    frame_code_floor        0.962         nan          nan       nan   [GT key joints -> FROZEN spatial layer -> full body: the CEILING on any temporal layer (full-body motion energy, not key-joint)]
+    frame-code floor full-body energy: 5.834 cm (ceiling on any temporal layer)
+    >> IS THE CODEBOOK REAL? the path registers buy 5.77 cm over having none, but only 3.81 cm of that depends on WHICH window's token was used
+    >> content share = 0.66  partial: a real but minority share of the benefit is window-specific
+
+------------------------------------------------------------------------------------------------------------
+6. SPECTRAL COVERAGE   [energy inside the token bandwidth; run reference 0.665]
+  family        <1Hz    <2Hz    <4Hz    >2Hz     n
+  walk         0.880   0.959   0.982   0.041   120
+  run          0.558   0.937   0.984   0.063   120
+  jacks        0.829   0.948   0.978   0.052   120
+  dance        0.794   0.937   0.974   0.063   120
+  kick         0.908   0.972   0.988   0.029   120
+  punch        0.786   0.907   0.989   0.093   120
+  ALL          0.807   0.930   0.972   0.070   120
+
+------------------------------------------------------------------------------------------------------------
+5. INTRINSIC DIMENSION   [from v5_probe_entropy.py; R8 estimators]
+  family      key6 TwoNN  full TwoNN   ratio  key MLE10  full MLE10
+  walk              7.39        7.36    1.00       7.17        7.23
+  run              14.03       13.21    1.06       8.56        8.84
+  jacks            36.61       42.99    0.85      11.64       12.89
+  dance            21.33       21.97    0.97      14.36       15.07
+  kick             37.93       36.49    1.04       7.21        7.05
+  ALL               7.07        7.19    0.98       6.54        6.71
+
+------------------------------------------------------------------------------------------------------------
+1b. SPATIAL-CODE RECURRENCE INSIDE WINDOWS   [from v5_probe_entropy.py]
+  one-off codes 71.0% | recurrent (>= T/4) 1.7% | novelty~speed r=+0.73 | novelty~|accel| r=+0.26
+  novelty at motion turning points: 1.15x the window mean
+
+------------------------------------------------------------------------------------------------------------
+FIGURES
+  /var/tmp/alphamotion/topo_exp/runs/V5_figs/v5_stat2_speed_invariance.png
+  /var/tmp/alphamotion/topo_exp/runs/V5_figs/v5_stat8_ladder.png
+  /var/tmp/alphamotion/topo_exp/runs/V5_figs/v5_stat34_vocab_time.png
+  /var/tmp/alphamotion/topo_exp/runs/V5_figs/v5_stat67_spectrum_leakage.png
+============================================================================================================

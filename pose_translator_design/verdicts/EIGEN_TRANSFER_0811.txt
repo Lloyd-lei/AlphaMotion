@@ -1,0 +1,15 @@
+EIGEN AXIS TRANSFER (0811) — NEGATIVE RESULT
+Does w_1 fitted on one endpoint pair steer another? rho(alpha, realised psi_1):
+scene            self   cross(mean)   random(mean of 3)
+walk->kick       0.87      0.21         -0.32
+run->sit         0.92     -0.23          0.67
+dance->walk      0.96      0.24         -0.28
+punch->jump      0.92      0.40          0.19
+Self-steering is strong and reproducible (0.87-0.96). Cross-scene steering is
+weak (-0.23..0.40) and, critically, NOT separable from the random-direction
+control, which itself ranges -0.32..0.67 — a random push in 192 lattice coords
+sometimes scores 0.67 by chance. So: the eigen axes are LOCAL to their bridge,
+and any claim of a general unsupervised control basis is unsupported.
+(The random arm is why this is stated as refuted rather than "weak transfer":
+without it, cross=0.40 would have looked like partial success.)
+Figure: png/eigen_transfer.png

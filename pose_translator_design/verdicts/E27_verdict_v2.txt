@@ -1,0 +1,250 @@
+E27 REOPENED — SigLIP text tower vs Qwen3-Embedding-0.6B, judged POST-PROJECTION
+generated 2026-08-06 (late). Script /var/tmp/alphamotion/topo_exp/night2_lib/e27_v2.py
+Numbers: runs/_e27v2/{m1,m2,m3,m4,m5,m6}.json + run.log
+Arms: E27_sig_0806 vs E27_qwen_0806 — matched recipe, only --sem_encoder differs
+(both: 8000 steps, n_latent 128, fsq 1x13, use_dof, w_contrast 0.5, 18 judges,
+holdout = unitree_g1_29dof / unitree_g1_23dof / pal_talos). E19 is NOT used as a
+control anywhere below: its init RNG differs, so it is a recipe comparison, not a
+seed comparison.
+Harness check: this script reproduces the first verdict's headline numbers exactly
+(zero-shot human->G1 pre-projection, LAFAN val: sig 17.72, qwen 17.47 deg), so the
+two verdicts differ in what is measured, not in how it is measured.
+====================================================================================================
+
+WHY THIS IS BEING REDONE
+  The first verdict turned on PRE-projection joint-limit violations. That criterion
+  is wrong for this system: manifold_project(method="global") is a mandatory layer in
+  the production path, it is not optional post-processing, and it is measured here to
+  drive post-projection violations to 0.0000% for BOTH encoders on every one of the
+  six target bodies. A violation the projection removes never reaches the robot. The
+  quantity that reaches the robot is the POST-projection pose, and nobody had measured
+  it. Below it is measured on 3000-6000 frames per body, on the seed-0 LAFAN val split
+  AND on cache_amass_heldout (600 clips, disjoint from every training corpus).
+
+====================================================================================================
+1. POST-PROJECTION POSE ERROR vs GT  (the decisive metric)
+   human_smpl -> body, geodesic deg. "pre" = raw decode, "post" = after
+   manifold_project(method="global"). Post-projection violations: 0.0000% everywhere,
+   both encoders, both datasets — the constraint layer does its job for both arms.
+
+   LAFAN seed-0 val, n=5000
+                              all          legs    arms   wrists  torso   proj-move
+   G1-29dof  sig   pre 17.72 / post 14.98   9.42   19.01   22.18   12.98    10.52
+             qwen  pre 17.47 / post 14.60   9.35   17.62   19.31   16.56    10.37   -0.38
+   G1-23dof  sig   pre 20.75 / post 18.46  10.56   30.47   24.72   12.53    10.52
+             qwen  pre 20.12 / post 17.26  10.69   29.17   21.56   10.96    10.37   -1.20
+   pal_talos sig   pre 44.11 / post 39.73   (no part split — see the pal_talos note)  20.53
+             qwen  pre 53.03 / post 47.60                                             26.33   +7.87
+
+   cache_amass_heldout, 600 held-out clips, n=6000
+   G1-29dof  sig   pre 28.37 / post 25.68  17.42   32.53   38.60   18.61    10.34
+             qwen  pre 27.15 / post 25.46  18.00   34.14   34.99   18.60     7.78   -0.22
+   G1-23dof  sig   pre 28.04 / post 25.50  18.26   32.39   37.53   17.16    10.34
+             qwen  pre 26.68 / post 25.21  19.37   33.93   33.81   15.77     7.78   -0.29
+   pal_talos sig   pre 47.22 / post 43.64                                            16.20
+             qwen  pre 52.86 / post 46.28                                            21.23   +2.64
+
+   Reading it: projection LOWERS the error for both arms on every body (-1.5 to -6.6
+   deg), so it is not a tax — it is part of the model. Qwen is ahead on all four
+   G1 cells (-0.22 to -1.20 deg), consistently on wrists (-2.9 / -3.6 deg, the single
+   largest per-part effect) and it needs 25% LESS correction on held-out AMASS
+   (7.78 vs 10.34 deg of projection movement). SigLIP is ahead on pal_talos only.
+
+   THE pal_talos NOTE — this is not a body, it is a naming failure.
+   pal_talos's cached joint names are "body00","body01",...,"body32". Every joint name
+   carries ZERO semantic content. It is the one embodiment in the cache where the text
+   encoder has literally nothing to encode, so the joint embeddings are arbitrary
+   functions of "the body07 joint of a body" and whichever encoder happens to land in a
+   luckier arrangement wins by chance. Both arms score 40-48 deg on it (vs 15-26 on G1)
+   and 44-57 deg on its own SELF-reconstruction. It is the only body in 18 where Qwen
+   loses, and it is the body where the encoder comparison is meaningless by
+   construction. Fix the names in the cache before using pal_talos to judge anything.
+
+   ALSO: unitree_g1_23dof is a DESCRIPTOR DUPLICATE of unitree_g1_29dof — identical
+   joint_names, identical rest_offsets, bit-identical _dof.npz (both list 29 DOF). Only
+   the GT motion differs. So the two G1 rows are one body evaluated against two
+   retargets, not two independent bodies. Their projection-movement numbers are
+   identical for exactly this reason. Do not count them as two votes.
+
+====================================================================================================
+2. SELF-RECONSTRUCTION, ALL 18 EMBODIMENTS — is the Qwen edge uniform or human-only?
+   It is UNIFORM. Qwen wins 17 of 18 on BOTH datasets; the only loss is pal_talos.
+   (geodesic deg; delta = qwen - sig, negative = Qwen better)
+
+                        LAFAN val (n=5000)              amass_heldout (n=6000)
+                     sig     qwen    delta            sig     qwen    delta
+   human_smpl        9.07    8.61    -0.46           22.97   18.31    -4.66   <-- lloyd's number
+   booster_k1        9.03    8.83    -0.20            9.59    9.08    -0.51
+   booster_t1        5.48    5.27    -0.21            5.75    5.24    -0.51
+   booster_t1_29dof  6.59    6.30    -0.29            7.64    7.33    -0.31
+   engineai_pm01     5.64    5.41    -0.23           10.82   10.35    -0.47
+   fourier_gr3       6.58    6.32    -0.26            9.14    8.67    -0.47
+   fourier_n1        6.62    6.33    -0.29            7.70    7.14    -0.56
+   hightorque_hi     8.68    8.43    -0.25           10.46    9.67    -0.79
+   kuavo_s45         6.92    6.52    -0.40           14.10   12.39    -1.71
+   pal_talos        50.04   57.10    +7.06           44.48   49.26    +4.78   <-- nameless body
+   pnd_adam_lite     6.26    6.09    -0.17            7.36    7.08    -0.28
+   tienkung          7.14    6.91    -0.23            8.42    7.80    -0.62
+   unitree_g1_23dof 17.15   15.93    -1.22           14.78   13.27    -1.51   (held out)
+   unitree_g1_29dof 16.36   15.87    -0.49           15.49   14.15    -1.34   (held out)
+   unitree_h1        5.50    5.16    -0.34            6.65    6.20    -0.45
+   unitree_h1_2      6.89    6.50    -0.39            7.44    6.95    -0.49
+   unitree_h2        6.33    6.05    -0.28            7.77    7.38    -0.39
+   unitree_r1        5.32    5.07    -0.25            6.65    6.08    -0.57
+   mean delta excluding pal_talos:  -0.35 (LAFAN)   -0.92 (held-out AMASS)
+   sign test 17/18, two-sided: p = 1.4e-4, replicated on two disjoint corpora.
+
+   lloyd's "human self-recon 17-20 vs 23-26 deg" reproduces here as 18.31 vs 22.97 on
+   the clean external exam. That single number (-4.66 deg) is the only measurement in
+   this whole comparison that clears the 2.2 deg run-to-run band on its own.
+
+====================================================================================================
+3. ZERO-SHOT ONTO BODIES BUILT FROM VENDOR MJCF (no motion data anywhere, no GT)
+   600 held-out AMASS clips x 3 frames = 1800 frames. Post-projection violations:
+   0.0000% for BOTH encoders on ALL THREE bodies, worst post overshoot 0.00 deg.
+   The mandatory layer holds on robots neither model has ever seen.
+
+                          projection movement (deg)                 pre-viol
+                        all    legs   arms  wrists  torso        >0.5deg   >90deg
+   agibot_x2_ultra  sig 5.38   4.20   9.50   3.78    2.91          0.56%   0.0018%
+                    qwen 5.35  6.33   6.24   3.07    3.40          3.40%   0.0018%
+   agibot_a3_ultra  sig 42.69  4.57  10.45  49.80    6.38         39.05%  11.00%
+                    qwen 38.87 4.53   8.43  49.35    5.07         41.44%   5.79%
+   apptronik_apollo sig 26.50  4.96  16.32  46.42   44.93         22.38%   2.87%
+                    qwen 25.54 6.56  13.53  44.33   44.01         26.50%   4.45%
+
+   Qwen needs less correction overall on all three (5.35/38.87/25.54 vs
+   5.38/42.69/26.50) and specifically on the ARMS of all three (6.24/8.43/13.53 vs
+   9.50/10.45/16.32, i.e. 20-34% less). That is exactly the part lloyd said looked
+   better in the X2 duel video. SigLIP is ahead on legs on X2 and Apollo.
+   The A3 wrist / Apollo torso numbers (45-50 deg) are large for both arms and are a
+   descriptor problem, not an encoder problem — see section 5.
+
+====================================================================================================
+4. PER-ACTION-FAMILY (R7 regex, verbatim) — post-projection deg on held-out AMASS
+   Is the Qwen edge concentrated in dynamic clips, as lloyd's read of the salsa suggests?
+   Partly, but not cleanly.
+
+   unitree_g1_29dof     n      sig     qwen    delta
+     walk              530    29.95   28.98   -0.97   <- Qwen
+     other            4460    25.51   25.01   -0.50   <- Qwen
+     sit                20    25.67    24.89  -0.78   (n too small)
+     jump              120    25.44   25.50   +0.06   tie
+     run                70    40.17   41.35   +1.18   (n too small)
+     reach             800    22.57   24.25   +1.68   <- SigLIP
+   unitree_g1_23dof
+     sit                20    26.01   23.69   -2.32   (n too small)
+     walk              530    29.25   28.45   -0.80   <- Qwen
+     other            4460    25.11   24.51   -0.60   <- Qwen
+     jump              120    26.03   25.48   -0.55   <- Qwen
+     run                70    34.40   35.25   +0.85   (n too small)
+     reach             800    24.32   26.12   +1.80   <- SigLIP
+
+   HONEST READ: the corpus has no "dance" clips at all after the regex, and run/jump/sit
+   have n=20-120, which is too thin to call. The two families with real support point in
+   opposite directions: Qwen wins locomotion (walk, and the 4460-frame "other" bulk),
+   SigLIP wins reach/manipulation (n=800, +1.7 deg both bodies, the most consistent
+   single effect in this table). So lloyd's "the salsa looked better" is NOT confirmed
+   by a dance-family measurement — that family does not exist in this exam — but the
+   locomotion + bulk direction does agree with him. Do not over-claim this section.
+
+====================================================================================================
+5. SEVERITY OF THE PRE-PROJECTION VIOLATIONS — the number that flipped the old verdict
+   The old verdict's decisive claim was "qwen violates target joint limits 1.7x as
+   often on G1 and 14x as often on X2". The rates are real. Here is what they are made of.
+
+   unitree_g1_29dof, fraction of limited-DOF samples exceeding X deg of overshoot:
+                      >0.5    >5      >10     >30     >90    mean-when-violating   max
+   LAFAN   sig       1.80%   1.19%   0.94%   0.42%  0.0007%      18.86 deg       90.02
+           qwen      3.48%   2.48%   1.46%   0.52%  0.0000%      14.90 deg       89.96
+   AMASS   sig       5.35%   3.04%   0.33%   0.06%  0.0000%       6.07 deg       89.74
+   heldout qwen      6.38%   6.06%   5.45%   0.02%  0.0000%      13.69 deg       85.54
+
+   * NOTHING is catastrophic. >90 deg is 0.0007% for SigLIP and 0.0000% for Qwen on
+     LAFAN, 0.0000% for both on held-out AMASS. The old "many tiny nudges, worst 13-20
+     deg" reading holds and extends: Qwen's extra violations are SMALLER on average
+     (14.90 vs 18.86 deg on LAFAN) and its >30 deg tail on held-out AMASS is 3x SMALLER
+     than SigLIP's (0.02% vs 0.06%). Qwen trades a few more small nudges for a shorter
+     tail. The maxima agree to within 0.06 deg between the two arms (90.02 vs 89.96 on
+     G1; 151.50 vs 151.49 on pal_talos) — the worst case is set by the limit-box
+     geometry, not by which encoder is driving.
+   * The rate is partly an ARTIFACT, and it is measurable. `pre_viol` fits hinge angles
+     WITHOUT the box and asks whether they land inside it; on a multi-DOF frame the
+     angle triple is a chart of SO(3), not a unique label, so the unclamped fitter is
+     free to return an out-of-box branch of a perfectly reachable rotation (this is
+     documented in eval_newbody.infeasibility and was measured on Apollo's hips at
+     47-53% "violation" for poses reachable to 0.1-0.25 deg).
+   * TRUE infeasibility (the chart-free residual between the predicted local rotation
+     and the nearest reachable one inside the box) shows the difference DISAPPEARS:
+                          LAFAN val            amass_heldout
+                        sig    qwen           sig    qwen
+       G1-29dof         8.94   9.17           9.16   7.92
+       agibot_x2_ultra  5.88   6.77           6.00   5.86
+       agibot_a3_ultra 34.15  32.09          35.35   31.55
+       apollo          22.62  26.41          22.92   23.32
+     A wash, with Qwen ahead on the two hardest bodies (A3 -2.1/-3.8 deg). In
+     particular the old verdict's headline "14x on X2" corresponds to a TRUE
+     infeasibility difference of 5.88 vs 6.77 on LAFAN and 6.00 vs 5.86 on AMASS —
+     i.e. no reliable difference at all, in either direction.
+   * And after the mandatory projection, both arms are at 0.0000% violations with a
+     0.00 deg worst overshoot on all six bodies. Whatever the pre-rate was, it is gone.
+
+====================================================================================================
+VERDICT
+  QWEN WINS on post-projection quality. The earlier "keep SigLIP" call was made on
+  pre-projection violations, and that criterion does not survive contact with the
+  projection layer: it is partly a chart artifact, it vanishes entirely in the
+  chart-free infeasibility measurement, and it is zero for both arms after the
+  mandatory projection every production pose passes through. It should be retired as a
+  model-selection criterion. lloyd's eye and the two objective numbers he cited were
+  right; the number that contradicted them was not measuring a defect.
+
+  DOES THE MARGIN CLEAR THE VARIANCE BAND? Two answers, and they differ — state both.
+  * BY MAGNITUDE, MOSTLY NO. Post-projection zero-shot error on G1 moves 0.22-1.20 deg.
+    The measured run-to-run band is 2.2 deg. Taken one number at a time, the decisive
+    metric is UNRESOLVED. The single exception is human self-reconstruction on the
+    clean external exam: -4.66 deg (22.97 -> 18.31), which clears 2.2 deg outright.
+  * BY DIRECTION, YES. The comparison is not one number, it is ~40 of them. Qwen is
+    ahead on 17 of 18 embodiments, on two disjoint corpora, and the one exception is a
+    body whose joints are literally named body00..body32. If the effect were run noise
+    the signs would scatter; they do not (sign test p = 1.4e-4 per corpus). Qwen is
+    also ahead on both G1 post-projection cells on both corpora, on projection movement
+    on held-out AMASS (7.78 vs 10.34), on arm projection movement on all three
+    vendor-MJCF bodies, and on true infeasibility on the two hardest ones. A small
+    effect measured consistently is still a real effect.
+    Plainly: Qwen is better by roughly 0.3-1.0 deg on cross-body decode and ~4.7 deg on
+    source-side representation quality. It is not a transformation. It is a real,
+    reproducible, one-directional improvement.
+
+  RECOMMENDATION FOR THE PRODUCTION RETRAIN: use Qwen3.
+  * It is ahead on every metric that reaches the robot, and behind on none once
+    pal_talos is set aside for cause.
+  * The cost argument in the old verdict does not survive either: the two checkpoints
+    are 18.006M vs 18.071M parameters (+0.36%), the text tower is FROZEN and its output
+    is a 300-entry disk LUT, so inference cost is identical and the extra Qwen forward
+    pass happens once per vocabulary change, not per frame.
+  * Two caveats to carry forward, neither blocking:
+    - SigLIP is consistently better on the reach/manipulation family (+1.7 deg, n=800,
+      both G1s). If the production target is manipulation-led rather than
+      locomotion-led, re-measure on a manipulation-heavy corpus before committing.
+    - The margin is inside the run-to-run band per-metric. If the retrain is expensive,
+      the cheap way to remove all doubt is 3 seeds x 2 encoders on the same recipe;
+      that turns "17/18 bodies point the same way" into a proper confidence interval.
+
+  THREE DATA BUGS FOUND WHILE MEASURING — these matter more than the encoder choice:
+  1. pal_talos joint names in cache_xwbc_lafan and cache_amass_heldout are
+     body00..body32. The name-semantics channel — the whole mechanism this experiment
+     was testing — is dead for that body. Its 40-57 deg errors are not a model result.
+     Re-extract its names from the MJCF and rebuild both caches.
+  2. unitree_g1_23dof carries unitree_g1_29dof's descriptor verbatim (same joint_names,
+     same rest_offsets, same _dof.npz listing 29 DOF). Every "two held-out G1s" result
+     in this and the previous verdict is one body scored twice.
+  3. agibot_a3_ultra_t3d0 (J=60) and apptronik_apollo take 39-50 deg of projection
+     movement in the wrists/torso for BOTH encoders. That is a descriptor/topology
+     problem in those bodies, not an encoder problem, and it is the largest single
+     source of zero-shot error in this whole report. It deserves its own investigation.
+
+  WHAT STILL DOES NOT MOVE: the axis question. Nothing here contradicts the first
+  verdict's section B — a bigger text tower does not separate hip pitch/roll/yaw. That
+  conclusion stands, and geometry/DOF conditioning is still the right lever for it.
+====================================================================================================

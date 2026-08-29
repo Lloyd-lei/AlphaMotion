@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>AlphaMotion 算法核心</title>
+<style>
+  @page { size: A4 landscape; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Noto Sans CJK SC", sans-serif;
+    color: #1c1c1e; background: #ffffff;
+  }
+  .page {
+    width: 297mm; height: 210mm;
+    padding: 9mm 11mm 7mm;
+    display: flex; flex-direction: column;
+  }
+  .brk { page-break-after: always; }
+  .eq { font-family: "Noto Sans Mono CJK SC", monospace; }
+  sub { font-size: 0.65em; }
+
+  /* ---------- header ---------- */
+  header { display: flex; align-items: baseline; gap: 14px; }
+  header h1 { font-size: 21px; font-weight: 900; letter-spacing: 0.5px; }
+  header h1 .dot { color: #ff8000; }
+  header .tag { font-size: 10.5px; color: #8a8a8e; }
+  .essence {
+    margin-top: 6px; font-size: 15.5px; font-weight: 700; line-height: 1.35;
+  }
+  .essence b { color: #ff8000; }
+  .essence .sep { color: #c7c7cc; font-weight: 400; padding: 0 4px; }
+
+  /* ---------- panels ---------- */
+  .row { display: flex; gap: 10px; margin-top: 8px; }
+  .panel {
+    border: 1.2px solid #e3e3e6; border-radius: 10px;
+    padding: 8px 12px 7px; background: #fff;
+  }
+  .panel h2 {
+    font-size: 13px; font-weight: 900; display: flex; align-items: baseline; gap: 8px;
+  }
+  .panel h2 .en { font-size: 10px; color: #8a8a8e; font-weight: 500; }
+  .panel h2 .num {
+    color: #fff; background: #1c1c1e; border-radius: 4px;
+    font-size: 10px; padding: 1px 5px; transform: translateY(-1px);
+  }
+  .panel h2 .num.o { background: #ff8000; }
+  .panel .sub { font-size: 10.5px; color: #55555a; margin-top: 2px; line-height: 1.45; }
+  .panel .sub b { color: #1c1c1e; }
+  svg { display: block; }
+  svg text { font-family: "Noto Sans CJK SC", sans-serif; }
+
+  .stats { display: flex; gap: 6px; margin-top: 5px; }
+  .chip {
+    font-size: 10px; border-radius: 20px; padding: 2.5px 9px; white-space: nowrap;
+    background: #fff3e6; color: #b35400; font-weight: 700;
+  }
+  .chip.dark { background: #f2f2f4; color: #3a3a3e; }
+
+  .eqline {
+    font-size: 11px; background: #fafafa; border: 1px solid #ececef;
+    border-radius: 6px; padding: 4px 9px; margin-top: 5px; line-height: 1.55;
+  }
+  .eqline .lbl { display: inline-block; min-width: 118px; color: #8a8a8e; font-size: 10px; }
+  .eqline .hl { color: #ff8000; font-weight: 700; }
+
+  .modes { display: flex; gap: 6px; margin-top: 6px; }
+  .mode {
+    flex: 1; font-size: 10px; line-height: 1.4; color: #55555a;
+    background: #fafafa; border: 1px solid #ececef; border-radius: 6px; padding: 4px 7px;
+  }
+  .mode b { display: block; color: #1c1c1e; font-size: 10.5px; }
+  .mode.hot { background: #fff8f0; border-color: #ffd9b0; }
+  .mode.hot b { color: #b35400; }
+
+  footer {
+    margin-top: auto; padding-top: 5px; font-size: 9.5px; color: #a0a0a5;
+    display: flex; justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ PAGE 1 -->
+<div class="page brk">
+
+<header>
+  <h1>AlphaMotion<span class="dot">·</span>算法核心</h1>
+  <span class="tag">Greenwich（空间层）× Equator（时序层）— 20 秒版 · 第 1/2 页</span>
+</header>
+<div class="essence">
+  把任何具身的动作压成通用 token<span class="sep">→</span>生成 = 在 token 空间<b>搭桥</b><span class="sep">→</span>具身在<b>解码那一刻</b>才决定
+</div>
+
+<!-- ================= Greenwich ================= -->
+<div class="row">
+  <div class="panel" style="flex:1">
+    <h2><span class="num">1</span>Greenwich — 空间层 <span class="en">动作 ⇌ 通用 motion-primitive 码本，重定向消失在码本里</span></h2>
+    <svg viewBox="0 0 1040 118" width="100%" height="118">
+      <defs>
+        <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0,1 L8,5 L0,9" fill="none" stroke="#9a9a9e" stroke-width="1.6"/>
+        </marker>
+        <marker id="arO" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0,1 L8,5 L0,9" fill="none" stroke="#ff8000" stroke-width="1.8"/>
+        </marker>
+      </defs>
+      <!-- source chips -->
+      <g font-size="11.5" font-weight="700" fill="#3a3a3e">
+        <rect x="4"  y="6"  width="118" height="22" rx="11" fill="#f2f2f4"/><text x="63"  y="21" text-anchor="middle">人类 SMPL</text>
+        <rect x="4"  y="34" width="118" height="22" rx="11" fill="#f2f2f4"/><text x="63"  y="49" text-anchor="middle">人形机器人</text>
+        <rect x="4"  y="62" width="118" height="22" rx="11" fill="#f2f2f4"/><text x="63"  y="77" text-anchor="middle">猫 / 狗（四足）</text>
+        <rect x="4"  y="90" width="118" height="22" rx="11" fill="#f2f2f4"/><text x="63"  y="105" text-anchor="middle">机械臂</text>
+      </g>
+      <!-- converge arrows -->
+      <g stroke="#9a9a9e" stroke-width="1.4" fill="none">
+        <path d="M124,17 C160,17 170,50 206,55" marker-end="url(#ar)"/>
+        <path d="M124,45 C155,45 165,53 206,57" marker-end="url(#ar)"/>
+        <path d="M124,73 C155,73 165,65 206,61" marker-end="url(#ar)"/>
+        <path d="M124,101 C160,101 170,68 206,63" marker-end="url(#ar)"/>
+      </g>
+      <!-- encoder -->
+      <rect x="212" y="38" width="96" height="42" rx="8" fill="#1c1c1e"/>
+      <text x="260" y="63" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="800">Encoder</text>
+      <path d="M310,59 L354,59" stroke="#ff8000" stroke-width="2" fill="none" marker-end="url(#arO)"/>
+      <!-- codebook -->
+      <g>
+        <rect x="360" y="14" width="150" height="90" rx="9" fill="#fff8f0" stroke="#ff8000" stroke-width="1.6"/>
+        <g>
+          <g fill="#e8dccb">
+            <rect x="372" y="26" width="14" height="14" rx="3"/><rect x="394" y="26" width="14" height="14" rx="3"/><rect x="416" y="26" width="14" height="14" rx="3"/><rect x="438" y="26" width="14" height="14" rx="3"/><rect x="460" y="26" width="14" height="14" rx="3"/><rect x="482" y="26" width="14" height="14" rx="3"/>
+            <rect x="372" y="44" width="14" height="14" rx="3"/><rect x="416" y="44" width="14" height="14" rx="3"/><rect x="438" y="44" width="14" height="14" rx="3"/><rect x="482" y="44" width="14" height="14" rx="3"/>
+            <rect x="372" y="62" width="14" height="14" rx="3"/><rect x="394" y="62" width="14" height="14" rx="3"/><rect x="438" y="62" width="14" height="14" rx="3"/><rect x="460" y="62" width="14" height="14" rx="3"/>
+            <rect x="394" y="80" width="14" height="14" rx="3"/><rect x="416" y="80" width="14" height="14" rx="3"/><rect x="460" y="80" width="14" height="14" rx="3"/><rect x="482" y="80" width="14" height="14" rx="3"/>
+          </g>
+          <g fill="#ff8000">
+            <rect x="394" y="44" width="14" height="14" rx="3"/><rect x="460" y="44" width="14" height="14" rx="3"/>
+            <rect x="416" y="62" width="14" height="14" rx="3"/><rect x="482" y="62" width="14" height="14" rx="3"/>
+            <rect x="372" y="80" width="14" height="14" rx="3"/><rect x="438" y="80" width="14" height="14" rx="3"/>
+          </g>
+        </g>
+        <text x="435" y="112" text-anchor="middle" font-size="10.5" font-weight="700" fill="#b35400">通用动作码本（预训练，具身无关）</text>
+      </g>
+      <path d="M512,59 L556,59" stroke="#ff8000" stroke-width="2" fill="none" marker-end="url(#arO)"/>
+      <!-- decoder -->
+      <rect x="562" y="38" width="96" height="42" rx="8" fill="#1c1c1e"/>
+      <text x="610" y="63" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="800">Decoder</text>
+      <!-- urdf input from below -->
+      <g>
+        <rect x="540" y="96" width="140" height="20" rx="10" fill="#fff" stroke="#9a9a9e" stroke-dasharray="4 3"/>
+        <text x="610" y="110" text-anchor="middle" font-size="10.5" font-weight="700" fill="#55555a">目标具身 URDF / XML</text>
+        <path d="M610,96 L610,84" stroke="#9a9a9e" stroke-width="1.4" fill="none" marker-end="url(#ar)"/>
+      </g>
+      <!-- out arrows -->
+      <g stroke="#9a9a9e" stroke-width="1.4" fill="none">
+        <path d="M660,55 C700,50 706,31 744,31" marker-end="url(#ar)"/>
+        <path d="M660,59 C696,59 704,59 744,59" marker-end="url(#ar)"/>
+        <path d="M660,63 C700,68 706,87 744,87" marker-end="url(#ar)"/>
+      </g>
+      <!-- targets -->
+      <g font-size="11.5" font-weight="700" fill="#3a3a3e">
+        <rect x="750" y="20" width="140" height="22" rx="11" fill="#f2f2f4"/><text x="820" y="35" text-anchor="middle">人形 G1 / X2 …</text>
+        <rect x="750" y="48" width="140" height="22" rx="11" fill="#f2f2f4"/><text x="820" y="63" text-anchor="middle">任何新上传具身</text>
+        <rect x="750" y="76" width="140" height="22" rx="11" fill="#f2f2f4"/><text x="820" y="91" text-anchor="middle">四足 / 机械臂</text>
+      </g>
+      <!-- no-GMR note -->
+      <g>
+        <rect x="906" y="34" width="128" height="50" rx="9" fill="#fff"/>
+        <text x="970" y="52" text-anchor="middle" font-size="11" font-weight="900" fill="#ff8000">没有 GMR</text>
+        <text x="970" y="68" text-anchor="middle" font-size="10" fill="#55555a">没有任何参数化</text>
+        <text x="970" y="81" text-anchor="middle" font-size="10" fill="#55555a">重定向算法</text>
+      </g>
+    </svg>
+    <div class="stats">
+      <span class="chip">解码 0.2 ms / 帧</span>
+      <span class="chip">关节违规率 2% ± 0.7%</span>
+      <span class="chip dark">一次预训练，对所有具身生效</span>
+      <span class="chip dark">源具身任意：人 · 机器人 · 猫狗 · 机械臂</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= Equator + Rainbow ================= -->
+<div class="row" style="flex:1">
+  <div class="panel" style="flex:1.15; display:flex; flex-direction:column">
+    <h2><span class="num">2</span>Equator — 时序层 <span class="en">在潜空间预测码流，再交给 Greenwich 解码</span></h2>
+    <div class="eqline eq">
+      <span class="lbl">自回归（masked attn）</span>P(x<sub>i</sub>) = P(x<sub>i</sub> | x<sub>1</sub> … x<sub>i−1</sub>)&nbsp;&nbsp;<span style="color:#8a8a8e">— 只看过去，一步步猜</span>
+    </div>
+    <div class="eqline eq">
+      <span class="lbl"><b style="color:#ff8000">桥（Markov Bridge）</b></span>P(x<sub>i+1</sub> … x<sub>final−1</sub> <span class="hl">| x<sub>i</sub>, x<sub>final</sub></span>)&nbsp;&nbsp;<span style="color:#8a8a8e">— 两端钉死，中间自己长出来</span>
+    </div>
+    <svg viewBox="0 0 470 170" width="100%" style="flex:1; max-height:220px">
+      <!-- freedom envelope -->
+      <path d="M40,92 C120,22 350,22 430,92 C350,162 120,162 40,92 Z" fill="#fff3e6" opacity="0.8"/>
+      <!-- candidate paths -->
+      <g fill="none" stroke="#c9c9cd" stroke-width="1.8">
+        <path d="M40,92 C140,32 330,44 430,92"/>
+        <path d="M40,92 C150,152 320,140 430,92"/>
+        <path d="M40,92 C160,54 300,128 430,92"/>
+      </g>
+      <!-- chosen path -->
+      <path d="M40,92 C150,118 310,48 430,92" fill="none" stroke="#ff8000" stroke-width="3.5"/>
+      <!-- pinned endpoints -->
+      <g>
+        <circle cx="40" cy="92" r="7" fill="#1c1c1e"/>
+        <circle cx="430" cy="92" r="7" fill="#1c1c1e"/>
+        <text x="46" y="120" text-anchor="middle" font-size="11.5" font-weight="800" fill="#1c1c1e">当前姿态 x<tspan font-size="8" dy="2">i</tspan></text>
+        <text x="424" y="120" text-anchor="middle" font-size="11.5" font-weight="800" fill="#1c1c1e">目标姿态 x<tspan font-size="8" dy="2">final</tspan></text>
+        <text x="235" y="14" text-anchor="middle" font-size="10.5" fill="#b35400" font-weight="700">自由度中间最大、两端为零 —— 所以两端永远命中</text>
+      </g>
+    </svg>
+    <div class="modes">
+      <div class="mode"><b>① 脑补</b>只给当前 + 目标，中间过程模型自己长</div>
+      <div class="mode"><b>② 过渡</b>给两段动作，衔接处自动平滑</div>
+      <div class="mode"><b>③ 插入</b>一段动作中插入另一段，自动学会来回切换</div>
+    </div>
+  </div>
+
+  <div class="panel" style="flex:1; display:flex; flex-direction:column">
+    <h2><span class="num">3</span>彩虹桥 — 跨任务换乘 <span class="en">两座桥焊在同一个码上</span></h2>
+    <div class="eqline eq">
+      任务 y 同理：P(y<sub>i+1</sub> … y<sub>final−1</sub> | y<sub>i</sub>, y<sub>final</sub>)，令 <span class="hl">x<sub>bridge</sub> = y<sub>bridge</sub> = z<sub>rainbow</sub></span>
+    </div>
+    <svg viewBox="0 0 470 148" width="100%" style="flex:1; max-height:190px"><g transform="translate(0,16)">
+      <defs>
+        <marker id="arB" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+          <path d="M0,1 L8,5 L0,9" fill="none" stroke="#ff8000" stroke-width="2"/>
+        </marker>
+      </defs>
+      <!-- bridge x -->
+      <path d="M50,92 C130,44 200,40 235,40" fill="none" stroke="#9a9a9e" stroke-width="2.2"/>
+      <path d="M235,40 C300,40 380,66 428,92" fill="none" stroke="#c9c9cd" stroke-width="2.2" stroke-dasharray="5 4"/>
+      <!-- bridge y -->
+      <path d="M50,24 C130,40 200,40 235,40" fill="none" stroke="#c9c9cd" stroke-width="2.2" stroke-dasharray="5 4"/>
+      <path d="M235,40 C300,40 380,36 428,24" fill="none" stroke="#ff8000" stroke-width="3" marker-end="url(#arB)"/>
+      <!-- z node -->
+      <circle cx="235" cy="40" r="9" fill="#fff" stroke="#ff8000" stroke-width="3"/>
+      <text x="235" y="22" text-anchor="middle" font-size="11.5" font-weight="900" fill="#ff8000">z<tspan font-size="8.5" dy="2">rainbow</tspan></text>
+      <!-- endpoints -->
+      <g font-size="11" font-weight="800">
+        <circle cx="50" cy="92" r="5.5" fill="#1c1c1e"/><text x="50" y="110" text-anchor="middle" fill="#1c1c1e">x<tspan font-size="8" dy="2">i</tspan> 走</text>
+        <circle cx="428" cy="92" r="5.5" fill="#c9c9cd"/><text x="424" y="110" text-anchor="middle" fill="#a0a0a5">x<tspan font-size="8" dy="2">final</tspan></text>
+        <circle cx="50" cy="24" r="5.5" fill="#c9c9cd"/><text x="52" y="12" text-anchor="middle" fill="#a0a0a5">y<tspan font-size="8" dy="2">i</tspan></text>
+        <circle cx="428" cy="24" r="5.5" fill="#ff8000"/><text x="422" y="12" text-anchor="middle" fill="#b35400">y<tspan font-size="8" dy="2">final</tspan> 跑</text>
+      </g>
+      <text x="235" y="76" text-anchor="middle" font-size="10.5" font-weight="700" fill="#55555a">走「走路」的桥上桥，在 z 换乘，走「跑步」的桥下桥</text>
+    </g></svg>
+    <div class="sub" style="margin-top:4px">
+      两个任务只要在码流里<b>共享一个 token</b>，就能互相接通。这就是从走 → 跑 → 跳 → 蹲逐步扩张的机制基础：
+      已掌握动作的<b>码邻居</b>就是下一步能学的动作 —— 地平线算法（geodecity）沿着它一格格往外推。
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>AlphaMotion · Greenwich + Equator · 内部科普</span>
+  <span>空间：解码到任意具身，无重定向 ｜ 时序：桥式生成，两端必命中 ｜ 跨任务：共享码换乘</span>
+</footer>
+
+</div>
+
+<!-- ============================================================ PAGE 2 -->
+<div class="page">
+
+<header>
+  <h1>为什么潜空间<span class="dot">·</span>可以搜路径</h1>
+  <span class="tag">FSQ 格点 × 拉普拉斯妖 × 地平线（geodecity）— 第 2/2 页</span>
+</header>
+<div class="essence">
+  FSQ 把动作流形变成<b>有限格点图</b><span class="sep">→</span>拉普拉斯妖学会每条边的概率<span class="sep">→</span>生成、换乘、恢复全都变成<b>图上搜路径</b>
+</div>
+
+<div class="row" style="flex:1">
+  <!-- ============ Panel 4: FSQ lattice ============ -->
+  <div class="panel" style="flex:1; display:flex; flex-direction:column">
+    <h2><span class="num">4</span>FSQ 格点 = 有限图 <span class="en">连通性可判定，桥不靠运气</span></h2>
+    <div class="eqline eq">
+      z ∈ {1…L}<sup>D</sup>（每维只有几档的高维格子）&nbsp;&nbsp;<span style="color:#8a8a8e">状态总数有限 ⇒ 潜空间是一张图，不是未知的连续地带</span>
+    </div>
+    <svg viewBox="0 0 470 150" width="100%" style="flex:1; max-height:180px">
+      <!-- lattice: cols x=30..430 step 50, rows y=22..124 step 34 -->
+      <!-- edges between visited nodes (gray) -->
+      <g stroke="#dcdce0" stroke-width="1.6">
+        <line x1="80" y1="22" x2="130" y2="22"/><line x1="130" y1="22" x2="130" y2="56"/>
+        <line x1="230" y1="22" x2="280" y2="22"/><line x1="280" y1="22" x2="280" y2="56"/>
+        <line x1="330" y1="56" x2="330" y2="90"/><line x1="80" y1="90" x2="80" y2="124"/>
+        <line x1="130" y1="124" x2="180" y2="124"/><line x1="230" y1="56" x2="230" y2="22"/>
+        <line x1="380" y1="56" x2="430" y2="56"/><line x1="330" y1="56" x2="380" y2="56"/>
+      </g>
+      <!-- orange path z_a -> z_b (lattice moves only) -->
+      <polyline points="30,90 80,90 80,56 130,56 180,56 180,90 230,90 280,90 280,124 330,124 380,124 380,90 430,90"
+                fill="none" stroke="#ff8000" stroke-width="3" stroke-linejoin="round"/>
+      <!-- unvisited nodes -->
+      <g fill="#ececef">
+        <circle cx="30" cy="22" r="4"/><circle cx="180" cy="22" r="4"/><circle cx="330" cy="22" r="4"/><circle cx="380" cy="22" r="4"/><circle cx="430" cy="22" r="4"/>
+        <circle cx="30" cy="56" r="4"/><circle cx="430" cy="124" r="4"/>
+        <circle cx="130" cy="90" r="4"/><circle cx="30" cy="124" r="4"/><circle cx="230" cy="124" r="4"/>
+      </g>
+      <!-- visited nodes -->
+      <g fill="#8a8a8e">
+        <circle cx="80" cy="22" r="4.5"/><circle cx="130" cy="22" r="4.5"/><circle cx="230" cy="22" r="4.5"/><circle cx="280" cy="22" r="4.5"/>
+        <circle cx="130" cy="56" r="4.5"/><circle cx="230" cy="56" r="4.5"/><circle cx="280" cy="56" r="4.5"/><circle cx="330" cy="56" r="4.5"/><circle cx="380" cy="56" r="4.5"/><circle cx="430" cy="56" r="4.5"/>
+        <circle cx="80" cy="90" r="4.5"/><circle cx="180" cy="90" r="4.5"/><circle cx="330" cy="90" r="4.5"/>
+        <circle cx="80" cy="124" r="4.5"/><circle cx="130" cy="124" r="4.5"/><circle cx="180" cy="124" r="4.5"/><circle cx="380" cy="124" r="4.5"/>
+      </g>
+      <!-- path nodes on top -->
+      <g fill="#ffb469">
+        <circle cx="80" cy="56" r="4.5"/><circle cx="130" cy="56" r="4.5"/><circle cx="180" cy="56" r="4.5"/><circle cx="180" cy="90" r="4.5"/>
+        <circle cx="230" cy="90" r="4.5"/><circle cx="280" cy="90" r="4.5"/><circle cx="280" cy="124" r="4.5"/><circle cx="330" cy="124" r="4.5"/><circle cx="380" cy="90" r="4.5"/>
+      </g>
+      <circle cx="30" cy="90" r="6.5" fill="#1c1c1e"/>
+      <circle cx="430" cy="90" r="6.5" fill="#fff" stroke="#ff8000" stroke-width="3"/>
+      <text x="30" y="108" text-anchor="middle" font-size="11" font-weight="800" fill="#1c1c1e">z<tspan font-size="8" dy="2">a</tspan></text>
+      <text x="430" y="108" text-anchor="middle" font-size="11" font-weight="800" fill="#b35400">z<tspan font-size="8" dy="2">b</tspan></text>
+      <text x="235" y="146" text-anchor="middle" font-size="10.5" font-weight="700" fill="#55555a">数据走过的格点和边构成一张图 —— 可桥接 ⇔ 两点在同一连通分量</text>
+    </svg>
+    <div class="sub">
+      连续潜空间里"两个状态之间有没有路"是玄学；格点上它是<b>可以查表回答的事实</b>。
+      桥的成功率不靠祈祷，靠图的连通性——这就是"潜空间桥接连通性"。
+    </div>
+  </div>
+
+  <!-- ============ Panel 5: Laplace demon + temperature ============ -->
+  <div class="panel" style="flex:1; display:flex; flex-direction:column">
+    <h2><span class="num">5</span>拉普拉斯妖 × 温度 <span class="en">妖 = 学到的转移核；温度 = 探索的胆量</span></h2>
+    <div class="eqline eq">
+      妖：P(z<sub>t+1</sub> | z<sub>t</sub>)&nbsp;&nbsp;温度采样：P<sub>τ</sub>(z′|z) ∝ P(z′|z)<sup>1/τ</sup>&nbsp;&nbsp;<span style="color:#8a8a8e">τ 大 = 探索稀疏边，τ→0 = 只走主干道</span>
+    </div>
+    <svg viewBox="0 0 470 108" width="100%" style="max-height:128px">
+      <defs>
+        <marker id="arG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0,1 L8,5 L0,9" fill="none" stroke="#b9b9bd" stroke-width="1.6"/>
+        </marker>
+        <marker id="arO2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0,1 L8,5 L0,9" fill="none" stroke="#ff8000" stroke-width="2"/>
+        </marker>
+      </defs>
+      <!-- high temperature: many faint edges -->
+      <g>
+        <circle cx="110" cy="52" r="8" fill="#1c1c1e"/>
+        <g stroke="#c9c9cd" fill="none">
+          <path d="M118,46 L186,18" stroke-width="1.2" marker-end="url(#arG)"/>
+          <path d="M120,50 L190,38" stroke-width="2.2" marker-end="url(#arG)"/>
+          <path d="M120,55 L190,62" stroke-width="3.2" marker-end="url(#arG)"/>
+          <path d="M118,59 L186,84" stroke-width="1.2" marker-end="url(#arG)"/>
+          <path d="M114,60 L150,96" stroke-width="0.9" marker-end="url(#arG)"/>
+        </g>
+        <text x="110" y="24" text-anchor="middle" font-size="10.5" font-weight="800" fill="#55555a">τ 大：做梦</text>
+        <text x="110" y="98" text-anchor="middle" font-size="9.5" fill="#8a8a8e">冷门边也走 → 发现新连通</text>
+      </g>
+      <!-- tau arrow -->
+      <text x="240" y="58" text-anchor="middle" font-size="15" font-weight="900" fill="#ff8000">τ ↓</text>
+      <!-- low temperature: one bold edge -->
+      <g>
+        <circle cx="330" cy="52" r="8" fill="#1c1c1e"/>
+        <g stroke="#ececef" fill="none">
+          <path d="M338,46 L406,18" stroke-width="1"/>
+          <path d="M338,59 L406,84" stroke-width="1"/>
+        </g>
+        <path d="M340,53 L410,58" stroke="#ff8000" stroke-width="3.5" fill="none" marker-end="url(#arO2)"/>
+        <text x="330" y="24" text-anchor="middle" font-size="10.5" font-weight="800" fill="#55555a">τ 小：走路</text>
+        <text x="345" y="98" text-anchor="middle" font-size="9.5" fill="#8a8a8e">只走验证过的主干道</text>
+      </g>
+    </svg>
+    <div class="modes">
+      <div class="mode hot"><b>① 高温做梦</b>妖用大 τ 采样候选码流（会有幻觉）</div>
+      <div class="mode hot"><b>② 物理门 + 真考</b>仿真里筛：滑步 / 穿地 / 跳变 / 失衡全刷掉</div>
+      <div class="mode hot"><b>③ 活下来的入池</b>妖在新数据上再训练，τ 逐步下调</div>
+    </div>
+    <div class="sub">
+      这就是"温度下采样学习"：<b>做梦 → 筛选 → 长记性</b>的闭环。妖不是天生全知，是一轮轮把幻觉换成经验。
+    </div>
+  </div>
+</div>
+
+<div class="row" style="flex:1">
+  <!-- ============ Panel 6: geodecity ============ -->
+  <div class="panel" style="flex:1; display:flex; flex-direction:column">
+    <h2><span class="num">6</span>地平线算法 geodecity <span class="en">掌握集沿邻居一圈圈外扩，永远追不上地平线</span></h2>
+    <div class="eqline eq">
+      M<sub>k+1</sub> = M<sub>k</sub> ∪ { w ∈ N(M<sub>k</sub>) : 真考(π<sub>k</sub>, w) ≥ τ }&nbsp;&nbsp;<span style="color:#8a8a8e">N = 码重叠的邻居；π 同步再训练，一个 generalist</span>
+    </div>
+    <svg viewBox="0 0 470 128" width="100%" style="flex:1; max-height:160px">
+      <!-- expansion rings -->
+      <circle cx="120" cy="66" r="26" fill="#ff8000" opacity="0.16"/>
+      <circle cx="120" cy="66" r="52" fill="#ff8000" opacity="0.08"/>
+      <circle cx="120" cy="66" r="26" fill="none" stroke="#ffb469" stroke-width="1.4"/>
+      <circle cx="120" cy="66" r="52" fill="none" stroke="#ffd9b0" stroke-width="1.4"/>
+      <!-- seed + mastered -->
+      <circle cx="120" cy="66" r="7" fill="#1c1c1e"/>
+      <text x="120" y="49" text-anchor="middle" font-size="10" font-weight="800" fill="#1c1c1e">种子</text>
+      <g fill="#ff8000">
+        <circle cx="98" cy="84" r="4.5"/><circle cx="142" cy="50" r="4.5"/><circle cx="138" cy="84" r="4.5"/>
+      </g>
+      <g fill="#ffb469">
+        <circle cx="76" cy="52" r="4.5"/><circle cx="164" cy="70" r="4.5"/><circle cx="120" cy="112" r="4.5"/><circle cx="102" cy="22" r="4.5"/>
+      </g>
+      <!-- outside nodes -->
+      <g fill="#dcdce0">
+        <circle cx="220" cy="30" r="4.5"/><circle cx="238" cy="80" r="4.5"/><circle cx="210" cy="108" r="4.5"/>
+      </g>
+      <!-- ring labels -->
+      <text x="196" y="52" font-size="9.5" fill="#b35400" font-weight="700">第 k 圈 = 第 k 轮课程</text>
+      <!-- horizon -->
+      <path d="M400,4 C376,44 376,88 400,124" fill="none" stroke="#8a8a8e" stroke-width="1.8" stroke-dasharray="6 5"/>
+      <text x="418" y="62" text-anchor="middle" font-size="11" font-weight="900" fill="#55555a">地平线</text>
+      <text x="418" y="76" text-anchor="middle" font-size="9" fill="#8a8a8e">永远在前面</text>
+      <!-- boat arrow -->
+      <path d="M258,66 L356,66" stroke="#ff8000" stroke-width="2.4" fill="none" marker-end="url(#arO2)"/>
+      <text x="306" y="58" text-anchor="middle" font-size="9.5" fill="#b35400" font-weight="700">船一直往前开</text>
+      <!-- homecoming + rainbow glyphs -->
+      <g>
+        <path d="M98,84 C 82,100 114,108 116,90" fill="none" stroke="#8a8a8e" stroke-width="1.6" marker-end="url(#arG)"/>
+        <text x="86" y="118" font-size="9" fill="#8a8a8e">回家=环路 c→c</text>
+        <path d="M142,50 C 176,28 200,26 220,30" fill="none" stroke="#8a8a8e" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#arG)"/>
+        <text x="222" y="18" font-size="9" fill="#8a8a8e">彩虹=跨簇边 c→c′</text>
+      </g>
+    </svg>
+    <div class="sub">
+      两种扩张招式都是第 1 页的桥：<b>回家</b>（出门绕一圈回起点，安全试胆）、<b>彩虹</b>（借共享码跨进新家族）。
+      考试是<b>真考</b>——policy 从头执行整窗、量真实位移，不用任何滑动平均估计。
+    </div>
+  </div>
+
+  <!-- ============ Panel 7: payoff ============ -->
+  <div class="panel" style="flex:1; display:flex; flex-direction:column">
+    <h2><span class="num o">★</span>路径搜索解锁什么 <span class="en">动作生成 → 动作导航</span></h2>
+    <div class="modes" style="flex-direction:column; gap:5px; flex:1; margin-top:5px">
+      <div class="mode"><b>① 零样本长程编排</b>给起点和终点，图上搜一条路——从没排练过的动作串（走→跳过障碍→翻滚→起身）一次生成，不需要该组合出现在数据里。</div>
+      <div class="mode"><b>② 任意时刻在线换乘</b>执行到一半改目标：当前码就是图上一个点，从这里重搜路径，动作不断、不跳帧。游戏 NPC / 遥操作接管 / 突发避障同一套机制。</div>
+      <div class="mode"><b>③ 摔倒自恢复</b>摔倒后的姿态也是图上一个点。恢复 = 搜一条从"倒地"回到"任意动作"的路——起身不是专门训的技能，是导航的副产品。</div>
+      <div class="mode"><b>④ 天生跨具身</b>路径在潜空间搜完，最后一步才解码到某台机器人：同一条路，人形 / 四足 / 机械臂全线通用，规划一次到处执行。</div>
+      <div class="mode"><b>⑤ 可控、可审计</b>路径是显式的码序列：可以避开危险码、卡时间预算（retiming）、事后逐码回放解释"为什么这么动"——黑盒生成做不到的。</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>AlphaMotion · Greenwich + Equator · 内部科普</span>
+  <span>格点 = 有限图 ｜ 妖 = 边概率 ｜ 温度 = 探索胆量 ｜ 地平线 = 课程 ｜ 生成 = 导航</span>
+</footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+====================================================================================================
+BRIDGE EXAM — A ... GAP(invented, interp-tokens) ... B. No GT in the gap.
+junction snap ~1.0 = join moves like its surroundings; arrival err = lands on B?
+baseline row = straight-line interp (0 bits) — the floor any model must beat.
+====================================================================================================
+
+-- GAP = 30 frames (1s invented)  n=48 --
+metric                          interp        MSBA        JEPA
+junction snap A->gap             0.000       3.789       2.407
+junction snap gap->B             0.000       3.761       3.231
+jerk ratio (gap/AB)              0.000       2.058       2.542
+bridge energy ratio              0.462       0.590       0.580
+arrival err [cm]                 0.000       2.134       1.696
+
+-- GAP = 60 frames (2s invented)  n=48 --
+metric                          interp        MSBA        JEPA
+junction snap A->gap             0.000       3.792       1.941
+junction snap gap->B             0.000       3.747       3.092
+jerk ratio (gap/AB)              0.000       0.997       0.780
+bridge energy ratio              0.227       0.307       0.284
+arrival err [cm]                 0.000       2.109       1.634

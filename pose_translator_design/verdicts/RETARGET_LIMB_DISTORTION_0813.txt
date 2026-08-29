@@ -1,0 +1,43 @@
+DOES RETARGETING DISTORT ARMS MORE THAN LEGS? (0813)
+Measured on the paired labels only — no model anywhere. Angle between the
+human's root->limb-end direction and the robot's, using the codebase's own
+KEY_PATTERNS semantic joints (root/wrist/ankle), which are the correspondences
+the whole cross-embodiment design already relies on. 24 windows x 60 frames.
+
+robot            l_wrist  r_wrist  l_ankle  r_ankle | wrist/ankle
+unitree_h1          60.0     67.8     24.6     26.7 |    2.49
+booster_t1          27.8     53.3     27.5     28.8 |    1.44
+fourier_gr3         26.0     35.1     26.4     28.7 |    1.11
+hightorque_hi       31.6     59.3     25.0     28.8 |    1.69
+ALL                 43.4 (wrist)      26.4 (ankle)  |    1.64
+
+ANSWER: YES, and by a clear margin. Retargeting moves the hand direction 43
+degrees away from the human's on average, and the foot direction 26. Arms are
+distorted 1.64x more than legs, on every robot tested (1.11 to 2.49).
+Ankles are remarkably consistent across bodies (24.6-28.8, a 17% spread) while
+wrists vary hugely (26.0-67.8, a 2.6x spread) — the legs are being solved the
+same way everywhere, the arms are not.
+ASYMMETRY WORTH NOTING: the RIGHT wrist is worse than the left on all four
+bodies (67.8 vs 60.0, 53.3 vs 27.8, 35.1 vs 26.0, 59.3 vs 31.6). A left/right
+asymmetry in a geometry-driven transform is not something geometry explains;
+it points at the solver or at a handedness bias in the source data.
+
+WHAT THIS DOES AND DOES NOT SETTLE
+ * It settles lloyd's summary: the labels do distort arms most. Combined with
+   the readout probe (codes -> human wrist 12 cm, codes -> paired robot wrist
+   30 cm), the arm ceiling is a label property, and the four latent-side
+   eliminations (decoder capacity, decoder training, loss wiring, code budget)
+   are consistent with that.
+ * It does NOT establish that the distortion is ERROR. A robot's shoulder is
+   not a human's, so some direction change is required, not wrong. What the
+   numbers do show is that the change is (a) much larger for arms than legs,
+   (b) far more variable across bodies for arms, and (c) left/right asymmetric —
+   and (b) and (c) are hard to explain by geometry alone.
+
+RETRACTION ATTACHED: the earlier SEW decomposition (SEW_DECOMPOSE_0813) reported
+label-vs-human arm direction errors of 36-49 deg using shoulder/elbow/wrist
+triples picked by a keyword-plus-depth heuristic. Printing the picks showed they
+were wrong (human arm resolved as [Elbow, Wrist, Shoulder]; h1's leg as two hip
+joints with the knee missing). Those numbers are withdrawn. The roll-vs-direction
+split in that file is withdrawn with them. This file replaces it, using only
+correspondences the codebase itself defines.

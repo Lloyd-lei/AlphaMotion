@@ -1,0 +1,15 @@
+================================================================================================
+M4 — SE(3) CONSTRAINT INTERFACE + constraint-density convergence
+================================================================================================
+constraint_err = did the output hit the COMMANDED track (GT-free, the real
+  product metric). free_joints_vs_GT = the untrustworthy number, printed
+  because the density trend is what matters, not its absolute value.
+------------------------------------------------------------------------------------------------
+dance|L_Wrist|+1 mid                       {"cells_given": 3, "pinned_joint_UNcommanded_frames_cm": 24.15, "model_alone_at_those_cells_cm": 8.05, "other_joints_vs_GT_cm": 16.83, "energy_ratio(GT-free)": 0.56}
+dance|L_Wrist|+3 mid                       {"cells_given": 5, "pinned_joint_UNcommanded_frames_cm": 21.45, "model_alone_at_those_cells_cm": 15.22, "other_joints_vs_GT_cm": 16.74, "energy_ratio(GT-free)": 0.611}
+dance|L_Wrist|endpoints                    {"cells_given": 2, "pinned_joint_UNcommanded_frames_cm": 25.6, "model_alone_at_those_cells_cm": 2.08, "other_joints_vs_GT_cm": 17.0, "energy_ratio(GT-free)": 0.544}
+dance|L_Wrist|full track                   {"cells_given": 60, "pinned_joint_UNcommanded_frames_cm": 0.0, "model_alone_at_those_cells_cm": 19.59, "other_joints_vs_GT_cm": 16.62, "energy_ratio(GT-free)": 0.716}
+kick|R_Ankle|+1 mid                        {"cells_given": 3, "pinned_joint_UNcommanded_frames_cm": 29.77, "model_alone_at_those_cells_cm": 12.44, "other_joints_vs_GT_cm": 9.75, "energy_ratio(GT-free)": 0.446}
+kick|R_Ankle|+3 mid                        {"cells_given": 5, "pinned_joint_UNcommanded_frames_cm": 22.2, "model_alone_at_those_cells_cm": 15.72, "other_joints_vs_GT_cm": 9.3, "energy_ratio(GT-free)": 0.57}
+kick|R_Ankle|endpoints                     {"cells_given": 2, "pinned_joint_UNcommanded_frames_cm": 31.56, "model_alone_at_those_cells_cm": 1.56, "other_joints_vs_GT_cm": 9.98, "energy_ratio(GT-free)": 0.385}
+kick|R_Ankle|full track                    {"cells_given": 60, "pinned_joint_UNcommanded_frames_cm": 0.0, "model_alone_at_those_cells_cm": 15.18, "other_joints_vs_GT_cm": 8.86, "energy_ratio(GT-free)": 0.817}

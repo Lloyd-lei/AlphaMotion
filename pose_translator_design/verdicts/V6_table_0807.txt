@@ -1,0 +1,57 @@
+====================================================================================================
+N3 TEMPORAL VERDICT — register-AR / xbody / root_vel vs V5c (control), 2026-08-07 06:53
+controls: V5c recipe (warp aug linear + Riemann both + cdrop .15/.05 + time-detach + no pair-NCE)
+====================================================================================================
+metric                                               V5c_0806     N3a_regAR_0807        V6_mae_0807      V6_regar_0807  V6_mae_resid_0807
+-- (1) 2c warp exam [gate >= 0.9; oracle 0.9606 / control 0.0176] --
+  warp invariance (frac)                                0.995              0.987              0.990              0.997              0.954
+  control (unrelated)                                   0.022              0.014              0.048              0.074              0.046
+-- (2) content / error [gates: share >= 0.6, key cm <= 7.5] --
+  content share                                         0.527              0.601              0.470              0.117              0.166
+  registers buy [cm]                                    1.410              1.943              1.858              3.518              7.030
+  key pos prefix8 [cm]                                   7.66               7.40               7.63               7.71               7.61
+  key rot prefix8 [deg]                                  13.5               12.9               12.9               13.1               12.7
+  energy ratio prefix8                                  0.805              0.822              0.816              0.807              0.813
+  prefix1 key pos [cm]                                   7.66               7.43               7.63               7.73               7.62
+  prefix2 key pos [cm]                                   7.66               7.41               7.63               7.72               7.62
+  prefix4 key pos [cm]                                   7.66               7.40               7.63               7.72               7.61
+  tokens shuffled [cm]                                   8.40               8.57               8.50               8.12               8.77
+  tokens zeroed [cm]                                     9.07               9.34               9.49              11.23              14.64
+  straight line [cm]                                     9.00               9.00               9.00               9.00               9.00
+-- (3) motion energy per family (energy ratio; root_vel arms add vel-mag ratio / fwd-speed corr) --
+  walk                                                  0.828              0.851              0.841              0.829              0.839
+  run                                                   0.702              0.728              0.715              0.692              0.722
+  jacks                                                 0.654              0.714              0.648              0.630              0.628
+  dance                                                 0.542              0.562              0.571              0.552              0.556
+  kick                                                  0.574              0.650              0.572              0.560              0.538
+  punch                                                 0.661              0.540              0.608              0.481              0.689
+  walk vel-mag ratio                                        -                  -                  -                  -                  -
+  run vel-mag ratio                                         -                  -                  -                  -                  -
+  jacks vel-mag ratio                                       -                  -                  -                  -                  -
+  dance vel-mag ratio                                       -                  -                  -                  -                  -
+  kick vel-mag ratio                                        -                  -                  -                  -                  -
+  punch vel-mag ratio                                       -                  -                  -                  -                  -
+  walk fwd-speed corr                                       -                  -                  -                  -                  -
+  run fwd-speed corr                                        -                  -                  -                  -                  -
+  jacks fwd-speed corr                                      -                  -                  -                  -                  -
+  dance fwd-speed corr                                      -                  -                  -                  -                  -
+  kick fwd-speed corr                                       -                  -                  -                  -                  -
+  punch fwd-speed corr                                      -                  -                  -                  -                  -
+-- (4) kNN body leakage [P1 ref 0.141; root_vel arms: 5 bodies, chance 0.20] --
+  knn body acc                                          0.119              0.097              0.083              0.099              0.067
+  chance                                                0.167              0.167              0.167              0.167              0.167
+-- (5) GT-free physeval, decoded G1, median over clips (walk1_subject1,walk3_subject1,run1_subject2,dance1_subject1) --
+   [reference floor GT_retarget: slip50=0.017  V5c@PHYSEVAL_0806 was 0.751]
+  foot slip p50 [m/s]                                   0.559              0.546              0.578              0.545              0.554
+  foot slip p95 [m/s]                                   1.020              0.901              0.946              1.246              0.978
+  torque over limit [%]                                 0.000              0.014              0.000              0.029              0.000
+  worst torque ratio [x]                                0.886              0.989              0.811              0.956              0.834
+  jerk p95 [rad/s^3]                                 3226.920           2760.762           3196.451           2888.387           3341.964
+
+VERDICT vs gates (2c >= 0.90, content >= 0.6, key <= 7.5 cm):
+  V5c_0806         2c 0.995 PASS | content 0.527 FAIL | key 7.66 FAIL
+  N3a_regAR_0807   2c 0.987 PASS | content 0.601 PASS | key 7.40 PASS
+  V6_mae_0807      2c 0.990 PASS | content 0.470 FAIL | key 7.63 FAIL
+  V6_regar_0807    2c 0.997 PASS | content 0.117 FAIL | key 7.71 FAIL
+  V6_mae_resid_0807 2c 0.954 PASS | content 0.166 FAIL | key 7.61 FAIL
+====================================================================================================

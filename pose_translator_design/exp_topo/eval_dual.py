@@ -30,7 +30,11 @@ def main():
     print(f"run={args.run}\ncache={cache}\ncfg={ {k: cfg[k] for k in sorted(cfg)} }")
 
     torch.manual_seed(0)
-    data, names, N = load_paired_data(cache, device)
+    # The run's config decides the text tower: SigLIP is 768-wide, Qwen3 is 1024.
+    # Without this, every Qwen-trained run died with
+    # "mat1 and mat2 shapes cannot be multiplied (110000x768 and 1024x256)".
+    data, names, N = load_paired_data(cache, device,
+                                      sem_encoder=cfg.get("sem_encoder", "siglip"))
     val_idx, tr_idx = split_indices(N)          # MUST precede model construction
 
     model = build_model(cfg, device)

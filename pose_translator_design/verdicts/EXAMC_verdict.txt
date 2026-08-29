@@ -1,0 +1,39 @@
+====================================================================================================
+EXAM C — generative-capability exam (visual gate FIRST; these numbers are the second gate)
+====================================================================================================
+m1 dance | V7_maskfsq                        {"key_pos_cm": 12.06, "energy_vs_gt": 0.86}
+m1 dance | V8_arclen                         {"key_pos_cm": 12.64, "energy_vs_gt": 0.835}
+m1 jacks | V7_maskfsq                        {"key_pos_cm": 0.45, "energy_vs_gt": 0.979}
+m1 jacks | V8_arclen                         {"key_pos_cm": 0.8, "energy_vs_gt": 1.049}
+m1 kick | V7_maskfsq                         {"key_pos_cm": 8.2, "energy_vs_gt": 0.92}
+m1 kick | V8_arclen                          {"key_pos_cm": 8.39, "energy_vs_gt": 0.983}
+m1 run | V7_maskfsq                          {"key_pos_cm": 10.57, "energy_vs_gt": 0.9}
+m1 run | V8_arclen                           {"key_pos_cm": 10.86, "energy_vs_gt": 0.943}
+m1 walk | V7_maskfsq                         {"key_pos_cm": 3.51, "energy_vs_gt": 1.011}
+m1 walk | V8_arclen                          {"key_pos_cm": 4.13, "energy_vs_gt": 0.896}
+m2 jacks | V7_maskfsq                        {"energy_vs_gt": 0.492, "ood": false}
+m2 jacks | V8_arclen                         {"energy_vs_gt": 0.236, "ood": false}
+m2 kick | V7_maskfsq                         {"energy_vs_gt": 1.24, "ood": false}
+m2 kick | V8_arclen                          {"energy_vs_gt": 0.628, "ood": false}
+m2b rot-only jacks | V7_maskfsq              {"energy_vs_gt": 0.69, "ood": true}
+m2b rot-only jacks | V8_arclen               {"energy_vs_gt": 0.143, "ood": true}
+m2b rot-only kick | V7_maskfsq               {"energy_vs_gt": 2.032, "ood": true}
+m2b rot-only kick | V8_arclen                {"energy_vs_gt": 0.404, "ood": true}
+m3 kick bwd | V7_maskfsq                     {"key_pos_cm": 10.04, "energy_vs_gt": 0.797, "ood": true}
+m3 kick bwd | V8_arclen                      {"key_pos_cm": 9.85, "energy_vs_gt": 0.743, "ood": true}
+m3 kick fwd | V7_maskfsq                     {"key_pos_cm": 10.73, "energy_vs_gt": 0.909, "ood": true}
+m3 kick fwd | V8_arclen                      {"key_pos_cm": 13.07, "energy_vs_gt": 0.866, "ood": true}
+m3 run bwd | V7_maskfsq                      {"key_pos_cm": 21.42, "energy_vs_gt": 0.777, "ood": true}
+m3 run bwd | V8_arclen                       {"key_pos_cm": 25.17, "energy_vs_gt": 0.774, "ood": true}
+m3 run fwd | V7_maskfsq                      {"key_pos_cm": 36.52, "energy_vs_gt": 0.716, "ood": true}
+m3 run fwd | V8_arclen                       {"key_pos_cm": 32.75, "energy_vs_gt": 0.613, "ood": true}
+m5 jacks | V7_maskfsq                        {"sketch_top5_fam": ["walk", "other", "walk", "walk", "dance"], "sketch_hit": false, "GTctrl_top5_fam": ["jacks", "jacks", "jacks", "jacks", "jacks"], "GTctrl_hit": true, "hamming_sketch/GT": [0.593, 0.259]}
+m5 jacks | V8_arclen                         {"sketch_top5_fam": ["other", "dance", "jacks", "dance", "jacks"], "sketch_hit": true, "GTctrl_top5_fam": ["jacks", "jacks", "jacks", "jacks", "other"], "GTctrl_hit": true, "hamming_sketch/GT": [0.438, 0.25]}
+m5 kick | V7_maskfsq                         {"sketch_top5_fam": ["kick", "kick", "other", "other", "kick"], "sketch_hit": true, "GTctrl_top5_fam": ["kick", "kick", "kick", "kick", "kick"], "GTctrl_hit": true, "hamming_sketch/GT": [0.593, 0.0]}
+m5 kick | V8_arclen                          {"sketch_top5_fam": ["other", "other", "other", "walk", "walk"], "sketch_hit": false, "GTctrl_top5_fam": ["kick", "kick", "kick", "kick", "kick"], "GTctrl_hit": true, "hamming_sketch/GT": [0.521, 0.0]}
+m5 walk | V7_maskfsq                         {"sketch_top5_fam": ["other", "other", "kick", "kick", "run"], "sketch_hit": false, "GTctrl_top5_fam": ["other", "run", "other", "kick", "walk"], "GTctrl_hit": false, "hamming_sketch/GT": [0.611, 0.593]}
+m5 walk | V8_arclen                          {"sketch_top5_fam": ["jacks", "jacks", "dance", "jacks", "walk"], "sketch_hit": false, "GTctrl_top5_fam": ["jacks", "jacks", "jacks", "jacks", "jacks"], "GTctrl_hit": false, "hamming_sketch/GT": [0.479, 0.521]}
+m6 kick Tsweep | V7_maskfsq                  {"speed_cm_s @0.5x/1x/2x": [22.9, 13.3, 8.4], "speed_monotone": true, "path_shape_drift_cm": 0.53}
+m6 kick Tsweep | V8_arclen                   {"speed_cm_s @0.5x/1x/2x": [23.5, 15.4, 9.1], "speed_monotone": true, "path_shape_drift_cm": 0.61}
+m6 run Tsweep | V7_maskfsq                   {"speed_cm_s @0.5x/1x/2x": [65.2, 35.8, 19.6], "speed_monotone": true, "path_shape_drift_cm": 0.65}
+m6 run Tsweep | V8_arclen                    {"speed_cm_s @0.5x/1x/2x": [63.0, 33.7, 18.4], "speed_monotone": true, "path_shape_drift_cm": 0.75}

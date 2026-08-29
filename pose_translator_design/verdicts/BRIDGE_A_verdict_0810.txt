@@ -1,0 +1,10 @@
+============================================================================================
+BRIDGE-A ACCEPTANCE — BRIDGE_A_pilot_0810 (board=PROD_c1_91k_dim20_tail_0810)
+NOT a controlled duel vs T32: human-only / no speed token / root codes GT-given.
+============================================================================================
+windows n=60, count=64 (val clips, seed 5)
+interior code top-1 acc      : 0.6028
+copy-rate (pred~prev>own)    : 36.96%  (frame-AR disease was 93.9%)
+FK all-joint err [cm]        : {'mean': 9.03, 'p95': 17.16, 'p99': 18.97}
+FK anchor err  [cm]          : {'mean': 12.21, 'p95': 21.66, 'p99': 25.96}
+T32 anchor err [cm] (same windows): {'mean': 6.88, 'p95': 18.22, 'p99': 24.77}

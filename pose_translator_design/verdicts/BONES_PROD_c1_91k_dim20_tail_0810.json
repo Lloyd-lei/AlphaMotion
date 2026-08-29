@@ -1,0 +1,84 @@
+{
+ "run": "PROD_c1_91k_dim20_tail_0810",
+ "sem_encoder": "qwen3",
+ "rows": 101392,
+ "rot_deg": {
+  "mean": 15.34,
+  "median": 13.87,
+  "p90": 22.77,
+  "p95": 25.41,
+  "p99": 30.12,
+  "max": 43.53
+ },
+ "pos_cm": {
+  "mean": 13.33,
+  "median": 12.95,
+  "p90": 15.19,
+  "p95": 16.29,
+  "p99": 18.65,
+  "max": 25.32
+ },
+ "per_family": {
+  "dance": {
+   "rows": 12659,
+   "rot_deg": 14.3,
+   "pos_cm": 12.96
+  },
+  "jump": {
+   "rows": 12878,
+   "rot_deg": 14.01,
+   "pos_cm": 13.24
+  },
+  "other": {
+   "rows": 15775,
+   "rot_deg": 12.43,
+   "pos_cm": 13.09
+  },
+  "reach": {
+   "rows": 12261,
+   "rot_deg": 16.71,
+   "pos_cm": 13.42
+  },
+  "run": {
+   "rows": 17168,
+   "rot_deg": 15.89,
+   "pos_cm": 12.79
+  },
+  "sit": {
+   "rows": 14145,
+   "rot_deg": 22.07,
+   "pos_cm": 15.06
+  },
+  "walk": {
+   "rows": 16506,
+   "rot_deg": 12.63,
+   "pos_cm": 12.95
+  }
+ },
+ "worst_joints": [
+  [
+   "R_Elbow",
+   26.5
+  ],
+  [
+   "L_Shoulder",
+   25.5
+  ],
+  [
+   "R_Shoulder",
+   25.3
+  ],
+  [
+   "R_Hip",
+   24.7
+  ],
+  [
+   "L_Hip",
+   22.9
+  ],
+  [
+   "L_Elbow",
+   22.4
+  ]
+ ]
+}

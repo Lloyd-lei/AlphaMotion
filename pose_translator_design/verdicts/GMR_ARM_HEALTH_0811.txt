@@ -1,0 +1,30 @@
+GMR ARM-LABEL HEALTH (0811). rough_ratio = robot/human 2nd-diff at end-effector; vel_cos = robot-vs-human EE velocity cosine (moving frames); eflip = elbow-branch flips per 1k frames.
+embodiment           rough_ratio   (leg)  vel_cos   (leg)  eflip/1k   (hum)
+booster_k1                  0.42    0.62    0.367   0.512       0.0     0.0
+booster_t1                  0.48    0.72    0.299   0.446       0.0     0.0
+booster_t1_29dof            1.00    0.73    0.447   0.447       0.0     0.0
+engineai_pm01               1.12    1.16    0.454   0.460       0.0     0.0
+fourier_gr3                 1.31    1.52    0.503   0.478       0.0     0.0
+fourier_n1                  1.00    0.97    0.427   0.445       0.0     0.0
+hightorque_hi               0.53    0.62    0.424   0.424       0.0     0.0
+kuavo_s45                   1.46    1.36    0.425   0.409       0.0     0.0
+pnd_adam_lite               1.49    1.15    0.420   0.437       0.0     0.0
+tienkung                    1.56    1.25    0.446   0.404       0.0     0.0
+unitree_g1_29dof            1.14    0.99    0.471   0.507       0.0     0.0
+unitree_g1_23dof            1.10    0.94    0.432   0.474       0.0     0.0
+unitree_h1                  1.16    1.45    0.324   0.432       0.0     0.0
+unitree_h1_2                1.82    1.52    0.456   0.451       0.1     0.0
+unitree_r1                  0.98    0.96    0.454   0.468       0.0     0.0
+
+ADDENDUM (same day): three hypotheses adjudicated.
+  jitter/multi-solution flips: REFUTED (eflip 0/1k everywhere, arm rough_ratio
+    == leg rough_ratio, vel_cos arm == leg).
+  short-history ambiguity: REFUTED (+-2-frame context readout: wrist p95
+    30.3 -> 29.1, no recovery).
+  => the ~29cm p95 wrist wall is either LONG-horizon solver state or
+     joint-limit infeasibility clamping (systematic, pose-dependent).
+NEW ACTIONABLE: decoder wrist p95 = 35.3 > probe ceiling 29.1 -> ~6cm (17%)
+  IS per-frame-recoverable; the 0811 post-train (arm_boost 2, lr 1e-4, 20k)
+  was too gentle to take it. A wrist-POSITION-targeted, hotter post-train can.
+Next diagnostics if pursued: (a) tail frames vs qpos limits (clamp check),
+  (b) GMR re-run determinism on one clip (true noise vs deterministic).

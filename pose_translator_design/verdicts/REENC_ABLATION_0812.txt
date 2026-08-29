@@ -1,0 +1,52 @@
+RE-ENCODE CONSISTENCY — SINGLE-VARIABLE ABLATION (0812, lloyd's design)
+SMALL_dim16_reenc_0812 replicates PROD_dim16_13k_0809 item for item (same two
+caches, 24k steps, bs 256, lr 3e-4, 16-dim lattice, mask 0.3, contrast 0.5,
+judges on, vis_residual, 4+4 layers). The ONLY difference is
+--reenc_consistency 0 -> 1. Both evaluated at step 24000.
+
+1 ROUND-TRIP (the thing the switch is for). Raw agreement, then normalised by
+each model's own chance floor as (x - floor)/(1 - floor), because the floors
+differ (a 16-dim lattice with different code spread has a different chance
+level, and comparing raw numbers across models would be wrong):
+
+model                     floor   enc-invar   dec-fidelity      chain
+loser  (reenc=0)          0.465   0.73  (50%)  0.497  ( 6.0%)   0.501  ( 6.7%)
+ABLATION (reenc=1)        0.625   0.84  (57%)  0.852  (60.5%)   0.879  (67.7%)
+C1 Greenwich (reenc=0)    0.568   0.80  (54%)  0.591  ( 5.3%)   0.600  ( 7.4%)
+
+=> The switch takes decoder fidelity from ~6% above chance to ~60% — a tenfold
+move on the exact failure the code comment predicted ("encode(decode(z))
+explodes... kills any synthetic-data pipeline"). Chain agreement moves the same
+way. Encoder invariance improves only modestly (50% -> 57%), consistent with
+the blame split: the encoder was never the problem.
+
+2 COST, and it is NOT uniform. Translation error at equal steps:
+direction                 loser        ablation      delta
+human -> unitree_g1_29dof 20.7/ 9.29   20.6/10.44   pos +12.4%   (HELD OUT)
+human -> fourier_gr3      10.4/ 3.87   10.9/ 3.94   pos  +1.8%
+human -> booster_t1        8.0/ 2.22    8.4/ 2.27   pos  +2.3%
+human -> kuavo_s45        15.0/ 8.78   15.6/ 8.89   pos  +1.3%
+human -> unitree_h1       10.5/ 4.28   10.9/ 4.34   pos  +1.4%
+=> in-distribution embodiments pay 1-2%; the ZERO-SHOT held-out G1 pays 12%.
+The constraint appears to spend generalisation headroom. This is the number to
+watch if the switch is adopted, and it should be reported, not averaged away.
+
+3 COLLAPSE CHECK (lloyd flagged this risk before the run). The chance floor
+rising 0.465 -> 0.625 looked like codes concentrating. FSQ usage says otherwise:
+  loser     pose H/dim min 2.56 med 2.76 max 2.80 /3.00, dead 0, distinct 180723
+  ablation  pose H/dim min 2.56 med 2.74 max 2.80 /3.00, dead 0, distinct 182467
+Per-dimension entropy and distinct-code counts are unchanged (root stream
+distinct drops 155k -> 132k, worth a second look but no dead or saturated dims).
+So the higher floor is not a shrinking codebook; it is the code becoming more
+predictable from geometry alone. No collapse. The guardrail lloyd asked for
+holds.
+
+VERDICT: adopt. The switch fixes a documented failure at a 1-2% in-distribution
+cost, with a real 12% zero-shot cost that must be measured again at full scale
+before it goes into the next Greenwich. Next: the same switch as a
+decoder-only, frozen-lattice finetune on C1 (zero downstream cascade), which is
+the cheap path to fixing the CURRENT Greenwich rather than waiting for a retrain.
+OPERATIONAL NOTE: two full-data jobs cannot run concurrently on this box —
+each holds a ~60 GB resident PoseStore and the second gets OOM-killed. Two runs
+were lost to this today. Serialise, and do not run a full-data eval next to a
+full-data training job.

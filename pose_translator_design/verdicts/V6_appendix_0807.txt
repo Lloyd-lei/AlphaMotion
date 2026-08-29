@@ -1,0 +1,47 @@
+
+====================================================================================================
+V6 APPENDIX — bit budget and the MASK LADDER (rows no V5-era harness has)
+====================================================================================================
+arm                       bits/s  registers      levels    params  arch
+V5c_0806                   62.69      8+1   5,5,5,5,5,5     8.31M  v5
+N3a_regAR_0807             62.69      8+1   5,5,5,5,5,5     8.31M  v5
+V6_mae_0807                62.69      8+1   5,5,5,5,5,5     8.30M  v6
+V6_regar_0807              62.69      8+1   5,5,5,5,5,5     8.31M  v6
+V6_mae_resid_0807          62.69      8+1   5,5,5,5,5,5     8.33M  v6  residual_in
+  P1 / V5 / V5c reference: 62.69 bit/s. Any arm off that number is not comparable and the
+  trainer asserts on it, so a mismatch cannot reach this table silently.
+
+-- MASK LADDER (V6 arms only; val split, 192 windows, full 8 registers) --
+   key_pos_cm = decoded error | interp = the SAME visible set interpolated with ZERO bits
+   the bits are worth exactly (interp - key_pos_cm) cm at each density.
+
+  V6_mae_0807  (step 60000)
+    visible set     key_pos_cm  interp_only  bits buy   energy
+    endpoints            7.683        9.242     1.559    0.780
+    sparse3              4.047        4.264     0.217    0.912
+    rand50               0.699        0.321    -0.378    0.999
+    prefix_half          4.086        4.942     0.856    0.909
+    full                 0.282        0.000    -0.282    1.005
+
+  V6_regar_0807  (step 60000)
+    visible set     key_pos_cm  interp_only  bits buy   energy
+    endpoints            7.759        9.242     1.483    0.775
+    sparse3              4.006        4.264     0.258    0.913
+    rand50               0.733        0.321    -0.412    0.999
+    prefix_half          4.058        4.942     0.884    0.903
+    full                 0.321        0.000    -0.321    1.003
+
+  V6_mae_resid_0807  (step 60000)
+    visible set     key_pos_cm  interp_only  bits buy   energy
+    endpoints            7.657        9.242     1.585    0.763
+    sparse3              4.086        4.264     0.178    0.905
+    rand50               0.733        0.321    -0.412    1.000
+    prefix_half          4.192        4.942     0.750    0.895
+    full                 0.332        0.000    -0.332    1.006
+
+READING IT: 'endpoints' is the row every other arm in the table above was
+measured in — V5c's only regime. The rows below it are densities V5c was
+never trained for and cannot be asked about. If 'bits buy' is ~0 at every
+density, the registers are decorative and V6 failed the same way V5c did;
+if it grows as the visible set thins, the tokens are carrying the interior.
+====================================================================================================

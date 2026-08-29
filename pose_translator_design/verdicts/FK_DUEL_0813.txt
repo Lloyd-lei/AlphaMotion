@@ -1,0 +1,92 @@
+FK-LOSS / ROT-ONLY ARMS — VERDICT (0813). Everything measured on the FK
+yardstick (FK on predicted rotations vs FK on GT rotations), the only ruler
+that is meaningful for rot_only models: their hpos head is gone, so the
+training eval's own pos_cm column measures |GT| and is discarded.
+All four arms share the PROD_dim16_13k_0809 recipe item for item.
+
+model                    slots  bits/f | arm mean  arm p95  leg mean  wrist p95
+PROD_dim16_13k (base)      256   12288 |    6.78    29.28     4.21      37.63
+SMALL_dim16_reenc          256   12288 |    7.17    29.44     4.37      37.62
+FK1  rot-only 128          128    6144 |    6.62    28.51     4.37      37.60
+FK2  rot-only 256          256   12288 |    6.81    28.54     4.21      37.18
+
+RESULT 1 — HALF THE BUDGET IS GENUINELY FREE. FK1 uses 128 slots and 6144
+bits/frame, HALF the baseline's storage, and is not worse: arm mean -2.3%,
+arm p95 -2.6%, wrist p95 -0.1%, legs +3.8%. The frame-level ablation showed the
+position codes cannot reach the render; this shows that removing them costs
+nothing end to end. Greenwich can be halved.
+
+RESULT 2 — DOUBLING THE USEFUL CAPACITY BUYS ALMOST NOTHING. FK2 spends the
+same 12288 bits as the baseline but puts all of them on rotation. Against the
+baseline: arm p95 -2.5%, wrist p95 -1.2%, legs flat. Against FK1 (half the
+bits) it is within noise on arms and slightly better on legs (14.00 vs 14.59)
+and wrists (37.18 vs 37.60). So the extra 128 rotation slots are worth ~1-4%,
+not the step change the "half the budget is wasted" framing might suggest.
+Reading: at this scale the bottleneck is NOT code capacity.
+
+RESULT 3 — THE FK LOSS DID NOT RESCUE THE ARMS EITHER. The hypothesis was that
+the metric, lever-arm-aware signal was being delivered to a discarded head, and
+that rewiring it into the rotation head would fix the arm tail. Both FK arms
+move arm p95 by about -2.5%. Real, reproducible, and far too small to be the
+arm story. Combined with the earlier decoder post-trains (<1%) and the readout
+probe (codes -> paired robot wrist saturates around 30 cm), the arm tail is
+now unexplained by: decoder capacity, decoder training, loss wiring, and code
+budget. What remains on the table is the paired-label variance itself, which
+is where the GMR audit pointed.
+
+WHAT TO ADOPT ANYWAY
+ * rot_only: halves Greenwich's storage, halves Equator's input width, halves
+   what Stage B must predict — at no measured cost. This is a free efficiency
+   win independent of the arm question, and it should go into the next build.
+ * fk_loss: keep it. It costs nothing, it supervises the head that actually
+   renders, and it removes a genuinely confusing piece of architecture (a
+   5.0-weighted loss on a discarded output).
+ * The reenc arm remains the one with a large effect (round-trip 11% -> 61%);
+   note it is slightly WORSE here on arms (+5.8% mean), consistent with the
+   earlier finding that it spends generalisation headroom.
+STILL TO RUN: arm 3 (foot contact in the loss), which is the only one of
+lloyd's three that has not been tested, and which needs the contact labels
+built carefully first.
+
+=== ADDENDUM 0813: AMPLITUDE RATIO, AND A RETRACTION ===
+lloyd watched the punch render and said the robot barely moved except one arm.
+A single-clip measurement seemed to confirm a severe amplitude collapse (all
+models at 30-44% of GT range, legs at 15-25%), and I reported it as a general
+finding. Measured properly it is NOT general.
+
+Full measurement, 24 contiguous 90-frame val windows x 4 cross-body directions,
+FK positions, ratio = std_over_time(decoded) / std_over_time(GT):
+model                        arm err  arm p95 | amp all  amp arm  amp leg
+PROD_c1_91k (Greenwich)         6.54    24.74 |  0.888    0.897    0.954
+PROD_dim16_13k (baseline)       7.08    31.19 |  0.912    0.935    0.941
+SMALL_dim16_reenc               7.50    31.45 |  0.898    0.919    0.911
+FK1 rot-only 128                6.90    29.95 |  0.895    0.910    0.949
+FK2 rot-only 256                7.06    30.14 |  0.885    0.905    0.937
+PT_c1dec_reenc                  6.56    25.01 |  0.894    0.903    0.950
+Amplitude is preserved at 88-95% everywhere, and the arms are not the weak
+group on this ruler — the legs are marginally the BEST preserved.
+
+Is collapse amplitude-dependent? 300 windows of C1, human->G1, binned by GT
+amplitude:
+  GT std 2.1 cm -> retention 0.985      GT std 11.1 cm -> 0.868
+  GT std 5.4 cm -> 0.901                GT std 16.4 cm -> 0.941
+  corr(GT amplitude, retention) = -0.073   top decile 0.937, bottom decile 1.122
+No trend. The hypothesis that big motions get compressed more is REFUTED.
+
+RETRACTION: the "all models compress motion to 30-44%" claim came from ONE
+punch window and does not survive contact with 24 (or 300). What is real: on
+that particular clip the decode was poor, and a single window has enormous
+variance. What is NOT real: a systematic amplitude collapse. I reported the
+single-clip number as a general finding before measuring it at scale; that was
+the same mistake this project has a written rule against.
+
+WHAT STANDS
+ * The amplitude ratio is worth keeping in the battery (dual_common.
+   amplitude_report). It is cheap, it is temporal where evaluate() is not, and
+   it would have caught a real collapse had there been one. It now also serves
+   as the control that says there isn't.
+ * The visual observation still needs an explanation: something about that punch
+   render read as static. Candidates not yet separated: that clip's decode
+   really is bad (its arm error was 19-21 cm against a 6-7 cm corpus mean), the
+   in-place rendering with no world translation makes locomotion invisible, or
+   the camera framing. Worth one more look before concluding.

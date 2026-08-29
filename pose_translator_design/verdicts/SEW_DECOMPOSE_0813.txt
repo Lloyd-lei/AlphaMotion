@@ -1,0 +1,53 @@
+SEW DECOMPOSITION (0813) — where the arm error actually lives.
+Motivated by SEW-Mimic (arXiv 2602.01632): matching an end effector's POSITION
+leaves the arm under-determined, so part of a paired label's arm configuration
+is solver choice rather than human motion. Split the error into DIRECTION
+(segment vectors, determined by the human) and ROLL (rotation about the limb
+axis, invisible to segment positions and free for the solver to pick).
+C1, human -> unitree_g1_29dof, 8 windows x 60 frames per family, degrees.
+
+family |  MODEL vs LABEL                  | LABEL vs HUMAN
+       |  upper-arm  forearm    roll      | upper-arm  forearm
+run    |   20.0      21.5      15.0       |   56.2      43.0
+dance  |    8.6       8.1      11.0       |   27.4       8.9
+walk   |   32.1      17.3      16.7       |   54.7      27.2
+punch  |   41.0      26.7      23.2       |   69.1      44.4
+jacks  |   68.0      25.6      40.1       |   82.9      26.8
+kick   |   23.5      24.6      23.8       |   39.8      30.1
+hard families: direction 34.9  roll 29.0  (roll = 45% of the total)
+easy families: direction 17.9  roll 14.2  (roll = 44% of the total)
+
+FINDING 1 — ROLL IS NOT THE STORY. The roll share is 45% on hard families and
+44% on easy ones: identical. If arbitrary redundancy resolution were what makes
+the hard families hard, roll would carry a larger share there. It does not. The
+hard families are hard in DIRECTION, which is the component the human motion
+actually determines. So the SEW mechanism, as a family-level explanation, is
+not supported — the same outcome as the joint-limit test.
+
+FINDING 2 — AND THIS IS THE LARGE ONE. The LABEL diverges from the HUMAN far
+more than our MODEL diverges from the LABEL. Upper-arm direction, label vs
+human: 27-83 degrees, mean 48.8 on hard families and 36.2 on easy ones —
+against a model-vs-label direction error of 34.9 / 17.9. The retargeting step
+changes the arm's direction by roughly TWICE what our model then adds.
+That is measured on the labels themselves with no model in the loop.
+
+WHAT THIS MEANS FOR THE LATENT-SPACE FIX lloyd asked for
+The model is being trained to reproduce an arm direction that already departs
+from the human's by 36-49 degrees. Some of that departure is legitimate (the
+robot's shoulder geometry differs and cannot copy a human arm exactly), and
+some is solver behaviour. We cannot separate those two from this measurement
+alone, and it would be wrong to assume either.
+What we CAN say: the largest single term in the arm story is the human->robot
+direction change in the labels, not anything in our latent space. Every
+latent-side lever we have tried moves 1-4%; this term is a factor of two.
+HONEST CONSEQUENCE: a latent-space fix for the arm tail is unlikely to exist,
+because the quantity being fitted is dominated by a transformation that happens
+before our model sees the data. The defensible latent-side actions are
+(a) stop reporting arm accuracy against a single retarget as if it were truth,
+(b) report direction and roll separately so the two failure modes stay visible,
+(c) if arm fidelity to the HUMAN is the product requirement, supervise against
+the human's arm directions through the robot's own geometry rather than against
+the retargeted label.
+(c) is a real latent-space change and it is the only one of the three that
+could move the number. It is also a different objective from what the model has
+been trained on, so it needs its own arm and its own acceptance.

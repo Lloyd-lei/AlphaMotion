@@ -1,0 +1,39 @@
+NOVELTY FRONTIER (0811) — does the bridge reach outside the training set?
+frozen Equator A3+B3 + Greenwich C1. 3 endpoint pairs x 10 samples x 6 taus,
+60-frame windows, compared against a 3000-window index built from RAW GT human
+motion (no model in the index).
+
+reference                                   novelty_cm   jerk
+corpus leave-one-out NN  median                  5.62    0.205 (median)
+corpus leave-one-out NN  p90                    14.23
+CONTROL real motion round-tripped through
+  the SAME pipeline (A3 encode->decode->C1)     11.76    0.291
+generated, tau=3.0                              20.90    2.577
+generated, tau=1.3                              21.44    1.233
+generated, tau=0.35                             20.03    0.935
+
+WHAT THE CONTROL CHANGES: without it the raw novelty ~20cm looks like
+extrapolation. The control shows ~11.8cm of it is codec+decoder distortion —
+real motion pushed through the pipeline already lands that far from itself.
+The honest excess is ~8cm, still above the corpus's own p90 spacing (14.2).
+
+TWO AXES, SEPARATELY CAUSED — the useful finding:
+  novelty is FLAT in temperature (20.0-21.4 across a 9x tau range) => it is
+    induced by the TASK (endpoints drawn from different action families force a
+    path no single corpus window contains), not by sampling randomness.
+  jerk falls 2.58 -> 0.94 as tau cools => roughness IS the temperature.
+So cooling buys smoothness without giving up novelty. But even the coolest
+setting is 3.2x rougher than round-tripped real motion (0.935 vs 0.291).
+
+VERDICT on "we found a way to reach outside the training distribution":
+PARTIALLY SUPPORTED, NOT PROVEN. The paths are measurably not copies of any
+corpus window, and that distance is not a sampling artefact. But they are not
+corpus-quality motion either, so "outside the distribution" cannot yet be
+distinguished from "inside the distribution plus quality deficit". The claim
+becomes safe only if generated jerk reaches the control band while novelty
+stays >=20.
+NEXT: (a) does jerk-matched filtering (keep only samples with jerk<=0.4) leave
+any high-novelty survivors? that is the direct test; (b) composition test
+(walk-legs + wave-arms) with the same control; (c) human/visual check that the
+high-novelty low-jerk survivors are real motion.
+Figure: png/novelty_frontier.png

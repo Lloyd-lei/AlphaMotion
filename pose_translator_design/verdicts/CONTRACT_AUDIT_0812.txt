@@ -1,0 +1,55 @@
+A3 / B3 CONTRACT AUDIT (0812, flagged by Codex) — the two token streams are
+NOT the same stream, and the gap is total, not marginal.
+
+THE BREAK
+  bridge_a.py:94  (A3's own encode, used in TRAINING A3)
+      out = self.enc(seq, mask=mask)     # time-local: token i sees segment i
+  bridge_b.py:70  (tokens_of, used to build B3's TRAINING targets)
+      out = ma.enc(seq)                  # no mask at all
+Same frozen weights, two different attention patterns, two different token
+streams.
+
+MEASURED on 64 val windows of 60 frames
+  token agreement, masked vs unmasked      0.0015    (chance-level; 1.0 = same)
+  mean |level difference| per FSQ dim       1.033    (levels run 0..4)
+  B3 masked-CE on ITS OWN (unmasked) tokens 3.025 nats
+  B3 masked-CE on A3-contract tokens       18.273 nats
+  penalty for feeding the wrong stream     +15.2 nats
+=> the two streams share essentially NOTHING (0.15% agreement). This is not a
+subtle drift; B3 lives in a token space A3's encoder never emits.
+
+WHO IS ON WHICH SIDE
+  UNMASKED (B3's contract): bridge_b.py training, bridge_b4.py, semigroup_
+    finetune, rollout_finetune, composition_test, rainbow_codes, disturb_test,
+    semigroup_duel, novelty_frontier
+  MASKED (A3's contract):   align_text.py, embodiment_chain.py
+The B family is internally consistent, so every B-vs-B comparison made so far
+(B3/B6/B7/B8, the phase-space series, knob sweeps, disturbance work) remains
+valid — they all used tokens_of.
+
+THREE CONSEQUENCES
+ 1 embodiment_chain's NLL column (~11 nats where cached tokens give ~3.1) is
+   explained and stays retracted.
+ 2 THE TEXT LAYER WAS ALIGNED TO THE WRONG SPACE. align_text learned
+   text <-> MASKED motion tokens, while B4 conditions a prior that lives in the
+   UNMASKED space. With 0.15% overlap between the two, the text codes were
+   pointing at a representation B4 never sees. This is a strong candidate for
+   why four rounds of B4 could not be pushed past noise — we attributed it to a
+   weak signal.
+ 3 A3's DECODER was trained on z from the masked path, while B3 emits unmasked
+   tokens. Generation works visually, so the decoder tolerates it, but the
+   generation path is running off-contract and its quality has never been
+   measured against the contract-correct alternative.
+
+WHAT IS NOT YET KNOWN (do not guess): whether the masked contract produces
+BETTER bridges. B3 is strong on its own stream; a contract-correct B9 might be
+better or worse. That is an experiment, not a deduction.
+
+PLAN
+ 1 freeze the contract: make tokens_of call the same masked path as
+   bridge_a.encode, and assert the two agree at import time so this cannot
+   silently fork again.
+ 2 retrain B9 = B3 recipe on contract-correct tokens; duel against B3 on the
+   full battery (bridge FK, diversity, pins, phase-space, semigroup).
+ 3 retrain the text layer on contract-correct tokens; if consequence 2 is right,
+   B4 should move immediately. This is the cheapest test of the whole story.

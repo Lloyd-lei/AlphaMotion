@@ -70,3 +70,16 @@ credentials.json
 *.log.gz
 nohup.out
 experiment/kimodo/
+
+# ---- 0829: third-party checkouts and generated artifacts (see PAPER_TRAIL when written)
+alpha_motion2/
+GENMO/
+any_body/
+experiment/ardy/
+experiment/synergy/
+pose_translator_design/R4_VIZ/mp4/
+pose_translator_design/grand_eval/
+*.fbx
+notebook/02_5_resources/
+data/babel/
+data/babel_labels.json

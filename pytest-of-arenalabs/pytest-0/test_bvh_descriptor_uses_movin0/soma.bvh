@@ -1,0 +1,17 @@
+HIERARCHY
+ROOT Root
+{
+ OFFSET 0 0 0
+ CHANNELS 6 Xposition Yposition Zposition Zrotation Yrotation Xrotation
+ JOINT Hips
+ {
+  OFFSET 0 100 0
+  CHANNELS 6 Xposition Yposition Zposition Zrotation Yrotation Xrotation
+ }
+}
+MOTION
+Frames: 3
+Frame Time: 0.1
+0 0 0 0 0 0 0 100 0 0 0 0
+0 0 0 0 0 0 100 100 0 0 0 0
+0 0 0 0 0 0 200 100 0 0 0 0

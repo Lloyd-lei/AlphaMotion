@@ -1,0 +1,59 @@
+FULL VERSION AUDIT after the A3/B3 contract break (0812)
+Discriminator: masked path (bridge_a.encode, A3's training contract) vs
+unmasked path (bridge_b.tokens_of, B3's training contract). Measured overlap
+between the two streams: 0.15%. Anything that mixes them is invalid; anything
+that stays on ONE of them is internally valid.
+
+CLASS 1 — A3-INTERNAL, both encode AND decode on the masked path. VALID.
+  bridge_a.py (A3 training)                 self-consistent by construction
+  bridge_locality_probe.py                  encode -> decode, never touches B
+    => the time-locality result (diag/off 14.9x A2, 9.1x A3) STANDS
+  bridge_retiming_long.py                   encode -> decode, never touches B
+    => self-retiming at 0.5x/1x/2x on 300f amass + 240f bones STANDS
+
+CLASS 2 — B-INTERNAL, everything on the unmasked path. VALID as comparisons.
+  bridge_b.py (B3/B6/B7/B8), bridge_b4.py, semigroup_finetune, rollout_finetune,
+  bridge_stack_eval2 (the clean-ruler verdict), semigroup_duel, composition_test,
+  rainbow_codes, disturb_test, novelty_frontier, bridge_native_demos
+    => every B-vs-B number stands: the stack v2 verdict, knob sweep, the
+       B3/B6/B7/B8 phase-space series, disturbance and re-planning, the
+       semigroup duel, rainbow-code statistics, composition, novelty.
+
+CLASS 3 — GENERATION PATH, B tokens (unmasked) fed to A3's decoder (trained on
+masked z). CROSS-CONTRACT BY CONSTRUCTION. Numbers are real measurements of the
+system as built and shipped, but they are NOT measurements of the intended
+architecture, and a contract-correct build has never been compared.
+  bridge_demo, bridge_birth_video, bridge_hell, bridge_knob_sweep,
+  homecoming_probe + homecoming_viz, rainbow_bridge, rainbow_eigen,
+  response_spectrum, gauge_invariance, phase_space (+ all B6/B7/B8 runs)
+    => the freedom-ratio / recovery-horizon map, semigroup consistency, the
+       rainbow mode spectrum, eigen axes and steering, the response spectrum
+       and gauge results, the autonomous-flow collapse and the whole B-series
+       progression: all measured on the shipped path. They describe what the
+       system does. They do NOT establish what the masked-contract system would
+       do. Every one of them needs a re-run after the contract is fixed before
+       it goes in a paper.
+
+CLASS 4 — MIXES THE TWO. INVALID.
+  align_text.py      text aligned to MASKED tokens; B4 conditions the UNMASKED
+                     prior. 0.15% overlap. The text layer's retrieval numbers
+                     (R@5 15%/30%) are internally valid as a retrieval result on
+                     masked tokens, but the text->B4 handoff was never on a
+                     shared space. B4's four failed rounds must be re-run before
+                     any conclusion about text conditioning is drawn.
+  embodiment_chain.py  NLL column already retracted; the code-agreement columns
+                     used the spatial codec only and are unaffected.
+
+NOT AFFECTED AT ALL (no Equator tokens involved)
+  everything spatial: C1 training and duels, the arm/wrist post-trains, the
+  GMR arm-label health check, blame_split, the reenc ablation and the
+  decoder-only reenc fix, FSQ usage probes, solver certificates (they use
+  B's own sampling, unmasked, class 3 at worst).
+
+WHAT ACTUALLY HAS TO BE REDONE, in order
+  1 freeze the contract (tokens_of -> masked path + an import-time assert)
+  2 text layer re-align on contract-correct tokens, then B4 again  [cheapest,
+    and it tests the strongest hypothesis: that B4 failed because of this]
+  3 B9 = B3 recipe on contract-correct tokens, dueled against B3 on the full
+    battery. Only after that do the class-3 studies get re-run on the winner.
+NOTHING in class 1 or 2 needs redoing.

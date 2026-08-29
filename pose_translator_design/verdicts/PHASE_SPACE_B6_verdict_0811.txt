@@ -1,0 +1,35 @@
+B6 (goal_drop 0.10 -> 0.50, warm-start B3, 40k steps) — PHASE-SPACE VERDICT
+
+BRIDGING (the thing we were afraid of losing): IMPROVED.
+  val bridge CE 3.118 -> 2.944, ppl 22.6 -> 19.0, token acc 0.267 -> 0.290.
+  Raising goal dropout 5x did not cost bridging quality. (Part of this is 40k
+  extra steps, so it is not a clean ablation of the dropout rate alone.)
+
+AUTONOMOUS FLOW (the thing it was trained for): STILL FAILS, differently.
+  return-map slope   corpus -0.70 | B3 -0.09 | B6 +0.90
+  B3 collapsed to a fixed point (slope ~0, portrait shrunk to a dot).
+  B6 no longer collapses to a point — its portrait covers 2 cm of travel and
+  wanders — but the return map slope is +0.90, i.e. NEUTRAL/DRIFTING: each
+  cycle lands where the previous one left it, with no restoring force. The
+  corpus's -0.70 means real gait actively pulls back to the cycle; B6 does not
+  pull back at all. Amplitude is also still an order of magnitude short
+  (2 cm of ankle travel vs the corpus's 20 cm; velocity +-0.6 vs +-3).
+  Lyapunov: walk +0.002 (neutral), jacks +0.091, sit +0.106 — consistent with
+  a marginally stable / slowly diverging flow rather than an attractor.
+
+READING: more goal dropout moved the failure from FROZEN to DRIFTING. That is
+progress in the sense that the flow now moves, and it is not progress in the
+sense that the gait attractor still does not exist. The missing ingredient is
+not exposure to goal-free training; it is that nothing in the objective rewards
+returning to a cycle. Masked-token CE is a per-frame likelihood; it has no term
+that penalises slow drift of the whole trajectory.
+NEXT CANDIDATES, in order of my confidence:
+ (a) train ON rollouts, not only on real windows: sample a chunk, re-encode its
+     own output as the next chunk's start, and require the chain to stay on the
+     data manifold (this is the exposure-bias fix, and it directly targets
+     drift);
+ (b) lloyd's E17 RL arm, with the return-map slope as the reward — we now have
+     a scalar target (-0.7) instead of a vibe;
+ (c) longer chunks (n=120) so one chunk contains a full gait cycle and the
+     prior can learn the cycle within a single conditioning window.
+Figure: png/phase_portrait_B6.png, png/phase_lyapunov_B6.png

@@ -1,0 +1,23 @@
+TEXT ALIGN v2 verdict (0810 night)
+run: TEXT_ALIGN_v2_0810  12k steps  bs128  ~6M trainable
+towers READ-ONLY: Greenwich C1 / Equator A3 / Qwen3-Embedding-0.6B
+
+Data: HumanML3D 9,286 clips mapped -> 24,976 train pairs + 2,766 amass-val
+      bones 500 clips -> 1,600 train + 400 holdout (80/20 clip split, rng7)
+      25,936 unique captions Qwen-embedded
+
+Retrieval (final step 11999, text->motion, one window per clip):
+  amass val  (gallery 400, chance R1 0.25%/R5 1.25%):  R1 4.5%  R5 15.3%
+  bones hold (gallery 100, chance R1 1%/R5 5%):        R1 10%   R5 30%
+  plateau ~9k steps. text-FSQ per-dim entropy 1.30-1.57 / 2.32 (all 6 alive)
+
+Novel-prompt probe (TEXT_PROBE_v2.txt, 902-clip mixed gallery, top-3):
+  HIT  walk / punch / jump(jacks) / wave (x2 exact) / sit / crawl (#2)
+  MISS kick (jog confusion), dance (bones jog confusion)
+  ~6/8 free-text prompts land semantic top-3 match.
+
+Verdict: alignment REAL (12-22x chance both corpora incl bones near-zero-shot),
+absolute strength = working v1, not a strong retriever. Known levers for v2:
+more caption corpora (Motion-X; 4.5k unmapped HumanML3D), k=8->16 text tokens,
+hard negatives, token-level (not pooled) Qwen features.
+Good enough as conditioning signal for B4 (held per lloyd).

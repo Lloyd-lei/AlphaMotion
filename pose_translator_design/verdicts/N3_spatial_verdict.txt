@@ -1,0 +1,53 @@
+====================================================================================================
+N3 SPATIAL VERDICT — reenc-consistency / var-floor vs E27_qwen (control), 2026-08-07 06:00
+noise band: same-recipe seed spread ~2.2 deg pose error (R9); deltas below that are not results
+====================================================================================================
+metric                                              E27_qwen_0806  N3f_varfloor_0807
+-- (ii) ROUND TRIP (the N3e metric): gen1 = dec(enc(x)), gen2 = dec(enc(gen1)) --
+  human_smpl gen1 rot [deg]                                  8.62               8.79
+  human_smpl gen2 rot [deg]                                 50.96              47.95
+  human_smpl blow-up [x]                                     5.91               5.46
+  unitree_g1_29dof gen1 rot [deg]                           15.83              16.11
+  unitree_g1_29dof gen2 rot [deg]                           35.88              38.11
+  unitree_g1_29dof blow-up [x]                               2.27               2.37
+  via-h1 cycle rot [deg]                                    31.31              33.01
+  (direct h->h rot [deg])                                    8.62               8.79
+-- (i) zero-shot human->G1 (holdout), per part --
+  all rot [deg]                                             17.47              17.58
+  all pos [cm]                                               8.83               8.79
+  legs rot [deg]                                            13.15              12.76
+  legs pos [cm]                                              6.70               6.93
+  arms rot [deg]                                            19.54              18.10
+  arms pos [cm]                                              8.49               7.34
+  wrists rot [deg]                                          20.50              25.57
+  wrists pos [cm]                                           12.39              13.55
+  POST-PROJECTION rot [deg]                                 14.60              14.71
+-- (iii) amplitude per family, held-out AMASS (decoded/GT; 1.0 = full amplitude) --
+  walk energy self                                          0.559              0.657
+  run energy self                                           0.717              1.088
+  dance energy self                                         0.711              0.752
+  kick energy self                                          0.804              0.898
+  punch energy self                                         0.846              0.933
+  jacks energy self                                         0.577              0.553
+  walk energy ->G1                                          0.988              1.018
+  run energy ->G1                                           0.955              1.324
+  dance energy ->G1                                         0.174              0.191
+  kick energy ->G1                                          0.836              0.863
+  punch energy ->G1                                         0.971              0.862
+  jacks energy ->G1                                         0.810              0.842
+  KICK ankle-lift self                                      0.900              0.801
+  KICK ankle-lift ->G1                                      1.195              1.127
+-- (v) night2 decomposition (G1 wrist, val512) --
+  full-vis wrist [cm]                                       29.27              28.79
+  continuous-z wrist [cm]                                   29.24              28.83
+  constraint-mode wrist [cm]                                26.98              27.36
+-- (iv) GT-free physeval, human->G1 decode, median over clips (walk1_subject1,walk3_subject1,run1_subject2,dance1_subject1) --
+   [GT_retarget floor: slip50=0.017; E27_qwen@PHYSEVAL_0806: 0.162]
+  foot slip p50 [m/s]                                       0.145              0.167
+  foot slip p95 [m/s]                                       0.675              1.329
+  torque over limit [%]                                     0.000              0.000
+  worst torque ratio [x]                                    0.858              0.854
+  jerk p95 [rad/s^3]                                     2757.715           2444.177
+
+READ: N3e wins if the blow-up column collapses toward 1x without zero-shot regressing > 0.5 cm; N3f wins if kick ankle-lift moves toward 1.0 without the same regression.
+====================================================================================================

@@ -27,6 +27,7 @@ def build_from_spec(spec: dict, T: int, J: int, C: int) -> Tuple[object, object]
             opm_chunk=spec["opm_chunk"], tri_hidden=spec["tri_hidden"],
             use_pair=spec["use_pair"], use_opm=spec["use_opm"],
             use_triangle=spec["use_triangle"],
+            use_opm_resnet=spec.get("use_opm_resnet", False),
         )
         return MotionFormer(cfg), cfg
 

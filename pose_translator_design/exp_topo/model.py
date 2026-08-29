@@ -169,10 +169,16 @@ class JointFeature(nn.Module):
     lets the decoder disambiguate otherwise-geometrically-similar joints
     (e.g. left vs right limb). Toggle via `use_index`.
     """
-    def __init__(self, d_model, use_index=False, max_joints=128, use_sem=False, sem_dim=768):
+    def __init__(self, d_model, use_index=False, max_joints=128, use_sem=False, sem_dim=768,
+                 use_dof=False, dof_dim=19):
         super().__init__()
         # input: rest_offset_full(3) + rest_offset_dir(3) + norm_bonelen(1) + depth sinusoid(8) = 15
-        self.proj = nn.Linear(15, d_model)
+        # use_dof adds the joint's MECHANICAL spec: 3 DOF slots x [axis(3), limited, half_range/pi,
+        # center/pi] + dof_count/3 = 19. Diagnosed as the missing conditioning that made stacked
+        # hinges (hip pitch/roll/yaw) indistinguishable — SigLIP name embeddings cannot separate
+        # them (cos 0.955 pitch-vs-roll, vs 0.907 knee-vs-hip).
+        self.use_dof = use_dof
+        self.proj = nn.Linear(15 + (dof_dim if use_dof else 0), d_model)
         self.use_index = use_index
         if use_index:
             self.idx_emb = nn.Embedding(max_joints, d_model)
@@ -180,13 +186,16 @@ class JointFeature(nn.Module):
         if use_sem:  # SigLIP joint-name semantics: the cross-topology alignment bridge
             self.sem_proj = nn.Sequential(nn.Linear(sem_dim, d_model), nn.GELU(), nn.Linear(d_model, d_model))
 
-    def forward(self, rest_off, bonelen, depth, sem=None):
-        # rest_off [B,J,3], bonelen [B,J], depth [B,J], sem [B,J,768] or None
+    def forward(self, rest_off, bonelen, depth, sem=None, dof=None):
+        # rest_off [B,J,3], bonelen [B,J], depth [B,J], sem [B,J,768] or None, dof [B,J,19] or None
         dirn = F.normalize(rest_off, dim=-1)
         d = depth.unsqueeze(-1).float()
         freqs = torch.arange(4, device=d.device).float()
         pe = torch.cat([torch.sin(d / (10 ** freqs)), torch.cos(d / (10 ** freqs))], -1)  # [B,J,8]
         feat = torch.cat([rest_off, dirn, bonelen.unsqueeze(-1), pe], -1)  # [B,J,15]
+        if self.use_dof:
+            assert dof is not None, "use_dof=True but no dof feature supplied"
+            feat = torch.cat([feat, dof], -1)
         out = self.proj(feat)
         if self.use_sem and sem is not None:
             out = out + self.sem_proj(sem)

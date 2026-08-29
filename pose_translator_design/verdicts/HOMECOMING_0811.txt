@@ -1,0 +1,76 @@
+E-A HOMECOMING (frozen Equator; 8 samples per start)
+family      n  home_nll  open_nll  home_spread  open_spread   ratio
+walk       20     1.849     2.010         0.48         0.97    0.50
+walk       45     1.573     1.640         1.11         1.74    0.64
+walk       90     1.433     1.285         1.51         2.22    0.68
+run        20     2.108     2.089         0.97         1.55    0.62
+run        45     1.558     1.616         1.76         2.43    0.72
+run        90     1.305     1.391         2.82         3.32    0.85
+jump       20     1.661     1.713         0.36         0.37    0.98
+jump       45     1.540     1.687         0.72         0.65    1.11
+jump       90     1.508     1.401         1.53         1.16    1.32
+kick       20     1.485     1.685         0.32         0.88    0.37
+kick       45     1.123     1.738         0.76         1.65    0.46
+kick       90     1.602     1.304         2.60         2.36    1.10
+punch      20     1.710     1.831         0.68         0.77    0.88
+punch      45     1.541     1.717         1.39         1.48    0.94
+punch      90     1.440     1.572         2.26         2.36    0.96
+dance      20     2.267     2.357         1.13         2.81    0.40
+dance      45     1.672     1.703         2.28         5.70    0.40
+dance      90     1.405     1.457         4.20         8.05    0.52
+sit        20     1.722     1.914         0.44         0.75    0.58
+sit        45     1.632     1.731         0.79         1.52    0.52
+sit        90     1.318     1.276         1.15         1.81    0.64
+jacks      20     1.772     2.167         0.48         2.54    0.19
+jacks      45     1.354     1.784         0.71         4.21    0.17
+jacks      90     1.260     1.627         1.08         5.65    0.19
+
+E-B SEMIGROUP  P(60) vs P(30)oP(30), same endpoints
+metric                        value_cm
+one-hop vs one-hop (ref)          3.89
+one-hop vs two-hop (gap)          2.69
+consistency ratio                 0.69
+
+READING (0811, lloyd's drunkard's-return question, zero training):
+1 [CORRECTED 0811 pm — see CORRECTION below] POSE FREEDOM MAP is real. home/open spread ratio at n=45:
+  jacks 0.17 < kick 0.46 < dance 0.40 < walk 0.64 < punch 0.94 < jump 1.11.
+  Low ratio = the return path is nearly UNIQUE = the pose is committed
+  (airborne/single-support). High ratio (jump>=1) = returning is no harder
+  than going anywhere = the pose is a free hub. This is a self-supervised
+  controllability/danger signal that needs NO ground truth and NO falls.
+2 GROWTH WITH n: ratio rises with n for every family (walk .50->.68,
+  jacks .19 flat, kick .37->1.10). More time = more ways home. The n at
+  which ratio crosses ~1 is the pose's "recovery horizon" - a per-pose
+  number a controller could budget with.
+3 HOMECOMING IS NOT HARDER THAN OPEN-LOOP: home_nll <= open_nll in 20/24
+  cells. Closing the loop is CHEAPER for the prior - periodic motion is
+  what the corpus is made of. (Also means loop demos were not luck.)
+4 SEMIGROUP SELF-CONSISTENCY: one-hop vs two-hop gap 2.69cm < one-hop
+  sampling noise 3.89cm (ratio 0.69). The kernel already composes within
+  its own noise floor => (a) chunked long-horizon generation is provably
+  safe, (b) the gap is a usable GT-FREE training signal, and starting at
+  0.69 it is a polish lever, not a rescue.
+NEXT (cheap): danger-map video (low vs high ratio poses side by side);
+  semigroup loss as an Equator finetune arm; recovery-horizon per pose.
+
+CORRECTION (0811 pm, after the 6-n sweep + return-vs-open fan chart):
+ a) "family-ordered" OVERSTATED. Per-clip ratios inside one family span more
+    than the family means differ: one walk clip 0.13 vs walk mean 0.87; one
+    dance clip 1.02 vs dance mean 0.40. The freedom ratio is a PER-POSE
+    quantity; family means are noisy aggregates. Useful consequence: it
+    discriminates WITHIN a family (which walking frame is already committed) —
+    that is the resolution a controller needs — but it cannot be looked up by
+    action label.
+ b) "ratio rises monotonically with n" REFUTED by the 6-point sweep: sit
+    (0.64,0.94,0.62,0.53,0.55,0.56) and jacks (flat ~0.23) are non-monotonic.
+    Only walk (n*~94) and kick (n*~97) cross 1 within n<=120; run reaches 0.89,
+    punch 0.76, dance 0.48, jump 0.53, jacks 0.23 never cross.
+ c) First fan chart (homecoming_fan_locked_vs_free.png) was MISLEADING: it drew
+    return paths only, so the RELATIVE ratio was invisible and read backwards.
+    Superseded by homecoming_fan_return_vs_open.png (red return fan inside grey
+    open-loop fan). Keep the old one only as a lesson.
+ d) Static-pose blind spot: for sit, "stay put" is itself the cheapest way home,
+    which shrinks return spread for reasons unrelated to danger. Absolute
+    spreads must be read alongside the ratio (both are now printed on the fan).
+Figures: png/homecoming_recovery_horizon.png, png/homecoming_fan_return_vs_open.png
+Video:   mp4/bridge_demo/homecoming_locked_vs_free_x2.mp4

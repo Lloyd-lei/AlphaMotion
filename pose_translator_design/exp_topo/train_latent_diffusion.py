@@ -64,6 +64,10 @@ def main():
     ap.add_argument("--bs", type=int, default=64)
     ap.add_argument("--lr", type=float, default=2e-4)
     ap.add_argument("--T", type=int, default=1000)
+    # eps-pred degenerates at high noise (x_t IS ~eps, so eps-MSE is trivially low while
+    # x0 = (x_t - sqrt(1-a)*eps)/sqrt(a) amplifies error ~1/sqrt(a) ≈ 300x at t=T; measured
+    # x0 mse 0.008 @t=100 -> 4943 @t=1000). v-pred is well-conditioned at every level.
+    ap.add_argument("--pred", choices=["eps", "v"], default="v")
     ap.add_argument("--eval_every", type=int, default=500)
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
@@ -110,7 +114,8 @@ def main():
         eps = torch.randn_like(tgt)
         x_t = a.sqrt() * tgt + (1 - a).sqrt() * eps
         pred = model(ctx, x_t, t.float() / args.T)
-        return nn.functional.mse_loss(pred, eps)
+        target = eps if args.pred == "eps" else a.sqrt() * eps - (1 - a).sqrt() * tgt
+        return nn.functional.mse_loss(pred, target)
 
     log = []; t0 = time.time(); best_val = float("inf")
     for step in range(args.steps):

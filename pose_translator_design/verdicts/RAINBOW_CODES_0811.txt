@@ -1,0 +1,39 @@
+RAINBOW CODES (0811) — share-level spectrum. B3, 12 bridges x 32 samples,
+n=60, tau=0.9; corpus vocabulary from 4000 real windows tokenised by the same
+A3. Rainbow = a code carried by >2 shared paths (lloyd's definition).
+
+WITHIN-BRIDGE
+  rainbow (share>=3) slot fraction        51.6% +- 16.5
+  => half of what a bridge emits is hub structure shared by 3+ of its own
+  samples; the other half is sample-specific. A path is roughly "half
+  skeleton, half decoration".
+
+CROSS-BRIDGE (the one that decides the data question)
+  (pos,code) used by >=3 of 12 bridges     1.9%   (97 / 5202)
+  CODE alone (any position) >=3 bridges   26.6%   (208 / 782)
+  => the VOCABULARY is shared (a quarter of codes are reused across three or
+  more unrelated bridges) but the PLACEMENT is not (2% at fixed position).
+  Codes are words; their position in the sentence is instance-specific.
+
+CONTAINMENT IN THE CORPUS VOCABULARY — the decisive number
+  generated slots whose (pos,code) occurs in the corpus     94.9%
+  generated slots whose code occurs anywhere in the corpus  99.8%
+  distinct codes: generated 782, corpus 3631, NOVEL only 16
+  corpus itself covers 3631/15625 = 23.2% of the lattice
+  => generation is essentially INSIDE the observed code set. 0.2% of emitted
+  slots are codes the corpus never showed. Whatever novelty the stack produces
+  comes from NEW ARRANGEMENTS of seen codes, not from new codes.
+
+WHAT THIS SAYS ABOUT "MORE DATA -> STRONGER CONNECTIVITY"
+  Supporting: the vocabulary is genuinely shared across bridges (26.6%), so
+  codes learned from one region of motion space are reused elsewhere — the
+  mechanism by which more data would help exists.
+  Cautioning: generation currently touches only 782 of the 3631 codes the
+  corpus already contains, i.e. 21% of what we ALREADY have. The bottleneck
+  today is not vocabulary size; it is that the prior samples from a small
+  corner of the vocabulary it was given. Adding data enlarges a resource that
+  is currently 79% unused at generation time.
+  Recommendation: before buying more data, test whether higher temperature /
+  a diversity-preserving prior widens the 782. If the used fraction stays flat
+  as the corpus grows, more data will not buy connectivity.
+Figure: png/rainbow_codes.png

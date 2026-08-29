@@ -1,0 +1,46 @@
+NIGHT2 verdict — 2026-08-06 19:20
+cache=/var/tmp/alphamotion/topo_exp/cache_xwbc_lafan  n_decomp=512  n_eval=5000  n_proj=256
+
+metric                                            E19_K128_0805     E28_resid_0807  E29_wristaug_0807
+-- (i) G1 wrist error decomposition, val512, left_rubber_hand [cm] --
+full-vis recon (quantized)                                12.90               0.00              28.10
+full-vis recon (continuous z)                             12.49               0.00              27.90
+  quantization cost                                        0.41               0.00               0.20
+constraint mode (root+wrist only)                         17.20               0.00              26.68
+  completion ambiguity cost                                4.30               0.00              -1.42
+full-vis all-joint pos                                     6.92               0.00               7.09
+   (continuous z = FSQ rounding bypassed, tanh bound kept. The 0805 session's
+    11.88 cm used a slightly different bypass; either way quantization is ~0.4-1cm,
+    i.e. innocent — the model's own encode-decode of visible input dominates.)
+-- (ii) wrist twist follow ratio (+-8/+-15 deg; 1.0 = perfect) --
+  -> human_smpl realized                                  0.763              1.000              0.782
+  -> unitree_h1_2 realized                                0.777              0.761              0.807
+  -> unitree_g1_29dof realized                            0.642              0.715              0.705
+  -> agibot_x2_ultra realized                             0.390              0.466              0.693
+  -> unitree_h1_2 actuator                                0.723              0.686              0.712
+  -> unitree_g1_29dof actuator                            0.625              0.620              0.658
+  -> agibot_x2_ultra actuator                            -0.343             -0.302             -0.613
+   (realized = wrist link twist after fit+FK through the mechanism;
+    actuator = the forearm-axis hinge's own angle. X2 negative actuator =
+    the model drives the wrong axis under X2's yaw->pitch->roll convention.)
+-- (iii) zero-shot human->G1 (val 5000) --
+  all rot [deg]                                           15.53              15.97              17.27
+  all pos [cm]                                             7.72               8.31               8.08
+  legs rot [deg]                                          14.07              11.86              12.32
+  legs pos [cm]                                            5.16               7.14               5.67
+  arms rot [deg]                                          17.22              17.63              17.97
+  arms pos [cm]                                            7.03               5.99               6.30
+  wrists rot [deg]                                        16.75              19.48              27.00
+  wrists pos [cm]                                         11.61              11.64              13.56
+  other rot [deg]                                         15.06              18.70              14.91
+  other pos [cm]                                           9.43               9.68               8.77
+  projected rot (n=256) [deg]                             13.99              13.51              14.72
+  off-manifold local [deg]                                 8.68               9.77              10.66
+-- (iv) soft SE3 constraint, human root+L_Wrist, val512 (NO pin) --
+  constraint pos [cm]                                      6.99               0.00               6.21
+  constraint wrist pos [cm]                               13.30               0.00              11.78
+  constraint rot [deg]                                    13.90               0.10              13.20
+  completion pos [cm]                                     14.75              14.47              15.11
+
+WINNER: E29_wristaug_0807  (min constraint-mode wrist pos among ['E29_wristaug_0807'] (26.68 cm vs control 17.2 cm))
+seed noise: single-seed runs; cross-embodiment rot numbers move ~+-0.9 deg across seeds (earlier E13 seed pairs); pos seed spread NOT measured — treat deltas < ~0.5 cm as unresolved; twist follow-ratio noise unmeasured, treat |delta| < 0.05 as noise.

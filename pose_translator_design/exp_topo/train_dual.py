@@ -14,7 +14,9 @@ from dual_common import load_paired_data, split_indices, build_model, geom, run_
 
 
 def main():
-    ap = argparse.ArgumentParser()
+    # @file argfile support (N3): one token per line, e.g. runs/qwen_recipe.args
+    # reproduces E27_qwen_0806's exact flags; later CLI flags override earlier ones.
+    ap = argparse.ArgumentParser(fromfile_prefix_chars="@")
     ap.add_argument("--cache", default=f"{CACHE_ROOT}/cache_paired")
     ap.add_argument("--steps", type=int, default=10000)
     ap.add_argument("--bs", type=int, default=256)
@@ -26,6 +28,7 @@ def main():
     ap.add_argument("--mask_prob", type=float, default=0.0)  # E0b: per-sample prob of masked encoder input
     ap.add_argument("--mask_mix", default="rand:0.4,ee:0.3,root:0.3")
     ap.add_argument("--visible_boost", type=float, default=0.0)  # upweight visible joints under mask (constraint honoring)
+    ap.add_argument("--tail_alpha", type=float, default=0.0)     # 0809 tail cure: per-sample-joint error^alpha reweighting (training only)
     ap.add_argument("--w_pos", type=float, default=5.0)
     ap.add_argument("--w_align", type=float, default=0.0)    # L2 same-motion code pull (collapses if strong)
     ap.add_argument("--w_contrast", type=float, default=0.0) # InfoNCE: same-motion attract, others repel (no collapse)
@@ -34,24 +37,88 @@ def main():
     ap.add_argument("--holdout", default=None)            # E5: comma-separated embodiments excluded from training; first one gets zero-shot eval
     ap.add_argument("--combo_sample", type=int, default=0)  # E5: combos per step (0 = all; bounds N^2 growth)
     ap.add_argument("--contrast_sample", type=int, default=0)  # InfoNCE embodiments per step (0 = all; bounds memory at large N)
+    ap.add_argument("--use_dof", action="store_true")  # feed per-joint rotation axes + limits
+    # E27: which frozen text encoder produces the joint-name semantics (same prompt both ways).
+    ap.add_argument("--sem_encoder", choices=["siglip", "qwen3"], default="siglip")
+    # E25 DOF-masking arms (default = every prior run, bit-for-bit).
+    #   --rot_head angles : arm A, decoder emits hinge ANGLES -> FK -> global rotations
+    #   --dof_loss        : arm B, free 6D head, loss projected onto the hinge manifold
+    ap.add_argument("--rot_head", choices=["free", "angles"], default="free")
+    ap.add_argument("--dof_loss", action="store_true")
     ap.add_argument("--judge_mode", choices=["off", "observe", "grad"], default="off")  # E14: sigmoid critics
+    # E28: decode encoder-VISIBLE joints as a residual on the observed pose (same-skeleton
+    # directions only; cross-body decode is untouched). Default off = every prior run.
+    ap.add_argument("--vis_residual", action="store_true")
     ap.add_argument("--w_judge", type=float, default=0.1)
+    # N3e (--reenc_consistency W): RE-ENCODE CYCLE CONSISTENCY. The measured failure
+    # it exists to fix: encode(decode(z)) explodes even same-body (round-trip error
+    # ~8.7 -> ~38.8 deg), which kills any synthetic-data pipeline. With prob
+    # --reenc_prob per step: pick one direction, decode, RE-ENCODE the decoded pose
+    # (no stop-grad anywhere — the encoder must learn to read decoded input AND the
+    # decoder must emit re-encodable poses) and penalize the z-space distance to the
+    # original codes with weight W. Runs at HALF batch to bound the double forward.
+    # 0 = off = bit-exact prior behavior.
+    ap.add_argument("--reenc_consistency", type=float, default=0.0)
+    ap.add_argument("--reenc_prob", type=float, default=0.3)
+    # N3f (--var_floor W): OUTPUT-VARIANCE FLOOR (VICReg's variance term applied to
+    # OUTPUTS): hinge max(0, std_gt - std_decoded) per joint/dim across the batch,
+    # std target = the GT batch's own std. Treats amplitude compression (the kick
+    # that never lifts). 0 = off = bit-exact prior behavior.
+    ap.add_argument("--var_floor", type=float, default=0.0)
     ap.add_argument("--eval_every", type=int, default=1000)
+    ap.add_argument("--seed", type=int, default=0)  # training randomness only; the val split stays seed-0
+    # E24 parameter axis. Everything before it scaled the BOTTLENECK (n_latent, fsq levels)
+    # or the data, never the backbone — every run from K=16 to K=128 sat at 17.95-18.01M params.
+    ap.add_argument("--d_model", type=int, default=256)
+    ap.add_argument("--n_heads", type=int, default=8)
+    ap.add_argument("--enc_layers", type=int, default=4)
+    ap.add_argument("--dec_layers", type=int, default=4)
     ap.add_argument("--out", default=f"{CACHE_ROOT}/runs/D_dual")
+    ap.add_argument("--device", default="cuda")   # "cpu" = smoke test while the GPU queue runs
+    ap.add_argument("--max_rows", type=int, default=0)  # 0 = all; smoke tests only
+    # decoder post-train (0811): warm-start a finished run and touch ONLY the decode
+    # side. The code lattice (enc/pool/FSQ-in, shared jf) stays byte-frozen, so every
+    # downstream consumer (BRIDGE A3/B3, text layer) keeps working unchanged.
+    ap.add_argument("--init", default=None, help="path to model.pt to warm-start from")
+    ap.add_argument("--train_scope", choices=["all", "decoder"], default="all")
+    ap.add_argument("--arm_boost", type=float, default=0.0)
+    ap.add_argument("--ee_boost", type=float, default=0.0)
+    # 0812 experiments (lloyd): the position head cannot reach the render, so
+    #   --fk_loss   supervise the ROTATION head with metric error via FK
+    #   --rot_only  spend every code slot on rotation instead of half on a
+    #               stream whose output is discarded
+    ap.add_argument("--fk_loss", action="store_true")
+    ap.add_argument("--rot_only", action="store_true")
     args = ap.parse_args()
     os.makedirs(args.out, exist_ok=True)
-    device = "cuda"; torch.manual_seed(0)
+    device = args.device; torch.manual_seed(0)
 
-    data, names, N = load_paired_data(args.cache, device)
-    val_idx, tr_idx = split_indices(N)
+    data, names, N = load_paired_data(args.cache, device, max_rows=args.max_rows,
+                                      sem_encoder=args.sem_encoder)
+    val_idx, tr_idx = split_indices(N)          # consumes global RNG -> must stay at seed 0
+    torch.manual_seed(args.seed)                # only init/batching/masking vary across seeds
 
     cfg = vars(args)
     if args.judge_mode != "off":
         cfg["n_judges"] = len(names)                     # judges cover ALL embodiments incl. holdouts
     emb_idx = {n: i for i, n in enumerate(names)}
     model = build_model(cfg, device)
+    if args.init:
+        model.load_state_dict(torch.load(args.init, map_location=device))
+        print(f"warm-start <- {args.init}")
+    train_params = list(model.parameters())
+    if args.train_scope == "decoder":
+        DEC = ("decp.", "decr.", "selfp.", "selfr.", "hrot", "hpos",
+               "fsqp.proj_out", "fsqr.proj_out")
+        n_tr = 0
+        for nm, prm in model.named_parameters():
+            on = nm.startswith(DEC)
+            prm.requires_grad_(on)
+            n_tr += prm.numel() if on else 0
+        train_params = [prm for prm in model.parameters() if prm.requires_grad]
+        print(f"train_scope=decoder: {n_tr/1e6:.2f}M trainable, lattice frozen")
     print(f"params {sum(p.numel() for p in model.parameters())/1e6:.2f}M dual-FSQ bits/frame={model.bits:.0f}")
-    opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-4)
+    opt = torch.optim.AdamW(train_params, lr=args.lr, weight_decay=1e-4)
     sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, args.steps)
     holdouts = [h for h in (args.holdout or "").split(",") if h]
     for h in holdouts:
@@ -67,6 +134,7 @@ def main():
     if holdouts:                                         # zero-shot: self-recon + translation into first holdout
         eval_combos += [(holdouts[0], holdouts[0]), (train_names[0], holdouts[0])]
     combo_rng = np.random.default_rng(4)                 # own stream: torch RNG order untouched
+    reenc_rng = np.random.default_rng(args.seed * 1000 + 77)   # N3e's own stream
     print("combos:", combos, "eval extra:", eval_combos[len(combos):])
 
     mask_mix = None
@@ -88,8 +156,27 @@ def main():
                 # per-sample: with prob mask_prob the encoder sees a partial pose; loss stays full-body
                 jm = sample_joint_mask(data[src]["spec"], args.bs, mask_mix, device=device)
                 jm &= (torch.rand(args.bs, 1, device=device) < args.mask_prob)
-            rot, pos = run_dir(model, data, src, tgt, sel, joint_mask=jm, visible_boost=args.visible_boost)
-            ((rot / 30.0 + args.w_pos * pos) / len(step_combos)).backward()
+            ex = {} if args.var_floor > 0 else None                 # N3f
+            rot, pos = run_dir(model, data, src, tgt, sel, joint_mask=jm,
+                               visible_boost=args.visible_boost, dof_loss=args.dof_loss,
+                               extras=ex, tail_alpha=args.tail_alpha,
+                               arm_boost=args.arm_boost, ee_boost=args.ee_boost,
+                               fk_loss=args.fk_loss)
+            term = rot / 30.0 + args.w_pos * pos
+            if ex is not None:
+                term = term + args.var_floor * ex["var_floor"]
+            (term / len(step_combos)).backward()
+        if args.reenc_consistency > 0 and float(reenc_rng.random()) < args.reenc_prob:
+            # N3e: decode -> re-encode cycle, half batch, one random direction.
+            B2 = max(8, args.bs // 2)
+            sel2 = sel[:B2]
+            a, b = combos[int(reenc_rng.integers(len(combos)))]
+            zp_c, zr_c = model.encode(data[a]["pose"][sel2], geom(data, a, B2))
+            prot_c, ppos_c = model.decode(zp_c, zr_c, geom(data, b, B2))
+            re_in = torch.cat([prot_c, ppos_c], -1)                 # decoded pose [B,J,9]
+            zp_r, zr_r = model.encode(re_in, geom(data, b, B2))
+            lre = ((zp_r - zp_c) ** 2).mean() + ((zr_r - zr_c) ** 2).mean()
+            (args.reenc_consistency * lre).backward()
         if args.w_align > 0 or args.w_contrast > 0:
             B = len(sel)
             cnames = train_names
@@ -124,7 +211,7 @@ def main():
                     jloss = jloss + torch.nn.functional.binary_cross_entropy_with_logits(jl, tgt)
                 extra = extra + args.w_judge * jloss / len(cnames)
             extra.backward()
-        torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+        torch.nn.utils.clip_grad_norm_(train_params, 1.0)
         opt.step(); sched.step()
         if (step + 1) % args.eval_every == 0 or step + 1 == args.steps:
             ev = evaluate(model, data, names, eval_combos, val_idx); ev["step"] = step + 1; log.append(ev)

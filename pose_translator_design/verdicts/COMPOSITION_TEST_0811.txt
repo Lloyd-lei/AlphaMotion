@@ -1,0 +1,36 @@
+COMPOSITION TEST (0811) — walker's legs + another clip's arm chain, a limb
+combination no corpus clip contains. 15 instances over 3 family pairs.
+
+metric                      real parents    COMPOSITE
+spatial recon (geodesic)      21.63 deg      23.91 deg   (+10.5%)
+temporal prior NLL             7.239          6.729      (-7.0%, i.e. MORE likely)
+novelty vs corpus index       38.66 cm       39.99 cm    (+3.4%)
+
+READING (relative only — see caveats)
+ Q1 the spatial code represents an unseen limb combination about as well as it
+    represents real motion (+10% error). The representation is COMPOSITIONAL:
+    it spans combinations it was never shown. This is the first direct evidence
+    for the "token combination" half of the thesis.
+ Q2 the temporal prior does NOT reject the composite — it scores it slightly
+    MORE likely than the parents. So the blocker for generating novel
+    combinations is not that the prior forbids them.
+ Q3 novelty is essentially unchanged (+3%), which given Q1/Q2 most likely means
+    the metric is under-powered here, not that the composite is familiar.
+
+CAVEATS THAT BOUND ALL THREE
+ * absolute recon 21 deg is NOT a bug: this is the same-skeleton no-obs decode
+   path, which the motion-eval skill bans as a yardstick (vis_residual OOD).
+   All three arms go through the identical path, so the COMPARISON is valid
+   while the absolute level is not. An earlier run of this script used a
+   hand-rolled encoder input (fk_pos/height instead of build_global's
+   gp/reach); those numbers are discarded.
+ * NLL ~7 vs the ~3.1 seen on cached training tokens: same cause, re-encoded
+   path. Again relative-only.
+ * the novelty index is 1500 windows drawn from 4.7M frames — too sparse to
+   resolve a 3% difference. Needs ~100k windows to be a real measurement.
+ * arm chain = 6 joints (shoulders/elbows/wrists). Grafting local rotations is
+   kinematically valid but carries no dynamics check.
+WHAT THIS DOES NOT SHOW: that the model GENERATES such combinations on its own.
+It shows the representation can hold them and the prior does not object. The
+generation question is separate and currently blocked by the autonomous-flow
+collapse (PHASE_SPACE_0811).

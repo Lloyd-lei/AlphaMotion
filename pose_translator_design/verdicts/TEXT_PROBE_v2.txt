@@ -1,0 +1,45 @@
+  self.enc = nn.TransformerEncoder(el, 2)
+  self.enc = nn.TransformerEncoder(el, enc_layers)
+  cp = torch.from_numpy(np.ascontiguousarray(
+gallery 902 clips (amass val + bones holdout)
+
+PROMPT: "a person kicks with their right leg"
+  #1 [amass] the person is jogging in place.
+  #2 [amass] a person steps side to side to the left.
+  #3 [amass] a person side steps to the right followed by the left and back to the right.
+
+PROMPT: "someone dances gracefully"
+  #1 [bones] person stops and walks backwards
+  #2 [bones] jogs to the right, then turn 90 degree over left shoulder, then repeats whole action sever
+  #3 [bones] person turns 180 degrees over their left shoulder and begins to jog
+
+PROMPT: "a man walks forward slowly"
+  #1 [amass] a person walks forward and looks up.
+  #2 [amass] a person walking in a strait path with his/her arm swaying in a confident manner.
+  #3 [amass] the person takes six normal size fast steps forward.
+
+PROMPT: "a person punches like a boxer"
+  #1 [amass] a person punches with their right arm.
+  #2 [amass] a person runs in a line.
+  #3 [amass] the person brings their left hand up in front of them and then brings it back down.
+
+PROMPT: "someone jumps up and down"
+  #1 [amass] a person does jumping jacks
+  #2 [amass] this person jumps a long way forward.
+  #3 [amass] the person is walking forward.
+
+PROMPT: "a person crawls on the ground"
+  #1 [amass] a person is stepping around while their hands are behind their back
+  #2 [amass] a person crawling from right to left and vice versa
+  #3 [bones] person kicks a trash can without much effort
+
+PROMPT: "someone waves their hand to say hello"
+  #1 [amass] a man waves with his left arm.
+  #2 [amass] the person is waving with his left hand.
+  #3 [amass] a person holds their arm out in front of them then lowers it
+
+PROMPT: "a person sits down on a chair"
+  #1 [amass] a person is standing with knees bent with his hands out to his side, then places his hands
+  #2 [bones] person is sitting and softly cradling a baby in their arms
+  #3 [bones] person is sitting and softly cradling a baby in their arms
+

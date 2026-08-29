@@ -143,6 +143,38 @@ def build_merge(model, eps=1e-3):
     return keep, frame
 
 
+def standing_height(model):
+    """True sole-to-pelvis height (m) at qpos0: root body z minus the lowest point of
+    any collision/visual geom, mesh vertices included.
+
+    NOT the MJCF spawn z (`body_pos[1][2]`). The spawn z is wherever the author
+    parked the free joint in the world: booster_t1 spawns at 1.68 m but stands with
+    its pelvis at 0.76 m, several robots spawn at 0 (which used to fall back to a
+    hard-coded 0.8 m). Since this value is the spec's ROOT BONE it enters
+    `spec.height` and therefore normalises every `norm_bonelen` the model is fed."""
+    import mujoco
+    d = mujoco.MjData(model)
+    mujoco.mj_resetData(model, d)
+    d.qpos[:] = model.qpos0
+    mujoco.mj_forward(model, d)
+    lo = np.inf
+    for g in range(model.ngeom):
+        if model.geom_bodyid[g] == 0:                 # the MJCF's own floor plane
+            continue
+        p, R = d.geom_xpos[g], d.geom_xmat[g].reshape(3, 3)
+        if model.geom_type[g] == mujoco.mjtGeom.mjGEOM_MESH:
+            mid = int(model.geom_dataid[g])
+            a, nv = int(model.mesh_vertadr[mid]), int(model.mesh_vertnum[mid])
+            v = model.mesh_vert[a:a + nv].reshape(-1, 3).astype(np.float64)
+            lo = min(lo, float((v @ R.T)[:, 2].min() + p[2]))
+        else:
+            lo = min(lo, float(p[2] - model.geom_rbound[g]))
+    h = float(d.xpos[1][2] - lo)
+    if not np.isfinite(h) or h <= 1e-3:               # no geoms at all -> old behaviour
+        h = float(model.body_pos[1][2] or 0.8)
+    return h
+
+
 def build_spec(model, name, keep):
     """keep -> SkeletonSpec (cm), same conventions as mjcf_skeleton.spec_from_mjcf
     (offset accumulation through dropped bodies, root bone = standing height)."""
@@ -167,7 +199,11 @@ def build_spec(model, name, keep):
         offsets.append(acc * CM)
         jnames.append(names[b])
     offsets = np.asarray(offsets, np.float32)
-    offsets[0] = np.array([0.0, 0.0, float(model.body_pos[1][2] or 0.8) * CM], np.float32)
+    # root bone = the robot's REAL standing (sole -> pelvis) height, measured from
+    # the mesh geometry at qpos0.  Was `model.body_pos[1][2] or 0.8` = the MJCF spawn
+    # z with a hard-coded fallback: wrong by +91.5 cm on booster_t1, -22.9 cm on
+    # fourier_gr3, +20.5 cm on booster_k1, ... (see LIMITS_AUDIT.md 5b).
+    offsets[0] = np.array([0.0, 0.0, standing_height(model) * CM], np.float32)
     offsets = (offsets @ AX.T).astype(np.float32)   # Z-up -> Y-up (root -> (0,h,0))
     spec = SkeletonSpec(name, np.asarray(parents, np.int64), offsets, jnames)
     spec.order_root_first()

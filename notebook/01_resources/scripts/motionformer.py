@@ -69,6 +69,11 @@ class MotionFormerConfig:
     use_pair: bool = True     # if False: no pair tensor, no pair-bias on row attn
     use_opm: bool = True      # if False: MSA does not update pair (pair stays static)
     use_triangle: bool = True # if False: no triangle multiplicative / triangle attention
+    # Replace hardcoded OuterProductMean with a learnable MLP (joint→pair transform).
+    # When True (and use_opm=True), each block uses OpmResNet instead of OuterProductMean.
+    # Goal: test if the strict outer-product structure is necessary, or if a free-form
+    # MLP can do the job equally well or better.
+    use_opm_resnet: bool = False
 
     @property
     def variant_name(self) -> str:
@@ -76,10 +81,12 @@ class MotionFormerConfig:
             return "axial_only"
         if not self.use_opm and not self.use_triangle:
             return "pair_static"
+        if self.use_opm_resnet:
+            return "opm_resnet"
         if self.use_pair and self.use_opm and self.use_triangle:
             return "full"
         # catch-all for exotic combinations
-        return f"custom(pair={self.use_pair},opm={self.use_opm},tri={self.use_triangle})"
+        return f"custom(pair={self.use_pair},opm={self.use_opm},tri={self.use_triangle},resnet={self.use_opm_resnet})"
 
 
 # ----------------------------------------------------------------------------
@@ -225,6 +232,46 @@ class OuterProductMean(nn.Module):
         return self.out(outer)
 
 
+class OpmResNet(nn.Module):
+    """Free-form learnable replacement for OuterProductMean.
+
+    Drop-in alternative: same input [B, T, J, H] → same output [B, J, J, P].
+    But the joint-pair feature mixing is a generic MLP on concatenated joint
+    features instead of the strict outer-product structure. Tests whether
+    the outer-product inductive bias is necessary or just a useful prior.
+
+    Pipeline:
+        1. Time pool:    h = msa.mean(T)                      → [B, J, H]
+        2. Pair concat:  cat(h_i, h_j) for all (i, j) pairs   → [B, J, J, 2H]
+        3. MLP:          Linear → GELU → Linear               → [B, J, J, P]
+
+    Param count comparison (default cfg: hidden=128, pair_hidden=32, opm_chunk=16):
+        OuterProductMean: norm(2H) + proj_a(H*16) + proj_b(H*16) + out(256*P)
+                        = 2*128 + 128*16*2 + 256*32 ≈ 12.5K params
+        OpmResNet:        Linear(2H, P*4) + Linear(P*4, P)
+                        = 256*128 + 128*32 ≈ 36.8K params  (~3x bigger)
+    """
+
+    def __init__(self, cfg: MotionFormerConfig, mlp_mult: int = 4):
+        super().__init__()
+        H = cfg.hidden
+        P = cfg.pair_hidden
+        self.norm = nn.LayerNorm(H)
+        self.mlp = nn.Sequential(
+            nn.Linear(2 * H, P * mlp_mult),
+            nn.GELU(),
+            nn.Linear(P * mlp_mult, P),
+        )
+
+    def forward(self, msa: torch.Tensor) -> torch.Tensor:
+        # msa: [B, T, J, H]
+        h = self.norm(msa).mean(dim=1)                              # [B, J, H]
+        J_ = h.shape[1]
+        h_i = h.unsqueeze(2).expand(-1, -1, J_, -1)                 # [B, J, J, H]
+        h_j = h.unsqueeze(1).expand(-1, J_, -1, -1)                 # [B, J, J, H]
+        return self.mlp(torch.cat([h_i, h_j], dim=-1))              # [B, J, J, P]
+
+
 # ----------------------------------------------------------------------------
 # Triangle multiplicative update (outgoing)
 # ----------------------------------------------------------------------------
@@ -315,8 +362,12 @@ class MotionFormerBlock(nn.Module):
         self.col_attn = ColumnAttention(cfg)
         self.msa_transition = Transition(cfg.hidden, cfg.ffn_mult)
 
-        # Pair-side modules only exist when the pair tensor is present
-        self.opm = OuterProductMean(cfg) if (cfg.use_pair and cfg.use_opm) else None
+        # Pair-side modules only exist when the pair tensor is present.
+        # If use_opm_resnet=True, OPM is the learnable MLP variant; else strict OuterProductMean.
+        if cfg.use_pair and cfg.use_opm:
+            self.opm = OpmResNet(cfg) if cfg.use_opm_resnet else OuterProductMean(cfg)
+        else:
+            self.opm = None
         self.tri_mult = TriangleMultiplicativeOutgoing(cfg) if (cfg.use_pair and cfg.use_triangle) else None
         self.tri_attn = TriangleAttentionStarting(cfg) if (cfg.use_pair and cfg.use_triangle) else None
         # Pair transition runs when pair exists AND at least one pair-update is on

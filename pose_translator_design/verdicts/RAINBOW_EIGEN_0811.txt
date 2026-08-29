@@ -1,0 +1,41 @@
+RAINBOW EIGEN (lloyd's addition: decompose the latent with eigenVECTORS)
+frozen Equator A3+B3 + Greenwich C1. K=64 paths, walk-start -> kick-goal,
+n=60, tau=0.6, Gumbel-max with per-seed frozen noise.
+
+WHAT WAS MEASURED
+ 1 diffusion-map eigenvectors psi_1..psi_3 of the rendered-joint affinity =
+   continuous CHOICE AXES over the path cloud (not class labels).
+ 2 pull-back: PCA(10) of the A3 lattice coords -> ridge -> psi_k.
+   5-fold OUT-OF-SAMPLE r:  psi_1 0.883   psi_2 0.714   psi_3 0.949
+   (an unregularised 192-dim in-sample fit returned r=1.000 — a tautology,
+    since K < dim. Only the cross-validated number is quoted.)
+ 3 causal steer: push the median path's lattice by +-2.5 CELLS along w_k,
+   re-quantize, decode, re-project onto psi_k.
+   rho(alpha, realised):    psi_1 0.869   psi_2 0.871   psi_3 0.943
+   lattice coords actually moved at alpha=2.5: 74 / 113 / 88 of 192.
+
+READING
+ * The axes are REAL and CAUSAL: directions found with zero supervision, from
+   the model's own sampling spread, move the decoded motion when pushed. This
+   is an unsupervised control handle on a frozen stack.
+ * BUT the response is a STEP, not a dial: flat for alpha<0, a jump between
+   alpha 0 and 1, flat after (see eigen_steer.png). Each psi_k behaves as a
+   THRESHOLD SWITCH between two basins, consistent with the discrete lattice
+   and with the mode structure found by the temperature ladder. Calling it a
+   continuous knob would overstate it.
+ * Visual check (eigen_axis_extremes_x2.mp4): sampled psi_1 extremes differ in
+   leg phase/lean; the steered pair reaches poses of the same visual family,
+   i.e. the push lands on real motion, not garbage — but the +2.5 tile shows a
+   strong arm/torso deviation worth a closer look before any claim of
+   semantic cleanliness.
+
+CAVEATS
+ * rho over 7 alpha points; psi projection of steered paths uses an 8-NN
+   Nystrom extension, which saturates once a path leaves the sampled cloud —
+   part of the plateau is measurement, not physics.
+ * Single endpoint pair, single seed. Stability across endpoint pairs and
+   seeds is UNTESTED.
+NEXT: threshold location vs temperature (does the switch move?); steer under a
+pinned mode; whether psi_1 of one endpoint pair transfers to another pair.
+Figures: png/eigen_axes.png, eigen_meaning.png, eigen_steer.png
+Video:   mp4/bridge_demo/eigen_axis_extremes_x2.mp4

@@ -1,0 +1,24 @@
+================================================================================================
+BRIDGE STACK verdict — B(sample)->A(render)->FK, human side
+A=BRIDGE_A_pilot_0810  B=BRIDGE_B_pilot_0810  board=PROD_c1_91k_dim20_tail_0810
+================================================================================================
+
+-- 1 SAME-ENDPOINT GENERATION (48 win x 4 samples) --
+endpoint hit [cm]     : mean  11.90  p95  20.26   (pass-through check)
+anchor FK vs GT [cm]  : mean  11.94  p95  20.22  (one-of-many caveat)
+energy ratio vs GT    : mean   1.83  p95   3.58   (mush<1; T32 recon 0.94)
+jerk  ratio vs GT     : mean  18.68  p95  60.42   (oversmooth<1)
+sample diversity [cm] : mean   0.00  p95   0.00   (0=mode collapse)
+B token ppl on GT     : 122.6  (uniform 15625, train-final 96.5)
+
+-- 2 CROSS-CLIP BRIDGE (gap 60 = 2s invented, 32 bridges) --
+junction snap in      : mean  25.51  p95  28.04  (T32 3.79 / jepa 1.94)
+junction snap out     : mean  38.11  p95  77.15  (T32 3.75 / jepa 3.09)
+bridge energy ratio   : mean   1.19  p95   2.22   (old arms 0.28-0.31 @2s)
+frame copy inside     : mean   0.90  p95   0.94   (fraction identical codes)
+
+-- 3 SPARSE PIN MODE: k GT tokens given --
+k= 0 pins: masked-token acc 0.107  anchor FK vs GT  10.33 cm
+k= 8 pins: masked-token acc 0.078  anchor FK vs GT  11.57 cm
+k=16 pins: masked-token acc 0.055  anchor FK vs GT  12.40 cm
+k=24 pins: masked-token acc 0.078  anchor FK vs GT  11.67 cm

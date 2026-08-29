@@ -1,0 +1,291 @@
+====================================================================================================
+V5b — THREE TARGETED FIXES TO THE V5 TEMPORAL LAYER, PLUS THE CONDITION-DROPOUT MECHANISM TEST
+generated 2026-08-06 (evening). Code: exp_topo/train_v5.py, v5_common.py (all flag-gated,
+defaults reproduce V5 bit-exactly — verified by smoke test). Full verdict: V5b_verdict_0806.txt.
+====================================================================================================
+
+THE FIXES
+  A  --aug_interp linear      continuous fractional-time resampling (lerp positions, lerp +
+                              re-orthonormalize 6D; measured inter-frame rotation p50 1.1 deg,
+                              p99 17.6 deg -> lerp+GS is safe). Model's canonical resample
+                              switches too, or it would reintroduce the staircase.
+  B  --timing_loss both       Riemann-sum per-segment |ds| matching, Huber, DEADZONE = 0.020
+                              reach units (the measured p10 of GT |ds|; p5 0.009 / p50 0.174 /
+                              mean 0.218) + low-weight total-length term, on top of the
+                              cumulative curve loss.
+  C  --w_pairnce 0.5          InfoNCE: same path under two time warps = positives for the PATH
+                              registers, batch = negatives (tau 0.1).
+  D  --cond_drop_tgt 0.3      condition dropout (coordinator's addition, arm V5b_cdrop):
+     --cond_drop_both 0.1     null cond tokens AND baseline held-at-cur, so the endpoint
+                              interpolation shortcut is sometimes absent.
+
+THE FOUR-NUMBER TABLE  (all 8.31M params / 62.69 bits/s / 60k steps; frameCE 8.53M)
+  arm                        (i) 2b inv   (ii) content   (iii) key cm   (iv) ladder 1->8   time rho*
+                             [>0.95]      share [>0.7]   [ctrl 4.63]    [want a slope]
+  ---------------------------------------------------------------------------------------------
+  V5_pathint     (last night)    0.701          0.14          7.46       7.46->7.45 flat     +0.79
+  V5_noaug       (last night)    0.550          0.91          6.89       6.93->6.89 flat     +0.58
+  V5_frameCE     (last night)    0.198          0.59          4.63       5.17->4.63 SLOPE    -0.04
+  V5b_full       (A+B+C)         0.685          0.11          7.40       7.40->7.40 flat     +0.38
+  V5b_noC        (A+B)           0.706          0.28          7.52       7.52->7.52 flat     +0.81
+  V5b_Bonly      (B only)        0.697          0.27          7.46       7.46->7.45 flat     +0.77
+  V5b_cdrop      (A+B+C+D)       0.633          0.57          7.89       7.90->7.89 flat     -0.72
+  * spearman of time-code dim0 vs measured speed; SIGN of an FSQ dim is arbitrary per run,
+    so cdrop's -0.72 is strong tracking with a flipped axis, not anti-tracking.
+  Leakage: all four V5b arms 0.097-0.113, below P1's 0.141 — no regression anywhere.
+
+WHAT EACH FIX ACTUALLY DID
+  B  is the one that worked as designed: share 0.14 -> 0.27/0.28 with 2b held (0.70/0.71) and
+     the best time-gear tracking of any arm family. Small but real, and cheap.
+  A  bought nothing measurable: noC (linear) vs Bonly (nearest) differ by noise on all four
+     numbers. The staircase-content hypothesis was not the binding constraint.
+  C  BACKFIRED: share 0.28 -> 0.11, time rho 0.81 -> 0.38. Decisive detail: pair_nce trained
+     to ~0.02, i.e. the path token could retrieve its own window out of 127 negatives — the
+     token HAS window identity — while the shuffle ablation shows the decoder uses it LESS.
+     So last night's "invariance by discarding" is not the whole story: the encoder can be
+     made to keep content and the decoder still ignores it.
+  D  is the mechanism test, and it half-confirmed: share 0.11 -> 0.57 (window-specific benefit
+     0.39 -> 0.89 cm) purely by sometimes withholding the endpoint shortcut — decoder-side
+     gradient starvation is REAL and is the main driver of the collapse. But 2b fell to 0.633
+     (below the 0.68 hold line) and the headline error rose to 7.89, so the coordinator's
+     clean-confirmation criterion is NOT met. Neither is the alternative ("aug destroys
+     regardless"): share clearly un-collapsed once the shortcut was removed.
+
+HONEST READ
+  1. No arm gets (i) and (ii) high at once. The interventions move along a tradeoff frontier
+     between "token is speed-invariant / decoder leans on endpoints" and "token carries this
+     window's motion"; nothing broke the frontier. Absolute window-specific benefit stays
+     under 1 cm in every aug arm (vs 2.58 cm noaug, 3.41 cm frameCE).
+  2. 2b is pinned at 0.63-0.71 across every aug variant we have ever run. The 2b exam's two
+     windows genuinely differ by 30 frames of new motion; an asymptote near 0.7 is plausibly
+     the content ceiling of the exam itself, and 0.95 may be unreachable without the token
+     deliberately over-weighting the shared prefix. Worth deciding whether the acceptance
+     line or the exam needs revisiting before more training-side iterations.
+  3. The structural conflict is now identified, not just suspected: the two-point endpoint
+     conditioning that kills copy-degeneracy is the same channel that starves the codebook.
+     D shows relieving it works; the cost (2b, error, stability) came from relieving it 40%
+     of the time with the aug/invariance pressure still on.
+  4. The prefix ladder stayed perfectly flat in all pathint-family arms — the OAT ordering
+     carries no incremental content. frameCE remains the only arm with a real 1->8 slope.
+  NEXT (if continued): B + a gentler D (e.g. 0.15/0.05) WITHOUT C, and consider decoupling
+  the time head from the cdrop dynamics; separately, re-derive the 2b acceptance number from
+  a GT oracle (what cosine does an ideal length-normalized path descriptor achieve on that
+  exam?) before spending more compute chasing 0.95.
+
+FILES
+  verdict            /var/tmp/alphamotion/topo_exp/runs/V5b_verdict_0806.txt
+  figures            /var/tmp/alphamotion/topo_exp/runs/V5b_figs/*.png
+  per-run numbers    /var/tmp/alphamotion/topo_exp/runs/V5b_{full,noC,Bonly,cdrop}_0806/eval_v5.json
+  train logs         /var/tmp/alphamotion/topo_exp/runs/V5b_*_0806.train.log
+  videos (V5b_noC)   pose_translator_design/R4_VIZ/mp4/v5b/  (money shot + cross-speed)
+====================================================================================================
+
+====================================================================================================
+2b ORACLE CEILING  (appended 2026-08-06, night — the NEXT item "re-derive the 2b acceptance
+number from a GT oracle" from above; numbers: runs/V5b_2b_oracle_0806.json, script:
+/var/tmp/alphamotion/topo_exp/night2_lib/oracle_2b.py)
+====================================================================================================
+
+WHAT WAS RUN
+  The EXACT stat2_speed window pairs (seed 13, n=512, val split, T=span=60, human_smpl):
+  window A = raw frames 0..59; window B = those 60 frames read at 2x (30 samples) + raw frames
+  60..89. On each window the IDEAL length-normalized geometric descriptor: GT key-joint paths,
+  arc-length-resampled to a fixed 60 points (speed fully removed), cosine under the token
+  metric's own aggregation (flatten, L2-normalize, dot, mean over pairs).
+  Sanity held: on the 2a pairs (same raw span re-read at 30 / 120 frames) this descriptor
+  scores 0.999-1.000 — it is genuinely speed-invariant. Its 2b score is therefore pure
+  content difference, i.e. the exam's ceiling. No static-path degenerate windows (0/512).
+
+THE CEILING (four descriptor variants; "control" = unrelated-window pairing, same aggregation)
+  descriptor                         2b oracle   control    calibrated (2b-ctrl)/(1-ctrl)
+  --------------------------------------------------------------------------------------
+  positions, raw                       0.958       0.778        0.809
+  positions, mean-pose removed         0.368       0.018        0.357
+  rot6d+pos state, raw                 0.925       0.450        0.863
+  rot6d+pos state, mean removed        0.415      -0.004        0.418
+  The raw variants' high scores are mean-standing-pose inflation: 0.78 cosine between
+  UNRELATED windows. The token metric has no such shared component — every arm's control is
+  0.001-0.076 (noC 0.0155). The control-matched oracle is the CENTERED one: ~0.37-0.42.
+
+EACH ARM AGAINST IT
+  arm            2b      /raw ceiling 0.958   calibrated   vs calibrated oracle 0.36-0.42
+  ------------------------------------------------------------------------------------
+  V5_pathint    0.701          73%                0.696          1.7-2.0x ABOVE
+  V5_noaug      0.550          57%                0.546          1.3-1.5x above
+  V5_frameCE    0.198          21%                0.131          0.3-0.4x (below)
+  V5b_full      0.685          72%                0.684          1.6-1.9x above
+  V5b_noC       0.706          74%                0.702          1.7-2.0x above
+  V5b_Bonly     0.697          73%                0.693          1.7-1.9x above
+  V5b_cdrop     0.633          66%                0.633          1.5-1.8x above
+
+PLAIN VERDICT
+  1. The 0.95 acceptance line was impossible. A perfect speed-removing descriptor that keeps
+     the window's content tops out at 0.37-0.42 on this exam once you subtract the shared-
+     mean-pose inflation that the tokens provably do not have (their controls are ~0). Even
+     WITH that inflation the ceiling is 0.958 — and only because unrelated windows already
+     score 0.78 under it. The two windows genuinely differ by 30 frames; no content-carrying
+     token can reach 0.95 with a near-zero control.
+  2. The aug arms are not "at ~95-100% of achievable" — they are 1.5-2x PAST it. 0.70 on a
+     control-matched scale where the ideal geometric descriptor gets 0.36-0.42 means the extra
+     similarity does not come from better speed invariance; it comes from DISCARDING window
+     content (or over-weighting the shared prefix). This independently confirms the content-
+     share collapse (0.11-0.28) from the geometry side: 2b > ~0.4 and content share > 0.7 are
+     mathematically in tension ON THIS EXAM.
+  3. So the exam, not the training, is what needs revising: past ~0.4, recipe-2b cosine is an
+     inverse content meter, not an invariance meter. A replacement exam should compare tokens
+     of the SAME raw span at different readout speeds with content held fixed (2a does this
+     but is trivially passed by construction) — e.g. time-warped readouts of one span (the
+     warp_idx machinery already exists) with acceptance re-set against this oracle, which
+     scores 1.00 there. Chasing 0.95 on the current 2b with more training-side iterations
+     would only reward further content discarding.
+
+====================================================================================================
+2c REPLACEMENT EXAM — SAME-SPAN WARPED-READOUT INVARIANCE, ALL SEVEN ARMS RE-JUDGED
+(appended 2026-08-06, night, follows directly from the oracle section above; numbers:
+runs/V5b_warp_exam_0806.json, script /var/tmp/alphamotion/topo_exp/night2_lib/warp_exam.py)
+====================================================================================================
+
+THE EXAM
+  The oracle section proved recipe-2b conflates invariance with content discarding. 2c holds
+  content fixed: tokens of the canonical uniform readout of a 60-frame span vs tokens of SIX
+  non-uniform monotone time-warped readouts of the SAME span (warp_fidx, n_ctrl=3, strength
+  1.0 — fast through part of the path, slow through the rest). Same 512 val windows as 2b
+  (seed 13), same aggregation. Fractional (lerp) and nearest warp readouts agree to 3 decimals
+  on every arm, so the readout mechanism is not a confound; the frac number is quoted.
+  The ideal length-normalized descriptor scores 0.961 here (residual = 60-sample
+  discretization of the warped readout, not speed), control 0.018 — so ~0.96 IS reachable by
+  a content-preserving representation on this exam, unlike 2b's 0.37-0.42.
+
+THE CORRECTED TWO-AXIS TABLE
+  arm             2c warp inv   control   content share   old 2b   read
+                  [true meter]            [>0.7 wanted]   [dead]
+  --------------------------------------------------------------------------------------
+  oracle (GT)         0.961      0.018        1.00*          0.37   *by definition
+  V5_pathint          0.997      0.020        0.14           0.70   invariant, empty
+  V5_noaug            0.756      0.021        0.91           0.55   full, NOT invariant
+  V5_frameCE          0.486      0.083        0.59           0.20   neither
+  V5b_full            0.997      0.007        0.11           0.69   invariant, empty
+  V5b_noC             0.992      0.024        0.28           0.71   invariant, thin
+  V5b_Bonly           0.997      0.009        0.27           0.70   invariant, thin
+  V5b_cdrop           0.996      0.007        0.57           0.63   BOTH — the only one
+  (n=512 val windows x 6 warps; per-warp spread and nearest-variant numbers in the json)
+
+WHAT CHANGES
+  1. The coordinator's prediction held exactly: every aug arm is genuinely warp-invariant
+     (0.99+), and noaug — which never saw a warp — is not (0.756, and its per-warp spread
+     0.60-0.91 tracks warp strength). The aug pressure DID buy the thing it was built to buy;
+     2b was simply the wrong instrument to see it.
+  2. The verdict on V5b_cdrop flips. Under 2b it was "below the 0.68 hold line" and judged a
+     failed confirmation. Under the true meter it is 0.996 invariant WHILE holding the highest
+     content share of any aug arm (0.57, 4-5x the other V5b arms). Condition dropout did not
+     cost invariance at all — it only cost points on an exam that rewards content discarding.
+     Its real costs remain the headline error (7.89 cm vs 7.40-7.52) and the flipped-axis
+     time gear; those are the things to fix, not its invariance.
+  3. The honest frontier is now visible: invariance is essentially solved among aug arms
+     (0.99+ vs oracle 0.96); the open axis is content (best aug arm 0.57 vs noaug's 0.91).
+     The next recipe writes itself, as predicted: warp aug for invariance + B (Riemann
+     timing) + a content-restoring mechanism (gentler cdrop, e.g. 0.15/0.05, time head
+     decoupled) and NO pair-NCE (C) — trained once, judged on 2c + content share, with the
+     acceptance line re-set to the oracle's 0.96, not the dead 2b 0.95.
+
+================================================================================
+CFG-STYLE TOKEN GUIDANCE AT INFERENCE (zero retraining) — 2026-08-06
+  runs/V5_guidance_0806.json | script: scratchpad v5_guidance.py | arm: V5b_cdrop_0806
+================================================================================
+
+RECIPE (LIT_JEPA_COLLAPSE.md finding 4, family 4):
+  guided = decode(cond, null_token) + w * (decode(cond, token) - decode(cond, null_token))
+  extrapolated on the DECODER OUTPUT (per-frame key-joint SE3): positions linear,
+  rotations GEODESIC (rotvec scaling of R_tok R_null^-1, scipy), re-emitted 6D.
+  w=1 reproduces the plain decode bit-for-bit (checked vs the verdict's prefix8 row).
+
+PREMISE CAVEAT, stated up front: the lit note's "already learned decode(cond, null-token)"
+is INVERTED relative to what train_v5.py actually does. cdrop drops the ENDPOINT COND
+(cond_null embeddings) — the model learned decode(null_cond, token), the reverse branch.
+The token side was only ever PARTIALLY dropped (OAT prefix mask, budgets 1/2/4/8 — never
+0 visible registers). So the null-token branch used here is an untrained extrapolation of
+two mechanically clean paths, both run:
+  hid  = all 8 path registers key_padding_masked (training's own mask mechanism at budget 0)
+  zero = path_z = 0 (the standard verdict's tokens_zeroed row; reproduces its 9.46 cm)
+
+TABLE (n=256 val windows, human_smpl, seed 31; null = hid unless noted)
+                 pos_cm  rot_deg  energy  pathint  shuf_gap_cm  warp_inv  accel_cm  rev
+  GT             0       0        1.000   0        --           0.997     0.35      0.03
+  null hid       8.93    15.5     0.784   0.097    --           --        2.29      0.45
+  null zero      9.46    19.4     0.673   0.580    --           --        0.76      0.39
+  w=1.0 (base)   7.89    14.2     0.791   0.055    0.85         0.920     2.56      0.48
+  w=1.5          8.32    14.6     0.837   0.054    1.11         0.911     2.73      0.47
+  w=2.0          9.25    15.6     0.902   0.102    1.25         0.899     2.93      0.44
+  w=3.0          11.97   18.6     1.063   0.342    1.38         0.875     3.37      0.40
+  w=5.0          18.86   26.3     1.427   1.091    1.40         0.843     4.37      0.34
+  (zero-null variant is strictly worse everywhere: w=2 already 12.88 cm / energy 1.14.
+   shuf_gap = shuffled-token minus correct-token error, i.e. window-specific content in cm.
+   warp_inv = 2c machinery applied to the OUTPUT: arclen descriptor cosine, base vs 3
+   warped readouts, control ~0.03; GT oracle 0.997.)
+
+VERDICT: NO w>1 is strictly better. Guidance moves the model along a trade-off line,
+it does not dominate w=1:
+  - Content: REAL but small. The shuffle gap does grow monotonically (0.85 -> 1.40 cm),
+    so the extrapolation direction genuinely amplifies window-specific token content —
+    the mechanism works as the lit note predicted.
+  - Cost: error grows faster than content (7.89 -> 18.86 cm), jitter accel +71% by w=5,
+    and output warp-invariance decays 0.920 -> 0.843. The energy gap closes (0.79 -> 1.0
+    around w~2.5) but by amplifying noise as much as motion.
+  - Best non-trivial point: w=1.5/hid — energy +0.046, pathint marginally better
+    (0.054 vs 0.055), shuffle gap +0.26 cm, for +0.43 cm error and +7% accel. A defensible
+    knob if downstream wants livelier decode; not a free win.
+  - Root cause visible in the null row itself: the token-free decode (hid) already scores
+    8.93 cm / 0.784 energy — barely worse than the full decode. The token's marginal
+    contribution in OUTPUT space is ~1 cm, so there is little signal for guidance to
+    amplify before it amplifies the residual noise. Guidance cannot create content the
+    decoder never routed through the tokens; it can only turn up the volume on what is
+    there. The fix stays on the training side (gentler cdrop + 2c-judged content recipe
+    above), with w~1.5 available as a cheap inference-time garnish afterwards.
+
+====================================================================================================
+V5c — THE 2c-GUIDED RECIPE, TRAINED AND JUDGED (appended 2026-08-06, late night)
+warp aug (linear) + Riemann(both) + GENTLE cond dropout 0.15/0.05 + TIME HEAD DETACHED from
+cdrop dynamics (--cdrop_time_detach, new in train_v5.py) + NO pair-NCE. Same 8.31M / 62.69
+bits/s / 60k budget, 28.3 min. Numbers: runs/V5c_0806/eval_v5.json, runs/V5c_warp_exam_0806.json,
+runs/V5c_verdict_0806.txt; train log runs/V5c_0806.train.log.
+====================================================================================================
+
+THE GATES (set by the coordinator against the 2c oracle)
+  gate                          wanted        V5c        verdict
+  ------------------------------------------------------------------
+  2c warp invariance          >= 0.90       0.995        PASS  (control 0.023; oracle 0.961)
+  content share               >= 0.6        0.604        PASS  (first aug arm ever over the line)
+  key error (n8)              <= 7.5 cm     7.66         MISS by 0.16 cm
+  time-gear spearman |rho|    >= 0.6        0.544        MISS by 0.056 (dim0 vs speed -0.544)
+  Context rows: old 2b 0.768 (highest ever, now understood as partly content-metric); leakage
+  0.119 vs P1 0.141 (pass); zeroed 9.07 / shuffled 8.51 / straight line 9.00 vs model 7.66;
+  prefix ladder still flat (7.66 across 1/2/4/8); 989 distinct path codes @ 9.93 bits.
+
+TWO-AXIS READ
+  V5c is the first arm in the entire V5 line that holds REAL invariance (0.995 on the exam an
+  ideal descriptor caps at 0.961) and content at the line (0.604) SIMULTANEOUSLY — the
+  tradeoff frontier every earlier arm slid along is broken, which was the point of the recipe.
+  The two misses are narrow and continuous, not structural: 2% on key cm, 0.06 on rho. The
+  time-head detach did protect stability (no divergence, best-ever 2b-family error at 60k) but
+  the gear tracking WEAKENED (|rho| 0.544 vs Bonly's 0.77 / cdrop's 0.72) — detaching on 20%
+  of samples starves the time codebook of some gradient; a lower detach rate or an always-on
+  auxiliary speed target is the obvious knob.
+  VERDICT for the P2 decision: the structural question is answered YES (invariance and content
+  can coexist under this architecture); what remains is tuning, not mechanism. By the
+  coordinator's own trigger (content < 0.6 -> V5d) the V5d arm is NOT triggered: 0.604 >= 0.6.
+
+MONEY VIDEOS (V5c arm)  — judge with eyes, not numbers:
+  pose_translator_design/R4_VIZ/mp4/v5c/MONEY_gt_vs_generated.mp4
+  pose_translator_design/R4_VIZ/mp4/v5c/c_cross_speed.mp4
+
+DORMANT WEAPONS (implemented + smoked tonight, NOT trained — per the standby plan)
+  --token_only_head (+ --w_tokhead 0.5)   Delta-JEPA aux: a head reading ONLY the path
+      registers predicts the canonical per-segment |ds| profile (se3_step) — training-time
+      demand for token content the decoder cannot shortcut. Target is readout-speed-invariant
+      (view A is always a uniform readout), so it cannot fight warp invariance.
+  --ema_target (+ --ema_momentum 0.996)   BYOL/I-JEPA slow target-conditioning pathway
+      (EMA copies of cond_in/cond_when/cond_role, no grad) — severs encoder-predictor
+      collusion. Second line.
+  Both default OFF and verified bit-path-clean: smokes pass in all four flag combinations, and
+  V5c/older checkpoints still load strict on the edited train_v5.py. If the tuning pass at the
+  two missed gates stalls, V5d = V5c + token_only_head is one command away.

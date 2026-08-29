@@ -1,0 +1,34 @@
+CROSSOVER: does repairing the decoder change the autonomous-flow verdict? (0812)
+The autonomous rollout re-encodes its own decoded frames every chunk, and that
+path was measured broken (decoder round-trip fidelity 11% above chance on C1).
+So the whole B3/B6/B7/B8 series may have been diagnosing a spatial-layer bug as
+a temporal-prior defect. Re-run of the phase-space ruler with the repaired
+decoder (PT_c1dec_reenc_0812, codes bit-identical to C1, translation unchanged):
+
+prior   decoder            return-map slope   (corpus reference -0.70)
+B3      C1  (broken RT)        -0.09      frozen: portrait collapsed to a point
+B3      REPAIRED              +0.25      no longer frozen; drifts
+B7      C1  (broken RT)        +0.38
+B7      REPAIRED              +0.34      essentially unchanged
+Lyapunov, walk:  B3+C1 +0.057 -> B3+repaired +0.054 ;  B7 -0.009 -> -0.010
+
+READING — the crossover does NOT rescue the B-series, and that is the useful
+answer. Repairing the round-trip visibly changes B3's failure MODE (a frozen
+fixed point becomes a drift, slope -0.09 -> +0.25) which confirms that part of
+what we called "freeze" was the decoder destroying its own state each chunk.
+But it does not produce a restoring force: no configuration approaches the
+corpus's -0.70, and B7 — the best autonomy checkpoint — is unmoved (+0.38 vs
++0.34, within run-to-run noise).
+So the original conclusion survives with one correction:
+  KEEP:      per-token likelihood contains no trajectory-level recurrence term;
+             goal-free rollout has no attractor; E17-style RL remains the
+             designated next move, reward = -(slope + 0.70)^2 + amplitude.
+  CORRECT:   B3's "freeze" was partly an artefact of the broken round-trip, so
+             the B3 -> B6 -> B7 progression should be re-stated against the
+             repaired decoder rather than quoted from the original run.
+  ALSO:      the repaired decoder is now the correct substrate for any future
+             rollout experiment, RL included — training an RL arm on the broken
+             decoder would have optimised against a corrupted state transition.
+That last point is the practical payoff: we caught this BEFORE spending an RL
+run on it.
+Figures: png/phase_portrait_B3reenc.png, png/phase_portrait_B7reenc.png

@@ -1,0 +1,47 @@
+HALF THE CODE BUDGET DOES NOT REACH THE RENDER (0812, found from lloyd's
+question "so there is a position decoder?"). CONFIRMED EMPIRICALLY.
+
+The spatial decoder has two streams that never cross:
+  qp <- cross-attend zp (position codes)  ->  hpos  ->  positions
+  qr <- cross-attend zr (rotation codes)  ->  hrot  ->  rotations
+Rendering takes ONLY the rotations and runs FK on them (v5_common.fk_pos; the
+raw position stream was retired for "rubber bones" long ago). So the position
+codes can only reach the screen through hpos, which is discarded.
+
+TEST: take a real 120-frame window, decode normally, then decode again with the
+position half of the codes ZEROED, and again with it SCRAMBLED with noise.
+  position codes zeroed     -> FK position change 0.00000 cm, rot change 0.000000
+  position codes scrambled  -> FK position change 0.00000 cm, rot change 0.000000
+  CONTROL: rotation zeroed  -> FK position change 12.88 cm, rot change 2.151289
+  (the position head's own output does move, 0.066 — it is just never rendered)
+Bit-exact zero. Not "small", not "negligible": the rendered motion is
+numerically identical whatever the position codes contain.
+
+SCOPE — this is bigger than the spatial layer
+  * Greenwich stores 256 slots x 20 dims per frame. 128 of those slots are the
+    position stream. Half the code budget has no path to the output.
+  * Equator's tokens are built from those same 256 slots (bridge_a: streams =
+    pose||root, 128 + 128). So HALF of every Equator token's content is
+    describing something that cannot change the render. The A3 codec spends
+    capacity compressing it, and B3 spends 15625-way softmax capacity
+    predicting it.
+  * Every "codebook budget" discussion we have had — the bit sweeps, the
+    dim13/16/20 duel, the scaling-law grid — was half about dead bits. The
+    conclusions of those duels are not wrong (all arms carried the same dead
+    half, so the comparisons were fair) but the EFFICIENCY numbers are.
+
+WHAT THIS DOES NOT MEAN
+  The position stream is not useless in TRAINING: run_dir's loss has w_pos=5.0
+  on the position head, so those gradients shape the shared encoder trunk and
+  therefore the rotation codes too. Killing the stream outright is a different
+  experiment from killing it at inference. Do not conflate them.
+
+IMMEDIATE CONSEQUENCES TO TEST, in order
+  1 Equator on rotation slots only (128 instead of 256). Same token count, half
+    the input dimensionality, nothing lost at the render. If quality holds, A3
+    gets cheaper and B3's prediction problem gets easier at zero cost.
+  2 Re-run the codebook-budget question on rotation slots only. The earlier
+    "how many bits do we need" answers were measured on a doubled representation.
+  3 Decide the position stream's real job: keep it as a training-time auxiliary
+    (measure by ablating w_pos), or give it a path to the output (feed zp into
+    the rotation stream, or use hpos to correct FK).

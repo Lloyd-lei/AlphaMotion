@@ -1,0 +1,29 @@
+================================================================================================
+BRIDGE STACK v2 — CLEAN RULER: decode->G1(heldout), score vs real paired retarget FK
+A=BRIDGE_A3_prod_0810  B=BRIDGE_B3_prod_0810  temp=0.9
+================================================================================================
+
+-- 1 SAME-ENDPOINT GEN [argmax] (24 win x 3 samples) --
+endpoint hit [cm]   : mean  14.05  p95  33.26  (v1 dirty ruler: 11.90)
+anchor FK vs GT [cm]: mean  15.64  p95  31.74  (v1: 11.94)
+energy ratio        : mean   0.65  p95   1.14  (v1: 1.83)
+jerk ratio          : mean   5.12  p95  11.79  (v1: 18.68)
+diversity [cm]      : mean   2.33  p95   5.70  (v1: 0.00)
+
+-- 1 SAME-ENDPOINT GEN [soft] (24 win x 3 samples) --
+endpoint hit [cm]   : mean  14.05  p95  33.26  (v1 dirty ruler: 11.90)
+anchor FK vs GT [cm]: mean  15.67  p95  31.71  (v1: 11.94)
+energy ratio        : mean   0.50  p95   0.89  (v1: 1.83)
+jerk ratio          : mean   1.68  p95   4.21  (v1: 18.68)
+diversity [cm]      : mean   2.24  p95   5.56  (v1: 0.00)
+
+-- 2 CROSS-CLIP BRIDGE [soft] (gap 60, 24 bridges) --
+junction snap in    : mean  21.21  p95  24.58  (v1: 25.51 | T32 3.79 jepa 1.94)
+junction snap out   : mean  31.85  p95  72.95  (v1: 38.11 | T32 3.75 jepa 3.09)
+bridge energy ratio : mean   0.95  p95   2.10  (v1: 1.19, old arms 0.28-0.31)
+
+-- 3 SPARSE PINS [soft] --
+k= 0 pins: masked-token acc 0.209  (v1 was flat ~0.08 = pins ignored)
+k= 8 pins: masked-token acc 0.344  (v1 was flat ~0.08 = pins ignored)
+k=16 pins: masked-token acc 0.430  (v1 was flat ~0.08 = pins ignored)
+k=24 pins: masked-token acc 0.477  (v1 was flat ~0.08 = pins ignored)

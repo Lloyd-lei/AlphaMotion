@@ -1,0 +1,26 @@
+{
+  "created_at": "2026-07-21T05:49:31.074879+00:00",
+  "files": {
+    "activations.safetensors": {
+      "bytes": 96,
+      "sha256": "f531393fbd5701741b26f4a9b47d9560c7ba604ce163f69d618d97cf17efd237"
+    },
+    "telemetry.safetensors": {
+      "bytes": 16,
+      "sha256": "9bbcbf73561f6bc5d0a17ea6a2081feed2d1304e87602d8c502d9a5c4bd85576"
+    }
+  },
+  "metadata": {},
+  "schema": "alphamotion.synergy.episode.v1",
+  "storage_warning": false,
+  "tensors": {
+    "hidden": {
+      "axes": [
+        "frame",
+        "hidden"
+      ],
+      "description": "",
+      "units": "unitless"
+    }
+  }
+}

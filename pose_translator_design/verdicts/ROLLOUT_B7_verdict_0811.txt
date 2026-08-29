@@ -1,0 +1,37 @@
+B7 ROLLOUT FINETUNE — VERDICT: partial win, direction confirmed, not there yet.
+(warm-start B6, 20k steps, 50% of steps conditioned on the model's OWN rolled
+state with the REAL continuation as target; goal_drop 0.5)
+
+THE PROGRESSION ON THE PHASE-SPACE RULER (corpus reference: slope -0.70)
+  B3  (goal_drop 0.10)                 slope -0.09   FROZEN (portrait a dot)
+  B6  (goal_drop 0.50)                 slope +0.90   DRIFTING (no restoring force)
+  B7  (+ rollout conditioning)         slope +0.38   still drifting, but the
+                                                     drift is now HALVED
+  portrait amplitude: B3 ~4 cm -> B6 ~2 cm -> B7 ~6 cm of ankle travel
+  (corpus 20 cm) and velocity range +-1.0 (corpus +-3)
+  Lyapunov, walk:  B6 +0.0018  ->  B7 -0.0092  (first NEGATIVE value we have
+  measured: the walk flow now weakly REJECTS a perturbation instead of letting
+  it stand). jacks +0.118 and sit +0.013 remain positive.
+
+BRIDGING COST: val ppl 19.0 (B6) -> 22.2 (B7), back to roughly B3's 22.6. So
+the rollout objective bought autonomous stability by giving back the bridging
+gain B6 had. That is a real trade, not a free lunch, and it is worth naming:
+the two objectives compete for the same capacity.
+
+READING: exposure-bias correction is the RIGHT lever — it is the first
+intervention that moved the return-map slope toward the corpus and the first
+that produced a negative Lyapunov exponent anywhere. But at +0.38 the gait
+attractor still does not exist; the flow decays instead of cycling, and
+amplitude is 3x short.
+WHY IT DOES NOT FINISH THE JOB: the target is still a per-token likelihood.
+Rollout conditioning fixes WHERE the model is asked to predict from; it does
+not add any term that rewards completing a cycle. The remaining gap is exactly
+what a trajectory-level objective is for.
+NEXT, in order:
+ (a) lloyd's E17 RL arm, reward = -(slope - (-0.70))^2 plus an amplitude term.
+     We now have both a scalar target and a measured baseline (+0.38).
+ (b) chunk 120 instead of 45, so one conditioning window contains a whole gait
+     cycle; the prior currently never sees a full period at once.
+ (c) multi-step rollout (3-4 chunks deep, not 1) so drift has room to be
+     penalised where it actually accumulates.
+Figures: png/phase_portrait_B7.png, png/phase_lyapunov_B7.png

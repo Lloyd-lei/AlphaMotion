@@ -1,0 +1,42 @@
+GAUGE INVARIANCE (0811) — two results, one of them a correction of my own
+earlier framing.
+
+CORRECTION FIRST. response_spectrum reported "93-134 of 192 near-null
+directions" and I described that as "half the coordinates are dead: the code
+moves, the body does not". That is WRONG as stated. Those were near-zero
+SINGULAR VALUES — dead COMBINATIONS. Measuring each coordinate on its own:
+
+bridge          coords with |dBody/dCoord| < 5% of max
+walk->kick        2/192      run->sit        0/192
+dance->walk       6/192      punch->jump     0/192
+jacks->run        0/192      sit->dance      0/192
+kick->punch       0/192      jump->walk      0/192
+
+Essentially NO coordinate is individually dead. The gauge sector is therefore
+REDUNDANCY, not inactivity: every code position moves the body, but ~100
+combinations of them cancel. That is a different and more useful statement —
+the codebook is not wasting slots, it is carrying a highly redundant
+parametrisation of a low-dimensional effect.
+
+MAIN TEST: is the sensitivity profile an invariant across bridges?
+  cross-bridge profile correlation      0.303
+  coordinate-shuffled control           0.005 +- 0.075   (~4 sigma above chance)
+  within-token only (per-token mean removed)  0.107
+  coordinates dead in ALL 8 bridges     0/192
+
+READING: a weak invariant exists (0.30, four sigma clear of the shuffle
+control), but most of it lives at the TOKEN-POSITION level — which time
+segments are sensitive — and only 0.107 survives once the per-token mean is
+removed. So the shared structure is largely "the middle of the bridge matters
+more than the ends", not "FSQ dimension 3 is always the gauge one".
+The strong hypothesis (a fixed gauge set, the same coordinates dead
+everywhere) is REFUTED: 0/192.
+
+CONSEQUENCE FOR THE INTERPRETABILITY PROGRAM: after three attempts — active
+eigenvector transfer (69 deg vs 80 random), subspace alignment, and now the
+gauge sector — the honest position is that this representation has NO strong
+context-independent structure that we have found. It has: a low local effective
+dimension (3-9 of 192), a large redundant sector, and a weak time-position
+prior shared across bridges. Claims of a readable emergence mechanism are not
+supported by any of the three tests.
+Figure: png/gauge_invariance.png

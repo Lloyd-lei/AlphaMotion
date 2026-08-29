@@ -1,0 +1,114 @@
+====================================================================================================
+EXAM B — codebook statistics for the future generator
+READ ME FIRST: maskfsq registers are time slices -> adjacent-register MI
+IS temporal predictability. jepa registers are unordered -> its MI is
+redundancy between codes, not an AR axis.
+====================================================================================================
+
+[V8_arclen]
+{
+  "bits_used_per_register": [
+    13.47,
+    12.38,
+    12.49,
+    11.93,
+    12.43,
+    12.06,
+    12.61,
+    13.33
+  ],
+  "bits_capacity_per_register": 13.93,
+  "bits_used_total": 100.7,
+  "bits_capacity_total": 111.5,
+  "distinct_codes_per_register (vocab 15625)": [
+    3456,
+    2817,
+    2735,
+    2457,
+    2708,
+    2389,
+    2883,
+    3340
+  ],
+  "adjacent_register_MI_bits_per_digit": [
+    0.078,
+    0.175,
+    0.151,
+    0.162,
+    0.086,
+    0.075,
+    0.187
+  ],
+  "next_register_digit_entropy": [
+    2.063,
+    2.082,
+    1.988,
+    2.071,
+    2.01,
+    2.101,
+    2.222
+  ],
+  "new_code_rate_first_vs_last_1k": [
+    1.0,
+    0.06
+  ],
+  "knn5_family_acc (bank = 6 named families only)": 0.686,
+  "majority_class_baseline": 0.692,
+  "n_train_windows": 6000
+}
+
+[V7_maskfsq]
+{
+  "bits_used_per_register": [
+    13.8,
+    13.74,
+    13.78,
+    13.75,
+    13.78,
+    13.76,
+    13.81,
+    13.71,
+    13.75
+  ],
+  "bits_capacity_per_register": 13.93,
+  "bits_used_total": 123.9,
+  "bits_capacity_total": 125.4,
+  "distinct_codes_per_register (vocab 15625)": [
+    4183,
+    4109,
+    4168,
+    4150,
+    4176,
+    4269,
+    4254,
+    4222,
+    4091
+  ],
+  "adjacent_register_MI_bits_per_digit": [
+    0.163,
+    0.176,
+    0.177,
+    0.156,
+    0.145,
+    0.12,
+    0.119,
+    0.195
+  ],
+  "next_register_digit_entropy": [
+    2.29,
+    2.296,
+    2.292,
+    2.297,
+    2.293,
+    2.301,
+    2.286,
+    2.292
+  ],
+  "new_code_rate_first_vs_last_1k": [
+    1.0,
+    0.053
+  ],
+  "knn5_family_acc (bank = 6 named families only)": 0.75,
+  "majority_class_baseline": 0.692,
+  "n_train_windows": 6000
+}

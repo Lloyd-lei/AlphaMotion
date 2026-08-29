@@ -1,0 +1,78 @@
+DISTURBANCE TEST v2 (0812, lloyd's design) [v1 RETRACTED, see below] — a foreign pose pinned mid-flight.
+Walking A -> B over n=90, at frame 45 the pose is hard-pinned to a pose from
+another family (dance / jump / kick). Goal unchanged. 10 reps, frozen A3+B3+C1.
+Endpoint pass-through DISABLED for this test: with the exit pinned, "did it
+arrive" is 0.00 by construction and measures nothing.
+
+scenario                     arrive (cm)   jerk
+S1 clean A->B                     2.31     0.32
+S2 shoved, same goal              2.31     1.27
+S3 re-plan, n given (45)          2.41     0.89
+S3f re-plan, n INFERRED           2.31     0.73
+S4 goal swapped mid-flight        2.71     —
+peak detour caused by the shove: 21.2 cm     end deviation vs clean: 0.00 cm
+
+WHAT HOLDS
+ * DISTURBANCE REJECTION IS REAL AND FREE. A 21 cm mid-course shove costs
+   NOTHING in arrival: 2.31 cm shoved vs 2.31 cm clean, and the end deviation
+   from the undisturbed trajectory is 0.00. The bridge absorbs the shove and
+   still lands on the goal. This is the closed-loop behaviour the freedom-ratio
+   work could only hint at, now demonstrated directly.
+ * SWAPPING THE GOAL mid-flight costs 0.4 cm (2.71 vs 2.31). Re-targeting under
+   way is nearly free — the moving-target / adversarial setting is architecturally
+   supported today, without retraining.
+ * n-FREE WORKS, AND IS BETTER. Letting the prior pick its own budget by chain
+   NLL gives arrival 2.31 (equal to clean, better than the 2.41 of the supplied
+   budget) and the SMOOTHEST recovery of all disturbed arms (jerk 0.73 vs 0.89).
+   The chosen budgets spread over the whole grid (30..120, mode at 90) rather
+   than collapsing to one value — the model does have an opinion about pacing.
+   lloyd's "the target is the identity, n is only pacing" is supported.
+ * COST OF THE SHOVE IS SMOOTHNESS, NOT ACCURACY: jerk 0.32 -> 1.27 (4x the
+   clean value, ~6x the corpus median 0.205). The recovery is correct but ugly;
+   re-planning halves that (0.89), inferring n halves it again (0.73).
+
+READING: the model is a strong disturbance-rejecting planner as long as it has
+a goal — which is the exact complement of the autonomous-flow collapse. Give it
+a target and it is robust to a 21 cm shove; take the target away and it drifts.
+Together these two results say the missing ingredient is INTENTION, not
+dynamics, which is lloyd's "发呆" reframe and it changes what E17's RL is for:
+supplying intention, not repairing the flow.
+Figure: png/disturb_test.png   Video: mp4/bridge_demo/disturb_shove_x2.mp4
+
+
+=== v1 RETRACTED, v2 RESULTS (0812) ===
+RETRACTION. In v1 the disturbance was spliced into the DECODED OUTPUT: one
+frame of the produced trajectory was overwritten with a foreign pose. Two
+consequences, both fatal to the v1 reading:
+  a) the trajectory jumps at that frame by construction (lloyd spotted this in
+     the video: curr -> curr+1 must stay continuous even under disturbance);
+  b) the model never saw the disturbance at all, so "21 cm shove costs nothing,
+     end deviation 0.00" measured nothing about robustness — the rest of the
+     trajectory was simply unaffected because nothing had changed for it.
+The v1 disturbance-rejection claim is withdrawn.
+
+v2 injects the disturbance where it belongs: as a PINNED TOKEN in the
+conditioning (the sparse-pin mode B was trained on), so the model plans around
+it. Token j covers timeline segment j; the pinned value is taken from the
+foreign clip's own tokenisation.
+
+scenario                     arrive (cm)   jerk    max frame step (cm)
+S1 clean A->B                     2.31     0.32          2.91
+S2 shoved (token-pinned)          2.30     0.40          3.24
+S3 re-plan, n given               2.41     0.89           —
+S3f re-plan, n INFERRED           2.31     0.73           —
+S4 goal swapped mid-flight        2.71      —             —
+peak detour 11.6 cm   end deviation vs clean 0.61 cm
+
+WHAT v2 ACTUALLY SHOWS (and it is a better result than the retracted one)
+ * The model DOES plan around the constraint: the trajectory now detours 11.6 cm
+   to honour the pinned pose and comes back to within 0.61 cm of the clean
+   ending, while arrival is unchanged (2.30 vs 2.31).
+ * And it stays SMOOTH while doing it: jerk 0.40 vs 0.32 clean (v1's post-hoc
+   splice gave 1.27), and the largest single-frame step is 3.24 cm against the
+   clean trajectory's own 2.91 cm — i.e. the disturbed motion's worst step is
+   within 11% of what an undisturbed motion already does. lloyd's continuity
+   requirement is met once the pin is in the conditioning.
+ * n-FREE still wins on the re-plan arms (2.31 vs 2.41 arrival, jerk 0.73 vs
+   0.89) and its chosen budgets still spread across 30..120.
+So: real disturbance rejection, planned rather than accidental, and smooth.

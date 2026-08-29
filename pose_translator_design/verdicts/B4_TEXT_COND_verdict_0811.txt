@@ -1,0 +1,26 @@
+B4 TEXT-CONDITIONING SAGA (0810 night - 0811 morning)
+Goal: 8 text-FSQ tokens as extra condition slots in Stage-B. B3 frozen throughout.
+
+runs (all on frozen A3 tokens; probe = captioned amass val, goal DROPPED):
+  v1 warm 30k  gd10%              gain_nogoal 0.017  full_ce_null 3.08
+  v2 warm 30k  gd50%              gain_nogoal 0.042  full_ce_null 3.09
+  v3 warm 50k  gd90% text_lr x10  gain_nogoal 0.057  full_ce_null 3.21
+  v4 SCRATCH 80k gd70% mix50%     gain_nogoal 0.083  full_ce_null 3.32
+Steady climb, but null-dist entropy is 3.49 nats/token: text moves the dist
+1-8% -> CFG x3-4 videos show differentiation without clear semantics. Not
+accepted yet. Cost trend: more text usage <-> weaker general prior.
+
+Root cause (shared with retrieval path's punch failure): arm-fine actions
+(punch vs golf vs throw) are blurred at the SOURCE - Greenwich wrist tail
+14-20cm -> A3 tokens underrepresent arm detail -> neither alignment nor
+conditioning can separate arm families. Leg/pose-dominant prompts work.
+
+SHIPPED INSTEAD (validated-parts pipeline, zero new training):
+  text -> retrieval (aligned FSQ space) -> goal = entry pose of match ->
+  top-3 destinations x 4 bridge samples -> Equator NLL judge picks ->
+  bridge + full matched action.  demo2 video: walk/wave/jacks clean+correct,
+  punch = documented retrieval miss.
+  R4_VIZ/mp4/bridge_demo/text2goal_v2_clean_4prompts_x2.mp4
+
+Next lever (lifts BOTH paths): spatial round vs arm tail (already planned),
+then re-tokenize + re-align (35min) + optional B4 v5.

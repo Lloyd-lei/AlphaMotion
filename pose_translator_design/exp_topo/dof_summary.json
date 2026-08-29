@@ -1,0 +1,262 @@
+{
+  "human_smpl": {
+    "cache": "cache_xwbc_lafan",
+    "J": 22,
+    "dof_hist_0123": [
+      0,
+      0,
+      0,
+      22
+    ],
+    "total_dof": 66,
+    "nonunit_axes": 0,
+    "note": "SMPL ball joints; R_rest = I"
+  },
+  "booster_k1": {
+    "cache": "cache_xwbc_lafan",
+    "J": 21,
+    "dof_hist_0123": [
+      1,
+      18,
+      2,
+      0
+    ],
+    "total_dof": 22,
+    "nonunit_axes": 0,
+    "note": "MJCF K1_serial.xml; composition max|err|=1.11e-15; non-hinge joints skipped: [('world_joint', 0)]"
+  },
+  "booster_t1": {
+    "cache": "cache_xwbc_lafan",
+    "J": 24,
+    "dof_hist_0123": [
+      1,
+      23,
+      0,
+      0
+    ],
+    "total_dof": 23,
+    "nonunit_axes": 0,
+    "note": "MJCF T1_serial.xml; composition max|err|=1.22e-15; non-hinge joints skipped: [('jnt0', 0)]"
+  },
+  "booster_t1_29dof": {
+    "cache": "cache_xwbc_lafan",
+    "J": 32,
+    "dof_hist_0123": [
+      5,
+      27,
+      0,
+      0
+    ],
+    "total_dof": 27,
+    "nonunit_axes": 0,
+    "note": "MJCF t1_mocap.xml; composition max|err|=1.11e-15; non-hinge joints skipped: [('jnt0', 0)]"
+  },
+  "engineai_pm01": {
+    "cache": "cache_xwbc_lafan",
+    "J": 25,
+    "dof_hist_0123": [
+      1,
+      24,
+      0,
+      0
+    ],
+    "total_dof": 24,
+    "nonunit_axes": 0,
+    "note": "MJCF pm_v2.xml; composition max|err|=1.44e-15; non-hinge joints skipped: [('jnt0', 0)]"
+  },
+  "fourier_gr3": {
+    "cache": "cache_xwbc_lafan",
+    "J": 32,
+    "dof_hist_0123": [
+      6,
+      21,
+      5,
+      0
+    ],
+    "total_dof": 31,
+    "nonunit_axes": 0,
+    "note": "MJCF gr3v2_1_1_dummy_hand.xml; composition max|err|=1.55e-15; non-hinge joints skipped: [('floating_base', 0)]"
+  },
+  "fourier_n1": {
+    "cache": "cache_xwbc_lafan",
+    "J": 27,
+    "dof_hist_0123": [
+      6,
+      19,
+      2,
+      0
+    ],
+    "total_dof": 23,
+    "nonunit_axes": 0,
+    "note": "MJCF n1_mocap.xml; composition max|err|=2.00e-15; non-hinge joints skipped: [('base_free_joint', 0)]"
+  },
+  "hightorque_hi": {
+    "cache": "cache_xwbc_lafan",
+    "J": 26,
+    "dof_hist_0123": [
+      1,
+      25,
+      0,
+      0
+    ],
+    "total_dof": 25,
+    "nonunit_axes": 0,
+    "note": "MJCF hi_25dof.xml; composition max|err|=1.33e-15; non-hinge joints skipped: [('floating_base_joint', 0)]"
+  },
+  "kuavo_s45": {
+    "cache": "cache_xwbc_lafan",
+    "J": 20,
+    "dof_hist_0123": [
+      1,
+      12,
+      5,
+      2
+    ],
+    "total_dof": 28,
+    "nonunit_axes": 0,
+    "note": "MJCF biped_s45_collision.xml; composition max|err|=9.99e-16; non-hinge joints skipped: [('jnt0', 0)]"
+  },
+  "pal_talos": {
+    "cache": "cache_xwbc_lafan",
+    "J": 33,
+    "dof_hist_0123": [
+      1,
+      32,
+      0,
+      0
+    ],
+    "total_dof": 32,
+    "nonunit_axes": 0,
+    "note": "data-tree axis recovery: max 1-DOF residual 6.97e-07 rad; R_rest constancy max|err|=1.15e-06; unmatched joints []"
+  },
+  "pnd_adam_lite": {
+    "cache": "cache_xwbc_lafan",
+    "J": 24,
+    "dof_hist_0123": [
+      1,
+      21,
+      2,
+      0
+    ],
+    "total_dof": 25,
+    "nonunit_axes": 0,
+    "note": "MJCF scene.xml; composition max|err|=1.11e-15; non-hinge joints skipped: [('floating_joint', 0)]"
+  },
+  "tienkung": {
+    "cache": "cache_xwbc_lafan",
+    "J": 22,
+    "dof_hist_0123": [
+      4,
+      16,
+      2,
+      0
+    ],
+    "total_dof": 20,
+    "nonunit_axes": 0,
+    "note": "MJCF tienkung.xml; composition max|err|=8.88e-16; non-hinge joints skipped: [('root', 0)]"
+  },
+  "unitree_g1_23dof": {
+    "cache": "cache_xwbc_lafan",
+    "J": 36,
+    "dof_hist_0123": [
+      8,
+      27,
+      1,
+      0
+    ],
+    "total_dof": 29,
+    "nonunit_axes": 0,
+    "note": "MJCF g1_mocap_29dof.xml; composition max|err|=1.55e-15; non-hinge joints skipped: [('pelvis', 0)]"
+  },
+  "unitree_g1_29dof": {
+    "cache": "cache_xwbc_lafan",
+    "J": 36,
+    "dof_hist_0123": [
+      8,
+      27,
+      1,
+      0
+    ],
+    "total_dof": 29,
+    "nonunit_axes": 0,
+    "note": "MJCF g1_mocap_29dof.xml; composition max|err|=1.55e-15; non-hinge joints skipped: [('pelvis', 0)]"
+  },
+  "unitree_h1": {
+    "cache": "cache_xwbc_lafan",
+    "J": 20,
+    "dof_hist_0123": [
+      1,
+      19,
+      0,
+      0
+    ],
+    "total_dof": 19,
+    "nonunit_axes": 0,
+    "note": "MJCF h1.xml; composition max|err|=1.11e-15; non-hinge joints skipped: [('jnt0', 0)]"
+  },
+  "unitree_h1_2": {
+    "cache": "cache_xwbc_lafan",
+    "J": 26,
+    "dof_hist_0123": [
+      1,
+      23,
+      2,
+      0
+    ],
+    "total_dof": 27,
+    "nonunit_axes": 0,
+    "note": "MJCF h1_2_handless.xml; composition max|err|=1.55e-15; non-hinge joints skipped: [('floating_base_joint', 0)]"
+  },
+  "unitree_h2": {
+    "cache": "cache_xwbc_lafan",
+    "J": 32,
+    "dof_hist_0123": [
+      1,
+      31,
+      0,
+      0
+    ],
+    "total_dof": 31,
+    "nonunit_axes": 0,
+    "note": "data-tree axis recovery: max 1-DOF residual 6.78e-07 rad; R_rest constancy max|err|=1.41e-06; unmatched joints []"
+  },
+  "unitree_r1": {
+    "cache": "cache_xwbc_lafan",
+    "J": 38,
+    "dof_hist_0123": [
+      14,
+      22,
+      2,
+      0
+    ],
+    "total_dof": 26,
+    "nonunit_axes": 0,
+    "note": "MJCF unitree_r1_mjcf.xml; composition max|err|=1.78e-15; non-hinge joints skipped: [('root', 0)]"
+  },
+  "soma77": {
+    "cache": "cache_paired_fixed",
+    "J": 78,
+    "dof_hist_0123": [
+      0,
+      0,
+      0,
+      78
+    ],
+    "total_dof": 234,
+    "nonunit_axes": 0,
+    "note": "BVH ball joints; R_rest = I"
+  },
+  "g1_30": {
+    "cache": "cache_paired_fixed",
+    "J": 30,
+    "dof_hist_0123": [
+      1,
+      29,
+      0,
+      0
+    ],
+    "total_dof": 29,
+    "nonunit_axes": 0,
+    "note": "ardy g1skel34/xml/g1.xml, one hinge per spec joint"
+  }
+}

@@ -1,0 +1,62 @@
+====================================================================================================
+V6 TEMPORAL VERDICT — 2026-08-07. HOW TO READ THIS TABLE BEFORE YOU READ ANY NUMBER IN IT.
+====================================================================================================
+
+TWO FAILURE MODES, NOT ONE. Every temporal arm to date has been judged against a single
+sentence ("the tokens are decorative"), and that sentence hides two independent mechanisms
+with two independent fixes. Reading a flat ladder as a verdict on masking, or a flat energy
+number as a verdict on the register chain, will get the wrong answer.
+
+  MODE A — MEAN REGRESSION.
+    Mechanism : the decoder's conditioning NEVER VARIED. V5 always handed it the same two
+                frames (current + target), so the cheapest solution is the per-frame
+                conditional mean of all trajectories with those endpoints.
+    Symptom   : motion energy below 1.0, worst in the families whose interior is the whole
+                point — jumping jacks, run, kick. V5c energy 0.762-0.805; jacks historically
+                0.2-0.4, i.e. a jack whose interior has been averaged away.
+    Fix       : V6's frame-mask DISTRIBUTION. At `sparse` density there is no endpoint pair to
+                interpolate between, so the interior can only come from the registers.
+    Rows to read: per-family energy, content share, the mask ladder.
+
+  MODE B — REGISTER REDUNDANCY (the flat OAT ladder).
+    Mechanism : the parallel Perceiver readout factorizes the code into per-register
+                INDEPENDENT MARGINALS — the readout queries never see each other — so every
+                register regresses to the same conditional mean and register 1 alone already
+                says what registers 1..8 say.
+    Symptom   : the OAT prefix ladder is flat. V5c: 7.66 cm at prefix1, 2, 4 AND 8 (spread
+                0.017 cm). V6_mae at 20k: spread 0.010 cm — UNCHANGED, as expected.
+    Fix       : --reg_ar (N3a's insight #2). Register k's readout query cross-attends the
+                QUANTIZED values of registers < k.
+    Rows to read: the prefix1/2/4/8 ladder.
+    MEASURED MECHANISM, 2026-08-07 (V6Tokenizer, d=32, identical weights, one perturbation):
+      parallel readout : perturb register 0's query -> register 0 moves 2.083,
+                         registers 1..7 move EXACTLY 0.0000. They are independent marginals.
+      register chain   : perturb the chain prefix -> register 0 moves 0.0 (it precedes the
+                         prefix), registers 1..7 move 0.098 / 0.150 / 0.124 / 0.122 / 0.059 /
+                         0.093 / 0.046. The chain is real.
+    This is why a flat ladder under V6_mae is NOT evidence against insight 3c: V6_mae keeps
+    V5's parallel readout verbatim and has no mechanism against Mode B at all.
+
+THE 2x2. Four arms, one control per cell, all at 62.69 bit/s and the same V5c loss recipe:
+
+                        |  no frame masking      |  V6 frame-mask distribution
+    --------------------+------------------------+-----------------------------
+    parallel readout    |  V5c_0806  (neither)   |  V6_mae_0807      (Mode A only)
+    register chain      |  N3a_regAR_0807 (B only)| V6_regar_0807    (BOTH)
+
+  V6_mae_resid_0807 sits outside the 2x2: it is V6_mae + --residual_in, testing the OTHER half
+  of insight 3c (rates instead of absolute states) and is read against V6_mae, not against the
+  grid. No run before V6_regar has ever carried both fixes.
+
+OPERATIONAL LESSON FROM TONIGHT — PLAN PARALLELISM ON PEAK, NOT STARTUP, MEMORY.
+  The spatial arms (train_dual) grow enormously at their eval checkpoints: N3f went 24.5 -> 46.3
+  GB, N3e went 24.5 -> 41.0 GB, both hours after startup. A slot measured at startup is not a
+  slot. Concretely tonight: 15.3 GB was freed at ~04:00 and the card read 80.6/97.9; by the time
+  the next arm was ready to launch the card read 96.9/97.9, because N3e had absorbed all of it
+  and more. Launching on that stale reading would have OOM'd the two V6 arms already in flight.
+  V6_regar was therefore gated on a SUSTAINED free-memory measurement (>= 12 GB across 5
+  consecutive one-minute polls) rather than on a pid disappearing, and the gate is what delayed
+  it. The rule for the next queue: budget every train_dual arm at its EVAL peak (~46 GB), not
+  its steady state (~24 GB).
+====================================================================================================
+

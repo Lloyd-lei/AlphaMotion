@@ -1,0 +1,68 @@
+{
+  "cascade": [
+    {
+      "tau": 4.0,
+      "modes": 1,
+      "spread_cm": 9.08591079711914,
+      "unique_token_paths": 48,
+      "mean_pair_dist": 20.682863235473633
+    },
+    {
+      "tau": 2.5,
+      "modes": 1,
+      "spread_cm": 8.985620498657227,
+      "unique_token_paths": 48,
+      "mean_pair_dist": 20.362648010253906
+    },
+    {
+      "tau": 1.6,
+      "modes": 5,
+      "spread_cm": 7.131222248077393,
+      "unique_token_paths": 48,
+      "mean_pair_dist": 16.791446685791016
+    },
+    {
+      "tau": 1.0,
+      "modes": 3,
+      "spread_cm": 4.519097805023193,
+      "unique_token_paths": 48,
+      "mean_pair_dist": 10.734087944030762
+    },
+    {
+      "tau": 0.6,
+      "modes": 2,
+      "spread_cm": 4.156992435455322,
+      "unique_token_paths": 48,
+      "mean_pair_dist": 9.806952476501465
+    },
+    {
+      "tau": 0.35,
+      "modes": 6,
+      "spread_cm": 3.7552247047424316,
+      "unique_token_paths": 45,
+      "mean_pair_dist": 8.771601676940918
+    },
+    {
+      "tau": 0.2,
+      "modes": 6,
+      "spread_cm": 3.086811065673828,
+      "unique_token_paths": 24,
+      "mean_pair_dist": 7.040961742401123
+    }
+  ],
+  "taus": [
+    4.0,
+    2.5,
+    1.6,
+    1.0,
+    0.6,
+    0.35,
+    0.2
+  ],
+  "fam": [
+    "walk",
+    "kick"
+  ],
+  "K": 48,
+  "n": 60
+}

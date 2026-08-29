@@ -1,0 +1,50 @@
+POSITION-STREAM AUDIT (0812, lloyd's three questions). C1, 2048 val frames,
+16 embodiments. FK positions are the yardstick (the V5 rule); the raw hpos
+stream is measured only against FK, never used as truth.
+
+Q1 CONSISTENCY GAP  |hpos - FK(hrot)|, cm, mean
+  It is NOT small and it is NOT uniform. Arms disagree more than legs on 14 of
+  16 bodies. Worst: unitree_g1_23/29dof 7.2 arm vs 6.7 leg; human_smpl 5.6 vs
+  4.1; kuavo_s45 4.8 vs 2.2. Best: hightorque_hi 1.1 / 1.2.
+  The gap TRACKS the FK error itself (corr with fk_arm +0.48): where the two
+  heads disagree is where the model is wrong. This is a usable GT-free
+  confidence signal — it costs one extra head evaluation and no labels.
+
+Q2 IS `gp / reach` CALIBRATED ON THE ARMS?  NO — and the answer is the
+  opposite of the hypothesis, which is why it is worth writing down.
+  reach = max ||joint - root|| over the corpus. The joint attaining it is a
+  FOOT/ANKLE/TOE on 15 of 16 bodies (right_toe_link x3, ankles, foot links);
+  only human_smpl is set by a wrist. Range use: legs occupy 98% of the maximum,
+  arms 86%.
+  So the normaliser is set by the LEGS, and the arms live inside ~86% of it.
+  lloyd's mechanism (arms defining the scale, everything else squeezed) does not
+  hold. But the observation behind it does: the arms are systematically the
+  worse group, they just are not worse because of this normaliser.
+  NOTE FOR THE RECORD: this also means the feet DO participate — they define
+  the scale for almost every robot. What is genuinely absent from the
+  representation is the GROUND: positions are root-relative, so nothing encodes
+  where the floor is or that a foot is standing on it.
+
+Q3 DOES SIZE PREDICT ERROR?  YES, and in the direction opposite to the memory.
+  corr(reach, arm error)      +0.67
+  corr(reach, arm p95)        +0.57
+  corr(reach, leg error)      +0.61
+  corr(reach, consistency gap)+0.48
+  BIGGER bodies have MORE error, not smaller ones. The smallest body in the set
+  (booster_k1, reach 54 cm) is among the best (arm 1.93, leg 1.13); the
+  worst are human_smpl (122 cm) and the two G1s. Since errors are reported in
+  cm and the normaliser is per-body, a fixed error in normalised units becomes a
+  larger centimetre error on a larger body — this correlation is largely that
+  arithmetic, and it means cross-body cm comparisons are NOT scale-fair.
+  The "small robot always had problems" recollection is not supported by this
+  measurement; the small robots are the good ones on this ruler. If a specific
+  robot was bad, it was bad for a reason other than size, and we should look at
+  it by name rather than by size.
+
+WHAT THIS CHANGES
+ * Add the consistency gap to the GT-free battery. It is free and it correlates
+   with real error.
+ * Report cross-embodiment error in reach-normalised units alongside cm, or the
+   biggest body will always look worst.
+ * The missing ground plane is a real representational gap and a candidate
+   explanation for foot-contact artefacts; it is not the arm problem.

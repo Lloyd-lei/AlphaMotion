@@ -1,0 +1,80 @@
+runs=8  budgets present per run: P1_oat_z_0805=(1, 2, 4, 8), P1b_motion_vel_0806=(1, 2, 4, 8), P1c_C1_conv_lo_0806=(2, 8), P1c_C2_freq_lo_0806=(2, 4, 8), P1c_C1_conv_hi_0806=(4, 16), P1c_C2_freq_hi_0806=(2, 4, 8, 16), P1c_C1_conv_lo_mres_0806=(2, 8), P1c_C1_conv_fps10_0806=(2, 8)
+comparison points (registers): [1, 2, 4, 8, 16]
+
+=== MOTION ENERGY RETENTION @ 1 REGISTER (14 bit / 2 s window) ===
+run                      arch     bit/s  ntot     walk     run   jacks   stand     ALL   walk&run>.80
+FRAME-CODE FLOOR         -            -     -    0.980   0.836   0.666   0.821   0.878   (ceiling)
+P1_oat_z_0805            global     0.0     ?    0.732   0.397   0.225   0.496   0.577        fail
+P1b_motion_vel_0806      global     0.0     ?    0.862   0.547   0.290   0.785   0.679        fail
+
+=== MOTION ENERGY RETENTION @ 2 REGISTERS (28 bit / 2 s window) ===
+run                      arch     bit/s  ntot     walk     run   jacks   stand     ALL   walk&run>.80
+FRAME-CODE FLOOR         -            -     -    0.980   0.836   0.666   0.821   0.878   (ceiling)
+P1_oat_z_0805            global     0.0     ?    0.807   0.461   0.188   0.652   0.629        fail
+P1b_motion_vel_0806      global     0.0     ?    0.935   0.631   0.371   0.788   0.719        fail
+P1c_C1_conv_lo_0806      conv      13.9     8    0.619   0.151   0.085   0.075   0.289        fail
+P1c_C2_freq_lo_0806      freq      13.9     8    0.477   0.282   0.136   0.199   0.389        fail
+P1c_C2_freq_hi_0806      freq      13.9    16    0.500   0.330   0.102   0.247   0.381        fail
+P1c_C1_conv_lo_mres_0806 conv      13.9     8    0.433   0.221   0.089   0.128   0.316        fail
+P1c_C1_conv_fps10_0806   conv      13.9     8    0.447   0.249   0.112   0.166   0.343        fail
+
+=== MOTION ENERGY RETENTION @ 4 REGISTERS (56 bit / 2 s window) ===
+run                      arch     bit/s  ntot     walk     run   jacks   stand     ALL   walk&run>.80
+FRAME-CODE FLOOR         -            -     -    0.980   0.836   0.666   0.821   0.878   (ceiling)
+P1_oat_z_0805            global     0.0     ?    0.819   0.479   0.208   0.701   0.644        fail
+P1b_motion_vel_0806      global     0.0     ?    0.921   0.687   0.395   0.875   0.757        fail
+P1c_C2_freq_lo_0806      freq      27.9     8    0.534   0.336   0.257   0.556   0.492        fail
+P1c_C1_conv_hi_0806      conv      27.9    16    0.552   0.188   0.195   0.671   0.479        fail
+P1c_C2_freq_hi_0806      freq      27.9    16    0.618   0.392   0.237   0.638   0.507        fail
+
+=== MOTION ENERGY RETENTION @ 8 REGISTERS (111 bit / 2 s window) ===
+run                      arch     bit/s  ntot     walk     run   jacks   stand     ALL   walk&run>.80
+FRAME-CODE FLOOR         -            -     -    0.980   0.836   0.666   0.821   0.878   (ceiling)
+P1_oat_z_0805            global     0.0     ?    0.820   0.484   0.220   0.691   0.647        fail
+P1b_motion_vel_0806      global     0.0     ?    0.926   0.689   0.405   0.875   0.760        fail
+P1c_C1_conv_lo_0806      conv      55.7     8    0.558   0.169   0.085   0.073   0.298        fail
+P1c_C2_freq_lo_0806      freq      55.7     8    0.586   0.400   0.335   0.640   0.553        fail
+P1c_C2_freq_hi_0806      freq      55.7    16    0.687   0.469   0.327   0.717   0.585        fail
+P1c_C1_conv_lo_mres_0806 conv      55.7     8    0.524   0.231   0.140   0.133   0.372        fail
+P1c_C1_conv_fps10_0806   conv      55.7     8    0.605   0.266   0.220   0.487   0.476        fail
+
+=== MOTION ENERGY RETENTION @ 16 REGISTERS (223 bit / 2 s window) ===
+run                      arch     bit/s  ntot     walk     run   jacks   stand     ALL   walk&run>.80
+FRAME-CODE FLOOR         -            -     -    0.980   0.836   0.666   0.821   0.878   (ceiling)
+P1c_C1_conv_hi_0806      conv     111.5    16    0.808   0.328   0.358   0.687   0.598        fail
+P1c_C2_freq_hi_0806      freq     111.5    16    0.694   0.481   0.332   0.733   0.594        fail
+
+=== KNEE-PHASE xcorr at lag 0 (noise cannot fake this) ===
+run                            n1 walk       n1 run     n16 walk      n16 run
+FRAME-CODE FLOOR                 0.562        0.725        0.562        0.725
+P1_oat_z_0805                    0.174        0.385          nan          nan
+P1b_motion_vel_0806              0.287        0.569          nan          nan
+P1c_C1_conv_lo_0806                nan          nan          nan          nan
+P1c_C2_freq_lo_0806                nan          nan          nan          nan
+P1c_C1_conv_hi_0806                nan          nan        0.150        0.440
+P1c_C2_freq_hi_0806                nan          nan        0.262        0.597
+P1c_C1_conv_lo_mres_0806           nan          nan          nan          nan
+P1c_C1_conv_fps10_0806             nan          nan          nan          nan
+
+=== RECON GEODESIC deg vs GT, ALL families (energy bought with noise shows up here) ===
+run                             n1       n2       n4       n8      n16  own top    floor
+P1_oat_z_0805                25.79    25.36    25.21    25.20      nan    25.20    21.25
+P1b_motion_vel_0806          26.58    25.38    24.46    24.44      nan    24.44    21.25
+P1c_C1_conv_lo_0806            nan    31.21      nan    30.88      nan    30.88    21.25
+P1c_C2_freq_lo_0806            nan    27.37    26.90    26.61      nan    26.61    21.25
+P1c_C1_conv_hi_0806            nan      nan    28.95      nan    27.83    27.83    21.25
+P1c_C2_freq_hi_0806            nan    27.00    26.62    26.21    26.15    26.15    21.25
+P1c_C1_conv_lo_mres_0806       nan    30.42      nan    29.87      nan    29.87    21.25
+P1c_C1_conv_fps10_0806         nan    30.16      nan    29.15      nan    29.15    21.23
+
+=== BIT BUDGETS + PARAM COUNTS ===
+P1_oat_z_0805            params=?    {}
+P1b_motion_vel_0806      params=?    {}
+P1c_C1_conv_lo_0806      params=36.8M {"content_bits_per_s": 55.73, "content_bits_per_window": 111.45, "n_content": 8, "frames_compressed": 60, "frame_stride": 1, "temporal_compression_x": 7.5, "scales": [2, 6]}
+P1c_C2_freq_lo_0806      params=21.6M {"content_bits_per_s": 55.73, "content_bits_per_window": 111.45, "n_content": 8, "frames_compressed": 60, "frame_stride": 1, "temporal_compression_x": 7.5}
+P1c_C1_conv_hi_0806      params=33.2M {"content_bits_per_s": 111.45, "content_bits_per_window": 222.91, "n_content": 16, "frames_compressed": 60, "frame_stride": 1, "temporal_compression_x": 3.75, "scales": [4, 12]}
+P1c_C2_freq_hi_0806      params=21.6M {"content_bits_per_s": 111.45, "content_bits_per_window": 222.91, "n_content": 16, "frames_compressed": 60, "frame_stride": 1, "temporal_compression_x": 3.75}
+P1c_C1_conv_lo_mres_0806 params=36.8M {"content_bits_per_s": 55.73, "content_bits_per_window": 111.45, "n_content": 8, "frames_compressed": 60, "frame_stride": 1, "temporal_compression_x": 7.5, "scales": [2, 6]}
+P1c_C1_conv_fps10_0806   params=33.2M {"content_bits_per_s": 55.73, "content_bits_per_window": 111.45, "n_content": 8, "frames_compressed": 20, "frame_stride": 3, "temporal_compression_x": 2.5, "scales": [2, 6]}
+
+NOTE: look at the videos before the numbers (<run>/mp4_fixed/). MDM reports FID moving the WRONG way while the animation visibly improves.

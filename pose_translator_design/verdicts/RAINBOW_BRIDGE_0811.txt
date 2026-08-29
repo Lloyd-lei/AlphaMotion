@@ -1,0 +1,44 @@
+RAINBOW BRIDGE (lloyd's 温度采样扩散—拉普拉斯妖), first run 0811
+frozen Equator A3+B3 + Greenwich C1; K=48 seeds, walk-start -> kick-goal, n=60
+Gumbel-max with per-seed FROZEN noise: same seed = one trackable trajectory
+across the whole temperature ladder. Distance measured in RENDERED joint space.
+
+tau    modes(eigengap)  spread_cm  unique_token_paths
+4.00        1             9.09        48/48
+2.50        1             8.99        48/48
+1.60        5             7.13        48/48
+1.00        3             4.52        48/48
+0.60        2             4.16        48/48
+0.35        6             3.76        45/48
+0.20        6             3.09        24/48
+
+WHAT HOLDS
+ * Direction of the effect is OPPOSITE to my prediction: modes do NOT merge on
+   cooling, they RESOLVE. Hot = one undifferentiated cloud (MDS panel tau=4 is
+   a structureless blob). Cold = tight, widely separated islands (MDS tau=0.2).
+   The prism metaphor is literally right; my "coalescence" guess was wrong.
+ * The DEMON signature is clean and assumption-free: unique token paths stay
+   48/48 down to tau=0.35, then halve to 24/48 at tau=0.2 — seeds are falling
+   into shared basins. No clustering hyperparameter involved.
+ * Spread contracts monotonically 9.09 -> 3.09 cm.
+ * Rendered modes at tau=0.2 differ visibly in leg phase / lean (see video),
+   i.e. the clusters are not pure root drift.
+
+WHAT DOES NOT HOLD (do not quote the mode counts)
+ * The eigengap mode count is UNSTABLE at intermediate tau: 5 (1.6) -> 3 (1.0)
+   -> 2 (0.6) -> 6 (0.35). The MDS panels show why: at tau=1.0 the cloud is
+   still a continuum, so any k is an arbitrary cut. Only at tau<=0.35, where
+   the cloud is genuinely discrete, is the count meaningful.
+ * A full Gaussian affinity graph can never report >1 mode (one zero
+   eigenvalue by construction) — fixed mid-run to union-kNN with Zelnik-Manor
+   local scaling. Any earlier "1 mode everywhere" reading was that bug.
+
+USE THE ROBUST PAIR INSTEAD: (unique_token_paths, spread) vs tau. Both are
+hyperparameter-free and tell the same story.
+
+NEXT: (a) basin-count vs n (more time = more distinct ways?); (b) barrier
+height between modes = how hot before two basins merge -> ties into the
+homecoming freedom ratio; (c) pin a mode found at mid tau and re-anneal — the
+route to composite motions the corpus never showed.
+Figures: png/rainbow_cascade.png, rainbow_spectrum.png, rainbow_genealogy.png
+Video:   mp4/bridge_demo/rainbow_modes_x2.mp4

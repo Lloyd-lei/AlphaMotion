@@ -1,0 +1,39 @@
+DISTURBANCE AS A SEGMENT (0812) — lloyd's formulation:
+    A_curr --bridge--> B_init [ REAL disturbance segment ] B_target --bridge--> A_target
+The disturbance is a MOTION, not a pose. The model builds both seams itself.
+9 reps, disturbance families jump / kick / dance, |B| = 45 frames, frozen stack.
+Endpoint pass-through is ON at the seams (that is its correct use — we are
+joining to a real segment) and OFF on the final leg, or arrival is 0.00 by
+construction. (Both earlier versions of this test reported such a 0.00; both
+are corrected here.)
+
+metric              value
+clean_arrive         3.51      (A_curr -> A_target, same total length)
+seq_arrive           3.57      after being taken through a foreign motion
+seqF_arrive          3.58      same, with budgets the model chose itself
+clean_maxstep        4.08      largest single-frame step a CLEAN motion takes
+seam_in              1.92      largest step around the entry seam
+seam_out             1.65      largest step around the exit seam
+seq_maxstep          7.82      largest step anywhere (includes the real B seg)
+clean_jerk           0.35   seq_jerk 1.09   seqF_jerk 0.78
+
+READING
+ * THE SEAMS ARE THE SMOOTHEST PART. seam-in 1.92 and seam-out 1.65 are both
+   BELOW the 4.08 that an undisturbed motion already produces in its worst
+   frame. lloyd's continuity requirement (curr -> curr+1 must stay close) is
+   met, and met with margin, once the disturbance is a segment the model
+   bridges into and out of.
+ * DETOUR COSTS ALMOST NOTHING IN ARRIVAL: 3.57 vs 3.51 clean (+1.7%). Being
+   dragged through a whole foreign motion — a jump, a kick, a dance — and then
+   sent back does not degrade where it ends up.
+ * THE PRICE IS SMOOTHNESS IN THE MIDDLE, NOT AT THE JOINTS: overall jerk 1.09
+   vs 0.35 clean. Letting the model pick its own budgets cuts that to 0.78
+   (-29%) at equal arrival, the same direction the pose-pin version showed.
+ * n CHOSEN BY THE MODEL SPREADS WIDELY (in/out pairs 100/80, 60/30, 80/20,
+   30/100, 45/20, 100/100, ...). It is not collapsing to one value; entry and
+   exit budgets differ per case, which is what "the target is the identity, n
+   is only pacing" predicts.
+PER-FAMILY NOTE: dance disturbances give the roughest seams (2.5-3.3 vs clean
+0.7-1.6 in those reps) while jump/kick seams stay under 1.2. Worth a look if
+this becomes a product path.
+Figure: png/disturb_seq.png   Video: mp4/bridge_demo/disturb_seq_x2.mp4

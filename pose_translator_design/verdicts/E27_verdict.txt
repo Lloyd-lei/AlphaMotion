@@ -1,0 +1,50 @@
+E27 — TEXT-ENCODER A/B: SigLIP text tower vs Qwen3-Embedding-0.6B, same everything else
+generated 2026-08-06 (night). Numbers: runs/E27_encoder_ab_0806.json; script
+/var/tmp/alphamotion/topo_exp/night2_lib/eval_encoder_ab.py. Arms: E27_sig_0806, E27_qwen_0806 (identical train_dual flags, only --sem_encoder
+differs; the qwen arm was retrained tonight after the earlier OOM kill — 8000 steps, clean run,
+first attempt's partial log kept as E27_qwen_0806.log.partial_step4000). E19_K128_0805 rides
+along as the previous-era siglip reference. Seed band for judgment: +-0.9 deg.
+====================================================================================================
+
+A. ZERO-SHOT human_smpl -> unitree_g1_29dof (G1 in holdout; LAFAN val split, n=5000)
+                        all              legs           arms           wrists          torso
+  E27_sig    17.72 deg / 9.07 cm   11.94 / 7.60   21.66 / 7.49   24.59 / 12.62   16.76 /  9.89
+  E27_qwen   17.47 deg / 8.82 cm   13.12 / 6.69   19.50 / 8.49   20.55 / 12.38   20.80 /  9.49
+  E19 (ref)  15.53 deg / 7.72 cm   14.07 / 5.16   17.22 / 7.03   16.75 / 11.61   15.06 /  9.43
+  Headline gap sig->qwen: -0.25 deg / -0.25 cm — INSIDE the +-0.9 deg seed band. Per part it is
+  a reshuffle, not a win: qwen buys arms (-2.2) and wrists (-4.0) by paying legs (+1.2) and
+  torso (+4.0). Note the reference: E19 vs E27_sig — SAME encoder — differ by 2.2 deg, i.e.
+  recipe/run variance is larger than the entire encoder effect.
+
+B. THE AXIS QUESTION (per-joint readout on the axis-only triads, deg)
+                      hip P/R/Y (left)      hip P/R/Y (right)     shoulder P/R/Y (left)
+  E27_sig            26.6 / 16.0 /  9.9     19.1 / 13.5 / 12.6     21.1 / 21.8 / 24.0
+  E27_qwen           23.8 / 18.6 / 21.7     20.6 / 14.0 / 18.3     17.2 / 19.1 / 19.3
+  E19 (ref)          25.1 / 14.3 / 20.8     30.7 / 12.1 / 24.2     16.2 / 19.5 / 21.0
+  The hypothesis was that a stronger text encoder separates joints whose names differ only by
+  the axis word. It does not happen: qwen is WORSE on the hip triads (sum L+R 117.0 deg vs
+  sig's 97.6) and better on the shoulder triad (55.5 vs 67.0) — a noise-shaped reshuffle, with
+  E19's same-encoder spread again as large as the sig/qwen spread. Hip yaw specifically, the
+  canonical confusion, is sig's BEST hip joint (9.9 left) and one of qwen's worst (21.7).
+  The axis confusion is not living in the text embedding.
+
+C. BONES soma_body cross-decode (GT-free: pre-projection limit violations + projection cost,
+   464 rows, 4 clips)
+                     self-recon        ->G1 viol% / worst / proj-move    ->X2 viol% / worst / proj-move
+  E27_sig       22.44 deg / 14.35 cm      3.70% / 11.7 / 10.2 deg          0.27% / 16.9 / 5.4 deg
+  E27_qwen      20.83 deg / 16.96 cm      6.18% / 22.2 /  7.8 deg          3.89% / 26.6 / 5.5 deg
+  E19 (ref)     19.19 deg / 14.70 cm      5.49% / 14.3 /  6.0 deg          4.40% / 66.8 / 6.5 deg
+  The one place the arms clearly separate — and it favors SIGLIP: qwen's decoder violates
+  target joint limits 1.7x as often on G1 and 14x as often on X2, with worse worst-case
+  overshoots. sig->X2's 0.27% is the best mechanism-respecting number of any arm here.
+
+VERDICT
+  The encoder swap is NOT worth anything. Headline zero-shot moves 0.25 deg on a +-0.9 deg seed
+  band; the axis-triad errors reshuffle without a direction; and the only decisive measurement
+  (limit-violation behavior on unseen bodies) goes to SigLIP. Qwen3 also costs more (1024-d
+  conditioning vs 768-d, a causal-LM forward per vocabulary refresh, and a second HF cache).
+  Keep SigLIP. The E19-vs-E27_sig gap (2.2 deg, same encoder) says the lever that actually
+  moves zero-shot is the training recipe, not the name-embedding source; the hip-axis question
+  should be attacked with geometry/DOF conditioning (the use_dof channel), not with a bigger
+  text model.
+====================================================================================================

@@ -1,0 +1,26 @@
+B8 (chunk 45 -> 120, "see a whole gait cycle in one window") — VERDICT: REFUTED
+
+Hypothesis: the prior never saw a full gait period inside one conditioning
+window; give it the whole cycle and the attractor forms.
+
+Result on the COMPARABLE 45-frame ruler (corpus -0.70):
+  B7 +0.38  ->  B8 +0.50           (moved BACKWARDS)
+Result on B8's NATIVE 120-frame ruler:
+  slope +0.98                       (no attractor at its own chunk size either)
+Lyapunov: mixed signs, no consistent improvement; the one negative cell moved
+from walk (B7) to sit/jacks (B8) — reads as noise, not progress.
+Bridging: val ppl 37.0, but measured at n=120 (harder windows), NOT comparable
+to B7's 22.2 at n=45. No clean bridging comparison exists for B8.
+
+CONCLUSION: full-cycle exposure does not build the cycle. Combined with B6/B7
+this closes the supervised-likelihood avenue: goal-dropout exposure (B6),
+own-state conditioning (B7), and full-period windows (B8) all leave the
+autonomous flow without a restoring force. The binding constraint is the
+OBJECTIVE — per-token likelihood has no term for trajectory-level recurrence —
+exactly lloyd's E17 thesis. The RL arm is now the designated next move, with:
+  reward    r = -(slope_hat + 0.70)^2 - w_amp * (amp_corpus - amp)_+
+  baseline  B7 (+0.38 at 45f, the best supervised checkpoint for autonomy)
+  note      B7 also kept bridging at 22.2 ~= B3 level, so it is the right init.
+Lineage note: B6 remains the best BRIDGING checkpoint (19.0); B7 the best
+autonomy-vs-bridging compromise; Equator title still with A3+B3 (unbeaten on
+the full acceptance suite).

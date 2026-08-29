@@ -1,0 +1,96 @@
+RARITY OR INFEASIBILITY? (0813) — separating the two explanations for the hard
+action families. C1/Greenwich, 12 windows x 90 frames per family, 6 robots,
+arm error reported in % of each robot's reach so bodies are comparable.
+
+family    g1_29   h1     t1     gr3    s45    hi    | mean    CV
+run        7.06   4.27   4.84   3.89   8.96   3.46  |  5.41  0.362
+sit        9.34   5.45   5.34   4.75  16.53   3.17  |  7.43  0.602
+dance      6.03   3.97   4.44   3.02   7.12   4.21  |  4.80  0.285
+walk      12.86   4.19   4.40   3.84  17.87   3.16  |  7.72  0.727
+jump      12.70   6.41   6.68   8.48  10.29   3.93  |  8.08  0.351
+punch     13.45   6.93   9.01  10.99  27.46   6.69  | 12.42  0.573
+jacks     17.86   6.39   1.50   1.77   2.50   1.11  |  5.19  1.144
+kick      19.82  12.33  13.57  12.77  26.28   9.03  | 15.63  0.367
+
+hard-family mean CV 0.609 vs easy-family 0.494, ratio 1.23 — below the 1.3 line
+I set in advance for "body-specific". So the headline test is INCONCLUSIVE, and
+neither explanation wins outright. But the per-cell numbers say more than the
+summary does:
+
+ * KICK is uniformly hard: CV 0.367, and it is the worst or near-worst family on
+   every single robot (9.0-26.3%). Nothing about a particular body explains it.
+   This is the profile of a DATA problem (or a systematic retarget problem that
+   affects all bodies equally).
+ * JACKS is the opposite and it is extreme: CV 1.144, ranging from 1.11 on
+   hightorque_hi to 17.86 on g1_29dof — a 16x spread. Jumping jacks are nearly
+   free on some bodies and catastrophic on others. That is a BODY-SPECIFIC
+   signature, i.e. infeasibility, and no amount of extra data fixes the bodies
+   that cannot do it.
+ * PUNCH sits in between (CV 0.573), with kuavo_s45 (27.5%) far worse than the
+   rest — again a body effect on top of a family effect.
+ * Two robots are consistently the worst across every family: unitree_g1_29dof
+   and kuavo_s45. G1 is a HELD-OUT embodiment (never trained on), so its
+   elevated errors are expected and should be read separately; kuavo_s45 is
+   trained, so its across-the-board weakness is its own finding.
+
+VERDICT: "our data is too small" is PARTIALLY supported and must not be acted
+on as a single explanation.
+  - For kick (the worst family), the uniform profile is consistent with more
+    data helping.
+  - For jacks, and partly punch, the variation is body-specific and more data
+    will not help those cells at all.
+  - The frequency correlation (-0.684) that motivated this test is real but
+    confounded: run is only 7.3% of the corpus and is the BEST family, which
+    already showed frequency is not sufficient on its own.
+RECOMMENDATION BEFORE BUYING DATA: buy for the families whose profile is
+uniform (kick first), and fix retargeting or change the yardstick for the ones
+whose profile is body-specific (jacks). Buying broadly on the strength of the
+-0.684 alone would spend money on cells that cannot improve.
+NEXT MEASUREMENT, still open: the joint-limit saturation test (hypothesis B in
+its direct form) failed on a manifold_project API mismatch and has not been run.
+It would settle the jacks cells directly.
+
+=== ADDENDUM: JOINT-LIMIT SATURATION (0813) ===
+The direct form of hypothesis B, run with manifold_project's own _limits() so
+the margins match the projection exactly. % of limited DOFs sitting within 2%
+of a joint stop, in the PAIRED GT poses (no model in the loop):
+
+family    g1_29    h1     t1     hi     s45   | mean
+run        5.93   4.23   3.68   0.00  12.07  | 5.18
+dance      0.52   1.01   1.53   0.18  12.08  | 3.06
+walk       2.44   2.24   5.60   0.00  23.13  | 6.68
+punch      6.70   5.15   3.49   0.00  10.92  | 5.25
+jacks     10.39   9.06   7.09   0.00   6.79  | 6.67
+kick       1.48   0.56   2.25   0.00   9.38  | 2.73
+hard families 4.88%   easy families 4.98%   ratio 0.98
+
+VERDICT: HYPOTHESIS B IS REFUTED AS A FAMILY-LEVEL EXPLANATION. Hard and easy
+families sit on the stops at the same rate (4.88% vs 4.98%). KICK, the worst
+family of all, has the LOWEST saturation of any family (2.73%) — the motion the
+model fails hardest on is the one least constrained by the robots' limits. So
+the arm tail is not the joints running out of travel.
+
+TWO THINGS THE TABLE DOES EXPLAIN
+ * The jacks 16x cell IS a limit story after all, just not a family-level one:
+   jacks on g1_29dof saturates 10.39% of limited DOFs, on hightorque_hi 0.00% —
+   exactly the two ends of the 17.86 vs 1.11 error spread. So for THAT cell,
+   more data will not help; the body cannot make the pose.
+ * kuavo_s45 saturates 6.8-23.1% on EVERY family, far above every other body.
+   Its across-the-board weakness in the previous table is now explained: its
+   descriptor's limits are being hit constantly, on walking as much as on
+   punching. That is a per-robot data/descriptor problem worth fixing on its
+   own, and it has been contaminating every cross-embodiment average we report.
+
+WHERE THE ARM TAIL NOW STANDS, after four eliminations
+  decoder capacity        refuted (two post-trains, <1%)
+  loss wiring             refuted (FK loss, ~2.5%)
+  code budget             refuted (rot_only 128 vs 256, 1-4%)
+  joint-limit clamping    refuted (this table, ratio 0.98)
+  family rarity           partially supported (corr -0.684) but confounded, and
+                          contradicted by run (7.3% of the corpus, best family)
+Still standing and now the leading candidate: the retargeting labels themselves
+carry family-dependent error that is not about limits — i.e. the solver does
+worse on kick/punch/jacks for reasons other than running out of joint travel.
+The readout probe already showed the ceiling is in the labels (codes -> paired
+wrist saturates ~30 cm while codes -> human wrist reaches 12 cm). This table
+says that ceiling is not made of joint stops.

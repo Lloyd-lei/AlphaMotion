@@ -1,0 +1,76 @@
+====================================================================================================
+SPARSE-CELL ROLLOUT — 5 tracked joints (A) / k random keyframes (B)
+====================================================================================================
+MODE B IS OUT OF DISTRIBUTION: V7/V8 trained cond_drop=False and have never
+seen a window without both endpoints. `interp_only` is the no-model control;
+a model row is only meaningful if it beats it.
+----------------------------------------------------------------------------------------------------
+A trackers | jacks | free=Head | V7_jepa             {"free_joint_cm": 6.25, "straight_baseline_cm": 3.7}
+A trackers | jacks | free=Head | V7_maskfsq          {"free_joint_cm": 6.41, "straight_baseline_cm": 3.7}
+A trackers | jacks | free=Head | V8_arclen           {"free_joint_cm": 5.94, "straight_baseline_cm": 3.7}
+A trackers | jacks | free=L_Ankle | V7_jepa          {"free_joint_cm": 10.66, "straight_baseline_cm": 12.95}
+A trackers | jacks | free=L_Ankle | V7_maskfsq       {"free_joint_cm": 10.75, "straight_baseline_cm": 12.95}
+A trackers | jacks | free=L_Ankle | V8_arclen        {"free_joint_cm": 10.94, "straight_baseline_cm": 12.95}
+A trackers | jacks | free=L_Wrist | V7_jepa          {"free_joint_cm": 28.5, "straight_baseline_cm": 36.05}
+A trackers | jacks | free=L_Wrist | V7_maskfsq       {"free_joint_cm": 28.89, "straight_baseline_cm": 36.05}
+A trackers | jacks | free=L_Wrist | V8_arclen        {"free_joint_cm": 29.6, "straight_baseline_cm": 36.05}
+A trackers | jacks | free=Pelvis | V7_jepa           {"free_joint_cm": 2.64, "straight_baseline_cm": 0.0}
+A trackers | jacks | free=Pelvis | V7_maskfsq        {"free_joint_cm": 2.73, "straight_baseline_cm": 0.0}
+A trackers | jacks | free=Pelvis | V8_arclen         {"free_joint_cm": 2.0, "straight_baseline_cm": 0.0}
+A trackers | jacks | free=R_Ankle | V7_jepa          {"free_joint_cm": 10.03, "straight_baseline_cm": 14.06}
+A trackers | jacks | free=R_Ankle | V7_maskfsq       {"free_joint_cm": 11.1, "straight_baseline_cm": 14.06}
+A trackers | jacks | free=R_Ankle | V8_arclen        {"free_joint_cm": 10.93, "straight_baseline_cm": 14.06}
+A trackers | jacks | free=R_Wrist | V7_jepa          {"free_joint_cm": 27.21, "straight_baseline_cm": 35.53}
+A trackers | jacks | free=R_Wrist | V7_maskfsq       {"free_joint_cm": 30.29, "straight_baseline_cm": 35.53}
+A trackers | jacks | free=R_Wrist | V8_arclen        {"free_joint_cm": 28.83, "straight_baseline_cm": 35.53}
+A trackers | kick | free=Head | V7_jepa              {"free_joint_cm": 7.22, "straight_baseline_cm": 8.58}
+A trackers | kick | free=Head | V7_maskfsq           {"free_joint_cm": 5.99, "straight_baseline_cm": 8.58}
+A trackers | kick | free=Head | V8_arclen            {"free_joint_cm": 6.12, "straight_baseline_cm": 8.58}
+A trackers | kick | free=L_Ankle | V7_jepa           {"free_joint_cm": 11.7, "straight_baseline_cm": 10.98}
+A trackers | kick | free=L_Ankle | V7_maskfsq        {"free_joint_cm": 11.17, "straight_baseline_cm": 10.98}
+A trackers | kick | free=L_Ankle | V8_arclen         {"free_joint_cm": 9.88, "straight_baseline_cm": 10.98}
+A trackers | kick | free=L_Wrist | V7_jepa           {"free_joint_cm": 11.71, "straight_baseline_cm": 11.62}
+A trackers | kick | free=L_Wrist | V7_maskfsq        {"free_joint_cm": 12.0, "straight_baseline_cm": 11.62}
+A trackers | kick | free=L_Wrist | V8_arclen         {"free_joint_cm": 11.7, "straight_baseline_cm": 11.62}
+A trackers | kick | free=Pelvis | V7_jepa            {"free_joint_cm": 1.74, "straight_baseline_cm": 0.0}
+A trackers | kick | free=Pelvis | V7_maskfsq         {"free_joint_cm": 1.62, "straight_baseline_cm": 0.0}
+A trackers | kick | free=Pelvis | V8_arclen          {"free_joint_cm": 1.81, "straight_baseline_cm": 0.0}
+A trackers | kick | free=R_Ankle | V7_jepa           {"free_joint_cm": 29.57, "straight_baseline_cm": 35.49}
+A trackers | kick | free=R_Ankle | V7_maskfsq        {"free_joint_cm": 26.85, "straight_baseline_cm": 35.49}
+A trackers | kick | free=R_Ankle | V8_arclen         {"free_joint_cm": 28.32, "straight_baseline_cm": 35.49}
+A trackers | kick | free=R_Wrist | V7_jepa           {"free_joint_cm": 10.9, "straight_baseline_cm": 11.65}
+A trackers | kick | free=R_Wrist | V7_maskfsq        {"free_joint_cm": 10.16, "straight_baseline_cm": 11.65}
+A trackers | kick | free=R_Wrist | V8_arclen         {"free_joint_cm": 10.16, "straight_baseline_cm": 11.65}
+A trackers | walk | free=Head | V7_jepa              {"free_joint_cm": 3.78, "straight_baseline_cm": 3.28}
+A trackers | walk | free=Head | V7_maskfsq           {"free_joint_cm": 4.2, "straight_baseline_cm": 3.28}
+A trackers | walk | free=Head | V8_arclen            {"free_joint_cm": 3.77, "straight_baseline_cm": 3.28}
+A trackers | walk | free=L_Ankle | V7_jepa           {"free_joint_cm": 12.59, "straight_baseline_cm": 21.42}
+A trackers | walk | free=L_Ankle | V7_maskfsq        {"free_joint_cm": 13.17, "straight_baseline_cm": 21.42}
+A trackers | walk | free=L_Ankle | V8_arclen         {"free_joint_cm": 11.23, "straight_baseline_cm": 21.42}
+A trackers | walk | free=L_Wrist | V7_jepa           {"free_joint_cm": 9.91, "straight_baseline_cm": 12.31}
+A trackers | walk | free=L_Wrist | V7_maskfsq        {"free_joint_cm": 10.68, "straight_baseline_cm": 12.31}
+A trackers | walk | free=L_Wrist | V8_arclen         {"free_joint_cm": 9.86, "straight_baseline_cm": 12.31}
+A trackers | walk | free=Pelvis | V7_jepa            {"free_joint_cm": 1.15, "straight_baseline_cm": 0.0}
+A trackers | walk | free=Pelvis | V7_maskfsq         {"free_joint_cm": 1.2, "straight_baseline_cm": 0.0}
+A trackers | walk | free=Pelvis | V8_arclen          {"free_joint_cm": 1.23, "straight_baseline_cm": 0.0}
+A trackers | walk | free=R_Ankle | V7_jepa           {"free_joint_cm": 12.58, "straight_baseline_cm": 20.27}
+A trackers | walk | free=R_Ankle | V7_maskfsq        {"free_joint_cm": 12.23, "straight_baseline_cm": 20.27}
+A trackers | walk | free=R_Ankle | V8_arclen         {"free_joint_cm": 10.59, "straight_baseline_cm": 20.27}
+A trackers | walk | free=R_Wrist | V7_jepa           {"free_joint_cm": 9.72, "straight_baseline_cm": 11.85}
+A trackers | walk | free=R_Wrist | V7_maskfsq        {"free_joint_cm": 10.0, "straight_baseline_cm": 11.85}
+A trackers | walk | free=R_Wrist | V8_arclen         {"free_joint_cm": 9.69, "straight_baseline_cm": 11.85}
+B sparse | jacks | k=1                               {"cells": "1 frames x 6 joints", "frames": [44], "interp_only_cm": 19.1, "straight_line_cm": 17.05, "endpoints_given": false, "V7_jepa_cm": 19.31, "V7_jepa_energy": 0.006, "V8_arclen_cm": 19.23, "V8_arclen_energy": 0.005, "V7_maskfsq_cm": 19.12, "V7_maskfsq_energy": 0.01}
+B sparse | jacks | k=10                              {"cells": "10 frames x 6 joints", "frames": [17, 24, 25, 29, 32, 33, 35, 40, 50, 54], "interp_only_cm": 7.11, "straight_line_cm": 17.05, "endpoints_given": false, "V7_jepa_cm": 12.82, "V7_jepa_energy": 0.844, "V8_arclen_cm": 11.09, "V8_arclen_energy": 0.802, "V7_maskfsq_cm": 11.14, "V7_maskfsq_energy": 0.857}
+B sparse | jacks | k=2                               {"cells": "2 frames x 6 joints", "frames": [20, 36], "interp_only_cm": 16.47, "straight_line_cm": 17.05, "endpoints_given": false, "V7_jepa_cm": 17.19, "V7_jepa_energy": 0.498, "V8_arclen_cm": 16.94, "V8_arclen_energy": 0.486, "V7_maskfsq_cm": 17.04, "V7_maskfsq_energy": 0.535}
+B sparse | jacks | k=3                               {"cells": "3 frames x 6 joints", "frames": [11, 30, 51], "interp_only_cm": 12.09, "straight_line_cm": 17.05, "endpoints_given": false, "V7_jepa_cm": 14.19, "V7_jepa_energy": 0.741, "V8_arclen_cm": 13.5, "V8_arclen_energy": 0.704, "V7_maskfsq_cm": 13.64, "V7_maskfsq_energy": 0.751}
+B sparse | jacks | k=5                               {"cells": "5 frames x 6 joints", "frames": [5, 22, 29, 36, 46], "interp_only_cm": 9.01, "straight_line_cm": 17.05, "endpoints_given": false, "V7_jepa_cm": 13.66, "V7_jepa_energy": 0.762, "V8_arclen_cm": 12.16, "V8_arclen_energy": 0.737, "V7_maskfsq_cm": 12.19, "V7_maskfsq_energy": 0.809}
+B sparse | kick | k=1                                {"cells": "1 frames x 6 joints", "frames": [46], "interp_only_cm": 16.44, "straight_line_cm": 13.05, "endpoints_given": false, "V7_jepa_cm": 16.59, "V7_jepa_energy": 0.006, "V8_arclen_cm": 16.53, "V8_arclen_energy": 0.006, "V7_maskfsq_cm": 16.32, "V7_maskfsq_energy": 0.022}
+B sparse | kick | k=10                               {"cells": "10 frames x 6 joints", "frames": [19, 20, 22, 36, 49, 50, 54, 55, 56, 58], "interp_only_cm": 6.48, "straight_line_cm": 13.05, "endpoints_given": false, "V7_jepa_cm": 10.88, "V7_jepa_energy": 0.717, "V8_arclen_cm": 9.69, "V8_arclen_energy": 0.732, "V7_maskfsq_cm": 9.75, "V7_maskfsq_energy": 0.826}
+B sparse | kick | k=2                                {"cells": "2 frames x 6 joints", "frames": [1, 2], "interp_only_cm": 17.77, "straight_line_cm": 13.05, "endpoints_given": false, "V7_jepa_cm": 18.0, "V7_jepa_energy": 0.031, "V8_arclen_cm": 17.87, "V8_arclen_energy": 0.034, "V7_maskfsq_cm": 17.59, "V7_maskfsq_energy": 0.043}
+B sparse | kick | k=3                                {"cells": "3 frames x 6 joints", "frames": [33, 41, 47], "interp_only_cm": 12.98, "straight_line_cm": 13.05, "endpoints_given": false, "V7_jepa_cm": 14.85, "V7_jepa_energy": 0.452, "V8_arclen_cm": 14.59, "V8_arclen_energy": 0.504, "V7_maskfsq_cm": 15.08, "V7_maskfsq_energy": 0.613}
+B sparse | kick | k=5                                {"cells": "5 frames x 6 joints", "frames": [8, 10, 17, 26, 48], "interp_only_cm": 5.77, "straight_line_cm": 13.05, "endpoints_given": false, "V7_jepa_cm": 9.55, "V7_jepa_energy": 0.756, "V8_arclen_cm": 8.83, "V8_arclen_energy": 0.761, "V7_maskfsq_cm": 9.3, "V7_maskfsq_energy": 0.843}
+B sparse | walk | k=1                                {"cells": "1 frames x 6 joints", "frames": [46], "interp_only_cm": 13.92, "straight_line_cm": 11.52, "endpoints_given": false, "V7_jepa_cm": 14.13, "V7_jepa_energy": 0.008, "V8_arclen_cm": 14.03, "V8_arclen_energy": 0.008, "V7_maskfsq_cm": 13.84, "V7_maskfsq_energy": 0.022}
+B sparse | walk | k=10                               {"cells": "10 frames x 6 joints", "frames": [19, 20, 22, 36, 49, 50, 54, 55, 56, 58], "interp_only_cm": 5.25, "straight_line_cm": 11.52, "endpoints_given": false, "V7_jepa_cm": 8.79, "V7_jepa_energy": 0.765, "V8_arclen_cm": 8.11, "V8_arclen_energy": 0.809, "V7_maskfsq_cm": 7.38, "V7_maskfsq_energy": 0.867}
+B sparse | walk | k=2                                {"cells": "2 frames x 6 joints", "frames": [1, 2], "interp_only_cm": 13.58, "straight_line_cm": 11.52, "endpoints_given": false, "V7_jepa_cm": 13.94, "V7_jepa_energy": 0.037, "V8_arclen_cm": 13.88, "V8_arclen_energy": 0.044, "V7_maskfsq_cm": 13.59, "V7_maskfsq_energy": 0.049}
+B sparse | walk | k=3                                {"cells": "3 frames x 6 joints", "frames": [33, 41, 47], "interp_only_cm": 9.84, "straight_line_cm": 11.52, "endpoints_given": false, "V7_jepa_cm": 11.38, "V7_jepa_energy": 0.502, "V8_arclen_cm": 11.99, "V8_arclen_energy": 0.552, "V7_maskfsq_cm": 10.86, "V7_maskfsq_energy": 0.63}
+B sparse | walk | k=5                                {"cells": "5 frames x 6 joints", "frames": [8, 10, 17, 26, 48], "interp_only_cm": 5.79, "straight_line_cm": 11.52, "endpoints_given": false, "V7_jepa_cm": 8.75, "V7_jepa_energy": 0.667, "V8_arclen_cm": 8.45, "V8_arclen_energy": 0.704, "V7_maskfsq_cm": 7.71, "V7_maskfsq_energy": 0.767}

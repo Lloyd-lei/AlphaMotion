@@ -84,6 +84,36 @@ DROP_JOINTS = {"booster_t1_29dof": {"AAHead_yaw", "Head_pitch"},
 # talos: gripper motion is kept instead of dropped.
 DATA_TREE = {"unitree_h2", "pal_talos"}
 
+# Joint LIMITS to encode into {emb}_dof.npz when the MJCF we do kinematics from is
+# not the vendor's own model.  GMR's g1_mocap_29dof.xml hand-narrows 15 of G1's 29
+# ranges (hips 130 deg lost, waist_yaw 120, shoulders 105/87/57, elbow 22.6, ...) to
+# keep its IK retargeter tame; the geometry, axes and joint set are identical to
+# Unitree's URDF.  The limits are fed to the network as INPUT FEATURES, so they must
+# describe the real robot, not GMR's solver box.  See LIMITS_AUDIT.md 1.
+# Verified byte-identical to upstream unitreerobotics/unitree_ros g1_29dof.urdf,
+# g1_29dof_rev_1_0.urdf and the g1_29dof_mode_{11,13,15,18} descriptions.
+_G1_VENDOR_URDF = f"{PG.GMR_REPO}/assets/unitree_g1/g1_custom_collision_29dof.urdf"
+LIMIT_URDF = {"unitree_g1_29dof": _G1_VENDOR_URDF,
+              "unitree_g1_23dof": _G1_VENDOR_URDF}
+
+
+def urdf_ranges(path):
+    """URDF -> {joint_name: (lower, upper)} in radians, movable joints only."""
+    import xml.etree.ElementTree as ET
+    out = {}
+    for j in ET.parse(path).getroot().iter("joint"):
+        lim = j.find("limit")
+        if j.get("type") == "fixed" or lim is None:
+            continue
+        out[j.get("name")] = (float(lim.get("lower")), float(lim.get("upper")))
+    return out
+
+
+def limit_override(emb):
+    """-> {joint_name: (lo, hi)} rad for `emb`, or None when the MJCF is the vendor's."""
+    p = LIMIT_URDF.get(emb)
+    return urdf_ranges(p) if p else None
+
 SMPL_NAMES = ['Pelvis', 'L_Hip', 'R_Hip', 'Torso', 'L_Knee', 'R_Knee', 'Spine',
               'L_Ankle', 'R_Ankle', 'Chest', 'L_Toe', 'R_Toe', 'Neck', 'L_Thorax',
               'R_Thorax', 'Head', 'L_Shoulder', 'R_Shoulder', 'L_Elbow', 'R_Elbow',
@@ -220,7 +250,19 @@ def build_data_spec(emb, ref_clip):
         p = parents[j]
         off[j] = np.einsum("tab,ta->tb", R[:, p], P[:, j].astype(np.float64)
                            - P[:, p].astype(np.float64)).mean(0)
-    off[0] = [0.0, 0.0, float(P[:, 0, 2].mean())]
+    # root bone = the robot's REAL standing (sole -> pelvis) height from the MJCF's
+    # mesh geometry.  Was the mean pelvis z over the retargeted motion, which is the
+    # height of a MOVING (crouched) pelvis: -15.4 cm on pal_talos, -6.1 cm on
+    # unitree_h2 (LIMITS_AUDIT.md 5b).  The MJCF is only geometrically unreliable for
+    # these two at the ~2-4 cm bone level, which is why DATA_TREE bypasses it for the
+    # tree; its overall standing height is still by far the best estimate we have.
+    root_h = float(P[:, 0, 2].mean())
+    try:
+        import mujoco
+        root_h = PG.standing_height(mujoco.MjModel.from_xml_path(resolve_xml(emb)))
+    except Exception as e:
+        print(f"[{emb}] standing_height failed ({e}); using mean pelvis z", flush=True)
+    off[0] = [0.0, 0.0, root_h]
     off = (off @ PG.AX.T) * PG.CM
     names = [f"body{j:02d}" for j in range(B)]
     try:                                     # borrow names from the MJCF where unambiguous

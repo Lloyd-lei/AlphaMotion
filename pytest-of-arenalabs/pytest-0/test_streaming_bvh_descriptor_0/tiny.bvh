@@ -1,0 +1,18 @@
+HIERARCHY
+ROOT Root
+{
+ OFFSET 0 0 0
+ CHANNELS 6 Xposition Yposition Zposition Zrotation Yrotation Xrotation
+ JOINT LeftLeg
+ {
+  OFFSET 0 1 0
+  CHANNELS 3 Zrotation Yrotation Xrotation
+ }
+}
+MOTION
+Frames: 4
+Frame Time: 0.1
+0 0 0 0 0 0 0 0 0
+1 0 0 1 0 0 2 0 0
+2 0 0 2 0 0 4 0 0
+3 0 0 3 0 0 6 0 0

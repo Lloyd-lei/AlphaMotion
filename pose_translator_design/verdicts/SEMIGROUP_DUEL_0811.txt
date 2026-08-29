@@ -1,0 +1,30 @@
+SEMIGROUP SELF-SUPERVISED FINETUNE — VERDICT (0811): NOT ACCEPTED
+
+EQ_B5_semigroup_0811 = copy of B3, 8k steps, loss = masked-CE anchor +
+0.5 * CE(one-hop logits vs the model's OWN two-hop composed tokens). B3 on
+disk untouched. Both re-measured on IDENTICAL batches (B5's training log was
+not comparable: fixed n=60 vs B3's variable n).
+
+run                     gap_cm  noise_cm  ratio  bridgeCE   ppl
+BRIDGE_B3_prod_0810      1.78     2.28     0.78    3.023    20.6
+EQ_B5_semigroup_0811     1.70     2.04     0.84    3.366    28.9
+
+READING — the gap fell (-4.5%) but for the WRONG reason: sampling noise fell
+further (-10.5%), so the noise-normalised ratio got WORSE (0.78 -> 0.84), and
+the prior degraded badly (ppl +40%). The finetune did not make the kernel more
+composable; it made it more deterministic. That is the signature of
+self-distillation mode-seeking: a hard-token teacher drawn from the model's own
+samples sharpens the distribution, and the CE anchor at weight 1.0 did not hold
+it. Diversity was a hard-won cure earlier in this stack (v1 diversity=0.00), so
+trading it for a 4% gap reduction is a bad deal.
+
+WHAT THIS DOES NOT REFUTE: the semigroup PROPERTY still holds and is still a
+valid free diagnostic (gap < noise on both models). What is refuted is this
+particular way of turning it into a loss.
+IF RETRIED: (a) distribution-level loss (KL against the two-hop token
+DISTRIBUTION, not sampled hard tokens), (b) w_semi << 0.5, (c) put the noise
+normaliser INSIDE the objective so shrinking diversity cannot score, (d) hold
+val ppl as a hard gate, not a report-only metric.
+NOTE on probe variance: B3's ratio measured 0.69 in HOMECOMING_0811 and 0.78
+here, different window sets — read ratios as +-0.1, and only compare models
+measured on the same batches.

@@ -1,0 +1,607 @@
+====================================================================================================
+V6 TEMPORAL VERDICT — 2026-08-07. HOW TO READ THIS TABLE BEFORE YOU READ ANY NUMBER IN IT.
+====================================================================================================
+
+TWO FAILURE MODES, NOT ONE. Every temporal arm to date has been judged against a single
+sentence ("the tokens are decorative"), and that sentence hides two independent mechanisms
+with two independent fixes. Reading a flat ladder as a verdict on masking, or a flat energy
+number as a verdict on the register chain, will get the wrong answer.
+
+  MODE A — MEAN REGRESSION.
+    Mechanism : the decoder's conditioning NEVER VARIED. V5 always handed it the same two
+                frames (current + target), so the cheapest solution is the per-frame
+                conditional mean of all trajectories with those endpoints.
+    Symptom   : motion energy below 1.0, worst in the families whose interior is the whole
+                point — jumping jacks, run, kick. V5c energy 0.762-0.805; jacks historically
+                0.2-0.4, i.e. a jack whose interior has been averaged away.
+    Fix       : V6's frame-mask DISTRIBUTION. At `sparse` density there is no endpoint pair to
+                interpolate between, so the interior can only come from the registers.
+    Rows to read: per-family energy, content share, the mask ladder.
+
+  MODE B — REGISTER REDUNDANCY (the flat OAT ladder).
+    Mechanism : the parallel Perceiver readout factorizes the code into per-register
+                INDEPENDENT MARGINALS — the readout queries never see each other — so every
+                register regresses to the same conditional mean and register 1 alone already
+                says what registers 1..8 say.
+    Symptom   : the OAT prefix ladder is flat. V5c: 7.66 cm at prefix1, 2, 4 AND 8 (spread
+                0.017 cm). V6_mae at 20k: spread 0.010 cm — UNCHANGED, as expected.
+    Fix       : --reg_ar (N3a's insight #2). Register k's readout query cross-attends the
+                QUANTIZED values of registers < k.
+    Rows to read: the prefix1/2/4/8 ladder.
+    MEASURED MECHANISM, 2026-08-07 (V6Tokenizer, d=32, identical weights, one perturbation):
+      parallel readout : perturb register 0's query -> register 0 moves 2.083,
+                         registers 1..7 move EXACTLY 0.0000. They are independent marginals.
+      register chain   : perturb the chain prefix -> register 0 moves 0.0 (it precedes the
+                         prefix), registers 1..7 move 0.098 / 0.150 / 0.124 / 0.122 / 0.059 /
+                         0.093 / 0.046. The chain is real.
+    This is why a flat ladder under V6_mae is NOT evidence against insight 3c: V6_mae keeps
+    V5's parallel readout verbatim and has no mechanism against Mode B at all.
+
+THE 2x2. Four arms, one control per cell, all at 62.69 bit/s and the same V5c loss recipe:
+
+                        |  no frame masking      |  V6 frame-mask distribution
+    --------------------+------------------------+-----------------------------
+    parallel readout    |  V5c_0806  (neither)   |  V6_mae_0807      (Mode A only)
+    register chain      |  N3a_regAR_0807 (B only)| V6_regar_0807    (BOTH)
+
+  V6_mae_resid_0807 sits outside the 2x2: it is V6_mae + --residual_in, testing the OTHER half
+  of insight 3c (rates instead of absolute states) and is read against V6_mae, not against the
+  grid. No run before V6_regar has ever carried both fixes.
+
+OPERATIONAL LESSON FROM TONIGHT — PLAN PARALLELISM ON PEAK, NOT STARTUP, MEMORY.
+  The spatial arms (train_dual) grow enormously at their eval checkpoints: N3f went 24.5 -> 46.3
+  GB, N3e went 24.5 -> 41.0 GB, both hours after startup. A slot measured at startup is not a
+  slot. Concretely tonight: 15.3 GB was freed at ~04:00 and the card read 80.6/97.9; by the time
+  the next arm was ready to launch the card read 96.9/97.9, because N3e had absorbed all of it
+  and more. Launching on that stale reading would have OOM'd the two V6 arms already in flight.
+  V6_regar was therefore gated on a SUSTAINED free-memory measurement (>= 12 GB across 5
+  consecutive one-minute polls) rather than on a pid disappearing, and the gate is what delayed
+  it. The rule for the next queue: budget every train_dual arm at its EVAL peak (~46 GB), not
+  its steady state (~24 GB).
+====================================================================================================
+
+====================================================================================================
+N3 TEMPORAL VERDICT — register-AR / xbody / root_vel vs V5c (control), 2026-08-07 06:53
+controls: V5c recipe (warp aug linear + Riemann both + cdrop .15/.05 + time-detach + no pair-NCE)
+====================================================================================================
+metric                                               V5c_0806     N3a_regAR_0807        V6_mae_0807      V6_regar_0807  V6_mae_resid_0807
+-- (1) 2c warp exam [gate >= 0.9; oracle 0.9606 / control 0.0176] --
+  warp invariance (frac)                                0.995              0.987              0.990              0.997              0.954
+  control (unrelated)                                   0.022              0.014              0.048              0.074              0.046
+-- (2) content / error [gates: share >= 0.6, key cm <= 7.5] --
+  content share                                         0.527              0.601              0.470              0.117              0.166
+  registers buy [cm]                                    1.410              1.943              1.858              3.518              7.030
+  key pos prefix8 [cm]                                   7.66               7.40               7.63               7.71               7.61
+  key rot prefix8 [deg]                                  13.5               12.9               12.9               13.1               12.7
+  energy ratio prefix8                                  0.805              0.822              0.816              0.807              0.813
+  prefix1 key pos [cm]                                   7.66               7.43               7.63               7.73               7.62
+  prefix2 key pos [cm]                                   7.66               7.41               7.63               7.72               7.62
+  prefix4 key pos [cm]                                   7.66               7.40               7.63               7.72               7.61
+  tokens shuffled [cm]                                   8.40               8.57               8.50               8.12               8.77
+  tokens zeroed [cm]                                     9.07               9.34               9.49              11.23              14.64
+  straight line [cm]                                     9.00               9.00               9.00               9.00               9.00
+-- (3) motion energy per family (energy ratio; root_vel arms add vel-mag ratio / fwd-speed corr) --
+  walk                                                  0.828              0.851              0.841              0.829              0.839
+  run                                                   0.702              0.728              0.715              0.692              0.722
+  jacks                                                 0.654              0.714              0.648              0.630              0.628
+  dance                                                 0.542              0.562              0.571              0.552              0.556
+  kick                                                  0.574              0.650              0.572              0.560              0.538
+  punch                                                 0.661              0.540              0.608              0.481              0.689
+  walk vel-mag ratio                                        -                  -                  -                  -                  -
+  run vel-mag ratio                                         -                  -                  -                  -                  -
+  jacks vel-mag ratio                                       -                  -                  -                  -                  -
+  dance vel-mag ratio                                       -                  -                  -                  -                  -
+  kick vel-mag ratio                                        -                  -                  -                  -                  -
+  punch vel-mag ratio                                       -                  -                  -                  -                  -
+  walk fwd-speed corr                                       -                  -                  -                  -                  -
+  run fwd-speed corr                                        -                  -                  -                  -                  -
+  jacks fwd-speed corr                                      -                  -                  -                  -                  -
+  dance fwd-speed corr                                      -                  -                  -                  -                  -
+  kick fwd-speed corr                                       -                  -                  -                  -                  -
+  punch fwd-speed corr                                      -                  -                  -                  -                  -
+-- (4) kNN body leakage [P1 ref 0.141; root_vel arms: 5 bodies, chance 0.20] --
+  knn body acc                                          0.119              0.097              0.083              0.099              0.067
+  chance                                                0.167              0.167              0.167              0.167              0.167
+-- (5) GT-free physeval, decoded G1, median over clips (walk1_subject1,walk3_subject1,run1_subject2,dance1_subject1) --
+   [reference floor GT_retarget: slip50=0.017  V5c@PHYSEVAL_0806 was 0.751]
+  foot slip p50 [m/s]                                   0.559              0.546              0.578              0.545              0.554
+  foot slip p95 [m/s]                                   1.020              0.901              0.946              1.246              0.978
+  torque over limit [%]                                 0.000              0.014              0.000              0.029              0.000
+  worst torque ratio [x]                                0.886              0.989              0.811              0.956              0.834
+  jerk p95 [rad/s^3]                                 3226.920           2760.762           3196.451           2888.387           3341.964
+
+VERDICT vs gates (2c >= 0.90, content >= 0.6, key <= 7.5 cm):
+  V5c_0806         2c 0.995 PASS | content 0.527 FAIL | key 7.66 FAIL
+  N3a_regAR_0807   2c 0.987 PASS | content 0.601 PASS | key 7.40 PASS
+  V6_mae_0807      2c 0.990 PASS | content 0.470 FAIL | key 7.63 FAIL
+  V6_regar_0807    2c 0.997 PASS | content 0.117 FAIL | key 7.71 FAIL
+  V6_mae_resid_0807 2c 0.954 PASS | content 0.166 FAIL | key 7.61 FAIL
+====================================================================================================
+
+====================================================================================================
+V6 APPENDIX — bit budget and the MASK LADDER (rows no V5-era harness has)
+====================================================================================================
+arm                       bits/s  registers      levels    params  arch
+V5c_0806                   62.69      8+1   5,5,5,5,5,5     8.31M  v5
+N3a_regAR_0807             62.69      8+1   5,5,5,5,5,5     8.31M  v5
+V6_mae_0807                62.69      8+1   5,5,5,5,5,5     8.30M  v6
+V6_regar_0807              62.69      8+1   5,5,5,5,5,5     8.31M  v6
+V6_mae_resid_0807          62.69      8+1   5,5,5,5,5,5     8.33M  v6  residual_in
+  P1 / V5 / V5c reference: 62.69 bit/s. Any arm off that number is not comparable and the
+  trainer asserts on it, so a mismatch cannot reach this table silently.
+
+-- MASK LADDER (V6 arms only; val split, 192 windows, full 8 registers) --
+   key_pos_cm = decoded error | interp = the SAME visible set interpolated with ZERO bits
+   the bits are worth exactly (interp - key_pos_cm) cm at each density.
+
+  V6_mae_0807  (step 60000)
+    visible set     key_pos_cm  interp_only  bits buy   energy
+    endpoints            7.683        9.242     1.559    0.780
+    sparse3              4.047        4.264     0.217    0.912
+    rand50               0.699        0.321    -0.378    0.999
+    prefix_half          4.086        4.942     0.856    0.909
+    full                 0.282        0.000    -0.282    1.005
+
+  V6_regar_0807  (step 60000)
+    visible set     key_pos_cm  interp_only  bits buy   energy
+    endpoints            7.759        9.242     1.483    0.775
+    sparse3              4.006        4.264     0.258    0.913
+    rand50               0.733        0.321    -0.412    0.999
+    prefix_half          4.058        4.942     0.884    0.903
+    full                 0.321        0.000    -0.321    1.003
+
+  V6_mae_resid_0807  (step 60000)
+    visible set     key_pos_cm  interp_only  bits buy   energy
+    endpoints            7.657        9.242     1.585    0.763
+    sparse3              4.086        4.264     0.178    0.905
+    rand50               0.733        0.321    -0.412    1.000
+    prefix_half          4.192        4.942     0.750    0.895
+    full                 0.332        0.000    -0.332    1.006
+
+READING IT: 'endpoints' is the row every other arm in the table above was
+measured in — V5c's only regime. The rows below it are densities V5c was
+never trained for and cannot be asked about. If 'bits buy' is ~0 at every
+density, the registers are decorative and V6 failed the same way V5c did;
+if it grows as the visible set thins, the tokens are carrying the interior.
+====================================================================================================
+====================================================================================================
+V6 BUILD RECORD — 2026-08-07, insight #3c (temporal layer made isomorphic to the spatial layer)
+====================================================================================================
+
+WHAT WAS BUILT (all paths under pose_translator_design/exp_topo/)
+
+  frame_masking.py      the axis-swapped twin of masking.py. masking.py hides JOINTS from the
+                        spatial encoder and keeps their GEOMETRY visible; frame_masking.py hides
+                        FRAMES from the temporal encoder and keeps their CLOCK visible.
+                        Families, one-for-one with the spatial ones:
+                          none       keep everything          (no spatial analogue: a temporal
+                                                               encode IS asked for the whole window)
+                          rand       keep U(0.2,0.8)          <- masking.rand, verbatim ratios
+                          endpoints  keep {frame 0, target}   <- V5's ENTIRE conditioning surface,
+                                                               here demoted to one family member
+                          sparse     keep frame 0 + 1..3      <- masking.sparse, same 1..3 draw
+                          prefix     keep [0,p), p~U(.1,.9)T  <- streaming / rollout
+                        FRAME 0 IS NEVER MASKED, exactly as masking.py never masks the root.
+                        Also: anchor_flags (I-frame detection), sg_smooth (Savitzky-Golay 5,2),
+                        rate_features (angular+linear velocity, SG5-smoothed acceleration).
+
+  train_v6.py           V6Tokenizer + trainer. Its public surface (encode / decode / forward /
+                        baseline / token_ints / budgets / n_path / T / nk / head_kind) is
+                        interface-identical to V5Tokenizer's, on purpose.
+
+  train_v5.py           one lazy branch added to load_run(): config.json arch == "v6" dispatches
+                        to train_v6.load_run. eval_v5.py and n3_eval_temporal.py both import
+                        load_run from here, so EVERY existing temporal measurement runs on V6
+                        with zero harness changes.
+
+  v6_append_report.py   adds the bit-budget equality check and the MASK LADDER to the verdict.
+  run_v6.sh             the slot-waiting launcher (never kills anything).
+
+----------------------------------------------------------------------------------------------------
+THE ISOMORPHISM, LINE BY LINE
+----------------------------------------------------------------------------------------------------
+  SPATIAL (model_dual.DualTranslator._trunk)   |  TEMPORAL V6 (V6Tokenizer.frame_tokens)
+  J joint tokens, 9 numbers each               |  T frame tokens, nk*9 = 54 numbers each
+  hidden joint's pose -> learned mask_tok      |  hidden frame's pose -> learned mask_tok
+  geometry/semantics stay visible              |  the Fourier clock stays visible
+  self-attention ACROSS JOINTS                 |  self-attention ACROSS FRAMES
+  Perceiver pool -> K registers -> FSQ         |  Perceiver pool -> 8 ordered registers -> FSQ
+  decode ALL J joints, loss on all of them     |  decode ALL T frames, loss on all of them
+  mask families = the product surface          |  mask families = the product surface
+
+THREE STRUCTURAL DIFFERENCES FROM V5c (nothing else changed)
+
+  1. THE MASK IS A DISTRIBUTION, NOT A CONSTANT. V5's decoder always got exactly two frames
+     (current + target). V6 draws the decoder's visible set per sample: endpoints 40% (V5c's
+     exact regime, so the comparable eval is trained rather than extrapolated), rand 30%,
+     sparse 15%, prefix 15%. A per-frame conditional mean is not a solution to that mixture —
+     at `sparse` density there is no endpoint pair to interpolate between, so the interior can
+     only come from the registers.
+
+  2. THE ENCODER IS A MASKED AUTOENCODER OVER FRAMES, AND IT NEVER SEES THE CONDITIONING.
+     V5's encoder saw all 60 frames AND ingested the two conditioning tokens — the same
+     encoder/predictor collusion channel V5d's --ema_target was built to sever. V6's encoder
+     sees only what its own mask leaves (mix: none 30%, rand 40%, sparse 15%, prefix 15%) and
+     has no access to the boundary states at all.
+
+  3. PIECEWISE-LINEAR BASELINE THROUGH THE VISIBLE FRAMES, generalizing V5's "predict the
+     deviation from the straight line between the endpoints". VERIFIED: with the visible set
+     {0, k} it reproduces V5Tokenizer.baseline to 2.4e-07 (integer k, which is every training
+     step and every harness call); V5's exact continuous-time formula is still used verbatim
+     for the zero-bit floor row so the number V5c was judged against is numerically the same.
+
+  Held fixed: 6 key joints, 60-frame window, V5c loss recipe (warp aug linear + Riemann `both`
+  + cdrop 0.15/0.05 + --cdrop_time_detach + w_vel 0.5 + w_frame 6.0 + InfoNCE 0.1), 8 path
+  registers + 1 time register on the 6x5 FSQ grid, AdamW 3e-4, bs 128, 60k steps.
+
+----------------------------------------------------------------------------------------------------
+--residual_in  (the other half of 3c), gated by R10_RATE_PROBES.md
+----------------------------------------------------------------------------------------------------
+  velocity      body-frame relative rotation R[t-1]^T R[t] (identity subtracted) + position delta.
+                R10 probe 3: the angular channel transfers across bodies at 7-10% magnitude error
+                vs 15% for positional speed, because bone length divides out.
+  acceleration  d/dt of the SG5-SMOOTHED velocity. R10 probe 2: raw second differences are
+                4.5-15 dB, SG5 lifts them to 18-28 dB. The smoothing is mandatory.
+  jerk          ABSENT. R10 probe 2 measured raw third differences at -11..-0.3 dB at 30 fps and
+                SG9 (the window that would fix them) is 0.3 s — long enough to erase the punch
+                transient it was supposed to measure. Red light, obeyed.
+  I/P STRUCTURE the first visible frame of each contiguous visible run carries its ABSOLUTE state
+                (an I-frame, marked with a learned anchor embedding); every later frame in the run
+                is a P-frame carried by rates alone. Frame 0 is never maskable, so no P-frame
+                chain can start unanchored and rate integration cannot drift.
+  CHANNEL SCALES measured on 256 AMASS train windows 2026-08-07: absolute state RMS 0.507,
+                velocity 0.0324, acceleration 0.0146 -> rate_scale 16.0, acc_scale 35.0, so no
+                channel enters the encoder two orders of magnitude quieter than its neighbours.
+
+--frame_repr {key,code}: `key` (default, comparable with V5) = the 6 key joints' SE3.
+  `code` = the frozen spatial layer's 3328-d frame code (e13_stream/E19_K128_amass_human_smpl,
+  1,395,241 rows, row-aligned with the paired cache) dequantized and added to the frame token.
+  Reconstruction target stays the key stream so every existing metric keeps its meaning.
+  Both smoke-tested; `key` is what trains tonight.
+
+----------------------------------------------------------------------------------------------------
+BIT BUDGET — MATCHED EXACTLY, AND THE TRAINER ASSERTS ON IT
+----------------------------------------------------------------------------------------------------
+  8 path registers + 1 time register, 6 FSQ dims x 5 levels = 15,625 words = 13.932 bit/register
+  -> 111.45 + 13.93 = 125.38 bit per 2 s window = 62.69 bit/s
+  identical to V5 / V5c / N3a / P1's 62.69 bit/s. The frame-token encoder changed nothing about
+  the register count or the lattice, so no compensation was needed. train_v6.py raises on any
+  configuration whose budget is not 62.69, so a mismatched arm cannot reach the verdict table.
+  Parameter count 8.30M vs V5c's 8.31M.
+
+----------------------------------------------------------------------------------------------------
+CPU / GPU VALIDATION BEFORE LAUNCH
+----------------------------------------------------------------------------------------------------
+  * all five mask families produce the intended visible sets; frame 0 visible in every one
+  * baseline equivalence with V5: max |V6.baseline - V5.baseline| = 0.0 at k_norm 1.0 / 0.7 / 0.5;
+    piecewise-linear-through-{0,k} vs V5's straight line = 2.4e-07 .. 7.7e-07 at integer k
+  * rate features: v[0] and a[0:2] exactly zero (no support), SG5 applied before differencing
+  * tiny CPU trainer runs in all three modes: default, --residual_in, --frame_repr code
+  * EVERY EXISTING HARNESS RUNS ON V6 UNCHANGED, verified on a 30-step CPU checkpoint:
+      train_v5.load_run dispatch -> V6Tokenizer            OK
+      eval_v5.tokens_of / cos_rows                         OK
+      n3_eval_temporal.exam_2c (the 2c warp exam)          OK
+      eval_v5.stat8_ladder (ladder + shuffled + zeroed)    OK
+      n3_eval_temporal.family_energy (per-family energy)   OK
+  * MASK-LEAK CHECK: decode(ctx = true window) vs decode(ctx = same window with every HIDDEN
+    frame replaced by noise) differ by exactly 0.0 — the key_padding_mask and the piecewise
+    baseline's visible-index gather together make it impossible for the decoder to read a frame
+    the mask hid. Without this check a "masked" decoder that silently sees everything would
+    produce a beautiful and completely meaningless table.
+  * recon_key_traj (the physeval path, 60-frame chunks + a 7-frame tail) and stat7_leakage both
+    run on a V6 checkpoint unchanged.
+  * GPU 300-step smoke under 5-way contention: 4.3 steps/s, bf16 autocast clean, no NaN,
+    8.30M params, budget printed at 62.69.
+    Untrained-but-moving mask ladder from that smoke (val, 192 windows, all 8 registers) —
+    the SHAPE is the point, the values are 300 steps old:
+        visible set     key_pos_cm   interp_only   bits buy
+        endpoints          10.296         9.242     -1.054
+        sparse3             5.587         4.264     -1.323
+        rand50              2.606         0.321     -2.285
+        prefix_half         6.756         4.942     -1.814
+        full                2.603         0.000     -2.603
+    At 300 steps the network is still worse than interpolation everywhere, which is exactly
+    what a from-scratch decoder that starts at zero deviation should look like. The trained
+    number to read is whether `bits buy` goes POSITIVE and GROWS as the visible set thins.
+
+----------------------------------------------------------------------------------------------------
+LAUNCH LOG
+----------------------------------------------------------------------------------------------------
+  02:50:37  V6_mae_0807        started (pid 2443354) into the slot N3a_regAR_0807 vacated at 02:50:17.
+                               ~6.0 steps/s under 4-way contention -> 60k steps ~ 2.8 h, ETA ~05:40.
+  03:14:57  V6_mae_resid_0807  started (pid 2462511) into the slot N3b_xbody_0807 vacated at 03:14:37.
+                               --residual_in, 8.33M params (+0.03M for inp_v/inp_a/anchor_emb), same
+                               62.69 bit/s. 4.7 steps/s -> ETA ~06:45. V6_mae was at 9.4k/60k, 7.5 steps/s.
+                               GPU 95.6/97.9 GB with a foreign 24.5 GB job that appeared at ~03:14; the two
+                               V6 arms hold 3.7 + 3.6 GB between them and are at steady state.
+  Nothing was killed or pre-empted; run_v6.sh only ever waits for a pid to disappear.
+  Live: runs/V6_chain.log, runs/V6_mae_0807.log, runs/V6_mae_resid_0807.log
+
+----------------------------------------------------------------------------------------------------
+TRAINING PLAN (never kills a running job)
+----------------------------------------------------------------------------------------------------
+  run_v6.sh waits on a specific pid, then takes that slot:
+    V6_mae_0807        waits on pid 2344149 (N3a_regAR, was at 58.3k/60k at 02:45)
+    V6_mae_resid_0807  waits on pid 2364473 (N3b_xbody,  was at 41.6k/60k at 02:45), --residual_in
+  Both: 60,000 steps, bs 128, same recipe and same 62.69 bit/s as V5c.
+  Then: n3_eval_temporal.py --runs V5c_0806,N3a_regAR_0807,V6_mae_0807,V6_mae_resid_0807
+        (2c warp exam, content share via shuffled tokens, per-family motion energy, OAT prefix
+        ladder, key cm, kNN body leakage, GT-free physeval foot slip) -> V6_verdict_0807.txt,
+        then v6_append_report.py adds the bit-budget check and the mask ladder.
+
+THE QUESTION THIS ANSWERS
+  V5c: prefix ladder flat to 0.017 cm from 1 register to 8 (7.66 cm at every budget), energy
+  0.762-0.805, content share 0.60, jumping-jacks energy historically 0.2-0.4. If frame-level
+  attention plus a DISTRIBUTION of frame masks is the right diagnosis, the ladder must acquire
+  a slope, content share must rise, and the families where mean regression shows first —
+  jacks, run, kick — must recover energy. Those are the rows to read.
+====================================================================================================
+
+----------------------------------------------------------------------------------------------------
+INTERIM READING — V6_mae at 20k/60k (03:57). NOT the verdict; recorded so it is not lost.
+----------------------------------------------------------------------------------------------------
+  OAT prefix ladder   n1 8.560  n2 8.563  n4 8.555  n8 8.550   spread +0.010 cm
+                      V5c at 60k: flat to 0.017 cm. SO FAR V6 HAS NOT BROKEN THE FLAT LADDER.
+  key cm @ prefix8    8.55  (V5c 7.66 at 60k; V6 is a third of the way in and spends only 40%
+                      of its steps in this regime, so this is not yet a like-for-like number)
+  energy @ prefix8    0.710 (V5c 0.805)
+  mask ladder         endpoints    8.550 vs interp 9.242 -> bits buy +0.692
+                      sparse3      4.532 vs interp 4.264 -> bits buy -0.268
+                      rand50       1.080 vs interp 0.321 -> bits buy -0.759
+                      prefix_half  4.766 vs interp 4.942 -> bits buy +0.176
+                      full         0.617 vs interp 0.000 -> bits buy -0.617
+
+  HONEST NOTE ON WHAT THIS DOES AND DOES NOT TEST. The flat OAT ladder and the mean regression
+  are TWO DIFFERENT failure modes, and V6 only attacks one of them:
+    * mean regression   = the decoder emits per-frame conditional means because its conditioning
+                          never varies. That is what the frame-mask DISTRIBUTION attacks, and the
+                          rows to read are per-family energy (jacks/run/kick) and content share.
+    * flat OAT ladder   = the 8 registers are near-redundant because the parallel Perceiver
+                          readout factorizes them into independent marginals. V6 keeps V5's
+                          parallel readout verbatim, so it has no mechanism against this at all —
+                          that is exactly what N3a's --reg_ar exists for.
+  If the final table shows V6 fixing energy/content while the ladder stays flat, the two diagnoses
+  are separable and the follow-up is the obvious one: V6 masking + --reg_ar in the same arm.
+  Negative "bits buy" at rand50/full is a nuisance, not a finding: at those densities plain
+  interpolation is already near-exact (0.32 / 0.00 cm), so any nonzero deviation from the baseline
+  can only hurt. The densities that carry information are endpoints, sparse3 and prefix_half.
+
+----------------------------------------------------------------------------------------------------
+ADDED 03:54 — V6_regar_0807: --reg_ar inside V6 (the "both fixes" cell of the 2x2)
+----------------------------------------------------------------------------------------------------
+  N3a's register chain ported verbatim into V6Tokenizer.path_features: register k's readout query
+  cross-attends [frame features ; the QUANTIZED values of registers < k], with the same
+  straight-through rounding encode() re-applies, so the values the chain conditioned on are exactly
+  the values the decoder later reads. Bit budget unchanged (asserts at 62.69), OAT prefix budgets
+  unchanged, off = bit-exact prior V6.
+
+  MECHANISM VERIFIED, not assumed (d=32, identical weights, one perturbation, CPU):
+    parallel readout : perturb register 0's query -> register 0 moves 2.0831,
+                       registers 1..7 move EXACTLY 0.0000  <- independent marginals, the cause
+                                                              of the flat OAT ladder
+    register chain   : perturb the chain prefix     -> register 0 moves 0.0 (it precedes the
+                       prefix), registers 1..7 move 0.098 0.150 0.124 0.122 0.059 0.093 0.046
+  (First attempt at this check returned all-zeros and was a TEST bug, not a model bug: the
+  perturbation was a constant vector, which the readout's LayerNorm removes exactly. Recorded
+  because the same trap will catch the next person who probes a LayerNorm'd KV path.)
+
+  LAUNCH GATE — and why the arm did not start when a slot was reported.
+  A slot was reported at ~04:00 (15.3 GB freed, card at 80.6/97.9). By the time the arm was ready
+  the card read 96896/97887 MiB — about 1 GB free — because N3e had grown 24.5 -> 41.0 GB at its
+  eval checkpoints and absorbed the freed memory and more. Launching on the reported figure would
+  have OOM'd V6_mae and V6_mae_resid, both mid-flight. V6_regar is therefore gated on SUSTAINED
+  free memory (>= 12 GB across 5 consecutive one-minute polls = 3.7 GB for the arm + ~8 GB margin
+  for other arms' eval peaks), not on a pid disappearing. runs/V6_regar_chain.log shows the gate.
+  RULE FOR THE NEXT QUEUE: budget each train_dual arm at its EVAL PEAK (~46 GB), not its steady
+  state (~24 GB). Startup memory is not a slot.
+
+  FINAL EVAL is now the 5-arm run, assembled into V6_verdict_0807.txt as:
+    V6_HEADER_0807.txt (the two-failure-mode framing + the 2x2) -> the table -> the mask-ladder
+    appendix -> this build record. The 4-arm eval that run_v6.sh fires when V6_mae and
+    V6_mae_resid finish stands as an intermediate fallback and is superseded.
+
+  GATE CLEARED 04:15:09. N3e_reenc_0807 finished and freed 41.0 GB; the gate saw 42024 MiB free
+  on five consecutive polls (04:11 - 04:15) and launched. V6_regar_0807 pid confirmed running:
+  8.31M params (+0.01M for ar_in / ar_pos over V6_mae's 8.30M), bit budget asserted at 62.69,
+  5.2 steps/s -> 193 min projected. The 8-step sequential readout costs ~19% throughput versus
+  the parallel one (5.2 vs 6.4 steps/s), not the 8x a naive reading of "sequential" would suggest,
+  because each step is one XBlock over a 60-token KV.
+  Card after launch: 60498/97887 MiB with 37 GB spare — no arm in flight was put at risk.
+
+  ALL THREE V6 ARMS IN FLIGHT (04:15):
+    V6_mae_0807        29.3k/60k  6.4 steps/s  ETA ~05:35   masking only        (Mode A)
+    V6_mae_resid_0807  17.7k/60k  7.5 steps/s  ETA ~05:50   masking + rates     (3c other half)
+    V6_regar_0807       0.2k/60k  5.2 steps/s  ETA ~07:30   masking + reg_ar    (Modes A and B)
+
+----------------------------------------------------------------------------------------------------
+INTERIM 04:45 — MATCHED-STEP ladder spread, the Mode-B diagnostic. Not the verdict.
+----------------------------------------------------------------------------------------------------
+  Spread = key_cm(prefix1) - key_cm(prefix8). Comparing arms at the SAME STEP is the only honest
+  read, because spread drifts as any arm trains. V6_regar is 32.5k steps behind the others.
+
+    step        V6_mae      V6_regar      (V5c at 60k: +0.017)
+    2500        -0.012        -0.011
+    5000        +0.021        +0.153       <- 7x
+    7500        +0.021        +0.068       <- 3x
+
+  V6_mae's spread never leaves the +/-0.03 noise band across all 40k steps measured (16 evals,
+  no trend). That is the prediction holding: FRAME MASKING DOES NOTHING FOR MODE B, because it
+  changes what the decoder is conditioned on and not how the registers are produced. V6_regar is
+  the only arm with a spread outside that band, at both matched steps where it has data.
+  Caveat, stated now so it is not oversold later: 0.07-0.15 cm is ~1% of a ~9 cm error. Whether
+  it survives to 60k is open, and 2 matched points is not a trend.
+
+  MODE A, meanwhile, is moving in V6_mae: bits-buy at `endpoints` 0.692 (20k) -> 1.373 (40k),
+  and the densities V5c cannot even be asked about have gone positive — sparse3 -0.268 -> +0.165,
+  prefix_half +0.176 -> +0.779. Headline key_cm 8.550 -> 7.869 and energy 0.710 -> 0.759, both
+  still short of V5c's 7.66 / 0.805 but on track to land near them at 60k DESPITE spending only
+  40% of steps in the regime being measured. If that is where it lands, the honest summary is
+  "same performance in V5c's regime, plus three densities V5c cannot do at all" — a capability
+  gain, not yet a demonstration that mean regression is cured. The per-family energy rows
+  (jacks / run / kick) are what decide the latter.
+
+  V6_mae_resid is AHEAD of V6_mae at matched steps from 10k on (27.5k: 8.054 vs 8.270 cm), which
+  is the first sign the velocity + SG5-acceleration channels are earning their place rather than
+  just costing input bandwidth.
+
+----------------------------------------------------------------------------------------------------
+V6_mae_0807 FINISHED 05:34:42 (164.1 min, 60k steps). Its own eval, ahead of the comparison table.
+----------------------------------------------------------------------------------------------------
+  OAT ladder   n1 7.683  n2 7.681  n4 7.678  n8 7.683   SPREAD EXACTLY 0.000 cm
+  key @ n8     7.683 cm   (V5c 7.66)
+  energy @ n8  0.780      (V5c 0.805)
+
+  mask ladder      key_cm   interp   bits buy   energy
+    endpoints       7.683    9.242     +1.559    0.780      <- V5c's only regime
+    sparse3         4.047    4.264     +0.217    0.912
+    rand50          0.699    0.321     -0.378    0.999
+    prefix_half     4.086    4.942     +0.856    0.909
+    full            0.282    0.000     -0.282    1.005
+
+  TWO THINGS THIS SETTLES, ONE AGAINST THE HYPOTHESIS.
+
+  1. MODE B IS UNTOUCHED BY MASKING — settled, not "trending". The final spread is 0.000 cm, i.e.
+     one register reconstructs exactly as well as eight. That is FLATTER than V5c's 0.017. Frame
+     masking has no effect on register redundancy whatsoever, exactly as the mechanism predicted
+     (masking changes what the decoder is conditioned on; redundancy is a property of how the
+     registers are produced). V6_regar is the only arm that can speak to this.
+
+  2. IN V5c's OWN REGIME, V6_mae IS A WASH OR A SLIGHT LOSS: 7.683 vs 7.66 cm, energy 0.780 vs
+     0.805. It does NOT beat V5c on the numbers V5c was optimized for. The aggregate energy
+     number therefore does NOT support a headline of "V6 breaks mean regression", and that should
+     be said plainly rather than buried under the densities where V6 wins.
+
+  WHAT V6_mae DOES BUY is capability V5c structurally cannot have: reconstruction from 3 keyframes
+  (+0.217 cm over interpolation) and from a past-only prefix (+0.856 cm), at the same 62.69 bit/s,
+  while giving up ~0.02 cm and ~0.025 energy in the endpoints regime. Whether that trade is worth
+  it is a product call, not a measurement — but the measurement is unambiguous about what it is.
+  The one test still outstanding for Mode A is PER-FAMILY energy (jacks / run / kick), where mean
+  regression shows first and where an aggregate of 0.780 can hide a jack at 0.3.
+
+====================================================================================================
+FINDINGS — the 4-arm table (06:03). THE ANSWER TO THE QUESTION ASKED IS NO.
+====================================================================================================
+The question was: does frame-level attention + random frame masking break the flat prefix ladder
+and the mean regression? Measured on the same harness, same 62.69 bit/s, same recipe:
+
+  1. THE FLAT PREFIX LADDER IS NOT BROKEN. V6_mae reads 7.63 / 7.63 / 7.63 / 7.63 cm at prefix
+     1 / 2 / 4 / 8. That is flatter than V5c (7.66 flat, spread 0.017). Frame masking does nothing
+     for it, exactly as the Mode-A / Mode-B split predicted. N3a (--reg_ar) is also essentially
+     flat here (7.43 / 7.41 / 7.40 / 7.40), so the register chain does not break it either — the
+     early matched-step spreads I flagged (0.153 at 5k) did not survive training.
+
+  2. MEAN REGRESSION IS NOT CURED. Per-family energy, V5c -> V6_mae -> V6_mae_resid (N3a):
+        walk   0.828 -> 0.841 -> 0.839  (0.851)
+        run    0.702 -> 0.715 -> 0.722  (0.728)
+        jacks  0.654 -> 0.648 -> 0.628  (0.714)   <- V6 WORSE than the control on both arms
+        dance  0.542 -> 0.571 -> 0.556  (0.562)
+        kick   0.574 -> 0.572 -> 0.538  (0.650)   <- V6 WORSE
+        punch  0.661 -> 0.608 -> 0.689  (0.540)
+     On the three families named as where mean regression shows — jacks, run, kick — V6 moves
+     run by +0.013 and moves jacks and kick the WRONG WAY. N3a beats every V6 arm on jacks and
+     kick. Nothing here supports "the mask distribution cures mean regression".
+
+  3. CONTENT SHARE GOT WORSE, AND ONLY PARTLY AS AN ARTEFACT.
+        arm                full  shuffled  zeroed   window-specific   buy   share
+        V5c_0806           7.66      8.53    9.07        +0.87 cm    1.41   0.617
+        N3a_regAR_0807     7.40      8.76    9.34        +1.36 cm    1.94   0.701
+        V6_mae_0807        7.63      8.37    9.49        +0.74 cm    1.86   0.398  FAIL
+        V6_mae_resid_0807  7.61      8.54   14.64        +0.93 cm    7.03   0.132  FAIL
+     For V6_mae the drop is REAL: its window-specific content is 0.74 cm against V5c's 0.87 cm in
+     absolute terms, not just as a ratio. For V6_mae_resid the share is largely an ARTEFACT — its
+     absolute window-specific content (0.93 cm) is the second best in the table, but zeroing its
+     registers costs 14.64 cm because a rate-fed encoder has no absolute fallback, which inflates
+     the denominator. content_share is not comparable across architectures whose zeroed baseline
+     differs this much, and the gate treating 0.132 as a failure is measuring the wrong thing.
+     Report the absolute cm column alongside it from now on.
+
+  4. WHAT V6 DID BUY, honestly small:
+     - kNN body leakage 0.119 (V5c) -> 0.083 (V6_mae) -> 0.067 (V6_mae_resid), best in the table.
+       The temporal tokens carry less body identity, which is what cross-embodiment transfer wants.
+     - Three visible-set densities V5c structurally cannot be asked about: 3 keyframes (+0.217 cm
+       over interpolation) and a past-only prefix (+0.856 cm) at the same bit budget.
+     - key cm 7.63 / 7.61 vs V5c 7.66 — a wash. Foot slip 0.578 / 0.554 vs 0.559 — a wash.
+     - N3a_regAR_0807 is the best arm on the headline gates (key 7.40 PASS, content 0.700) and no
+       V6 arm beats it on anything except body leakage.
+
+  5. A PREMISE IN THE TASK DID NOT REPRODUCE, which matters for how 2 is read. The brief said
+     jumping-jacks energy is "historically ~0.2-0.4"; this harness measures V5c jacks at 0.654,
+     and the LOWEST family is dance (0.542), not jacks. So the specific symptom V6 was aimed at is
+     not the symptom this harness shows. Either the 0.2-0.4 figure came from a different
+     measurement (full-body rather than key-joint energy is the likely candidate) or it is stale.
+     Before another arm is built against "mean regression", that number should be re-derived, or
+     the target is being chosen from a statistic nobody has reproduced.
+
+  CONFOUND THAT SURVIVES THE VERDICT. V6 spends 40% of its steps in the endpoints regime the
+  table measures; V5c and N3a spend 100%. V6 matching V5c on key cm while training on 40% of the
+  relevant steps is consistent with EITHER "the architecture is neutral and it is undertrained in
+  this regime" OR "the architecture is slightly better and the loss of steps cancels it". The
+  table cannot separate these. The clean version is a V6 arm with dec_mix = endpoints:1.0 (V5c's
+  regime, V6's encoder) — one flag, and it isolates the encoder change from the masking change.
+
+  STILL OUTSTANDING: V6_regar_0807 (both fixes) finishes ~07:05, then the 5-arm eval reassembles
+  this file. Given N3a already reads 0.700 content / 7.40 cm and V6_mae drags content down, the
+  honest prior is that V6_regar lands between them rather than above N3a.
+====================================================================================================
+
+====================================================================================================
+FINAL — the complete 2x2 (06:53). BOTH FIXES TOGETHER IS THE WORST ARM. INSIGHT 3c IS NOT SUPPORTED.
+====================================================================================================
+                        |  no frame masking        |  V6 frame-mask distribution
+    --------------------+--------------------------+------------------------------
+    parallel readout    |  V5c   7.66cm / 0.527    |  V6_mae    7.63cm / 0.470
+    register chain      |  N3a   7.40cm / 0.601    |  V6_regar  7.71cm / 0.117
+                                            (key cm / content share)
+
+  V6_regar_0807 — the only run ever to carry both fixes — is the WORST arm in the table on key cm
+  (7.71, worse than the V5c control), the worst on content share (0.117), and worse than V5c on
+  jacks (0.630 vs 0.654), kick (0.560 vs 0.574) and punch (0.481 vs 0.661). It wins the warp exam
+  (0.997) and foot-slip p50 (0.545) and loses foot-slip p95 badly (1.246 vs 1.020). My stated prior
+  was "lands between V5c and N3a"; it landed below both. The prior was wrong and the 2x2 is
+  negative in every cell that contains masking.
+
+  ABSOLUTE window-specific content (shuffled - full), which the share ratio hides:
+    V5c      +0.74 cm     N3a      +1.17 cm     V6_mae   +0.87 cm
+    V6_regar +0.41 cm     V6_resid +1.16 cm
+  V6_mae's tokens ARE more window-specific than V5c's in absolute cm (+0.87 vs +0.74) — its low
+  share is a denominator effect. V6_regar's +0.41 cm is a genuine collapse, the lowest in the table.
+
+  OAT ladder spread, final: V5c +0.000, V6_mae +0.000, V6_resid +0.010, V6_regar +0.020, N3a +0.030.
+  Nothing breaks the flat ladder. The register chain moves it by 0.03 cm out of 7.4 — noise.
+
+  ---------------------------------------------------------------------------------------------
+  METHODOLOGICAL FINDING THAT OUTRANKS THE ARCHITECTURE RESULT: content_share IS TOO NOISY FOR
+  THE GATE IT IS BEING JUDGED AGAINST. The SAME checkpoints, evaluated twice 50 minutes apart:
+      V5c      0.619 -> 0.527  (-0.092)      N3a      0.700 -> 0.601  (-0.099)
+      V6_mae   0.396 -> 0.470  (+0.074)      V6_resid 0.132 -> 0.166  (+0.034)
+  eval_v5.stat8_ladder draws its shuffle with an UNSEEDED torch.randperm, so run-to-run spread is
+  ~0.1 — the same size as the differences between arms, and the gate sits at 0.6. N3a "PASSES" at
+  0.601 and would have failed on a different draw. Every content-share comparison in the N3 and V6
+  tables, including the ones above, is being read at a precision the statistic does not have.
+  FIX BEFORE THE NEXT QUEUE: seed the permutation and average over >= 8 draws; report absolute
+  window-specific cm next to the ratio, since the ratio's denominator is not comparable across
+  architectures (V6_resid buys 7.03 cm because a rate-fed encoder has no absolute fallback when
+  its registers are zeroed — that inflates the denominator, not the finding).
+
+  ---------------------------------------------------------------------------------------------
+  WHAT SURVIVES, stated without inflation:
+   * N3a_regAR_0807 is the best temporal arm to date and the only one passing both gates
+     (key 7.40, content 0.601). Nothing built tonight beats it.
+   * V6's one durable win is CROSS-BODY: kNN body leakage 0.119 (V5c) -> 0.083 (V6_mae) ->
+     0.067 (V6_resid), the two lowest in the table. Frame masking does make the temporal tokens
+     carry less body identity.
+   * V6 can be asked for reconstructions V5c structurally cannot do (3 keyframes +0.217 cm over
+     interpolation, past-only prefix +0.856 cm, same 62.69 bit/s). That capability is real and
+     cost ~0.03 cm in the endpoints regime for V6_mae.
+   * --residual_in is the better of the two V6 variants on error (7.61 vs 7.63) and on leakage
+     (0.067, best in table), so the R10 rate channels earn their bandwidth even though the
+     architecture around them did not pay off.
+
+  UNRESOLVED, and the honest next step is measurement, not another arm:
+   1. The 40%-vs-100% regime confound is still uncontrolled. One flag isolates it:
+      --dec_mix endpoints:1.0 (V6's encoder, V5c's conditioning regime).
+   2. The "jacks 0.2-0.4" premise this work was aimed at does not reproduce here (V5c jacks 0.654;
+      lowest family is dance 0.542). Re-derive that number before targeting mean regression again.
+   3. Fix content_share's noise (above) and re-run the N3 + V6 tables; several PASS/FAIL calls in
+      both are currently coin flips.
+====================================================================================================

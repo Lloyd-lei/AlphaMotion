@@ -62,10 +62,16 @@ def load_eval_model(ckpt_path: str | Path, *, device: str = "cuda") -> Tuple[tor
     return model, cfg_obj, variant
 
 
-def eval_loader(subset: Subset, batch: int = 32, num_workers: int = 2) -> DataLoader:
+def eval_loader(subset: Subset, batch: int = 32, num_workers: int = 0) -> DataLoader:
+    """Eval-time DataLoader. num_workers defaults to 0 to avoid worker-thread
+    leak across many sequential eval calls (NB02.5 hits this — multiple eval
+    functions per cell × 6 variants accumulates ~30 leaked worker/pin_memory
+    threads, eventually deadlocking on futex). For 200-clip eval batches, the
+    main proc loads data faster than worker IPC overhead anyway.
+    """
     return DataLoader(
         subset, batch_size=batch, shuffle=False,
-        num_workers=num_workers, pin_memory=True, drop_last=False,
+        num_workers=num_workers, pin_memory=(num_workers > 0), drop_last=False,
     )
 
 

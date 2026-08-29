@@ -1,0 +1,108 @@
+==============================================================================================================
+V7 BRIDGE — two DIFFERENT held-out clips chained, middle invented by the model
+==============================================================================================================
+The bridge has NO ground truth by construction, so every number here is
+GT-free. handoff_in/out = motion speed just after a join / just before it;
+1.0 means velocity carries through. bridge_energy_ratio << 1 = the model
+goes limp in the invented part. Bridge tokens come from the ENDPOINT
+INTERPOLATION (no generator exists yet) — the floor, not a best case.
+X2 is ZERO-SHOT: in no training set of any run.
+--------------------------------------------------------------------------------------------------------------
+case                                                            hand_in  hand_out  maxstep  br_energy
+--------------------------------------------------------------------------------------------------------------
+dance->run | span30 | agibot_x2_ultra_ZEROSHOT | V7_jepa donor-tok    0.833     0.049     2.92      0.948
+dance->run | span30 | agibot_x2_ultra_ZEROSHOT | V7_jepa interp-tok    0.426     0.192     1.83      0.231
+dance->run | span30 | agibot_x2_ultra_ZEROSHOT | V7_maskfsq donor-tok    2.168     0.048      2.5      0.884
+dance->run | span30 | agibot_x2_ultra_ZEROSHOT | V7_maskfsq interp-tok     0.41     0.279     1.75      0.271
+dance->run | span30 | agibot_x2_ultra_ZEROSHOT | hard cut (no model)      0.0 54761.735     4.82        0.0
+dance->run | span30 | agibot_x2_ultra_ZEROSHOT | interp (0 bits)    0.407     0.201     1.75      0.291
+dance->run | span30 | human_smpl | V7_jepa donor-tok              0.809      0.05      3.3       1.13
+dance->run | span30 | human_smpl | V7_jepa interp-tok             0.315     0.179     1.65      0.235
+dance->run | span30 | human_smpl | V7_maskfsq donor-tok           1.707     0.046      2.9      1.088
+dance->run | span30 | human_smpl | V7_maskfsq interp-tok          0.351     0.285     1.65      0.288
+dance->run | span30 | human_smpl | hard cut (no model)              0.0 58564.575     4.77        0.0
+dance->run | span30 | human_smpl | interp (0 bits)                0.293     0.264     1.65      0.308
+dance->run | span60 | agibot_x2_ultra_ZEROSHOT | V7_jepa donor-tok    1.136     0.085     3.05      1.207
+dance->run | span60 | agibot_x2_ultra_ZEROSHOT | V7_jepa interp-tok    0.138     0.292     1.75      0.206
+dance->run | span60 | agibot_x2_ultra_ZEROSHOT | V7_maskfsq donor-tok    1.688     0.115     3.42      1.159
+dance->run | span60 | agibot_x2_ultra_ZEROSHOT | V7_maskfsq interp-tok      0.2     0.428     1.75      0.266
+dance->run | span60 | agibot_x2_ultra_ZEROSHOT | hard cut (no model)      0.0 54761.906     4.82        0.0
+dance->run | span60 | agibot_x2_ultra_ZEROSHOT | interp (0 bits)    0.172     0.307     1.75      0.284
+dance->run | span60 | human_smpl | V7_jepa donor-tok              1.394      0.11     3.52      1.524
+dance->run | span60 | human_smpl | V7_jepa interp-tok             0.181     0.215     1.65      0.197
+dance->run | span60 | human_smpl | V7_maskfsq donor-tok           1.617     0.101     4.52      1.567
+dance->run | span60 | human_smpl | V7_maskfsq interp-tok          0.167     0.537     1.65      0.282
+dance->run | span60 | human_smpl | hard cut (no model)              0.0 58565.215     4.77        0.0
+dance->run | span60 | human_smpl | interp (0 bits)                 0.12     0.434     1.65      0.303
+kick->walk | span30 | agibot_x2_ultra_ZEROSHOT | V7_jepa donor-tok    0.731     0.419     1.89      0.427
+kick->walk | span30 | agibot_x2_ultra_ZEROSHOT | V7_jepa interp-tok    0.903     0.386     1.67      0.513
+kick->walk | span30 | agibot_x2_ultra_ZEROSHOT | V7_maskfsq donor-tok    0.841     0.463     1.67      0.478
+kick->walk | span30 | agibot_x2_ultra_ZEROSHOT | V7_maskfsq interp-tok    0.933      0.61     1.67      0.504
+kick->walk | span30 | agibot_x2_ultra_ZEROSHOT | hard cut (no model)      0.0207959.755    10.81        0.0
+kick->walk | span30 | agibot_x2_ultra_ZEROSHOT | interp (0 bits)    0.733     0.432     1.67      0.496
+kick->walk | span30 | human_smpl | V7_jepa donor-tok              0.555     0.525     1.74       0.38
+kick->walk | span30 | human_smpl | V7_jepa interp-tok             0.699     0.301     1.74      0.481
+kick->walk | span30 | human_smpl | V7_maskfsq donor-tok           0.592     0.469     1.74       0.43
+kick->walk | span30 | human_smpl | V7_maskfsq interp-tok          0.621     0.717     1.74      0.473
+kick->walk | span30 | human_smpl | hard cut (no model)              0.0208101.917     8.49        0.0
+kick->walk | span30 | human_smpl | interp (0 bits)                0.623     0.425     1.74      0.432
+kick->walk | span60 | agibot_x2_ultra_ZEROSHOT | V7_jepa donor-tok    2.554     0.151     3.21      0.821
+kick->walk | span60 | agibot_x2_ultra_ZEROSHOT | V7_jepa interp-tok    0.674     0.419     1.72      0.474
+kick->walk | span60 | agibot_x2_ultra_ZEROSHOT | V7_maskfsq donor-tok    3.455     0.123     4.05      0.844
+kick->walk | span60 | agibot_x2_ultra_ZEROSHOT | V7_maskfsq interp-tok    0.607      1.15     1.67      0.498
+kick->walk | span60 | agibot_x2_ultra_ZEROSHOT | hard cut (no model)      0.0  207959.4    10.81        0.0
+kick->walk | span60 | agibot_x2_ultra_ZEROSHOT | interp (0 bits)      0.6     0.727     1.67      0.493
+kick->walk | span60 | human_smpl | V7_jepa donor-tok              1.572     0.147     3.79      1.015
+kick->walk | span60 | human_smpl | V7_jepa interp-tok             0.394     0.422     1.75      0.451
+kick->walk | span60 | human_smpl | V7_maskfsq donor-tok           2.821     0.117     4.01      0.897
+kick->walk | span60 | human_smpl | V7_maskfsq interp-tok          0.462     1.265     1.74      0.468
+kick->walk | span60 | human_smpl | hard cut (no model)              0.0208101.475     8.49        0.0
+kick->walk | span60 | human_smpl | interp (0 bits)                0.554     0.702     1.74      0.428
+run->jacks | span30 | agibot_x2_ultra_ZEROSHOT | V7_jepa donor-tok    0.788     0.355     3.45      0.718
+run->jacks | span30 | agibot_x2_ultra_ZEROSHOT | V7_jepa interp-tok    0.469     1.607     2.65      0.507
+run->jacks | span30 | agibot_x2_ultra_ZEROSHOT | V7_maskfsq donor-tok    1.216     0.836     2.99      0.736
+run->jacks | span30 | agibot_x2_ultra_ZEROSHOT | V7_maskfsq interp-tok    0.514     1.819     2.65       0.52
+run->jacks | span30 | agibot_x2_ultra_ZEROSHOT | hard cut (no model)      0.0836509.208    14.42        0.0
+run->jacks | span30 | agibot_x2_ultra_ZEROSHOT | interp (0 bits)    0.389     2.069     2.65      0.501
+run->jacks | span30 | human_smpl | V7_jepa donor-tok              0.588     0.398     3.93      0.735
+run->jacks | span30 | human_smpl | V7_jepa interp-tok             0.436     1.381     3.69      0.532
+run->jacks | span30 | human_smpl | V7_maskfsq donor-tok           0.931     0.794     3.69      0.682
+run->jacks | span30 | human_smpl | V7_maskfsq interp-tok          0.429     1.397     3.69      0.529
+run->jacks | span30 | human_smpl | hard cut (no model)              0.0972735.622    14.79        0.0
+run->jacks | span30 | human_smpl | interp (0 bits)                0.333     2.065     3.69      0.505
+run->jacks | span60 | agibot_x2_ultra_ZEROSHOT | V7_jepa donor-tok    1.281     0.704     3.08      0.919
+run->jacks | span60 | agibot_x2_ultra_ZEROSHOT | V7_jepa interp-tok    0.253     1.879     2.65      0.485
+run->jacks | span60 | agibot_x2_ultra_ZEROSHOT | V7_maskfsq donor-tok    0.851     0.353     4.51      1.046
+run->jacks | span60 | agibot_x2_ultra_ZEROSHOT | V7_maskfsq interp-tok    0.332     2.945     2.65      0.515
+run->jacks | span60 | agibot_x2_ultra_ZEROSHOT | hard cut (no model)      0.0836508.362    14.42        0.0
+run->jacks | span60 | agibot_x2_ultra_ZEROSHOT | interp (0 bits)    0.239     2.274     2.65      0.494
+run->jacks | span60 | human_smpl | V7_jepa donor-tok              0.906     0.721     4.46      0.823
+run->jacks | span60 | human_smpl | V7_jepa interp-tok             0.236     1.712     3.69        0.5
+run->jacks | span60 | human_smpl | V7_maskfsq donor-tok           0.498     0.451     3.69      0.734
+run->jacks | span60 | human_smpl | V7_maskfsq interp-tok          0.297     2.221     3.69      0.524
+run->jacks | span60 | human_smpl | hard cut (no model)              0.0972734.324    14.79        0.0
+run->jacks | span60 | human_smpl | interp (0 bits)                0.217     2.313     3.69        0.5
+walk->kick | span30 | agibot_x2_ultra_ZEROSHOT | V7_jepa donor-tok    3.442     0.792     2.74      0.347
+walk->kick | span30 | agibot_x2_ultra_ZEROSHOT | V7_jepa interp-tok    6.279     2.411     2.74      0.291
+walk->kick | span30 | agibot_x2_ultra_ZEROSHOT | V7_maskfsq donor-tok    5.015     0.512     3.58      0.389
+walk->kick | span30 | agibot_x2_ultra_ZEROSHOT | V7_maskfsq interp-tok    4.938     1.317     2.74      0.299
+walk->kick | span30 | agibot_x2_ultra_ZEROSHOT | hard cut (no model)      0.0640458.613    12.39        0.0
+walk->kick | span30 | agibot_x2_ultra_ZEROSHOT | interp (0 bits)    4.829     1.783     2.74      0.321
+walk->kick | span30 | human_smpl | V7_jepa donor-tok               3.23     0.794     3.93      0.308
+walk->kick | span30 | human_smpl | V7_jepa interp-tok             5.406     1.753     3.93      0.279
+walk->kick | span30 | human_smpl | V7_maskfsq donor-tok           3.372     0.468     5.13       0.32
+walk->kick | span30 | human_smpl | V7_maskfsq interp-tok          4.881     1.225     3.93      0.282
+walk->kick | span30 | human_smpl | hard cut (no model)              0.0725546.337    14.99        0.0
+walk->kick | span30 | human_smpl | interp (0 bits)                4.728     1.418     3.93      0.314
+walk->kick | span60 | agibot_x2_ultra_ZEROSHOT | V7_jepa donor-tok   13.686     1.215     2.74      0.575
+walk->kick | span60 | agibot_x2_ultra_ZEROSHOT | V7_jepa interp-tok    3.562     3.564     2.74      0.267
+walk->kick | span60 | agibot_x2_ultra_ZEROSHOT | V7_maskfsq donor-tok   12.745     0.724     3.36      0.682
+walk->kick | span60 | agibot_x2_ultra_ZEROSHOT | V7_maskfsq interp-tok     2.86     2.007     2.74      0.294
+walk->kick | span60 | agibot_x2_ultra_ZEROSHOT | hard cut (no model)      0.0640459.194    12.39        0.0
+walk->kick | span60 | agibot_x2_ultra_ZEROSHOT | interp (0 bits)      2.6     3.113     2.74      0.316
+walk->kick | span60 | human_smpl | V7_jepa donor-tok             12.305      1.02     3.93      0.577
+walk->kick | span60 | human_smpl | V7_jepa interp-tok             2.979      2.45     3.93      0.251
+walk->kick | span60 | human_smpl | V7_maskfsq donor-tok          10.961     0.623     5.28      0.781
+walk->kick | span60 | human_smpl | V7_maskfsq interp-tok          2.883      1.92     3.93      0.277
+walk->kick | span60 | human_smpl | hard cut (no model)              0.0725546.927    14.99        0.0
+walk->kick | span60 | human_smpl | interp (0 bits)                2.088     2.241     3.93       0.31

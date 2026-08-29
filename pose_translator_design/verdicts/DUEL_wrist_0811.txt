@@ -1,0 +1,44 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights: 100%|██████████| 310/310 [00:00<00:00, 3576.82it/s]
+[load_paired_data] 5230296 rows -> pose resident fp16 on CPU (PoseStore)
+[human_smpl] J=22 rows=5230296 reach=121.9cm sem=(22, 1024)
+[booster_k1] J=21 rows=5230296 reach=54.1cm sem=(21, 1024)
+[booster_t1] J=24 rows=5230296 reach=71.6cm sem=(24, 1024)
+[booster_t1_29dof] J=32 rows=5230296 reach=77.4cm sem=(32, 1024)
+[engineai_pm01] J=25 rows=5230296 reach=84.8cm sem=(25, 1024)
+[fourier_gr3] J=32 rows=5230296 reach=98.4cm sem=(32, 1024)
+[fourier_n1] J=27 rows=5230296 reach=75.0cm sem=(27, 1024)
+[hightorque_hi] J=26 rows=5230296 reach=68.5cm sem=(26, 1024)
+[kuavo_s45] J=20 rows=5230296 reach=105.5cm sem=(20, 1024)
+[pal_talos] J=33 rows=5230296 reach=112.0cm sem=(33, 1024)
+[pnd_adam_lite] J=24 rows=5230296 reach=96.2cm sem=(24, 1024)
+[tienkung] J=22 rows=5230296 reach=101.9cm sem=(22, 1024)
+[unitree_g1_23dof] J=36 rows=5230296 reach=87.8cm sem=(36, 1024)
+[unitree_g1_29dof] J=36 rows=5230296 reach=87.4cm sem=(36, 1024)
+[unitree_h1] J=20 rows=5230296 reach=101.4cm sem=(20, 1024)
+[unitree_h1_2] J=26 rows=5230296 reach=104.9cm sem=(26, 1024)
+[unitree_h2] J=32 rows=5230296 reach=106.0cm sem=(32, 1024)
+[unitree_r1] J=38 rows=5230296 reach=73.9cm sem=(38, 1024)
+[codes] human_smpl: IDENTICAL (10485760 ints)
+[codes] booster_t1: IDENTICAL (10485760 ints)
+[codes] unitree_h1: IDENTICAL (10485760 ints)
+CODE INVARIANCE: PASS
+
+direction                        model     arm mean/p95     leg mean/p95   wrist mean/p95
+human_smpl->unitree_g1_29dof     C1      9.24/  30.34    8.42/  16.66    9.87/  35.54
+human_smpl->unitree_g1_29dof     PT      9.26/  30.44    8.54/  16.58    9.88/  35.41
+human_smpl->fourier_gr3          C1      4.41/  15.46    4.96/  16.89     nan/    nan
+human_smpl->fourier_gr3          PT      4.41/  15.50    5.06/  17.13     nan/    nan
+human_smpl->booster_t1           C1      3.50/  11.61    1.90/   5.77     nan/    nan
+human_smpl->booster_t1           PT      3.53/  11.60    1.94/   5.82     nan/    nan
+human_smpl->kuavo_s45            C1     10.53/  43.34    4.65/  18.28     nan/    nan
+human_smpl->kuavo_s45            PT     10.42/  42.52    4.90/  18.65     nan/    nan
+booster_t1->unitree_h1           C1      3.83/  12.20    2.37/   7.17     nan/    nan
+booster_t1->unitree_h1           PT      3.78/  12.04    2.58/   7.49     nan/    nan
+
+=== DELTA (PT vs C1, negative = better) ===
+  human_smpl->unitree_g1_29dof     arm_p95   +0.3%  leg_p95   -0.5%  wrist_p95   -0.4%
+  human_smpl->fourier_gr3          arm_p95   +0.3%  leg_p95   +1.4%  wrist_p95   +nan%
+  human_smpl->booster_t1           arm_p95   -0.1%  leg_p95   +0.9%  wrist_p95   +nan%
+  human_smpl->kuavo_s45            arm_p95   -1.9%  leg_p95   +2.0%  wrist_p95   +nan%
+  booster_t1->unitree_h1           arm_p95   -1.3%  leg_p95   +4.5%  wrist_p95   +nan%

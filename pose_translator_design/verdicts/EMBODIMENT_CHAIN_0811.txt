@@ -1,0 +1,44 @@
+EMBODIMENT CHAIN (0811, lloyd's test) — the code does NOT survive translation.
+human -> booster_t1 -> unitree_h1 -> fourier_gr3 -> human -> booster_t1,
+re-encoded in observation space at every hop, every hop compared with hop 0.
+24 windows x 60 frames, frozen C1 + A3 + B3.
+
+hop  embodiment      code-agree   lattice drift   Equator token-agree
+ 0   human_smpl          1.000        0.000              1.000
+ 1   booster_t1          0.605        0.594              0.002
+ 2   unitree_h1          0.589        0.629              0.004
+ 3   fourier_gr3         0.579        0.646              0.000
+ 4   human_smpl          0.588        0.613              0.000
+ 5   booster_t1          0.591        0.610              0.002
+CONTROLS  ceiling (same pose re-encoded, no hop) 1.000
+          floor  (an unrelated motion's codes)   0.567
+
+VERDICT: hypothesis refuted, and hard. One hop puts the integer code at 0.605
+against a chance floor of 0.567 — 3.8 points above unrelated motion. Equator
+tokens agree 0.0%. Hops 2-5 add nothing: the damage is entirely in hop 1 and
+then saturates. The code is not an embodiment-invariant object; it is
+re-drawn the moment the pose passes through another body.
+
+THE APPARENT CONTRADICTION, AND WHERE IT LANDS: translation itself is fine
+(7-20 cm, visually correct). So the MOTION survives while the CODE does not.
+This is a known, documented failure that was never switched on: train_dual.py's
+N3e option says verbatim "encode(decode(z)) explodes even same-body (round-trip
+error ~8.7 -> ~38.8 deg), which kills any synthetic-data pipeline" — and C1's
+config has reenc_consistency = 0.0. lloyd's chain test independently
+rediscovered it and, for the first time, quantified how fast it dies: one hop.
+
+CONSEQUENCES
+ * any pipeline that feeds decoded output back into the encoder is unsound with
+   C1: synthetic-data generation, iterative refinement, chained retargeting,
+   and (importantly) the autonomous rollout in phase_space.py, which re-encodes
+   its own decoded frames every chunk. Part of the B3/B6/B7 drift we spent the
+   evening on may be THIS, not a prior-side defect. That reframes the B-series
+   result and must be tested before the E17 RL run is designed around it.
+ * the fix exists and is one flag: retrain/finetune the spatial stack with
+   --reenc_consistency > 0. Cheap to try as a decoder-side finetune first,
+   using the same frozen-lattice surgery that was already validated today.
+CAVEAT ON ONE COLUMN: the prior-NLL column of this run reads ~11 nats where
+cached tokens give ~3.1, i.e. this script's encode path does not reproduce the
+tokenizer cache bit-for-bit. Code-agreement numbers are internal comparisons
+(same encode function on both sides, ceiling 1.000 verifies it) and stand; the
+NLL column is NOT reportable and is excluded above.

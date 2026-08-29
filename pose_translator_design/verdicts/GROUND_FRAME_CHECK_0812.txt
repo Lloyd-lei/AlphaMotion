@@ -1,0 +1,39 @@
+GROUND-FRAME CHECK (0812, lloyd: "don't fabricate contact labels without a real
+ground reference")
+
+WHAT EXISTS
+  {emb}_root_world.pt   4,733,703 x 3, cm, basis "ardy Y-up", 6 embodiments
+    (human_smpl, unitree_g1_29dof, unitree_h1, booster_t1, fourier_gr3,
+     tienkung). Height is column 1 (Y).
+  raw xwbc npz          body_pos_w [T, 23, 3] — world position of EVERY link,
+    which is strictly more than the root file.
+  ROOT_WORLD_meta.json  records 13281 clips, 6666 moving clips (>20cm), and
+    human-vs-robot net-displacement cosines of 0.9998-0.9999.
+
+IS Y=0 THE FLOOR? Ankle world height over 40k sampled frames (human_smpl):
+  per-frame LOWEST ankle:  p1 -4.1 cm   median 7.2 cm   p99 24.1 cm
+  frames with an ankle below 5 cm:  34.9%
+  frames with an ankle below 0 cm:   6.0%
+READING: Y=0 is approximately the floor, but only approximately.
+ * The ankle JOINT sits above the sole, so a standing foot reads ~7 cm, not 0 —
+   the median is exactly the ankle-to-sole offset, which is the expected signature
+   of a correct ground plane.
+ * But 6% of frames put an ankle BELOW zero, down to -60 cm. Those are either
+   genuine ground penetration in the retargeted data, or clips whose floor is
+   not at zero (stairs, elevated platforms, capture drift). Either way, a naive
+   "height < threshold" contact label would be wrong on those frames.
+
+VERDICT: the ground reference is REAL but not clean enough to label contact from
+height alone, and lloyd's caution is the correct call. A defensible label needs
+  (a) the sole, not the ankle: add the ankle-to-sole offset per embodiment from
+      the rest skeleton, so the threshold is about the actual contact surface;
+  (b) a per-clip floor estimate rather than a global zero: e.g. the 1st
+      percentile of the lowest-sole height within that clip;
+  (c) velocity as a second gate: contact requires low horizontal foot speed, not
+      just low height — this is what removes the swing-phase false positives;
+  (d) an audit of the 6% sub-zero frames BEFORE labelling, since they may be a
+      data-quality signal in their own right.
+AND SEPARATELY: even a perfect label has nowhere to live right now. The pose
+representation is root-relative (gp / reach), so height above the floor is not
+an input channel at all. Adding contact labels requires first adding a
+world-height channel — two changes, not one, and they must ship together.
