@@ -1,0 +1,427 @@
+[
+{
+"name": "GRAB__s10__apple_eat_1_stageii",
+"start": 83086,
+"len": 222
+},
+{
+"name": "GRAB__s10__binoculars_see_1_stageii",
+"start": 83611,
+"len": 255
+},
+{
+"name": "GRAB__s10__cubelarge_inspect_1_stageii",
+"start": 83866,
+"len": 253
+},
+{
+"name": "GRAB__s10__cubelarge_pick_all_stageii",
+"start": 84119,
+"len": 435
+},
+{
+"name": "GRAB__s10__cylinderlarge_inspect_1_stageii",
+"start": 84554,
+"len": 306
+},
+{
+"name": "GRAB__s10__hammer_pick_all_stageii",
+"start": 84860,
+"len": 420
+},
+{
+"name": "GRAB__s10__mug_drink_2_stageii",
+"start": 85544,
+"len": 219
+},
+{
+"name": "GRAB__s10__pyramidlarge_pass_1_stageii",
+"start": 85763,
+"len": 197
+},
+{
+"name": "GRAB__s10__scissors_pass_1_stageii",
+"start": 85960,
+"len": 166
+},
+{
+"name": "GRAB__s1__apple_offhand_1_stageii",
+"start": 86126,
+"len": 376
+},
+{
+"name": "GRAB__s1__cylindermedium_inspect_1_stageii",
+"start": 86502,
+"len": 281
+},
+{
+"name": "GRAB__s1__cylindersmall_pick_all_stageii",
+"start": 86783,
+"len": 478
+},
+{
+"name": "GRAB__s1__mug_drink_1_stageii",
+"start": 87261,
+"len": 333
+},
+{
+"name": "GRAB__s1__mug_toast_1_stageii",
+"start": 87594,
+"len": 336
+},
+{
+"name": "GRAB__s1__teapot_pass_1_stageii",
+"start": 87930,
+"len": 331
+},
+{
+"name": "GRAB__s1__waterbottle_pick_all_stageii",
+"start": 88261,
+"len": 606
+},
+{
+"name": "GRAB__s2__camera_browse_1_stageii",
+"start": 88867,
+"len": 414
+},
+{
+"name": "GRAB__s2__cubelarge_inspect_1_stageii",
+"start": 89281,
+"len": 437
+},
+{
+"name": "GRAB__s2__scissors_use_1_stageii",
+"start": 89991,
+"len": 259
+},
+{
+"name": "GRAB__s3__cup_pass_1_stageii",
+"start": 90250,
+"len": 214
+},
+{
+"name": "GRAB__s3__flute_offhand_1_stageii",
+"start": 90464,
+"len": 254
+},
+{
+"name": "GRAB__s3__scissors_use_2_stageii",
+"start": 90718,
+"len": 199
+},
+{
+"name": "GRAB__s3__stanfordbunny_inspect_1_stageii",
+"start": 90917,
+"len": 265
+},
+{
+"name": "GRAB__s4__cup_drink_2_stageii",
+"start": 91182,
+"len": 218
+},
+{
+"name": "GRAB__s4__pyramidlarge_pass_1_stageii",
+"start": 91400,
+"len": 189
+},
+{
+"name": "GRAB__s4__spheresmall_pass_1_stageii",
+"start": 91589,
+"len": 164
+},
+{
+"name": "GRAB__s4__stanfordbunny_pick_all_stageii",
+"start": 91753,
+"len": 623
+},
+{
+"name": "GRAB__s4__toothpaste_pass_1_stageii",
+"start": 92376,
+"len": 162
+},
+{
+"name": "GRAB__s5__alarmclock_pick_all_stageii",
+"start": 92538,
+"len": 572
+},
+{
+"name": "GRAB__s5__cubelarge_inspect_1_stageii",
+"start": 93110,
+"len": 259
+},
+{
+"name": "GRAB__s5__elephant_inspect_1_stageii",
+"start": 93369,
+"len": 263
+},
+{
+"name": "GRAB__s5__elephant_pass_1_stageii",
+"start": 93632,
+"len": 196
+},
+{
+"name": "GRAB__s5__elephant_pick_all_stageii",
+"start": 93828,
+"len": 661
+},
+{
+"name": "GRAB__s5__scissors_pass_1_stageii",
+"start": 94489,
+"len": 219
+},
+{
+"name": "GRAB__s6__apple_offhand_1_Retake_stageii",
+"start": 94708,
+"len": 214
+},
+{
+"name": "GRAB__s6__bowl_drink_1_stageii",
+"start": 94922,
+"len": 240
+},
+{
+"name": "GRAB__s6__cubelarge_inspect_1_stageii",
+"start": 95162,
+"len": 308
+},
+{
+"name": "GRAB__s6__cylinderlarge_pass_1_stageii",
+"start": 95470,
+"len": 234
+},
+{
+"name": "GRAB__s6__hand_inspect_1_stageii",
+"start": 95704,
+"len": 378
+},
+{
+"name": "GRAB__s6__mug_pass_1_stageii",
+"start": 96377,
+"len": 282
+},
+{
+"name": "GRAB__s6__stapler_offhand_1_Retake_stageii",
+"start": 96659,
+"len": 328
+},
+{
+"name": "GRAB__s7__airplane_pick_all_Retake_stageii",
+"start": 97312,
+"len": 652
+},
+{
+"name": "GRAB__s7__camera_browse_1_stageii",
+"start": 97964,
+"len": 274
+},
+{
+"name": "GRAB__s7__hammer_use_3_stageii",
+"start": 98480,
+"len": 243
+},
+{
+"name": "GRAB__s7__pyramidmedium_pass_1_stageii",
+"start": 98723,
+"len": 141
+},
+{
+"name": "GRAB__s7__stanfordbunny_pass_1_stageii",
+"start": 98864,
+"len": 150
+},
+{
+"name": "GRAB__s8__cubemedium_pass_1_stageii",
+"start": 99222,
+"len": 205
+},
+{
+"name": "GRAB__s8__cubesmall_inspect_1_stageii",
+"start": 99427,
+"len": 219
+},
+{
+"name": "GRAB__s8__cup_pick_all_stageii",
+"start": 99646,
+"len": 473
+},
+{
+"name": "GRAB__s8__cylinderlarge_pass_1_stageii",
+"start": 100119,
+"len": 236
+},
+{
+"name": "GRAB__s8__cylindersmall_inspect_1_stageii",
+"start": 100355,
+"len": 291
+},
+{
+"name": "GRAB__s8__flashlight_pass_1_stageii",
+"start": 100646,
+"len": 212
+},
+{
+"name": "GRAB__s8__headphones_pass_1_stageii",
+"start": 100858,
+"len": 200
+},
+{
+"name": "GRAB__s8__pyramidmedium_inspect_1_stageii",
+"start": 101058,
+"len": 275
+},
+{
+"name": "GRAB__s8__toothbrush_pass_1_stageii",
+"start": 101333,
+"len": 230
+},
+{
+"name": "GRAB__s8__toruslarge_inspect_1_stageii",
+"start": 101563,
+"len": 237
+},
+{
+"name": "GRAB__s8__waterbottle_pick_all_stageii",
+"start": 101800,
+"len": 501
+},
+{
+"name": "GRAB__s9__airplane_pick_all_stageii",
+"start": 102301,
+"len": 487
+},
+{
+"name": "GRAB__s9__eyeglasses_pass_1_stageii",
+"start": 103177,
+"len": 172
+},
+{
+"name": "GRAB__s9__stamp_pass_1_stageii",
+"start": 103349,
+"len": 159
+},
+{
+"name": "HumanEva__S2__Box_3_stageii",
+"start": 114853,
+"len": 777
+},
+{
+"name": "KIT__1487__pouring_the_bottle04_stageii",
+"start": 118150,
+"len": 312
+},
+{
+"name": "KIT__1717__displace_from_left_to_right_10_stageii",
+"start": 118950,
+"len": 130
+},
+{
+"name": "KIT__1717__displace_tilt_middle_11_stageii",
+"start": 119080,
+"len": 226
+},
+{
+"name": "KIT__1717__displace_tilt_side_06_stageii",
+"start": 119306,
+"len": 228
+},
+{
+"name": "KIT__1717__displace_tilt_side_13_stageii",
+"start": 119534,
+"len": 232
+},
+{
+"name": "KIT__1717__displace_tilt_side_33_stageii",
+"start": 119766,
+"len": 276
+},
+{
+"name": "KIT__1717__displace_tilt_side_36_stageii",
+"start": 120042,
+"len": 269
+},
+{
+"name": "KIT__1717__displace_tilt_side_38_stageii",
+"start": 120311,
+"len": 237
+},
+{
+"name": "KIT__1717__displace_tilt_side_41_stageii",
+"start": 120548,
+"len": 242
+},
+{
+"name": "KIT__1747__displace_from_left_to_right_04_stageii",
+"start": 120908,
+"len": 125
+},
+{
+"name": "KIT__1747__displace_tilt_middle_11_stageii",
+"start": 121033,
+"len": 226
+},
+{
+"name": "KIT__1747__displace_tilt_middle_20_stageii",
+"start": 121259,
+"len": 235
+},
+{
+"name": "KIT__1747__displace_tilt_middle_21_stageii",
+"start": 121494,
+"len": 237
+},
+{
+"name": "KIT__3__lean_on_table01_stageii",
+"start": 128182,
+"len": 176
+},
+{
+"name": "KIT__3__lean_on_table14_stageii",
+"start": 128358,
+"len": 178
+},
+{
+"name": "KIT__425__pour_and_mixing_normal_speed_02_stageii",
+"start": 132940,
+"len": 447
+},
+{
+"name": "KIT__441__drinking04_stageii",
+"start": 134168,
+"len": 429
+},
+{
+"name": "KIT__442__drinking01_stageii",
+"start": 134597,
+"len": 365
+},
+{
+"name": "KIT__551__pour06_stageii",
+"start": 137012,
+"len": 119
+},
+{
+"name": "KIT__572__stir_left02_stageii",
+"start": 137954,
+"len": 121
+},
+{
+"name": "KIT__572__wipe_circular_left03_stageii",
+"start": 139655,
+"len": 124
+},
+{
+"name": "KIT__674__wipe_front01_stageii",
+"start": 140811,
+"len": 259
+},
+{
+"name": "KIT__675__double_pour_and_mixing05_stageii",
+"start": 141070,
+"len": 654
+},
+{
+"name": "KIT__675__double_pour_and_mixing08_stageii",
+"start": 141724,
+"len": 724
+}
+]

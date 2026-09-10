@@ -1,0 +1,2101 @@
+{
+ "booster_k1": {
+  "name": "booster_k1",
+  "source": "cache",
+  "J": 21,
+  "root": 0,
+  "root_name": "Trunk",
+  "joint_names": [
+   "Trunk",
+   "Head_1",
+   "Head_2",
+   "Left_Arm_1",
+   "Left_Arm_2",
+   "Left_Arm_3",
+   "left_hand_link",
+   "Right_Arm_1",
+   "Right_Arm_2",
+   "Right_Arm_3",
+   "right_hand_link",
+   "Left_Hip_Pitch",
+   "Left_Hip_Roll",
+   "Left_Hip_Yaw",
+   "Left_Shank",
+   "Left_Ankle_Cross",
+   "Right_Hip_Pitch",
+   "Right_Hip_Roll",
+   "Right_Hip_Yaw",
+   "Right_Shank",
+   "Right_Ankle_Cross"
+  ],
+  "left": {
+   "hand": 6,
+   "hand_name": "left_hand_link",
+   "shoulder": 3,
+   "shoulder_name": "Left_Arm_1",
+   "arm_len_cm": 23.5,
+   "foot": 15,
+   "foot_name": "Left_Ankle_Cross",
+   "hip": 11,
+   "hip_name": "Left_Hip_Pitch",
+   "leg_len_cm": 43.9,
+   "foot_rest_pos": [
+    9.6,
+    -49.9,
+    -0.2
+   ],
+   "hand_rest_pos": [
+    31.1,
+    17.1,
+    0.2
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "right": {
+   "hand": 10,
+   "hand_name": "right_hand_link",
+   "shoulder": 7,
+   "shoulder_name": "Right_Arm_1",
+   "arm_len_cm": 23.5,
+   "foot": 20,
+   "foot_name": "Right_Ankle_Cross",
+   "hip": 16,
+   "hip_name": "Right_Hip_Pitch",
+   "leg_len_cm": 43.9,
+   "foot_rest_pos": [
+    -9.6,
+    -49.9,
+    -0.2
+   ],
+   "hand_rest_pos": [
+    -31.1,
+    17.1,
+    0.2
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "pelvis_height_rest_cm": 49.9,
+  "checks": [
+   "ok"
+  ]
+ },
+ "booster_t1": {
+  "name": "booster_t1",
+  "source": "cache",
+  "J": 24,
+  "root": 0,
+  "root_name": "Trunk",
+  "joint_names": [
+   "Trunk",
+   "H1",
+   "H2",
+   "AL1",
+   "AL2",
+   "AL3",
+   "left_hand_link",
+   "AR1",
+   "AR2",
+   "AR3",
+   "right_hand_link",
+   "Waist",
+   "Hip_Pitch_Left",
+   "Hip_Roll_Left",
+   "Hip_Yaw_Left",
+   "Shank_Left",
+   "Ankle_Cross_Left",
+   "left_foot_link",
+   "Hip_Pitch_Right",
+   "Hip_Roll_Right",
+   "Hip_Yaw_Right",
+   "Shank_Right",
+   "Ankle_Cross_Right",
+   "right_foot_link"
+  ],
+  "left": {
+   "hand": 6,
+   "hand_name": "left_hand_link",
+   "shoulder": 3,
+   "shoulder_name": "AL1",
+   "arm_len_cm": 25.5,
+   "foot": 17,
+   "foot_name": "left_foot_link",
+   "hip": 12,
+   "hip_name": "Hip_Pitch_Left",
+   "leg_len_cm": 52.9,
+   "foot_rest_pos": [
+    10.6,
+    -64.3,
+    4.9
+   ],
+   "hand_rest_pos": [
+    36.1,
+    21.9,
+    5.8
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0009,
+    1.0
+   ]
+  },
+  "right": {
+   "hand": 10,
+   "hand_name": "right_hand_link",
+   "shoulder": 7,
+   "shoulder_name": "AR1",
+   "arm_len_cm": 25.5,
+   "foot": 23,
+   "foot_name": "right_foot_link",
+   "hip": 18,
+   "hip_name": "Hip_Pitch_Right",
+   "leg_len_cm": 52.9,
+   "foot_rest_pos": [
+    -10.6,
+    -64.3,
+    4.9
+   ],
+   "hand_rest_pos": [
+    -36.1,
+    21.9,
+    5.8
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0009,
+    1.0
+   ]
+  },
+  "pelvis_height_rest_cm": 64.3,
+  "checks": [
+   "ok"
+  ]
+ },
+ "booster_t1_29dof": {
+  "name": "booster_t1_29dof",
+  "source": "cache",
+  "J": 32,
+  "root": 0,
+  "root_name": "Trunk",
+  "joint_names": [
+   "Trunk",
+   "H1",
+   "H2",
+   "AL1",
+   "AL2",
+   "AL3",
+   "AL4",
+   "AL5",
+   "AL6",
+   "left_hand_link",
+   "AR1",
+   "AR2",
+   "AR3",
+   "AR4",
+   "AR5",
+   "AR6",
+   "right_hand_link",
+   "Waist",
+   "Hip_Pitch_Left",
+   "Hip_Roll_Left",
+   "Hip_Yaw_Left",
+   "Shank_Left",
+   "Ankle_Cross_Left",
+   "left_foot_link",
+   "left_toe_link",
+   "Hip_Pitch_Right",
+   "Hip_Roll_Right",
+   "Hip_Yaw_Right",
+   "Shank_Right",
+   "Ankle_Cross_Right",
+   "right_foot_link",
+   "right_toe_link"
+  ],
+  "left": {
+   "hand": 9,
+   "hand_name": "left_hand_link",
+   "shoulder": 3,
+   "shoulder_name": "AL1",
+   "arm_len_cm": 47.2,
+   "foot": 24,
+   "foot_name": "left_toe_link",
+   "hip": 18,
+   "hip_name": "Hip_Pitch_Left",
+   "leg_len_cm": 63.1,
+   "foot_rest_pos": [
+    10.6,
+    -66.3,
+    14.9
+   ],
+   "hand_rest_pos": [
+    57.8,
+    22.1,
+    6.3
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0009,
+    1.0
+   ]
+  },
+  "right": {
+   "hand": 16,
+   "hand_name": "right_hand_link",
+   "shoulder": 10,
+   "shoulder_name": "AR1",
+   "arm_len_cm": 47.2,
+   "foot": 31,
+   "foot_name": "right_toe_link",
+   "hip": 25,
+   "hip_name": "Hip_Pitch_Right",
+   "leg_len_cm": 63.1,
+   "foot_rest_pos": [
+    -10.6,
+    -66.3,
+    14.9
+   ],
+   "hand_rest_pos": [
+    -57.8,
+    22.1,
+    6.3
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0009,
+    1.0
+   ]
+  },
+  "pelvis_height_rest_cm": 66.3,
+  "checks": [
+   "ok"
+  ]
+ },
+ "fourier_gr3": {
+  "name": "fourier_gr3",
+  "source": "cache",
+  "J": 32,
+  "root": 0,
+  "root_name": "base_link",
+  "joint_names": [
+   "base_link",
+   "waist_yaw_link",
+   "waist_roll_link",
+   "torso_link",
+   "head_yaw_link",
+   "head_pitch_link",
+   "camera_link",
+   "right_upper_arm_pitch_link",
+   "right_upper_arm_roll_link",
+   "right_upper_arm_yaw_link",
+   "right_lower_arm_pitch_link",
+   "right_hand_yaw_link",
+   "right_hand_pitch_link",
+   "right_end_effector_link",
+   "left_upper_arm_pitch_link",
+   "left_upper_arm_roll_link",
+   "left_upper_arm_yaw_link",
+   "left_lower_arm_pitch_link",
+   "left_hand_yaw_link",
+   "left_hand_pitch_link",
+   "left_end_effector_link",
+   "right_thigh_pitch_link",
+   "right_thigh_roll_link",
+   "right_thigh_yaw_link",
+   "right_shank_pitch_link",
+   "right_foot_pitch_link",
+   "left_thigh_pitch_link",
+   "left_thigh_roll_link",
+   "left_thigh_yaw_link",
+   "left_shank_pitch_link",
+   "left_foot_pitch_link",
+   "imu_link"
+  ],
+  "left": {
+   "hand": 20,
+   "hand_name": "left_end_effector_link",
+   "shoulder": 14,
+   "shoulder_name": "left_upper_arm_pitch_link",
+   "arm_len_cm": 59.8,
+   "foot": 30,
+   "foot_name": "left_foot_pitch_link",
+   "hip": 26,
+   "hip_name": "left_thigh_pitch_link",
+   "leg_len_cm": 88.5,
+   "foot_rest_pos": [
+    13.1,
+    -85.9,
+    2.5
+   ],
+   "hand_rest_pos": [
+    23.4,
+    -8.7,
+    3.4
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    -0.2753,
+    -0.1587,
+    0.9482
+   ]
+  },
+  "right": {
+   "hand": 13,
+   "hand_name": "right_end_effector_link",
+   "shoulder": 7,
+   "shoulder_name": "right_upper_arm_pitch_link",
+   "arm_len_cm": 59.8,
+   "foot": 25,
+   "foot_name": "right_foot_pitch_link",
+   "hip": 21,
+   "hip_name": "right_thigh_pitch_link",
+   "leg_len_cm": 88.5,
+   "foot_rest_pos": [
+    -13.1,
+    -85.9,
+    2.5
+   ],
+   "hand_rest_pos": [
+    -23.4,
+    -8.7,
+    3.4
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.2753,
+    -0.1587,
+    0.9482
+   ]
+  },
+  "pelvis_height_rest_cm": 85.9,
+  "checks": [
+   "ok"
+  ]
+ },
+ "fourier_n1": {
+  "name": "fourier_n1",
+  "source": "cache",
+  "J": 27,
+  "root": 0,
+  "root_name": "base_link",
+  "joint_names": [
+   "base_link",
+   "left_thigh_pitch_link",
+   "left_thigh_roll_link",
+   "left_thigh_yaw_link",
+   "left_shank_pitch_link",
+   "left_foot_roll_link",
+   "right_thigh_pitch_link",
+   "right_thigh_roll_link",
+   "right_thigh_yaw_link",
+   "right_shank_pitch_link",
+   "right_foot_roll_link",
+   "imu_link",
+   "waist_yaw_link",
+   "torso_link",
+   "camera_link",
+   "left_upper_arm_pitch_link",
+   "left_upper_arm_roll_link",
+   "left_upper_arm_yaw_link",
+   "left_lower_arm_pitch_link",
+   "left_hand_yaw_link",
+   "left_end_effector_link",
+   "right_upper_arm_pitch_link",
+   "right_upper_arm_roll_link",
+   "right_upper_arm_yaw_link",
+   "right_lower_arm_pitch_link",
+   "right_hand_yaw_link",
+   "right_end_effector_link"
+  ],
+  "left": {
+   "hand": 20,
+   "hand_name": "left_end_effector_link",
+   "shoulder": 15,
+   "shoulder_name": "left_upper_arm_pitch_link",
+   "arm_len_cm": 49.3,
+   "foot": 5,
+   "foot_name": "left_foot_roll_link",
+   "hip": 1,
+   "hip_name": "left_thigh_pitch_link",
+   "leg_len_cm": 64.1,
+   "foot_rest_pos": [
+    12.0,
+    -65.5,
+    0.0
+   ],
+   "hand_rest_pos": [
+    17.6,
+    7.5,
+    20.5
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    -1.0,
+    -0.0
+   ]
+  },
+  "right": {
+   "hand": 26,
+   "hand_name": "right_end_effector_link",
+   "shoulder": 21,
+   "shoulder_name": "right_upper_arm_pitch_link",
+   "arm_len_cm": 49.3,
+   "foot": 10,
+   "foot_name": "right_foot_roll_link",
+   "hip": 6,
+   "hip_name": "right_thigh_pitch_link",
+   "leg_len_cm": 64.1,
+   "foot_rest_pos": [
+    -12.0,
+    -65.5,
+    0.0
+   ],
+   "hand_rest_pos": [
+    -17.6,
+    7.5,
+    20.5
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    -1.0,
+    -0.0
+   ]
+  },
+  "pelvis_height_rest_cm": 65.5,
+  "checks": [
+   "ok"
+  ]
+ },
+ "hightorque_hi": {
+  "name": "hightorque_hi",
+  "source": "cache",
+  "J": 26,
+  "root": 0,
+  "root_name": "base_link",
+  "joint_names": [
+   "base_link",
+   "waist_link",
+   "l_hip_pitch_link",
+   "l_hip_roll_link",
+   "l_thigh_link",
+   "l_calf_link",
+   "l_ankle_pitch_link",
+   "l_ankle_roll_link",
+   "r_hip_pitch_link",
+   "r_hip_roll_link",
+   "r_thigh_link",
+   "r_calf_link",
+   "r_ankle_pitch_link",
+   "r_ankle_roll_link",
+   "l_shoulder_pitch_link",
+   "l_shoulder_roll_link",
+   "l_upper_arm_link",
+   "l_elbow_link",
+   "l_wrist_link",
+   "r_shoulder_pitch_link",
+   "r_shoulder_roll_link",
+   "r_upper_arm_link",
+   "r_elbow_link",
+   "r_wrist_link",
+   "head_yaw_link",
+   "head_pitch_link"
+  ],
+  "left": {
+   "hand": 18,
+   "hand_name": "l_wrist_link",
+   "shoulder": 14,
+   "shoulder_name": "l_shoulder_pitch_link",
+   "arm_len_cm": 27.4,
+   "foot": 6,
+   "foot_name": "l_ankle_pitch_link",
+   "hip": 2,
+   "hip_name": "l_hip_pitch_link",
+   "leg_len_cm": 45.4,
+   "foot_rest_pos": [
+    9.9,
+    -64.4,
+    0.9
+   ],
+   "hand_rest_pos": [
+    15.3,
+    -19.9,
+    0.9
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "right": {
+   "hand": 23,
+   "hand_name": "r_wrist_link",
+   "shoulder": 19,
+   "shoulder_name": "r_shoulder_pitch_link",
+   "arm_len_cm": 27.4,
+   "foot": 12,
+   "foot_name": "r_ankle_pitch_link",
+   "hip": 8,
+   "hip_name": "r_hip_pitch_link",
+   "leg_len_cm": 45.4,
+   "foot_rest_pos": [
+    -9.9,
+    -64.4,
+    0.9
+   ],
+   "hand_rest_pos": [
+    -15.3,
+    -19.9,
+    0.9
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "pelvis_height_rest_cm": 64.4,
+  "checks": [
+   "ok"
+  ]
+ },
+ "kuavo_s45": {
+  "name": "kuavo_s45",
+  "source": "cache",
+  "J": 20,
+  "root": 0,
+  "root_name": "base_link",
+  "joint_names": [
+   "base_link",
+   "leg_l1_link",
+   "leg_l3_link",
+   "leg_l4_link",
+   "leg_l5_link",
+   "leg_r1_link",
+   "leg_r3_link",
+   "leg_r4_link",
+   "leg_r5_link",
+   "zarm_l1_link",
+   "zarm_l4_link",
+   "zarm_l5_link",
+   "zarm_l6_link",
+   "zarm_l7_link",
+   "zarm_r1_link",
+   "zarm_r4_link",
+   "zarm_r5_link",
+   "zarm_r6_link",
+   "zarm_r7_link",
+   "zhead_1_link"
+  ],
+  "left": {
+   "hand": 13,
+   "hand_name": "zarm_l7_link",
+   "shoulder": 9,
+   "shoulder_name": "zarm_l1_link",
+   "arm_len_cm": 54.0,
+   "foot": 4,
+   "foot_name": "leg_l5_link",
+   "hip": 1,
+   "hip_name": "leg_l1_link",
+   "leg_len_cm": 75.9,
+   "foot_rest_pos": [
+    8.6,
+    -82.5,
+    -0.2
+   ],
+   "hand_rest_pos": [
+    29.3,
+    -11.4,
+    -1.7
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "right": {
+   "hand": 18,
+   "hand_name": "zarm_r7_link",
+   "shoulder": 14,
+   "shoulder_name": "zarm_r1_link",
+   "arm_len_cm": 54.0,
+   "foot": 8,
+   "foot_name": "leg_r5_link",
+   "hip": 5,
+   "hip_name": "leg_r1_link",
+   "leg_len_cm": 75.9,
+   "foot_rest_pos": [
+    -8.7,
+    -82.5,
+    -0.2
+   ],
+   "hand_rest_pos": [
+    -29.3,
+    -11.4,
+    -1.7
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "pelvis_height_rest_cm": 82.5,
+  "checks": [
+   "ok"
+  ]
+ },
+ "pnd_adam_lite": {
+  "name": "pnd_adam_lite",
+  "source": "cache",
+  "J": 24,
+  "root": 0,
+  "root_name": "pelvis",
+  "joint_names": [
+   "pelvis",
+   "hipPitchLeft",
+   "hipRollLeft",
+   "thighLeft",
+   "shinLeft",
+   "anklePitchLeft",
+   "hipPitchRight",
+   "hipRollRight",
+   "thighRight",
+   "shinRight",
+   "anklePitchRight",
+   "waistRoll",
+   "waistPitch",
+   "torso",
+   "shoulderPitchLeft",
+   "shoulderRollLeft",
+   "shoulderYawLeft",
+   "elbowLeft",
+   "wristYawLeft",
+   "shoulderPitchRight",
+   "shoulderRollRight",
+   "shoulderYawRight",
+   "elbowRight",
+   "wristYawRight"
+  ],
+  "left": {
+   "hand": 18,
+   "hand_name": "wristYawLeft",
+   "shoulder": 14,
+   "shoulder_name": "shoulderPitchLeft",
+   "arm_len_cm": 41.9,
+   "foot": 5,
+   "foot_name": "anklePitchLeft",
+   "hip": 1,
+   "hip_name": "hipPitchLeft",
+   "leg_len_cm": 88.3,
+   "foot_rest_pos": [
+    11.7,
+    -86.4,
+    1.9
+   ],
+   "hand_rest_pos": [
+    23.5,
+    11.4,
+    -2.5
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "right": {
+   "hand": 23,
+   "hand_name": "wristYawRight",
+   "shoulder": 19,
+   "shoulder_name": "shoulderPitchRight",
+   "arm_len_cm": 41.9,
+   "foot": 10,
+   "foot_name": "anklePitchRight",
+   "hip": 6,
+   "hip_name": "hipPitchRight",
+   "leg_len_cm": 88.3,
+   "foot_rest_pos": [
+    -11.7,
+    -86.4,
+    1.9
+   ],
+   "hand_rest_pos": [
+    -23.4,
+    11.4,
+    -2.5
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "pelvis_height_rest_cm": 86.4,
+  "checks": [
+   "ok"
+  ]
+ },
+ "tienkung": {
+  "name": "tienkung",
+  "source": "cache",
+  "J": 22,
+  "root": 0,
+  "root_name": "Base_link",
+  "joint_names": [
+   "Base_link",
+   "hip_roll_l_link",
+   "hip_pitch_l_link",
+   "hip_yaw_l_link",
+   "knee_pitch_l_link",
+   "ankle_pitch_l_link",
+   "hip_roll_r_link",
+   "hip_pitch_r_link",
+   "hip_yaw_r_link",
+   "knee_pitch_r_link",
+   "ankle_pitch_r_link",
+   "shoulder_pitch_l_link",
+   "shoulder_roll_l_link",
+   "shoulder_yaw_l_link",
+   "elbow_pitch_l_link",
+   "left_hand",
+   "shoulder_pitch_r_link",
+   "shoulder_roll_r_link",
+   "shoulder_yaw_r_link",
+   "elbow_pitch_r_link",
+   "right_hand",
+   "head"
+  ],
+  "left": {
+   "hand": 15,
+   "hand_name": "left_hand",
+   "shoulder": 11,
+   "shoulder_name": "shoulder_pitch_l_link",
+   "arm_len_cm": 65.4,
+   "foot": 5,
+   "foot_name": "ankle_pitch_l_link",
+   "hip": 1,
+   "hip_name": "hip_roll_l_link",
+   "leg_len_cm": 93.0,
+   "foot_rest_pos": [
+    15.0,
+    -93.2,
+    0.0
+   ],
+   "hand_rest_pos": [
+    26.4,
+    -19.5,
+    2.0
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "right": {
+   "hand": 20,
+   "hand_name": "right_hand",
+   "shoulder": 16,
+   "shoulder_name": "shoulder_pitch_r_link",
+   "arm_len_cm": 65.4,
+   "foot": 10,
+   "foot_name": "ankle_pitch_r_link",
+   "hip": 6,
+   "hip_name": "hip_roll_r_link",
+   "leg_len_cm": 93.0,
+   "foot_rest_pos": [
+    -14.9,
+    -93.2,
+    0.0
+   ],
+   "hand_rest_pos": [
+    -26.4,
+    -19.5,
+    2.0
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "pelvis_height_rest_cm": 93.2,
+  "checks": [
+   "ok"
+  ]
+ },
+ "unitree_g1_23dof": {
+  "name": "unitree_g1_23dof",
+  "source": "cache",
+  "J": 36,
+  "root": 0,
+  "root_name": "pelvis",
+  "joint_names": [
+   "pelvis",
+   "left_hip_pitch_link",
+   "left_hip_roll_link",
+   "left_hip_yaw_link",
+   "left_knee_link",
+   "left_ankle_pitch_link",
+   "left_ankle_roll_link",
+   "left_toe_link",
+   "right_hip_pitch_link",
+   "right_hip_roll_link",
+   "right_hip_yaw_link",
+   "right_knee_link",
+   "right_ankle_pitch_link",
+   "right_ankle_roll_link",
+   "right_toe_link",
+   "waist_yaw_link",
+   "waist_roll_link",
+   "head_link",
+   "head_mocap",
+   "imu_in_torso",
+   "left_shoulder_pitch_link",
+   "left_shoulder_roll_link",
+   "left_shoulder_yaw_link",
+   "left_elbow_link",
+   "left_wrist_roll_link",
+   "left_wrist_pitch_link",
+   "left_wrist_yaw_link",
+   "left_rubber_hand",
+   "right_shoulder_pitch_link",
+   "right_shoulder_roll_link",
+   "right_shoulder_yaw_link",
+   "right_elbow_link",
+   "right_wrist_roll_link",
+   "right_wrist_pitch_link",
+   "right_wrist_yaw_link",
+   "right_rubber_hand"
+  ],
+  "left": {
+   "hand": 27,
+   "hand_name": "left_rubber_hand",
+   "shoulder": 20,
+   "shoulder_name": "left_shoulder_pitch_link",
+   "arm_len_cm": 45.2,
+   "foot": 7,
+   "foot_name": "left_toe_link",
+   "hip": 1,
+   "hip_name": "left_hip_pitch_link",
+   "leg_len_cm": 80.0,
+   "foot_rest_pos": [
+    11.9,
+    -77.7,
+    10.0
+   ],
+   "hand_rest_pos": [
+    15.2,
+    9.5,
+    24.1
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0002,
+    0.0001,
+    1.0
+   ]
+  },
+  "right": {
+   "hand": 35,
+   "hand_name": "right_rubber_hand",
+   "shoulder": 28,
+   "shoulder_name": "right_shoulder_pitch_link",
+   "arm_len_cm": 45.2,
+   "foot": 14,
+   "foot_name": "right_toe_link",
+   "hip": 8,
+   "hip_name": "right_hip_pitch_link",
+   "leg_len_cm": 80.0,
+   "foot_rest_pos": [
+    -11.9,
+    -77.7,
+    10.0
+   ],
+   "hand_rest_pos": [
+    -15.2,
+    9.5,
+    24.1
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    -0.0002,
+    0.0001,
+    1.0
+   ]
+  },
+  "pelvis_height_rest_cm": 77.7,
+  "checks": [
+   "ok"
+  ]
+ },
+ "unitree_g1_29dof": {
+  "name": "unitree_g1_29dof",
+  "source": "cache",
+  "J": 36,
+  "root": 0,
+  "root_name": "pelvis",
+  "joint_names": [
+   "pelvis",
+   "left_hip_pitch_link",
+   "left_hip_roll_link",
+   "left_hip_yaw_link",
+   "left_knee_link",
+   "left_ankle_pitch_link",
+   "left_ankle_roll_link",
+   "left_toe_link",
+   "right_hip_pitch_link",
+   "right_hip_roll_link",
+   "right_hip_yaw_link",
+   "right_knee_link",
+   "right_ankle_pitch_link",
+   "right_ankle_roll_link",
+   "right_toe_link",
+   "waist_yaw_link",
+   "waist_roll_link",
+   "head_link",
+   "head_mocap",
+   "imu_in_torso",
+   "left_shoulder_pitch_link",
+   "left_shoulder_roll_link",
+   "left_shoulder_yaw_link",
+   "left_elbow_link",
+   "left_wrist_roll_link",
+   "left_wrist_pitch_link",
+   "left_wrist_yaw_link",
+   "left_rubber_hand",
+   "right_shoulder_pitch_link",
+   "right_shoulder_roll_link",
+   "right_shoulder_yaw_link",
+   "right_elbow_link",
+   "right_wrist_roll_link",
+   "right_wrist_pitch_link",
+   "right_wrist_yaw_link",
+   "right_rubber_hand"
+  ],
+  "left": {
+   "hand": 27,
+   "hand_name": "left_rubber_hand",
+   "shoulder": 20,
+   "shoulder_name": "left_shoulder_pitch_link",
+   "arm_len_cm": 45.2,
+   "foot": 7,
+   "foot_name": "left_toe_link",
+   "hip": 1,
+   "hip_name": "left_hip_pitch_link",
+   "leg_len_cm": 80.0,
+   "foot_rest_pos": [
+    11.9,
+    -77.7,
+    10.0
+   ],
+   "hand_rest_pos": [
+    15.2,
+    9.5,
+    24.1
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0002,
+    0.0001,
+    1.0
+   ]
+  },
+  "right": {
+   "hand": 35,
+   "hand_name": "right_rubber_hand",
+   "shoulder": 28,
+   "shoulder_name": "right_shoulder_pitch_link",
+   "arm_len_cm": 45.2,
+   "foot": 14,
+   "foot_name": "right_toe_link",
+   "hip": 8,
+   "hip_name": "right_hip_pitch_link",
+   "leg_len_cm": 80.0,
+   "foot_rest_pos": [
+    -11.9,
+    -77.7,
+    10.0
+   ],
+   "hand_rest_pos": [
+    -15.2,
+    9.5,
+    24.1
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    -0.0002,
+    0.0001,
+    1.0
+   ]
+  },
+  "pelvis_height_rest_cm": 77.7,
+  "checks": [
+   "ok"
+  ]
+ },
+ "unitree_h1": {
+  "name": "unitree_h1",
+  "source": "cache",
+  "J": 20,
+  "root": 0,
+  "root_name": "pelvis",
+  "joint_names": [
+   "pelvis",
+   "left_hip_yaw_link",
+   "left_hip_roll_link",
+   "left_hip_pitch_link",
+   "left_knee_link",
+   "left_ankle_link",
+   "right_hip_yaw_link",
+   "right_hip_roll_link",
+   "right_hip_pitch_link",
+   "right_knee_link",
+   "right_ankle_link",
+   "torso_link",
+   "left_shoulder_pitch_link",
+   "left_shoulder_roll_link",
+   "left_shoulder_yaw_link",
+   "left_elbow_link",
+   "right_shoulder_pitch_link",
+   "right_shoulder_roll_link",
+   "right_shoulder_yaw_link",
+   "right_elbow_link"
+  ],
+  "left": {
+   "hand": 15,
+   "hand_name": "left_elbow_link",
+   "shoulder": 12,
+   "shoulder_name": "left_shoulder_pitch_link",
+   "arm_len_cm": 39.2,
+   "foot": 5,
+   "foot_name": "left_ankle_link",
+   "hip": 1,
+   "hip_name": "left_hip_yaw_link",
+   "leg_len_cm": 95.5,
+   "foot_rest_pos": [
+    20.3,
+    -97.4,
+    3.9
+   ],
+   "hand_rest_pos": [
+    21.4,
+    10.7,
+    1.9
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "right": {
+   "hand": 19,
+   "hand_name": "right_elbow_link",
+   "shoulder": 16,
+   "shoulder_name": "right_shoulder_pitch_link",
+   "arm_len_cm": 39.2,
+   "foot": 10,
+   "foot_name": "right_ankle_link",
+   "hip": 6,
+   "hip_name": "right_hip_yaw_link",
+   "leg_len_cm": 95.5,
+   "foot_rest_pos": [
+    -20.3,
+    -97.4,
+    3.9
+   ],
+   "hand_rest_pos": [
+    -21.4,
+    10.7,
+    1.9
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "pelvis_height_rest_cm": 97.4,
+  "checks": [
+   "ok"
+  ]
+ },
+ "unitree_h1_2": {
+  "name": "unitree_h1_2",
+  "source": "cache",
+  "J": 26,
+  "root": 0,
+  "root_name": "pelvis",
+  "joint_names": [
+   "pelvis",
+   "left_hip_yaw_link",
+   "left_hip_pitch_link",
+   "left_knee_link",
+   "left_ankle_pitch_link",
+   "left_ankle_roll_link",
+   "right_hip_yaw_link",
+   "right_hip_pitch_link",
+   "right_knee_link",
+   "right_ankle_pitch_link",
+   "right_ankle_roll_link",
+   "torso_link",
+   "left_shoulder_pitch_link",
+   "left_shoulder_roll_link",
+   "left_shoulder_yaw_link",
+   "left_elbow_link",
+   "left_wrist_roll_link",
+   "left_wrist_pitch_link",
+   "left_wrist_yaw_link",
+   "right_shoulder_pitch_link",
+   "right_shoulder_roll_link",
+   "right_shoulder_yaw_link",
+   "right_elbow_link",
+   "right_wrist_roll_link",
+   "right_wrist_pitch_link",
+   "right_wrist_yaw_link"
+  ],
+  "left": {
+   "hand": 18,
+   "hand_name": "left_wrist_yaw_link",
+   "shoulder": 12,
+   "shoulder_name": "left_shoulder_pitch_link",
+   "arm_len_cm": 63.9,
+   "foot": 5,
+   "foot_name": "left_ankle_roll_link",
+   "hip": 1,
+   "hip_name": "left_hip_yaw_link",
+   "leg_len_cm": 89.6,
+   "foot_rest_pos": [
+    16.3,
+    -98.3,
+    0.0
+   ],
+   "hand_rest_pos": [
+    20.9,
+    9.5,
+    23.4
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "right": {
+   "hand": 25,
+   "hand_name": "right_wrist_yaw_link",
+   "shoulder": 19,
+   "shoulder_name": "right_shoulder_pitch_link",
+   "arm_len_cm": 63.9,
+   "foot": 10,
+   "foot_name": "right_ankle_roll_link",
+   "hip": 6,
+   "hip_name": "right_hip_yaw_link",
+   "leg_len_cm": 89.6,
+   "foot_rest_pos": [
+    -16.3,
+    -98.3,
+    0.0
+   ],
+   "hand_rest_pos": [
+    -20.9,
+    9.5,
+    23.4
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "pelvis_height_rest_cm": 98.3,
+  "checks": [
+   "ok"
+  ]
+ },
+ "unitree_h2": {
+  "name": "unitree_h2",
+  "source": "cache",
+  "J": 32,
+  "root": 0,
+  "root_name": "body00",
+  "joint_names": [
+   "body00",
+   "body01",
+   "body02",
+   "body03",
+   "body04",
+   "body05",
+   "body06",
+   "body07",
+   "body08",
+   "body09",
+   "body10",
+   "body11",
+   "body12",
+   "body13",
+   "body14",
+   "body15",
+   "body16",
+   "body17",
+   "body18",
+   "body19",
+   "body20",
+   "body21",
+   "body22",
+   "body23",
+   "body24",
+   "body25",
+   "body26",
+   "body27",
+   "body28",
+   "body29",
+   "body30",
+   "body31"
+  ],
+  "left": {
+   "hand": 30,
+   "hand_name": "body30",
+   "shoulder": 13,
+   "shoulder_name": "body13",
+   "arm_len_cm": 54.7,
+   "foot": 20,
+   "foot_name": "body20",
+   "hip": 1,
+   "hip_name": "body01",
+   "leg_len_cm": 99.7,
+   "foot_rest_pos": [
+    7.9,
+    -98.5,
+    2.2
+   ],
+   "hand_rest_pos": [
+    18.8,
+    21.4,
+    25.4
+   ],
+   "sole_normal_local": [
+    -0.0,
+    -1.0,
+    -0.0
+   ],
+   "foot_forward_local": [
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    -0.0,
+    1.0
+   ]
+  },
+  "right": {
+   "hand": 31,
+   "hand_name": "body31",
+   "shoulder": 14,
+   "shoulder_name": "body14",
+   "arm_len_cm": 54.4,
+   "foot": 16,
+   "foot_name": "body16",
+   "hip": 2,
+   "hip_name": "body02",
+   "leg_len_cm": 97.1,
+   "foot_rest_pos": [
+    -11.6,
+    -98.5,
+    2.2
+   ],
+   "hand_rest_pos": [
+    -18.4,
+    21.5,
+    25.0
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    -0.0
+   ],
+   "foot_forward_local": [
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    -0.0,
+    -0.0,
+    1.0
+   ]
+  },
+  "pelvis_height_rest_cm": 98.5,
+  "checks": [
+   "leg len asym"
+  ]
+ },
+ "unitree_r1": {
+  "name": "unitree_r1",
+  "source": "cache",
+  "J": 38,
+  "root": 0,
+  "root_name": "pelvis_link",
+  "joint_names": [
+   "pelvis_link",
+   "left_hip_pitch_link",
+   "left_hip_roll_link",
+   "left_hip_yaw_link",
+   "left_knee_link",
+   "left_ankle_A_link",
+   "left_ankle_A_rod_link",
+   "left_ankle_B_link",
+   "left_ankle_B_rod_link",
+   "left_ankle_pitch_link",
+   "left_ankle_constraint_A_link",
+   "left_ankle_constraint_B_link",
+   "right_hip_pitch_link",
+   "right_hip_roll_link",
+   "right_hip_yaw_link",
+   "right_knee_link",
+   "right_ankle_A_link",
+   "right_ankle_A_rod_link",
+   "right_ankle_B_link",
+   "right_ankle_B_rod_link",
+   "right_ankle_pitch_link",
+   "right_ankle_constraint_A_link",
+   "right_ankle_constraint_B_link",
+   "imu_in_pelvis_link",
+   "waist_roll_link",
+   "waist_yaw_link",
+   "left_shoulder_pitch_link",
+   "left_shoulder_roll_link",
+   "left_shoulder_yaw_link",
+   "left_elbow_link",
+   "left_wrist_roll_link",
+   "right_shoulder_pitch_link",
+   "right_shoulder_roll_link",
+   "right_shoulder_yaw_link",
+   "right_elbow_link",
+   "right_wrist_roll_link",
+   "head_pitch_link",
+   "head_yaw_link"
+  ],
+  "left": {
+   "hand": 30,
+   "hand_name": "left_wrist_roll_link",
+   "shoulder": 26,
+   "shoulder_name": "left_shoulder_pitch_link",
+   "arm_len_cm": 38.3,
+   "foot": 9,
+   "foot_name": "left_ankle_pitch_link",
+   "hip": 1,
+   "hip_name": "left_hip_pitch_link",
+   "leg_len_cm": 61.1,
+   "foot_rest_pos": [
+    8.6,
+    -68.8,
+    -0.2
+   ],
+   "hand_rest_pos": [
+    13.9,
+    3.1,
+    16.1
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "right": {
+   "hand": 35,
+   "hand_name": "right_wrist_roll_link",
+   "shoulder": 31,
+   "shoulder_name": "right_shoulder_pitch_link",
+   "arm_len_cm": 38.3,
+   "foot": 20,
+   "foot_name": "right_ankle_pitch_link",
+   "hip": 12,
+   "hip_name": "right_hip_pitch_link",
+   "leg_len_cm": 61.1,
+   "foot_rest_pos": [
+    -8.6,
+    -68.8,
+    -0.2
+   ],
+   "hand_rest_pos": [
+    -13.9,
+    3.1,
+    16.1
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "pelvis_height_rest_cm": 68.8,
+  "checks": [
+   "ok"
+  ]
+ },
+ "agibot_x2_ultra": {
+  "name": "agibot_x2_ultra",
+  "source": "xml",
+  "J": 29,
+  "root": 0,
+  "root_name": "pelvis",
+  "joint_names": [
+   "pelvis",
+   "left_hip_pitch_link",
+   "left_hip_roll_link",
+   "left_hip_yaw_link",
+   "left_knee_link",
+   "left_ankle_pitch_link",
+   "left_ankle_roll_link",
+   "right_hip_pitch_link",
+   "right_hip_roll_link",
+   "right_hip_yaw_link",
+   "right_knee_link",
+   "right_ankle_pitch_link",
+   "right_ankle_roll_link",
+   "waist_yaw_link",
+   "waist_pitch_link",
+   "left_shoulder_pitch_link",
+   "left_shoulder_roll_link",
+   "left_shoulder_yaw_link",
+   "left_elbow_link",
+   "left_wrist_yaw_link",
+   "left_wrist_pitch_link",
+   "right_shoulder_pitch_link",
+   "right_shoulder_roll_link",
+   "right_shoulder_yaw_link",
+   "right_elbow_link",
+   "right_wrist_yaw_link",
+   "right_wrist_pitch_link",
+   "head_yaw_link",
+   "head_pitch_link"
+  ],
+  "left": {
+   "hand": 20,
+   "hand_name": "left_wrist_pitch_link",
+   "shoulder": 15,
+   "shoulder_name": "left_shoulder_pitch_link",
+   "arm_len_cm": 45.8,
+   "foot": 5,
+   "foot_name": "left_ankle_pitch_link",
+   "hip": 1,
+   "hip_name": "left_hip_pitch_link",
+   "leg_len_cm": 66.8,
+   "foot_rest_pos": [
+    13.7,
+    -60.2,
+    -1.8
+   ],
+   "hand_rest_pos": [
+    27.6,
+    1.2,
+    0.3
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "right": {
+   "hand": 26,
+   "hand_name": "right_wrist_pitch_link",
+   "shoulder": 21,
+   "shoulder_name": "right_shoulder_pitch_link",
+   "arm_len_cm": 45.8,
+   "foot": 11,
+   "foot_name": "right_ankle_pitch_link",
+   "hip": 7,
+   "hip_name": "right_hip_pitch_link",
+   "leg_len_cm": 66.8,
+   "foot_rest_pos": [
+    -13.7,
+    -60.2,
+    -1.8
+   ],
+   "hand_rest_pos": [
+    -27.5,
+    1.2,
+    0.3
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "pelvis_height_rest_cm": 60.2,
+  "checks": [
+   "ok"
+  ]
+ },
+ "agibot_a3_ultra_t3d0": {
+  "name": "agibot_a3_ultra_t3d0",
+  "source": "xml",
+  "J": 60,
+  "root": 0,
+  "root_name": "pelvis_link",
+  "joint_names": [
+   "pelvis_link",
+   "waist_yaw_Link",
+   "waist_roll_Link",
+   "torso_Link",
+   "head_yaw_Link",
+   "ultra_head_pitch_Link",
+   "left_shoulder_pitch_Link",
+   "left_shoulder_roll_Link",
+   "left_shoulder_yaw_Link",
+   "left_elbow_Link",
+   "left_wrist_roll_Link",
+   "left_wrist_pitch_Link",
+   "left_wrist_yaw_Link",
+   "L_thumb_roll_link",
+   "L_thumb_abad_link",
+   "L_thumb_mcp_link",
+   "L_thumb_pip_link",
+   "L_thumb_dip_link",
+   "L_index_abad_link",
+   "L_index_pip_link",
+   "L_index_dip_link",
+   "L_middle_pip_link",
+   "L_middle_dip_link",
+   "L_ring_abad_link",
+   "L_ring_pip_link",
+   "L_ring_dip_link",
+   "L_pinky_abad_link",
+   "L_pinky_pip_link",
+   "L_pinky_dip_link",
+   "right_shoulder_pitch_Link",
+   "right_shoulder_roll_Link",
+   "right_shoulder_yaw_Link",
+   "right_elbow_Link",
+   "right_wrist_roll_Link",
+   "right_wrist_pitch_Link",
+   "right_wrist_yaw_Link",
+   "R_thumb_roll_link",
+   "R_thumb_abad_link",
+   "R_thumb_mcp_link",
+   "R_thumb_pip_link",
+   "R_thumb_dip_link",
+   "R_index_abad_link",
+   "R_index_pip_link",
+   "R_index_dip_link",
+   "R_middle_pip_link",
+   "R_middle_dip_link",
+   "R_ring_abad_link",
+   "R_ring_pip_link",
+   "R_ring_dip_link",
+   "R_pinky_abad_link",
+   "R_pinky_pip_link",
+   "R_pinky_dip_link",
+   "left_hip_pitch_Link",
+   "left_hip_roll_Link",
+   "left_knee_Link",
+   "left_ankle_pitch_Link",
+   "right_hip_pitch_Link",
+   "right_hip_roll_Link",
+   "right_knee_Link",
+   "right_ankle_pitch_Link"
+  ],
+  "left": {
+   "hand": 12,
+   "hand_name": "left_wrist_yaw_Link",
+   "shoulder": 6,
+   "shoulder_name": "left_shoulder_pitch_Link",
+   "arm_len_cm": 57.5,
+   "foot": 55,
+   "foot_name": "left_ankle_pitch_Link",
+   "hip": 52,
+   "hip_name": "left_hip_pitch_Link",
+   "leg_len_cm": 82.9,
+   "foot_rest_pos": [
+    12.4,
+    -100.7,
+    0.0
+   ],
+   "hand_rest_pos": [
+    21.7,
+    0.4,
+    25.5
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "right": {
+   "hand": 35,
+   "hand_name": "right_wrist_yaw_Link",
+   "shoulder": 29,
+   "shoulder_name": "right_shoulder_pitch_Link",
+   "arm_len_cm": 57.5,
+   "foot": 59,
+   "foot_name": "right_ankle_pitch_Link",
+   "hip": 56,
+   "hip_name": "right_hip_pitch_Link",
+   "leg_len_cm": 82.9,
+   "foot_rest_pos": [
+    -12.4,
+    -100.7,
+    -0.1
+   ],
+   "hand_rest_pos": [
+    -21.7,
+    0.4,
+    25.5
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "pelvis_height_rest_cm": 100.7,
+  "checks": [
+   "ok"
+  ]
+ },
+ "agibot_a3_t3d0": {
+  "name": "agibot_a3_t3d0",
+  "source": "xml",
+  "J": 28,
+  "root": 0,
+  "root_name": "pelvis_link",
+  "joint_names": [
+   "pelvis_link",
+   "waist_yaw_Link",
+   "waist_roll_Link",
+   "torso_Link",
+   "head_yaw_Link",
+   "head_pitch_Link",
+   "left_shoulder_pitch_Link",
+   "left_shoulder_roll_Link",
+   "left_shoulder_yaw_Link",
+   "left_elbow_Link",
+   "left_wrist_roll_Link",
+   "left_wrist_pitch_Link",
+   "left_wrist_yaw_Link",
+   "right_shoulder_pitch_Link",
+   "right_shoulder_roll_Link",
+   "right_shoulder_yaw_Link",
+   "right_elbow_Link",
+   "right_wrist_roll_Link",
+   "right_wrist_pitch_Link",
+   "right_wrist_yaw_Link",
+   "left_hip_pitch_Link",
+   "left_hip_roll_Link",
+   "left_knee_Link",
+   "left_ankle_pitch_Link",
+   "right_hip_pitch_Link",
+   "right_hip_roll_Link",
+   "right_knee_Link",
+   "right_ankle_pitch_Link"
+  ],
+  "left": {
+   "hand": 12,
+   "hand_name": "left_wrist_yaw_Link",
+   "shoulder": 6,
+   "shoulder_name": "left_shoulder_pitch_Link",
+   "arm_len_cm": 57.5,
+   "foot": 23,
+   "foot_name": "left_ankle_pitch_Link",
+   "hip": 20,
+   "hip_name": "left_hip_pitch_Link",
+   "leg_len_cm": 82.9,
+   "foot_rest_pos": [
+    12.4,
+    -100.7,
+    0.0
+   ],
+   "hand_rest_pos": [
+    21.7,
+    0.4,
+    25.5
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "right": {
+   "hand": 19,
+   "hand_name": "right_wrist_yaw_Link",
+   "shoulder": 13,
+   "shoulder_name": "right_shoulder_pitch_Link",
+   "arm_len_cm": 57.6,
+   "foot": 27,
+   "foot_name": "right_ankle_pitch_Link",
+   "hip": 24,
+   "hip_name": "right_hip_pitch_Link",
+   "leg_len_cm": 82.9,
+   "foot_rest_pos": [
+    -12.4,
+    -100.7,
+    -0.1
+   ],
+   "hand_rest_pos": [
+    -21.7,
+    0.3,
+    25.5
+   ],
+   "sole_normal_local": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "foot_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "hand_forward_local": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "pelvis_height_rest_cm": 100.7,
+  "checks": [
+   "ok"
+  ]
+ }
+}
