@@ -1,0 +1,44 @@
+{
+ "T1": {
+  "n_lying_frames": 12661,
+  "n_standing": 2000,
+  "within_lying_cos": 0.21762555837631226,
+  "lying_standing_cos": 0.1447102278470993,
+  "margin": 0.07291533052921295,
+  "nn_lying_hit_rate": 0.872758865808388,
+  "pass": true
+ },
+ "T2": {
+  "n_query": 500,
+  "n_cand": 5000,
+  "top1_same_clip": 0.18200001120567322,
+  "retrieved_clip_entropy_bits": 6.118843205319051,
+  "max_entropy_bits": 6.266786540694901,
+  "chance": 0.012987012987012988,
+  "pass": false
+ },
+ "T3": {
+  "n_frames": 5980,
+  "feat_vel_median": 0.3410419225692749,
+  "feat_vel_p99": 1.3618320226669312,
+  "joint_vel_median_cm": 1.0228546857833862,
+  "spurious_jumps": 3,
+  "spurious_frac": 0.0005016722408026755,
+  "pass": true
+ },
+ "T4": {
+  "n_rows": 5000,
+  "unitree_g1_29dof": {
+   "median": 0.9472437500953674,
+   "p10": 0.8996930122375488,
+   "p90": 0.9720538854598999,
+   "pass_ceiling": true
+  },
+  "pnd_adam_lite": {
+   "median": 0.951001763343811,
+   "p10": 0.8942526578903198,
+   "p90": 0.97562575340271,
+   "pass_ceiling": true
+  }
+ }
+}
