@@ -83,3 +83,7 @@ pose_translator_design/grand_eval/
 notebook/02_5_resources/
 data/babel/
 data/babel_labels.json
+
+# ---- editor / session backups ----
+*.bak_*
+*.bak
