@@ -110,7 +110,7 @@ def capsule_tile(hp_cm, parents, label):
     m = sp.compile(); d = mj.MjData(m); mj.mj_forward(m, d)
     rend = mj.Renderer(m, height=GC.TILE_H, width=GC.TILE_W)
     cam = mj.MjvCamera(); cam.lookat[:] = [0, 0, 0.85]
-    cam.distance, cam.elevation, cam.azimuth = 3.2, -8, 180
+    cam.distance, cam.elevation, cam.azimuth = 3.2, -8, float(os.environ.get("AM_AZ", 180))
     par = np.asarray(parents)
     out = []
     for t in range(hp.shape[0]):
@@ -122,7 +122,7 @@ def capsule_tile(hp_cm, parents, label):
             gg = sc.geoms[sc.ngeom]; sc.ngeom += 1
             mj.mjv_initGeom(gg, mj.mjtGeom.mjGEOM_CAPSULE, np.zeros(3),
                             np.zeros(3), np.eye(3).flatten(),
-                            np.array([0.30, 0.30, 0.33, 1], np.float32))
+                            np.array([0.95, 0.55, 0.15, 1], np.float32))
             mj.mjv_connector(gg, mj.mjtGeom.mjGEOM_CAPSULE, 0.030,
                              hp[t, par[j]], hp[t, j])
         im = Image.new("RGB", (GC.TILE_W, GC.TILE_H + GC.BAND), (14, 14, 16))

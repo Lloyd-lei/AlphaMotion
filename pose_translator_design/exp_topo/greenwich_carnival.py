@@ -100,7 +100,7 @@ def render_tile(xml, spec, qnames, q, rootR, gp, T, status="trained"):
     rend = mj.Renderer(m, height=TILE_H, width=TILE_W)
     cam = mj.MjvCamera()
     cam.lookat[:] = [0, 0, 0.55 * h]
-    cam.distance, cam.elevation, cam.azimuth = max(1.6, 2.45 * h), -8, 180
+    cam.distance, cam.elevation, cam.azimuth = max(1.6, 2.45 * h), -8, float(os.environ.get("AM_AZ", 180))
     fr = [j for j in range(m.njnt) if m.jnt_type[j] == mj.mjtJoint.mjJNT_FREE]
     ra = int(m.jnt_qposadr[fr[0]]) if fr else -1
     tab = -np.ones((spec.J, 3), np.int64)

@@ -77,14 +77,22 @@ def build_name_embeddings(names, device="cuda", encoder="siglip"):
     the split reproduction contract in dual_common's module docstring."""
     cache = CACHES[encoder]
     uniq = list(dict.fromkeys(names))
+    d = {}
     if os.path.exists(cache):
         d = torch.load(cache, map_location="cpu")
         if set(uniq).issubset(set(d.keys())):
             return d
-    prompts = [joint_prompt(n) for n in uniq]       # SAME prompt for both encoders
+    # 未命中时只补缺口、与磁盘上已有的条目合并后再写回 (0830 修)。为什么: 老版本
+    # torch.save(out) 会把整个缓存文件缩成"这次要的名字", 谁用子集跑一次谁就把
+    # 别人的条目冲掉 —— qwen3 缓存实测被冲剩 88/380 键; 而缓存不全 = 下次训练
+    # 加载时消耗 RNG = FIX split 复现约定被破坏 (见 dual_common 模块注释)。
+    # 已有键保留老值(训练年代算的), 只有真缺的键才重新编码。
+    need = [n for n in uniq if n not in d]
+    prompts = [joint_prompt(n) for n in need]       # SAME prompt for both encoders
     feats = _encode_siglip(prompts, device) if encoder == "siglip" else _encode_qwen3(prompts, device)
     feats = torch.nn.functional.normalize(feats, dim=-1)
-    out = {n: feats[i] for i, n in enumerate(uniq)}
+    out = dict(d)
+    out.update({n: feats[i] for i, n in enumerate(need)})
     torch.save(out, cache)
     return out
 

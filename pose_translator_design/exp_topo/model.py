@@ -63,6 +63,10 @@ class FSQ(nn.Module):
         zr = torch.round(zt)
         # straight-through
         zq = zt + (zr - zt).detach()
+        # 0902 code_noise (单帧路线, lloyd): 训练时给量化值加 ±noise 格的均匀噪声,
+        # 让解码器对 ±1 格抖动平滑 (相邻帧码位跳格 -> 脚点不跳)。eval 时不加, 码本不变。
+        if self.training and getattr(self, "noise", 0.0) > 0:
+            zq = zq + (torch.rand_like(zq) - 0.5) * (2 * self.noise)
         # normalize to [-1,1] for the decoder
         return zq / half
 

@@ -28,7 +28,7 @@ OUT = "/var/tmp/alphamotion/ctrl_verify/"
 XML = "/var/tmp/alphamotion/config_harvest/GMR/assets/unitree_g1/g1_mocap_29dof.xml"
 AX = np.array([[0., 1, 0], [0, 0, 1], [1, 0, 0]])     # Z-up -> Y-up (prep_gmr_cache v2)
 FPS = 30
-CLIPS = ["fallAndGetUp1_subject1", "fallAndGetUp2_subject2", "fallAndGetUp3_subject1", "ground1_subject1"]
+CLIPS = ["ground1_subject1"]   # lloyd 0830: crouch/crawl decode check
 
 def load_spec(p):
     d = np.load(p, allow_pickle=True); return SkeletonSpec(str(d["name"]), d["parents"], d["rest_offsets"], [str(n) for n in d["joint_names"]])
