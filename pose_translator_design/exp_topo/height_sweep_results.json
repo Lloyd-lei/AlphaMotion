@@ -1,0 +1,854 @@
+{
+ "ckpt": "/var/tmp/alphamotion/topo_exp/runs/PT_c1dec_reenc_0812",
+ "windows": {
+  "walk": {
+   "clip": "walk3_subject1",
+   "start": 460017
+  },
+  "ground": {
+   "clip": "aiming1_subject4",
+   "start": 11023
+  },
+  "dyn": {
+   "clip": "sprint1_subject4",
+   "start": 402964
+  }
+ },
+ "crouch": {
+  "window": "dyn",
+  "n_frames": 15,
+  "root_height_cm": 57.4
+ },
+ "human_src": {
+  "ground": {
+   "knee": {
+    "mean": 103.62,
+    "p95": 120.16,
+    "max": 129.12
+   },
+   "hip": {
+    "mean": 162.71,
+    "p95": 177.46,
+    "max": 179.7
+   }
+  },
+  "crouch": {
+   "knee": {
+    "mean": 69.36,
+    "p95": 106.97,
+    "max": 115.06
+   },
+   "hip": {
+    "mean": 168.24,
+    "p95": 177.58,
+    "max": 179.92
+   }
+  }
+ },
+ "part2": {
+  "table": [
+   {
+    "name": "hightorque_hi",
+    "height": 293.1,
+    "leg_cm": 27.8,
+    "leg_ratio": 0.0948,
+    "knee_ground": {
+     "mean": 137.9,
+     "p95": 157.2,
+     "max": 162.83
+    },
+    "hip_ground": {
+     "mean": 91.18,
+     "p95": 111.02,
+     "max": 113.81
+    },
+    "gt_knee_ground": {
+     "mean": 129.74,
+     "p95": 166.44,
+     "max": 179.91
+    },
+    "knee_crouch": {
+     "mean": 103.71,
+     "p95": 138.64,
+     "max": 154.48
+    },
+    "hip_crouch": {
+     "mean": 80.36,
+     "p95": 127.67,
+     "max": 130.64
+    },
+    "gt_knee_crouch": {
+     "mean": 101.88,
+     "p95": 149.48,
+     "max": 150.57
+    }
+   },
+   {
+    "name": "booster_k1",
+    "height": 302.5,
+    "leg_cm": 36.3,
+    "leg_ratio": 0.12,
+    "knee_ground": {
+     "mean": 106.31,
+     "p95": 125.8,
+     "max": 127.12
+    },
+    "hip_ground": {
+     "mean": 67.82,
+     "p95": 85.61,
+     "max": 90.44
+    },
+    "gt_knee_ground": {
+     "mean": 102.3,
+     "p95": 120.35,
+     "max": 127.77
+    },
+    "knee_crouch": {
+     "mean": 68.5,
+     "p95": 107.0,
+     "max": 119.46
+    },
+    "hip_crouch": {
+     "mean": 53.51,
+     "p95": 88.08,
+     "max": 92.61
+    },
+    "gt_knee_crouch": {
+     "mean": 67.53,
+     "p95": 104.49,
+     "max": 108.5
+    }
+   },
+   {
+    "name": "fourier_n1",
+    "height": 395.8,
+    "leg_cm": 48.8,
+    "leg_ratio": 0.1233,
+    "knee_ground": {
+     "mean": 102.27,
+     "p95": 124.01,
+     "max": 125.67
+    },
+    "hip_ground": {
+     "mean": 89.26,
+     "p95": 110.72,
+     "max": 115.82
+    },
+    "gt_knee_ground": {
+     "mean": 94.12,
+     "p95": 125.12,
+     "max": 133.52
+    },
+    "knee_crouch": {
+     "mean": 61.66,
+     "p95": 101.45,
+     "max": 119.15
+    },
+    "hip_crouch": {
+     "mean": 63.88,
+     "p95": 103.53,
+     "max": 110.47
+    },
+    "gt_knee_crouch": {
+     "mean": 56.78,
+     "p95": 107.13,
+     "max": 117.33
+    }
+   },
+   {
+    "name": "booster_t1_29dof",
+    "height": 406.1,
+    "leg_cm": 41.5,
+    "leg_ratio": 0.1022,
+    "knee_ground": {
+     "mean": 106.81,
+     "p95": 126.82,
+     "max": 131.12
+    },
+    "hip_ground": {
+     "mean": 90.1,
+     "p95": 106.87,
+     "max": 110.95
+    },
+    "gt_knee_ground": {
+     "mean": 104.01,
+     "p95": 122.84,
+     "max": 130.74
+    },
+    "knee_crouch": {
+     "mean": 69.73,
+     "p95": 105.95,
+     "max": 118.87
+    },
+    "hip_crouch": {
+     "mean": 71.84,
+     "p95": 97.46,
+     "max": 99.69
+    },
+    "gt_knee_crouch": {
+     "mean": 67.6,
+     "p95": 103.05,
+     "max": 109.88
+    }
+   },
+   {
+    "name": "engineai_pm01",
+    "height": 430.2,
+    "leg_cm": 60.2,
+    "leg_ratio": 0.1399,
+    "knee_ground": {
+     "mean": 105.99,
+     "p95": 125.28,
+     "max": 126.29
+    },
+    "hip_ground": {
+     "mean": 93.97,
+     "p95": 113.69,
+     "max": 118.74
+    },
+    "gt_knee_ground": {
+     "mean": 98.74,
+     "p95": 123.02,
+     "max": 131.55
+    },
+    "knee_crouch": {
+     "mean": 68.95,
+     "p95": 105.99,
+     "max": 117.61
+    },
+    "hip_crouch": {
+     "mean": 70.79,
+     "p95": 108.85,
+     "max": 116.06
+    },
+    "gt_knee_crouch": {
+     "mean": 67.78,
+     "p95": 104.08,
+     "max": 112.05
+    }
+   },
+   {
+    "name": "booster_t1",
+    "height": 440.3,
+    "leg_cm": 41.5,
+    "leg_ratio": 0.0943,
+    "knee_ground": {
+     "mean": 105.65,
+     "p95": 124.72,
+     "max": 128.78
+    },
+    "hip_ground": {
+     "mean": 88.25,
+     "p95": 105.29,
+     "max": 109.87
+    },
+    "gt_knee_ground": {
+     "mean": 103.32,
+     "p95": 122.01,
+     "max": 130.79
+    },
+    "knee_crouch": {
+     "mean": 70.53,
+     "p95": 106.24,
+     "max": 120.27
+    },
+    "hip_crouch": {
+     "mean": 72.93,
+     "p95": 99.05,
+     "max": 103.73
+    },
+    "gt_knee_crouch": {
+     "mean": 67.8,
+     "p95": 101.53,
+     "max": 109.11
+    }
+   },
+   {
+    "name": "pnd_adam_lite",
+    "height": 452.0,
+    "leg_cm": 74.1,
+    "leg_ratio": 0.1639,
+    "knee_ground": {
+     "mean": 99.03,
+     "p95": 117.54,
+     "max": 120.85
+    },
+    "hip_ground": {
+     "mean": 68.32,
+     "p95": 86.75,
+     "max": 92.04
+    },
+    "gt_knee_ground": {
+     "mean": 95.49,
+     "p95": 115.18,
+     "max": 124.78
+    },
+    "knee_crouch": {
+     "mean": 63.78,
+     "p95": 101.8,
+     "max": 116.23
+    },
+    "hip_crouch": {
+     "mean": 50.24,
+     "p95": 90.52,
+     "max": 96.58
+    },
+    "gt_knee_crouch": {
+     "mean": 58.73,
+     "p95": 99.95,
+     "max": 110.11
+    }
+   },
+   {
+    "name": "unitree_g1_23dof",
+    "height": 471.6,
+    "leg_cm": 49.4,
+    "leg_ratio": 0.1047,
+    "knee_ground": {
+     "mean": 78.63,
+     "p95": 104.42,
+     "max": 108.31
+    },
+    "hip_ground": {
+     "mean": 80.61,
+     "p95": 103.59,
+     "max": 109.8
+    },
+    "gt_knee_ground": {
+     "mean": 104.16,
+     "p95": 123.44,
+     "max": 135.95
+    },
+    "knee_crouch": {
+     "mean": 48.16,
+     "p95": 93.76,
+     "max": 106.96
+    },
+    "hip_crouch": {
+     "mean": 62.15,
+     "p95": 111.93,
+     "max": 119.96
+    },
+    "gt_knee_crouch": {
+     "mean": 59.27,
+     "p95": 104.64,
+     "max": 111.12
+    }
+   },
+   {
+    "name": "unitree_g1_29dof",
+    "height": 471.6,
+    "leg_cm": 49.4,
+    "leg_ratio": 0.1047,
+    "knee_ground": {
+     "mean": 78.63,
+     "p95": 104.42,
+     "max": 108.31
+    },
+    "hip_ground": {
+     "mean": 80.61,
+     "p95": 103.59,
+     "max": 109.8
+    },
+    "gt_knee_ground": {
+     "mean": 98.15,
+     "p95": 116.77,
+     "max": 128.1
+    },
+    "knee_crouch": {
+     "mean": 48.16,
+     "p95": 93.76,
+     "max": 106.96
+    },
+    "hip_crouch": {
+     "mean": 62.15,
+     "p95": 111.93,
+     "max": 119.96
+    },
+    "gt_knee_crouch": {
+     "mean": 58.6,
+     "p95": 101.51,
+     "max": 115.08
+    }
+   },
+   {
+    "name": "unitree_r1",
+    "height": 472.9,
+    "leg_cm": 47.2,
+    "leg_ratio": 0.0998,
+    "knee_ground": {
+     "mean": 98.81,
+     "p95": 122.24,
+     "max": 125.44
+    },
+    "hip_ground": {
+     "mean": 103.28,
+     "p95": 126.63,
+     "max": 132.79
+    },
+    "gt_knee_ground": {
+     "mean": 90.9,
+     "p95": 116.43,
+     "max": 129.55
+    },
+    "knee_crouch": {
+     "mean": 60.79,
+     "p95": 104.6,
+     "max": 122.23
+    },
+    "hip_crouch": {
+     "mean": 78.31,
+     "p95": 124.65,
+     "max": 131.05
+    },
+    "gt_knee_crouch": {
+     "mean": 64.3,
+     "p95": 107.26,
+     "max": 121.4
+    }
+   },
+   {
+    "name": "fourier_gr3",
+    "height": 494.3,
+    "leg_cm": 74.0,
+    "leg_ratio": 0.1497,
+    "knee_ground": {
+     "mean": 106.45,
+     "p95": 125.27,
+     "max": 127.63
+    },
+    "hip_ground": {
+     "mean": 85.45,
+     "p95": 102.22,
+     "max": 107.48
+    },
+    "gt_knee_ground": {
+     "mean": 105.62,
+     "p95": 127.84,
+     "max": 135.0
+    },
+    "knee_crouch": {
+     "mean": 74.69,
+     "p95": 108.92,
+     "max": 121.07
+    },
+    "hip_crouch": {
+     "mean": 62.89,
+     "p95": 99.71,
+     "max": 105.82
+    },
+    "gt_knee_crouch": {
+     "mean": 73.32,
+     "p95": 112.24,
+     "max": 117.89
+    }
+   },
+   {
+    "name": "unitree_h1",
+    "height": 509.9,
+    "leg_cm": 80.0,
+    "leg_ratio": 0.1569,
+    "knee_ground": {
+     "mean": 109.66,
+     "p95": 126.9,
+     "max": 127.91
+    },
+    "hip_ground": {
+     "mean": 80.66,
+     "p95": 100.86,
+     "max": 107.38
+    },
+    "gt_knee_ground": {
+     "mean": 110.27,
+     "p95": 117.46,
+     "max": 117.46
+    },
+    "knee_crouch": {
+     "mean": 78.02,
+     "p95": 114.71,
+     "max": 121.71
+    },
+    "hip_crouch": {
+     "mean": 60.23,
+     "p95": 101.4,
+     "max": 109.19
+    },
+    "gt_knee_crouch": {
+     "mean": 87.1,
+     "p95": 117.46,
+     "max": 117.46
+    }
+   },
+   {
+    "name": "kuavo_s45",
+    "height": 530.0,
+    "leg_cm": 63.0,
+    "leg_ratio": 0.1189,
+    "knee_ground": {
+     "mean": 97.5,
+     "p95": 134.2,
+     "max": 140.41
+    },
+    "hip_ground": {
+     "mean": 68.26,
+     "p95": 96.35,
+     "max": 101.03
+    },
+    "gt_knee_ground": {
+     "mean": 92.39,
+     "p95": 132.94,
+     "max": 145.0
+    },
+    "knee_crouch": {
+     "mean": 59.44,
+     "p95": 121.98,
+     "max": 132.72
+    },
+    "hip_crouch": {
+     "mean": 50.05,
+     "p95": 90.18,
+     "max": 98.21
+    },
+    "gt_knee_crouch": {
+     "mean": 57.31,
+     "p95": 97.67,
+     "max": 129.58
+    }
+   },
+   {
+    "name": "unitree_h1_2",
+    "height": 536.5,
+    "leg_cm": 80.0,
+    "leg_ratio": 0.1491,
+    "knee_ground": {
+     "mean": 98.02,
+     "p95": 116.25,
+     "max": 119.01
+    },
+    "hip_ground": {
+     "mean": 97.96,
+     "p95": 119.46,
+     "max": 124.44
+    },
+    "gt_knee_ground": {
+     "mean": 93.18,
+     "p95": 117.41,
+     "max": 125.48
+    },
+    "knee_crouch": {
+     "mean": 66.26,
+     "p95": 104.98,
+     "max": 118.58
+    },
+    "hip_crouch": {
+     "mean": 75.01,
+     "p95": 117.52,
+     "max": 124.01
+    },
+    "gt_knee_crouch": {
+     "mean": 72.25,
+     "p95": 112.16,
+     "max": 125.48
+    }
+   },
+   {
+    "name": "pal_talos",
+    "height": 558.8,
+    "leg_cm": 70.5,
+    "leg_ratio": 0.1262,
+    "knee_ground": {
+     "mean": 96.41,
+     "p95": 114.08,
+     "max": 118.32
+    },
+    "hip_ground": {
+     "mean": 47.5,
+     "p95": 62.93,
+     "max": 67.51
+    },
+    "gt_knee_ground": {
+     "mean": 101.91,
+     "p95": 139.43,
+     "max": 150.0
+    },
+    "knee_crouch": {
+     "mean": 33.9,
+     "p95": 82.75,
+     "max": 94.64
+    },
+    "hip_crouch": {
+     "mean": 20.19,
+     "p95": 35.36,
+     "max": 39.48
+    },
+    "gt_knee_crouch": {
+     "mean": 71.47,
+     "p95": 109.6,
+     "max": 138.58
+    }
+   },
+   {
+    "name": "unitree_h2",
+    "height": 569.0,
+    "leg_cm": 81.5,
+    "leg_ratio": 0.1432,
+    "knee_ground": {
+     "mean": 97.86,
+     "p95": 124.45,
+     "max": 128.69
+    },
+    "hip_ground": {
+     "mean": 67.67,
+     "p95": 85.59,
+     "max": 91.06
+    },
+    "gt_knee_ground": {
+     "mean": 90.89,
+     "p95": 119.37,
+     "max": 126.01
+    },
+    "knee_crouch": {
+     "mean": 57.83,
+     "p95": 102.38,
+     "max": 117.81
+    },
+    "hip_crouch": {
+     "mean": 51.82,
+     "p95": 94.62,
+     "max": 100.22
+    },
+    "gt_knee_crouch": {
+     "mean": 60.16,
+     "p95": 108.21,
+     "max": 122.26
+    }
+   },
+   {
+    "name": "tienkung",
+    "height": 575.4,
+    "leg_cm": 70.1,
+    "leg_ratio": 0.1218,
+    "knee_ground": {
+     "mean": 111.44,
+     "p95": 130.48,
+     "max": 131.91
+    },
+    "hip_ground": {
+     "mean": 46.41,
+     "p95": 63.23,
+     "max": 67.89
+    },
+    "gt_knee_ground": {
+     "mean": 112.4,
+     "p95": 134.06,
+     "max": 136.94
+    },
+    "knee_crouch": {
+     "mean": 84.06,
+     "p95": 117.07,
+     "max": 127.51
+    },
+    "hip_crouch": {
+     "mean": 45.85,
+     "p95": 74.29,
+     "max": 76.96
+    },
+    "gt_knee_crouch": {
+     "mean": 84.69,
+     "p95": 122.18,
+     "max": 130.23
+    }
+   }
+  ],
+  "corr": {
+   "ground": {
+    "knee_vs_height": -0.445,
+    "knee_vs_legratio": -0.038,
+    "hip_vs_height": -0.41,
+    "kneeMinusGT_vs_height": -0.206
+   },
+   "crouch": {
+    "knee_vs_height": -0.425,
+    "knee_vs_legratio": -0.028,
+    "hip_vs_height": -0.479,
+    "kneeMinusGT_vs_height": -0.426
+   }
+  }
+ },
+ "part1": {
+  "decoded_preproj": {
+   "knee": {
+    "mean": 78.63,
+    "p95": 104.42,
+    "max": 108.31
+   },
+   "hip": {
+    "mean": 80.61,
+    "p95": 103.59,
+    "max": 109.8
+   }
+  },
+  "cache_vs_gmr_stock_maxdiff": 0.0,
+  "cache_vs_ufo_stock_maxdiff": 0.37802,
+  "gmr_stock": {
+   "knee_flex": {
+    "mean": 84.08,
+    "p95": 101.88,
+    "max": 103.48
+   },
+   "hip_flex": {
+    "mean": 84.04,
+    "p95": 92.14,
+    "max": 98.29
+   },
+   "knee_q_deg": {
+    "mean": 84.08,
+    "p95": 101.88,
+    "max": 103.48
+   },
+   "hip_pitch_q_deg": {
+    "mean": -82.15,
+    "min": -89.95,
+    "max": -51.24
+   },
+   "fk_gap_deg_mean": 9.65
+  },
+  "ufo_stock": {
+   "knee_flex": {
+    "mean": 86.75,
+    "p95": 111.44,
+    "max": 113.52
+   },
+   "hip_flex": {
+    "mean": 88.63,
+    "p95": 108.33,
+    "max": 112.54
+   },
+   "knee_q_deg": {
+    "mean": 86.75,
+    "p95": 111.44,
+    "max": 113.52
+   },
+   "hip_pitch_q_deg": {
+    "mean": -87.05,
+    "min": -112.88,
+    "max": -51.24
+   },
+   "fk_gap_deg_mean": 9.25
+  },
+  "max_q_diff_deg": 22.926,
+  "mean_q_diff_deg": 0.1762
+ },
+ "part3": {
+  "reach_g1": 87.43,
+  "scales": [
+   {
+    "scale": 0.9,
+    "height": 424.5,
+    "reach": 78.68,
+    "fk_linearity_err_cm": 1.5e-05,
+    "knee_ground": {
+     "mean": 80.75,
+     "p95": 105.49,
+     "max": 109.27
+    },
+    "hip_ground": {
+     "mean": 84.61,
+     "p95": 107.32,
+     "max": 113.08
+    },
+    "knee_crouch": {
+     "mean": 49.0,
+     "p95": 93.81,
+     "max": 107.22
+    },
+    "hip_crouch": {
+     "mean": 63.91,
+     "p95": 112.66,
+     "max": 120.52
+    }
+   },
+   {
+    "scale": 1.0,
+    "height": 471.6,
+    "reach": 87.43,
+    "fk_linearity_err_cm": 0.0,
+    "knee_ground": {
+     "mean": 78.63,
+     "p95": 104.42,
+     "max": 108.31
+    },
+    "hip_ground": {
+     "mean": 80.61,
+     "p95": 103.59,
+     "max": 109.8
+    },
+    "knee_crouch": {
+     "mean": 48.16,
+     "p95": 93.76,
+     "max": 106.96
+    },
+    "hip_crouch": {
+     "mean": 62.15,
+     "p95": 111.93,
+     "max": 119.96
+    },
+    "equals_real_g1": true
+   },
+   {
+    "scale": 1.1,
+    "height": 518.8,
+    "reach": 96.17,
+    "fk_linearity_err_cm": 2.3e-05,
+    "knee_ground": {
+     "mean": 76.14,
+     "p95": 102.76,
+     "max": 106.84
+    },
+    "hip_ground": {
+     "mean": 76.29,
+     "p95": 99.37,
+     "max": 106.12
+    },
+    "knee_crouch": {
+     "mean": 47.37,
+     "p95": 93.7,
+     "max": 106.72
+    },
+    "hip_crouch": {
+     "mean": 60.51,
+     "p95": 110.91,
+     "max": 119.11
+    }
+   },
+   {
+    "scale": 1.2,
+    "height": 565.9,
+    "reach": 104.91,
+    "fk_linearity_err_cm": 2.3e-05,
+    "knee_ground": {
+     "mean": 73.21,
+     "p95": 100.77,
+     "max": 104.75
+    },
+    "hip_ground": {
+     "mean": 71.73,
+     "p95": 94.71,
+     "max": 102.05
+    },
+    "knee_crouch": {
+     "mean": 46.56,
+     "p95": 93.49,
+     "max": 106.37
+    },
+    "hip_crouch": {
+     "mean": 59.04,
+     "p95": 109.63,
+     "max": 117.93
+    }
+   }
+  ],
+  "monotone_knee_ground": false,
+  "monotone_knee_crouch": false
+ }
+}

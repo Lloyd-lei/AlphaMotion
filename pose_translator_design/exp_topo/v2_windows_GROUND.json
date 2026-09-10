@@ -1,0 +1,127 @@
+{
+ "cache": "/var/tmp/alphamotion/topo_exp/cache_xwbc_lafan",
+ "T": 90,
+ "n_win": 24,
+ "wset": "GROUND",
+ "holdout": false,
+ "val_clips": [
+  "aiming1_subject4",
+  "aiming2_subject3",
+  "dance2_subject3",
+  "fight1_subject5",
+  "sprint1_subject2",
+  "sprint1_subject4",
+  "walk3_subject1"
+ ],
+ "clips_used": [
+  "fallAndGetUp1_subject1",
+  "fallAndGetUp1_subject4",
+  "fallAndGetUp1_subject5",
+  "fallAndGetUp2_subject3",
+  "ground1_subject1",
+  "ground1_subject4",
+  "ground1_subject5",
+  "ground2_subject3",
+  "pushAndFall1_subject4",
+  "pushAndStumble1_subject2",
+  "pushAndStumble1_subject5"
+ ],
+ "windows": [
+  {
+   "clip": "pushAndStumble1_subject2",
+   "start": 348266
+  },
+  {
+   "clip": "ground1_subject5",
+   "start": 163078
+  },
+  {
+   "clip": "fallAndGetUp2_subject3",
+   "start": 107811
+  },
+  {
+   "clip": "fallAndGetUp1_subject4",
+   "start": 92686
+  },
+  {
+   "clip": "fallAndGetUp1_subject5",
+   "start": 101681
+  },
+  {
+   "clip": "ground2_subject3",
+   "start": 177096
+  },
+  {
+   "clip": "ground1_subject5",
+   "start": 164645
+  },
+  {
+   "clip": "pushAndStumble1_subject5",
+   "start": 362486
+  },
+  {
+   "clip": "ground2_subject3",
+   "start": 175081
+  },
+  {
+   "clip": "ground1_subject5",
+   "start": 166173
+  },
+  {
+   "clip": "fallAndGetUp2_subject3",
+   "start": 111552
+  },
+  {
+   "clip": "ground2_subject3",
+   "start": 172128
+  },
+  {
+   "clip": "ground1_subject1",
+   "start": 156329
+  },
+  {
+   "clip": "ground1_subject5",
+   "start": 161980
+  },
+  {
+   "clip": "pushAndFall1_subject4",
+   "start": 342585
+  },
+  {
+   "clip": "pushAndStumble1_subject2",
+   "start": 345170
+  },
+  {
+   "clip": "fallAndGetUp1_subject4",
+   "start": 96882
+  },
+  {
+   "clip": "fallAndGetUp1_subject1",
+   "start": 90242
+  },
+  {
+   "clip": "fallAndGetUp1_subject4",
+   "start": 94090
+  },
+  {
+   "clip": "ground1_subject4",
+   "start": 159048
+  },
+  {
+   "clip": "ground1_subject1",
+   "start": 152473
+  },
+  {
+   "clip": "fallAndGetUp1_subject1",
+   "start": 88175
+  },
+  {
+   "clip": "fallAndGetUp1_subject1",
+   "start": 90882
+  },
+  {
+   "clip": "ground1_subject5",
+   "start": 164834
+  }
+ ]
+}

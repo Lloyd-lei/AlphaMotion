@@ -1,0 +1,121 @@
+{
+ "cache": "/var/tmp/alphamotion/topo_exp/cache_xwbc_lafan",
+ "T": 90,
+ "n_win": 24,
+ "heldout": false,
+ "note": "\u8bad\u7ec3\u96c6\u5185\u8003\u8bd5: LAFAN \u5730\u9762\u7247\u6bb5\u4e0d\u5728 val \u5212\u5206\u91cc",
+ "val_clips": [
+  "fallAndGetUp1_subject1",
+  "fallAndGetUp1_subject4",
+  "fallAndGetUp1_subject5",
+  "fallAndGetUp2_subject3",
+  "fallAndGetUp3_subject1",
+  "ground1_subject4",
+  "ground1_subject5",
+  "ground2_subject2",
+  "ground2_subject3",
+  "pushAndFall1_subject1",
+  "pushAndFall1_subject4",
+  "pushAndStumble1_subject2",
+  "pushAndStumble1_subject3",
+  "pushAndStumble1_subject5"
+ ],
+ "windows": [
+  {
+   "clip": "pushAndStumble1_subject5",
+   "start": 361786
+  },
+  {
+   "clip": "ground2_subject3",
+   "start": 177011
+  },
+  {
+   "clip": "ground2_subject2",
+   "start": 170799
+  },
+  {
+   "clip": "pushAndStumble1_subject2",
+   "start": 345503
+  },
+  {
+   "clip": "fallAndGetUp1_subject1",
+   "start": 89047
+  },
+  {
+   "clip": "fallAndGetUp2_subject3",
+   "start": 111830
+  },
+  {
+   "clip": "pushAndStumble1_subject3",
+   "start": 350827
+  },
+  {
+   "clip": "ground1_subject4",
+   "start": 160902
+  },
+  {
+   "clip": "fallAndGetUp1_subject5",
+   "start": 101601
+  },
+  {
+   "clip": "fallAndGetUp1_subject4",
+   "start": 94924
+  },
+  {
+   "clip": "pushAndStumble1_subject2",
+   "start": 346025
+  },
+  {
+   "clip": "fallAndGetUp3_subject1",
+   "start": 113359
+  },
+  {
+   "clip": "pushAndFall1_subject1",
+   "start": 335316
+  },
+  {
+   "clip": "pushAndStumble1_subject5",
+   "start": 360578
+  },
+  {
+   "clip": "ground1_subject4",
+   "start": 159429
+  },
+  {
+   "clip": "ground2_subject2",
+   "start": 169586
+  },
+  {
+   "clip": "ground1_subject5",
+   "start": 166454
+  },
+  {
+   "clip": "pushAndFall1_subject4",
+   "start": 342892
+  },
+  {
+   "clip": "pushAndFall1_subject1",
+   "start": 337104
+  },
+  {
+   "clip": "fallAndGetUp3_subject1",
+   "start": 115473
+  },
+  {
+   "clip": "ground1_subject4",
+   "start": 158084
+  },
+  {
+   "clip": "pushAndStumble1_subject2",
+   "start": 345067
+  },
+  {
+   "clip": "pushAndStumble1_subject2",
+   "start": 348102
+  },
+  {
+   "clip": "fallAndGetUp1_subject4",
+   "start": 92822
+  }
+ ]
+}

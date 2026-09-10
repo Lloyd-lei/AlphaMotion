@@ -1,0 +1,112 @@
+{
+ "cache": "/var/tmp/alphamotion/topo_exp/cache_xwbc_lafan",
+ "T": 90,
+ "n_win": 24,
+ "val_clips": [
+  "aiming1_subject4",
+  "aiming2_subject3",
+  "dance2_subject3",
+  "fight1_subject5",
+  "sprint1_subject2",
+  "sprint1_subject4",
+  "walk3_subject1"
+ ],
+ "windows": [
+  {
+   "clip": "sprint1_subject4",
+   "start": 406702
+  },
+  {
+   "clip": "fight1_subject5",
+   "start": 132245
+  },
+  {
+   "clip": "dance2_subject3",
+   "start": 67523
+  },
+  {
+   "clip": "aiming1_subject4",
+   "start": 7300
+  },
+  {
+   "clip": "aiming2_subject3",
+   "start": 30922
+  },
+  {
+   "clip": "sprint1_subject2",
+   "start": 400744
+  },
+  {
+   "clip": "fight1_subject5",
+   "start": 134689
+  },
+  {
+   "clip": "walk3_subject1",
+   "start": 460017
+  },
+  {
+   "clip": "sprint1_subject2",
+   "start": 397752
+  },
+  {
+   "clip": "fight1_subject5",
+   "start": 137072
+  },
+  {
+   "clip": "aiming2_subject3",
+   "start": 30945
+  },
+  {
+   "clip": "sprint1_subject2",
+   "start": 393370
+  },
+  {
+   "clip": "dance2_subject3",
+   "start": 72977
+  },
+  {
+   "clip": "fight1_subject5",
+   "start": 130531
+  },
+  {
+   "clip": "sprint1_subject4",
+   "start": 407453
+  },
+  {
+   "clip": "sprint1_subject4",
+   "start": 402964
+  },
+  {
+   "clip": "aiming1_subject4",
+   "start": 13305
+  },
+  {
+   "clip": "aiming1_subject4",
+   "start": 11023
+  },
+  {
+   "clip": "aiming1_subject4",
+   "start": 9308
+  },
+  {
+   "clip": "fight1_subject5",
+   "start": 133355
+  },
+  {
+   "clip": "dance2_subject3",
+   "start": 67439
+  },
+  {
+   "clip": "aiming1_subject4",
+   "start": 8064
+  },
+  {
+   "clip": "aiming1_subject4",
+   "start": 11939
+  },
+  {
+   "clip": "fight1_subject5",
+   "start": 134984
+  }
+ ]
+}
