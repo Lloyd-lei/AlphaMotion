@@ -1,0 +1,171 @@
+{
+ "final": {
+  "final_sat_w5_90_8": {
+   "proj_h": 221.5,
+   "keep_measured": 0.726,
+   "w5_p10": 0.974,
+   "share_w5_lt70": 0.002,
+   "lost": 0.0032,
+   "release": 0.99,
+   "cycle": 0.967,
+   "ratio_used": {
+    "carry": 0.767,
+    "whole_other": 0.595,
+    "sit": 0.483,
+    "push_pull": 0.815,
+    "kick_hit": 0.77,
+    "upper_manip": 0.655,
+    "lift_place": 0.653,
+    "step": 0.717,
+    "throw": 0.77,
+    "ground": 0.708,
+    "other_other": 0.708,
+    "other_gesture_social": 0.708,
+    "locomotion": 0.708,
+    "other_idle_posture": 0.708
+   }
+  },
+  "final_satcap_w5_90_8": {
+   "proj_h": 160.4,
+   "keep_measured": 0.536,
+   "w5_p10": 0.543,
+   "share_w5_lt70": 0.158,
+   "lost": 0.0553,
+   "release": 0.946,
+   "cycle": 0.94,
+   "ratio_used": {
+    "carry": 0.521,
+    "whole_other": 0.467,
+    "sit": 0.429,
+    "push_pull": 0.541,
+    "kick_hit": 0.535,
+    "upper_manip": 0.488,
+    "lift_place": 0.49,
+    "step": 0.515,
+    "throw": 0.555,
+    "ground": 0.505,
+    "other_other": 0.505,
+    "other_gesture_social": 0.505,
+    "locomotion": 0.505,
+    "other_idle_posture": 0.505
+   }
+  },
+  "final_fix_20_8": {
+   "proj_h": 142.6,
+   "keep_measured": 0.476,
+   "w5_p10": 0.384,
+   "share_w5_lt70": 0.233,
+   "lost": 0.1041,
+   "release": 0.942,
+   "cycle": 0.92,
+   "ratio_used": {}
+  },
+  "final_fix_30_8": {
+   "proj_h": 190.5,
+   "keep_measured": 0.624,
+   "w5_p10": 0.543,
+   "share_w5_lt70": 0.158,
+   "lost": 0.0537,
+   "release": 0.947,
+   "cycle": 0.959,
+   "ratio_used": {}
+  },
+  "final_oa_20_8": {
+   "proj_h": 169.7,
+   "keep_measured": 0.562,
+   "w5_p10": 0.503,
+   "share_w5_lt70": 0.176,
+   "lost": 0.0665,
+   "release": 0.951,
+   "cycle": 0.958,
+   "ratio_used": {
+    "carry": 0.522,
+    "whole_other": 0.537,
+    "sit": 0.54,
+    "push_pull": 0.543,
+    "kick_hit": 0.615,
+    "upper_manip": 0.534,
+    "lift_place": 0.523,
+    "step": 0.55,
+    "throw": 0.544,
+    "ground": 0.534,
+    "other_other": 0.534,
+    "other_gesture_social": 0.534,
+    "locomotion": 0.534,
+    "other_idle_posture": 0.534
+   }
+  },
+  "final_sat_f5_95_8": {
+   "proj_h": 221.0,
+   "keep_measured": 0.728,
+   "w5_p10": 0.9,
+   "share_w5_lt70": 0.022,
+   "lost": 0.0127,
+   "release": 0.986,
+   "cycle": 0.962,
+   "ratio_used": {
+    "carry": 0.763,
+    "whole_other": 0.619,
+    "sit": 0.487,
+    "push_pull": 0.784,
+    "kick_hit": 0.659,
+    "upper_manip": 0.69,
+    "lift_place": 0.645,
+    "step": 0.652,
+    "throw": 0.729,
+    "ground": 0.71,
+    "other_other": 0.71,
+    "other_gesture_social": 0.71,
+    "locomotion": 0.71,
+    "other_idle_posture": 0.71
+   }
+  },
+  "fix_15_0": {
+   "proj_h": 73.4,
+   "keep_measured": 0.232,
+   "w5_p10": 0.1,
+   "share_w5_lt70": 0.49,
+   "lost": 0.3145,
+   "release": 0.206,
+   "cycle": 0.784,
+   "ratio_used": {}
+  },
+  "fix_20_0": {
+   "proj_h": 97.9,
+   "keep_measured": 0.309,
+   "w5_p10": 0.199,
+   "share_w5_lt70": 0.369,
+   "lost": 0.2287,
+   "release": 0.242,
+   "cycle": 0.87,
+   "ratio_used": {}
+  },
+  "fix_30_0": {
+   "proj_h": 146.9,
+   "keep_measured": 0.463,
+   "w5_p10": 0.344,
+   "share_w5_lt70": 0.261,
+   "lost": 0.1511,
+   "release": 0.275,
+   "cycle": 0.93,
+   "ratio_used": {}
+  }
+ },
+ "full_nonrep_h": 8.3,
+ "full_rep_h": {
+  "carry": 27.87,
+  "whole_other": 12.46,
+  "sit": 1.41,
+  "push_pull": 21.4,
+  "kick_hit": 13.6,
+  "upper_manip": 41.2,
+  "lift_place": 11.42,
+  "step": 0.89,
+  "throw": 4.67,
+  "ground": 7.48,
+  "other_other": 29.41,
+  "other_gesture_social": 12.01,
+  "locomotion": 106.24,
+  "other_idle_posture": 10.36
+ }
+}

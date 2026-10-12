@@ -1,0 +1,600 @@
+{
+ "schema": "umr_factory per-robot pipeline v2",
+ "robot": "unitree_g1_23dof",
+ "frozen": "2026-10-05 00:10:15",
+ "engine": {
+  "reference": "CPU umrf (umr_factory_code: pipeline.run_umr -> postprocess), UMR d1cdaed",
+  "runner": "/home/arenalabs/umr_factory_data/robots/unitree_g1_23dof/pipeline/run_qa.py",
+  "gpu_engine": "/home/arenalabs/umr_gpu (separate agent; must reproduce this config)",
+  "umr_python": "/var/tmp/alphamotion/umr_factory/umr/env/bin/python",
+  "smplx_device": "cpu"
+ },
+ "assets": {
+  "mjcf": "/home/arenalabs/umr_factory_data/robots/unitree_g1_23dof/unitree_g1_23dof.xml",
+  "mjcf_sha256": "de7a52e0894364a94b691066ccead92ccb5cf4197758e626c49e4fb0301ebf6c",
+  "source_mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/unitree_g1/g1_mocap_29dof.xml",
+  "nq": 30,
+  "nv": 29,
+  "surface": "/home/arenalabs/umr_factory_data/robots/unitree_g1_23dof/surface.npz",
+  "surface_sha256": "183bac15261f90e5c918b095844ef089c191d64b113f8dc2ca65305593c2e3f4",
+  "n_dense_points": 4096,
+  "n_hull_vertices": 43315,
+  "staging": "/home/arenalabs/umr_factory_data/robots/unitree_g1_23dof/staging.json",
+  "staging_sha256": "f67b72a6c2a678efcb62d4fe6084223130276390589322fb6f89aec153505d89",
+  "umr_robot_json": "/home/arenalabs/umr_factory_data/robots/unitree_g1_23dof/umr_robot.json",
+  "contact_patches": "/home/arenalabs/umr_factory_data/robots/unitree_g1_23dof/pipeline/contact_patches.npz",
+  "contact_patches_sha256": "06afddb12d31c5c1fd82f3a3d3f0c885b4ed5276b559ee357e0a9136ff397e49",
+  "asset_check": "/home/arenalabs/umr_factory_data/qa/unitree_g1_23dof/assets/assets_check.json"
+ },
+ "scale_and_correspondence": {
+  "smpl_scale": "per clip by UMR = robot_height / human_height (robot_height 1.32246 m T-pose); dance 0.7155, box 0.7699 (stored per output as human_scale)",
+  "point_cloud_center": "body:waist_yaw_link",
+  "bbox_center_ratio": 0.598916,
+  "smplx_plain": {
+   "dataset": "/home/arenalabs/umr_factory_data/corr/unitree_g1_23dof/smplx/correspondence_dataset.npz",
+   "slots": "/home/arenalabs/umr_factory_data/corr/unitree_g1_23dof/smplx/train/correspondence_slots_final.npz",
+   "slots_sha256": "88f1d2772ff7ce4a",
+   "names": [
+    "smplx_neutral_betas_c4eb7419e9",
+    "unitree_g1_23dof"
+   ]
+  },
+  "shared_beta0": {
+   "dataset": "/home/arenalabs/umr_factory_data/corr/unitree_g1_23dof/beta0/correspondence_dataset.npz",
+   "slots": "/home/arenalabs/umr_factory_data/corr/unitree_g1_23dof/beta0/train/correspondence_slots_final.npz",
+   "slots_sha256": "b4c31ad67a20da9b",
+   "names": [
+    "smplx_neutral_betas_b80de5d138",
+    "unitree_g1_23dof"
+   ],
+   "use": "HOI / HiPHI / any SMPL-X body shape (no per-clip GPU training)"
+  }
+ },
+ "regions": {
+  "names": [
+   "trunk",
+   "L_thigh",
+   "R_thigh",
+   "L_shin",
+   "R_shin",
+   "L_foot",
+   "R_foot",
+   "L_upper_arm",
+   "R_upper_arm",
+   "L_forearm",
+   "R_forearm",
+   "L_hand",
+   "R_hand"
+  ],
+  "region_to_bodies": {
+   "trunk": [
+    "head_link",
+    "head_mocap",
+    "imu_in_torso",
+    "pelvis",
+    "pelvis_contour_link",
+    "torso_link",
+    "waist_roll_link",
+    "waist_yaw_link"
+   ],
+   "L_thigh": [
+    "left_hip_pitch_link",
+    "left_hip_roll_link",
+    "left_hip_yaw_link"
+   ],
+   "R_thigh": [
+    "right_hip_pitch_link",
+    "right_hip_roll_link",
+    "right_hip_yaw_link"
+   ],
+   "L_shin": [
+    "left_knee_link"
+   ],
+   "R_shin": [
+    "right_knee_link"
+   ],
+   "L_foot": [
+    "left_ankle_pitch_link",
+    "left_ankle_roll_link",
+    "left_toe_link"
+   ],
+   "R_foot": [
+    "right_ankle_pitch_link",
+    "right_ankle_roll_link",
+    "right_toe_link"
+   ],
+   "L_upper_arm": [
+    "left_shoulder_pitch_link",
+    "left_shoulder_roll_link",
+    "left_shoulder_yaw_link"
+   ],
+   "R_upper_arm": [
+    "right_shoulder_pitch_link",
+    "right_shoulder_roll_link",
+    "right_shoulder_yaw_link"
+   ],
+   "L_forearm": [
+    "left_elbow_link"
+   ],
+   "R_forearm": [
+    "right_elbow_link"
+   ],
+   "L_hand": [
+    "left_rubber_hand",
+    "left_wrist_pitch_link",
+    "left_wrist_roll_link",
+    "left_wrist_yaw_link"
+   ],
+   "R_hand": [
+    "right_rubber_hand",
+    "right_wrist_pitch_link",
+    "right_wrist_roll_link",
+    "right_wrist_yaw_link"
+   ]
+  },
+  "n_points": {
+   "trunk": 1268,
+   "L_thigh": 504,
+   "R_thigh": 503,
+   "L_shin": 284,
+   "R_shin": 280,
+   "L_foot": 151,
+   "R_foot": 148,
+   "L_upper_arm": 222,
+   "R_upper_arm": 223,
+   "L_forearm": 64,
+   "R_forearm": 68,
+   "L_hand": 191,
+   "R_hand": 190
+  },
+  "human_side": "SMPL-X part segmentation -> same 13 regions (umrf.surface.SMPLX_PART_REGION)"
+ },
+ "contact": {
+  "capable_regions": {
+   "ground": [
+    "L_foot",
+    "R_foot",
+    "L_shin",
+    "R_shin",
+    "L_thigh",
+    "R_thigh",
+    "L_hand",
+    "R_hand",
+    "L_forearm",
+    "R_forearm",
+    "L_upper_arm",
+    "R_upper_arm",
+    "trunk"
+   ],
+   "object": [
+    "L_hand",
+    "R_hand",
+    "L_forearm",
+    "R_forearm",
+    "L_upper_arm",
+    "R_upper_arm",
+    "trunk",
+    "L_thigh",
+    "R_thigh",
+    "L_foot",
+    "R_foot",
+    "L_shin",
+    "R_shin"
+   ]
+  },
+  "patches": {
+   "L_sole": {
+    "n_points": 87,
+    "rule": "L_foot points within 20 mm of the sole plane at rest (sole + rim/edges: point/edge contact allowed)"
+   },
+   "R_sole": {
+    "n_points": 90,
+    "rule": "same, right"
+   },
+   "L_knee": {
+    "n_points": 178,
+    "rule": "L_shin/L_thigh points within 8 cm of the knee joint anchor"
+   },
+   "R_knee": {
+    "n_points": 170,
+    "rule": "same, right"
+   },
+   "L_shin_front": {
+    "n_points": 137,
+    "rule": "L_shin points in front of the knee-ankle mid line (kneeling)"
+   },
+   "R_shin_front": {
+    "n_points": 141,
+    "rule": "same, right"
+   },
+   "L_elbow": {
+    "n_points": 95,
+    "rule": "upper-arm/forearm points within 6 cm of the elbow anchor"
+   },
+   "R_elbow": {
+    "n_points": 92,
+    "rule": "same, right"
+   },
+   "L_hand": {
+    "n_points": 191,
+    "rule": "all L_hand points (wrist roll/pitch/yaw links + fixed rubber hand)"
+   },
+   "R_hand": {
+    "n_points": 190,
+    "rule": "same, right"
+   },
+   "pelvis": {
+    "n_points": 238,
+    "rule": "trunk points on pelvis + pelvis_contour_link (sitting/lying)"
+   },
+   "torso": {
+    "n_points": 756,
+    "rule": "trunk points on torso_link except head mesh (lying prone/supine, box against chest)"
+   },
+   "head": {
+    "n_points": 274,
+    "rule": "head mesh points (contact allowed only if the human head touches)"
+   }
+  },
+  "patch_point_indices": "contact_patches.npz (int32 indices into surface.npz points)",
+  "expected_patch_per_region": {
+   "L_foot": "L_sole",
+   "R_foot": "R_sole",
+   "L_shin": "L_knee|L_shin_front",
+   "R_shin": "R_knee|R_shin_front",
+   "L_hand": "L_hand",
+   "R_hand": "R_hand",
+   "L_forearm": "L_elbow",
+   "R_forearm": "R_elbow",
+   "trunk": "pelvis|torso|head"
+  },
+  "sole_point_spacing_mm_p50": 14.1,
+  "known_resolution_limit": "87/90 dense points per sole (14 mm spacing): tilted heel/toe/edge contacts leave the nearest DENSE point 0.5-4 mm above the floor while the mesh touches; see qa report"
+ },
+ "self_collision": {
+  "staged_exclude_list": [],
+  "mjcf_nexclude": 0,
+  "filterparent": true,
+  "mujoco_implicit_filters": [
+   {
+    "bodies": [
+     "left_ankle_pitch_link",
+     "left_ankle_roll_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "left_ankle_pitch_link",
+     "left_knee_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "left_ankle_roll_link",
+     "left_ankle_roll_link"
+    ],
+    "reason": "same weld body (rigidly attached: removed/locked joint or same link)"
+   },
+   {
+    "bodies": [
+     "left_elbow_link",
+     "left_shoulder_yaw_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "left_elbow_link",
+     "left_wrist_pitch_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "left_elbow_link",
+     "left_wrist_roll_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "left_elbow_link",
+     "left_wrist_yaw_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "left_hip_pitch_link",
+     "left_hip_roll_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "left_hip_pitch_link",
+     "pelvis"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "left_hip_roll_link",
+     "left_hip_yaw_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "left_hip_yaw_link",
+     "left_knee_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "left_shoulder_pitch_link",
+     "left_shoulder_roll_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "left_shoulder_pitch_link",
+     "torso_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "left_shoulder_roll_link",
+     "left_shoulder_yaw_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "left_wrist_pitch_link",
+     "left_wrist_roll_link"
+    ],
+    "reason": "same weld body (rigidly attached: removed/locked joint or same link)"
+   },
+   {
+    "bodies": [
+     "left_wrist_pitch_link",
+     "left_wrist_yaw_link"
+    ],
+    "reason": "same weld body (rigidly attached: removed/locked joint or same link)"
+   },
+   {
+    "bodies": [
+     "left_wrist_roll_link",
+     "left_wrist_yaw_link"
+    ],
+    "reason": "same weld body (rigidly attached: removed/locked joint or same link)"
+   },
+   {
+    "bodies": [
+     "pelvis",
+     "right_hip_pitch_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "pelvis",
+     "torso_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "right_ankle_pitch_link",
+     "right_ankle_roll_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "right_ankle_pitch_link",
+     "right_knee_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "right_ankle_roll_link",
+     "right_ankle_roll_link"
+    ],
+    "reason": "same weld body (rigidly attached: removed/locked joint or same link)"
+   },
+   {
+    "bodies": [
+     "right_elbow_link",
+     "right_shoulder_yaw_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "right_elbow_link",
+     "right_wrist_pitch_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "right_elbow_link",
+     "right_wrist_roll_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "right_elbow_link",
+     "right_wrist_yaw_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "right_hip_pitch_link",
+     "right_hip_roll_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "right_hip_roll_link",
+     "right_hip_yaw_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "right_hip_yaw_link",
+     "right_knee_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "right_shoulder_pitch_link",
+     "right_shoulder_roll_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "right_shoulder_pitch_link",
+     "torso_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "right_shoulder_roll_link",
+     "right_shoulder_yaw_link"
+    ],
+    "reason": "parent-child across one joint (MuJoCo filterparent)"
+   },
+   {
+    "bodies": [
+     "right_wrist_pitch_link",
+     "right_wrist_roll_link"
+    ],
+    "reason": "same weld body (rigidly attached: removed/locked joint or same link)"
+   },
+   {
+    "bodies": [
+     "right_wrist_pitch_link",
+     "right_wrist_yaw_link"
+    ],
+    "reason": "same weld body (rigidly attached: removed/locked joint or same link)"
+   },
+   {
+    "bodies": [
+     "right_wrist_roll_link",
+     "right_wrist_yaw_link"
+    ],
+    "reason": "same weld body (rigidly attached: removed/locked joint or same link)"
+   },
+   {
+    "bodies": [
+     "torso_link",
+     "torso_link"
+    ],
+    "reason": "same weld body (rigidly attached: removed/locked joint or same link)"
+   }
+  ],
+  "nonadjacent_filtered": [],
+  "pairs_checked": 570,
+  "pairs_total": 630,
+  "rest_or_tpose_overlaps": [],
+  "always_overlapping": [],
+  "verdict": "only adjacent (parent-child through one joint) or rigidly welded pairs are skipped; no explicit exclusions needed; shoulder/elbow/wrist vs torso overlap in 4-22 % of random in-limit poses = real collisions, kept"
+ },
+ "floor": {
+  "convention": "calibrated floor = z 0 in every output (qpos root z shifted by -floor); raw value stored as floor_offset_removed; floor_height = 0",
+  "calibration": "per session (here per clip) from the human source: median lowest foot point over quasi-static stance frames",
+  "robot_rest_sole_z_m": 0.0007
+ },
+ "thresholds": {
+  "DATA_SPEC_v2": {
+   "contact_min_clearance_mm": [
+    0.0,
+    1.0
+   ],
+   "penetration_tol_mm": 0.5,
+   "slip_max_cms": 1.0,
+   "min_contact_segment_frames": 3,
+   "hysteresis_enter_mm": 1.0,
+   "hysteresis_leave_mm": 2.0,
+   "human_contact": "hysteresis enter < 1 cm, leave > 2 cm, >= 3 frames (same ruler as robot labels)",
+   "human_off_cm": 2.0,
+   "robot_off_when_human_off_mm": 5.0,
+   "fps": 30
+  },
+  "audit_hover_band_mm": [
+   1.0,
+   20.0
+  ]
+ },
+ "quirks": [
+  "23 DoF = GMR 29-DoF G1 with waist_roll/waist_pitch and wrist_pitch/wrist_yaw joints REMOVED (nq 30); the removed links are welded (waist_roll_link + torso_link to waist_yaw_link; wrist pitch/yaw links to wrist_roll_link).",
+  "Hands are fixed rubber hands (no finger DoF). left/right_rubber_hand have NO collision geom: hand-object and hand-ground contact can only be verified with dense points + the wrist link collision meshes; in MuJoCo physics a palm/finger contact does not exist.",
+  "Feet: collision = 4 spheres r 5 mm per foot (corners at x -0.05/+0.12 m), bottoms 0.41 mm above the flat visual sole; visual sole overhangs the spheres by 1.1 cm (heel) and 1.7 cm (toe) -> heel/toe-edge contacts and any top/side-of-foot contact (soccer kick) have no physics counterpart.",
+  "waist_yaw_link and waist_roll_link have no collision geom (covered by pelvis_contour and torso meshes).",
+  "Head mesh is merged into torso_link (head_link body has no geom).",
+  "G1 elbow = 0 rad means forearm horizontal (90 deg flexion) at qpos0.",
+  "Sole has only ~88 dense points (14 mm spacing) -> spec-literal dense-point contact gauge under-reports edge contacts."
+ ],
+ "qa_clip_set": {
+  "dance": {
+   "cid": "qa_v2__dance__lafan1_smplx__dance1_subject2__f1900-2500s1",
+   "kind": "smplx",
+   "data": "/var/tmp/alphamotion/umr_factory/umr/UMR/sample_data/lafan1_smplx",
+   "seq": "dance1_subject2",
+   "start": 1900,
+   "end": 2500,
+   "stride": 1,
+   "note": "LAFAN1 dance1_subject2 (30 fps), frames 1900-2500"
+  },
+  "soccer": {
+   "cid": "qa_v2__soccer__case3_kick_right__20260330000586_1_1775269234__f600-1800s3",
+   "kind": "hoi",
+   "data": "/var/tmp/alphamotion/umr_factory/umr/UMR/sample_data/omnicontact/soccer/case3_kick_right",
+   "seq": "20260330000586_1_1775269234",
+   "start": 600,
+   "end": 1800,
+   "stride": 3,
+   "shared": true,
+   "note": "OmniContact soccer case3_kick_right (90 fps -> 30 fps), approach + first kicks"
+  },
+  "box": {
+   "cid": "qa_v2__box__case1_carry__20260330000166_1_1775007076__f450-1950s3",
+   "kind": "hoi",
+   "data": "/home/arenalabs/umr_factory_data/smplx/omnicontact/box/case1_carry",
+   "seq": "20260330000166_1_1775007076",
+   "start": 450,
+   "end": 1950,
+   "stride": 3,
+   "shared": true,
+   "note": "OmniContact box case1_carry (90 fps -> 30 fps): lift, carry, put down, lift again"
+  },
+  "getup": {
+   "cid": "qa_v2__getup__get_up__Getting_up-get_up_0004__f1000-2500s3",
+   "kind": "hoi",
+   "post_kind": "smplx",
+   "data": "/var/tmp/alphamotion/umr_factory/umr/UMR/sample_data/hiphi/data/Getting_up/get_up",
+   "seq": "Getting_up-get_up_0004",
+   "start": 1000,
+   "end": 2500,
+   "stride": 3,
+   "shared": true,
+   "note": "HiPHI Getting_up-get_up_0004 (90 fps -> 30 fps, no object): go down, lie prone, push up with hands/knees, stand, go down again. HiPHI clip with hand/knee/torso/hip ground contact (none of the converted /home/.../smplx/hiphi clips is a pure ground-contact clip; the kneel clips there also need CoACD chair assets written into the shared HiPHI tree)"
+  }
+ }
+}

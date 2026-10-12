@@ -1,0 +1,19 @@
+[
+ {
+  "mode": "human2robot",
+  "workers": 8,
+  "window": 64,
+  "batch": 256,
+  "cold": true,
+  "fields": [
+   "labels"
+  ],
+  "samples_per_s": 13578.1,
+  "frames_per_s": 868999.3,
+  "body_frames_per_s": 1737998.6,
+  "decoded_MB_per_s": 858.0,
+  "batches": 532,
+  "seconds": 10.03,
+  "eligible_clips": 1000
+ }
+]

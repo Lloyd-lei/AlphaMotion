@@ -1,0 +1,1885 @@
+{
+ "generated_at": "2026-10-05 00:03:56",
+ "scope": "OmniContact + NVIDIA GRAIL, 只读统计; 无 GPU",
+ "outputs": {
+  "summary_json": "/home/arenalabs/umr_factory_data/diversity/omnicontact_grail/summary.json",
+  "summary_md": "/home/arenalabs/umr_factory_data/diversity/omnicontact_grail/summary.md",
+  "omnicontact_clip_stats": "/home/arenalabs/umr_factory_data/diversity/omnicontact_grail/omnicontact_clip_stats.jsonl",
+  "grail_clip_stats": "/home/arenalabs/umr_factory_data/diversity/omnicontact_grail/grail_clip_stats.jsonl",
+  "hf_remaining_tree": "/home/arenalabs/umr_factory_data/diversity/omnicontact_grail/_hf_remaining_tree.json"
+ },
+ "omnicontact": {
+  "license": "CC BY-NC 4.0 (lightcone02/OmniContact-Dataset, gated=auto)",
+  "capture": "光学动捕 BVH(omni51 骨架) 90 fps + 物体位姿 CSV; 转 SMPL-X neutral (Y-up) 90 fps",
+  "subjects": {
+   "bvh_skeleton_calibrations": 26,
+   "stature_cm_min_max": [
+    171.9,
+    189.0
+   ],
+   "stature_clusters_cm(间隔>1cm 聚类, 估计演员数)": [
+    [
+     171.9,
+     174.4
+    ],
+    [
+     175.9,
+     177.0
+    ],
+    [
+     179.8,
+     180.4
+    ],
+    [
+     183.9,
+     184.7
+    ],
+    [
+     187.4,
+     187.9
+    ],
+    [
+     189.0,
+     189.0
+    ]
+   ],
+   "estimated_actors": 6,
+   "gender": "未提供(元数据无性别; 转换用 neutral)",
+   "note": "BVH 骨架身高=静止姿态 头顶端点到脚趾端点 Y 跨度, 约等于身高; 骨架校准数≠人数"
+  },
+  "per_category": {
+   "box/case1_carry": {
+    "name_zh": "搬箱子",
+    "taxonomy": {
+     "whole_body_object": [
+      "carry_box"
+     ],
+     "upper_body_manipulation": [
+      "pick",
+      "place",
+      "carry"
+     ],
+     "locomotion": [
+      "walk",
+      "turn"
+     ]
+    },
+    "clips": {
+     "source_captures_release": 210,
+     "task_clips_release_npz_clips": 623,
+     "on_disk_raw": 210,
+     "converted_smplx": 210,
+     "converted_ok": 210,
+     "retargeted_umr_captures": 1,
+     "retargeted_umr_detail": {
+      "20260330000166_1_1775007076": [
+       "unitree_g1_29dof",
+       "unitree_h1",
+       "unitree_h2"
+      ]
+     }
+    },
+    "fps_source": 90,
+    "frames": 1128972,
+    "hours_original": 3.484,
+    "hours_mirrored": 0.0,
+    "has_object": true,
+    "objects": {
+     "箱子 30×30×30 cm": 210
+    },
+    "contact_types": [
+     "feet",
+     "object-hands",
+     "object-torso(抱箱贴胸, 人体穿模统计佐证)"
+    ],
+    "contact_evidence": "G1 标签 wrist 接触 65.5%, ankle 0%",
+    "interaction_frac": {
+     "g1_label_obj_contact_approx(max手+max脚)": 0.655,
+     "g1_label_frac_lAnkle_rAnkle_lWrist_rWrist_mean": [
+      0.0,
+      0.0,
+      0.655,
+      0.655
+     ],
+     "g1_label_captures": 210,
+     "human_obj_within_2cm_frac_p50": 0.62
+    },
+    "motion": {
+     "pelvis_drop_m_p5_50_95": [
+      0.03,
+      0.26,
+      0.65
+     ],
+     "captures_with_deep_squat_gt45cm_ge1pct_frames": 31,
+     "path_m_p5_50_95": [
+      6.4,
+      18.0,
+      35.4
+     ],
+     "speed_p95_mps_p5_50_95": [
+      0.27,
+      0.78,
+      1.15
+     ],
+     "run_frac_gt2mps_max": 0.024,
+     "yaw_total_deg_p50": 1104.0,
+     "torso_tilt_p95_deg_p50": 44.9
+    },
+    "subjects": {
+     "bvh_skeleton_calibrations": 12,
+     "bvh_stature_cm_min_max": [
+      171.9,
+      183.9
+     ]
+    },
+    "split": {
+     "train": 152,
+     "val": 32,
+     "test": 26
+    },
+    "ik_residual_cm_p50": 3.69,
+    "status": "converted_smplx (+1 段 QA 窗口试 retarget)"
+   },
+   "box/case2_push": {
+    "name_zh": "推箱子",
+    "taxonomy": {
+     "whole_body_object": [
+      "push_box"
+     ],
+     "locomotion": [
+      "walk",
+      "turn"
+     ]
+    },
+    "clips": {
+     "source_captures_release": 162,
+     "task_clips_release_npz_clips": 453,
+     "on_disk_raw": 162,
+     "converted_smplx": 162,
+     "converted_ok": 162,
+     "retargeted_umr_captures": 0,
+     "retargeted_umr_detail": {}
+    },
+    "fps_source": 90,
+    "frames": 948897,
+    "hours_original": 2.929,
+    "hours_mirrored": 0.0,
+    "has_object": true,
+    "objects": {
+     "箱子 48.5×40×72.5 cm": 162
+    },
+    "contact_types": [
+     "feet",
+     "object-hands"
+    ],
+    "contact_evidence": "G1 标签 wrist 接触 38.5%, ankle 0%; 躯干前倾 p95≈52°",
+    "interaction_frac": {
+     "g1_label_obj_contact_approx(max手+max脚)": 0.385,
+     "g1_label_frac_lAnkle_rAnkle_lWrist_rWrist_mean": [
+      0.0,
+      0.0,
+      0.385,
+      0.385
+     ],
+     "g1_label_captures": 162,
+     "human_obj_within_2cm_frac_p50": 0.26
+    },
+    "motion": {
+     "pelvis_drop_m_p5_50_95": [
+      0.05,
+      0.15,
+      0.19
+     ],
+     "captures_with_deep_squat_gt45cm_ge1pct_frames": 0,
+     "path_m_p5_50_95": [
+      9.3,
+      22.5,
+      32.2
+     ],
+     "speed_p95_mps_p5_50_95": [
+      0.28,
+      0.93,
+      1.09
+     ],
+     "run_frac_gt2mps_max": 0.0204,
+     "yaw_total_deg_p50": 1645.0,
+     "torso_tilt_p95_deg_p50": 52.2
+    },
+    "subjects": {
+     "bvh_skeleton_calibrations": 4,
+     "bvh_stature_cm_min_max": [
+      173.1,
+      184.1
+     ]
+    },
+    "split": {
+     "train": 118,
+     "test": 24,
+     "val": 20
+    },
+    "ik_residual_cm_p50": 3.59,
+    "status": "converted_smplx"
+   },
+   "box/case3_slide": {
+    "name_zh": "用脚滑/推箱子",
+    "taxonomy": {
+     "whole_body_object": [
+      "push_box_with_foot"
+     ],
+     "locomotion": [
+      "walk",
+      "turn"
+     ]
+    },
+    "clips": {
+     "source_captures_release": 118,
+     "task_clips_release_npz_clips": 190,
+     "on_disk_raw": 118,
+     "converted_smplx": 118,
+     "converted_ok": 118,
+     "retargeted_umr_captures": 0,
+     "retargeted_umr_detail": {}
+    },
+    "fps_source": 90,
+    "frames": 668625,
+    "hours_original": 2.064,
+    "hours_mirrored": 0.0,
+    "has_object": true,
+    "objects": {
+     "箱子 30×30×30 cm": 118
+    },
+    "contact_types": [
+     "feet",
+     "object-feet"
+    ],
+    "contact_evidence": "G1 标签(104/118段) ankle 接触 L8.2%/R21.2%, wrist 仅1.7%",
+    "interaction_frac": {
+     "g1_label_obj_contact_approx(max手+max脚)": 0.229,
+     "g1_label_frac_lAnkle_rAnkle_lWrist_rWrist_mean": [
+      0.082,
+      0.212,
+      0.017,
+      0.017
+     ],
+     "g1_label_captures": 104,
+     "human_obj_within_2cm_frac_p50": 0.12
+    },
+    "motion": {
+     "pelvis_drop_m_p5_50_95": [
+      0.01,
+      0.03,
+      0.11
+     ],
+     "captures_with_deep_squat_gt45cm_ge1pct_frames": 0,
+     "path_m_p5_50_95": [
+      7.3,
+      16.5,
+      24.4
+     ],
+     "speed_p95_mps_p5_50_95": [
+      0.23,
+      0.48,
+      0.82
+     ],
+     "run_frac_gt2mps_max": 0.0,
+     "yaw_total_deg_p50": 1706.0,
+     "torso_tilt_p95_deg_p50": 8.1
+    },
+    "subjects": {
+     "bvh_skeleton_calibrations": 5,
+     "bvh_stature_cm_min_max": [
+      175.9,
+      183.9
+     ]
+    },
+    "split": {
+     "train": 86,
+     "val": 18,
+     "test": 14
+    },
+    "ik_residual_cm_p50": 3.62,
+    "status": "converted_smplx"
+   },
+   "soccer/case1_kick_forward": {
+    "name_zh": "向前踢球",
+    "taxonomy": {
+     "dynamic": [
+      "kick"
+     ],
+     "whole_body_object": [
+      "kick_ball"
+     ],
+     "locomotion": [
+      "walk",
+      "turn"
+     ]
+    },
+    "clips": {
+     "source_captures_release": 30,
+     "task_clips_release_npz_clips": 177,
+     "on_disk_raw": 30,
+     "converted_smplx": 30,
+     "converted_ok": 30,
+     "retargeted_umr_captures": 0,
+     "retargeted_umr_detail": {}
+    },
+    "fps_source": 90,
+    "frames": 173458,
+    "hours_original": 0.535,
+    "hours_mirrored": 0.0,
+    "has_object": true,
+    "objects": {
+     "足球 直径 21.6 cm": 30
+    },
+    "contact_types": [
+     "feet",
+     "object-feet"
+    ],
+    "contact_evidence": "推断(足球 G1 标签未下载); 人体-球 2cm 内帧比 p50≈2%",
+    "interaction_frac": {
+     "g1_label_obj_contact_approx(max手+max脚)": null,
+     "g1_label_frac_lAnkle_rAnkle_lWrist_rWrist_mean": null,
+     "g1_label_captures": 0,
+     "human_obj_within_2cm_frac_p50": 0.03
+    },
+    "motion": {
+     "pelvis_drop_m_p5_50_95": [
+      0.06,
+      0.08,
+      0.23
+     ],
+     "captures_with_deep_squat_gt45cm_ge1pct_frames": 0,
+     "path_m_p5_50_95": [
+      12.8,
+      27.0,
+      37.3
+     ],
+     "speed_p95_mps_p5_50_95": [
+      0.54,
+      0.97,
+      1.37
+     ],
+     "run_frac_gt2mps_max": 0.0141,
+     "yaw_total_deg_p50": 2057.0,
+     "torso_tilt_p95_deg_p50": 13.3
+    },
+    "subjects": {
+     "bvh_skeleton_calibrations": 2,
+     "bvh_stature_cm_min_max": [
+      184.7,
+      187.9
+     ]
+    },
+    "split": {
+     "train": 21,
+     "test": 4,
+     "val": 5
+    },
+    "ik_residual_cm_p50": 3.87,
+    "status": "converted_smplx"
+   },
+   "soccer/case2_kick_left": {
+    "name_zh": "向左踢球",
+    "taxonomy": {
+     "dynamic": [
+      "kick"
+     ],
+     "whole_body_object": [
+      "kick_ball"
+     ],
+     "locomotion": [
+      "walk",
+      "turn"
+     ]
+    },
+    "clips": {
+     "source_captures_release": 30,
+     "task_clips_release_npz_clips": 170,
+     "on_disk_raw": 30,
+     "converted_smplx": 30,
+     "converted_ok": 30,
+     "retargeted_umr_captures": 0,
+     "retargeted_umr_detail": {}
+    },
+    "fps_source": 90,
+    "frames": 172808,
+    "hours_original": 0.533,
+    "hours_mirrored": 0.0,
+    "has_object": true,
+    "objects": {
+     "足球 直径 21.6 cm": 30
+    },
+    "contact_types": [
+     "feet",
+     "object-feet"
+    ],
+    "contact_evidence": "推断; 人体-球 2cm 内帧比 p50≈2%",
+    "interaction_frac": {
+     "g1_label_obj_contact_approx(max手+max脚)": null,
+     "g1_label_frac_lAnkle_rAnkle_lWrist_rWrist_mean": null,
+     "g1_label_captures": 0,
+     "human_obj_within_2cm_frac_p50": 0.03
+    },
+    "motion": {
+     "pelvis_drop_m_p5_50_95": [
+      0.07,
+      0.09,
+      0.21
+     ],
+     "captures_with_deep_squat_gt45cm_ge1pct_frames": 0,
+     "path_m_p5_50_95": [
+      29.7,
+      34.2,
+      39.7
+     ],
+     "speed_p95_mps_p5_50_95": [
+      1.0,
+      1.14,
+      1.35
+     ],
+     "run_frac_gt2mps_max": 0.0181,
+     "yaw_total_deg_p50": 2484.0,
+     "torso_tilt_p95_deg_p50": 14.5
+    },
+    "subjects": {
+     "bvh_skeleton_calibrations": 1,
+     "bvh_stature_cm_min_max": [
+      184.7,
+      184.7
+     ]
+    },
+    "split": {
+     "train": 20,
+     "test": 7,
+     "val": 3
+    },
+    "ik_residual_cm_p50": 3.9,
+    "status": "converted_smplx"
+   },
+   "soccer/case3_kick_right": {
+    "name_zh": "向右踢球",
+    "taxonomy": {
+     "dynamic": [
+      "kick"
+     ],
+     "whole_body_object": [
+      "kick_ball"
+     ],
+     "locomotion": [
+      "walk",
+      "turn"
+     ]
+    },
+    "clips": {
+     "source_captures_release": 30,
+     "task_clips_release_npz_clips": 210,
+     "on_disk_raw": 30,
+     "converted_smplx": 30,
+     "converted_ok": 30,
+     "retargeted_umr_captures": 1,
+     "retargeted_umr_detail": {
+      "20260330000586_1_1775269234": [
+       "fourier_gr3",
+       "unitree_g1_23dof",
+       "unitree_g1_29dof",
+       "unitree_h1",
+       "unitree_h2",
+       "unitree_r1"
+      ]
+     }
+    },
+    "fps_source": 90,
+    "frames": 169327,
+    "hours_original": 0.523,
+    "hours_mirrored": 0.0,
+    "has_object": true,
+    "objects": {
+     "足球 直径 21.6 cm": 30
+    },
+    "contact_types": [
+     "feet",
+     "object-feet(含小腿)"
+    ],
+    "contact_evidence": "UMR 试跑: 人体 L_foot 503 帧/L_shin 483 帧触球",
+    "interaction_frac": {
+     "g1_label_obj_contact_approx(max手+max脚)": null,
+     "g1_label_frac_lAnkle_rAnkle_lWrist_rWrist_mean": null,
+     "g1_label_captures": 0,
+     "human_obj_within_2cm_frac_p50": 0.03
+    },
+    "motion": {
+     "pelvis_drop_m_p5_50_95": [
+      0.07,
+      0.11,
+      0.21
+     ],
+     "captures_with_deep_squat_gt45cm_ge1pct_frames": 0,
+     "path_m_p5_50_95": [
+      27.0,
+      37.2,
+      45.0
+     ],
+     "speed_p95_mps_p5_50_95": [
+      1.08,
+      1.2,
+      1.44
+     ],
+     "run_frac_gt2mps_max": 0.0147,
+     "yaw_total_deg_p50": 3090.0,
+     "torso_tilt_p95_deg_p50": 12.5
+    },
+    "subjects": {
+     "bvh_skeleton_calibrations": 1,
+     "bvh_stature_cm_min_max": [
+      184.7,
+      184.7
+     ]
+    },
+    "split": {
+     "train": 18,
+     "test": 10,
+     "val": 2
+    },
+    "ik_residual_cm_p50": 3.95,
+    "status": "converted_smplx (+1 段 QA 窗口试 retarget)"
+   },
+   "soccer/case4_carry": {
+    "name_zh": "捡球搬运",
+    "taxonomy": {
+     "upper_body_manipulation": [
+      "pick",
+      "carry",
+      "place"
+     ],
+     "locomotion": [
+      "walk",
+      "turn"
+     ]
+    },
+    "clips": {
+     "source_captures_release": 51,
+     "task_clips_release_npz_clips": 199,
+     "on_disk_raw": 51,
+     "converted_smplx": 51,
+     "converted_ok": 51,
+     "retargeted_umr_captures": 0,
+     "retargeted_umr_detail": {}
+    },
+    "fps_source": 90,
+    "frames": 293940,
+    "hours_original": 0.907,
+    "hours_mirrored": 0.0,
+    "has_object": true,
+    "objects": {
+     "足球 直径 21.6 cm": 51
+    },
+    "contact_types": [
+     "feet",
+     "object-hands"
+    ],
+    "contact_evidence": "推断; 人体-球 2cm 内帧比 p50≈68%, 弯腰 p95≈51°",
+    "interaction_frac": {
+     "g1_label_obj_contact_approx(max手+max脚)": null,
+     "g1_label_frac_lAnkle_rAnkle_lWrist_rWrist_mean": null,
+     "g1_label_captures": 0,
+     "human_obj_within_2cm_frac_p50": 0.68
+    },
+    "motion": {
+     "pelvis_drop_m_p5_50_95": [
+      0.12,
+      0.14,
+      0.21
+     ],
+     "captures_with_deep_squat_gt45cm_ge1pct_frames": 0,
+     "path_m_p5_50_95": [
+      9.5,
+      25.6,
+      45.3
+     ],
+     "speed_p95_mps_p5_50_95": [
+      0.36,
+      0.87,
+      1.5
+     ],
+     "run_frac_gt2mps_max": 0.0,
+     "yaw_total_deg_p50": 1824.0,
+     "torso_tilt_p95_deg_p50": 51.4
+    },
+    "subjects": {
+     "bvh_skeleton_calibrations": 3,
+     "bvh_stature_cm_min_max": [
+      187.7,
+      189.0
+     ]
+    },
+    "split": {
+     "train": 34,
+     "test": 9,
+     "val": 8
+    },
+    "ik_residual_cm_p50": 3.5,
+    "status": "converted_smplx"
+   },
+   "soccer/case5_pickball_kick": {
+    "name_zh": "捡球再踢",
+    "taxonomy": {
+     "upper_body_manipulation": [
+      "pick",
+      "place"
+     ],
+     "dynamic": [
+      "kick"
+     ],
+     "whole_body_object": [
+      "kick_ball"
+     ],
+     "locomotion": [
+      "walk",
+      "turn"
+     ]
+    },
+    "clips": {
+     "source_captures_release": 59,
+     "task_clips_release_npz_clips": 209,
+     "on_disk_raw": 59,
+     "converted_smplx": 59,
+     "converted_ok": 59,
+     "retargeted_umr_captures": 0,
+     "retargeted_umr_detail": {}
+    },
+    "fps_source": 90,
+    "frames": 340404,
+    "hours_original": 1.051,
+    "hours_mirrored": 0.0,
+    "has_object": true,
+    "objects": {
+     "足球 直径 21.6 cm": 59
+    },
+    "contact_types": [
+     "feet",
+     "object-hands",
+     "object-feet"
+    ],
+    "contact_evidence": "推断; 人体-球 2cm 内帧比 p50≈62%",
+    "interaction_frac": {
+     "g1_label_obj_contact_approx(max手+max脚)": null,
+     "g1_label_frac_lAnkle_rAnkle_lWrist_rWrist_mean": null,
+     "g1_label_captures": 0,
+     "human_obj_within_2cm_frac_p50": 0.62
+    },
+    "motion": {
+     "pelvis_drop_m_p5_50_95": [
+      0.12,
+      0.14,
+      0.23
+     ],
+     "captures_with_deep_squat_gt45cm_ge1pct_frames": 0,
+     "path_m_p5_50_95": [
+      12.6,
+      23.4,
+      42.8
+     ],
+     "speed_p95_mps_p5_50_95": [
+      0.44,
+      0.8,
+      1.52
+     ],
+     "run_frac_gt2mps_max": 0.0067,
+     "yaw_total_deg_p50": 1774.0,
+     "torso_tilt_p95_deg_p50": 51.2
+    },
+    "subjects": {
+     "bvh_skeleton_calibrations": 3,
+     "bvh_stature_cm_min_max": [
+      187.4,
+      187.9
+     ]
+    },
+    "split": {
+     "val": 9,
+     "train": 37,
+     "test": 13
+    },
+    "ik_residual_cm_p50": 3.5,
+    "status": "converted_smplx"
+   }
+  },
+  "totals": {
+   "captures": 690,
+   "hours_original": 12.026,
+   "hours_mirrored": 0.0,
+   "task_clips_release": 2231,
+   "retargeted_captures": 2,
+   "retargeted_robots_union": [
+    "fourier_gr3",
+    "unitree_g1_23dof",
+    "unitree_g1_29dof",
+    "unitree_h1",
+    "unitree_h2",
+    "unitree_r1"
+   ]
+  },
+  "remaining_download": {
+   "raw_mocap": "全部 690 段已在盘(case2_push 目录 165 个, 比 README 多 3 个)",
+   "npz(G1 轨迹+接触标签)": "g1_labels 仅 box 476/490 段(case3_slide 缺 14); 足球 200 段标签未取; 全量 npz 7.58 GB",
+   "npz_clips(2231 任务切片, 含箱子尺寸增广)": "未下载, 6.86 GB; 是 G1 关节轨迹, 不是人体, 对 SMPL-X 管线无新增动作"
+  }
+ },
+ "grail": {
+  "license": "CC BY-NC 4.0 (nvidia/PhysicalAI-Robotics-Locomanipulation-GRAIL), 非商用",
+  "hf_sha": "40e795761302e611c1e7e3a6caefdd010d56c199",
+  "manifest_snapshot": "2026-10-05 00:01:42",
+  "hf_categories_released": [
+   "pickup_table",
+   "pickup_ground",
+   "sitting",
+   "slope",
+   "curb",
+   "stair_p1",
+   "stair_p2"
+  ],
+  "hf_categories_not_released": "README: tabletop / ground manipulation(ComAsset/Hunyuan 物体) 计划后续发布; HF data/ 目录目前只有这 7 个",
+  "per_category": {
+   "pickup_table": {
+    "desc_zh": "桌面取物: 从桌上抓起物体, 举起, 搬运",
+    "taxonomy_label_clip_counts(ok段, 多标签)": {
+     "locomotion/turn": 1,
+     "upper_body_manipulation": 1280,
+     "upper_body_manipulation/lift_in_place": 1280,
+     "upper_body_manipulation/pick": 1280
+    },
+    "clips": {
+     "release": 2991,
+     "recon_smplx_on_hf": 2991,
+     "on_disk_raw_recon": 1339,
+     "manifest_ok": 1280,
+     "manifest_pending": 1711,
+     "manifest_dropped": 0,
+     "converted_pkl_on_disk_now": 1302,
+     "converter_version_of_ok": {
+      "3": 296,
+      "1": 984
+     },
+     "retargeted_umr": 0
+    },
+    "fps": {
+     "recon_true": 24,
+     "source_pkl_field": 30,
+     "release_robot_traj_hz": 25
+    },
+    "hours": {
+     "release_est(README帧数/25Hz)": 8.308,
+     "smplx_available_on_hf_est": 8.308,
+     "converted_ok(24fps)": 3.57,
+     "converted_final_v2v3": 0.826,
+     "converted_old_v1(待重转)": 2.745,
+     "src_valid_of_final_v2v3": 0.776,
+     "mirrored": 0.0
+    },
+    "seq_len_s_readme": 10,
+    "has_object": true,
+    "objects": {
+     "n_unique_instances": 685,
+     "n_classes": 75,
+     "top_classes(clips)": {
+      "apple": 131,
+      "kettle": 109,
+      "potato": 96,
+      "coffee_cup": 87,
+      "lemon": 86,
+      "water_bottle": 86,
+      "bread": 85,
+      "canned_food": 83,
+      "cupcake": 80,
+      "beer": 79,
+      "can": 79,
+      "bowl": 75,
+      "mug": 75,
+      "pear": 75,
+      "cereal": 73,
+      "mango": 72,
+      "donut": 61,
+      "alcohol": 60,
+      "teapot": 58,
+      "mushroom": 57,
+      "orange": 57,
+      "banana": 56,
+      "croissant": 52,
+      "wine": 50,
+      "bottled_water": 46
+     },
+     "size_max_extent_m_p5_50_95": [
+      0.103,
+      0.148,
+      0.239
+     ],
+     "source": "RoboCasa 衍生 3D 资产(厨房/食物/餐具小物件)",
+     "table": "静态桌 2.0×0.6 m, 桌面高约 0.40 m"
+    },
+    "contact_types": [
+     "feet",
+     "object-hands"
+    ],
+    "interaction_frac(interaction_frames/frames)": {
+     "mean": 0.478,
+     "p5_50_95": [
+      0.344,
+      0.477,
+      0.623
+     ]
+    },
+    "hand_obj_within_20mm_frac_p5_50_95": [
+     0.917,
+     1.0,
+     1.0
+    ],
+    "motion(已转换段)": {
+     "n_scanned": 1268,
+     "pelvis_drop_m_p5_50_95": [
+      0.01,
+      0.02,
+      0.08
+     ],
+     "dz_end_start_m_p5_50_95": [
+      -0.02,
+      -0.01,
+      0.01
+     ],
+     "net_xy_m_p5_50_95": [
+      0.11,
+      0.27,
+      0.52
+     ],
+     "speed_p95_mps_p5_50_95": [
+      0.1,
+      0.18,
+      0.26
+     ],
+     "yaw_net_deg_abs_p50_p95": [
+      7.0,
+      15.0
+     ]
+    },
+    "subjects": {
+     "type": "合成角色(Blender SMPL-X 角色 + Kling 生成视频 → GEM-SMPL 重建), 无真人",
+     "gender": "neutral",
+     "meta_smpl_height_m": null,
+     "recon_pred_height_m_p5_50_95": [
+      1.63,
+      1.68,
+      1.86
+     ],
+     "betas_unique(保留2位)": 1,
+     "betas_all_zero": true
+    },
+    "flags_top": {
+     "src_pen_gt10mm_over_20pct_frames": 42,
+     "body_sinks_gt50mm_over_5pct_frames": 9,
+     "src_valid_lt_50pct": 5
+    },
+    "drop_reasons": {},
+    "remaining_download": {
+     "recon_missing_files": 1652,
+     "recon_missing_GB": 10.088,
+     "robot_G1_traj_GB(未下, 非人体)": 0.643,
+     "objects_postRL_GB(未下)": 11.949,
+     "video_GB(未下)": 17.473,
+     "video_files": 2991
+    },
+    "license": "CC BY-NC 4.0; 物体 USD: RoboCasa 衍生 CC BY 4.0",
+    "status": "converted_smplx(部分)"
+   },
+   "pickup_ground": {
+    "desc_zh": "地面取物: 跪下抓地上物体再站起",
+    "taxonomy_label_clip_counts(ok段, 多标签)": {
+     "ground_contact": 155,
+     "ground_contact/kneel_or_deep_squat": 155,
+     "locomotion": 38,
+     "locomotion/walk": 38,
+     "upper_body_manipulation": 209,
+     "upper_body_manipulation/pick": 209
+    },
+    "clips": {
+     "release": 1736,
+     "recon_smplx_on_hf": 209,
+     "on_disk_raw_recon": 209,
+     "manifest_ok": 209,
+     "manifest_pending": 0,
+     "manifest_dropped": 1527,
+     "converted_pkl_on_disk_now": 209,
+     "converter_version_of_ok": {
+      "3": 209
+     },
+     "retargeted_umr": 0
+    },
+    "fps": {
+     "recon_true": 24,
+     "source_pkl_field": 30,
+     "release_robot_traj_hz": 25
+    },
+    "hours": {
+     "release_est(README帧数/25Hz)": 7.233,
+     "smplx_available_on_hf_est": 0.871,
+     "converted_ok(24fps)": 0.881,
+     "converted_final_v2v3": 0.881,
+     "converted_old_v1(待重转)": 0.0,
+     "src_valid_of_final_v2v3": 0.651,
+     "mirrored": 0.0
+    },
+    "seq_len_s_readme": 15,
+    "has_object": true,
+    "objects": {
+     "n_unique_instances": 644,
+     "n_classes": 76,
+     "top_classes(clips)": {
+      "apple": 72,
+      "beer": 68,
+      "bread": 62,
+      "can": 58,
+      "canned_food": 53,
+      "water_bottle": 53,
+      "coffee_cup": 48,
+      "bowl": 46,
+      "cupcake": 46,
+      "banana": 45,
+      "bottled_water": 45,
+      "alcohol": 43,
+      "cereal": 40,
+      "boxed_drink": 39,
+      "boxed_food": 39,
+      "donut": 37,
+      "mug": 37,
+      "kettle": 36,
+      "bagged_food": 35,
+      "cake": 33,
+      "bagel": 32,
+      "lemon": 31,
+      "mango": 30,
+      "mushroom": 28,
+      "candle": 27
+     },
+     "size_max_extent_m_p5_50_95": [
+      0.106,
+      0.177,
+      0.252
+     ],
+     "source": "RoboCasa 衍生 3D 资产(厨房/食物/餐具小物件)"
+    },
+    "contact_types": [
+     "feet",
+     "knees(跪, README 所述 + 骨盆下降佐证)",
+     "object-hands"
+    ],
+    "interaction_frac(interaction_frames/frames)": {
+     "mean": 0.249,
+     "p5_50_95": [
+      0.216,
+      0.25,
+      0.275
+     ]
+    },
+    "hand_obj_within_20mm_frac_p5_50_95": [
+     0.772,
+     1.0,
+     1.0
+    ],
+    "motion(已转换段)": {
+     "n_scanned": 209,
+     "pelvis_drop_m_p5_50_95": [
+      0.33,
+      0.36,
+      0.42
+     ],
+     "dz_end_start_m_p5_50_95": [
+      -0.1,
+      -0.01,
+      0.01
+     ],
+     "net_xy_m_p5_50_95": [
+      0.58,
+      0.81,
+      1.15
+     ],
+     "speed_p95_mps_p5_50_95": [
+      0.28,
+      0.36,
+      0.46
+     ],
+     "yaw_net_deg_abs_p50_p95": [
+      13.0,
+      26.0
+     ]
+    },
+    "subjects": {
+     "type": "合成角色(Blender SMPL-X 角色 + Kling 生成视频 → GEM-SMPL 重建), 无真人",
+     "gender": "neutral",
+     "meta_smpl_height_m": null,
+     "recon_pred_height_m_p5_50_95": [
+      1.69,
+      1.77,
+      1.84
+     ],
+     "betas_unique(保留2位)": 1,
+     "betas_all_zero": true
+    },
+    "flags_top": {
+     "object_floats_above_floor_f0": 186,
+     "src_pen_gt10mm_over_20pct_frames": 149,
+     "scene_mesh_not_watertight": 81
+    },
+    "drop_reasons": {
+     "no SMPL-X recon in the GRAIL release (only meta/USD)": 1527
+    },
+    "remaining_download": {
+     "recon_missing_files": 0,
+     "recon_missing_GB": 0.0,
+     "robot_G1_traj_GB(未下, 非人体)": 0.565,
+     "objects_postRL_GB(未下)": 5.019,
+     "video_GB(未下)": 3.053,
+     "video_files": 209
+    },
+    "license": "CC BY-NC 4.0; 物体 USD: RoboCasa 衍生 CC BY 4.0",
+    "status": "converted_smplx(部分)"
+   },
+   "sitting": {
+    "desc_zh": "坐到椅子类物体上",
+    "taxonomy_label_clip_counts(ok段, 多标签)": {
+     "locomotion": 1742,
+     "locomotion/turn": 878,
+     "locomotion/walk": 1742,
+     "sitting_on_object": 1748,
+     "sitting_on_object/chair": 1748
+    },
+    "clips": {
+     "release": 1748,
+     "recon_smplx_on_hf": 1748,
+     "on_disk_raw_recon": 1748,
+     "manifest_ok": 1748,
+     "manifest_pending": 0,
+     "manifest_dropped": 0,
+     "converted_pkl_on_disk_now": 1748,
+     "converter_version_of_ok": {
+      "2": 1626,
+      "1": 122
+     },
+     "retargeted_umr": 0
+    },
+    "fps": {
+     "recon_true": 24,
+     "source_pkl_field": 30,
+     "release_robot_traj_hz": 25
+    },
+    "hours": {
+     "release_est(README帧数/25Hz)": 2.428,
+     "smplx_available_on_hf_est": 2.428,
+     "converted_ok(24fps)": 2.448,
+     "converted_final_v2v3": 2.277,
+     "converted_old_v1(待重转)": 0.171,
+     "src_valid_of_final_v2v3": 2.026,
+     "mirrored": 0.0
+    },
+    "seq_len_s_readme": 5,
+    "has_object": true,
+    "objects": {
+     "n_unique_instances": 189,
+     "classes(clips)": {
+      "其他椅子": 586,
+      "餐椅/侧椅": 320,
+      "扶手椅": 304,
+      "雕塑/异形座": 160,
+      "宝座/礼仪椅": 145,
+      "单座/剧场座": 137,
+      "躺椅/休闲椅": 37,
+      "摇椅": 23,
+      "长凳式": 19,
+      "凳子": 13,
+      "吊椅": 4
+     },
+     "extent_m_p50(xyz)": [
+      0.53,
+      0.76,
+      0.51
+     ],
+     "source": "Hunyuan3D-2.1 生成椅子"
+    },
+    "contact_types": [
+     "feet",
+     "hips(坐面)",
+     "back(靠背, 推断未核实)"
+    ],
+    "interaction_frac(interaction_frames/frames)": {
+     "mean": 0.125,
+     "p5_50_95": [
+      0.124,
+      0.124,
+      0.124
+     ]
+    },
+    "hand_obj_within_20mm_frac_p5_50_95": [
+     0.0,
+     0.733,
+     1.0
+    ],
+    "motion(已转换段)": {
+     "n_scanned": 1748,
+     "pelvis_drop_m_p5_50_95": [
+      0.17,
+      0.25,
+      0.38
+     ],
+     "dz_end_start_m_p5_50_95": [
+      -0.37,
+      -0.25,
+      -0.16
+     ],
+     "net_xy_m_p5_50_95": [
+      1.18,
+      1.4,
+      1.61
+     ],
+     "speed_p95_mps_p5_50_95": [
+      0.72,
+      0.92,
+      1.26
+     ],
+     "yaw_net_deg_abs_p50_p95": [
+      60.0,
+      147.0
+     ]
+    },
+    "subjects": {
+     "type": "合成角色(Blender SMPL-X 角色 + Kling 生成视频 → GEM-SMPL 重建), 无真人",
+     "gender": "neutral",
+     "meta_smpl_height_m": 1.66,
+     "recon_pred_height_m_p5_50_95": [
+      1.6,
+      1.63,
+      1.7
+     ],
+     "betas_unique(保留2位)": 1,
+     "betas_all_zero": true
+    },
+    "flags_top": {
+     "src_pen_gt10mm_over_20pct_frames": 195,
+     "feet_float_gt30mm_over_25pct_frames": 63,
+     "scene_mesh_not_watertight": 30,
+     "object_floats_above_floor_f0": 26,
+     "src_valid_lt_50pct": 13,
+     "few_upright_stance_frames_used_all_stance": 12
+    },
+    "drop_reasons": {},
+    "remaining_download": {
+     "recon_missing_files": 0,
+     "recon_missing_GB": 0.0,
+     "robot_G1_traj_GB(未下, 非人体)": 0.174,
+     "objects_postRL_GB(未下)": 0.312,
+     "video_GB(未下)": 8.998,
+     "video_files": 1748
+    },
+    "license": "CC BY-NC 4.0; 物体 USD: Hunyuan3D-2.1 生成, CC BY-NC 4.0",
+    "status": "converted_smplx(全部)"
+   },
+   "slope": {
+    "desc_zh": "斜坡行走",
+    "taxonomy_label_clip_counts(ok段, 多标签)": {
+     "locomotion": 1880,
+     "locomotion/ascend": 366,
+     "locomotion/level_or_up-down": 1514,
+     "locomotion/slope": 1880,
+     "locomotion/turn": 979,
+     "locomotion/walk": 1880
+    },
+    "clips": {
+     "release": 1880,
+     "recon_smplx_on_hf": 1880,
+     "on_disk_raw_recon": 1880,
+     "manifest_ok": 1880,
+     "manifest_pending": 0,
+     "manifest_dropped": 0,
+     "converted_pkl_on_disk_now": 1880,
+     "converter_version_of_ok": {
+      "2": 1626,
+      "1": 254
+     },
+     "retargeted_umr": 0
+    },
+    "fps": {
+     "recon_true": 24,
+     "source_pkl_field": 30,
+     "release_robot_traj_hz": 25
+    },
+    "hours": {
+     "release_est(README帧数/25Hz)": 5.222,
+     "smplx_available_on_hf_est": 5.222,
+     "converted_ok(24fps)": 5.244,
+     "converted_final_v2v3": 4.535,
+     "converted_old_v1(待重转)": 0.708,
+     "src_valid_of_final_v2v3": 4.042,
+     "mirrored": 0.0
+    },
+    "seq_len_s_readme": 10,
+    "has_object": true,
+    "objects": {
+     "n_unique_instances": 200,
+     "source": "程序化地形",
+     "slope_rise_m_p5_50_95": [
+      0.012,
+      0.211,
+      0.517
+     ],
+     "slope_rise_over_run_deg_p5_50_95": [
+      0.2,
+      3.6,
+      9.8
+     ]
+    },
+    "contact_types": [
+     "feet only(地形物体上)"
+    ],
+    "interaction_frac(interaction_frames/frames)": {
+     "mean": 0.181,
+     "p5_50_95": [
+      0.124,
+      0.124,
+      0.373
+     ]
+    },
+    "hand_obj_within_20mm_frac_p5_50_95": null,
+    "motion(已转换段)": {
+     "n_scanned": 1880,
+     "pelvis_drop_m_p5_50_95": [
+      0.02,
+      0.03,
+      0.06
+     ],
+     "dz_end_start_m_p5_50_95": [
+      -0.02,
+      0.0,
+      0.3
+     ],
+     "net_xy_m_p5_50_95": [
+      0.21,
+      2.35,
+      4.66
+     ],
+     "speed_p95_mps_p5_50_95": [
+      0.57,
+      0.79,
+      1.18
+     ],
+     "yaw_net_deg_abs_p50_p95": [
+      152.0,
+      198.0
+     ]
+    },
+    "subjects": {
+     "type": "合成角色(Blender SMPL-X 角色 + Kling 生成视频 → GEM-SMPL 重建), 无真人",
+     "gender": "neutral",
+     "meta_smpl_height_m": 1.66,
+     "recon_pred_height_m_p5_50_95": [
+      1.6,
+      1.62,
+      1.8
+     ],
+     "betas_unique(保留2位)": 1,
+     "betas_all_zero": true
+    },
+    "flags_top": {
+     "src_pen_gt10mm_over_20pct_frames": 191,
+     "src_valid_lt_50pct": 23,
+     "feet_float_gt30mm_over_25pct_frames": 18,
+     "body_sinks_gt50mm_over_5pct_frames": 6
+    },
+    "drop_reasons": {},
+    "remaining_download": {
+     "recon_missing_files": 0,
+     "recon_missing_GB": 0.0,
+     "robot_G1_traj_GB(未下, 非人体)": 0.373,
+     "objects_postRL_GB(未下)": 0.036,
+     "video_GB(未下)": 14.272,
+     "video_files": 1880
+    },
+    "license": "CC BY-NC 4.0; 物体 USD: 程序化, CC BY-NC 4.0",
+    "status": "converted_smplx(全部)"
+   },
+   "curb": {
+    "desc_zh": "跨路沿",
+    "taxonomy_label_clip_counts(ok段, 多标签)": {
+     "locomotion": 1769,
+     "locomotion/ascend": 289,
+     "locomotion/curb": 1769,
+     "locomotion/descend": 1,
+     "locomotion/level_or_up-down": 1479,
+     "locomotion/run": 5,
+     "locomotion/turn": 930,
+     "locomotion/walk": 1769
+    },
+    "clips": {
+     "release": 1769,
+     "recon_smplx_on_hf": 1769,
+     "on_disk_raw_recon": 1769,
+     "manifest_ok": 1769,
+     "manifest_pending": 0,
+     "manifest_dropped": 0,
+     "converted_pkl_on_disk_now": 1769,
+     "converter_version_of_ok": {
+      "2": 1627,
+      "1": 142
+     },
+     "retargeted_umr": 0
+    },
+    "fps": {
+     "recon_true": 24,
+     "source_pkl_field": 30,
+     "release_robot_traj_hz": 25
+    },
+    "hours": {
+     "release_est(README帧数/25Hz)": 4.914,
+     "smplx_available_on_hf_est": 4.914,
+     "converted_ok(24fps)": 4.934,
+     "converted_final_v2v3": 4.538,
+     "converted_old_v1(待重转)": 0.396,
+     "src_valid_of_final_v2v3": 3.821,
+     "mirrored": 0.0
+    },
+    "seq_len_s_readme": 10,
+    "has_object": true,
+    "objects": {
+     "n_unique_instances": 200,
+     "source": "程序化地形",
+     "curb_height_m_p5_50_95": [
+      0.174,
+      0.3,
+      0.355
+     ]
+    },
+    "contact_types": [
+     "feet only(地形物体上)"
+    ],
+    "interaction_frac(interaction_frames/frames)": {
+     "mean": 0.198,
+     "p5_50_95": [
+      0.124,
+      0.124,
+      0.498
+     ]
+    },
+    "hand_obj_within_20mm_frac_p5_50_95": null,
+    "motion(已转换段)": {
+     "n_scanned": 1769,
+     "pelvis_drop_m_p5_50_95": [
+      0.03,
+      0.05,
+      0.08
+     ],
+     "dz_end_start_m_p5_50_95": [
+      -0.04,
+      -0.0,
+      0.2
+     ],
+     "net_xy_m_p5_50_95": [
+      0.15,
+      2.8,
+      4.6
+     ],
+     "speed_p95_mps_p5_50_95": [
+      0.66,
+      0.9,
+      1.42
+     ],
+     "yaw_net_deg_abs_p50_p95": [
+      152.0,
+      203.0
+     ]
+    },
+    "subjects": {
+     "type": "合成角色(Blender SMPL-X 角色 + Kling 生成视频 → GEM-SMPL 重建), 无真人",
+     "gender": "neutral",
+     "meta_smpl_height_m": 1.66,
+     "recon_pred_height_m_p5_50_95": [
+      1.6,
+      1.62,
+      1.65
+     ],
+     "betas_unique(保留2位)": 1,
+     "betas_all_zero": true
+    },
+    "flags_top": {
+     "src_pen_gt10mm_over_20pct_frames": 340,
+     "body_sinks_gt50mm_over_5pct_frames": 13,
+     "src_valid_lt_50pct": 6,
+     "feet_float_gt30mm_over_25pct_frames": 3
+    },
+    "drop_reasons": {},
+    "remaining_download": {
+     "recon_missing_files": 0,
+     "recon_missing_GB": 0.0,
+     "robot_G1_traj_GB(未下, 非人体)": 0.351,
+     "objects_postRL_GB(未下)": 0.035,
+     "video_GB(未下)": 13.673,
+     "video_files": 1769
+    },
+    "license": "CC BY-NC 4.0; 物体 USD: 程序化, CC BY-NC 4.0",
+    "status": "converted_smplx(全部)"
+   },
+   "stair_p1": {
+    "desc_zh": "上下楼梯(生成+真实楼梯资产) 第1部分",
+    "taxonomy_label_clip_counts(ok段, 多标签)": {
+     "locomotion": 1306,
+     "locomotion/ascend": 11,
+     "locomotion/descend": 931,
+     "locomotion/level_or_up-down": 293,
+     "locomotion/run": 1,
+     "locomotion/stairs": 1306,
+     "locomotion/turn": 351,
+     "locomotion/walk": 1306
+    },
+    "clips": {
+     "release": 6094,
+     "recon_smplx_on_hf": 6094,
+     "on_disk_raw_recon": 1339,
+     "manifest_ok": 1306,
+     "manifest_pending": 4788,
+     "manifest_dropped": 0,
+     "converted_pkl_on_disk_now": 1331,
+     "converter_version_of_ok": {
+      "2": 321,
+      "1": 985
+     },
+     "retargeted_umr": 0
+    },
+    "fps": {
+     "recon_true": 24,
+     "source_pkl_field": 30,
+     "release_robot_traj_hz": 25
+    },
+    "hours": {
+     "release_est(README帧数/25Hz)": 16.928,
+     "smplx_available_on_hf_est": 16.928,
+     "converted_ok(24fps)": 3.643,
+     "converted_final_v2v3": 0.895,
+     "converted_old_v1(待重转)": 2.748,
+     "src_valid_of_final_v2v3": 0.789,
+     "mirrored": 0.0
+    },
+    "seq_len_s_readme": 10,
+    "has_object": true,
+    "objects": {
+     "n_unique_instances": 3138,
+     "n_unique_geometry(去 _updown)": 2625,
+     "classes(clips)": {
+      "程序化楼梯 stairs_NNNN": 4012,
+      "小型练习台阶(3-6 级)": 2002,
+      "弧形楼梯": 80
+     },
+     "updown_clips": 513,
+     "named_step_count_min_p50_max": [
+      3,
+      5,
+      15
+     ],
+     "extent_m_p5_50_95(xyz)": [
+      [
+       0.66,
+       0.52,
+       0.74
+      ],
+      [
+       0.94,
+       0.82,
+       1.17
+      ],
+      [
+       1.47,
+       1.1,
+       1.85
+      ]
+     ]
+    },
+    "contact_types": [
+     "feet only(楼梯物体上)"
+    ],
+    "interaction_frac(interaction_frames/frames)": {
+     "mean": 0.195,
+     "p5_50_95": [
+      0.124,
+      0.249,
+      0.249
+     ]
+    },
+    "hand_obj_within_20mm_frac_p5_50_95": null,
+    "motion(已转换段)": {
+     "n_scanned": 1235,
+     "pelvis_drop_m_p5_50_95": [
+      0.03,
+      0.76,
+      1.1
+     ],
+     "dz_end_start_m_p5_50_95": [
+      -1.08,
+      -0.75,
+      0.0
+     ],
+     "net_xy_m_p5_50_95": [
+      0.44,
+      1.29,
+      2.15
+     ],
+     "speed_p95_mps_p5_50_95": [
+      0.31,
+      0.43,
+      0.88
+     ],
+     "yaw_net_deg_abs_p50_p95": [
+      15.0,
+      280.0
+     ]
+    },
+    "subjects": {
+     "type": "合成角色(Blender SMPL-X 角色 + Kling 生成视频 → GEM-SMPL 重建), 无真人",
+     "gender": "neutral",
+     "meta_smpl_height_m": 1.66,
+     "recon_pred_height_m_p5_50_95": [
+      1.61,
+      1.66,
+      1.87
+     ],
+     "betas_unique(保留2位)": 1,
+     "betas_all_zero": true
+    },
+    "flags_top": {
+     "feet_float_gt30mm_over_25pct_frames": 314,
+     "body_sinks_gt50mm_over_5pct_frames": 56,
+     "src_pen_gt10mm_over_20pct_frames": 38,
+     "scene_mesh_not_watertight": 7,
+     "src_valid_lt_50pct": 3
+    },
+    "drop_reasons": {},
+    "remaining_download": {
+     "recon_missing_files": 4755,
+     "recon_missing_GB": 1.959,
+     "robot_G1_traj_GB(未下, 非人体)": 1.211,
+     "objects_postRL_GB(未下)": 0.114,
+     "video_GB(未下)": 41.625,
+     "video_files": 6094
+    },
+    "license": "CC BY-NC 4.0; 物体 USD: Hunyuan3D 生成/程序化, CC BY-NC 4.0",
+    "status": "converted_smplx(部分)"
+   },
+   "stair_p2": {
+    "desc_zh": "上下楼梯 第2部分",
+    "taxonomy_label_clip_counts(ok段, 多标签)": {
+     "locomotion": 1311,
+     "locomotion/ascend": 1261,
+     "locomotion/stairs": 1311,
+     "locomotion/turn": 377,
+     "locomotion/walk": 1311
+    },
+    "clips": {
+     "release": 6094,
+     "recon_smplx_on_hf": 6094,
+     "on_disk_raw_recon": 1338,
+     "manifest_ok": 1311,
+     "manifest_pending": 4783,
+     "manifest_dropped": 0,
+     "converted_pkl_on_disk_now": 1335,
+     "converter_version_of_ok": {
+      "2": 325,
+      "1": 986
+     },
+     "retargeted_umr": 0
+    },
+    "fps": {
+     "recon_true": 24,
+     "source_pkl_field": 30,
+     "release_robot_traj_hz": 25
+    },
+    "hours": {
+     "release_est(README帧数/25Hz)": 16.928,
+     "smplx_available_on_hf_est": 16.928,
+     "converted_ok(24fps)": 3.657,
+     "converted_final_v2v3": 0.907,
+     "converted_old_v1(待重转)": 2.75,
+     "src_valid_of_final_v2v3": 0.814,
+     "mirrored": 0.0
+    },
+    "seq_len_s_readme": 10,
+    "has_object": true,
+    "objects": {
+     "n_unique_instances": 2489,
+     "n_unique_geometry(去 _updown)": 2328,
+     "classes(clips)": {
+      "程序化楼梯 stairs_NNNN": 3463,
+      "直跑楼梯(生成, 10-15 级)": 1651,
+      "真实楼梯资产(stairs_real)": 971,
+      "弧形楼梯": 9
+     },
+     "updown_clips": 161,
+     "named_step_count_min_p50_max": [
+      2,
+      6,
+      12
+     ],
+     "extent_m_p5_50_95(xyz)": [
+      [
+       2.8,
+       2.05,
+       0.57
+      ],
+      [
+       5.45,
+       2.5,
+       0.85
+      ],
+      [
+       8.15,
+       2.95,
+       1.23
+      ]
+     ]
+    },
+    "contact_types": [
+     "feet only(楼梯物体上)"
+    ],
+    "interaction_frac(interaction_frames/frames)": {
+     "mean": 0.125,
+     "p5_50_95": [
+      0.124,
+      0.124,
+      0.124
+     ]
+    },
+    "hand_obj_within_20mm_frac_p5_50_95": null,
+    "motion(已转换段)": {
+     "n_scanned": 1261,
+     "pelvis_drop_m_p5_50_95": [
+      0.01,
+      0.03,
+      0.04
+     ],
+     "dz_end_start_m_p5_50_95": [
+      0.52,
+      0.79,
+      1.12
+     ],
+     "net_xy_m_p5_50_95": [
+      2.27,
+      3.34,
+      4.29
+     ],
+     "speed_p95_mps_p5_50_95": [
+      0.57,
+      0.68,
+      0.81
+     ],
+     "yaw_net_deg_abs_p50_p95": [
+      17.0,
+      90.0
+     ]
+    },
+    "subjects": {
+     "type": "合成角色(Blender SMPL-X 角色 + Kling 生成视频 → GEM-SMPL 重建), 无真人",
+     "gender": "neutral",
+     "meta_smpl_height_m": 1.66,
+     "recon_pred_height_m_p5_50_95": null,
+     "betas_unique(保留2位)": 1,
+     "betas_all_zero": true
+    },
+    "flags_top": {
+     "feet_float_gt30mm_over_25pct_frames": 144,
+     "src_pen_gt10mm_over_20pct_frames": 29,
+     "body_sinks_gt50mm_over_5pct_frames": 26
+    },
+    "drop_reasons": {},
+    "remaining_download": {
+     "recon_missing_files": 4756,
+     "recon_missing_GB": 1.955,
+     "robot_G1_traj_GB(未下, 非人体)": 1.21,
+     "objects_postRL_GB(未下)": 0.102,
+     "video_GB(未下)": 40.331,
+     "video_files": 6094
+    },
+    "license": "CC BY-NC 4.0; 物体 USD: 程序化, CC BY-NC 4.0",
+    "status": "converted_smplx(部分)"
+   }
+  },
+  "totals": {
+   "clips_release": 22312,
+   "hours": {
+    "release_est(README帧数/25Hz)": 61.961,
+    "smplx_available_on_hf_est": 55.599,
+    "converted_ok(24fps)": 24.377,
+    "converted_final_v2v3": 14.859,
+    "converted_old_v1(待重转)": 9.518,
+    "src_valid_of_final_v2v3": 12.919
+   },
+   "manifest_status": {
+    "ok": 9503,
+    "dropped": 1527,
+    "pending": 11282
+   },
+   "retargeted_umr": 0
+  }
+ },
+ "taxonomy_rollup(多标签, 小时可重复计)": {
+  "whole_body_object": {
+   "omnicontact_hours": 11.119,
+   "grail_converted_hours": 0.0,
+   "grail_clips": 0,
+   "omnicontact_captures": 639,
+   "sub_labels": [
+    "carry_box",
+    "kick_ball",
+    "push_box",
+    "push_box_with_foot"
+   ]
+  },
+  "upper_body_manipulation": {
+   "omnicontact_hours": 5.442,
+   "grail_converted_hours": 4.451,
+   "grail_clips": 1489,
+   "omnicontact_captures": 320,
+   "sub_labels": [
+    "carry",
+    "lift_in_place",
+    "pick",
+    "place"
+   ]
+  },
+  "locomotion": {
+   "omnicontact_hours": 12.026,
+   "grail_converted_hours": 20.078,
+   "grail_clips": 8046,
+   "omnicontact_captures": 690,
+   "sub_labels": [
+    "ascend",
+    "curb",
+    "descend",
+    "level_or_up-down",
+    "run",
+    "slope",
+    "stairs",
+    "turn",
+    "walk"
+   ]
+  },
+  "dynamic": {
+   "omnicontact_hours": 2.642,
+   "grail_converted_hours": 0.0,
+   "grail_clips": 0,
+   "omnicontact_captures": 149,
+   "sub_labels": [
+    "kick"
+   ]
+  },
+  "ground_contact": {
+   "omnicontact_hours": 0.0,
+   "grail_converted_hours": 0.653,
+   "grail_clips": 155,
+   "omnicontact_captures": 0,
+   "sub_labels": [
+    "kneel_or_deep_squat"
+   ]
+  },
+  "sitting_on_object": {
+   "omnicontact_hours": 0.0,
+   "grail_converted_hours": 2.448,
+   "grail_clips": 1748,
+   "omnicontact_captures": 0,
+   "sub_labels": [
+    "chair"
+   ]
+  },
+  "gesture_social": {
+   "omnicontact_hours": 0.0,
+   "grail_converted_hours": 0.0,
+   "grail_clips": 0,
+   "omnicontact_captures": 0,
+   "sub_labels": []
+  },
+  "idle_posture": {
+   "omnicontact_hours": 0.0,
+   "grail_converted_hours": 0.0,
+   "grail_clips": 0,
+   "omnicontact_captures": 0,
+   "sub_labels": []
+  },
+  "other": {
+   "omnicontact_hours": 0.0,
+   "grail_converted_hours": 0.0,
+   "grail_clips": 0,
+   "omnicontact_captures": 0,
+   "sub_labels": []
+  }
+ },
+ "grail_sub_label_counts(ok段)": {
+  "ground_contact": {
+   "clips": 155,
+   "hours": 0.653
+  },
+  "ground_contact/kneel_or_deep_squat": {
+   "clips": 155,
+   "hours": 0.653
+  },
+  "locomotion": {
+   "clips": 8046,
+   "hours": 20.078
+  },
+  "locomotion/ascend": {
+   "clips": 1927,
+   "hours": 5.375
+  },
+  "locomotion/curb": {
+   "clips": 1769,
+   "hours": 4.934
+  },
+  "locomotion/descend": {
+   "clips": 932,
+   "hours": 2.6
+  },
+  "locomotion/level_or_up-down": {
+   "clips": 3286,
+   "hours": 9.166
+  },
+  "locomotion/run": {
+   "clips": 6,
+   "hours": 0.017
+  },
+  "locomotion/slope": {
+   "clips": 1880,
+   "hours": 5.244
+  },
+  "locomotion/stairs": {
+   "clips": 2617,
+   "hours": 7.3
+  },
+  "locomotion/turn": {
+   "clips": 3516,
+   "hours": 8.588
+  },
+  "locomotion/walk": {
+   "clips": 8046,
+   "hours": 20.078
+  },
+  "sitting_on_object": {
+   "clips": 1748,
+   "hours": 2.448
+  },
+  "sitting_on_object/chair": {
+   "clips": 1748,
+   "hours": 2.448
+  },
+  "upper_body_manipulation": {
+   "clips": 1489,
+   "hours": 4.451
+  },
+  "upper_body_manipulation/lift_in_place": {
+   "clips": 1280,
+   "hours": 3.57
+  },
+  "upper_body_manipulation/pick": {
+   "clips": 1489,
+   "hours": 4.451
+  }
+ }
+}

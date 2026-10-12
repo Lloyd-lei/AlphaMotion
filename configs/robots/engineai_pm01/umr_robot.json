@@ -1,0 +1,17 @@
+{
+ "robot": {
+  "name": "engineai_pm01",
+  "xml": "/home/arenalabs/umr_factory_data/robots/engineai_pm01/engineai_pm01.xml",
+  "point_cloud_center": "body:LINK_TORSO_YAW",
+  "tpose_qpos": {
+   "J14_SHOULDER_ROLL_L": 1.570796,
+   "J19_SHOULDER_ROLL_R": -1.570796
+  }
+ },
+ "correspondence": {
+  "dataset": {
+   "smpl_center": "bbox_ratio",
+   "bbox_center_ratio": 0.644306
+  }
+ }
+}

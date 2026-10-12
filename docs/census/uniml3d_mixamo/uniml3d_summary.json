@@ -1,0 +1,240 @@
+{
+ "source": "UniML3D (Linzhan/UniML3D) = Mixamo + Objaverse-XL 绑骨动画 + Truebones 动物",
+ "fps": 30,
+ "all_sources": {
+  "mixamo/bipedal": {
+   "clips": 2317,
+   "hours": 2.408
+  },
+  "objaverse/articulated_rigid": {
+   "clips": 172,
+   "hours": 0.142
+  },
+  "objaverse/avian": {
+   "clips": 223,
+   "hours": 0.222
+  },
+  "objaverse/bipedal": {
+   "clips": 9094,
+   "hours": 13.486
+  },
+  "objaverse/insectoid": {
+   "clips": 159,
+   "hours": 0.159
+  },
+  "objaverse/marine": {
+   "clips": 59,
+   "hours": 0.054
+  },
+  "objaverse/quadrupedal": {
+   "clips": 623,
+   "hours": 1.005
+  },
+  "objaverse/serpentine": {
+   "clips": 13,
+   "hours": 0.01
+  },
+  "objaverse/uncertain": {
+   "clips": 12,
+   "hours": 0.009
+  },
+  "truebones/avian": {
+   "clips": 116,
+   "hours": 0.107
+  },
+  "truebones/bipedal": {
+   "clips": 159,
+   "hours": 0.179
+  },
+  "truebones/insectoid": {
+   "clips": 215,
+   "hours": 0.166
+  },
+  "truebones/marine": {
+   "clips": 19,
+   "hours": 0.014
+  },
+  "truebones/quadrupedal": {
+   "clips": 558,
+   "hours": 0.53
+  },
+  "truebones/serpentine": {
+   "clips": 30,
+   "hours": 0.039
+  }
+ },
+ "mixamo": {
+  "clips": 2317,
+  "hours": 2.408,
+  "unimate_train_subset": {
+   "clips": 2162,
+   "minutes": 105.04
+  },
+  "rig": "单一 65 关节 Mixamo rig（UniML3D 只保留 22 关节人形核心）；无演员信息",
+  "taxonomy": {
+   "locomotion": {
+    "primary_hours": 0.34,
+    "primary_clips": 563,
+    "primary_share_pct": 14.04,
+    "multilabel_hours": 0.69,
+    "multilabel_clips": 948
+   },
+   "dynamic": {
+    "primary_hours": 0.78,
+    "primary_clips": 701,
+    "primary_share_pct": 32.32,
+    "multilabel_hours": 0.92,
+    "multilabel_clips": 845
+   },
+   "ground_contact": {
+    "primary_hours": 0.29,
+    "primary_clips": 262,
+    "primary_share_pct": 11.87,
+    "multilabel_hours": 0.29,
+    "multilabel_clips": 266
+   },
+   "sitting_on_object": {
+    "primary_hours": 0.19,
+    "primary_clips": 123,
+    "primary_share_pct": 7.86,
+    "multilabel_hours": 0.19,
+    "multilabel_clips": 123
+   },
+   "upper_body_manipulation": {
+    "primary_hours": 0.25,
+    "primary_clips": 209,
+    "primary_share_pct": 10.45,
+    "multilabel_hours": 0.46,
+    "multilabel_clips": 474
+   },
+   "whole_body_object": {
+    "primary_hours": 0.04,
+    "primary_clips": 50,
+    "primary_share_pct": 1.56,
+    "multilabel_hours": 0.04,
+    "multilabel_clips": 50
+   },
+   "gesture_social": {
+    "primary_hours": 0.13,
+    "primary_clips": 98,
+    "primary_share_pct": 5.48,
+    "multilabel_hours": 0.33,
+    "multilabel_clips": 209
+   },
+   "idle_posture": {
+    "primary_hours": 0.34,
+    "primary_clips": 252,
+    "primary_share_pct": 14.01,
+    "multilabel_hours": 1.2,
+    "multilabel_clips": 1140
+   },
+   "other": {
+    "primary_hours": 0.06,
+    "primary_clips": 59,
+    "primary_share_pct": 2.41,
+    "multilabel_hours": 0.06,
+    "multilabel_clips": 59
+   }
+  },
+  "contacts": {
+   "hours_any_class": {
+    "feet_only": 1.52,
+    "hands_ground": 0.09,
+    "knees": 0.07,
+    "hips": 0.32,
+    "back": 0.1,
+    "object_hands": 0.48,
+    "object_feet": 0.03
+   },
+   "hours_by_primary_class": {
+    "locomotion": {
+     "feet_only": 0.34,
+     "object_feet": 0.0
+    },
+    "dynamic": {
+     "feet_only": 0.65,
+     "back": 0.0,
+     "object_hands": 0.12,
+     "object_feet": 0.0
+    },
+    "ground_contact": {
+     "feet_only": 0.01,
+     "hands_ground": 0.08,
+     "knees": 0.07,
+     "hips": 0.13,
+     "back": 0.1,
+     "object_hands": 0.04
+    },
+    "sitting_on_object": {
+     "hips": 0.19,
+     "object_hands": 0.04
+    },
+    "upper_body_manipulation": {
+     "hips": 0.0,
+     "object_hands": 0.25
+    },
+    "whole_body_object": {
+     "hands_ground": 0.0,
+     "knees": 0.0,
+     "hips": 0.0,
+     "back": 0.0,
+     "object_hands": 0.04,
+     "object_feet": 0.03
+    },
+    "gesture_social": {
+     "feet_only": 0.13
+    },
+    "idle_posture": {
+     "feet_only": 0.34,
+     "hips": 0.0
+    },
+    "other": {
+     "feet_only": 0.06,
+     "object_feet": 0.0
+    }
+   }
+  },
+  "prop_in_name_clips": 319,
+  "prop_in_name_hours": 0.241,
+  "object_pose_or_mesh_available": false,
+  "local_feature_npz": 129
+ },
+ "objaverse_bipedal": {
+  "clips": 9094,
+  "hours": 13.486,
+  "rigs": 6614,
+  "joints": {
+   "min": 3,
+   "median": 41.0,
+   "max": 116
+  },
+  "mixamo_named_animation_share": 0.274,
+  "taxonomy_primary_hours": {
+   "locomotion": 2.574,
+   "dynamic": 4.444,
+   "ground_contact": 0.339,
+   "sitting_on_object": 0.166,
+   "upper_body_manipulation": 0.117,
+   "whole_body_object": 0.003,
+   "gesture_social": 0.242,
+   "idle_posture": 3.999,
+   "other": 1.601
+  },
+  "humanoid_usable": "未验证：'bipedal' 是 VLM 判的体型类，包含卡通/机器人/怪物；27% 动画名是 mixamo.com（Mixamo 动作套在任意角色上，和 Mixamo 重复）"
+ },
+ "truebones_bipedal_note": "Truebones 'bipedal' 是霸王龙/迅猛龙/鸵鸟等 8 种(0.18 h)，不是人形；原始片段需购买",
+ "license": {
+  "mixamo": "Adobe Mixamo 条款（动作可用于项目，数据集再分发/训练授权不明确 → 有风险）",
+  "objaverse": "逐物体继承 Objaverse-XL 上游许可，无统一许可",
+  "captions_metadata": "ODC-BY 1.0",
+  "unimate_models": "CC BY-NC 4.0",
+  "open_release_of_retargeted": "有风险/不建议"
+ },
+ "status": {
+  "on_disk_raw": "元数据(clips.csv/skeletons.csv/README)+HF 缓存冒烟样本: Mixamo 特征 npz 129/2,162, Objaverse 90；reload 导出 2 段 + 1.3 GB GLB 样本；全量数据未下载（主下载器在下 UniMate 模型权重, 非数据）",
+  "converted_smplx": "0",
+  "retargeted": "0",
+  "umr_robots": 0
+ },
+ "umr_bringup": "Mixamo FBX → BVH(Blender) → UMR 通用 FBX/BVH(NR) 适配器（未验证）；或用 UniML3D 特征(22 关节全局位置+局部旋转@30fps)做 SMPL-X 拟合；可用的人形部分只有 Mixamo 2.4 h，Objaverse 'bipedal' 需人工/自动筛人形"
+}

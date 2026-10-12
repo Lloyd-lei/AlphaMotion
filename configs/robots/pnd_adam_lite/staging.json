@@ -1,0 +1,79 @@
+{
+ "name": "pnd_adam_lite",
+ "src_mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/pnd_adam_lite/scene.xml",
+ "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/pnd_adam_lite/pnd_adam_lite.xml",
+ "nq": 32,
+ "nv": 31,
+ "facing_plus_x": true,
+ "locked_joints": [],
+ "tpose": {
+  "shoulderRoll_Left": 1.41738,
+  "shoulderRoll_Right": -1.41738,
+  "shoulderPitch_Left": 0.13031,
+  "shoulderYaw_Left": 0.046,
+  "elbow_Left": -0.27187,
+  "wristYaw_Left": -0.96352,
+  "shoulderPitch_Right": 0.13032,
+  "shoulderYaw_Right": -0.04606,
+  "elbow_Right": -0.27189,
+  "wristYaw_Right": 0.96316
+ },
+ "tpose_fixed": true,
+ "tpose_metrics_draft": {
+  "L": {
+   "upper_arm_deg": 3.8409187015869812,
+   "forearm_deg": 27.476323109515192,
+   "hand_deg": 0.16247694367741028,
+   "tip_minus_shoulder_cm": [
+    -2.5,
+    68.7,
+    5.0
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "R": {
+   "upper_arm_deg": 3.8409187015869812,
+   "forearm_deg": 27.47632310951522,
+   "hand_deg": 0.1624769367056033,
+   "tip_minus_shoulder_cm": [
+    -2.5,
+    -68.7,
+    5.0
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "pass": false
+ },
+ "tpose_metrics_final": {
+  "L": {
+   "upper_arm_deg": 4.538697247786421,
+   "forearm_deg": 13.016509857723458,
+   "hand_deg": 13.284044994124926,
+   "tip_minus_shoulder_cm": [
+    3.4,
+    68.2,
+    -4.6
+   ],
+   "elbow_axis_vertical": 0.986
+  },
+  "R": {
+   "upper_arm_deg": 4.538639093966975,
+   "forearm_deg": 13.016467993203582,
+   "hand_deg": 13.284247497318425,
+   "tip_minus_shoulder_cm": [
+    3.4,
+    -68.2,
+    -4.6
+   ],
+   "elbow_axis_vertical": 0.986
+  },
+  "pass": true
+ },
+ "bbox_center_ratio": 0.6618142393011206,
+ "bbox_center_ratio_draft": 0.6618,
+ "exclusions": [],
+ "flagged_nonadjacent_rest_overlaps": [],
+ "remaining_tpose_overlaps": [],
+ "n_collision_geoms": 12,
+ "seconds": 13.7
+}

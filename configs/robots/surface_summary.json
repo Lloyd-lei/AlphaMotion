@@ -1,0 +1,422 @@
+{
+ "booster_k1": {
+  "n": 4096,
+  "hull_vertices": 17350,
+  "region_counts": {
+   "trunk": 1457,
+   "L_thigh": 369,
+   "R_thigh": 369,
+   "L_shin": 333,
+   "R_shin": 343,
+   "L_foot": 184,
+   "R_foot": 179,
+   "L_upper_arm": 128,
+   "R_upper_arm": 119,
+   "L_forearm": 142,
+   "R_forearm": 158,
+   "L_hand": 161,
+   "R_hand": 154
+  },
+  "s": 7.1
+ },
+ "booster_t1": {
+  "n": 4096,
+  "hull_vertices": 14945,
+  "region_counts": {
+   "trunk": 1479,
+   "L_thigh": 405,
+   "R_thigh": 397,
+   "L_shin": 285,
+   "R_shin": 278,
+   "L_foot": 233,
+   "R_foot": 227,
+   "L_upper_arm": 99,
+   "R_upper_arm": 103,
+   "L_forearm": 136,
+   "R_forearm": 140,
+   "L_hand": 161,
+   "R_hand": 153
+  },
+  "s": 8.0
+ },
+ "booster_t1_29dof": {
+  "n": 4096,
+  "hull_vertices": 15808,
+  "region_counts": {
+   "trunk": 1353,
+   "L_thigh": 359,
+   "R_thigh": 352,
+   "L_shin": 261,
+   "R_shin": 271,
+   "L_foot": 215,
+   "R_foot": 208,
+   "L_upper_arm": 89,
+   "R_upper_arm": 90,
+   "L_forearm": 198,
+   "R_forearm": 201,
+   "L_hand": 245,
+   "R_hand": 254
+  },
+  "s": 7.4
+ },
+ "engineai_pm01": {
+  "n": 4096,
+  "hull_vertices": 24932,
+  "region_counts": {
+   "trunk": 1211,
+   "L_thigh": 452,
+   "R_thigh": 457,
+   "L_shin": 328,
+   "R_shin": 350,
+   "L_foot": 197,
+   "R_foot": 192,
+   "L_upper_arm": 219,
+   "R_upper_arm": 219,
+   "L_forearm": 137,
+   "R_forearm": 138,
+   "L_hand": 97,
+   "R_hand": 99
+  },
+  "s": 11.8
+ },
+ "fourier_gr3": {
+  "n": 4096,
+  "hull_vertices": 30469,
+  "region_counts": {
+   "trunk": 1266,
+   "L_thigh": 454,
+   "R_thigh": 437,
+   "L_shin": 350,
+   "R_shin": 362,
+   "L_foot": 176,
+   "R_foot": 182,
+   "L_upper_arm": 218,
+   "R_upper_arm": 207,
+   "L_forearm": 26,
+   "R_forearm": 33,
+   "L_hand": 190,
+   "R_hand": 195
+  },
+  "s": 7.7
+ },
+ "fourier_n1": {
+  "n": 4096,
+  "hull_vertices": 23222,
+  "region_counts": {
+   "trunk": 1538,
+   "L_thigh": 472,
+   "R_thigh": 470,
+   "L_shin": 250,
+   "R_shin": 258,
+   "L_foot": 142,
+   "R_foot": 134,
+   "L_upper_arm": 228,
+   "R_upper_arm": 235,
+   "L_forearm": 80,
+   "R_forearm": 82,
+   "L_hand": 104,
+   "R_hand": 103
+  },
+  "s": 11.2
+ },
+ "hightorque_hi": {
+  "n": 4096,
+  "hull_vertices": 7062,
+  "region_counts": {
+   "trunk": 1664,
+   "L_thigh": 394,
+   "R_thigh": 384,
+   "L_shin": 276,
+   "R_shin": 295,
+   "L_foot": 161,
+   "R_foot": 168,
+   "L_upper_arm": 241,
+   "R_upper_arm": 248,
+   "L_forearm": 104,
+   "R_forearm": 109,
+   "L_hand": 27,
+   "R_hand": 25
+  },
+  "s": 8.0
+ },
+ "kuavo_s45": {
+  "n": 4096,
+  "hull_vertices": 8472,
+  "region_counts": {
+   "trunk": 1779,
+   "L_thigh": 404,
+   "R_thigh": 402,
+   "L_shin": 144,
+   "R_shin": 145,
+   "L_foot": 77,
+   "R_foot": 72,
+   "L_upper_arm": 251,
+   "R_upper_arm": 253,
+   "L_forearm": 182,
+   "R_forearm": 185,
+   "L_hand": 101,
+   "R_hand": 101
+  },
+  "s": 6.9
+ },
+ "pal_talos": {
+  "n": 4096,
+  "hull_vertices": 12212,
+  "region_counts": {
+   "trunk": 1497,
+   "L_thigh": 445,
+   "R_thigh": 443,
+   "L_shin": 308,
+   "R_shin": 309,
+   "L_foot": 137,
+   "R_foot": 132,
+   "L_upper_arm": 239,
+   "R_upper_arm": 240,
+   "L_forearm": 149,
+   "R_forearm": 151,
+   "L_hand": 23,
+   "R_hand": 23
+  },
+  "s": 7.0
+ },
+ "pnd_adam_lite": {
+  "n": 4096,
+  "hull_vertices": 17103,
+  "region_counts": {
+   "trunk": 1612,
+   "L_thigh": 625,
+   "R_thigh": 624,
+   "L_shin": 168,
+   "R_shin": 160,
+   "L_foot": 122,
+   "R_foot": 127,
+   "L_upper_arm": 174,
+   "R_upper_arm": 181,
+   "L_forearm": 46,
+   "R_forearm": 46,
+   "L_hand": 106,
+   "R_hand": 105
+  },
+  "s": 11.0
+ },
+ "tienkung": {
+  "n": 4096,
+  "hull_vertices": 1467,
+  "region_counts": {
+   "trunk": 1675,
+   "L_thigh": 531,
+   "R_thigh": 533,
+   "L_shin": 198,
+   "R_shin": 196,
+   "L_foot": 151,
+   "R_foot": 146,
+   "L_upper_arm": 204,
+   "R_upper_arm": 199,
+   "L_forearm": 83,
+   "R_forearm": 90,
+   "L_hand": 45,
+   "R_hand": 45
+  },
+  "s": 4.0
+ },
+ "unitree_g1_23dof": {
+  "n": 4096,
+  "hull_vertices": 43315,
+  "region_counts": {
+   "trunk": 1268,
+   "L_thigh": 504,
+   "R_thigh": 503,
+   "L_shin": 284,
+   "R_shin": 280,
+   "L_foot": 151,
+   "R_foot": 148,
+   "L_upper_arm": 222,
+   "R_upper_arm": 223,
+   "L_forearm": 64,
+   "R_forearm": 68,
+   "L_hand": 191,
+   "R_hand": 190
+  },
+  "s": 8.9
+ },
+ "unitree_g1_29dof": {
+  "n": 4096,
+  "hull_vertices": 43315,
+  "region_counts": {
+   "trunk": 1268,
+   "L_thigh": 504,
+   "R_thigh": 503,
+   "L_shin": 284,
+   "R_shin": 280,
+   "L_foot": 151,
+   "R_foot": 148,
+   "L_upper_arm": 222,
+   "R_upper_arm": 223,
+   "L_forearm": 64,
+   "R_forearm": 68,
+   "L_hand": 191,
+   "R_hand": 190
+  },
+  "s": 8.1
+ },
+ "unitree_h1": {
+  "n": 4096,
+  "hull_vertices": 12436,
+  "region_counts": {
+   "trunk": 1487,
+   "L_thigh": 561,
+   "R_thigh": 560,
+   "L_shin": 235,
+   "R_shin": 227,
+   "L_foot": 89,
+   "R_foot": 81,
+   "L_upper_arm": 264,
+   "R_upper_arm": 268,
+   "L_forearm": 113,
+   "R_forearm": 108,
+   "L_hand": 51,
+   "R_hand": 52
+  },
+  "s": 9.7
+ },
+ "unitree_h1_2": {
+  "n": 4096,
+  "hull_vertices": 16503,
+  "region_counts": {
+   "trunk": 1326,
+   "L_thigh": 566,
+   "R_thigh": 569,
+   "L_shin": 241,
+   "R_shin": 248,
+   "L_foot": 151,
+   "R_foot": 143,
+   "L_upper_arm": 261,
+   "R_upper_arm": 259,
+   "L_forearm": 57,
+   "R_forearm": 59,
+   "L_hand": 105,
+   "R_hand": 111
+  },
+  "s": 9.2
+ },
+ "unitree_h2": {
+  "n": 4096,
+  "hull_vertices": 22982,
+  "region_counts": {
+   "trunk": 1230,
+   "L_thigh": 477,
+   "R_thigh": 485,
+   "L_shin": 304,
+   "R_shin": 291,
+   "L_foot": 136,
+   "R_foot": 136,
+   "L_upper_arm": 218,
+   "R_upper_arm": 218,
+   "L_forearm": 92,
+   "R_forearm": 98,
+   "L_hand": 204,
+   "R_hand": 207
+  },
+  "s": 7.5
+ },
+ "unitree_r1": {
+  "n": 4096,
+  "hull_vertices": 33863,
+  "region_counts": {
+   "trunk": 1236,
+   "L_thigh": 391,
+   "R_thigh": 373,
+   "L_shin": 323,
+   "R_shin": 317,
+   "L_foot": 163,
+   "R_foot": 158,
+   "L_upper_arm": 320,
+   "R_upper_arm": 320,
+   "L_forearm": 115,
+   "R_forearm": 113,
+   "L_hand": 134,
+   "R_hand": 133
+  },
+  "s": 7.2
+ },
+ "agibot_x2_ultra": {
+  "n": 4096,
+  "hull_vertices": 45486,
+  "region_counts": {
+   "trunk": 1416,
+   "L_thigh": 383,
+   "R_thigh": 387,
+   "L_shin": 259,
+   "R_shin": 258,
+   "L_foot": 241,
+   "R_foot": 233,
+   "L_upper_arm": 219,
+   "R_upper_arm": 214,
+   "L_forearm": 78,
+   "R_forearm": 76,
+   "L_hand": 163,
+   "R_hand": 169
+  },
+  "s": 11.1
+ },
+ "agibot_a3_t3d0": {
+  "n": 4096,
+  "hull_vertices": 25011,
+  "region_counts": {
+   "trunk": 1277,
+   "L_thigh": 442,
+   "R_thigh": 455,
+   "L_shin": 303,
+   "R_shin": 301,
+   "L_foot": 152,
+   "R_foot": 162,
+   "L_upper_arm": 267,
+   "R_upper_arm": 276,
+   "L_forearm": 83,
+   "R_forearm": 86,
+   "L_hand": 148,
+   "R_hand": 144
+  },
+  "s": 8.0
+ },
+ "agibot_a2": {
+  "n": 4096,
+  "hull_vertices": 22940,
+  "region_counts": {
+   "trunk": 1358,
+   "L_thigh": 540,
+   "R_thigh": 552,
+   "L_shin": 227,
+   "R_shin": 228,
+   "L_foot": 140,
+   "R_foot": 132,
+   "L_upper_arm": 151,
+   "R_upper_arm": 146,
+   "L_forearm": 230,
+   "R_forearm": 235,
+   "L_hand": 76,
+   "R_hand": 81
+  },
+  "s": 9.4
+ },
+ "openloong": {
+  "n": 4096,
+  "hull_vertices": 12252,
+  "region_counts": {
+   "trunk": 1805,
+   "L_thigh": 485,
+   "R_thigh": 474,
+   "L_shin": 154,
+   "R_shin": 154,
+   "L_foot": 99,
+   "R_foot": 96,
+   "L_upper_arm": 158,
+   "R_upper_arm": 161,
+   "L_forearm": 154,
+   "R_forearm": 154,
+   "L_hand": 102,
+   "R_hand": 100
+  },
+  "s": 8.4
+ }
+}

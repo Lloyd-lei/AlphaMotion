@@ -1,0 +1,83 @@
+{
+ "name": "unitree_h1_2",
+ "src_mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/unitree_h1_2/h1_2_handless.xml",
+ "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/unitree_h1_2/unitree_h1_2.xml",
+ "nq": 34,
+ "nv": 33,
+ "facing_plus_x": true,
+ "locked_joints": [],
+ "tpose": {
+  "left_shoulder_roll_joint": 2.20151,
+  "left_elbow_joint": 1.48058,
+  "right_shoulder_roll_joint": -2.21058,
+  "right_elbow_joint": 1.47379,
+  "left_shoulder_pitch_joint": -3.14,
+  "left_shoulder_yaw_joint": -0.06973,
+  "left_wrist_roll_joint": -1.15263,
+  "left_wrist_pitch_joint": 0.4625,
+  "left_wrist_yaw_joint": 0.2374,
+  "right_shoulder_pitch_joint": -3.14,
+  "right_shoulder_yaw_joint": 0.06967,
+  "right_wrist_roll_joint": 0.14575,
+  "right_wrist_pitch_joint": 0.3387,
+  "right_wrist_yaw_joint": 0.67499
+ },
+ "tpose_fixed": true,
+ "tpose_metrics_draft": {
+  "L": {
+   "upper_arm_deg": 6.389402341816881,
+   "forearm_deg": 15.997390322193533,
+   "hand_deg": 6.3438646063507935,
+   "tip_minus_shoulder_cm": [
+    -1.6,
+    68.0,
+    2.5
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "R": {
+   "upper_arm_deg": 6.389402341816881,
+   "forearm_deg": 15.997390322193533,
+   "hand_deg": 6.343864667921099,
+   "tip_minus_shoulder_cm": [
+    -1.6,
+    -68.0,
+    2.5
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "pass": false
+ },
+ "tpose_metrics_final": {
+  "L": {
+   "upper_arm_deg": 6.917512521534849,
+   "forearm_deg": 9.037372254113961,
+   "hand_deg": 0.9066661423623255,
+   "tip_minus_shoulder_cm": [
+    -0.7,
+    67.5,
+    -2.3
+   ],
+   "elbow_axis_vertical": 0.992
+  },
+  "R": {
+   "upper_arm_deg": 7.355416532239204,
+   "forearm_deg": 8.509387429783065,
+   "hand_deg": 3.0821603921357212,
+   "tip_minus_shoulder_cm": [
+    -0.5,
+    -67.2,
+    -2.1
+   ],
+   "elbow_axis_vertical": 0.991
+  },
+  "pass": true
+ },
+ "bbox_center_ratio": 0.5750410885346575,
+ "bbox_center_ratio_draft": 0.575,
+ "exclusions": [],
+ "flagged_nonadjacent_rest_overlaps": [],
+ "remaining_tpose_overlaps": [],
+ "n_collision_geoms": 26,
+ "seconds": 6.0
+}

@@ -1,0 +1,79 @@
+{
+ "name": "unitree_r1",
+ "src_mjcf": "/var/tmp/alphamotion/robot_models/unitree_ros/robots/r1_description/unitree_r1_mjcf.xml",
+ "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/unitree_r1/unitree_r1.xml",
+ "nq": 33,
+ "nv": 32,
+ "facing_plus_x": true,
+ "locked_joints": [],
+ "tpose": {
+  "left_shoulder_roll_joint": 2.2422,
+  "left_elbow_joint": 1.49094,
+  "right_shoulder_roll_joint": -2.24235,
+  "right_elbow_joint": 1.49077,
+  "left_shoulder_pitch_joint": -3.1416,
+  "left_shoulder_yaw_joint": 0.08007,
+  "left_wrist_roll_joint": -0.68408,
+  "right_shoulder_pitch_joint": -3.1416,
+  "right_shoulder_yaw_joint": -0.07951,
+  "right_wrist_roll_joint": 0.66638
+ },
+ "tpose_fixed": true,
+ "tpose_metrics_draft": {
+  "L": {
+   "upper_arm_deg": 5.706064877717321,
+   "forearm_deg": 16.02503906327344,
+   "hand_deg": 3.9404078421144377,
+   "tip_minus_shoulder_cm": [
+    -0.4,
+    49.8,
+    -1.7
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "R": {
+   "upper_arm_deg": 5.706064877717321,
+   "forearm_deg": 16.02503906327344,
+   "hand_deg": 3.968282549595748,
+   "tip_minus_shoulder_cm": [
+    -0.4,
+    -49.8,
+    -1.7
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "pass": false
+ },
+ "tpose_metrics_final": {
+  "L": {
+   "upper_arm_deg": 6.821810826848493,
+   "forearm_deg": 6.50713110976233,
+   "hand_deg": 1.1099994115318337,
+   "tip_minus_shoulder_cm": [
+    -1.3,
+    48.2,
+    -1.2
+   ],
+   "elbow_axis_vertical": 0.986
+  },
+  "R": {
+   "upper_arm_deg": 6.828387643594129,
+   "forearm_deg": 6.4976502535710665,
+   "hand_deg": 1.0831470528527556,
+   "tip_minus_shoulder_cm": [
+    -1.3,
+    -48.2,
+    -1.2
+   ],
+   "elbow_axis_vertical": 0.986
+  },
+  "pass": true
+ },
+ "bbox_center_ratio": 0.6420154875189109,
+ "bbox_center_ratio_draft": 0.642,
+ "exclusions": [],
+ "flagged_nonadjacent_rest_overlaps": [],
+ "remaining_tpose_overlaps": [],
+ "n_collision_geoms": 34,
+ "seconds": 4.4
+}

@@ -1,0 +1,21 @@
+{
+ "name": "gr3_default",
+ "source": "/var/tmp/alphamotion/umr_factory/umr/configs/defaults_gr3_default.json",
+ "base": "third_party/UMR/humanoid_retarget_defaults.json @ d1cdaed",
+ "note": "10-04 UMR scout ablation; only keys that differ from the base (dotted paths). Path keys use ${SR_*} tokens.",
+ "overrides": {
+  "smplx_model_dir": "${SR_UMR_ROOT}/smpl",
+  "correspondence.dataset.smpl_models": [
+   {
+    "type": "smplx",
+    "dir": "${SR_UMR_ROOT}/smpl",
+    "genders": [
+     "neutral"
+    ]
+   }
+  ],
+  "motion.data": "${SR_UMR_ROOT}/sample_data/lafan1_smplx",
+  "retarget.out": "${SR_FACTORY_ROOT}/umr/runs/gr3_default.npz",
+  "view.enabled": false
+ }
+}

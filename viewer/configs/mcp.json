@@ -1,0 +1,57 @@
+{
+  "schema": "alphamotion-mcp-config-v1",
+  "data_root": "/home/arenalabs/umr_factory_data",
+  "cache_root": "/home/arenalabs/motion_audit_web/cache/arrays",
+  "state_root": "/home/arenalabs/motion_audit_web/agent_state",
+  "evidence_roots": {
+    "workbench": "/home/arenalabs/motion_audit_web/qa"
+  },
+  "reserve_bytes": 17179869184,
+  "download_remaining_upper_bound_bytes": 200505865539,
+  "workflows": {
+    "retarget": {
+      "enabled": false,
+      "stage": "retarget",
+      "description": "retarget",
+      "disabled_reason": "Existing UMR pipelines write to their own outputs; isolated input/output adapter still required",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    },
+    "train": {
+      "enabled": false,
+      "stage": "train",
+      "description": "train",
+      "disabled_reason": "Next-round configuration and isolated training adapter required; historical six-run queue is not reused",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    },
+    "evaluate": {
+      "enabled": false,
+      "stage": "evaluate",
+      "description": "evaluate",
+      "disabled_reason": "Next-round checkpoint/data selection contract required; historical evaluation evidence is readable now",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    },
+    "simulate": {
+      "enabled": false,
+      "stage": "simulate",
+      "description": "simulate",
+      "disabled_reason": "No dynamics-validation workflow registered; kinematic replay does not satisfy this stage",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    }
+  }
+}

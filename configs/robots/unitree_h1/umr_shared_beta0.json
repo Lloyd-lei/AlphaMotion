@@ -1,0 +1,50 @@
+{
+ "robot": {
+  "name": "unitree_h1",
+  "xml": "/home/arenalabs/umr_factory_data/robots/unitree_h1/unitree_h1.xml",
+  "point_cloud_center": "body:torso_link",
+  "tpose_qpos": {
+   "left_shoulder_roll_joint": 1.5477,
+   "right_shoulder_roll_joint": -1.54771,
+   "left_shoulder_pitch_joint": 0.08058,
+   "left_shoulder_yaw_joint": 0.0264,
+   "left_elbow_joint": 1.36489,
+   "right_shoulder_pitch_joint": 0.08058,
+   "right_shoulder_yaw_joint": -0.02621,
+   "right_elbow_joint": 1.36489
+  }
+ },
+ "correspondence": {
+  "dataset": {
+   "smpl_center": "bbox_ratio",
+   "bbox_center_ratio": 0.578199,
+   "out": "/home/arenalabs/umr_factory_data/corr/unitree_h1/beta0/correspondence_dataset.npz"
+  },
+  "train": {
+   "out_dir": "/home/arenalabs/umr_factory_data/corr/unitree_h1/beta0/train",
+   "template_name": "auto",
+   "device": "auto"
+  },
+  "smpl_name": "auto"
+ },
+ "smpl_template": {
+  "source": "config",
+  "type": "smplx",
+  "gender": "neutral",
+  "use_betas": true,
+  "use_gender": true,
+  "name": "auto",
+  "betas": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ }
+}

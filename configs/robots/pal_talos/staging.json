@@ -1,0 +1,100 @@
+{
+ "name": "pal_talos",
+ "src_mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/pal_talos/talos.xml",
+ "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/pal_talos/pal_talos.xml",
+ "nq": 37,
+ "nv": 36,
+ "facing_plus_x": true,
+ "locked_joints": [],
+ "tpose": {
+  "arm_left_2_joint": 1.33097,
+  "arm_right_2_joint": -1.33031,
+  "arm_left_1_joint": 0.01932,
+  "arm_left_3_joint": 1.47537,
+  "arm_left_4_joint": -0.31625,
+  "arm_left_5_joint": 0.01502,
+  "arm_left_6_joint": -0.22191,
+  "arm_left_7_joint": -0.4085,
+  "arm_right_1_joint": -0.01878,
+  "arm_right_3_joint": -1.4805,
+  "arm_right_4_joint": -0.31717,
+  "arm_right_5_joint": -0.00983,
+  "arm_right_6_joint": -0.17203,
+  "arm_right_7_joint": -0.42672
+ },
+ "tpose_fixed": true,
+ "tpose_metrics_draft": {
+  "L": {
+   "upper_arm_deg": 7.278214943607915,
+   "forearm_deg": 4.327415177436618,
+   "hand_deg": 30.51170788705385,
+   "tip_minus_shoulder_cm": [
+    0.7,
+    76.0,
+    9.4
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "R": {
+   "upper_arm_deg": 7.278214943607915,
+   "forearm_deg": 4.327415177436618,
+   "hand_deg": 30.51170788705385,
+   "tip_minus_shoulder_cm": [
+    0.7,
+    -76.0,
+    9.4
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "pass": false
+ },
+ "tpose_metrics_final": {
+  "L": {
+   "upper_arm_deg": 0.15520657856215248,
+   "forearm_deg": 0.1948705899983775,
+   "hand_deg": 0.028580431202681042,
+   "tip_minus_shoulder_cm": [
+    -0.0,
+    77.0,
+    -0.0
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "R": {
+   "upper_arm_deg": 0.1407885986045697,
+   "forearm_deg": 0.1608763516768097,
+   "hand_deg": 0.05066519904529601,
+   "tip_minus_shoulder_cm": [
+    -0.0,
+    -77.0,
+    -0.0
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "pass": true
+ },
+ "bbox_center_ratio": 0.6578268435033952,
+ "bbox_center_ratio_draft": 0.6578,
+ "exclusions": [],
+ "flagged_nonadjacent_rest_overlaps": [
+  {
+   "body1": "arm_left_7_link",
+   "body2": "leg_left_3_link",
+   "rest_depth_mm": 36.37,
+   "tree_hops": 12,
+   "overlap_frac_random_poses": 0.03,
+   "reason": "rest overlap between NON-adjacent links: NOT excluded (counted as penetration)"
+  },
+  {
+   "body1": "arm_right_7_link",
+   "body2": "leg_right_3_link",
+   "rest_depth_mm": 36.37,
+   "tree_hops": 12,
+   "overlap_frac_random_poses": 0.01,
+   "reason": "rest overlap between NON-adjacent links: NOT excluded (counted as penetration)"
+  }
+ ],
+ "remaining_tpose_overlaps": [],
+ "n_collision_geoms": 35,
+ "seconds": 2.4
+}

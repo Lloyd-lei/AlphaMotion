@@ -1,0 +1,29 @@
+{
+ "robot": {
+  "name": "unitree_h1_2",
+  "xml": "/home/arenalabs/umr_factory_data/robots/unitree_h1_2/unitree_h1_2.xml",
+  "point_cloud_center": "body:torso_link",
+  "tpose_qpos": {
+   "left_shoulder_roll_joint": 2.20151,
+   "left_elbow_joint": 1.48058,
+   "right_shoulder_roll_joint": -2.21058,
+   "right_elbow_joint": 1.47379,
+   "left_shoulder_pitch_joint": -3.14,
+   "left_shoulder_yaw_joint": -0.06973,
+   "left_wrist_roll_joint": -1.15263,
+   "left_wrist_pitch_joint": 0.4625,
+   "left_wrist_yaw_joint": 0.2374,
+   "right_shoulder_pitch_joint": -3.14,
+   "right_shoulder_yaw_joint": 0.06967,
+   "right_wrist_roll_joint": 0.14575,
+   "right_wrist_pitch_joint": 0.3387,
+   "right_wrist_yaw_joint": 0.67499
+  }
+ },
+ "correspondence": {
+  "dataset": {
+   "smpl_center": "bbox_ratio",
+   "bbox_center_ratio": 0.575041
+  }
+ }
+}

@@ -1,0 +1,16 @@
+{
+ "left_shoulder_pitch_joint": -0.5283921302650071,
+ "left_shoulder_roll_joint": 1.2788513822617515,
+ "left_shoulder_yaw_joint": -1.0600016229209523,
+ "left_elbow_pitch_joint": 0.08726599999999998,
+ "left_wrist_yaw_joint": -6.620555650797588e-06,
+ "left_wrist_pitch_joint": 0.08706130892328177,
+ "left_wrist_roll_joint": 0.05967986635773802,
+ "right_shoulder_pitch_joint": -0.5283747244034888,
+ "right_shoulder_roll_joint": -1.2788449318322448,
+ "right_shoulder_yaw_joint": 1.0599606680333085,
+ "right_elbow_pitch_joint": 0.08726599999999998,
+ "right_wrist_yaw_joint": -0.000875287390901091,
+ "right_wrist_pitch_joint": 0.08700663396997109,
+ "right_wrist_roll_joint": -0.04969662064517475
+}

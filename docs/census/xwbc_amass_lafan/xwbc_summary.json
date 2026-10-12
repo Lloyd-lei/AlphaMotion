@@ -1,0 +1,624 @@
+{
+ "amass": {
+  "source": "AMASS 经 xwbc-retarget-data 的人体流 (TonyZhang1999/xwbc-retarget-data, human_motion.tar.gz)",
+  "fps": 30,
+  "clips": 13281,
+  "tar_npz_members": 13283,
+  "hours": 43.83,
+  "mirrors_hours": 0.0,
+  "label_sources": {
+   "babel_v1_clips": 6002,
+   "humanml3d_caption_clips": 7986,
+   "any_text_annotation_clips": 8900,
+   "any_text_annotation_hours": 26.55,
+   "name_only_clips": 4381,
+   "name_only_hours": 17.28
+  },
+  "taxonomy": {
+   "locomotion": {
+    "primary_hours": 14.62,
+    "primary_clips": 5175,
+    "primary_share_pct": 33.36,
+    "multilabel_hours": 26.15,
+    "multilabel_clips": 8056
+   },
+   "dynamic": {
+    "primary_hours": 10.06,
+    "primary_clips": 2544,
+    "primary_share_pct": 22.96,
+    "multilabel_hours": 11.8,
+    "multilabel_clips": 2913
+   },
+   "ground_contact": {
+    "primary_hours": 1.83,
+    "primary_clips": 492,
+    "primary_share_pct": 4.17,
+    "multilabel_hours": 1.89,
+    "multilabel_clips": 501
+   },
+   "sitting_on_object": {
+    "primary_hours": 1.99,
+    "primary_clips": 375,
+    "primary_share_pct": 4.54,
+    "multilabel_hours": 2.24,
+    "multilabel_clips": 419
+   },
+   "upper_body_manipulation": {
+    "primary_hours": 9.28,
+    "primary_clips": 2997,
+    "primary_share_pct": 21.17,
+    "multilabel_hours": 14.11,
+    "multilabel_clips": 4037
+   },
+   "whole_body_object": {
+    "primary_hours": 1.33,
+    "primary_clips": 305,
+    "primary_share_pct": 3.02,
+    "multilabel_hours": 1.33,
+    "multilabel_clips": 305
+   },
+   "gesture_social": {
+    "primary_hours": 2.29,
+    "primary_clips": 589,
+    "primary_share_pct": 5.23,
+    "multilabel_hours": 9.71,
+    "multilabel_clips": 1690
+   },
+   "idle_posture": {
+    "primary_hours": 1.24,
+    "primary_clips": 570,
+    "primary_share_pct": 2.84,
+    "multilabel_hours": 23.28,
+    "multilabel_clips": 6736
+   },
+   "other": {
+    "primary_hours": 1.19,
+    "primary_clips": 234,
+    "primary_share_pct": 2.72,
+    "multilabel_hours": 1.19,
+    "multilabel_clips": 234
+   }
+  },
+  "contacts": {
+   "hours_any_class": {
+    "feet_only": 28.9,
+    "hands_ground": 1.3,
+    "knees": 0.77,
+    "hips": 2.65,
+    "back": 0.31,
+    "object_hands": 11.76,
+    "object_feet": 1.73
+   },
+   "hours_by_primary_class": {
+    "locomotion": {
+     "feet_only": 14.17,
+     "hips": 0.01,
+     "back": 0.03,
+     "object_feet": 0.43
+    },
+    "dynamic": {
+     "feet_only": 8.5,
+     "hands_ground": 0.0,
+     "hips": 0.02,
+     "back": 0.03,
+     "object_hands": 1.42,
+     "object_feet": 0.13
+    },
+    "ground_contact": {
+     "feet_only": 0.01,
+     "hands_ground": 1.27,
+     "knees": 0.75,
+     "hips": 0.41,
+     "back": 0.19,
+     "object_hands": 0.66,
+     "object_feet": 0.05
+    },
+    "sitting_on_object": {
+     "hips": 1.99,
+     "back": 0.0,
+     "object_hands": 0.82,
+     "object_feet": 0.01
+    },
+    "upper_body_manipulation": {
+     "feet_only": 1.51,
+     "hands_ground": 0.0,
+     "hips": 0.02,
+     "back": 0.02,
+     "object_hands": 7.74,
+     "object_feet": 0.2
+    },
+    "whole_body_object": {
+     "feet_only": 0.01,
+     "hands_ground": 0.03,
+     "knees": 0.02,
+     "hips": 0.2,
+     "back": 0.03,
+     "object_hands": 1.13,
+     "object_feet": 0.93
+    },
+    "gesture_social": {
+     "feet_only": 2.29,
+     "hips": 0.0
+    },
+    "idle_posture": {
+     "feet_only": 1.23,
+     "hips": 0.01,
+     "object_feet": 0.0
+    },
+    "other": {
+     "feet_only": 1.19,
+     "hips": 0.0,
+     "back": 0.0
+    }
+   }
+  },
+  "objects": {
+   "object_implied_hours": 11.76,
+   "grab_hours": 3.76,
+   "object_pose_or_mesh_available": false,
+   "note": "xwbc 人体流只有 22 个 SMPL 刚体位姿；GRAB 原始数据有物体 6DoF+网格，但这里没有",
+   "implied_object_category_hours": {
+    "box_crate_generic": 5.48,
+    "small_geometric_toy": 2.08,
+    "kitchenware_food": 1.91,
+    "furniture": 1.5,
+    "handheld_device": 1.38,
+    "ball_sport_gear": 1.16,
+    "tool": 0.77,
+    "articulated_fixture": 0.76,
+    "terrain_env": 0.68,
+    "instrument": 0.45,
+    "person_or_doll": 0.33,
+    "assistive": 0.01
+   }
+  },
+  "subsets": {
+   "ACCAD": {
+    "clips": 230,
+    "hours": 0.37,
+    "babel": 102,
+    "humanml3d": 230,
+    "subject_folders": 75,
+    "primary_hours": {
+     "locomotion": 0.12,
+     "dynamic": 0.15,
+     "ground_contact": 0.01,
+     "upper_body_manipulation": 0.04,
+     "whole_body_object": 0.02,
+     "gesture_social": 0.02,
+     "idle_posture": 0.01
+    }
+   },
+   "BMLmovi": {
+    "clips": 1852,
+    "hours": 2.86,
+    "babel": 1101,
+    "humanml3d": 1789,
+    "subject_folders": 89,
+    "primary_hours": {
+     "locomotion": 0.72,
+     "dynamic": 0.47,
+     "ground_contact": 0.42,
+     "sitting_on_object": 0.23,
+     "upper_body_manipulation": 0.33,
+     "whole_body_object": 0.04,
+     "gesture_social": 0.23,
+     "idle_posture": 0.32,
+     "other": 0.1
+    }
+   },
+   "CMU": {
+    "clips": 1885,
+    "hours": 7.42,
+    "babel": 1300,
+    "humanml3d": 1885,
+    "subject_folders": 95,
+    "primary_hours": {
+     "locomotion": 2.2,
+     "dynamic": 2.57,
+     "ground_contact": 0.51,
+     "sitting_on_object": 0.16,
+     "upper_body_manipulation": 0.94,
+     "whole_body_object": 0.77,
+     "gesture_social": 0.09,
+     "idle_posture": 0.13,
+     "other": 0.02
+    }
+   },
+   "CNRS": {
+    "clips": 79,
+    "hours": 0.13,
+    "babel": 0,
+    "humanml3d": 0,
+    "subject_folders": 2,
+    "primary_hours": {
+     "locomotion": 0.13
+    }
+   },
+   "DFaust": {
+    "clips": 129,
+    "hours": 0.09,
+    "babel": 79,
+    "humanml3d": 0,
+    "subject_folders": 10,
+    "primary_hours": {
+     "locomotion": 0.01,
+     "dynamic": 0.04,
+     "idle_posture": 0.02,
+     "other": 0.01
+    }
+   },
+   "DanceDB": {
+    "clips": 123,
+    "hours": 2.63,
+    "babel": 0,
+    "humanml3d": 0,
+    "subject_folders": 19,
+    "primary_hours": {
+     "dynamic": 2.63
+    }
+   },
+   "EyesJapanDataset": {
+    "clips": 679,
+    "hours": 5.95,
+    "babel": 491,
+    "humanml3d": 0,
+    "subject_folders": 12,
+    "primary_hours": {
+     "locomotion": 1.37,
+     "dynamic": 1.65,
+     "ground_contact": 0.18,
+     "sitting_on_object": 0.08,
+     "upper_body_manipulation": 0.94,
+     "whole_body_object": 0.12,
+     "gesture_social": 1.11,
+     "idle_posture": 0.34,
+     "other": 0.16
+    }
+   },
+   "GRAB": {
+    "clips": 1338,
+    "hours": 3.76,
+    "babel": 0,
+    "humanml3d": 0,
+    "subject_folders": 10,
+    "primary_hours": {
+     "upper_body_manipulation": 3.76
+    }
+   },
+   "HDM05": {
+    "clips": 184,
+    "hours": 1.98,
+    "babel": 141,
+    "humanml3d": 0,
+    "subject_folders": 4,
+    "primary_hours": {
+     "locomotion": 0.47,
+     "dynamic": 0.46,
+     "ground_contact": 0.12,
+     "sitting_on_object": 0.04,
+     "upper_body_manipulation": 0.38,
+     "whole_body_object": 0.03,
+     "gesture_social": 0.04,
+     "other": 0.44
+    }
+   },
+   "HUMAN4D": {
+    "clips": 125,
+    "hours": 1.03,
+    "babel": 0,
+    "humanml3d": 0,
+    "subject_folders": 8,
+    "primary_hours": {
+     "locomotion": 0.09,
+     "dynamic": 0.12,
+     "sitting_on_object": 0.04,
+     "whole_body_object": 0.09,
+     "gesture_social": 0.33,
+     "idle_posture": 0.03,
+     "other": 0.32
+    }
+   },
+   "HumanEva": {
+    "clips": 28,
+    "hours": 0.14,
+    "babel": 16,
+    "humanml3d": 28,
+    "subject_folders": 3,
+    "primary_hours": {
+     "locomotion": 0.05,
+     "dynamic": 0.05,
+     "upper_body_manipulation": 0.02,
+     "gesture_social": 0.02
+    }
+   },
+   "KIT": {
+    "clips": 3985,
+    "hours": 8.75,
+    "babel": 2523,
+    "humanml3d": 3985,
+    "subject_folders": 55,
+    "primary_hours": {
+     "locomotion": 2.07,
+     "dynamic": 1.34,
+     "ground_contact": 0.48,
+     "sitting_on_object": 1.38,
+     "upper_body_manipulation": 2.76,
+     "whole_body_object": 0.22,
+     "gesture_social": 0.34,
+     "idle_posture": 0.13,
+     "other": 0.01
+    }
+   },
+   "MoSh": {
+    "clips": 76,
+    "hours": 0.25,
+    "babel": 51,
+    "humanml3d": 0,
+    "subject_folders": 19,
+    "primary_hours": {
+     "locomotion": 0.02,
+     "dynamic": 0.1,
+     "ground_contact": 0.01,
+     "whole_body_object": 0.01,
+     "gesture_social": 0.01,
+     "idle_posture": 0.09,
+     "other": 0.01
+    }
+   },
+   "PosePrior": {
+    "clips": 27,
+    "hours": 0.31,
+    "babel": 20,
+    "humanml3d": 0,
+    "subject_folders": 3,
+    "primary_hours": {
+     "locomotion": 0.06,
+     "dynamic": 0.08,
+     "gesture_social": 0.06,
+     "idle_posture": 0.11
+    }
+   },
+   "SFU": {
+    "clips": 34,
+    "hours": 0.21,
+    "babel": 25,
+    "humanml3d": 34,
+    "subject_folders": 7,
+    "primary_hours": {
+     "locomotion": 0.07,
+     "dynamic": 0.07,
+     "ground_contact": 0.08
+    }
+   },
+   "SOMA": {
+    "clips": 66,
+    "hours": 0.28,
+    "babel": 0,
+    "humanml3d": 0,
+    "subject_folders": 2,
+    "primary_hours": {
+     "locomotion": 0.05,
+     "dynamic": 0.08,
+     "sitting_on_object": 0.01,
+     "upper_body_manipulation": 0.02,
+     "gesture_social": 0.02,
+     "idle_posture": 0.03,
+     "other": 0.07
+    }
+   },
+   "SSM": {
+    "clips": 30,
+    "hours": 0.02,
+    "babel": 20,
+    "humanml3d": 0,
+    "subject_folders": 3,
+    "primary_hours": {
+     "dynamic": 0.01,
+     "idle_posture": 0.01
+    }
+   },
+   "TCDHands": {
+    "clips": 62,
+    "hours": 0.14,
+    "babel": 40,
+    "humanml3d": 0,
+    "subject_folders": 1,
+    "primary_hours": {
+     "sitting_on_object": 0.02,
+     "upper_body_manipulation": 0.06,
+     "gesture_social": 0.02,
+     "idle_posture": 0.01,
+     "other": 0.02
+    }
+   },
+   "TotalCapture": {
+    "clips": 35,
+    "hours": 0.33,
+    "babel": 21,
+    "humanml3d": 35,
+    "subject_folders": 5,
+    "primary_hours": {
+     "locomotion": 0.2,
+     "dynamic": 0.08,
+     "ground_contact": 0.01,
+     "sitting_on_object": 0.01,
+     "upper_body_manipulation": 0.02,
+     "idle_posture": 0.01
+    }
+   },
+   "Transitions": {
+    "clips": 103,
+    "hours": 0.23,
+    "babel": 72,
+    "humanml3d": 0,
+    "subject_folders": 1,
+    "primary_hours": {
+     "locomotion": 0.04,
+     "dynamic": 0.16,
+     "ground_contact": 0.01,
+     "other": 0.01
+    }
+   },
+   "WEIZMANN": {
+    "clips": 2211,
+    "hours": 6.94,
+    "babel": 0,
+    "humanml3d": 0,
+    "subject_folders": 5,
+    "primary_hours": {
+     "locomotion": 6.94
+    }
+   }
+  },
+  "actors": {
+   "subject_folders_total": 428,
+   "note": "xwbc 数据无 betas/性别/身高；subject_folders 是子集内的人/会话文件夹数，不等于独立演员数（ACCAD/DanceDB 偏高）"
+  },
+  "license": {
+   "name": "AMASS License (非商业科研, 禁止分发) + 各子集原许可; BABEL/HumanML3D 标注另有许可",
+   "training_use": "仅非商业科研；公司内部研发是否覆盖需法务确认",
+   "open_release_of_retargeted": false
+  },
+  "status": {
+   "on_disk_raw": "否：原始 AMASS(SMPL-X/SMPL+H) 已不在本机；只有 xwbc 派生的 22 刚体 pos+quat (5.1 GB tar, 13,283 npz)",
+   "converted_smplx": "0",
+   "retargeted": "xwbc/GMR 已重定向 18 台(tar 在盘): berkeley_humanoid_lite, booster_k1, booster_t1, booster_t1_29dof, engineai_pm01, fourier_gr3, fourier_n1, hightorque_hi, kuavo_s45, pal_talos, pnd_adam_lite, tienkung, unitree_g1_23dof, unitree_g1_29dof, unitree_h1, unitree_h1_2, unitree_h2, unitree_r1；我们的缓存 cache_amass_lconv_tfix 用其中 17 台(去掉 berkeley_humanoid_lite)；UMR 0 台",
+   "known_issue": "xwbc 机器人流 4,560 段时间轴错位(KIT 3,985/CMU 503/TotalCapture 35…)，tfix 缓存已修；人体流本身对",
+   "umr_robots": 0
+  },
+  "umr_bringup": "A(推荐) lloyd 用 AMASS 账号下官方 SMPL-X G 版 → UMR 直接读，无需转换；B(不下载) 22 关节四元数 → SMPL-X 拟合（无 betas/手指, 有损）；BABEL 逐帧动作标签已在盘(6,002 段带标签)可直接复用"
+ },
+ "lafan": {
+  "source": "LAFAN1 经 xwbc 人体流 (/var/tmp/alphamotion/xwbc_lafan/extracted/human_motion)",
+  "fps": 30,
+  "clips": 77,
+  "hours": 4.599,
+  "mirrors_hours": 0.0,
+  "subjects": 5,
+  "action_families": {
+   "aiming": 0.388,
+   "dance": 0.423,
+   "fallAndGetUp": 0.26,
+   "fight": 0.204,
+   "fightAndSports": 0.136,
+   "ground": 0.234,
+   "jumps": 0.204,
+   "multipleActions": 0.17,
+   "obstacles": 1.046,
+   "push": 0.028,
+   "pushAndFall": 0.092,
+   "pushAndStumble": 0.189,
+   "run": 0.268,
+   "sprint": 0.152,
+   "walk": 0.804
+  },
+  "taxonomy": {
+   "locomotion": {
+    "primary_hours": 1.61,
+    "primary_clips": 23,
+    "primary_share_pct": 35.05,
+    "multilabel_hours": 2.83,
+    "multilabel_clips": 44
+   },
+   "dynamic": {
+    "primary_hours": 2.4,
+    "primary_clips": 41,
+    "primary_share_pct": 52.2,
+    "multilabel_hours": 2.75,
+    "multilabel_clips": 49
+   },
+   "ground_contact": {
+    "primary_hours": 0.59,
+    "primary_clips": 13,
+    "primary_share_pct": 12.74,
+    "multilabel_hours": 0.59,
+    "multilabel_clips": 13
+   },
+   "sitting_on_object": {
+    "primary_hours": 0.0,
+    "primary_clips": 0,
+    "primary_share_pct": 0.0,
+    "multilabel_hours": 0.0,
+    "multilabel_clips": 0
+   },
+   "upper_body_manipulation": {
+    "primary_hours": 0.0,
+    "primary_clips": 0,
+    "primary_share_pct": 0.0,
+    "multilabel_hours": 0.0,
+    "multilabel_clips": 0
+   },
+   "whole_body_object": {
+    "primary_hours": 0.0,
+    "primary_clips": 0,
+    "primary_share_pct": 0.0,
+    "multilabel_hours": 0.0,
+    "multilabel_clips": 0
+   },
+   "gesture_social": {
+    "primary_hours": 0.0,
+    "primary_clips": 0,
+    "primary_share_pct": 0.0,
+    "multilabel_hours": 0.39,
+    "multilabel_clips": 5
+   },
+   "idle_posture": {
+    "primary_hours": 0.0,
+    "primary_clips": 0,
+    "primary_share_pct": 0.0,
+    "multilabel_hours": 0.17,
+    "multilabel_clips": 4
+   },
+   "other": {
+    "primary_hours": 0.0,
+    "primary_clips": 0,
+    "primary_share_pct": 0.0,
+    "multilabel_hours": 0.0,
+    "multilabel_clips": 0
+   }
+  },
+  "contacts": {
+   "hours_any_class": {
+    "feet_only": 4.01,
+    "hands_ground": 0.59,
+    "knees": 0.49,
+    "hips": 0.59,
+    "back": 0.59,
+    "object_hands": 0.0,
+    "object_feet": 0.0
+   },
+   "hours_by_primary_class": {
+    "locomotion": {
+     "feet_only": 1.61
+    },
+    "dynamic": {
+     "feet_only": 2.4
+    },
+    "ground_contact": {
+     "hands_ground": 0.59,
+     "knees": 0.49,
+     "hips": 0.59,
+     "back": 0.59
+    }
+   }
+  },
+  "objects": {
+   "object_implied_hours": 0.0,
+   "object_pose_or_mesh_available": false,
+   "note": "obstacles1-6 有越障/攀爬，但障碍物没有几何"
+  },
+  "license": {
+   "name": "CC BY-NC-ND 4.0",
+   "training_use": "非商业；ND 禁止分发改编物(含重定向结果)",
+   "open_release_of_retargeted": false
+  },
+  "status": {
+   "on_disk_raw": "原始 BVH 不在本机；有 xwbc 人体流 77 段 + UMR 样例 lafan1_smplx/dance1_subject2.npz",
+   "converted_smplx": "1 段 (dance1_subject2, UMR 自带样例)",
+   "retargeted": "xwbc/GMR 18 台(xwbc_full/lafan/*.tar.gz)；UMR: 1 段 dance1_subject2 → 3 台(fourier_gr3/unitree_g1_29dof/unitree_h2, out/) + QA 窗口(g1_23dof/h1/r1)",
+   "umr_robots": 3
+  },
+  "umr_bringup": "从 GitHub 下 LAFAN1 BVH(很小) → lafan_to_smplx(MIT) → UMR，已有成功样例；只是只有 4.6 h"
+ }
+}

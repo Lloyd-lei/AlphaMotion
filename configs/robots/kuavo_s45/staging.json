@@ -1,0 +1,71 @@
+{
+ "name": "kuavo_s45",
+ "src_mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/kuavo_s45/biped_s45_collision.xml",
+ "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/kuavo_s45/kuavo_s45.xml",
+ "nq": 35,
+ "nv": 34,
+ "facing_plus_x": true,
+ "locked_joints": [],
+ "tpose": {
+  "zarm_l2_joint": 1.570796,
+  "zarm_r2_joint": -1.570796
+ },
+ "tpose_fixed": false,
+ "tpose_metrics_draft": {
+  "L": {
+   "upper_arm_deg": 4.032509328871625,
+   "forearm_deg": 4.448619349034946,
+   "hand_deg": 1.6576440111933384,
+   "tip_minus_shoulder_cm": [
+    0.7,
+    78.9,
+    -0.2
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "R": {
+   "upper_arm_deg": 4.032509328871625,
+   "forearm_deg": 4.493380584270858,
+   "hand_deg": 1.9185208797619722,
+   "tip_minus_shoulder_cm": [
+    0.8,
+    -79.0,
+    -0.3
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "pass": true
+ },
+ "tpose_metrics_final": {
+  "L": {
+   "upper_arm_deg": 4.032509328871625,
+   "forearm_deg": 4.448619349034946,
+   "hand_deg": 1.6576440111933384,
+   "tip_minus_shoulder_cm": [
+    0.7,
+    78.9,
+    -0.2
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "R": {
+   "upper_arm_deg": 4.032509328871625,
+   "forearm_deg": 4.493380584270858,
+   "hand_deg": 1.9185208797619722,
+   "tip_minus_shoulder_cm": [
+    0.8,
+    -79.0,
+    -0.3
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "pass": true
+ },
+ "bbox_center_ratio": 0.5249383006777363,
+ "bbox_center_ratio_draft": 0.5249,
+ "exclusions": [],
+ "flagged_nonadjacent_rest_overlaps": [],
+ "remaining_tpose_overlaps": [],
+ "n_collision_geoms": 28,
+ "seconds": 4.6
+}

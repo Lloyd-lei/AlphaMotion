@@ -1,0 +1,53 @@
+{
+  "checked_utc": "2026-10-05T06:24:01.794704+00:00",
+  "source_documents": {
+    "/home/arenalabs/umr_factory_data/audit/CODEX_PROMPT.md": "2b4ed6210d9d910be5939fb0652f9d43bef6412323e7934662d0f32dd512cc4f",
+    "/home/arenalabs/umr_factory_data/audit/SCHEMA.md": "1c81af730a2bd605cee94abb854e0309ac762e765d36caa57d0324c26826ff69",
+    "/home/arenalabs/umr_factory_data/DATA_SPEC_v2.md": "61fd2a02991768f2d731bc0446719988033bbb1c281f080b6175df1265c1b3a4",
+    "/home/arenalabs/umr_factory_code/README.md": "ddfc4910f55a76bc2fe6f1858421849ddc532af4a904298dbe7b33b084604f10"
+  },
+  "npz_baseline": {
+    "/home/arenalabs/umr_factory_data/out/case3_kick_right__20260330000586_1_1775269234/fourier_gr3.npz": {
+      "sha256": "5c0a01df2ce80aafa7060efe0913e567ac6905974576925668de0773906a92e8",
+      "size": 2693692,
+      "mtime_ns": 1791177370000810249,
+      "inode": 50470797
+    },
+    "/home/arenalabs/umr_factory_data/out/case3_kick_right__20260330000586_1_1775269234/unitree_g1_29dof.npz": {
+      "sha256": "46f362f2bbcd1c3bc67d7964cc771bfe7c63e8bff2351603d2944055bd800fea",
+      "size": 2622331,
+      "mtime_ns": 1791178040462378418,
+      "inode": 50466674
+    },
+    "/home/arenalabs/umr_factory_data/out/case3_kick_right__20260330000586_1_1775269234/unitree_h2.npz": {
+      "sha256": "c7b62f3b77cd12ffacea98be80e96fd3dadef843e9a889358fcd39ad0ce838dc",
+      "size": 2687108,
+      "mtime_ns": 1791177391866642998,
+      "inode": 50470553
+    },
+    "/home/arenalabs/umr_factory_data/out/lafan1_smplx__dance1_subject2/fourier_gr3.npz": {
+      "sha256": "5c6603d465e44ff7abb2635aaa317d318ea4cfc285e40529c3a521ec0be5e3e3",
+      "size": 1685013,
+      "mtime_ns": 1791176906283069353,
+      "inode": 50107325
+    },
+    "/home/arenalabs/umr_factory_data/out/lafan1_smplx__dance1_subject2/unitree_g1_29dof.npz": {
+      "sha256": "a214bef0dc20443af56559104b3e0a06c828a2330c3c33ac28246dba21f85eba",
+      "size": 1634027,
+      "mtime_ns": 1791177003499345279,
+      "inode": 50106075
+    },
+    "/home/arenalabs/umr_factory_data/out/lafan1_smplx__dance1_subject2/unitree_h2.npz": {
+      "sha256": "252ce87a7a6e55d1a2b4b9310013d8e02a793316001ac8c151bb360f4dc5c70c",
+      "size": 1664184,
+      "mtime_ns": 1791176919925018863,
+      "inode": 50107334
+    },
+    "/home/arenalabs/umr_factory_data/out/pilot_test__omni_carry_166_1775007076__f0-1800s3/unitree_g1_29dof.npz": {
+      "sha256": "72422b48b371e341de550e9c9a3b54a8c784081c0b86c5983459a88721703595",
+      "size": 327058,
+      "mtime_ns": 1791179562777550898,
+      "inode": 47734323
+    }
+  }
+}

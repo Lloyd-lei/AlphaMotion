@@ -1,0 +1,375 @@
+{
+ "robot": "unitree_h1",
+ "frozen": "2026-10-04 23:37:32",
+ "engine": "CPU reference factory /home/arenalabs/umr_factory_code (run via pipeline/run_qa_clips.py)",
+ "mjcf": {
+  "path": "/home/arenalabs/umr_factory_data/robots/unitree_h1/unitree_h1.xml",
+  "sha256": "8529c6e75156ff5e648f8bde2f8dda0e81614ec3c9d2d1a2b0b13f5be3b706f5",
+  "source": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/unitree_h1/h1.xml",
+  "nq": 26,
+  "nv": 25,
+  "n_hinge": 19,
+  "facing": "+x",
+  "up": "+z"
+ },
+ "surface": {
+  "path": "/home/arenalabs/umr_factory_data/robots/unitree_h1/surface.npz",
+  "sha256": "2f300154b888fec48451c7c6d50a9416422d532f32de6b9ec56e45018d114c87",
+  "n_points": 4096,
+  "points_per_region": {
+   "trunk": 1487,
+   "L_thigh": 561,
+   "R_thigh": 560,
+   "L_shin": 235,
+   "R_shin": 227,
+   "L_foot": 89,
+   "R_foot": 81,
+   "L_upper_arm": 264,
+   "R_upper_arm": 268,
+   "L_forearm": 113,
+   "R_forearm": 108,
+   "L_hand": 51,
+   "R_hand": 52
+  },
+  "hull_vertices": 12436,
+  "hand_split": {
+   "L": "geometric split at 17.8 cm lateral from elbow anchor (hand mesh on forearm link)",
+   "R": "geometric split at 17.8 cm lateral from elbow anchor (hand mesh on forearm link)"
+  }
+ },
+ "umr_robot_config": {
+  "path": "/home/arenalabs/umr_factory_data/robots/unitree_h1/umr_robot.json",
+  "sha256": "352bf1651637a3fb3af5d6fdc759c2950b021f394f9df292556787181480b0d4",
+  "tpose": {
+   "left_shoulder_roll_joint": 1.5477,
+   "right_shoulder_roll_joint": -1.54771,
+   "left_shoulder_pitch_joint": 0.08058,
+   "left_shoulder_yaw_joint": 0.0264,
+   "left_elbow_joint": 1.36489,
+   "right_shoulder_pitch_joint": 0.08058,
+   "right_shoulder_yaw_joint": -0.02621,
+   "right_elbow_joint": 1.36489
+  },
+  "point_cloud_center": "body:torso_link",
+  "bbox_center_ratio": 0.578198873347795
+ },
+ "correspondence": {
+  "smplx": {
+   "dir": "/home/arenalabs/umr_factory_data/corr/unitree_h1/smplx",
+   "slot_names": [
+    "smplx_neutral_betas_c4eb7419e9",
+    "unitree_h1"
+   ],
+   "dataset_sha256_16": "5d58924b337c2dea",
+   "slots_sha256_16": "0f2745c9b21d342e"
+  },
+  "hoi_shared_beta0": {
+   "dir": "/home/arenalabs/umr_factory_data/corr/unitree_h1/beta0",
+   "slot_names": [
+    "smplx_neutral_betas_b80de5d138",
+    "unitree_h1"
+   ],
+   "dataset_sha256_16": "5129ce4530048207",
+   "slots_sha256_16": "544b14bd72acda45"
+  },
+  "scale": "UMR per_sample_height normalisation (robot height 1.806 m); human scale per clip = UMR smpl_scale (stored as human_scale)",
+  "hoi_policy": "HOI clips use the shared beta-zero correspondence (UMR HiPHI mechanism) -> no per-clip GPU training"
+ },
+ "region_to_body": {
+  "trunk": [
+   "pelvis",
+   "torso_link"
+  ],
+  "L_thigh": [
+   "left_hip_pitch_link",
+   "left_hip_roll_link",
+   "left_hip_yaw_link"
+  ],
+  "R_thigh": [
+   "right_hip_pitch_link",
+   "right_hip_roll_link",
+   "right_hip_yaw_link"
+  ],
+  "L_shin": [
+   "left_knee_link"
+  ],
+  "R_shin": [
+   "right_knee_link"
+  ],
+  "L_foot": [
+   "left_ankle_link"
+  ],
+  "R_foot": [
+   "right_ankle_link"
+  ],
+  "L_upper_arm": [
+   "left_shoulder_pitch_link",
+   "left_shoulder_roll_link",
+   "left_shoulder_yaw_link"
+  ],
+  "R_upper_arm": [
+   "right_shoulder_pitch_link",
+   "right_shoulder_roll_link",
+   "right_shoulder_yaw_link"
+  ],
+  "L_forearm": [],
+  "R_forearm": [],
+  "L_hand": [
+   "left_elbow_link"
+  ],
+  "R_hand": [
+   "right_elbow_link"
+  ]
+ },
+ "region_note": "L/R_forearm and L/R_hand share body left/right_elbow_link (no wrist, no hand DoF); dense points split geometrically at 17.8 cm lateral from the elbow anchor; one convex collision hull covers both",
+ "contact_capable_regions": [
+  "L_foot",
+  "R_foot",
+  "L_shin",
+  "R_shin",
+  "L_thigh",
+  "R_thigh",
+  "L_hand",
+  "R_hand",
+  "L_forearm",
+  "R_forearm",
+  "L_upper_arm",
+  "R_upper_arm",
+  "trunk"
+ ],
+ "contact_patches": {
+  "file": "/home/arenalabs/umr_factory_data/robots/unitree_h1/pipeline/contact_patches.npz",
+  "counts": {
+   "L_foot": 89,
+   "L_knee": 85,
+   "L_hand": 51,
+   "L_elbow": 105,
+   "R_foot": 81,
+   "R_knee": 88,
+   "R_hand": 52,
+   "R_elbow": 96,
+   "pelvis": 237,
+   "torso": 1250
+  },
+  "definition": {
+   "foot": "every L/R_foot dense point (ankle_link shell, 30 x 3 cm footprint). Solid contact may be a single point / heel or toe edge / sole line (only 11-12 points lie within 1 mm of the foot minimum when flat)",
+   "knee": "thigh+shin points within 8 cm of the knee joint anchor (rest pose)",
+   "hand": "L/R_hand points = distal end of elbow_link (fixed, no fingers); any single point may carry contact",
+   "elbow": "upper_arm/forearm/hand points within 7 cm of the elbow joint anchor",
+   "pelvis": "trunk points on the pelvis body (sitting / lying)",
+   "torso": "trunk points on torso_link (lying, leaning)"
+  }
+ },
+ "self_collision": {
+  "staged_exclusions": [],
+  "mjcf_contact_exclude": 0,
+  "implicit_parent_child_filter": {
+   "pairs": [
+    [
+     "pelvis",
+     "left_hip_yaw_link"
+    ],
+    [
+     "left_hip_yaw_link",
+     "left_hip_roll_link"
+    ],
+    [
+     "left_hip_roll_link",
+     "left_hip_pitch_link"
+    ],
+    [
+     "left_hip_pitch_link",
+     "left_knee_link"
+    ],
+    [
+     "left_knee_link",
+     "left_ankle_link"
+    ],
+    [
+     "pelvis",
+     "right_hip_yaw_link"
+    ],
+    [
+     "right_hip_yaw_link",
+     "right_hip_roll_link"
+    ],
+    [
+     "right_hip_roll_link",
+     "right_hip_pitch_link"
+    ],
+    [
+     "right_hip_pitch_link",
+     "right_knee_link"
+    ],
+    [
+     "right_knee_link",
+     "right_ankle_link"
+    ],
+    [
+     "pelvis",
+     "torso_link"
+    ],
+    [
+     "torso_link",
+     "left_shoulder_pitch_link"
+    ],
+    [
+     "left_shoulder_pitch_link",
+     "left_shoulder_roll_link"
+    ],
+    [
+     "left_shoulder_roll_link",
+     "left_shoulder_yaw_link"
+    ],
+    [
+     "left_shoulder_yaw_link",
+     "left_elbow_link"
+    ],
+    [
+     "torso_link",
+     "right_shoulder_pitch_link"
+    ],
+    [
+     "right_shoulder_pitch_link",
+     "right_shoulder_roll_link"
+    ],
+    [
+     "right_shoulder_roll_link",
+     "right_shoulder_yaw_link"
+    ],
+    [
+     "right_shoulder_yaw_link",
+     "right_elbow_link"
+    ]
+   ],
+   "reason": "MuJoCo filterparent (joint-adjacent bodies, always overlapping at the joint); not configurable per pair"
+  },
+  "not_excluded_non_adjacent_pairs_seen_overlapping": {
+   "right_hip_yaw_link|right_hip_pitch_link": {
+    "frac": 0.427,
+    "hops": 2
+   },
+   "left_hip_yaw_link|left_hip_pitch_link": {
+    "frac": 0.363,
+    "hops": 2
+   },
+   "pelvis|left_hip_pitch_link": {
+    "frac": 0.173,
+    "hops": 3
+   },
+   "pelvis|right_hip_pitch_link": {
+    "frac": 0.173,
+    "hops": 3
+   },
+   "torso_link|left_shoulder_roll_link": {
+    "frac": 0.143,
+    "hops": 2
+   },
+   "torso_link|right_shoulder_roll_link": {
+    "frac": 0.11,
+    "hops": 2
+   },
+   "torso_link|left_shoulder_yaw_link": {
+    "frac": 0.06,
+    "hops": 3
+   },
+   "torso_link|left_elbow_link": {
+    "frac": 0.05,
+    "hops": 4
+   }
+  },
+  "rest_overlaps": {},
+  "tpose_overlaps": {},
+  "rule": "only adjacent (parent/child) pairs excluded; no non-adjacent pair overlaps at rest/T-pose or in >=95% of 300 random poses, so none excluded; hip_yaw|hip_pitch (2 hops, 36-43% of random poses) stays a real collision pair"
+ },
+ "floor_convention": "per-clip floor from the human source (median lowest foot slot over quasi-static stance), outputs shifted so floor z = 0; raw offset stored as floor_offset_removed",
+ "thresholds_DATA_SPEC_v2": {
+  "contact_clearance_m": [
+   0.0,
+   0.001
+  ],
+  "min_points_in_contact": 1,
+  "penetration_tol_m": 0.0005,
+  "slip_speed_max_m_s": 0.01,
+  "min_segment_frames": 3,
+  "hysteresis_enter_m": 0.001,
+  "hysteresis_leave_m": 0.002,
+  "human_contact_requires_robot_solid": true,
+  "human_clear_m": 0.02,
+  "robot_clear_when_human_clear_m": 0.005,
+  "near_surface_store_m": 0.02,
+  "fps": 30
+ },
+ "engine_thresholds_in_use": {
+  "label_hysteresis_enter_m": 0.01,
+  "label_hysteresis_leave_m": 0.02,
+  "slip_flag_speed_m_s": 0.03,
+  "pen_tol_m": 0.0005,
+  "contact_tol_m": 0.001,
+  "LATCH_PIN": 0.0,
+  "note": "engine label hysteresis (1/2 cm) and slip flag (3 cm/s) are looser than v2 (1/2 mm, 1 cm/s); LATCH_PIN=0 reproduces UMR slip"
+ },
+ "quirks": [
+  "no hands: elbow_link ends in a fixed rounded fist; no wrist joint, no finger DoF (hand_type none/fixed)",
+  "ankle is 1-DoF (pitch only): foot cannot roll to conform to the ground; flat contact is a 3 cm wide line",
+  "mesh collision geoms are used by MuJoCo as CONVEX HULLS (pelvis, torso, elbow_link, knee_link...): self/object collision gauge is conservative (hull fills concavities), e.g. elbow_link hull vs torso hull",
+  "hip_yaw_link collision is a cylinder (r 6 cm, half-length 3.5 cm), not the visual mesh",
+  "logo_link visual mesh on torso has no collision geom (decorative, inside torso hull)",
+  "torso_link visual mesh includes the head; the head belongs to region trunk",
+  "no dedicated knee / elbow regions in the 13-region label set: knee contact is labelled on L/R_shin or L/R_thigh, elbow contact on upper_arm/forearm; patches above give the dense-point subsets"
+ ],
+ "qa_clips": [
+  {
+   "id": "dance",
+   "kind": "smplx",
+   "data": "/var/tmp/alphamotion/umr_factory/umr/UMR/sample_data/lafan1_smplx",
+   "seq": "dance1_subject2",
+   "start": 1900,
+   "end": 2500,
+   "stride": 1,
+   "src_fps": 30,
+   "cid": "lafan1_smplx__dance1_subject2__f1900-2500"
+  },
+  {
+   "id": "kick",
+   "kind": "hoi",
+   "data": "/var/tmp/alphamotion/umr_factory/umr/UMR/sample_data/omnicontact/soccer/case3_kick_right",
+   "seq": "20260330000586_1_1775269234",
+   "start": 300,
+   "end": 1800,
+   "stride": 3,
+   "src_fps": 90,
+   "cid": "omni_soccer_case3_kick_right__20260330000586_1_1775269234__f300-1800s3",
+   "why": "ball resting against the left foot/shin (src 300-482) then kicks (ball speed up to 12.9 m/s at src 1500-1800)"
+  },
+  {
+   "id": "box_carry",
+   "kind": "hoi",
+   "data": "/home/arenalabs/umr_factory_data/smplx/omnicontact/box/case1_carry",
+   "seq": "20260330000166_1_1775007076",
+   "start": 0,
+   "end": 1800,
+   "stride": 3,
+   "src_fps": 90,
+   "cid": "omni_box_case1_carry__20260330000166_1_1775007076__f0-1800s3",
+   "why": "same window as the G1 pilot; hands on the box from out-frame ~190, carried to the end"
+  },
+  {
+   "id": "kneel",
+   "kind": "hoi",
+   "data": "/home/arenalabs/umr_factory_data/smplx/hiphi/data/Change_posture/lean",
+   "seq": "Change_posture-lean_0025",
+   "start": 600,
+   "end": 2400,
+   "stride": 3,
+   "src_fps": 90,
+   "cid": "hiphi_Change_posture-lean_0025__f600-2400s3",
+   "why": "HiPHI: kneel facing a chair (knees on the ground), forearms on the seat, lean in; kneels by src ~900"
+  }
+ ],
+ "outputs": {
+  "runs": "/home/arenalabs/umr_factory_data/robots/unitree_h1/pipeline/runs",
+  "out": "/home/arenalabs/umr_factory_data/robots/unitree_h1/pipeline/out",
+  "qa": "/home/arenalabs/umr_factory_data/qa/unitree_h1"
+ }
+}

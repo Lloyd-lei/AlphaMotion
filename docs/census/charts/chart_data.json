@@ -1,0 +1,286 @@
+{
+ "panel_totals_fig1": {
+  "A": 126.422,
+  "B": 48.43,
+  "C": 396.641
+ },
+ "umr_retargeted_seconds": 212.2888888888889,
+ "funnel": {
+  "HiPHI": [
+   308.73,
+   86.005,
+   85.987,
+   0,
+   0
+  ],
+  "BONES-SEED": [
+   144.22,
+   0,
+   0,
+   0,
+   144.22
+  ],
+  "AMASS(xwbc)": [
+   43.83,
+   0,
+   0,
+   0,
+   43.83
+  ],
+  "GRAIL": [
+   55.599000000000004,
+   28.39,
+   28.39,
+   0,
+   0
+  ],
+  "OmniContact": [
+   12.026,
+   12.026,
+   12.026,
+   0.022441358024691358,
+   0
+  ],
+  "LAFAN/Mixamo": [
+   7.007,
+   0,
+   0.03652777777777778,
+   0.03652777777777778,
+   4.599
+  ]
+ },
+ "contact_matrix": {
+  "HiPHI ★": {
+   "feet_only": 177.942,
+   "hands_ground": 1.324,
+   "knees": 4.017,
+   "hips_back": 5.45,
+   "object_hands": 118.899,
+   "object_feet": 3.842
+  },
+  "BONES-SEED": {
+   "feet_only": 103.767,
+   "hands_ground": 4.716,
+   "knees": 6.264,
+   "hips_back": 10.681,
+   "object_hands": 24.624,
+   "object_feet": 3.229
+  },
+  "AMASS(xwbc)": {
+   "feet_only": 28.899,
+   "hands_ground": 1.3,
+   "knees": 0.77,
+   "hips_back": 2.785,
+   "object_hands": 11.764,
+   "object_feet": 1.734
+  },
+  "GRAIL ★（合成）": {
+   "feet_only": 43.992000000000004,
+   "hands_ground": 0.0,
+   "knees": 0.653,
+   "hips_back": 2.428,
+   "object_hands": 9.179,
+   "object_feet": 0.0
+  },
+  "OmniContact ★": {
+   "feet_only": 0.0,
+   "hands_ground": 0.0,
+   "knees": 0.0,
+   "hips_back": 0.0,
+   "object_hands": 8.371,
+   "object_feet": 4.706
+  },
+  "LAFAN": {
+   "feet_only": 4.013,
+   "hands_ground": 0.586,
+   "knees": 0.494,
+   "hips_back": 0.586,
+   "object_hands": 0.0,
+   "object_feet": 0.0
+  },
+  "Mixamo": {
+   "feet_only": 1.524,
+   "hands_ground": 0.085,
+   "knees": 0.074,
+   "hips_back": 0.347,
+   "object_hands": 0.484,
+   "object_feet": 0.03
+  }
+ },
+ "objects_pose": [
+  [
+   "椅子",
+   {
+    "HiPHI": 45.57,
+    "GRAIL": 2.428
+   }
+  ],
+  [
+   "箱子",
+   {
+    "HiPHI": 29.41,
+    "OmniContact": 8.477
+   }
+  ],
+  [
+   "楼梯（地形）",
+   {
+    "GRAIL": 33.856
+   }
+  ],
+  [
+   "桌子（约 60 cm 小边桌）",
+   {
+    "HiPHI": 29.89
+   }
+  ],
+  [
+   "厨房/食物小物件（GRAIL 75 类）",
+   {
+    "GRAIL": 9.179,
+    "HiPHI": 0.41
+   }
+  ],
+  [
+   "球 / 足球",
+   {
+    "HiPHI": 5.37,
+    "OmniContact": 3.5490000000000004
+   }
+  ],
+  [
+   "斜坡（地形）",
+   {
+    "GRAIL": 5.222
+   }
+  ],
+  [
+   "路沿（地形）",
+   {
+    "GRAIL": 4.914
+   }
+  ],
+  [
+   "水桶",
+   {
+    "HiPHI": 4.63
+   }
+  ],
+  [
+   "踏凳",
+   {
+    "HiPHI": 2.03
+   }
+  ],
+  [
+   "衣架",
+   {
+    "HiPHI": 1.9
+   }
+  ],
+  [
+   "长凳",
+   {
+    "HiPHI": 1.62
+   }
+  ],
+  [
+   "拖把",
+   {
+    "HiPHI": 1.51
+   }
+  ],
+  [
+   "垃圾桶",
+   {
+    "HiPHI": 0.52
+   }
+  ]
+ ],
+ "objects_text": [
+  [
+   "箱子/板条箱",
+   {
+    "BONES-SEED": 13.64,
+    "AMASS(xwbc)": 5.48
+   }
+  ],
+  [
+   "环境/障碍（墙/架/台阶）",
+   {
+    "BONES-SEED": 13.27,
+    "AMASS(xwbc)": 0.68
+   }
+  ],
+  [
+   "家具（椅/桌/架）",
+   {
+    "BONES-SEED": 9.71,
+    "AMASS(xwbc)": 1.5
+   }
+  ],
+  [
+   "门/冰箱/抽屉",
+   {
+    "BONES-SEED": 3.85,
+    "AMASS(xwbc)": 0.76
+   }
+  ],
+  [
+   "工具",
+   {
+    "BONES-SEED": 2.82,
+    "AMASS(xwbc)": 0.77
+   }
+  ],
+  [
+   "厨房/食物",
+   {
+    "BONES-SEED": 0.91,
+    "AMASS(xwbc)": 1.91
+   }
+  ],
+  [
+   "手机等手持设备",
+   {
+    "BONES-SEED": 0.93,
+    "AMASS(xwbc)": 1.38
+   }
+  ],
+  [
+   "小几何体（GRAB）",
+   {
+    "BONES-SEED": 0.0,
+    "AMASS(xwbc)": 2.08
+   }
+  ],
+  [
+   "拐杖等辅具",
+   {
+    "BONES-SEED": 1.44,
+    "AMASS(xwbc)": 0.01
+   }
+  ],
+  [
+   "乐器",
+   {
+    "BONES-SEED": 0.97,
+    "AMASS(xwbc)": 0.45
+   }
+  ],
+  [
+   "球/运动器材",
+   {
+    "BONES-SEED": 0.25,
+    "AMASS(xwbc)": 1.16
+   }
+  ],
+  [
+   "人/玩偶（沙袋婴儿）",
+   {
+    "BONES-SEED": 0.89,
+    "AMASS(xwbc)": 0.33
+   }
+  ]
+ ]
+}

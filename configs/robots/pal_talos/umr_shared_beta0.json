@@ -1,0 +1,56 @@
+{
+ "robot": {
+  "name": "pal_talos",
+  "xml": "/home/arenalabs/umr_factory_data/robots/pal_talos/pal_talos.xml",
+  "point_cloud_center": "body:torso_1_link",
+  "tpose_qpos": {
+   "arm_left_2_joint": 1.33097,
+   "arm_right_2_joint": -1.33031,
+   "arm_left_1_joint": 0.01932,
+   "arm_left_3_joint": 1.47537,
+   "arm_left_4_joint": -0.31625,
+   "arm_left_5_joint": 0.01502,
+   "arm_left_6_joint": -0.22191,
+   "arm_left_7_joint": -0.4085,
+   "arm_right_1_joint": -0.01878,
+   "arm_right_3_joint": -1.4805,
+   "arm_right_4_joint": -0.31717,
+   "arm_right_5_joint": -0.00983,
+   "arm_right_6_joint": -0.17203,
+   "arm_right_7_joint": -0.42672
+  }
+ },
+ "correspondence": {
+  "dataset": {
+   "smpl_center": "bbox_ratio",
+   "bbox_center_ratio": 0.657827,
+   "out": "/home/arenalabs/umr_factory_data/corr/pal_talos/beta0/correspondence_dataset.npz"
+  },
+  "train": {
+   "out_dir": "/home/arenalabs/umr_factory_data/corr/pal_talos/beta0/train",
+   "template_name": "auto",
+   "device": "auto"
+  },
+  "smpl_name": "auto"
+ },
+ "smpl_template": {
+  "source": "config",
+  "type": "smplx",
+  "gender": "neutral",
+  "use_betas": true,
+  "use_gender": true,
+  "name": "auto",
+  "betas": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ }
+}

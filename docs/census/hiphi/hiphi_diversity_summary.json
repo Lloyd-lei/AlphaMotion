@@ -1,0 +1,2145 @@
+{
+ "source": "HiPHI (Noitom Robotics, CoRL 2026, arXiv 2608.16222)",
+ "generated": "2026-10-05 00:00",
+ "license": "ModalityNet Open Research License v1.0 — NON-COMMERCIAL ONLY; no redistribution/public mirrors; no competing dataset or commercial-substitute motion generator; commercial license via licensing@modalitynet.com",
+ "fps": {
+  "nominal": 90.0,
+  "measured_min": 90.0,
+  "measured_max": 90.009
+ },
+ "format": "55-joint BVH (Y-up, cm, ZXY Euler) + HOI object tracks (CSV, m, xyzw) + 40 OBJ meshes (+40 mirrored)",
+ "totals": {
+  "n_clips_orig": 17626,
+  "n_clips_mirror": 17626,
+  "hours_orig": 308.73,
+  "hours_mirror": 308.73,
+  "hours_with_mirror": 617.46,
+  "hoi_hours_orig": 122.85,
+  "hoi_clips_orig": 7025,
+  "body_only_hours_orig": 185.88,
+  "n_frames": 22,
+  "n_frame_lus": 214,
+  "unique_text_annotations": 3832,
+  "clip_duration_sec": {
+   "min": 14.6,
+   "median": 61.6,
+   "max": 309.1
+  },
+  "objects_per_hoi_clip": "always exactly 1 (no multi-object rows)"
+ },
+ "taxonomy_rule": "multi-label from Frame-LU defaults + keyword rules on text_annotation; primary = first hit in priority ground_contact > dynamic > sitting_on_object > whole_body_object > upper_body_manipulation > locomotion > gesture_social > idle_posture > other",
+ "classes_multilabel": {
+  "locomotion": {
+   "n_clips_orig": 10015,
+   "hours_orig": 174.42,
+   "hours_with_mirror": 348.83,
+   "share_of_orig_hours_pct": 56.5,
+   "n_actors": 113,
+   "actor_height_cm_range": [
+    155,
+    185
+   ],
+   "hours_by_gender": {
+    "female": 59.47,
+    "male": 114.95
+   },
+   "hoi_hours_orig": 57.14,
+   "status_hours_orig": {
+    "converted_smplx": 6.95,
+    "downloading": 2.72,
+    "not_downloaded": 164.74
+   },
+   "status_clips_orig": {
+    "converted_smplx": 399,
+    "downloading": 153,
+    "not_downloaded": 9463
+   },
+   "retargeted_robots": 0,
+   "top_frame_lus_by_hours": [
+    [
+     "Bringing-carry",
+     8.31
+    ],
+    [
+     "Bringing-lug",
+     6.99
+    ],
+    [
+     "Cause_motion-move",
+     6.82
+    ],
+    [
+     "Bringing-take",
+     5.45
+    ],
+    [
+     "Bringing-hump",
+     4.77
+    ],
+    [
+     "Cause_motion-pull",
+     3.19
+    ],
+    [
+     "Cause_motion-push",
+     2.91
+    ],
+    [
+     "Dodging-sidestep",
+     2.7
+    ]
+   ]
+  },
+  "dynamic": {
+   "n_clips_orig": 1112,
+   "hours_orig": 21.24,
+   "hours_with_mirror": 42.49,
+   "share_of_orig_hours_pct": 6.9,
+   "n_actors": 106,
+   "actor_height_cm_range": [
+    157,
+    185
+   ],
+   "hours_by_gender": {
+    "female": 7.69,
+    "male": 13.55
+   },
+   "hoi_hours_orig": 3.07,
+   "status_hours_orig": {
+    "converted_smplx": 0.17,
+    "downloading": 0.24,
+    "not_downloaded": 20.83
+   },
+   "status_clips_orig": {
+    "converted_smplx": 10,
+    "downloading": 14,
+    "not_downloaded": 1088
+   },
+   "retargeted_robots": 0,
+   "top_frame_lus_by_hours": [
+    [
+     "Self_motion-sashay",
+     2.94
+    ],
+    [
+     "Self_motion-caper",
+     2.53
+    ],
+    [
+     "Self_motion-jump",
+     2.47
+    ],
+    [
+     "Cause_motion-punt",
+     2.39
+    ],
+    [
+     "Self_motion-hop",
+     2.03
+    ],
+    [
+     "Self_motion-frolic",
+     1.45
+    ],
+    [
+     "Cause_motion-hit",
+     1.2
+    ],
+    [
+     "Self_motion-vault",
+     0.74
+    ]
+   ]
+  },
+  "ground_contact": {
+   "n_clips_orig": 478,
+   "hours_orig": 8.11,
+   "hours_with_mirror": 16.22,
+   "share_of_orig_hours_pct": 2.6,
+   "n_actors": 85,
+   "actor_height_cm_range": [
+    158,
+    185
+   ],
+   "hours_by_gender": {
+    "female": 2.71,
+    "male": 5.4
+   },
+   "hoi_hours_orig": 0.17,
+   "status_hours_orig": {
+    "converted_smplx": 0.09,
+    "downloading": 0.02,
+    "not_downloaded": 8.01
+   },
+   "status_clips_orig": {
+    "converted_smplx": 5,
+    "downloading": 1,
+    "not_downloaded": 472
+   },
+   "retargeted_robots": 0,
+   "top_frame_lus_by_hours": [
+    [
+     "Posture-kneel",
+     0.93
+    ],
+    [
+     "Change_posture-kneel_down",
+     0.75
+    ],
+    [
+     "Posture-shrink",
+     0.69
+    ],
+    [
+     "Body_movement-kneel",
+     0.65
+    ],
+    [
+     "Posture-lie",
+     0.64
+    ],
+    [
+     "Self_motion-vault",
+     0.52
+    ],
+    [
+     "Motion_directional-fall",
+     0.42
+    ],
+    [
+     "Motion_directional-topple",
+     0.34
+    ]
+   ]
+  },
+  "sitting_on_object": {
+   "n_clips_orig": 115,
+   "hours_orig": 1.98,
+   "hours_with_mirror": 3.96,
+   "share_of_orig_hours_pct": 0.6,
+   "n_actors": 15,
+   "actor_height_cm_range": [
+    160,
+    183
+   ],
+   "hours_by_gender": {
+    "female": 0.87,
+    "male": 1.12
+   },
+   "hoi_hours_orig": 1.98,
+   "status_hours_orig": {
+    "converted_smplx": 0.41,
+    "downloading": 0.22,
+    "not_downloaded": 1.35
+   },
+   "status_clips_orig": {
+    "converted_smplx": 24,
+    "downloading": 13,
+    "not_downloaded": 78
+   },
+   "retargeted_robots": 0,
+   "top_frame_lus_by_hours": [
+    [
+     "Posture-sit",
+     0.92
+    ],
+    [
+     "Change_posture-stand_up",
+     0.36
+    ],
+    [
+     "Change_posture-sit_down",
+     0.26
+    ],
+    [
+     "Change_posture-lean",
+     0.22
+    ],
+    [
+     "Change_posture-sit_up",
+     0.17
+    ],
+    [
+     "Change_posture-sprawl",
+     0.05
+    ]
+   ]
+  },
+  "upper_body_manipulation": {
+   "n_clips_orig": 2539,
+   "hours_orig": 44.02,
+   "hours_with_mirror": 88.03,
+   "share_of_orig_hours_pct": 14.3,
+   "n_actors": 54,
+   "actor_height_cm_range": [
+    158,
+    185
+   ],
+   "hours_by_gender": {
+    "female": 12.68,
+    "male": 31.34
+   },
+   "hoi_hours_orig": 44.02,
+   "status_hours_orig": {
+    "converted_smplx": 8.12,
+    "downloading": 4.84,
+    "not_downloaded": 31.06
+   },
+   "status_clips_orig": {
+    "converted_smplx": 467,
+    "downloading": 276,
+    "not_downloaded": 1796
+   },
+   "retargeted_robots": 0,
+   "top_frame_lus_by_hours": [
+    [
+     "Adjusting-tweak",
+     4.73
+    ],
+    [
+     "Adjusting-adjust",
+     4.06
+    ],
+    [
+     "Cause_to_move_in_place-rotate",
+     3.2
+    ],
+    [
+     "Cause_to_move_in_place-shake",
+     2.91
+    ],
+    [
+     "Cause_to_move_in_place-swing",
+     2.82
+    ],
+    [
+     "Cause_to_move_in_place-rock",
+     2.73
+    ],
+    [
+     "Cause_to_move_in_place-spin",
+     2.39
+    ],
+    [
+     "Cause_to_move_in_place-turn",
+     2.26
+    ]
+   ]
+  },
+  "whole_body_object": {
+   "n_clips_orig": 4384,
+   "hours_orig": 77.07,
+   "hours_with_mirror": 154.15,
+   "share_of_orig_hours_pct": 25.0,
+   "n_actors": 56,
+   "actor_height_cm_range": [
+    158,
+    185
+   ],
+   "hours_by_gender": {
+    "female": 25.22,
+    "male": 51.85
+   },
+   "hoi_hours_orig": 77.07,
+   "status_hours_orig": {
+    "converted_smplx": 10.63,
+    "downloading": 4.56,
+    "not_downloaded": 61.88
+   },
+   "status_clips_orig": {
+    "converted_smplx": 605,
+    "downloading": 256,
+    "not_downloaded": 3523
+   },
+   "retargeted_robots": 0,
+   "top_frame_lus_by_hours": [
+    [
+     "Bringing-carry",
+     8.19
+    ],
+    [
+     "Cause_motion-move",
+     7.91
+    ],
+    [
+     "Bringing-lug",
+     7.64
+    ],
+    [
+     "Bringing-take",
+     6.81
+    ],
+    [
+     "Bringing-hump",
+     5.42
+    ],
+    [
+     "Cause_motion-pull",
+     4.59
+    ],
+    [
+     "Cause_motion-lift",
+     4.55
+    ],
+    [
+     "Cause_motion-push",
+     4.12
+    ]
+   ]
+  },
+  "gesture_social": {
+   "n_clips_orig": 969,
+   "hours_orig": 16.87,
+   "hours_with_mirror": 33.73,
+   "share_of_orig_hours_pct": 5.5,
+   "n_actors": 95,
+   "actor_height_cm_range": [
+    158,
+    185
+   ],
+   "hours_by_gender": {
+    "female": 5.5,
+    "male": 11.36
+   },
+   "hoi_hours_orig": 0.0,
+   "status_hours_orig": {
+    "not_downloaded": 16.87
+   },
+   "status_clips_orig": {
+    "not_downloaded": 969
+   },
+   "retargeted_robots": 0,
+   "top_frame_lus_by_hours": [
+    [
+     "Body_movement-clap",
+     2.55
+    ],
+    [
+     "Body_movement-wave",
+     2.31
+    ],
+    [
+     "Gesture-gesture",
+     2.22
+    ],
+    [
+     "Gesture-gesticulate",
+     2.17
+    ],
+    [
+     "Body_movement-shrug",
+     1.62
+    ],
+    [
+     "Body_movement-shiver",
+     1.53
+    ],
+    [
+     "Body_movement-curtsy",
+     1.51
+    ],
+    [
+     "Body_movement-nod",
+     1.05
+    ]
+   ]
+  },
+  "idle_posture": {
+   "n_clips_orig": 995,
+   "hours_orig": 17.38,
+   "hours_with_mirror": 34.75,
+   "share_of_orig_hours_pct": 5.6,
+   "n_actors": 103,
+   "actor_height_cm_range": [
+    155,
+    185
+   ],
+   "hours_by_gender": {
+    "female": 6.39,
+    "male": 10.98
+   },
+   "hoi_hours_orig": 0.0,
+   "status_hours_orig": {
+    "not_downloaded": 17.38
+   },
+   "status_clips_orig": {
+    "not_downloaded": 995
+   },
+   "retargeted_robots": 0,
+   "top_frame_lus_by_hours": [
+    [
+     "Body_movement-bend",
+     2.98
+    ],
+    [
+     "Body_movement-flex",
+     1.33
+    ],
+    [
+     "Change_posture-hunch_up",
+     1.03
+    ],
+    [
+     "Body_movement-arch",
+     1.0
+    ],
+    [
+     "Body_movement-reach",
+     0.95
+    ],
+    [
+     "Change_posture-crouch_down",
+     0.94
+    ],
+    [
+     "Change_posture-bend",
+     0.91
+    ],
+    [
+     "Posture-cower",
+     0.91
+    ]
+   ]
+  },
+  "other": {
+   "n_clips_orig": 1893,
+   "hours_orig": 32.65,
+   "hours_with_mirror": 65.31,
+   "share_of_orig_hours_pct": 10.6,
+   "n_actors": 99,
+   "actor_height_cm_range": [
+    158,
+    185
+   ],
+   "hours_by_gender": {
+    "female": 12.02,
+    "male": 20.64
+   },
+   "hoi_hours_orig": 0.0,
+   "status_hours_orig": {
+    "not_downloaded": 32.65
+   },
+   "status_clips_orig": {
+    "not_downloaded": 1893
+   },
+   "retargeted_robots": 0,
+   "top_frame_lus_by_hours": [
+    [
+     "Body_movement-bob",
+     4.28
+    ],
+    [
+     "Body_movement-shake",
+     2.04
+    ],
+    [
+     "Body_movement-swing",
+     2.0
+    ],
+    [
+     "Manipulation-paw",
+     1.97
+    ],
+    [
+     "Body_movement-twitch",
+     1.59
+    ],
+    [
+     "Body_movement-twist",
+     1.53
+    ],
+    [
+     "Body_movement-toss",
+     1.44
+    ],
+    [
+     "Body_movement-lift",
+     1.44
+    ]
+   ]
+  }
+ },
+ "classes_primary_partition": {
+  "locomotion": {
+   "n_clips_orig": 6214,
+   "hours_orig": 107.78,
+   "hours_with_mirror": 215.57,
+   "share_of_orig_hours_pct": 34.9,
+   "n_actors": 109,
+   "actor_height_cm_range": [
+    155,
+    185
+   ],
+   "hours_by_gender": {
+    "female": 38.29,
+    "male": 69.5
+   },
+   "hoi_hours_orig": 0.08,
+   "status_hours_orig": {
+    "not_downloaded": 107.78
+   },
+   "status_clips_orig": {
+    "not_downloaded": 6214
+   },
+   "retargeted_robots": 0,
+   "top_frame_lus_by_hours": [
+    [
+     "Self_motion-run",
+     2.52
+    ],
+    [
+     "Self_motion-lope",
+     2.49
+    ],
+    [
+     "Change_direction-bear",
+     2.2
+    ],
+    [
+     "Dodging-sidestep",
+     2.2
+    ],
+    [
+     "Change_direction-veer",
+     2.19
+    ],
+    [
+     "Self_motion-nance",
+     2.11
+    ],
+    [
+     "Patrolling-patrol",
+     2.09
+    ],
+    [
+     "Self_motion-goose-step",
+     2.05
+    ]
+   ]
+  },
+  "dynamic": {
+   "n_clips_orig": 915,
+   "hours_orig": 18.21,
+   "hours_with_mirror": 36.42,
+   "share_of_orig_hours_pct": 5.9,
+   "n_actors": 99,
+   "actor_height_cm_range": [
+    157,
+    185
+   ],
+   "hours_by_gender": {
+    "female": 6.34,
+    "male": 11.87
+   },
+   "hoi_hours_orig": 3.05,
+   "status_hours_orig": {
+    "converted_smplx": 0.17,
+    "downloading": 0.24,
+    "not_downloaded": 17.8
+   },
+   "status_clips_orig": {
+    "converted_smplx": 10,
+    "downloading": 14,
+    "not_downloaded": 891
+   },
+   "retargeted_robots": 0,
+   "top_frame_lus_by_hours": [
+    [
+     "Self_motion-sashay",
+     2.94
+    ],
+    [
+     "Self_motion-caper",
+     2.53
+    ],
+    [
+     "Self_motion-jump",
+     2.47
+    ],
+    [
+     "Cause_motion-punt",
+     2.39
+    ],
+    [
+     "Self_motion-hop",
+     2.03
+    ],
+    [
+     "Self_motion-frolic",
+     1.45
+    ],
+    [
+     "Cause_motion-hit",
+     1.2
+    ],
+    [
+     "Body_movement-swing",
+     0.62
+    ]
+   ]
+  },
+  "ground_contact": {
+   "n_clips_orig": 478,
+   "hours_orig": 8.11,
+   "hours_with_mirror": 16.22,
+   "share_of_orig_hours_pct": 2.6,
+   "n_actors": 85,
+   "actor_height_cm_range": [
+    158,
+    185
+   ],
+   "hours_by_gender": {
+    "female": 2.71,
+    "male": 5.4
+   },
+   "hoi_hours_orig": 0.17,
+   "status_hours_orig": {
+    "converted_smplx": 0.09,
+    "downloading": 0.02,
+    "not_downloaded": 8.01
+   },
+   "status_clips_orig": {
+    "converted_smplx": 5,
+    "downloading": 1,
+    "not_downloaded": 472
+   },
+   "retargeted_robots": 0,
+   "top_frame_lus_by_hours": [
+    [
+     "Posture-kneel",
+     0.93
+    ],
+    [
+     "Change_posture-kneel_down",
+     0.75
+    ],
+    [
+     "Posture-shrink",
+     0.69
+    ],
+    [
+     "Body_movement-kneel",
+     0.65
+    ],
+    [
+     "Posture-lie",
+     0.64
+    ],
+    [
+     "Self_motion-vault",
+     0.52
+    ],
+    [
+     "Motion_directional-fall",
+     0.42
+    ],
+    [
+     "Motion_directional-topple",
+     0.34
+    ]
+   ]
+  },
+  "sitting_on_object": {
+   "n_clips_orig": 114,
+   "hours_orig": 1.96,
+   "hours_with_mirror": 3.93,
+   "share_of_orig_hours_pct": 0.6,
+   "n_actors": 15,
+   "actor_height_cm_range": [
+    160,
+    183
+   ],
+   "hours_by_gender": {
+    "female": 0.87,
+    "male": 1.1
+   },
+   "hoi_hours_orig": 1.96,
+   "status_hours_orig": {
+    "converted_smplx": 0.41,
+    "downloading": 0.22,
+    "not_downloaded": 1.33
+   },
+   "status_clips_orig": {
+    "converted_smplx": 24,
+    "downloading": 13,
+    "not_downloaded": 77
+   },
+   "retargeted_robots": 0,
+   "top_frame_lus_by_hours": [
+    [
+     "Posture-sit",
+     0.92
+    ],
+    [
+     "Change_posture-stand_up",
+     0.36
+    ],
+    [
+     "Change_posture-sit_down",
+     0.26
+    ],
+    [
+     "Change_posture-lean",
+     0.22
+    ],
+    [
+     "Change_posture-sit_up",
+     0.15
+    ],
+    [
+     "Change_posture-sprawl",
+     0.05
+    ]
+   ]
+  },
+  "upper_body_manipulation": {
+   "n_clips_orig": 2515,
+   "hours_orig": 43.61,
+   "hours_with_mirror": 87.21,
+   "share_of_orig_hours_pct": 14.1,
+   "n_actors": 54,
+   "actor_height_cm_range": [
+    158,
+    185
+   ],
+   "hours_by_gender": {
+    "female": 12.52,
+    "male": 31.09
+   },
+   "hoi_hours_orig": 43.61,
+   "status_hours_orig": {
+    "converted_smplx": 8.04,
+    "downloading": 4.79,
+    "not_downloaded": 30.78
+   },
+   "status_clips_orig": {
+    "converted_smplx": 462,
+    "downloading": 273,
+    "not_downloaded": 1780
+   },
+   "retargeted_robots": 0,
+   "top_frame_lus_by_hours": [
+    [
+     "Adjusting-tweak",
+     4.73
+    ],
+    [
+     "Adjusting-adjust",
+     4.06
+    ],
+    [
+     "Cause_to_move_in_place-rotate",
+     3.2
+    ],
+    [
+     "Cause_to_move_in_place-shake",
+     2.91
+    ],
+    [
+     "Cause_to_move_in_place-swing",
+     2.82
+    ],
+    [
+     "Cause_to_move_in_place-rock",
+     2.73
+    ],
+    [
+     "Cause_to_move_in_place-spin",
+     2.39
+    ],
+    [
+     "Cause_to_move_in_place-turn",
+     2.26
+    ]
+   ]
+  },
+  "whole_body_object": {
+   "n_clips_orig": 4205,
+   "hours_orig": 73.97,
+   "hours_with_mirror": 147.94,
+   "share_of_orig_hours_pct": 24.0,
+   "n_actors": 55,
+   "actor_height_cm_range": [
+    158,
+    185
+   ],
+   "hours_by_gender": {
+    "female": 24.82,
+    "male": 49.15
+   },
+   "hoi_hours_orig": 73.97,
+   "status_hours_orig": {
+    "converted_smplx": 10.43,
+    "downloading": 4.32,
+    "not_downloaded": 59.23
+   },
+   "status_clips_orig": {
+    "converted_smplx": 593,
+    "downloading": 242,
+    "not_downloaded": 3370
+   },
+   "retargeted_robots": 0,
+   "top_frame_lus_by_hours": [
+    [
+     "Bringing-carry",
+     7.99
+    ],
+    [
+     "Cause_motion-move",
+     7.91
+    ],
+    [
+     "Bringing-lug",
+     7.64
+    ],
+    [
+     "Bringing-take",
+     6.81
+    ],
+    [
+     "Bringing-hump",
+     5.42
+    ],
+    [
+     "Cause_motion-pull",
+     4.59
+    ],
+    [
+     "Cause_motion-lift",
+     4.55
+    ],
+    [
+     "Cause_motion-push",
+     4.12
+    ]
+   ]
+  },
+  "gesture_social": {
+   "n_clips_orig": 692,
+   "hours_orig": 12.01,
+   "hours_with_mirror": 24.03,
+   "share_of_orig_hours_pct": 3.9,
+   "n_actors": 91,
+   "actor_height_cm_range": [
+    158,
+    185
+   ],
+   "hours_by_gender": {
+    "female": 4.02,
+    "male": 8.0
+   },
+   "hoi_hours_orig": 0.0,
+   "status_hours_orig": {
+    "not_downloaded": 12.01
+   },
+   "status_clips_orig": {
+    "not_downloaded": 692
+   },
+   "retargeted_robots": 0,
+   "top_frame_lus_by_hours": [
+    [
+     "Gesture-gesture",
+     2.22
+    ],
+    [
+     "Gesture-gesticulate",
+     2.17
+    ],
+    [
+     "Body_movement-clap",
+     2.02
+    ],
+    [
+     "Body_movement-wave",
+     1.95
+    ],
+    [
+     "Body_movement-curtsy",
+     0.82
+    ],
+    [
+     "Body_movement-shrug",
+     0.64
+    ],
+    [
+     "Body_movement-nod",
+     0.53
+    ],
+    [
+     "Body_movement-shake",
+     0.44
+    ]
+   ]
+  },
+  "idle_posture": {
+   "n_clips_orig": 600,
+   "hours_orig": 10.41,
+   "hours_with_mirror": 20.83,
+   "share_of_orig_hours_pct": 3.4,
+   "n_actors": 92,
+   "actor_height_cm_range": [
+    155,
+    185
+   ],
+   "hours_by_gender": {
+    "female": 4.01,
+    "male": 6.41
+   },
+   "hoi_hours_orig": 0.0,
+   "status_hours_orig": {
+    "not_downloaded": 10.41
+   },
+   "status_clips_orig": {
+    "not_downloaded": 600
+   },
+   "retargeted_robots": 0,
+   "top_frame_lus_by_hours": [
+    [
+     "Body_movement-bend",
+     2.98
+    ],
+    [
+     "Body_movement-flex",
+     0.97
+    ],
+    [
+     "Body_movement-reach",
+     0.95
+    ],
+    [
+     "Body_movement-stretch",
+     0.88
+    ],
+    [
+     "Posture-stand",
+     0.71
+    ],
+    [
+     "Change_posture-bend",
+     0.67
+    ],
+    [
+     "Posture-crouch",
+     0.44
+    ],
+    [
+     "Body_movement-arch",
+     0.38
+    ]
+   ]
+  },
+  "other": {
+   "n_clips_orig": 1893,
+   "hours_orig": 32.65,
+   "hours_with_mirror": 65.31,
+   "share_of_orig_hours_pct": 10.6,
+   "n_actors": 99,
+   "actor_height_cm_range": [
+    158,
+    185
+   ],
+   "hours_by_gender": {
+    "female": 12.02,
+    "male": 20.64
+   },
+   "hoi_hours_orig": 0.0,
+   "status_hours_orig": {
+    "not_downloaded": 32.65
+   },
+   "status_clips_orig": {
+    "not_downloaded": 1893
+   },
+   "retargeted_robots": 0,
+   "top_frame_lus_by_hours": [
+    [
+     "Body_movement-bob",
+     4.28
+    ],
+    [
+     "Body_movement-shake",
+     2.04
+    ],
+    [
+     "Body_movement-swing",
+     2.0
+    ],
+    [
+     "Manipulation-paw",
+     1.97
+    ],
+    [
+     "Body_movement-twitch",
+     1.59
+    ],
+    [
+     "Body_movement-twist",
+     1.53
+    ],
+    [
+     "Body_movement-toss",
+     1.44
+    ],
+    [
+     "Body_movement-lift",
+     1.44
+    ]
+   ]
+  }
+ },
+ "subtags": {
+  "turn_curve": {
+   "hours_orig": 50.29,
+   "hours_with_mirror": 100.57,
+   "n_clips_orig": 2885
+  },
+  "in_place_body_isolation": {
+   "hours_orig": 48.38,
+   "hours_with_mirror": 96.75,
+   "n_clips_orig": 2798
+  },
+  "sidestep": {
+   "hours_orig": 36.7,
+   "hours_with_mirror": 73.4,
+   "n_clips_orig": 2112
+  },
+  "backward": {
+   "hours_orig": 28.82,
+   "hours_with_mirror": 57.63,
+   "n_clips_orig": 1654
+  },
+  "jump_hop": {
+   "hours_orig": 10.92,
+   "hours_with_mirror": 21.84,
+   "n_clips_orig": 635
+  },
+  "run": {
+   "hours_orig": 5.4,
+   "hours_with_mirror": 10.8,
+   "n_clips_orig": 319
+  },
+  "stumble": {
+   "hours_orig": 3.86,
+   "hours_with_mirror": 7.72,
+   "n_clips_orig": 221
+  },
+  "kick": {
+   "hours_orig": 3.47,
+   "hours_with_mirror": 6.94,
+   "n_clips_orig": 211
+  },
+  "dance": {
+   "hours_orig": 3.18,
+   "hours_with_mirror": 6.36,
+   "n_clips_orig": 60
+  },
+  "kick_object": {
+   "hours_orig": 3.1,
+   "hours_with_mirror": 6.2,
+   "n_clips_orig": 179
+  },
+  "emote": {
+   "hours_orig": 2.43,
+   "hours_with_mirror": 4.87,
+   "n_clips_orig": 138
+  },
+  "getup": {
+   "hours_orig": 1.86,
+   "hours_with_mirror": 3.72,
+   "n_clips_orig": 109
+  },
+  "martial": {
+   "hours_orig": 1.43,
+   "hours_with_mirror": 2.86,
+   "n_clips_orig": 58
+  },
+  "in_place_stepping": {
+   "hours_orig": 1.09,
+   "hours_with_mirror": 2.18,
+   "n_clips_orig": 64
+  },
+  "fall": {
+   "hours_orig": 1.01,
+   "hours_with_mirror": 2.02,
+   "n_clips_orig": 63
+  },
+  "acrobatic": {
+   "hours_orig": 0.77,
+   "hours_with_mirror": 1.55,
+   "n_clips_orig": 70
+  },
+  "drop_to_crouch": {
+   "hours_orig": 0.48,
+   "hours_with_mirror": 0.96,
+   "n_clips_orig": 28
+  },
+  "platform_step": {
+   "hours_orig": 0.34,
+   "hours_with_mirror": 0.68,
+   "n_clips_orig": 20
+  },
+  "step_onto_object": {
+   "hours_orig": 0.34,
+   "hours_with_mirror": 0.68,
+   "n_clips_orig": 20
+  }
+ },
+ "contacts": {
+  "feet_ground": {
+   "hours_orig": 300.62,
+   "hours_with_mirror": 601.24,
+   "n_clips_orig": 17148
+  },
+  "object_hands": {
+   "hours_orig": 118.9,
+   "hours_with_mirror": 237.8,
+   "n_clips_orig": 6796
+  },
+  "object_body": {
+   "hours_orig": 9.36,
+   "hours_with_mirror": 18.72,
+   "n_clips_orig": 526
+  },
+  "knees": {
+   "hours_orig": 4.02,
+   "hours_with_mirror": 8.03,
+   "n_clips_orig": 230
+  },
+  "object_feet": {
+   "hours_orig": 3.84,
+   "hours_with_mirror": 7.68,
+   "n_clips_orig": 222
+  },
+  "object_hips": {
+   "hours_orig": 1.98,
+   "hours_with_mirror": 3.96,
+   "n_clips_orig": 115
+  },
+  "hips_ground": {
+   "hours_orig": 1.47,
+   "hours_with_mirror": 2.95,
+   "n_clips_orig": 83
+  },
+  "hands_ground": {
+   "hours_orig": 1.32,
+   "hours_with_mirror": 2.65,
+   "n_clips_orig": 95
+  },
+  "back": {
+   "hours_orig": 0.95,
+   "hours_with_mirror": 1.91,
+   "n_clips_orig": 53
+  },
+  "front": {
+   "hours_orig": 0.48,
+   "hours_with_mirror": 0.96,
+   "n_clips_orig": 29
+  },
+  "body_ground_unspecified": {
+   "hours_orig": 0.41,
+   "hours_with_mirror": 0.82,
+   "n_clips_orig": 24
+  },
+  "side": {
+   "hours_orig": 0.2,
+   "hours_with_mirror": 0.4,
+   "n_clips_orig": 12
+  }
+ },
+ "contacts_feet_only_no_object": {
+  "hours_orig": 177.94,
+  "note": "只有脚着地且不碰任何物体"
+ },
+ "hoi_by_object": {
+  "chair": {
+   "n_clips_orig": 2589,
+   "hours_orig": 45.57,
+   "hours_with_mirror": 91.14,
+   "n_actors": 38,
+   "primary_hours": {
+    "whole_body_object": 31.72,
+    "upper_body_manipulation": 12.47,
+    "sitting_on_object": 1.31,
+    "ground_contact": 0.07
+   },
+   "n_frame_lus": 34,
+   "converted_hours_orig": 7.26,
+   "on_disk_or_converted_hours_orig": 7.26
+  },
+  "table": {
+   "n_clips_orig": 1701,
+   "hours_orig": 29.89,
+   "hours_with_mirror": 59.79,
+   "n_actors": 35,
+   "primary_hours": {
+    "whole_body_object": 20.33,
+    "upper_body_manipulation": 9.5,
+    "sitting_on_object": 0.05,
+    "ground_contact": 0.02
+   },
+   "n_frame_lus": 31,
+   "converted_hours_orig": 5.43,
+   "on_disk_or_converted_hours_orig": 5.43
+  },
+  "box": {
+   "n_clips_orig": 1685,
+   "hours_orig": 29.41,
+   "hours_with_mirror": 58.81,
+   "n_actors": 45,
+   "primary_hours": {
+    "whole_body_object": 17.65,
+    "upper_body_manipulation": 9.62,
+    "dynamic": 1.71,
+    "sitting_on_object": 0.38,
+    "ground_contact": 0.03
+   },
+   "n_frame_lus": 56,
+   "converted_hours_orig": 2.79,
+   "on_disk_or_converted_hours_orig": 2.79
+  },
+  "ball": {
+   "n_clips_orig": 278,
+   "hours_orig": 4.71,
+   "hours_with_mirror": 9.42,
+   "n_actors": 20,
+   "primary_hours": {
+    "upper_body_manipulation": 3.47,
+    "dynamic": 0.84,
+    "whole_body_object": 0.4
+   },
+   "n_frame_lus": 17,
+   "converted_hours_orig": 1.12,
+   "on_disk_or_converted_hours_orig": 1.12
+  },
+  "bucket": {
+   "n_clips_orig": 273,
+   "hours_orig": 4.63,
+   "hours_with_mirror": 9.26,
+   "n_actors": 20,
+   "primary_hours": {
+    "upper_body_manipulation": 4.61,
+    "ground_contact": 0.02
+   },
+   "n_frame_lus": 16,
+   "converted_hours_orig": 1.43,
+   "on_disk_or_converted_hours_orig": 1.43
+  },
+  "stepstool": {
+   "n_clips_orig": 117,
+   "hours_orig": 2.03,
+   "hours_with_mirror": 4.06,
+   "n_actors": 9,
+   "primary_hours": {
+    "whole_body_object": 1.57,
+    "upper_body_manipulation": 0.45
+   },
+   "n_frame_lus": 9,
+   "converted_hours_orig": 0.24,
+   "on_disk_or_converted_hours_orig": 0.24
+  },
+  "clothrack": {
+   "n_clips_orig": 110,
+   "hours_orig": 1.9,
+   "hours_with_mirror": 3.79,
+   "n_actors": 12,
+   "primary_hours": {
+    "whole_body_object": 0.97,
+    "upper_body_manipulation": 0.91,
+    "ground_contact": 0.02
+   },
+   "n_frame_lus": 5,
+   "converted_hours_orig": 0.53,
+   "on_disk_or_converted_hours_orig": 0.53
+  },
+  "bench": {
+   "n_clips_orig": 94,
+   "hours_orig": 1.62,
+   "hours_with_mirror": 3.23,
+   "n_actors": 16,
+   "primary_hours": {
+    "whole_body_object": 0.93,
+    "upper_body_manipulation": 0.38,
+    "sitting_on_object": 0.22,
+    "locomotion": 0.08
+   },
+   "n_frame_lus": 5,
+   "converted_hours_orig": 0.27,
+   "on_disk_or_converted_hours_orig": 0.27
+  },
+  "mop": {
+   "n_clips_orig": 86,
+   "hours_orig": 1.51,
+   "hours_with_mirror": 3.03,
+   "n_actors": 4,
+   "primary_hours": {
+    "upper_body_manipulation": 1.51
+   },
+   "n_frame_lus": 17,
+   "converted_hours_orig": 0.04,
+   "on_disk_or_converted_hours_orig": 0.04
+  },
+  "soccerball": {
+   "n_clips_orig": 37,
+   "hours_orig": 0.66,
+   "hours_with_mirror": 1.31,
+   "n_actors": 2,
+   "primary_hours": {
+    "dynamic": 0.5,
+    "upper_body_manipulation": 0.16
+   },
+   "n_frame_lus": 2,
+   "converted_hours_orig": 0.0,
+   "on_disk_or_converted_hours_orig": 0.0
+  },
+  "trashbin": {
+   "n_clips_orig": 31,
+   "hours_orig": 0.52,
+   "hours_with_mirror": 1.04,
+   "n_actors": 6,
+   "primary_hours": {
+    "whole_body_object": 0.4,
+    "upper_body_manipulation": 0.1,
+    "ground_contact": 0.02
+   },
+   "n_frame_lus": 5,
+   "converted_hours_orig": 0.0,
+   "on_disk_or_converted_hours_orig": 0.0
+  },
+  "bottle": {
+   "n_clips_orig": 24,
+   "hours_orig": 0.41,
+   "hours_with_mirror": 0.81,
+   "n_actors": 6,
+   "primary_hours": {
+    "upper_body_manipulation": 0.41
+   },
+   "n_frame_lus": 2,
+   "converted_hours_orig": 0.04,
+   "on_disk_or_converted_hours_orig": 0.04
+  }
+ },
+ "ground_contact": {
+  "hours_orig": 8.11,
+  "hours_with_mirror": 16.22,
+  "n_clips_orig": 478,
+  "n_actors": 85,
+  "by_contact_hours_orig": {
+   "knees": 4.02,
+   "hands_ground": 1.32,
+   "hips_ground": 1.47,
+   "back": 0.95,
+   "front": 0.48,
+   "side": 0.2,
+   "body_ground_unspecified": 0.41
+  },
+  "top_frame_lus": [
+   [
+    "Posture-kneel",
+    0.93
+   ],
+   [
+    "Change_posture-kneel_down",
+    0.75
+   ],
+   [
+    "Posture-shrink",
+    0.69
+   ],
+   [
+    "Body_movement-kneel",
+    0.65
+   ],
+   [
+    "Posture-lie",
+    0.64
+   ],
+   [
+    "Self_motion-vault",
+    0.52
+   ],
+   [
+    "Motion_directional-fall",
+    0.42
+   ],
+   [
+    "Motion_directional-topple",
+    0.34
+   ],
+   [
+    "Self_motion-scramble",
+    0.3
+   ],
+   [
+    "Body_movement-wiggle",
+    0.26
+   ],
+   [
+    "Change_posture-stand_up",
+    0.25
+   ],
+   [
+    "Body_movement-wriggle",
+    0.25
+   ],
+   [
+    "Change_posture-sit_down",
+    0.24
+   ],
+   [
+    "Posture-sprawl",
+    0.24
+   ],
+   [
+    "Getting_up-get_up",
+    0.19
+   ],
+   [
+    "Motion_directional-plunge",
+    0.17
+   ],
+   [
+    "Body_movement-cross",
+    0.17
+   ],
+   [
+    "Self_motion-crawl",
+    0.17
+   ],
+   [
+    "Change_posture-lie_down",
+    0.16
+   ],
+   [
+    "Body_movement-arch",
+    0.15
+   ],
+   [
+    "Change_posture-kneel_up",
+    0.14
+   ],
+   [
+    "Body_movement-flutter",
+    0.12
+   ],
+   [
+    "Self_motion-burrow",
+    0.09
+   ],
+   [
+    "Change_posture-lean",
+    0.09
+   ],
+   [
+    "Change_posture-sprawl",
+    0.08
+   ]
+  ],
+  "status_hours_orig": {
+   "converted_smplx": 0.09,
+   "downloading": 0.02,
+   "not_downloaded": 8.01
+  }
+ },
+ "actors": {
+  "n_actors": 132,
+  "gender": {
+   "male": 76,
+   "female": 56
+  },
+  "height_cm": {
+   "min": 155,
+   "p10": 160.0,
+   "median": 170.0,
+   "p90": 180.0,
+   "max": 185
+  },
+  "weight_kg": {
+   "min": 40,
+   "median": 56.25,
+   "max": 82
+  },
+  "height_by_gender_median": {
+   "female": 163.0,
+   "male": 175.0
+  },
+  "hours_by_gender_orig": {
+   "female": 105.59,
+   "male": 203.14
+  },
+  "hours_per_actor_orig": {
+   "min": 0.02,
+   "median": 1.22,
+   "max": 15.05
+  },
+  "top10_actor_share_pct": 32.5,
+  "median_actors_per_frame_lu": 23.5,
+  "frame_lus_with_ge10_actors": 154,
+  "frame_lus_with_le3_actors": 19
+ },
+ "status": {
+  "parts_total": 32,
+  "tar_complete_on_disk": [
+   "0002",
+   "0029"
+  ],
+  "tar_partial": {
+   "0001": "7.66/7.71 GB"
+  },
+  "extracted_parts": [
+   "0002"
+  ],
+  "streamc_snapshot": {
+   "t": "2026-10-04 23:59:59",
+   "current": "0001",
+   "our_rate_MBps_10m": 0.663,
+   "remaining_download_GB": 192.58,
+   "eta_all_parts_h": 80.74,
+   "deadline_in_h": 34.8,
+   "n_todo": 30,
+   "net_up": true
+  },
+  "converted_smplx_orig_clips": 1094,
+  "converted_smplx_mirror_clips": 0,
+  "converted_smplx_hours_orig": 19.14,
+  "converted_ok_in_log": 1094,
+  "gpu_bench4_clips_same_set": 1094,
+  "converted_dir": "/home/arenalabs/umr_factory_data/smplx/hiphi (3.8 GB; smplx_gpu/hiphi does not exist; GPU re-run lives in /home/arenalabs/gpu_convert/runs/bench4/hiphi)",
+  "retargeted_clips": 0,
+  "retargeted_robots": 0,
+  "status_hours_orig": {
+   "converted_smplx": 19.14,
+   "downloading": 9.58,
+   "not_downloaded": 280.01
+  },
+  "status_clips_orig": {
+   "converted_smplx": 1094,
+   "downloading": 543,
+   "not_downloaded": 15989
+  },
+  "parts": [
+   {
+    "rank": 1,
+    "part": "0001",
+    "streamc_state": "downloading",
+    "tar_on_disk": "partial",
+    "tar_GB_have": 7.66,
+    "tar_GB_total": 7.71,
+    "extracted": false,
+    "n_orig": 543,
+    "orig_h": 9.58,
+    "hoi_h": 9.58,
+    "ground_h": 0.02,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 2,
+    "part": "0002",
+    "streamc_state": "foreign",
+    "tar_on_disk": "complete",
+    "tar_GB_have": 7.72,
+    "tar_GB_total": 7.72,
+    "extracted": true,
+    "n_orig": 546,
+    "orig_h": 9.57,
+    "hoi_h": 9.57,
+    "ground_h": 0.05,
+    "converted_orig": 546,
+    "converted_h": 9.57
+   },
+   {
+    "rank": 3,
+    "part": "0029",
+    "streamc_state": "foreign",
+    "tar_on_disk": "complete",
+    "tar_GB_have": 7.74,
+    "tar_GB_total": 7.74,
+    "extracted": false,
+    "n_orig": 548,
+    "orig_h": 9.57,
+    "hoi_h": 9.57,
+    "ground_h": 0.03,
+    "converted_orig": 548,
+    "converted_h": 9.57
+   },
+   {
+    "rank": 4,
+    "part": "0021",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 7.71,
+    "extracted": false,
+    "n_orig": 544,
+    "orig_h": 9.56,
+    "hoi_h": 9.56,
+    "ground_h": 0.0,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 5,
+    "part": "0003",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 7.8,
+    "extracted": false,
+    "n_orig": 542,
+    "orig_h": 9.55,
+    "hoi_h": 9.55,
+    "ground_h": 0.0,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 6,
+    "part": "0024",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 7.71,
+    "extracted": false,
+    "n_orig": 541,
+    "orig_h": 9.55,
+    "hoi_h": 9.55,
+    "ground_h": 0.0,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 7,
+    "part": "0022",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 7.73,
+    "extracted": false,
+    "n_orig": 539,
+    "orig_h": 9.55,
+    "hoi_h": 9.55,
+    "ground_h": 0.0,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 8,
+    "part": "0023",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 7.74,
+    "extracted": false,
+    "n_orig": 545,
+    "orig_h": 9.54,
+    "hoi_h": 9.54,
+    "ground_h": 0.0,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 9,
+    "part": "0025",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 7.71,
+    "extracted": false,
+    "n_orig": 542,
+    "orig_h": 9.54,
+    "hoi_h": 9.54,
+    "ground_h": 0.02,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 10,
+    "part": "0004",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 7.77,
+    "extracted": false,
+    "n_orig": 543,
+    "orig_h": 9.53,
+    "hoi_h": 9.53,
+    "ground_h": 0.02,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 11,
+    "part": "0005",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 7.39,
+    "extracted": false,
+    "n_orig": 556,
+    "orig_h": 9.65,
+    "hoi_h": 7.25,
+    "ground_h": 0.07,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 12,
+    "part": "0020",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 7.09,
+    "extracted": false,
+    "n_orig": 560,
+    "orig_h": 9.65,
+    "hoi_h": 6.45,
+    "ground_h": 0.44,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 13,
+    "part": "0028",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 7.33,
+    "extracted": false,
+    "n_orig": 558,
+    "orig_h": 9.69,
+    "hoi_h": 5.03,
+    "ground_h": 0.62,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 14,
+    "part": "0030",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 6.82,
+    "extracted": false,
+    "n_orig": 570,
+    "orig_h": 9.8,
+    "hoi_h": 2.97,
+    "ground_h": 1.31,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 15,
+    "part": "0026",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 7.5,
+    "extracted": false,
+    "n_orig": 540,
+    "orig_h": 9.76,
+    "hoi_h": 2.93,
+    "ground_h": 0.5,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 16,
+    "part": "0031",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 6.7,
+    "extracted": false,
+    "n_orig": 563,
+    "orig_h": 9.79,
+    "hoi_h": 2.56,
+    "ground_h": 0.37,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 17,
+    "part": "0027",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 7.37,
+    "extracted": false,
+    "n_orig": 560,
+    "orig_h": 9.82,
+    "hoi_h": 0.0,
+    "ground_h": 1.1,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 18,
+    "part": "0010",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 6.04,
+    "extracted": false,
+    "n_orig": 575,
+    "orig_h": 9.93,
+    "hoi_h": 0.0,
+    "ground_h": 0.29,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 19,
+    "part": "0011",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 6.11,
+    "extracted": false,
+    "n_orig": 575,
+    "orig_h": 9.93,
+    "hoi_h": 0.0,
+    "ground_h": 0.29,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 20,
+    "part": "0012",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 6.07,
+    "extracted": false,
+    "n_orig": 578,
+    "orig_h": 9.95,
+    "hoi_h": 0.0,
+    "ground_h": 0.26,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 21,
+    "part": "0008",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 6.08,
+    "extracted": false,
+    "n_orig": 573,
+    "orig_h": 9.92,
+    "hoi_h": 0.0,
+    "ground_h": 0.27,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 22,
+    "part": "0018",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 6.02,
+    "extracted": false,
+    "n_orig": 578,
+    "orig_h": 9.96,
+    "hoi_h": 0.0,
+    "ground_h": 0.21,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 23,
+    "part": "0019",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 6.05,
+    "extracted": false,
+    "n_orig": 578,
+    "orig_h": 9.94,
+    "hoi_h": 0.05,
+    "ground_h": 0.24,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 24,
+    "part": "0014",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 6.07,
+    "extracted": false,
+    "n_orig": 576,
+    "orig_h": 9.93,
+    "hoi_h": 0.0,
+    "ground_h": 0.21,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 25,
+    "part": "0032",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 2.61,
+    "extracted": false,
+    "n_orig": 226,
+    "orig_h": 5.94,
+    "hoi_h": 0.07,
+    "ground_h": 0.5,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 26,
+    "part": "0017",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 6.06,
+    "extracted": false,
+    "n_orig": 572,
+    "orig_h": 9.95,
+    "hoi_h": 0.0,
+    "ground_h": 0.26,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 27,
+    "part": "0015",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 6.02,
+    "extracted": false,
+    "n_orig": 578,
+    "orig_h": 9.93,
+    "hoi_h": 0.0,
+    "ground_h": 0.18,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 28,
+    "part": "0013",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 6.04,
+    "extracted": false,
+    "n_orig": 578,
+    "orig_h": 9.94,
+    "hoi_h": 0.0,
+    "ground_h": 0.19,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 29,
+    "part": "0007",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 6.1,
+    "extracted": false,
+    "n_orig": 572,
+    "orig_h": 9.94,
+    "hoi_h": 0.0,
+    "ground_h": 0.24,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 30,
+    "part": "0006",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 6.0,
+    "extracted": false,
+    "n_orig": 575,
+    "orig_h": 9.94,
+    "hoi_h": 0.0,
+    "ground_h": 0.15,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 31,
+    "part": "0009",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 6.05,
+    "extracted": false,
+    "n_orig": 574,
+    "orig_h": 9.9,
+    "hoi_h": 0.0,
+    "ground_h": 0.14,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   },
+   {
+    "rank": 32,
+    "part": "0016",
+    "streamc_state": "queued",
+    "tar_on_disk": "absent",
+    "tar_GB_have": 0.0,
+    "tar_GB_total": 6.05,
+    "extracted": false,
+    "n_orig": 578,
+    "orig_h": 9.95,
+    "hoi_h": 0.0,
+    "ground_h": 0.14,
+    "converted_orig": 0,
+    "converted_h": 0.0
+   }
+  ]
+ },
+ "ambiguous_frame_lus": {
+  "Body_movement-swing": "混合(162 条): 43 条是武术/器械套路名(Tornado kick/Tai Chi/剑/枪/棍…, 0.62 h)→dynamic(martial); 116 条是单腿/单臂左右摆(2.0 h)→other(原地局部动作)",
+  "Self_motion-sashay": "混合(156 条): 46 条是具名舞蹈(Samba/KPOP/古典/民族/爵士…, 2.94 h, 单条最长 309 s)→dynamic(dance); 110 条是扭胯走步(1.95 h)→locomotion",
+  "Self_motion-vault": "70 条全是体操/特技/武术动作名(后空翻/侧手翻/倒立/滚翻/倒地/旋子): 67 条 acrobatic, 其中 46 条有手撑地/倒地→主类 ground_contact; 3 条单腿平衡→idle_posture",
+  "Cause_motion-hit": "混合(48 条): 15 条徒手格斗(Boxing/Muay Thai/Sanda/Combat, 无物体, 0.82 h)→dynamic(martial); 15 条用脚背踢箱子→whole_body_object+kick; 18 条手掌/前臂拍箱子→upper_body_manipulation",
+  "Self_motion-step": "混合(86 条): 20 条踏上/跨过/沿长凳顶面走(物体-脚接触, 类台阶 0.34 h); 19 条原地踏步; 其余推桌/推箱/扶凳走",
+  "Self_motion-trip": "绊脚踉跄(扰动步态)→归 locomotion, 子标签 stumble; 不算 fall",
+  "Self_motion-totter": "摇晃欲倒步态→locomotion+stumble",
+  "Self_motion-lurch": "前扑踉跄步态→locomotion+stumble",
+  "Motion_directional-fall": "混合(37 条): 28 条真倒地/跪倒/坐倒/护身倒法(ground_contact+fall); 9 条只是落入低蹲(idle_posture/locomotion)",
+  "Motion_directional-topple": "混合(39 条): 20 条倒地/跪倒; 19 条踉跄后落入低蹲",
+  "Change_posture-sit_down": "混合(29 条): 14 条坐到地上/跪坐(ground_contact) vs 15 条坐到椅/箱/桌(sitting_on_object)",
+  "Change_posture-stand_up": "混合(36 条): 15 条从地上/跪/趴起身(ground+getup) vs 21 条从椅子/箱子起身(sitting_on_object)",
+  "Change_posture-sprawl": "混合: 扑倒在地 vs 瘫坐/趴在椅子上",
+  "Posture-sit": "56 条: 53 条坐椅/凳/箱(sitting_on_object); 3 条坐地上抱着衣架/垃圾桶/水桶(ground_contact)",
+  "Manipulation-paw": "框架叫 Manipulation 但无物体: 是手在自己腿上抓挠→other(身体局部)",
+  "Scouring-rifle": "无物体的'搜寻'哑剧(下蹲伸手)→other/locomotion",
+  "Scouring-scour": "无物体的环顾/转身搜寻→locomotion/other",
+  "Scouring-sweep": "无物体的'扫视/伸手扫地面'→other",
+  "Body_movement-wave": "是手臂来回挥摆, 不一定是社交挥手; 归 gesture_social(wave)",
+  "Body_movement-kneel": "跪地后做上身动作→ground_contact",
+  "Body_movement-shiver": "发抖/寒颤(情绪)→gesture_social(emote); 多数边走边抖→也算 locomotion",
+  "Posture-cower": "蜷缩畏惧姿态→gesture_social(emote)+idle_posture",
+  "Posture-shrink": "抱膝坐地蜷缩→ground_contact(hips)",
+  "Attaching-hook": "用手臂弯/脚背/小腿勾衣架: 一半是勾住后全身拉/用脚抬架子(whole_body_object, 物体-脚接触 18 条), 一半是手臂勾挂(upper_body_manipulation)",
+  "Placing-lean": "把椅子斜靠在髋部→upper_body_manipulation + object-body",
+  "Change_posture-lean": "HOI(32 条): 坐在椅/箱上前倾(sitting_on_object 40%), 全身压/靠在椅子或箱子上(whole_body_object 41%), 蹲/跪在椅边(ground 16%)",
+  "Cause_motion-punt": "踢箱子/球(object-feet, 140 条): 多标签 whole_body_object(kick ball)+dynamic(kick), 主类按优先级记为 dynamic",
+  "Cause_motion-force": "推/顶衣架、长凳、垃圾桶、球, 多为全身发力",
+  "Cause_motion-shove": "同上",
+  "Cause_to_move_in_place-turn": "混合: 77% 原地扭转/旋转物体(upper_body_manipulation), 23% 把长凳/箱子立起翻倒(whole_body_object)",
+  "Self_motion-press": "'press forward' 是前倾推进步态, 不是按压物体",
+  "Self_motion-edge": "'edge' 是沿边缘踮脚走, 不是物体",
+  "Self_motion-shrink": "缩身怯步走→locomotion",
+  "Self_motion-slip": "'slip' 是低身滑步走, 不是滑倒",
+  "Self_motion-back": "全是后退步态(walk/march backward)"
+ },
+ "outputs": {
+  "summary_json": "/home/arenalabs/umr_factory_data/diversity/hiphi/hiphi_diversity_summary.json",
+  "report_md": "/home/arenalabs/umr_factory_data/diversity/hiphi/hiphi_diversity_report.md",
+  "lu_mapping_csv": "/home/arenalabs/umr_factory_data/diversity/hiphi/hiphi_lu_mapping.csv",
+  "clips_csv": "/home/arenalabs/umr_factory_data/diversity/hiphi/hiphi_clips_labeled.csv",
+  "script": "/home/arenalabs/umr_factory_data/diversity/hiphi/hiphi_diversity.py"
+ }
+}

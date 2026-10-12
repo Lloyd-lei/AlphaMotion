@@ -1,0 +1,83 @@
+{
+ "name": "fourier_gr3",
+ "src_mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/fourier_gr3v2_1_1/mjcf/gr3v2_1_1_dummy_hand.xml",
+ "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/fourier_gr3/fourier_gr3.xml",
+ "nq": 38,
+ "nv": 37,
+ "facing_plus_x": true,
+ "locked_joints": [],
+ "tpose": {
+  "left_shoulder_roll_joint": 1.25061,
+  "right_shoulder_roll_joint": -1.25061,
+  "left_shoulder_pitch_joint": -0.54223,
+  "left_shoulder_yaw_joint": -1.11975,
+  "left_elbow_pitch_joint": -0.109,
+  "left_wrist_yaw_joint": -0.04254,
+  "left_wrist_pitch_joint": 0.61425,
+  "left_wrist_roll_joint": 0.09308,
+  "right_shoulder_pitch_joint": -0.54224,
+  "right_shoulder_yaw_joint": 1.11974,
+  "right_elbow_pitch_joint": -0.109,
+  "right_wrist_yaw_joint": 0.04011,
+  "right_wrist_pitch_joint": 0.60691,
+  "right_wrist_roll_joint": -0.09091
+ },
+ "tpose_fixed": true,
+ "tpose_metrics_draft": {
+  "L": {
+   "upper_arm_deg": 20.07192131352284,
+   "forearm_deg": 34.00611523233731,
+   "hand_deg": 14.162741866481767,
+   "tip_minus_shoulder_cm": [
+    -20.6,
+    72.9,
+    5.7
+   ],
+   "elbow_axis_vertical": 0.986
+  },
+  "R": {
+   "upper_arm_deg": 20.07192131352284,
+   "forearm_deg": 34.006115232337336,
+   "hand_deg": 14.39111803145146,
+   "tip_minus_shoulder_cm": [
+    -20.8,
+    -72.9,
+    5.7
+   ],
+   "elbow_axis_vertical": 0.986
+  },
+  "pass": false
+ },
+ "tpose_metrics_final": {
+  "L": {
+   "upper_arm_deg": 4.0598083003216665,
+   "forearm_deg": 3.1298270884262522,
+   "hand_deg": 1.8773331170198722,
+   "tip_minus_shoulder_cm": [
+    0.3,
+    73.9,
+    0.4
+   ],
+   "elbow_axis_vertical": 0.872
+  },
+  "R": {
+   "upper_arm_deg": 4.060143050812337,
+   "forearm_deg": 3.1296454445675748,
+   "hand_deg": 1.8762796842324125,
+   "tip_minus_shoulder_cm": [
+    0.3,
+    -74.0,
+    0.4
+   ],
+   "elbow_axis_vertical": 0.872
+  },
+  "pass": true
+ },
+ "bbox_center_ratio": 0.6486113582402304,
+ "bbox_center_ratio_draft": 0.6486,
+ "exclusions": [],
+ "flagged_nonadjacent_rest_overlaps": [],
+ "remaining_tpose_overlaps": [],
+ "n_collision_geoms": 22,
+ "seconds": 7.4
+}

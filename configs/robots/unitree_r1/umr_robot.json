@@ -1,0 +1,25 @@
+{
+ "robot": {
+  "name": "unitree_r1",
+  "xml": "/home/arenalabs/umr_factory_data/robots/unitree_r1/unitree_r1.xml",
+  "point_cloud_center": "body:waist_yaw_link",
+  "tpose_qpos": {
+   "left_shoulder_roll_joint": 2.2422,
+   "left_elbow_joint": 1.49094,
+   "right_shoulder_roll_joint": -2.24235,
+   "right_elbow_joint": 1.49077,
+   "left_shoulder_pitch_joint": -3.1416,
+   "left_shoulder_yaw_joint": 0.08007,
+   "left_wrist_roll_joint": -0.68408,
+   "right_shoulder_pitch_joint": -3.1416,
+   "right_shoulder_yaw_joint": -0.07951,
+   "right_wrist_roll_joint": 0.66638
+  }
+ },
+ "correspondence": {
+  "dataset": {
+   "smpl_center": "bbox_ratio",
+   "bbox_center_ratio": 0.642015
+  }
+ }
+}

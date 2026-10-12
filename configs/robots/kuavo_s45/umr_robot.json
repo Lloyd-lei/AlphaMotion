@@ -1,0 +1,17 @@
+{
+ "robot": {
+  "name": "kuavo_s45",
+  "xml": "/home/arenalabs/umr_factory_data/robots/kuavo_s45/kuavo_s45.xml",
+  "point_cloud_center": "body:base_link",
+  "tpose_qpos": {
+   "zarm_l2_joint": 1.570796,
+   "zarm_r2_joint": -1.570796
+  }
+ },
+ "correspondence": {
+  "dataset": {
+   "smpl_center": "bbox_ratio",
+   "bbox_center_ratio": 0.524938
+  }
+ }
+}

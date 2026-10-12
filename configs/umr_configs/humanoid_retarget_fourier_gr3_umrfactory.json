@@ -1,0 +1,29 @@
+{
+  "robot": {
+    "name": "fourier_gr3",
+    "xml": "../assets/fourier_gr3v2_1_1/mjcf/gr3v2_1_1_dummy_hand.xml",
+    "point_cloud_center": "body:waist_yaw_link",
+    "tpose_qpos": {
+      "left_shoulder_pitch_joint": -0.5284,
+      "left_shoulder_roll_joint": 1.2789,
+      "left_shoulder_yaw_joint": -1.06,
+      "left_elbow_pitch_joint": 0.0873,
+      "left_wrist_yaw_joint": -0.0,
+      "left_wrist_pitch_joint": 0.0871,
+      "left_wrist_roll_joint": 0.0597,
+      "right_shoulder_pitch_joint": -0.5284,
+      "right_shoulder_roll_joint": -1.2788,
+      "right_shoulder_yaw_joint": 1.06,
+      "right_elbow_pitch_joint": 0.0873,
+      "right_wrist_yaw_joint": -0.0009,
+      "right_wrist_pitch_joint": 0.087,
+      "right_wrist_roll_joint": -0.0497
+    }
+  },
+  "correspondence": {
+    "dataset": {
+      "smpl_center": "bbox_ratio",
+      "bbox_center_ratio": 0.648611
+    }
+  }
+}

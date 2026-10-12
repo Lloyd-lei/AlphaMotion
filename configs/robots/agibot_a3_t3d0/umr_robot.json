@@ -1,0 +1,19 @@
+{
+ "robot": {
+  "name": "agibot_a3_t3d0",
+  "xml": "/home/arenalabs/umr_factory_data/robots/agibot_a3_t3d0/agibot_a3_t3d0.xml",
+  "point_cloud_center": "body:waist_yaw_Link",
+  "tpose_qpos": {
+   "left_shoulder_roll_joint": 1.570796,
+   "left_elbow_joint": 1.570796,
+   "right_shoulder_roll_joint": -1.570796,
+   "right_elbow_joint": 1.570796
+  }
+ },
+ "correspondence": {
+  "dataset": {
+   "smpl_center": "bbox_ratio",
+   "bbox_center_ratio": 0.624766
+  }
+ }
+}

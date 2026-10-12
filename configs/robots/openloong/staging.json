@@ -1,0 +1,68 @@
+{
+ "name": "openloong",
+ "src_mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/openloong/AzureLoong.xml",
+ "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/openloong/openloong.xml",
+ "nq": 38,
+ "nv": 37,
+ "facing_plus_x": true,
+ "locked_joints": [],
+ "tpose": {},
+ "tpose_fixed": false,
+ "tpose_metrics_draft": {
+  "L": {
+   "upper_arm_deg": 7.135098929354323,
+   "forearm_deg": 6.8712928554543184,
+   "hand_deg": 4.691015001088087,
+   "tip_minus_shoulder_cm": [
+    1.2,
+    93.4,
+    1.1
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "R": {
+   "upper_arm_deg": 7.135098929354323,
+   "forearm_deg": 6.8712928554543184,
+   "hand_deg": 4.69101541318181,
+   "tip_minus_shoulder_cm": [
+    1.2,
+    -93.4,
+    1.1
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "pass": true
+ },
+ "tpose_metrics_final": {
+  "L": {
+   "upper_arm_deg": 7.135098929354323,
+   "forearm_deg": 6.8712928554543184,
+   "hand_deg": 4.691015001088087,
+   "tip_minus_shoulder_cm": [
+    1.2,
+    93.4,
+    1.1
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "R": {
+   "upper_arm_deg": 7.135098929354323,
+   "forearm_deg": 6.8712928554543184,
+   "hand_deg": 4.69101541318181,
+   "tip_minus_shoulder_cm": [
+    1.2,
+    -93.4,
+    1.1
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "pass": true
+ },
+ "bbox_center_ratio": 0.573399766091021,
+ "bbox_center_ratio_draft": 0.5734,
+ "exclusions": [],
+ "flagged_nonadjacent_rest_overlaps": [],
+ "remaining_tpose_overlaps": [],
+ "n_collision_geoms": 32,
+ "seconds": 2.7
+}

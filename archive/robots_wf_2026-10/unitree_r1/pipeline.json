@@ -1,0 +1,448 @@
+{
+ "robot": "unitree_r1",
+ "frozen_at": "2026-10-04 23:38:28",
+ "spec": "/home/arenalabs/umr_factory_data/DATA_SPEC_v2.md",
+ "assets": {
+  "mjcf": "/home/arenalabs/umr_factory_data/robots/unitree_r1/unitree_r1.xml",
+  "mjcf_sha256": "0620cd91fcc718c8c3af1dde606a254e65a55e951f89c97a67e9eb91f1d6bb12",
+  "mjcf_source": "/var/tmp/alphamotion/robot_models/unitree_ros/robots/r1_description/unitree_r1_mjcf.xml",
+  "nq": 33,
+  "nv": 32,
+  "surface": "/home/arenalabs/umr_factory_data/robots/unitree_r1/surface.npz",
+  "surface_sha256": "b2123ad93bed92d307b8c4fb1244f843f7e9bb72a48e573bfc105594c5dfc421",
+  "n_dense_points": 4096,
+  "surface_policy": "4096 exterior points (UMR first-hit sampler) on VISUAL meshes, bound to geoms; + 33863 convex-hull vertices of visual geoms (exact ground gauge)",
+  "umr_robot_json": "/home/arenalabs/umr_factory_data/robots/unitree_r1/umr_robot.json",
+  "umr_robot_json_sha256": "081586dce6591dc02614359bf1aca1a59827ca98c504e326bf9d7612c4c4e02f",
+  "staging_json": "/home/arenalabs/umr_factory_data/robots/unitree_r1/staging.json",
+  "staging_json_sha256": "e84c907729d33f5ca9e87fe53f2f81e70bed42cb9429b877e86647626c5796dd",
+  "patches": "/home/arenalabs/umr_factory_data/robots/unitree_r1/pipeline/patches.npz",
+  "patches_sha256": "c234338cecba7565f9d0bbbba02ca31741864971b5d3a64faa4003fe4042bc43"
+ },
+ "tpose": {
+  "qpos": {
+   "left_shoulder_roll_joint": 2.2422,
+   "left_elbow_joint": 1.49094,
+   "right_shoulder_roll_joint": -2.24235,
+   "right_elbow_joint": 1.49077,
+   "left_shoulder_pitch_joint": -3.1416,
+   "left_shoulder_yaw_joint": 0.08007,
+   "left_wrist_roll_joint": -0.68408,
+   "right_shoulder_pitch_joint": -3.1416,
+   "right_shoulder_yaw_joint": -0.07951,
+   "right_wrist_roll_joint": 0.66638
+  },
+  "metrics": {
+   "L": {
+    "upper_arm_deg": 6.821810826848493,
+    "forearm_deg": 6.50713110976233,
+    "hand_deg": 1.1099994115318337,
+    "tip_minus_shoulder_cm": [
+     -1.3,
+     48.2,
+     -1.2
+    ],
+    "elbow_axis_vertical": 0.986
+   },
+   "R": {
+    "upper_arm_deg": 6.828387643594129,
+    "forearm_deg": 6.4976502535710665,
+    "hand_deg": 1.0831470528527556,
+    "tip_minus_shoulder_cm": [
+     -1.3,
+     -48.2,
+     -1.2
+    ],
+    "elbow_axis_vertical": 0.986
+   },
+   "pass": true
+  },
+  "note": "least-squares arm-chain T-pose (draft failed: forearm 16 deg)"
+ },
+ "scale_and_correspondence": {
+  "point_cloud_center": "body:waist_yaw_link",
+  "smpl_center": "bbox_ratio",
+  "bbox_center_ratio": 0.6420154875189109,
+  "human_scale": "UMR auto: robot_height / human_height per clip (smpl_scale), recorded per output as human_scale",
+  "smplx_plain": {
+   "dir": "/home/arenalabs/umr_factory_data/corr/unitree_r1/smplx",
+   "template": "smplx_neutral_betas_c4eb7419e9",
+   "slots_sha256": "2223745fd635a46e",
+   "used_for": "plain SMPL-X (LAFAN)"
+  },
+  "shared_beta0": {
+   "dir": "/home/arenalabs/umr_factory_data/corr/unitree_r1/beta0",
+   "template": "smplx_neutral_betas_b80de5d138",
+   "slots_sha256": "da491fecd0f4a57e",
+   "used_for": "HOI / HiPHI with per-actor betas (reuse_across_smplx_betas, fixed face+bary transfer)"
+  }
+ },
+ "regions": [
+  "trunk",
+  "L_thigh",
+  "R_thigh",
+  "L_shin",
+  "R_shin",
+  "L_foot",
+  "R_foot",
+  "L_upper_arm",
+  "R_upper_arm",
+  "L_forearm",
+  "R_forearm",
+  "L_hand",
+  "R_hand"
+ ],
+ "region_to_bodies": {
+  "trunk": [
+   "pelvis_link",
+   "imu_in_pelvis_link",
+   "waist_roll_link",
+   "waist_yaw_link",
+   "head_pitch_link",
+   "head_yaw_link"
+  ],
+  "L_thigh": [
+   "left_hip_pitch_link",
+   "left_hip_roll_link",
+   "left_hip_yaw_link"
+  ],
+  "R_thigh": [
+   "right_hip_pitch_link",
+   "right_hip_roll_link",
+   "right_hip_yaw_link"
+  ],
+  "L_shin": [
+   "left_knee_link",
+   "left_ankle_A_link",
+   "left_ankle_A_rod_link",
+   "left_ankle_B_link",
+   "left_ankle_B_rod_link"
+  ],
+  "R_shin": [
+   "right_knee_link",
+   "right_ankle_A_link",
+   "right_ankle_A_rod_link",
+   "right_ankle_B_link",
+   "right_ankle_B_rod_link"
+  ],
+  "L_foot": [
+   "left_ankle_pitch_link",
+   "left_ankle_roll_link",
+   "left_ankle_constraint_A_link",
+   "left_ankle_constraint_B_link"
+  ],
+  "R_foot": [
+   "right_ankle_pitch_link",
+   "right_ankle_roll_link",
+   "right_ankle_constraint_A_link",
+   "right_ankle_constraint_B_link"
+  ],
+  "L_upper_arm": [
+   "left_shoulder_pitch_link",
+   "left_shoulder_roll_link",
+   "left_shoulder_yaw_link"
+  ],
+  "R_upper_arm": [
+   "right_shoulder_pitch_link",
+   "right_shoulder_roll_link",
+   "right_shoulder_yaw_link"
+  ],
+  "L_forearm": [
+   "left_elbow_link"
+  ],
+  "R_forearm": [
+   "right_elbow_link"
+  ],
+  "L_hand": [
+   "left_wrist_roll_link"
+  ],
+  "R_hand": [
+   "right_wrist_roll_link"
+  ]
+ },
+ "region_point_counts": {
+  "trunk": 1236,
+  "L_thigh": 391,
+  "R_thigh": 373,
+  "L_shin": 323,
+  "R_shin": 317,
+  "L_foot": 163,
+  "R_foot": 158,
+  "L_upper_arm": 320,
+  "R_upper_arm": 320,
+  "L_forearm": 115,
+  "R_forearm": 113,
+  "L_hand": 134,
+  "R_hand": 133
+ },
+ "collision_geoms_per_region": {
+  "trunk": [
+   "pelvis_link",
+   "imu_in_pelvis_link",
+   "waist_roll_link",
+   "waist_yaw_link",
+   "head_pitch_link",
+   "head_yaw_link"
+  ],
+  "L_thigh": [
+   "left_hip_pitch_link",
+   "left_hip_roll_link",
+   "left_hip_yaw_link"
+  ],
+  "L_shin": [
+   "left_knee_link",
+   "left_ankle_A_link",
+   "left_ankle_B_link"
+  ],
+  "L_foot": [
+   "left_ankle_roll_link",
+   "left_ankle_constraint_A_link",
+   "left_ankle_constraint_B_link"
+  ],
+  "R_thigh": [
+   "right_hip_pitch_link",
+   "right_hip_roll_link",
+   "right_hip_yaw_link"
+  ],
+  "R_shin": [
+   "right_knee_link",
+   "right_ankle_A_link",
+   "right_ankle_B_link"
+  ],
+  "R_foot": [
+   "right_ankle_roll_link",
+   "right_ankle_constraint_A_link",
+   "right_ankle_constraint_B_link"
+  ],
+  "L_upper_arm": [
+   "left_shoulder_pitch_link",
+   "left_shoulder_roll_link",
+   "left_shoulder_yaw_link"
+  ],
+  "L_forearm": [
+   "left_elbow_link"
+  ],
+  "L_hand": [
+   "left_wrist_roll_link"
+  ],
+  "R_upper_arm": [
+   "right_shoulder_pitch_link",
+   "right_shoulder_roll_link",
+   "right_shoulder_yaw_link"
+  ],
+  "R_forearm": [
+   "right_elbow_link"
+  ],
+  "R_hand": [
+   "right_wrist_roll_link"
+  ]
+ },
+ "contact_capable": {
+  "ground": [
+   "L_foot",
+   "R_foot",
+   "L_shin",
+   "R_shin",
+   "L_thigh",
+   "R_thigh",
+   "L_hand",
+   "R_hand",
+   "L_forearm",
+   "R_forearm",
+   "L_upper_arm",
+   "R_upper_arm",
+   "trunk"
+  ],
+  "object": [
+   "L_hand",
+   "R_hand",
+   "L_forearm",
+   "R_forearm",
+   "L_upper_arm",
+   "R_upper_arm",
+   "L_foot",
+   "R_foot",
+   "L_shin",
+   "R_shin",
+   "L_thigh",
+   "R_thigh",
+   "trunk"
+  ],
+  "note": "region level = the 13 label regions shared with the human (SMPL-X part segmentation). Knee = L/R_knee patch (shin+thigh points within 8 cm of the knee joint), elbow = L/R_elbow patch (upper_arm+forearm within 6 cm of the elbow joint), pelvis/hips = pelvis patch (pelvis_link + imu), torso/back = torso_back patch."
+ },
+ "contact_patches": {
+  "definition": {
+   "L_foot_all/R_foot_all": "every dense point of the foot region (ankle_pitch, ankle_roll, constraint_A/B links). ANY point may carry ground contact: edges/heel/toe tip allowed (spec v2: 1 point suffices)",
+   "L_sole/R_sole": "informational: foot points within 15 mm of the rest-pose foot minimum with downward normal (40 / 40)",
+   "L_knee/R_knee": "shin+thigh points within 8 cm of the knee joint anchor (rest pose)",
+   "L_elbow/R_elbow": "upper_arm+forearm points within 6 cm of the elbow joint anchor (T-pose)",
+   "L_hand/R_hand": "all points of wrist_roll_link (fixed fist, no finger DoF)",
+   "pelvis": "pelvis_link + imu_in_pelvis_link points",
+   "torso_back": "waist_roll_link + waist_yaw_link points"
+  },
+  "counts": {
+   "L_knee": 180,
+   "L_elbow": 71,
+   "L_hand": 134,
+   "L_foot_all": 163,
+   "L_sole": 40,
+   "R_knee": 176,
+   "R_elbow": 75,
+   "R_hand": 133,
+   "R_foot_all": 158,
+   "R_sole": 40,
+   "pelvis": 272,
+   "torso_back": 658
+  },
+  "dense_spacing_mm": {
+   "L_foot": {
+    "p50_mm": 13.11,
+    "p95_mm": 15.72
+   },
+   "R_foot": {
+    "p50_mm": 13.33,
+    "p95_mm": 16.33
+   },
+   "L_hand": {
+    "p50_mm": 13.2,
+    "p95_mm": 15.27
+   },
+   "R_hand": {
+    "p50_mm": 13.13,
+    "p95_mm": 15.93
+   },
+   "L_shin": {
+    "p50_mm": 13.28,
+    "p95_mm": 16.27
+   },
+   "trunk": {
+    "p50_mm": 13.43,
+    "p95_mm": 16.4
+   }
+  }
+ },
+ "self_collision": {
+  "gauge": "MuJoCo collision geoms (34 meshes, convex hulls), mj_geomDistance; every pair of different, non parent/child bodies",
+  "exclusions": [],
+  "exclusions_reason": "none needed: no pair overlaps at qpos0 or T-pose; no pair overlaps in >=95% of 300 random in-limit poses",
+  "n_pairs_tested": 530,
+  "rigid_pairs_tested_never_overlap": [
+   "left_ankle_A_link|left_ankle_B_link",
+   "left_ankle_constraint_A_link|left_ankle_constraint_B_link",
+   "right_ankle_A_link|right_ankle_B_link",
+   "right_ankle_constraint_A_link|right_ankle_constraint_B_link"
+  ],
+  "frequent_overlap_pairs_random_poses": {
+   "waist_yaw_link|head_yaw_link": 0.763,
+   "waist_yaw_link|left_shoulder_roll_link": 0.07
+  }
+ },
+ "floor_convention": {
+  "output": "calibrated floor = z 0 (per clip, from the human source: median lowest foot point over quasi-static stance frames); floor_offset_removed stored in every output npz; the same floor is used for robot and human labels",
+  "robot_qpos0": "root z = 0 puts the soles at -0.741 m; the factory floor alignment handles it (no robot offset table)"
+ },
+ "thresholds_spec_v2": {
+  "contact_clearance_m": [
+   0.0,
+   0.001
+  ],
+  "min_contact_points": 1,
+  "penetration_tol_m": 0.0005,
+  "slip_speed_max_m_s": 0.01,
+  "min_contact_segment_frames": 3,
+  "hysteresis_enter_m": 0.001,
+  "hysteresis_leave_m": 0.002,
+  "human_contact": "human region in contact (same ruler: enter < 1 cm / leave > 2 cm on SMPL-X slots, floor calibrated) -> robot region must be solid",
+  "human_off_m": 0.02,
+  "robot_off_required_m": 0.005,
+  "hover_band_m": [
+   0.001,
+   0.02
+  ],
+  "fps": 30
+ },
+ "engine": {
+  "name": "umrf CPU reference (UMR d1cdaed + strict post-pass)",
+  "code": "/home/arenalabs/umr_factory_code",
+  "module_sha256": {
+   "__init__.py": "15aa1fa7d6107ecf",
+   "geometry.py": "1670030651002862",
+   "labels.py": "d0a412f471efed2a",
+   "objects.py": "9167bac2e771e19d",
+   "paths.py": "feb2256a3cdfb6e7",
+   "pipeline.py": "2deef74ab1440b3c",
+   "postpass.py": "bc59897e9972da91",
+   "robots.py": "aa22c8ec2b63c213",
+   "shared_corr.py": "065039b3ae17a895",
+   "surface.py": "389754b1f9f86362"
+  },
+  "solver_overrides": "pipeline.SOLVER_OVERRIDES (ground hard, self hard+slack, object hard for HOI)",
+  "latch_pin": 0.0,
+  "latch_note": "LATCH_PIN=0 reproduces UMR slip -> does NOT meet spec v2 no-slip",
+  "umr_python": "/var/tmp/alphamotion/umr_factory/umr/env/bin/python",
+  "cuda": "disabled (CUDA_VISIBLE_DEVICES=\"\") for this robot run",
+  "runner": "/home/arenalabs/umr_factory_data/robots/unitree_r1/pipeline/run_qa_clips.py"
+ },
+ "quirks": [
+  "hands are fixed fists (wrist_roll_link, no finger DoF); hand contact = any fist point",
+  "ankle parallel linkage (ankle_A/B_link + rods, constraint_A/B) has NO joints and NO equality constraints: the rods are welded to the knee link / ankle roll link and do not follow ankle pitch/roll (visual artefact only; rods have no collision geom)",
+  "ankle_pitch_link and the 4 ankle rods have no collision geom (visual only); ground gauge still covers them via visual hull vertices + dense points",
+  "head_yaw_link vs waist_yaw_link collision meshes are 0-5 mm apart at rest and overlap 1-6 mm for most head pitch/yaw values (76% of random in-limit poses): not adjacent, not always overlapping -> NOT excluded; head motion is pushed back by the self constraint",
+  "dense point spacing ~13 mm (4096 points / 1.23 m robot): a tilted foot touching with an edge may have its lowest DENSE point 1-5 mm up while the hull vertex is at 0; the engine gauge uses hull vertices",
+  "small foot: 163/158 dense points per foot, 40 per sole"
+ ],
+ "qa_clips": [
+  {
+   "id": "lafan_dance",
+   "kind": "smplx",
+   "source": "/var/tmp/alphamotion/umr_factory/umr/UMR/sample_data/lafan1_smplx/dance1_subject2.npz",
+   "window_frames": [
+    1900,
+    2500
+   ],
+   "stride": 1,
+   "fps": 30,
+   "note": "windowed copy under pipeline/src (run_umr has no smplx window)"
+  },
+  {
+   "id": "soccer_kick",
+   "kind": "hoi",
+   "data": "/var/tmp/alphamotion/umr_factory/umr/UMR/sample_data/omnicontact/soccer/case3_kick_right",
+   "seq": "20260330000586_1_1775269234",
+   "window_src_frames": [
+    450,
+    1950
+   ],
+   "stride": 3,
+   "fps": 30,
+   "shared_corr": true
+  },
+  {
+   "id": "box_carry",
+   "kind": "hoi",
+   "data": "/home/arenalabs/umr_factory_data/smplx/omnicontact/box/case1_carry",
+   "seq": "20260330000166_1_1775007076",
+   "window_src_frames": [
+    450,
+    2250
+   ],
+   "stride": 3,
+   "fps": 30,
+   "shared_corr": true
+  },
+  {
+   "id": "hiphi_kneel",
+   "kind": "hoi",
+   "data": "/home/arenalabs/umr_factory_data/smplx/hiphi/data/Change_posture/lean",
+   "seq": "Change_posture-lean_0025",
+   "window_src_frames": [
+    450,
+    2250
+   ],
+   "stride": 3,
+   "fps": 30,
+   "shared_corr": true,
+   "note": "kneel facing a chair, both forearms on the seat (knees on the ground from src frame ~723); copied to pipeline/src/hiphi so the CoACD chair collision asset is written under this robot"
+  }
+ ]
+}

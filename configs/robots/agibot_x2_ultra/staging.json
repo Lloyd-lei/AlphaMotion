@@ -1,0 +1,92 @@
+{
+ "name": "agibot_x2_ultra",
+ "src_mjcf": "/var/tmp/alphamotion/robot_models/agibot_x2_urdf/X2_URDF-v1.4.0/agibot_x2_ultra_mjcf.xml",
+ "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/agibot_x2_ultra/agibot_x2_ultra.xml",
+ "nq": 38,
+ "nv": 37,
+ "facing_plus_x": true,
+ "locked_joints": [],
+ "tpose": {
+  "left_shoulder_roll_joint": 1.33767,
+  "right_shoulder_roll_joint": -1.33844,
+  "left_shoulder_pitch_joint": 0.28833,
+  "left_shoulder_yaw_joint": 0.18166,
+  "left_elbow_joint": -0.1794,
+  "left_wrist_yaw_joint": -0.0119,
+  "left_wrist_pitch_joint": 0.21734,
+  "left_wrist_roll_joint": 0.09544,
+  "right_shoulder_pitch_joint": 0.28176,
+  "right_shoulder_yaw_joint": -0.16741,
+  "right_elbow_joint": -0.17761,
+  "right_wrist_yaw_joint": 0.01221,
+  "right_wrist_pitch_joint": 0.21877,
+  "right_wrist_roll_joint": -0.09723
+ },
+ "tpose_fixed": true,
+ "tpose_metrics_draft": {
+  "L": {
+   "upper_arm_deg": 12.42730323319483,
+   "forearm_deg": 13.644755112369266,
+   "hand_deg": 9.052188447042468,
+   "tip_minus_shoulder_cm": [
+    0.8,
+    63.5,
+    12.0
+   ],
+   "elbow_axis_vertical": 0.978
+  },
+  "R": {
+   "upper_arm_deg": 12.404211533114365,
+   "forearm_deg": 13.645002332715944,
+   "hand_deg": 9.048566897739352,
+   "tip_minus_shoulder_cm": [
+    0.8,
+    -63.5,
+    12.0
+   ],
+   "elbow_axis_vertical": 0.978
+  },
+  "pass": false
+ },
+ "tpose_metrics_final": {
+  "L": {
+   "upper_arm_deg": 1.3546420475169172,
+   "forearm_deg": 1.2391574361262516,
+   "hand_deg": 0.3890526841077528,
+   "tip_minus_shoulder_cm": [
+    0.0,
+    64.6,
+    0.1
+   ],
+   "elbow_axis_vertical": 0.995
+  },
+  "R": {
+   "upper_arm_deg": 1.3553135501091425,
+   "forearm_deg": 1.239000787506554,
+   "hand_deg": 0.3889983073740949,
+   "tip_minus_shoulder_cm": [
+    0.0,
+    -64.6,
+    0.1
+   ],
+   "elbow_axis_vertical": 0.994
+  },
+  "pass": true
+ },
+ "bbox_center_ratio": 0.5628470973750298,
+ "bbox_center_ratio_draft": 0.5628,
+ "exclusions": [
+  {
+   "body1": "torso_link",
+   "body2": "head_pitch_link",
+   "rest_depth_mm": 7.11,
+   "tree_hops": 2,
+   "overlap_frac_random_poses": 1.0,
+   "reason": "rest/T-pose overlap 7.11 mm, kinematically adjacent (2 hops)"
+  }
+ ],
+ "flagged_nonadjacent_rest_overlaps": [],
+ "remaining_tpose_overlaps": [],
+ "n_collision_geoms": 59,
+ "seconds": 15.3
+}

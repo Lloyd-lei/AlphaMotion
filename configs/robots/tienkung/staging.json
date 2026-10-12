@@ -1,0 +1,71 @@
+{
+ "name": "tienkung",
+ "src_mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/tienkung/mjcf/tienkung.xml",
+ "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/tienkung/tienkung.xml",
+ "nq": 27,
+ "nv": 26,
+ "facing_plus_x": true,
+ "locked_joints": [],
+ "tpose": {
+  "shoulder_roll_l_joint": 1.570796,
+  "shoulder_roll_r_joint": -1.570796
+ },
+ "tpose_fixed": false,
+ "tpose_metrics_draft": {
+  "L": {
+   "upper_arm_deg": 5.9570369858721826,
+   "forearm_deg": 4.999960933533987,
+   "hand_deg": 0.0,
+   "tip_minus_shoulder_cm": [
+    2.0,
+    65.1,
+    5.7
+   ],
+   "elbow_axis_vertical": 0.996
+  },
+  "R": {
+   "upper_arm_deg": 5.957476223480981,
+   "forearm_deg": 4.999960933533987,
+   "hand_deg": 0.0,
+   "tip_minus_shoulder_cm": [
+    2.0,
+    -65.1,
+    5.7
+   ],
+   "elbow_axis_vertical": 0.996
+  },
+  "pass": true
+ },
+ "tpose_metrics_final": {
+  "L": {
+   "upper_arm_deg": 5.9570369858721826,
+   "forearm_deg": 4.999960933533987,
+   "hand_deg": 0.0,
+   "tip_minus_shoulder_cm": [
+    2.0,
+    65.1,
+    5.7
+   ],
+   "elbow_axis_vertical": 0.996
+  },
+  "R": {
+   "upper_arm_deg": 5.957476223480981,
+   "forearm_deg": 4.999960933533987,
+   "hand_deg": 0.0,
+   "tip_minus_shoulder_cm": [
+    2.0,
+    -65.1,
+    5.7
+   ],
+   "elbow_axis_vertical": 0.996
+  },
+  "pass": true
+ },
+ "bbox_center_ratio": 0.5710241821050338,
+ "bbox_center_ratio_draft": 0.571,
+ "exclusions": [],
+ "flagged_nonadjacent_rest_overlaps": [],
+ "remaining_tpose_overlaps": [],
+ "n_collision_geoms": 13,
+ "seconds": 0.4
+}

@@ -1,0 +1,19 @@
+{
+ "robot": {
+  "name": "unitree_g1_23dof",
+  "xml": "/home/arenalabs/umr_factory_data/robots/unitree_g1_23dof/unitree_g1_23dof.xml",
+  "point_cloud_center": "body:waist_yaw_link",
+  "tpose_qpos": {
+   "left_shoulder_roll_joint": 1.570796,
+   "left_elbow_joint": 1.570796,
+   "right_shoulder_roll_joint": -1.570796,
+   "right_elbow_joint": 1.570796
+  }
+ },
+ "correspondence": {
+  "dataset": {
+   "smpl_center": "bbox_ratio",
+   "bbox_center_ratio": 0.598916
+  }
+ }
+}

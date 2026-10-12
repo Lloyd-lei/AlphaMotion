@@ -1,0 +1,73 @@
+{
+ "name": "fourier_n1",
+ "src_mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/fourier_n1/n1_mocap.xml",
+ "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/fourier_n1/fourier_n1.xml",
+ "nq": 30,
+ "nv": 29,
+ "facing_plus_x": true,
+ "locked_joints": [],
+ "tpose": {
+  "left_shoulder_roll_joint": 1.570796,
+  "left_elbow_pitch_joint": 1.570796,
+  "right_shoulder_roll_joint": -1.570796,
+  "right_elbow_pitch_joint": 1.570796
+ },
+ "tpose_fixed": false,
+ "tpose_metrics_draft": {
+  "L": {
+   "upper_arm_deg": 1.3633671807462765e-05,
+   "forearm_deg": 0.0002624781246702181,
+   "hand_deg": 0.0002624781246702181,
+   "tip_minus_shoulder_cm": [
+    0.0,
+    52.3,
+    -0.0
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "R": {
+   "upper_arm_deg": 1.3633671807462765e-05,
+   "forearm_deg": 0.0002624781246702181,
+   "hand_deg": 0.0002624781246702181,
+   "tip_minus_shoulder_cm": [
+    0.0,
+    -52.3,
+    -0.0
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "pass": true
+ },
+ "tpose_metrics_final": {
+  "L": {
+   "upper_arm_deg": 1.3633671807462765e-05,
+   "forearm_deg": 0.0002624781246702181,
+   "hand_deg": 0.0002624781246702181,
+   "tip_minus_shoulder_cm": [
+    0.0,
+    52.3,
+    -0.0
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "R": {
+   "upper_arm_deg": 1.3633671807462765e-05,
+   "forearm_deg": 0.0002624781246702181,
+   "hand_deg": 0.0002624781246702181,
+   "tip_minus_shoulder_cm": [
+    0.0,
+    -52.3,
+    -0.0
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "pass": true
+ },
+ "bbox_center_ratio": 0.5841946805418001,
+ "bbox_center_ratio_draft": 0.5842,
+ "exclusions": [],
+ "flagged_nonadjacent_rest_overlaps": [],
+ "remaining_tpose_overlaps": [],
+ "n_collision_geoms": 20,
+ "seconds": 13.3
+}

@@ -1,0 +1,29 @@
+{
+ "robot": {
+  "name": "fourier_gr3",
+  "xml": "/home/arenalabs/umr_factory_data/robots/fourier_gr3/fourier_gr3.xml",
+  "point_cloud_center": "body:waist_yaw_link",
+  "tpose_qpos": {
+   "left_shoulder_roll_joint": 1.25061,
+   "right_shoulder_roll_joint": -1.25061,
+   "left_shoulder_pitch_joint": -0.54223,
+   "left_shoulder_yaw_joint": -1.11975,
+   "left_elbow_pitch_joint": -0.109,
+   "left_wrist_yaw_joint": -0.04254,
+   "left_wrist_pitch_joint": 0.61425,
+   "left_wrist_roll_joint": 0.09308,
+   "right_shoulder_pitch_joint": -0.54224,
+   "right_shoulder_yaw_joint": 1.11974,
+   "right_elbow_pitch_joint": -0.109,
+   "right_wrist_yaw_joint": 0.04011,
+   "right_wrist_pitch_joint": 0.60691,
+   "right_wrist_roll_joint": -0.09091
+  }
+ },
+ "correspondence": {
+  "dataset": {
+   "smpl_center": "bbox_ratio",
+   "bbox_center_ratio": 0.648611
+  }
+ }
+}

@@ -1,0 +1,88 @@
+{
+ "name": "hightorque_hi",
+ "src_mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/hightorque_hi/hi_25dof.xml",
+ "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/hightorque_hi/hightorque_hi.xml",
+ "nq": 32,
+ "nv": 31,
+ "facing_plus_x": true,
+ "locked_joints": [],
+ "tpose": {
+  "l_shoulder_roll_joint": 1.570796,
+  "r_shoulder_roll_joint": -1.570796
+ },
+ "tpose_fixed": false,
+ "tpose_metrics_draft": {
+  "L": {
+   "upper_arm_deg": 8.021590921456214,
+   "forearm_deg": 14.947571012778457,
+   "hand_deg": 1.870524340221744e-05,
+   "tip_minus_shoulder_cm": [
+    -0.0,
+    32.3,
+    -0.0
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "R": {
+   "upper_arm_deg": 8.021590921456214,
+   "forearm_deg": 14.947571012778457,
+   "hand_deg": 1.870524340221744e-05,
+   "tip_minus_shoulder_cm": [
+    -0.0,
+    -32.3,
+    -0.0
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "pass": true
+ },
+ "tpose_metrics_final": {
+  "L": {
+   "upper_arm_deg": 8.021590921456214,
+   "forearm_deg": 14.947571012778457,
+   "hand_deg": 1.870524340221744e-05,
+   "tip_minus_shoulder_cm": [
+    -0.0,
+    32.3,
+    -0.0
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "R": {
+   "upper_arm_deg": 8.021590921456214,
+   "forearm_deg": 14.947571012778457,
+   "hand_deg": 1.870524340221744e-05,
+   "tip_minus_shoulder_cm": [
+    -0.0,
+    -32.3,
+    -0.0
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "pass": true
+ },
+ "bbox_center_ratio": 0.5370200381801005,
+ "bbox_center_ratio_draft": 0.537,
+ "exclusions": [
+  {
+   "body1": "l_calf_link",
+   "body2": "l_ankle_roll_link",
+   "rest_depth_mm": 22.39,
+   "tree_hops": 2,
+   "overlap_frac_random_poses": 1.0,
+   "reason": "rest/T-pose overlap 22.39 mm, kinematically adjacent (2 hops)"
+  },
+  {
+   "body1": "r_calf_link",
+   "body2": "r_ankle_roll_link",
+   "rest_depth_mm": 22.39,
+   "tree_hops": 2,
+   "overlap_frac_random_poses": 1.0,
+   "reason": "rest/T-pose overlap 22.39 mm, kinematically adjacent (2 hops)"
+  }
+ ],
+ "flagged_nonadjacent_rest_overlaps": [],
+ "remaining_tpose_overlaps": [],
+ "n_collision_geoms": 26,
+ "seconds": 1.3
+}

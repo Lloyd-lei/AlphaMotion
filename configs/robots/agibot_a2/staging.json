@@ -1,0 +1,133 @@
+{
+ "name": "agibot_a2",
+ "src_mjcf": "/var/tmp/alphamotion/robot_models/agibot_a2_gmr/agibot_a2_gmr_mjcf.xml",
+ "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/agibot_a2/agibot_a2.xml",
+ "nq": 27,
+ "nv": 26,
+ "facing_plus_x": true,
+ "locked_joints": [],
+ "tpose": {},
+ "tpose_fixed": false,
+ "tpose_metrics_draft": {
+  "L": {
+   "upper_arm_deg": 0.0,
+   "forearm_deg": 1.6112707363099863,
+   "hand_deg": 3.2170253694832995,
+   "tip_minus_shoulder_cm": [
+    0.3,
+    70.9,
+    0.9
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "R": {
+   "upper_arm_deg": 0.0,
+   "forearm_deg": 1.6112707363099863,
+   "hand_deg": 3.2170255816880013,
+   "tip_minus_shoulder_cm": [
+    0.3,
+    -70.9,
+    0.9
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "pass": true
+ },
+ "tpose_metrics_final": {
+  "L": {
+   "upper_arm_deg": 0.0,
+   "forearm_deg": 1.6112707363099863,
+   "hand_deg": 3.2170253694832995,
+   "tip_minus_shoulder_cm": [
+    0.3,
+    70.9,
+    0.9
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "R": {
+   "upper_arm_deg": 0.0,
+   "forearm_deg": 1.6112707363099863,
+   "hand_deg": 3.2170255816880013,
+   "tip_minus_shoulder_cm": [
+    0.3,
+    -70.9,
+    0.9
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "pass": true
+ },
+ "bbox_center_ratio": 0.5834528437328396,
+ "bbox_center_ratio_draft": 0.5835,
+ "exclusions": [
+  {
+   "body1": "base_link",
+   "body2": "left_hip_yaw",
+   "rest_depth_mm": 15.91,
+   "tree_hops": 2,
+   "overlap_frac_random_poses": 1.0,
+   "reason": "rest/T-pose overlap 15.91 mm, kinematically adjacent (2 hops)"
+  },
+  {
+   "body1": "base_link",
+   "body2": "right_hip_yaw",
+   "rest_depth_mm": 15.84,
+   "tree_hops": 2,
+   "overlap_frac_random_poses": 1.0,
+   "reason": "rest/T-pose overlap 15.84 mm, kinematically adjacent (2 hops)"
+  },
+  {
+   "body1": "left_tarsus",
+   "body2": "left_toe_roll",
+   "rest_depth_mm": 37.97,
+   "tree_hops": 2,
+   "overlap_frac_random_poses": 1.0,
+   "reason": "rest/T-pose overlap 37.97 mm, kinematically adjacent (2 hops)"
+  },
+  {
+   "body1": "left_toe_roll",
+   "body2": "left_toe_A_rod",
+   "rest_depth_mm": 6.24,
+   "tree_hops": 4,
+   "overlap_frac_random_poses": 0.41,
+   "reason": "manual: ankle parallel-linkage rod end attaches to the toe plate in the physical closed chain (open-chain MJCF); overlaps 6.2-6.4 mm at rest"
+  },
+  {
+   "body1": "left_toe_roll",
+   "body2": "left_toe_B_rod",
+   "rest_depth_mm": 6.38,
+   "tree_hops": 4,
+   "overlap_frac_random_poses": 0.427,
+   "reason": "manual: ankle parallel-linkage rod end attaches to the toe plate in the physical closed chain (open-chain MJCF); overlaps 6.2-6.4 mm at rest"
+  },
+  {
+   "body1": "right_tarsus",
+   "body2": "right_toe_roll",
+   "rest_depth_mm": 37.97,
+   "tree_hops": 2,
+   "overlap_frac_random_poses": 1.0,
+   "reason": "rest/T-pose overlap 37.97 mm, kinematically adjacent (2 hops)"
+  },
+  {
+   "body1": "right_toe_roll",
+   "body2": "right_toe_A_rod",
+   "rest_depth_mm": 6.21,
+   "tree_hops": 4,
+   "overlap_frac_random_poses": 0.373,
+   "reason": "manual: ankle parallel-linkage rod end attaches to the toe plate in the physical closed chain (open-chain MJCF); overlaps 6.2-6.4 mm at rest"
+  },
+  {
+   "body1": "right_toe_roll",
+   "body2": "right_toe_B_rod",
+   "rest_depth_mm": 6.38,
+   "tree_hops": 4,
+   "overlap_frac_random_poses": 0.39,
+   "reason": "manual: ankle parallel-linkage rod end attaches to the toe plate in the physical closed chain (open-chain MJCF); overlaps 6.2-6.4 mm at rest"
+  }
+ ],
+ "flagged_nonadjacent_rest_overlaps": [],
+ "remaining_tpose_overlaps": [],
+ "n_collision_geoms": 47,
+ "seconds": 3.3
+}

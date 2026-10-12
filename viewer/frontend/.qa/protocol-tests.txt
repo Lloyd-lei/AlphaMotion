@@ -1,0 +1,18 @@
+✔ binary float32 preserves submillimetre coordinates and uint8 contacts (1.207167ms)
+✔ unknown wire protocol is rejected (0.194584ms)
+✔ truncated payload does not create a plausible partial scene (0.076792ms)
+✔ unknown scalar encoding is rejected (0.0695ms)
+✔ a committed stale write retains committed information and readable message (31.106541ms)
+✔ nested MJCF object local rotation composes to a finite world transform (1.729083ms)
+✔ flat and nested object descriptors produce identical WebGL matrix elements (0.086834ms)
+✔ nonfinite rotation rejects rendering rather than silently hiding the object (0.180375ms)
+✔ full geom arrays can be indexed without interpreting neighbouring poses (0.055291ms)
+✔ actual ScoccerBall_A_1 descriptor is finite and has correct composed translation (1.502875ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 114.509125

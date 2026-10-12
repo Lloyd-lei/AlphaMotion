@@ -1,0 +1,4726 @@
+{
+ "schema": "umr_factory_robot_inventory_v1",
+ "generated": "2026-10-04",
+ "mujoco": "3.6.0 (ardy env, read-only)",
+ "code": [
+  "/var/tmp/alphamotion/umr_factory/robots/inventory.py",
+  "/var/tmp/alphamotion/umr_factory/robots/finalize.py",
+  "/var/tmp/alphamotion/umr_factory/robots/render_tpose.py"
+ ],
+ "tpose_contact_sheet": "/var/tmp/alphamotion/umr_factory/robots/png/contact_sheet_tpose.png",
+ "umr_reference_configs": "/var/tmp/alphamotion/umr_factory/robots/umr_ref",
+ "not_found_locally": {
+  "booster_t3": "no MJCF/URDF anywhere on / (bounded find); needs vendor download",
+  "engineai_t800 / hightorque_pipluspro": "only in UMR repo assets (not cloned locally; /var/tmp/alphamotion/umr_factory/umr/UMR is empty)",
+  "roboterax_star1": "URDF only (models_roboterax/star1), no MJCF"
+ },
+ "robots": [
+  {
+   "name": "booster_k1",
+   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/booster_k1/K1_serial.xml",
+   "mjcf_sha256": "8d3429c327116305",
+   "load_ok": true,
+   "nq": 29,
+   "nv": 28,
+   "nu": 22,
+   "nbody": 24,
+   "ngeom": 44,
+   "nmesh": 23,
+   "n_free": 1,
+   "n_hinge": 22,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 0,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "has_freejoint": true,
+   "root_body": "Trunk",
+   "n_root_children": 1,
+   "n_limited": 22,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 23,
+   "n_visual_mesh_geoms": 23,
+   "n_collision_geoms": 20,
+   "n_collision_mesh_geoms": 6,
+   "n_collision_geoms_physics_enabled": 20,
+   "collision_geom_types": [
+    "BOX",
+    "CYLINDER",
+    "MESH"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 23,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 0.9282,
+   "min_z_qpos0_m": -0.5256,
+   "extent_xy_qpos0_m": [
+    0.165,
+    1.078
+   ],
+   "feet": {
+    "L": {
+     "body": "left_foot_link",
+     "min_z": -0.5256,
+     "n_collision": 1,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "BOX"
+     ]
+    },
+    "R": {
+     "body": "right_foot_link",
+     "min_z": -0.5256,
+     "n_collision": 1,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "BOX"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "left_hand_link",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "ALeft_Shoulder_Pitch",
+      "Left_Shoulder_Roll",
+      "Left_Elbow_Pitch",
+      "Left_Elbow_Yaw"
+     ],
+     "top_body": "Left_Arm_1"
+    },
+    "R": {
+     "hand_body": "right_hand_link",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "ARight_Shoulder_Pitch",
+      "Right_Shoulder_Roll",
+      "Right_Elbow_Pitch",
+      "Right_Elbow_Yaw"
+     ],
+     "top_body": "Right_Arm_1"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:Trunk",
+   "height_tpose_m": 0.9282,
+   "armspan_tpose_m": 1.0779,
+   "umr_tpose_qpos_proposed": {},
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.234 dz=-0.014 m",
+    "L: qpos0 already T-pose (no change)",
+    "R qpos0: hand-shoulder dy=-0.234 dz=-0.014 m",
+    "R: qpos0 already T-pose (no change)"
+   ],
+   "pcc_bbox_ratio_tpose": 0.5662,
+   "mjcf_source": "sole_audit.json (report 32)",
+   "am2_role": "xwbc_train",
+   "xwbc_lafan_extracted": 77,
+   "topo_exp_caches": [
+    "cache_amass_heldout",
+    "cache_amass_lconv",
+    "cache_amass_lconv_tfix",
+    "cache_amass_v3",
+    "cache_lafan_v2",
+    "cache_lafan_v3",
+    "cache_xwbc_amass_full",
+    "cache_xwbc_lafan",
+    "cache_xwbc_lafan_fixed"
+   ],
+   "surface_v2_asset": true,
+   "sole_audit_label_feet": [
+    "Left_Ankle_Cross",
+    "Right_Ankle_Cross"
+   ],
+   "sole_audit_predicted_bias_cm": 6.399999999999999,
+   "tier": "A_core20",
+   "flags": [
+    "qpos0 root z=0 (soles at -0.53 m); UMR ships its own K1_serial_tpose_mjcf.xml"
+   ],
+   "needs_fix": false
+  },
+  {
+   "name": "booster_t1",
+   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/booster_t1/T1_serial.xml",
+   "mjcf_sha256": "7cbbe63c8664e5fd",
+   "load_ok": true,
+   "nq": 30,
+   "nv": 29,
+   "nu": 23,
+   "nbody": 25,
+   "ngeom": 40,
+   "nmesh": 24,
+   "n_free": 1,
+   "n_hinge": 23,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 0,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    1.68
+   ],
+   "has_freejoint": true,
+   "root_body": "Trunk",
+   "n_root_children": 1,
+   "n_limited": 23,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 24,
+   "n_visual_mesh_geoms": 24,
+   "n_collision_geoms": 15,
+   "n_collision_mesh_geoms": 0,
+   "n_collision_geoms_physics_enabled": 15,
+   "collision_geom_types": [
+    "CAPSULE",
+    "SPHERE"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 24,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.1675,
+   "min_z_qpos0_m": 1.0056,
+   "extent_xy_qpos0_m": [
+    0.225,
+    1.215
+   ],
+   "feet": {
+    "R": {
+     "body": "right_foot_link",
+     "min_z": 1.0056,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 2,
+     "physics_enabled": true,
+     "collision_types": [
+      "CAPSULE"
+     ]
+    },
+    "L": {
+     "body": "left_foot_link",
+     "min_z": 1.0056,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 2,
+     "physics_enabled": true,
+     "collision_types": [
+      "CAPSULE"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "left_hand_link",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "Left_Shoulder_Pitch",
+      "Left_Shoulder_Roll",
+      "Left_Elbow_Pitch",
+      "Left_Elbow_Yaw"
+     ],
+     "top_body": "AL1"
+    },
+    "R": {
+     "hand_body": "right_hand_link",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "Right_Shoulder_Pitch",
+      "Right_Shoulder_Roll",
+      "Right_Elbow_Pitch",
+      "Right_Elbow_Yaw"
+     ],
+     "top_body": "AR1"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:Trunk",
+   "height_tpose_m": 1.1675,
+   "armspan_tpose_m": 1.2147,
+   "umr_tpose_qpos_proposed": {},
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.255 dz=-0.000 m",
+    "L: qpos0 already T-pose (no change)",
+    "R qpos0: hand-shoulder dy=-0.255 dz=-0.000 m",
+    "R: qpos0 already T-pose (no change)"
+   ],
+   "pcc_bbox_ratio_tpose": 0.5776,
+   "mjcf_source": "sole_audit.json (report 32)",
+   "am2_role": "xwbc_train",
+   "xwbc_lafan_extracted": 77,
+   "topo_exp_caches": [
+    "cache_amass_heldout",
+    "cache_amass_lconv",
+    "cache_amass_lconv_tfix",
+    "cache_amass_v3",
+    "cache_lafan_v2",
+    "cache_lafan_v3",
+    "cache_xwbc_amass_full",
+    "cache_xwbc_lafan",
+    "cache_xwbc_lafan_fixed"
+   ],
+   "surface_v2_asset": true,
+   "sole_audit_label_feet": [
+    "left_foot_link",
+    "right_foot_link"
+   ],
+   "sole_audit_predicted_bias_cm": 7.149961179822281,
+   "tier": "A_core20",
+   "flags": [
+    "qpos0 root z=1.68 (soles 1.0 m above floor)"
+   ],
+   "needs_fix": false
+  },
+  {
+   "name": "booster_t1_29dof",
+   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/booster_t1_29dof/t1_mocap.xml",
+   "mjcf_sha256": "813027d701c167d3",
+   "load_ok": true,
+   "nq": 34,
+   "nv": 33,
+   "nu": 27,
+   "nbody": 33,
+   "ngeom": 47,
+   "nmesh": 30,
+   "n_free": 1,
+   "n_hinge": 27,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 0,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.7
+   ],
+   "has_freejoint": true,
+   "root_body": "Trunk",
+   "n_root_children": 1,
+   "n_limited": 27,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 30,
+   "n_visual_mesh_geoms": 30,
+   "n_collision_geoms": 16,
+   "n_collision_mesh_geoms": 0,
+   "n_collision_geoms_physics_enabled": 16,
+   "collision_geom_types": [
+    "BOX",
+    "CYLINDER",
+    "SPHERE"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 30,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.1675,
+   "min_z_qpos0_m": 0.0256,
+   "extent_xy_qpos0_m": [
+    0.225,
+    1.527
+   ],
+   "feet": {
+    "R": {
+     "body": "right_foot_link",
+     "min_z": 0.0256,
+     "n_collision": 1,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "BOX"
+     ]
+    },
+    "L": {
+     "body": "left_foot_link",
+     "min_z": 0.0256,
+     "n_collision": 1,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "BOX"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "left_hand_link",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "Left_Shoulder_Pitch",
+      "Left_Shoulder_Roll",
+      "Left_Elbow_Pitch",
+      "Left_Elbow_Yaw",
+      "Left_Wrist_Pitch",
+      "Left_Wrist_Yaw",
+      "Left_Hand_Roll"
+     ],
+     "top_body": "AL1"
+    },
+    "R": {
+     "hand_body": "right_hand_link",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "Right_Shoulder_Pitch",
+      "Right_Shoulder_Roll",
+      "Right_Elbow_Pitch",
+      "Right_Elbow_Yaw",
+      "Right_Wrist_Pitch",
+      "Right_Wrist_Yaw",
+      "Right_Hand_Roll"
+     ],
+     "top_body": "AR1"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [
+    "Left_Hand_Roll",
+    "Right_Hand_Roll"
+   ],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:Trunk",
+   "height_tpose_m": 1.1675,
+   "armspan_tpose_m": 1.5269,
+   "umr_tpose_qpos_proposed": {},
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.472 dz=+0.002 m",
+    "L: qpos0 already T-pose (no change)",
+    "R qpos0: hand-shoulder dy=-0.472 dz=+0.002 m",
+    "R: qpos0 already T-pose (no change)"
+   ],
+   "pcc_bbox_ratio_tpose": 0.5776,
+   "mjcf_source": "sole_audit.json (report 32)",
+   "am2_role": "xwbc_train",
+   "xwbc_lafan_extracted": 77,
+   "topo_exp_caches": [
+    "cache_amass_heldout",
+    "cache_amass_lconv",
+    "cache_amass_lconv_tfix",
+    "cache_amass_v3",
+    "cache_lafan_v2",
+    "cache_lafan_v3",
+    "cache_xwbc_amass_full",
+    "cache_xwbc_lafan",
+    "cache_xwbc_lafan_fixed"
+   ],
+   "surface_v2_asset": true,
+   "sole_audit_label_feet": [
+    "left_foot_link",
+    "right_foot_link"
+   ],
+   "sole_audit_predicted_bias_cm": 9.65,
+   "tier": "A_core20",
+   "flags": [],
+   "needs_fix": false
+  },
+  {
+   "name": "engineai_pm01",
+   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/engineai_pm01/pm_v2.xml",
+   "mjcf_sha256": "a6ba73d3afe744e7",
+   "load_ok": true,
+   "nq": 31,
+   "nv": 30,
+   "nu": 24,
+   "nbody": 30,
+   "ngeom": 40,
+   "nmesh": 25,
+   "n_free": 1,
+   "n_hinge": 24,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 1,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.82
+   ],
+   "has_freejoint": true,
+   "root_body": "LINK_BASE",
+   "n_root_children": 1,
+   "n_limited": 24,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 25,
+   "n_visual_mesh_geoms": 25,
+   "n_collision_geoms": 14,
+   "n_collision_mesh_geoms": 0,
+   "n_collision_geoms_physics_enabled": 14,
+   "collision_geom_types": [
+    "BOX",
+    "CYLINDER",
+    "SPHERE"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 25,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.4004,
+   "min_z_qpos0_m": -0.0014,
+   "extent_xy_qpos0_m": [
+    0.252,
+    0.536
+   ],
+   "feet": {
+    "R": {
+     "body": "LINK_ANKLE_ROLL_R",
+     "min_z": -0.0014,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 0,
+     "physics_enabled": true,
+     "collision_types": [
+      "BOX"
+     ]
+    },
+    "L": {
+     "body": "LINK_ANKLE_ROLL_L",
+     "min_z": -0.0014,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 0,
+     "physics_enabled": true,
+     "collision_types": [
+      "BOX"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "LINK_ELBOW_END_L",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "J13_SHOULDER_PITCH_L",
+      "J14_SHOULDER_ROLL_L",
+      "J15_SHOULDER_YAW_L",
+      "J16_ELBOW_PITCH_L",
+      "J17_ELBOW_YAW_L"
+     ],
+     "top_body": "LINK_SHOULDER_PITCH_L"
+    },
+    "R": {
+     "hand_body": "LINK_ELBOW_END_R",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "J18_SHOULDER_PITCH_R",
+      "J19_SHOULDER_ROLL_R",
+      "J20_SHOULDER_YAW_R",
+      "J21_ELBOW_PITCH_R",
+      "J22_ELBOW_YAW_R"
+     ],
+     "top_body": "LINK_SHOULDER_PITCH_R"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:LINK_TORSO_YAW",
+   "height_tpose_m": 1.4004,
+   "armspan_tpose_m": 1.4315,
+   "umr_tpose_qpos_proposed": {
+    "J14_SHOULDER_ROLL_L": 1.570796,
+    "J19_SHOULDER_ROLL_R": -1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.101 dz=-0.351 m",
+    "L: hand-shoulder dy=+0.397 dz=+0.013 dx=+0.014 m",
+    "R qpos0: hand-shoulder dy=-0.101 dz=-0.351 m",
+    "R: hand-shoulder dy=-0.397 dz=+0.013 dx=+0.014 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.6443,
+   "mjcf_source": "sole_audit.json (report 32)",
+   "am2_role": "xwbc_data_only(not in AM2 lists)",
+   "xwbc_lafan_extracted": 77,
+   "topo_exp_caches": [
+    "cache_amass_heldout",
+    "cache_amass_lconv",
+    "cache_amass_lconv_tfix",
+    "cache_amass_v3",
+    "cache_lafan_v2",
+    "cache_lafan_v3",
+    "cache_xwbc_amass_full",
+    "cache_xwbc_lafan",
+    "cache_xwbc_lafan_fixed"
+   ],
+   "surface_v2_asset": false,
+   "sole_audit_label_feet": [
+    "LINK_ANKLE_ROLL_L",
+    "LINK_ANKLE_ROLL_R"
+   ],
+   "sole_audit_predicted_bias_cm": 9.229,
+   "tier": "A_core20",
+   "flags": [
+    "foot collision lives on child body LINK_FOOT_L/R (fixed), not on ankle-roll body: fine for MuJoCo, note for foot-body label code"
+   ],
+   "needs_fix": false
+  },
+  {
+   "name": "fourier_gr3",
+   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/fourier_gr3v2_1_1/mjcf/gr3v2_1_1_dummy_hand.xml",
+   "mjcf_sha256": "811393ee295496d0",
+   "load_ok": true,
+   "nq": 38,
+   "nv": 37,
+   "nu": 0,
+   "nbody": 40,
+   "ngeom": 60,
+   "nmesh": 37,
+   "n_free": 1,
+   "n_hinge": 31,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 1,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "has_freejoint": true,
+   "root_body": "base_link",
+   "n_root_children": 1,
+   "n_limited": 31,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 37,
+   "n_visual_mesh_geoms": 37,
+   "n_collision_geoms": 22,
+   "n_collision_mesh_geoms": 0,
+   "n_collision_geoms_physics_enabled": 22,
+   "collision_geom_types": [
+    "BOX",
+    "CYLINDER",
+    "SPHERE"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 37,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.6418,
+   "min_z_qpos0_m": -0.9285,
+   "extent_xy_qpos0_m": [
+    0.385,
+    0.549
+   ],
+   "feet": {
+    "R": {
+     "body": "right_foot_roll_link",
+     "min_z": -0.9285,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 0,
+     "physics_enabled": true,
+     "collision_types": [
+      "CYLINDER"
+     ]
+    },
+    "L": {
+     "body": "left_foot_roll_link",
+     "min_z": -0.9285,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 2,
+     "physics_enabled": true,
+     "collision_types": [
+      "CYLINDER"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "left_dummy_hand_link",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_pitch_joint",
+      "left_wrist_yaw_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_roll_joint"
+     ],
+     "top_body": "left_upper_arm_pitch_link"
+    },
+    "R": {
+     "hand_body": "dummy_right_hand_link",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_pitch_joint",
+      "right_wrist_yaw_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_roll_joint"
+     ],
+     "top_body": "right_upper_arm_pitch_link"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:waist_yaw_link",
+   "height_tpose_m": 1.6418,
+   "armspan_tpose_m": 1.6948,
+   "umr_tpose_qpos_proposed": {
+    "left_shoulder_roll_joint": 1.570796,
+    "right_shoulder_roll_joint": -1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.115 dz=-0.477 m",
+    "L: hand-shoulder dy=+0.554 dz=+0.071 dx=-0.170 m",
+    "R qpos0: hand-shoulder dy=-0.116 dz=-0.477 m",
+    "R: hand-shoulder dy=-0.554 dz=+0.072 dx=-0.170 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.6486,
+   "mjcf_source": "sole_audit.json (report 32)",
+   "am2_role": "xwbc_heldout",
+   "xwbc_lafan_extracted": 77,
+   "topo_exp_caches": [
+    "cache_amass_heldout",
+    "cache_amass_lconv",
+    "cache_amass_lconv_tfix",
+    "cache_amass_v3",
+    "cache_lafan_v2",
+    "cache_lafan_v3",
+    "cache_xwbc_amass_full",
+    "cache_xwbc_lafan",
+    "cache_xwbc_lafan_fixed"
+   ],
+   "surface_v2_asset": true,
+   "sole_audit_label_feet": [
+    "right_foot_pitch_link",
+    "left_foot_pitch_link"
+   ],
+   "sole_audit_predicted_bias_cm": 9.99044620482585,
+   "tier": "A_core20",
+   "flags": [
+    "asymmetric foot collision: right foot collision on right_foot_pitch_link (does not follow ankle roll), left on left_foot_roll_link; proposed T-pose arm goes 17 cm backward / +7 cm up -> set shoulder_pitch/yaw in UMR Studio"
+   ],
+   "needs_fix": true
+  },
+  {
+   "name": "fourier_n1",
+   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/fourier_n1/n1_mocap.xml",
+   "mjcf_sha256": "d2bbf71eec5921a4",
+   "load_ok": true,
+   "nq": 30,
+   "nv": 29,
+   "nu": 23,
+   "nbody": 30,
+   "ngeom": 50,
+   "nmesh": 29,
+   "n_free": 1,
+   "n_hinge": 23,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 1,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.7
+   ],
+   "has_freejoint": true,
+   "root_body": "base_link",
+   "n_root_children": 1,
+   "n_limited": 23,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 29,
+   "n_visual_mesh_geoms": 29,
+   "n_collision_geoms": 20,
+   "n_collision_mesh_geoms": 2,
+   "n_collision_geoms_physics_enabled": 20,
+   "collision_geom_types": [
+    "CYLINDER",
+    "MESH",
+    "SPHERE"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 29,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.2411,
+   "min_z_qpos0_m": 0.0005,
+   "extent_xy_qpos0_m": [
+    0.31,
+    0.441
+   ],
+   "feet": {
+    "L": {
+     "body": "left_foot_pitch_link",
+     "min_z": 0.0005,
+     "n_collision": 1,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH"
+     ]
+    },
+    "R": {
+     "body": "right_foot_pitch_link",
+     "min_z": 0.0008,
+     "n_collision": 1,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "left_end_effector_link",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_pitch_joint",
+      "left_wrist_yaw_joint"
+     ],
+     "top_body": "left_upper_arm_pitch_link"
+    },
+    "R": {
+     "hand_body": "right_end_effector_link",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_pitch_joint",
+      "right_wrist_yaw_joint"
+     ],
+     "top_body": "right_upper_arm_pitch_link"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:waist_yaw_link",
+   "height_tpose_m": 1.2411,
+   "armspan_tpose_m": 1.2413,
+   "umr_tpose_qpos_proposed": {
+    "left_shoulder_roll_joint": 1.570796,
+    "left_elbow_pitch_joint": 1.570796,
+    "right_shoulder_roll_joint": -1.570796,
+    "right_elbow_pitch_joint": 1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.078 dz=-0.210 m",
+    "L: hand-shoulder dy=+0.493 dz=+0.000 dx=+0.000 m",
+    "R qpos0: hand-shoulder dy=-0.078 dz=-0.210 m",
+    "R: hand-shoulder dy=-0.493 dz=+0.000 dx=+0.000 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.5842,
+   "mjcf_source": "sole_audit.json (report 32)",
+   "am2_role": "xwbc_train",
+   "xwbc_lafan_extracted": 77,
+   "topo_exp_caches": [
+    "cache_amass_heldout",
+    "cache_amass_lconv",
+    "cache_amass_lconv_tfix",
+    "cache_amass_v3",
+    "cache_lafan_v2",
+    "cache_lafan_v3",
+    "cache_xwbc_amass_full",
+    "cache_xwbc_lafan",
+    "cache_xwbc_lafan_fixed"
+   ],
+   "surface_v2_asset": true,
+   "sole_audit_label_feet": [
+    "left_foot_roll_link",
+    "right_foot_roll_link"
+   ],
+   "sole_audit_predicted_bias_cm": 0.016692899036159226,
+   "tier": "A_core20",
+   "flags": [],
+   "needs_fix": false
+  },
+  {
+   "name": "hightorque_hi",
+   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/hightorque_hi/hi_25dof.xml",
+   "mjcf_sha256": "3d33aaa5cad01913",
+   "load_ok": true,
+   "nq": 32,
+   "nv": 31,
+   "nu": 21,
+   "nbody": 27,
+   "ngeom": 53,
+   "nmesh": 26,
+   "n_free": 1,
+   "n_hinge": 25,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 0,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.688
+   ],
+   "has_freejoint": true,
+   "root_body": "base_link",
+   "n_root_children": 1,
+   "n_limited": 25,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 26,
+   "n_visual_mesh_geoms": 26,
+   "n_collision_geoms": 26,
+   "n_collision_mesh_geoms": 26,
+   "n_collision_geoms_physics_enabled": 26,
+   "collision_geom_types": [
+    "MESH"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 26,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 0.8853,
+   "min_z_qpos0_m": -0.0001,
+   "extent_xy_qpos0_m": [
+    0.176,
+    0.379
+   ],
+   "feet": {
+    "L": {
+     "body": "l_ankle_roll_link",
+     "min_z": -0.0001,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH"
+     ]
+    },
+    "R": {
+     "body": "r_ankle_roll_link",
+     "min_z": -0.0001,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "l_wrist_link",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "l_shoulder_pitch_joint",
+      "l_shoulder_roll_joint",
+      "l_upper_arm_joint",
+      "l_elbow_joint",
+      "l_wrist_joint"
+     ],
+     "top_body": "l_shoulder_pitch_link"
+    },
+    "R": {
+     "hand_body": "r_wrist_link",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "r_shoulder_pitch_joint",
+      "r_shoulder_roll_joint",
+      "r_upper_arm_joint",
+      "r_elbow_joint",
+      "r_wrist_joint"
+     ],
+     "top_body": "r_shoulder_pitch_link"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:waist_link",
+   "height_tpose_m": 0.8853,
+   "armspan_tpose_m": 0.8851,
+   "umr_tpose_qpos_proposed": {
+    "l_shoulder_roll_joint": 1.570796,
+    "r_shoulder_roll_joint": -1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.034 dz=-0.220 m",
+    "L: hand-shoulder dy=+0.254 dz=-0.000 dx=-0.000 m",
+    "R qpos0: hand-shoulder dy=-0.034 dz=-0.220 m",
+    "R: hand-shoulder dy=-0.254 dz=-0.000 dx=-0.000 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.537,
+   "mjcf_source": "sole_audit.json (report 32)",
+   "am2_role": "xwbc_train",
+   "xwbc_lafan_extracted": 77,
+   "topo_exp_caches": [
+    "cache_amass_heldout",
+    "cache_amass_lconv",
+    "cache_amass_lconv_tfix",
+    "cache_amass_v3",
+    "cache_lafan_v2",
+    "cache_lafan_v3",
+    "cache_xwbc_amass_full",
+    "cache_xwbc_lafan",
+    "cache_xwbc_lafan_fixed"
+   ],
+   "surface_v2_asset": true,
+   "sole_audit_label_feet": [
+    "l_ankle_roll_link",
+    "r_ankle_roll_link"
+   ],
+   "sole_audit_predicted_bias_cm": -7.762576181846725e-08,
+   "tier": "A_core20",
+   "flags": [],
+   "needs_fix": false
+  },
+  {
+   "name": "kuavo_s45",
+   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/kuavo_s45/biped_s45_collision.xml",
+   "mjcf_sha256": "b1b4d76cdb37f8ff",
+   "load_ok": true,
+   "nq": 35,
+   "nv": 34,
+   "nu": 28,
+   "nbody": 30,
+   "ngeom": 60,
+   "nmesh": 31,
+   "n_free": 1,
+   "n_hinge": 28,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 1,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.85
+   ],
+   "has_freejoint": true,
+   "root_body": "base_link",
+   "n_root_children": 1,
+   "n_limited": 28,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 31,
+   "n_visual_mesh_geoms": 31,
+   "n_collision_geoms": 28,
+   "n_collision_mesh_geoms": 0,
+   "n_collision_geoms_physics_enabled": 28,
+   "collision_geom_types": [
+    "BOX",
+    "CAPSULE",
+    "CYLINDER",
+    "ELLIPSOID",
+    "SPHERE"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 31,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.6844,
+   "min_z_qpos0_m": -0.0342,
+   "extent_xy_qpos0_m": [
+    0.315,
+    0.696
+   ],
+   "feet": {
+    "L": {
+     "body": "leg_l6_link",
+     "min_z": -0.0352,
+     "n_collision": 3,
+     "n_collision_on_foot_body": 3,
+     "physics_enabled": true,
+     "collision_types": [
+      "BOX",
+      "CYLINDER"
+     ]
+    },
+    "R": {
+     "body": "leg_r6_link",
+     "min_z": -0.0352,
+     "n_collision": 3,
+     "n_collision_on_foot_body": 3,
+     "physics_enabled": true,
+     "collision_types": [
+      "BOX",
+      "CYLINDER"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "zarm_l7_link",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "zarm_l1_joint",
+      "zarm_l2_joint",
+      "zarm_l3_joint",
+      "zarm_l4_joint",
+      "zarm_l5_joint",
+      "zarm_l6_joint",
+      "zarm_l7_joint"
+     ],
+     "top_body": "zarm_l1_link"
+    },
+    "R": {
+     "hand_body": "zarm_r7_link",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "zarm_r1_joint",
+      "zarm_r2_joint",
+      "zarm_r3_joint",
+      "zarm_r4_joint",
+      "zarm_r5_joint",
+      "zarm_r6_joint",
+      "zarm_r7_joint"
+     ],
+     "top_body": "zarm_r1_link"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:base_link",
+   "height_tpose_m": 1.6844,
+   "armspan_tpose_m": 2.1639,
+   "umr_tpose_qpos_proposed": {
+    "zarm_l2_joint": 1.570796,
+    "zarm_r2_joint": -1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.000 dz=-0.538 m",
+    "L: hand-shoulder dy=+0.538 dz=+0.000 dx=+0.000 m",
+    "R qpos0: hand-shoulder dy=+0.000 dz=-0.538 m",
+    "R: hand-shoulder dy=-0.538 dz=+0.000 dx=+0.000 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.5249,
+   "mjcf_source": "sole_audit.json (report 32)",
+   "am2_role": "xwbc_heldout",
+   "xwbc_lafan_extracted": 77,
+   "topo_exp_caches": [
+    "cache_amass_heldout",
+    "cache_amass_lconv",
+    "cache_amass_lconv_tfix",
+    "cache_amass_v3",
+    "cache_lafan_v2",
+    "cache_lafan_v3",
+    "cache_xwbc_amass_full",
+    "cache_xwbc_lafan",
+    "cache_xwbc_lafan_fixed"
+   ],
+   "surface_v2_asset": true,
+   "sole_audit_label_feet": [
+    "leg_l5_link",
+    "leg_r5_link"
+   ],
+   "sole_audit_predicted_bias_cm": 4.7,
+   "tier": "A_core20",
+   "flags": [],
+   "needs_fix": false
+  },
+  {
+   "name": "pal_talos",
+   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/pal_talos/talos.xml",
+   "mjcf_sha256": "953d0a84ade71af6",
+   "load_ok": true,
+   "nq": 37,
+   "nv": 36,
+   "nu": 30,
+   "nbody": 32,
+   "ngeom": 73,
+   "nmesh": 62,
+   "n_free": 1,
+   "n_hinge": 30,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 1,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    1.1
+   ],
+   "has_freejoint": true,
+   "root_body": "base_link",
+   "n_root_children": 1,
+   "n_limited": 30,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 37,
+   "n_visual_mesh_geoms": 32,
+   "n_collision_geoms": 35,
+   "n_collision_mesh_geoms": 29,
+   "n_collision_geoms_physics_enabled": 35,
+   "collision_geom_types": [
+    "BOX",
+    "CYLINDER",
+    "MESH"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 32,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.7568,
+   "min_z_qpos0_m": 0.0166,
+   "extent_xy_qpos0_m": [
+    0.331,
+    0.758
+   ],
+   "feet": {
+    "L": {
+     "body": "leg_left_6_link",
+     "min_z": 0.0166,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "BOX",
+      "MESH"
+     ]
+    },
+    "R": {
+     "body": "leg_right_6_link",
+     "min_z": 0.0166,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "BOX",
+      "MESH"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "arm_left_7_link",
+     "n_hand_dof": 0,
+     "n_collision": 4,
+     "arm_chain_joints": [
+      "arm_left_1_joint",
+      "arm_left_2_joint",
+      "arm_left_3_joint",
+      "arm_left_4_joint",
+      "arm_left_5_joint",
+      "arm_left_6_joint",
+      "arm_left_7_joint"
+     ],
+     "top_body": "arm_left_1_link"
+    },
+    "R": {
+     "hand_body": "arm_right_7_link",
+     "n_hand_dof": 0,
+     "n_collision": 4,
+     "arm_chain_joints": [
+      "arm_right_1_joint",
+      "arm_right_2_joint",
+      "arm_right_3_joint",
+      "arm_right_4_joint",
+      "arm_right_5_joint",
+      "arm_right_6_joint",
+      "arm_right_7_joint"
+     ],
+     "top_body": "arm_right_1_link"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:torso_1_link",
+   "height_tpose_m": 1.7568,
+   "armspan_tpose_m": 1.8345,
+   "umr_tpose_qpos_proposed": {
+    "arm_left_2_joint": 1.570796,
+    "arm_right_2_joint": -1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.137 dz=-0.496 m",
+    "L: hand-shoulder dy=+0.679 dz=+0.047 dx=+0.005 m",
+    "R qpos0: hand-shoulder dy=-0.137 dz=-0.496 m",
+    "R: hand-shoulder dy=-0.679 dz=+0.047 dx=+0.005 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.6578,
+   "mjcf_source": "GMR params.py ROOT_XML_DICT[pal_talos] (sole_audit had None)",
+   "am2_role": "xwbc_data_only(not in AM2 lists)",
+   "xwbc_lafan_extracted": 77,
+   "topo_exp_caches": [
+    "cache_amass_heldout",
+    "cache_amass_lconv",
+    "cache_amass_lconv_tfix",
+    "cache_amass_v3",
+    "cache_lafan_v2",
+    "cache_lafan_v3",
+    "cache_xwbc_amass_full",
+    "cache_xwbc_lafan",
+    "cache_xwbc_lafan_fixed"
+   ],
+   "surface_v2_asset": false,
+   "sole_audit_label_feet": null,
+   "sole_audit_predicted_bias_cm": null,
+   "tier": "A_core20",
+   "flags": [
+    "GMR talos.xml has no gripper joints (XWBC data has gripper_left/right_joint, dropped); 20.6 mm geometric mismatch vs XWBC data (prep_xwbc_cache DATA_TREE)"
+   ],
+   "needs_fix": false
+  },
+  {
+   "name": "pnd_adam_lite",
+   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/pnd_adam_lite/scene.xml",
+   "mjcf_sha256": "b358da0ad62b25eb",
+   "load_ok": true,
+   "nq": 32,
+   "nv": 31,
+   "nu": 25,
+   "nbody": 27,
+   "ngeom": 86,
+   "nmesh": 73,
+   "n_free": 1,
+   "n_hinge": 25,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 0,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.93
+   ],
+   "has_freejoint": true,
+   "root_body": "pelvis",
+   "n_root_children": 1,
+   "n_limited": 23,
+   "unlimited_joints": [
+    "wristYaw_Left",
+    "wristYaw_Right"
+   ],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 73,
+   "n_visual_mesh_geoms": 73,
+   "n_collision_geoms": 12,
+   "n_collision_mesh_geoms": 0,
+   "n_collision_geoms_physics_enabled": 12,
+   "collision_geom_types": [
+    "BOX",
+    "CYLINDER",
+    "SPHERE"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 73,
+   "degenerate_meshes": [
+    "torso_0"
+   ],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.6695,
+   "min_z_qpos0_m": 0.0021,
+   "extent_xy_qpos0_m": [
+    0.301,
+    0.555
+   ],
+   "feet": {
+    "L": {
+     "body": "toeLeft",
+     "min_z": 0.0007,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 2,
+     "physics_enabled": true,
+     "collision_types": [
+      "CYLINDER"
+     ]
+    },
+    "R": {
+     "body": "toeRight",
+     "min_z": 0.0007,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 2,
+     "physics_enabled": true,
+     "collision_types": [
+      "CYLINDER"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "wristYawLeft",
+     "n_hand_dof": 0,
+     "n_collision": 0,
+     "arm_chain_joints": [
+      "shoulderPitch_Left",
+      "shoulderRoll_Left",
+      "shoulderYaw_Left",
+      "elbow_Left",
+      "wristYaw_Left"
+     ],
+     "top_body": "shoulderPitchLeft"
+    },
+    "R": {
+     "hand_body": "wristYawRight",
+     "n_hand_dof": 0,
+     "n_collision": 0,
+     "arm_chain_joints": [
+      "shoulderPitch_Right",
+      "shoulderRoll_Right",
+      "shoulderYaw_Right",
+      "elbow_Right",
+      "wristYaw_Right"
+     ],
+     "top_body": "shoulderPitchRight"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": false,
+   "umr_point_cloud_center": "body:torso",
+   "height_tpose_m": 1.6695,
+   "armspan_tpose_m": 1.6941,
+   "umr_tpose_qpos_proposed": {
+    "shoulderRoll_Left": 1.570796,
+    "shoulderRoll_Right": -1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.075 dz=-0.321 m",
+    "L: hand-shoulder dy=+0.376 dz=+0.049 dx=-0.025 m",
+    "R qpos0: hand-shoulder dy=-0.075 dz=-0.321 m",
+    "R: hand-shoulder dy=-0.376 dz=+0.049 dx=-0.025 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.6618,
+   "mjcf_source": "sole_audit.json (report 32)",
+   "am2_role": "xwbc_train",
+   "xwbc_lafan_extracted": 77,
+   "topo_exp_caches": [
+    "cache_amass_heldout",
+    "cache_amass_lconv",
+    "cache_amass_lconv_tfix",
+    "cache_amass_v3",
+    "cache_lafan_v2",
+    "cache_lafan_v3",
+    "cache_xwbc_amass_full",
+    "cache_xwbc_lafan",
+    "cache_xwbc_lafan_fixed"
+   ],
+   "surface_v2_asset": true,
+   "sole_audit_label_feet": [
+    "anklePitchLeft",
+    "anklePitchRight"
+   ],
+   "sole_audit_predicted_bias_cm": 9.398823840557583,
+   "tier": "A_core20",
+   "flags": [
+    "degenerate mesh torso_0 (9 verts / 3 faces); wristYaw_Left/Right unlimited; hands have no collision geoms; T-pose hand +5 cm above shoulder",
+    "hands: no collision geoms near hand body",
+    "degenerate meshes: torso_0"
+   ],
+   "needs_fix": true
+  },
+  {
+   "name": "tienkung",
+   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/tienkung/mjcf/tienkung.xml",
+   "mjcf_sha256": "e42ae617c0c98e9b",
+   "load_ok": true,
+   "nq": 27,
+   "nv": 26,
+   "nu": 20,
+   "nbody": 25,
+   "ngeom": 35,
+   "nmesh": 21,
+   "n_free": 1,
+   "n_hinge": 20,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 0,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "has_freejoint": true,
+   "root_body": "Base_link",
+   "n_root_children": 1,
+   "n_limited": 20,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 21,
+   "n_visual_mesh_geoms": 21,
+   "n_collision_geoms": 13,
+   "n_collision_mesh_geoms": 0,
+   "n_collision_geoms_physics_enabled": 13,
+   "collision_geom_types": [
+    "CYLINDER",
+    "SPHERE"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 21,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.7314,
+   "min_z_qpos0_m": 0.0113,
+   "extent_xy_qpos0_m": [
+    0.313,
+    0.609
+   ],
+   "feet": {
+    "L": {
+     "body": "ankle_roll_l_link",
+     "min_z": 0.0113,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 2,
+     "physics_enabled": true,
+     "collision_types": [
+      "CYLINDER"
+     ]
+    },
+    "R": {
+     "body": "ankle_roll_r_link",
+     "min_z": 0.0113,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 2,
+     "physics_enabled": true,
+     "collision_types": [
+      "CYLINDER"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "left_hand",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "shoulder_pitch_l_joint",
+      "shoulder_roll_l_joint",
+      "shoulder_yaw_l_joint",
+      "elbow_pitch_l_joint"
+     ],
+     "top_body": "shoulder_pitch_l_link"
+    },
+    "R": {
+     "hand_body": "right_hand",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "shoulder_pitch_r_joint",
+      "shoulder_roll_r_joint",
+      "shoulder_yaw_r_joint",
+      "elbow_pitch_r_joint"
+     ],
+     "top_body": "shoulder_pitch_r_link"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:Base_link",
+   "height_tpose_m": 1.7314,
+   "armspan_tpose_m": 1.691,
+   "umr_tpose_qpos_proposed": {
+    "shoulder_roll_l_joint": 1.570796,
+    "shoulder_roll_r_joint": -1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.123 dz=-0.571 m",
+    "L: hand-shoulder dy=+0.651 dz=+0.057 dx=+0.020 m",
+    "R qpos0: hand-shoulder dy=-0.123 dz=-0.571 m",
+    "R: hand-shoulder dy=-0.651 dz=+0.057 dx=+0.020 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.571,
+   "mjcf_source": "sole_audit.json (report 32)",
+   "am2_role": "xwbc_train",
+   "xwbc_lafan_extracted": 77,
+   "topo_exp_caches": [
+    "cache_amass_heldout",
+    "cache_amass_lconv",
+    "cache_amass_lconv_tfix",
+    "cache_amass_v3",
+    "cache_lafan_v2",
+    "cache_lafan_v3",
+    "cache_xwbc_amass_full",
+    "cache_xwbc_lafan",
+    "cache_xwbc_lafan_fixed"
+   ],
+   "surface_v2_asset": true,
+   "sole_audit_label_feet": [
+    "ankle_pitch_l_link",
+    "ankle_pitch_r_link"
+   ],
+   "sole_audit_predicted_bias_cm": 9.999951209626197,
+   "tier": "A_core20",
+   "flags": [],
+   "needs_fix": false
+  },
+  {
+   "name": "unitree_g1_23dof",
+   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/unitree_g1/g1_mocap_29dof.xml",
+   "mjcf_sha256": "85a25128d42ad3cc",
+   "load_ok": true,
+   "nq": 36,
+   "nv": 35,
+   "nu": 29,
+   "nbody": 39,
+   "ngeom": 72,
+   "nmesh": 35,
+   "n_free": 1,
+   "n_hinge": 29,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 0,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.793
+   ],
+   "has_freejoint": true,
+   "root_body": "pelvis",
+   "n_root_children": 1,
+   "n_limited": 29,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 35,
+   "n_visual_mesh_geoms": 35,
+   "n_collision_geoms": 36,
+   "n_collision_mesh_geoms": 24,
+   "n_collision_geoms_physics_enabled": 36,
+   "collision_geom_types": [
+    "CYLINDER",
+    "MESH",
+    "SPHERE"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 35,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [
+    "head_link"
+   ],
+   "height_qpos0_m": 1.3228,
+   "min_z_qpos0_m": 0.0007,
+   "extent_xy_qpos0_m": [
+    0.446,
+    0.363
+   ],
+   "feet": {
+    "R": {
+     "body": "right_ankle_roll_link",
+     "min_z": 0.0007,
+     "n_collision": 5,
+     "n_collision_on_foot_body": 4,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH",
+      "SPHERE"
+     ]
+    },
+    "L": {
+     "body": "left_ankle_roll_link",
+     "min_z": 0.0007,
+     "n_collision": 5,
+     "n_collision_on_foot_body": 4,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH",
+      "SPHERE"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "left_rubber_hand",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_yaw_joint"
+     ],
+     "top_body": "left_shoulder_pitch_link"
+    },
+    "R": {
+     "hand_body": "right_rubber_hand",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_yaw_joint"
+     ],
+     "top_body": "right_shoulder_pitch_link"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:waist_yaw_link",
+   "height_tpose_m": 1.3228,
+   "armspan_tpose_m": 1.3632,
+   "umr_tpose_qpos_proposed": {
+    "left_shoulder_roll_joint": 1.570796,
+    "left_elbow_joint": 1.570796,
+    "right_shoulder_roll_joint": -1.570796,
+    "right_elbow_joint": 1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.051 dz=-0.197 m",
+    "L: hand-shoulder dy=+0.450 dz=+0.008 dx=+0.006 m",
+    "R qpos0: hand-shoulder dy=-0.051 dz=-0.197 m",
+    "R: hand-shoulder dy=-0.450 dz=+0.008 dx=+0.006 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.5989,
+   "mjcf_source": "sole_audit.json (report 32)",
+   "am2_role": "xwbc_train",
+   "xwbc_lafan_extracted": 77,
+   "topo_exp_caches": [
+    "cache_amass_heldout",
+    "cache_amass_lconv",
+    "cache_amass_lconv_tfix",
+    "cache_amass_v3",
+    "cache_lafan_v2",
+    "cache_lafan_v3",
+    "cache_xwbc_amass_full",
+    "cache_xwbc_lafan",
+    "cache_xwbc_lafan_fixed"
+   ],
+   "surface_v2_asset": true,
+   "sole_audit_label_feet": [
+    "left_ankle_roll_link",
+    "right_ankle_roll_link"
+   ],
+   "sole_audit_predicted_bias_cm": 0.04000000000000048,
+   "tier": "A_core20",
+   "flags": [
+    "GMR XML is the 29-DoF tree with 6 joints locked; UMR should use a true 23-DoF MJCF (unitree_g1_23dof_vendor) or lock joints via joint_limits"
+   ],
+   "needs_fix": false
+  },
+  {
+   "name": "unitree_g1_29dof",
+   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/unitree_g1/g1_mocap_29dof.xml",
+   "mjcf_sha256": "85a25128d42ad3cc",
+   "load_ok": true,
+   "nq": 36,
+   "nv": 35,
+   "nu": 29,
+   "nbody": 39,
+   "ngeom": 72,
+   "nmesh": 35,
+   "n_free": 1,
+   "n_hinge": 29,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 0,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.793
+   ],
+   "has_freejoint": true,
+   "root_body": "pelvis",
+   "n_root_children": 1,
+   "n_limited": 29,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 35,
+   "n_visual_mesh_geoms": 35,
+   "n_collision_geoms": 36,
+   "n_collision_mesh_geoms": 24,
+   "n_collision_geoms_physics_enabled": 36,
+   "collision_geom_types": [
+    "CYLINDER",
+    "MESH",
+    "SPHERE"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 35,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [
+    "head_link"
+   ],
+   "height_qpos0_m": 1.3228,
+   "min_z_qpos0_m": 0.0007,
+   "extent_xy_qpos0_m": [
+    0.446,
+    0.363
+   ],
+   "feet": {
+    "R": {
+     "body": "right_ankle_roll_link",
+     "min_z": 0.0007,
+     "n_collision": 5,
+     "n_collision_on_foot_body": 4,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH",
+      "SPHERE"
+     ]
+    },
+    "L": {
+     "body": "left_ankle_roll_link",
+     "min_z": 0.0007,
+     "n_collision": 5,
+     "n_collision_on_foot_body": 4,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH",
+      "SPHERE"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "left_rubber_hand",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_yaw_joint"
+     ],
+     "top_body": "left_shoulder_pitch_link"
+    },
+    "R": {
+     "hand_body": "right_rubber_hand",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_yaw_joint"
+     ],
+     "top_body": "right_shoulder_pitch_link"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:waist_yaw_link",
+   "height_tpose_m": 1.3228,
+   "armspan_tpose_m": 1.3632,
+   "umr_tpose_qpos_proposed": {
+    "left_shoulder_roll_joint": 1.570796,
+    "left_elbow_joint": 1.570796,
+    "right_shoulder_roll_joint": -1.570796,
+    "right_elbow_joint": 1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.051 dz=-0.197 m",
+    "L: hand-shoulder dy=+0.450 dz=+0.008 dx=+0.006 m",
+    "R qpos0: hand-shoulder dy=-0.051 dz=-0.197 m",
+    "R: hand-shoulder dy=-0.450 dz=+0.008 dx=+0.006 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.5989,
+   "mjcf_source": "sole_audit.json (report 32)",
+   "am2_role": "xwbc_train",
+   "xwbc_lafan_extracted": 77,
+   "topo_exp_caches": [
+    "cache_amass_heldout",
+    "cache_amass_lconv",
+    "cache_amass_lconv_tfix",
+    "cache_amass_v3",
+    "cache_lafan_v2",
+    "cache_lafan_v3",
+    "cache_xwbc_amass_full",
+    "cache_xwbc_lafan",
+    "cache_xwbc_lafan_fixed"
+   ],
+   "surface_v2_asset": true,
+   "sole_audit_label_feet": [
+    "left_ankle_roll_link",
+    "right_ankle_roll_link"
+   ],
+   "sole_audit_predicted_bias_cm": 0.04000000000000048,
+   "tier": "A_core20",
+   "flags": [
+    "GMR g1_mocap_29dof.xml has hand-narrowed joint limits (15/29, per prep_xwbc_cache LIMIT_URDF note) and head_link has mass but no geom -> head missing from point cloud; prefer unitree_g1_29dof_vendor for UMR"
+   ],
+   "needs_fix": false
+  },
+  {
+   "name": "unitree_h1",
+   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/unitree_h1/h1.xml",
+   "mjcf_sha256": "94e522d91104252e",
+   "load_ok": true,
+   "nq": 26,
+   "nv": 25,
+   "nu": 19,
+   "nbody": 21,
+   "ngeom": 42,
+   "nmesh": 21,
+   "n_free": 1,
+   "n_hinge": 19,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 1,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    1.1
+   ],
+   "has_freejoint": true,
+   "root_body": "pelvis",
+   "n_root_children": 1,
+   "n_limited": 19,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 21,
+   "n_visual_mesh_geoms": 21,
+   "n_collision_geoms": 20,
+   "n_collision_mesh_geoms": 18,
+   "n_collision_geoms_physics_enabled": 20,
+   "collision_geom_types": [
+    "CYLINDER",
+    "MESH"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 21,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.806,
+   "min_z_qpos0_m": 0.0558,
+   "extent_xy_qpos0_m": [
+    0.391,
+    0.524
+   ],
+   "feet": {
+    "L": {
+     "body": "left_ankle_link",
+     "min_z": 0.0558,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH"
+     ]
+    },
+    "R": {
+     "body": "right_ankle_link",
+     "min_z": 0.0558,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "left_elbow_link",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint"
+     ],
+     "top_body": "left_shoulder_pitch_link"
+    },
+    "R": {
+     "hand_body": "right_elbow_link",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint"
+     ],
+     "top_body": "right_shoulder_pitch_link"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:torso_link",
+   "height_tpose_m": 1.806,
+   "armspan_tpose_m": 1.1885,
+   "umr_tpose_qpos_proposed": {
+    "left_shoulder_roll_joint": 1.570796,
+    "right_shoulder_roll_joint": -1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.058 dz=-0.323 m",
+    "L: hand-shoulder dy=+0.390 dz=+0.009 dx=+0.013 m",
+    "R qpos0: hand-shoulder dy=-0.058 dz=-0.323 m",
+    "R: hand-shoulder dy=-0.390 dz=+0.009 dx=+0.013 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.5782,
+   "mjcf_source": "sole_audit.json (report 32)",
+   "am2_role": "xwbc_train",
+   "xwbc_lafan_extracted": 77,
+   "topo_exp_caches": [
+    "cache_amass_heldout",
+    "cache_amass_lconv",
+    "cache_amass_lconv_tfix",
+    "cache_amass_v3",
+    "cache_lafan_v2",
+    "cache_lafan_v3",
+    "cache_xwbc_amass_full",
+    "cache_xwbc_lafan",
+    "cache_xwbc_lafan_fixed"
+   ],
+   "surface_v2_asset": true,
+   "sole_audit_label_feet": [
+    "left_ankle_link",
+    "right_ankle_link"
+   ],
+   "sole_audit_predicted_bias_cm": -9.614582054950915e-07,
+   "tier": "A_core20",
+   "flags": [],
+   "needs_fix": false
+  },
+  {
+   "name": "unitree_h1_2",
+   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/unitree_h1_2/h1_2_handless.xml",
+   "mjcf_sha256": "18bae2cc5ab6aeed",
+   "load_ok": true,
+   "nq": 34,
+   "nv": 33,
+   "nu": 27,
+   "nbody": 29,
+   "ngeom": 56,
+   "nmesh": 28,
+   "n_free": 1,
+   "n_hinge": 27,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 0,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    1.03
+   ],
+   "has_freejoint": true,
+   "root_body": "pelvis",
+   "n_root_children": 1,
+   "n_limited": 27,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 29,
+   "n_visual_mesh_geoms": 29,
+   "n_collision_geoms": 26,
+   "n_collision_mesh_geoms": 16,
+   "n_collision_geoms_physics_enabled": 26,
+   "collision_geom_types": [
+    "BOX",
+    "CYLINDER",
+    "MESH",
+    "SPHERE"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 29,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.788,
+   "min_z_qpos0_m": 0.0018,
+   "extent_xy_qpos0_m": [
+    0.383,
+    0.511
+   ],
+   "feet": {
+    "L": {
+     "body": "left_ankle_roll_link",
+     "min_z": 0.0018,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH"
+     ]
+    },
+    "R": {
+     "body": "right_ankle_roll_link",
+     "min_z": 0.0018,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "left_wrist_yaw_link",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_yaw_joint"
+     ],
+     "top_body": "left_shoulder_pitch_link"
+    },
+    "R": {
+     "hand_body": "right_wrist_yaw_link",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_yaw_joint"
+     ],
+     "top_body": "right_shoulder_pitch_link"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:torso_link",
+   "height_tpose_m": 1.788,
+   "armspan_tpose_m": 1.6562,
+   "umr_tpose_qpos_proposed": {
+    "left_shoulder_roll_joint": 1.570796,
+    "left_elbow_joint": 1.570796,
+    "right_shoulder_roll_joint": -1.570796,
+    "right_elbow_joint": 1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.061 dz=-0.328 m",
+    "L: hand-shoulder dy=+0.617 dz=+0.010 dx=-0.005 m",
+    "R qpos0: hand-shoulder dy=-0.061 dz=-0.328 m",
+    "R: hand-shoulder dy=-0.617 dz=+0.010 dx=-0.005 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.575,
+   "mjcf_source": "sole_audit.json (report 32)",
+   "am2_role": "xwbc_train",
+   "xwbc_lafan_extracted": 77,
+   "topo_exp_caches": [
+    "cache_amass_heldout",
+    "cache_amass_lconv",
+    "cache_amass_lconv_tfix",
+    "cache_amass_v3",
+    "cache_lafan_v2",
+    "cache_lafan_v3",
+    "cache_xwbc_amass_full",
+    "cache_xwbc_lafan",
+    "cache_xwbc_lafan_fixed"
+   ],
+   "surface_v2_asset": true,
+   "sole_audit_label_feet": [
+    "left_ankle_roll_link",
+    "right_ankle_roll_link"
+   ],
+   "sole_audit_predicted_bias_cm": 1.7941505170426808e-08,
+   "tier": "A_core20",
+   "flags": [],
+   "needs_fix": false
+  },
+  {
+   "name": "unitree_h2",
+   "mjcf": "/var/tmp/alphamotion/robot_models/unitree_ros/robots/h2_description/unitree_h2_mjcf.xml",
+   "mjcf_sha256": "8254a2ce7ca7bec5",
+   "load_ok": true,
+   "nq": 38,
+   "nv": 37,
+   "nu": 0,
+   "nbody": 38,
+   "ngeom": 57,
+   "nmesh": 34,
+   "n_free": 1,
+   "n_hinge": 31,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 0,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "has_freejoint": true,
+   "root_body": "pelvis",
+   "n_root_children": 1,
+   "n_limited": 31,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 34,
+   "n_visual_mesh_geoms": 34,
+   "n_collision_geoms": 23,
+   "n_collision_mesh_geoms": 19,
+   "n_collision_geoms_physics_enabled": 23,
+   "collision_geom_types": [
+    "CYLINDER",
+    "MESH",
+    "SPHERE"
+   ],
+   "floor_geom_in_model": false,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 34,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.8333,
+   "min_z_qpos0_m": -1.0388,
+   "extent_xy_qpos0_m": [
+    0.561,
+    0.447
+   ],
+   "feet": {
+    "R": {
+     "body": "right_ankle_pitch_link",
+     "min_z": -1.0388,
+     "n_collision": 1,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH"
+     ]
+    },
+    "L": {
+     "body": "left_ankle_pitch_link",
+     "min_z": -1.0388,
+     "n_collision": 1,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "left_hand_link",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_yaw_joint"
+     ],
+     "top_body": "left_shoulder_pitch_link"
+    },
+    "R": {
+     "hand_body": "right_hand_link",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_yaw_joint"
+     ],
+     "top_body": "right_shoulder_pitch_link"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:waist_yaw_link",
+   "height_tpose_m": 1.8333,
+   "armspan_tpose_m": 1.7169,
+   "umr_tpose_qpos_proposed": {
+    "left_shoulder_roll_joint": 1.570796,
+    "left_elbow_joint": 1.570796,
+    "right_shoulder_roll_joint": -1.570796,
+    "right_elbow_joint": 1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.073 dz=-0.269 m",
+    "L: hand-shoulder dy=+0.597 dz=-0.018 dx=-0.003 m",
+    "R qpos0: hand-shoulder dy=-0.073 dz=-0.269 m",
+    "R: hand-shoulder dy=-0.597 dz=-0.018 dx=-0.003 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.616,
+   "mjcf_source": "sole_audit.json (report 32)",
+   "am2_role": "xwbc_heldout",
+   "xwbc_lafan_extracted": 77,
+   "topo_exp_caches": [
+    "cache_amass_heldout",
+    "cache_amass_lconv",
+    "cache_amass_lconv_tfix",
+    "cache_amass_v3",
+    "cache_lafan_v2",
+    "cache_lafan_v3",
+    "cache_xwbc_amass_full",
+    "cache_xwbc_lafan",
+    "cache_xwbc_lafan_fixed"
+   ],
+   "surface_v2_asset": true,
+   "sole_audit_label_feet": [],
+   "sole_audit_predicted_bias_cm": null,
+   "tier": "A_core20",
+   "flags": [
+    "~40 mm geometric mismatch between unitree_ros MJCF and XWBC data on several bodies (prep_xwbc_cache DATA_TREE); UMR ships its own H2_stl_mjcf.xml"
+   ],
+   "needs_fix": false
+  },
+  {
+   "name": "unitree_r1",
+   "mjcf": "/var/tmp/alphamotion/robot_models/unitree_ros/robots/r1_description/unitree_r1_mjcf.xml",
+   "mjcf_sha256": "513b534baa0f654a",
+   "load_ok": true,
+   "nq": 33,
+   "nv": 32,
+   "nu": 0,
+   "nbody": 41,
+   "ngeom": 74,
+   "nmesh": 42,
+   "n_free": 1,
+   "n_hinge": 26,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 0,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "has_freejoint": true,
+   "root_body": "pelvis_link",
+   "n_root_children": 1,
+   "n_limited": 26,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 40,
+   "n_visual_mesh_geoms": 40,
+   "n_collision_geoms": 34,
+   "n_collision_mesh_geoms": 34,
+   "n_collision_geoms_physics_enabled": 34,
+   "collision_geom_types": [
+    "MESH"
+   ],
+   "floor_geom_in_model": false,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 40,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.2302,
+   "min_z_qpos0_m": -0.7408,
+   "extent_xy_qpos0_m": [
+    0.369,
+    0.362
+   ],
+   "feet": {
+    "R": {
+     "body": "right_ankle_roll_link",
+     "min_z": -0.7408,
+     "n_collision": 3,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH"
+     ]
+    },
+    "L": {
+     "body": "left_ankle_roll_link",
+     "min_z": -0.7408,
+     "n_collision": 3,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "left_wrist_roll_link",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint"
+     ],
+     "top_body": "left_shoulder_pitch_link"
+    },
+    "R": {
+     "hand_body": "right_wrist_roll_link",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint"
+     ],
+     "top_body": "right_shoulder_pitch_link"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:waist_yaw_link",
+   "height_tpose_m": 1.2302,
+   "armspan_tpose_m": 1.1678,
+   "umr_tpose_qpos_proposed": {
+    "left_shoulder_roll_joint": 1.570796,
+    "left_elbow_joint": 1.570796,
+    "right_shoulder_roll_joint": -1.570796,
+    "right_elbow_joint": 1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.053 dz=-0.216 m",
+    "L: hand-shoulder dy=+0.356 dz=-0.012 dx=+0.004 m",
+    "R qpos0: hand-shoulder dy=-0.053 dz=-0.216 m",
+    "R: hand-shoulder dy=-0.356 dz=-0.012 dx=+0.004 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.642,
+   "mjcf_source": "sole_audit.json (report 32)",
+   "am2_role": "xwbc_heldout",
+   "xwbc_lafan_extracted": 77,
+   "topo_exp_caches": [
+    "cache_amass_heldout",
+    "cache_amass_lconv",
+    "cache_amass_lconv_tfix",
+    "cache_amass_v3",
+    "cache_lafan_v2",
+    "cache_lafan_v3",
+    "cache_xwbc_amass_full",
+    "cache_xwbc_lafan",
+    "cache_xwbc_lafan_fixed"
+   ],
+   "surface_v2_asset": true,
+   "sole_audit_label_feet": [],
+   "sole_audit_predicted_bias_cm": -0.4992017187320008,
+   "tier": "A_core20",
+   "flags": [
+    "qpos0 root z=0 (soles at -0.74 m)"
+   ],
+   "needs_fix": false
+  },
+  {
+   "name": "unitree_g1_29dof_dex3",
+   "mjcf": "/var/tmp/alphamotion/robot_models/unitree_ros_official/robots/g1_description/g1_29dof_with_hand.xml",
+   "mjcf_sha256": "7b73b894c01c0be4",
+   "load_ok": true,
+   "nq": 50,
+   "nv": 49,
+   "nu": 43,
+   "nbody": 45,
+   "ngeom": 104,
+   "nmesh": 50,
+   "n_free": 1,
+   "n_hinge": 43,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 0,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.793
+   ],
+   "has_freejoint": true,
+   "root_body": "pelvis",
+   "n_root_children": 1,
+   "n_limited": 43,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 50,
+   "n_visual_mesh_geoms": 50,
+   "n_collision_geoms": 53,
+   "n_collision_mesh_geoms": 39,
+   "n_collision_geoms_physics_enabled": 53,
+   "collision_geom_types": [
+    "BOX",
+    "CYLINDER",
+    "MESH",
+    "SPHERE"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 50,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.3228,
+   "min_z_qpos0_m": 0.0007,
+   "extent_xy_qpos0_m": [
+    0.489,
+    0.363
+   ],
+   "feet": {
+    "R": {
+     "body": "right_ankle_roll_link",
+     "min_z": 0.0007,
+     "n_collision": 5,
+     "n_collision_on_foot_body": 4,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH",
+      "SPHERE"
+     ]
+    },
+    "L": {
+     "body": "left_ankle_roll_link",
+     "min_z": 0.0007,
+     "n_collision": 5,
+     "n_collision_on_foot_body": 4,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH",
+      "SPHERE"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "left_wrist_yaw_link",
+     "n_hand_dof": 7,
+     "n_collision": 10,
+     "arm_chain_joints": [
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_yaw_joint",
+      "left_hand_thumb_0_joint",
+      "left_hand_thumb_1_joint",
+      "left_hand_thumb_2_joint"
+     ],
+     "top_body": "left_shoulder_pitch_link"
+    },
+    "R": {
+     "hand_body": "right_wrist_yaw_link",
+     "n_hand_dof": 7,
+     "n_collision": 10,
+     "arm_chain_joints": [
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_yaw_joint",
+      "right_hand_thumb_0_joint",
+      "right_hand_thumb_1_joint",
+      "right_hand_thumb_2_joint"
+     ],
+     "top_body": "right_shoulder_pitch_link"
+    }
+   },
+   "hand_type": "dexterous",
+   "hand_like_joints": [
+    "left_hand_thumb_0_joint",
+    "left_hand_thumb_1_joint",
+    "left_hand_thumb_2_joint",
+    "left_hand_middle_0_joint",
+    "left_hand_middle_1_joint",
+    "left_hand_index_0_joint",
+    "left_hand_index_1_joint",
+    "right_hand_thumb_0_joint",
+    "right_hand_thumb_1_joint",
+    "right_hand_thumb_2_joint",
+    "right_hand_middle_0_joint",
+    "right_hand_middle_1_joint",
+    "right_hand_index_0_joint",
+    "right_hand_index_1_joint"
+   ],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:waist_yaw_link",
+   "height_tpose_m": 1.3228,
+   "armspan_tpose_m": 1.4505,
+   "umr_tpose_qpos_proposed": {
+    "left_shoulder_roll_joint": 1.570796,
+    "left_elbow_joint": 1.570796,
+    "right_shoulder_roll_joint": -1.570796,
+    "right_elbow_joint": 1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.048 dz=-0.197 m",
+    "L: hand-shoulder dy=+0.408 dz=+0.005 dx=+0.006 m",
+    "R qpos0: hand-shoulder dy=-0.048 dz=-0.197 m",
+    "R: hand-shoulder dy=-0.408 dz=+0.005 dx=+0.006 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.5989,
+   "mjcf_source": "unitree_ros_official (vendor G1 + Dex3 hands)",
+   "am2_role": "xwbc_train",
+   "xwbc_lafan_extracted": 77,
+   "topo_exp_caches": [
+    "cache_amass_heldout",
+    "cache_amass_lconv",
+    "cache_amass_lconv_tfix",
+    "cache_amass_v3",
+    "cache_lafan_v2",
+    "cache_lafan_v3",
+    "cache_xwbc_amass_full",
+    "cache_xwbc_lafan",
+    "cache_xwbc_lafan_fixed"
+   ],
+   "surface_v2_asset": true,
+   "sole_audit_label_feet": [
+    "left_ankle_roll_link",
+    "right_ankle_roll_link"
+   ],
+   "sole_audit_predicted_bias_cm": 0.04000000000000048,
+   "tier": "B_dexterous_variant(object contact)",
+   "flags": [
+    "Dex3 hands 7 DoF/side; same body/leg geometry as G1 29dof"
+   ],
+   "needs_fix": false
+  },
+  {
+   "name": "agibot_x2_ultra",
+   "mjcf": "/var/tmp/alphamotion/robot_models/agibot_x2_urdf/X2_URDF-v1.4.0/agibot_x2_ultra_mjcf.xml",
+   "mjcf_sha256": "bdc42a3cb899998d",
+   "load_ok": true,
+   "nq": 38,
+   "nv": 37,
+   "nu": 31,
+   "nbody": 33,
+   "ngeom": 99,
+   "nmesh": 40,
+   "n_free": 1,
+   "n_hinge": 31,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 0,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.68
+   ],
+   "has_freejoint": true,
+   "root_body": "pelvis",
+   "n_root_children": 1,
+   "n_limited": 31,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 40,
+   "n_visual_mesh_geoms": 40,
+   "n_collision_geoms": 59,
+   "n_collision_mesh_geoms": 7,
+   "n_collision_geoms_physics_enabled": 59,
+   "collision_geom_types": [
+    "BOX",
+    "CYLINDER",
+    "MESH",
+    "SPHERE"
+   ],
+   "floor_geom_in_model": false,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 40,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.319,
+   "min_z_qpos0_m": 0.0047,
+   "extent_xy_qpos0_m": [
+    0.309,
+    0.642
+   ],
+   "feet": {
+    "R": {
+     "body": "right_ankle_roll_link",
+     "min_z": 0.0047,
+     "n_collision": 12,
+     "n_collision_on_foot_body": 12,
+     "physics_enabled": true,
+     "collision_types": [
+      "SPHERE"
+     ]
+    },
+    "L": {
+     "body": "left_ankle_roll_link",
+     "min_z": 0.0047,
+     "n_collision": 12,
+     "n_collision_on_foot_body": 12,
+     "physics_enabled": true,
+     "collision_types": [
+      "SPHERE"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "left_wrist_roll_link",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_yaw_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_roll_joint"
+     ],
+     "top_body": "left_shoulder_pitch_link"
+    },
+    "R": {
+     "hand_body": "right_wrist_roll_link",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_yaw_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_roll_joint"
+     ],
+     "top_body": "right_shoulder_pitch_link"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:waist_yaw_link",
+   "height_tpose_m": 1.319,
+   "armspan_tpose_m": 1.5557,
+   "umr_tpose_qpos_proposed": {
+    "left_shoulder_roll_joint": 1.570796,
+    "right_shoulder_roll_joint": -1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.133 dz=-0.388 m",
+    "L: hand-shoulder dy=+0.446 dz=+0.095 dx=+0.000 m",
+    "R qpos0: hand-shoulder dy=-0.132 dz=-0.388 m",
+    "R: hand-shoulder dy=-0.446 dz=+0.094 dx=-0.000 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.5628,
+   "mjcf_source": "robot_models (used by prior X2 zero-shot code, 23 refs)",
+   "am2_role": "not_in_am2",
+   "xwbc_lafan_extracted": false,
+   "topo_exp_caches": [],
+   "surface_v2_asset": false,
+   "sole_audit_label_feet": null,
+   "sole_audit_predicted_bias_cm": null,
+   "tier": "A_core20",
+   "flags": [
+    "agibot_x2_ultra_mjcf.xml is a 2-line <include> wrapper of vendor X2-Ultra.xml (identical model); proposed T-pose hand +9.5 cm above shoulder -> check in UMR Studio; qpos0 root z=0.68"
+   ],
+   "needs_fix": false
+  },
+  {
+   "name": "unitree_g1_29dof_vendor",
+   "mjcf": "/var/tmp/alphamotion/robot_models/unitree_ros_official/robots/g1_description/g1_29dof.xml",
+   "mjcf_sha256": "dfcfd8b41d098069",
+   "load_ok": true,
+   "nq": 36,
+   "nv": 35,
+   "nu": 29,
+   "nbody": 31,
+   "ngeom": 74,
+   "nmesh": 36,
+   "n_free": 1,
+   "n_hinge": 29,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 0,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.793
+   ],
+   "has_freejoint": true,
+   "root_body": "pelvis",
+   "n_root_children": 1,
+   "n_limited": 29,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 36,
+   "n_visual_mesh_geoms": 36,
+   "n_collision_geoms": 37,
+   "n_collision_mesh_geoms": 25,
+   "n_collision_geoms_physics_enabled": 37,
+   "collision_geom_types": [
+    "CYLINDER",
+    "MESH",
+    "SPHERE"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 36,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.3228,
+   "min_z_qpos0_m": 0.0007,
+   "extent_xy_qpos0_m": [
+    0.446,
+    0.363
+   ],
+   "feet": {
+    "R": {
+     "body": "right_ankle_roll_link",
+     "min_z": 0.0007,
+     "n_collision": 5,
+     "n_collision_on_foot_body": 4,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH",
+      "SPHERE"
+     ]
+    },
+    "L": {
+     "body": "left_ankle_roll_link",
+     "min_z": 0.0007,
+     "n_collision": 5,
+     "n_collision_on_foot_body": 4,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH",
+      "SPHERE"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "left_wrist_yaw_link",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_yaw_joint"
+     ],
+     "top_body": "left_shoulder_pitch_link"
+    },
+    "R": {
+     "hand_body": "right_wrist_yaw_link",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_yaw_joint"
+     ],
+     "top_body": "right_shoulder_pitch_link"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:waist_yaw_link",
+   "height_tpose_m": 1.3228,
+   "armspan_tpose_m": 1.3632,
+   "umr_tpose_qpos_proposed": {
+    "left_shoulder_roll_joint": 1.570796,
+    "left_elbow_joint": 1.570796,
+    "right_shoulder_roll_joint": -1.570796,
+    "right_elbow_joint": 1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.048 dz=-0.197 m",
+    "L: hand-shoulder dy=+0.408 dz=+0.005 dx=+0.006 m",
+    "R qpos0: hand-shoulder dy=-0.048 dz=-0.197 m",
+    "R: hand-shoulder dy=-0.408 dz=+0.005 dx=+0.006 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.5989,
+   "mjcf_source": "unitree_ros_official vendor G1 29dof (alt. to GMR mocap XML)",
+   "am2_role": "not_in_am2",
+   "xwbc_lafan_extracted": false,
+   "topo_exp_caches": [],
+   "surface_v2_asset": false,
+   "sole_audit_label_feet": null,
+   "sole_audit_predicted_bias_cm": null,
+   "tier": "B_alt_mjcf",
+   "flags": [],
+   "needs_fix": false
+  },
+  {
+   "name": "unitree_g1_23dof_vendor",
+   "mjcf": "/var/tmp/alphamotion/robot_models/unitree_ros_official/robots/g1_description/g1_23dof.xml",
+   "mjcf_sha256": "aaca282f79cc4cdd",
+   "load_ok": true,
+   "nq": 30,
+   "nv": 29,
+   "nu": 23,
+   "nbody": 25,
+   "ngeom": 63,
+   "nmesh": 29,
+   "n_free": 1,
+   "n_hinge": 23,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 0,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.793
+   ],
+   "has_freejoint": true,
+   "root_body": "pelvis",
+   "n_root_children": 1,
+   "n_limited": 23,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 29,
+   "n_visual_mesh_geoms": 29,
+   "n_collision_geoms": 33,
+   "n_collision_mesh_geoms": 21,
+   "n_collision_geoms_physics_enabled": 33,
+   "collision_geom_types": [
+    "CYLINDER",
+    "MESH",
+    "SPHERE"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 29,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.3228,
+   "min_z_qpos0_m": 0.0007,
+   "extent_xy_qpos0_m": [
+    0.442,
+    0.363
+   ],
+   "feet": {
+    "R": {
+     "body": "right_ankle_roll_link",
+     "min_z": 0.0007,
+     "n_collision": 5,
+     "n_collision_on_foot_body": 4,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH",
+      "SPHERE"
+     ]
+    },
+    "L": {
+     "body": "left_ankle_roll_link",
+     "min_z": 0.0007,
+     "n_collision": 5,
+     "n_collision_on_foot_body": 4,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH",
+      "SPHERE"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "left_wrist_roll_rubber_hand",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint"
+     ],
+     "top_body": "left_shoulder_pitch_link"
+    },
+    "R": {
+     "hand_body": "right_wrist_roll_rubber_hand",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint"
+     ],
+     "top_body": "right_shoulder_pitch_link"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:torso_link",
+   "height_tpose_m": 1.3228,
+   "armspan_tpose_m": 1.3552,
+   "umr_tpose_qpos_proposed": {
+    "left_shoulder_roll_joint": 1.570796,
+    "left_elbow_joint": 1.570796,
+    "right_shoulder_roll_joint": -1.570796,
+    "right_elbow_joint": 1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.048 dz=-0.197 m",
+    "L: hand-shoulder dy=+0.324 dz=+0.005 dx=+0.006 m",
+    "R qpos0: hand-shoulder dy=-0.048 dz=-0.197 m",
+    "R: hand-shoulder dy=-0.324 dz=+0.005 dx=+0.006 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.6397,
+   "mjcf_source": "unitree_ros_official vendor G1 23dof (true 23-DoF tree)",
+   "am2_role": "not_in_am2",
+   "xwbc_lafan_extracted": false,
+   "topo_exp_caches": [],
+   "surface_v2_asset": false,
+   "sole_audit_label_feet": null,
+   "sole_audit_predicted_bias_cm": null,
+   "tier": "B_alt_mjcf",
+   "flags": [],
+   "needs_fix": false
+  },
+  {
+   "name": "agibot_a3_t3d0",
+   "mjcf": "/var/tmp/alphamotion/robot_models/agibot_a3/a3_t3d0/mjcf/agibot_a3_t3d0_mjcf.xml",
+   "mjcf_sha256": "0ace3ccf62c73fb3",
+   "load_ok": true,
+   "nq": 38,
+   "nv": 37,
+   "nu": 31,
+   "nbody": 33,
+   "ngeom": 91,
+   "nmesh": 40,
+   "n_free": 1,
+   "n_hinge": 31,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 1,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    1.3
+   ],
+   "has_freejoint": true,
+   "root_body": "pelvis_link",
+   "n_root_children": 1,
+   "n_limited": 31,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 38,
+   "n_visual_mesh_geoms": 38,
+   "n_collision_geoms": 52,
+   "n_collision_mesh_geoms": 26,
+   "n_collision_geoms_physics_enabled": 52,
+   "collision_geom_types": [
+    "MESH",
+    "SPHERE"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 38,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.7223,
+   "min_z_qpos0_m": 0.2239,
+   "extent_xy_qpos0_m": [
+    0.579,
+    0.532
+   ],
+   "feet": {
+    "R": {
+     "body": "right_ankle_roll_Link",
+     "min_z": 0.2235,
+     "n_collision": 13,
+     "n_collision_on_foot_body": 13,
+     "physics_enabled": true,
+     "collision_types": [
+      "SPHERE"
+     ]
+    },
+    "L": {
+     "body": "left_ankle_roll_Link",
+     "min_z": 0.2235,
+     "n_collision": 13,
+     "n_collision_on_foot_body": 13,
+     "physics_enabled": true,
+     "collision_types": [
+      "SPHERE"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "left_wrist_yaw_Link",
+     "n_hand_dof": 0,
+     "n_collision": 3,
+     "arm_chain_joints": [
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_yaw_joint"
+     ],
+     "top_body": "left_shoulder_pitch_Link"
+    },
+    "R": {
+     "hand_body": "right_wrist_yaw_Link",
+     "n_hand_dof": 0,
+     "n_collision": 3,
+     "arm_chain_joints": [
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_yaw_joint"
+     ],
+     "top_body": "right_shoulder_pitch_Link"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:waist_yaw_Link",
+   "height_tpose_m": 1.7223,
+   "armspan_tpose_m": 1.8721,
+   "umr_tpose_qpos_proposed": {
+    "left_shoulder_roll_joint": 1.570796,
+    "left_elbow_joint": 1.570796,
+    "right_shoulder_roll_joint": -1.570796,
+    "right_elbow_joint": 1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.069 dz=-0.285 m",
+    "L: hand-shoulder dy=+0.574 dz=+0.015 dx=+0.000 m",
+    "R qpos0: hand-shoulder dy=-0.069 dz=-0.285 m",
+    "R: hand-shoulder dy=-0.574 dz=+0.015 dx=+0.000 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.6248,
+   "mjcf_source": "robot_models",
+   "am2_role": "not_in_am2",
+   "xwbc_lafan_extracted": false,
+   "topo_exp_caches": [],
+   "surface_v2_asset": false,
+   "sole_audit_label_feet": null,
+   "sole_audit_predicted_bias_cm": null,
+   "tier": "A_core20",
+   "flags": [
+    "qpos0 root z=1.3 leaves soles 22.4 cm above floor (convention only, UMR solves root)"
+   ],
+   "needs_fix": false
+  },
+  {
+   "name": "agibot_a3_ultra_t3d0",
+   "mjcf": "/var/tmp/alphamotion/robot_models/agibot_a3/a3_ultra_t3d0/mjcf/agibot_a3_ultra_t3d0_mjcf.xml",
+   "mjcf_sha256": "333b14774fefeb1e",
+   "load_ok": true,
+   "nq": 70,
+   "nv": 69,
+   "nu": 51,
+   "nbody": 65,
+   "ngeom": 160,
+   "nmesh": 58,
+   "n_free": 1,
+   "n_hinge": 63,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 12,
+   "n_contact_pairs": 0,
+   "n_keyframes": 1,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    1.3
+   ],
+   "has_freejoint": true,
+   "root_body": "pelvis_link",
+   "n_root_children": 1,
+   "n_limited": 63,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 83,
+   "n_visual_mesh_geoms": 83,
+   "n_collision_geoms": 76,
+   "n_collision_mesh_geoms": 24,
+   "n_collision_geoms_physics_enabled": 76,
+   "collision_geom_types": [
+    "BOX",
+    "CYLINDER",
+    "MESH",
+    "SPHERE"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 83,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.7372,
+   "min_z_qpos0_m": 0.2239,
+   "extent_xy_qpos0_m": [
+    0.602,
+    0.564
+   ],
+   "feet": {
+    "L": {
+     "body": "left_ankle_roll_Link",
+     "min_z": 0.2205,
+     "n_collision": 13,
+     "n_collision_on_foot_body": 13,
+     "physics_enabled": true,
+     "collision_types": [
+      "SPHERE"
+     ]
+    },
+    "R": {
+     "body": "right_ankle_roll_Link",
+     "min_z": 0.2205,
+     "n_collision": 13,
+     "n_collision_on_foot_body": 13,
+     "physics_enabled": true,
+     "collision_types": [
+      "SPHERE"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "left_wrist_yaw_Link",
+     "n_hand_dof": 16,
+     "n_collision": 15,
+     "arm_chain_joints": [
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_yaw_joint",
+      "L_thumb_roll_joint",
+      "L_thumb_abad_joint",
+      "L_thumb_mcp_joint",
+      "L_thumb_pip_joint",
+      "L_thumb_dip_joint"
+     ],
+     "top_body": "left_shoulder_pitch_Link"
+    },
+    "R": {
+     "hand_body": "right_wrist_yaw_Link",
+     "n_hand_dof": 16,
+     "n_collision": 15,
+     "arm_chain_joints": [
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_yaw_joint",
+      "R_thumb_roll_joint",
+      "R_thumb_abad_joint",
+      "R_thumb_mcp_joint",
+      "R_thumb_pip_joint",
+      "R_thumb_dip_joint"
+     ],
+     "top_body": "right_shoulder_pitch_Link"
+    }
+   },
+   "hand_type": "dexterous",
+   "hand_like_joints": [
+    "L_thumb_roll_joint",
+    "L_thumb_abad_joint",
+    "L_thumb_mcp_joint",
+    "L_thumb_pip_joint",
+    "L_thumb_dip_joint",
+    "L_index_abad_joint",
+    "L_index_pip_joint",
+    "L_index_dip_joint",
+    "L_middle_pip_joint",
+    "L_middle_dip_joint",
+    "L_ring_abad_joint",
+    "L_ring_pip_joint",
+    "L_ring_dip_joint",
+    "L_pinky_abad_joint",
+    "L_pinky_pip_joint",
+    "L_pinky_dip_joint",
+    "R_thumb_roll_joint",
+    "R_thumb_abad_joint",
+    "R_thumb_mcp_joint",
+    "R_thumb_pip_joint"
+   ],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:waist_yaw_Link",
+   "height_tpose_m": 1.7372,
+   "armspan_tpose_m": 1.917,
+   "umr_tpose_qpos_proposed": {
+    "left_shoulder_roll_joint": 1.570796,
+    "left_elbow_joint": 1.570796,
+    "right_shoulder_roll_joint": -1.570796,
+    "right_elbow_joint": 1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.069 dz=-0.285 m",
+    "L: hand-shoulder dy=+0.574 dz=+0.015 dx=+0.000 m",
+    "R qpos0: hand-shoulder dy=-0.069 dz=-0.285 m",
+    "R: hand-shoulder dy=-0.574 dz=+0.015 dx=+0.000 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.6194,
+   "mjcf_source": "robot_models",
+   "am2_role": "not_in_am2",
+   "xwbc_lafan_extracted": false,
+   "topo_exp_caches": [],
+   "surface_v2_asset": false,
+   "sole_audit_label_feet": null,
+   "sole_audit_predicted_bias_cm": null,
+   "tier": "B_dexterous_variant(object contact)",
+   "flags": [
+    "12 equality constraints (finger couplings); 16 hand DoF/side"
+   ],
+   "needs_fix": false
+  },
+  {
+   "name": "agibot_a2",
+   "mjcf": "/var/tmp/alphamotion/robot_models/agibot_a2_gmr/agibot_a2_gmr_mjcf.xml",
+   "mjcf_sha256": "8a421fd255ec0914",
+   "load_ok": true,
+   "nq": 27,
+   "nv": 26,
+   "nu": 0,
+   "nbody": 51,
+   "ngeom": 95,
+   "nmesh": 95,
+   "n_free": 1,
+   "n_hinge": 20,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 0,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "has_freejoint": true,
+   "root_body": "base_link",
+   "n_root_children": 1,
+   "n_limited": 20,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 48,
+   "n_visual_mesh_geoms": 48,
+   "n_collision_geoms": 47,
+   "n_collision_mesh_geoms": 47,
+   "n_collision_geoms_physics_enabled": 47,
+   "collision_geom_types": [
+    "MESH"
+   ],
+   "floor_geom_in_model": false,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 48,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.6913,
+   "min_z_qpos0_m": 0.0132,
+   "extent_xy_qpos0_m": [
+    0.366,
+    1.801
+   ],
+   "feet": {
+    "R": {
+     "body": "right_toe_roll",
+     "min_z": 0.0132,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH"
+     ]
+    },
+    "L": {
+     "body": "left_toe_roll",
+     "min_z": 0.0132,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "MESH"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "left_hand",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "idx13_left_arm_joint1",
+      "idx14_left_arm_joint2",
+      "idx15_left_arm_joint3",
+      "idx16_left_arm_joint4"
+     ],
+     "top_body": "left_arm_link_base"
+    },
+    "R": {
+     "hand_body": "right_hand",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "idx20_right_arm_joint1",
+      "idx21_right_arm_joint2",
+      "idx22_right_arm_joint3",
+      "idx23_right_arm_joint4"
+     ],
+     "top_body": "right_arm_link_base"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:base_link",
+   "height_tpose_m": 1.6913,
+   "armspan_tpose_m": 1.8006,
+   "umr_tpose_qpos_proposed": {},
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.700 dz=+0.000 m",
+    "L: qpos0 already T-pose (no change)",
+    "R qpos0: hand-shoulder dy=-0.700 dz=+0.000 m",
+    "R: qpos0 already T-pose (no change)"
+   ],
+   "pcc_bbox_ratio_tpose": 0.5835,
+   "mjcf_source": "robot_models (GMR agibot_a2 converted)",
+   "am2_role": "not_in_am2",
+   "xwbc_lafan_extracted": false,
+   "topo_exp_caches": [],
+   "surface_v2_asset": false,
+   "sole_audit_label_feet": null,
+   "sole_audit_predicted_bias_cm": null,
+   "tier": "A_core20",
+   "flags": [],
+   "needs_fix": false
+  },
+  {
+   "name": "openloong",
+   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/openloong/AzureLoong.xml",
+   "mjcf_sha256": "6bdfef45affea906",
+   "load_ok": true,
+   "nq": 38,
+   "nv": 37,
+   "nu": 31,
+   "nbody": 33,
+   "ngeom": 64,
+   "nmesh": 32,
+   "n_free": 1,
+   "n_hinge": 31,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 0,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    1.2
+   ],
+   "has_freejoint": true,
+   "root_body": "base_link",
+   "n_root_children": 1,
+   "n_limited": 31,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 32,
+   "n_visual_mesh_geoms": 32,
+   "n_collision_geoms": 32,
+   "n_collision_mesh_geoms": 30,
+   "n_collision_geoms_physics_enabled": 32,
+   "collision_geom_types": [
+    "BOX",
+    "MESH"
+   ],
+   "floor_geom_in_model": false,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 32,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.8164,
+   "min_z_qpos0_m": 0.0605,
+   "extent_xy_qpos0_m": [
+    0.337,
+    2.191
+   ],
+   "feet": {
+    "L": {
+     "body": "Link_ankle_l_roll",
+     "min_z": 0.0591,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "BOX",
+      "MESH"
+     ]
+    },
+    "R": {
+     "body": "Link_ankle_r_roll",
+     "min_z": 0.0605,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "BOX",
+      "MESH"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "Link_arm_l_07",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "J_arm_l_01",
+      "J_arm_l_02",
+      "J_arm_l_03",
+      "J_arm_l_04",
+      "J_arm_l_05",
+      "J_arm_l_06",
+      "J_arm_l_07"
+     ],
+     "top_body": "Link_arm_l_01"
+    },
+    "R": {
+     "hand_body": "Link_arm_r_07",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "J_arm_r_01",
+      "J_arm_r_02",
+      "J_arm_r_03",
+      "J_arm_r_04",
+      "J_arm_r_05",
+      "J_arm_r_06",
+      "J_arm_r_07"
+     ],
+     "top_body": "Link_arm_r_01"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:Link_waist_yaw",
+   "height_tpose_m": 1.8164,
+   "armspan_tpose_m": 2.1909,
+   "umr_tpose_qpos_proposed": {},
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.641 dz=+0.032 m",
+    "L: qpos0 already T-pose (no change)",
+    "R qpos0: hand-shoulder dy=-0.641 dz=+0.032 m",
+    "R: qpos0 already T-pose (no change)"
+   ],
+   "pcc_bbox_ratio_tpose": 0.5734,
+   "mjcf_source": "GMR assets (not in params.py dict)",
+   "am2_role": "not_in_am2",
+   "xwbc_lafan_extracted": false,
+   "topo_exp_caches": [],
+   "surface_v2_asset": false,
+   "sole_audit_label_feet": null,
+   "sole_audit_predicted_bias_cm": null,
+   "tier": "A_core20",
+   "flags": [],
+   "needs_fix": false
+  },
+  {
+   "name": "berkeley_humanoid_lite",
+   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/berkeley_humanoid_lite/berkeley_humanoid_lite.xml",
+   "mjcf_sha256": "78431404f7ab19d3",
+   "load_ok": true,
+   "nq": 29,
+   "nv": 28,
+   "nu": 22,
+   "nbody": 27,
+   "ngeom": 37,
+   "nmesh": 26,
+   "n_free": 1,
+   "n_hinge": 22,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 0,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "has_freejoint": true,
+   "root_body": "base",
+   "n_root_children": 1,
+   "n_limited": 22,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 26,
+   "n_visual_mesh_geoms": 26,
+   "n_collision_geoms": 11,
+   "n_collision_mesh_geoms": 0,
+   "n_collision_geoms_physics_enabled": 11,
+   "collision_geom_types": [
+    "BOX",
+    "CYLINDER"
+   ],
+   "floor_geom_in_model": false,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 26,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 0.79,
+   "min_z_qpos0_m": 0.04,
+   "extent_xy_qpos0_m": [
+    0.27,
+    0.597
+   ],
+   "feet": {
+    "R": {
+     "body": "leg_right_ankle_roll",
+     "min_z": 0.04,
+     "n_collision": 1,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "BOX"
+     ]
+    },
+    "L": {
+     "body": "leg_left_ankle_roll",
+     "min_z": 0.04,
+     "n_collision": 1,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "BOX"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "arm_left_hand_link",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "arm_left_shoulder_pitch_joint",
+      "arm_left_shoulder_roll_joint",
+      "arm_left_shoulder_yaw_joint",
+      "arm_left_elbow_pitch_joint",
+      "arm_left_elbow_roll_joint"
+     ],
+     "top_body": "arm_left_shoulder_pitch"
+    },
+    "R": {
+     "hand_body": "arm_right_hand_link",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "arm_right_shoulder_pitch_joint",
+      "arm_right_shoulder_roll_joint",
+      "arm_right_shoulder_yaw_joint",
+      "arm_right_elbow_pitch_joint",
+      "arm_right_elbow_roll_joint"
+     ],
+     "top_body": "arm_right_shoulder_pitch"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:base",
+   "height_tpose_m": 0.7905,
+   "armspan_tpose_m": 1.196,
+   "umr_tpose_qpos_proposed": {
+    "arm_left_shoulder_roll_joint": 1.308997,
+    "arm_right_shoulder_roll_joint": -1.308997
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.119 dz=-0.279 m",
+    "L: hand-shoulder dy=+0.332 dz=+0.001 dx=+0.000 m",
+    "R qpos0: hand-shoulder dy=-0.119 dz=-0.279 m",
+    "R: hand-shoulder dy=-0.332 dz=+0.001 dx=+0.000 m"
+   ],
+   "pcc_bbox_ratio_tpose": -0.0506,
+   "mjcf_source": "GMR assets",
+   "am2_role": "xwbc_data_only(not in AM2 lists)",
+   "xwbc_lafan_extracted": 77,
+   "topo_exp_caches": [],
+   "surface_v2_asset": false,
+   "sole_audit_label_feet": null,
+   "sole_audit_predicted_bias_cm": null,
+   "tier": "C_optional_extra",
+   "flags": [
+    "root body \"base\" frame is at foot level (body z=0, meshes at 0.7 m): body:base gives bbox ratio -0.05 -> use point_cloud_center \"bbox_ratio_0.6\" or body:imu_2; XWBC data exists (77 clips) but excluded from AM2 cache (prep_xwbc_cache EXCLUDE)",
+    "point_cloud_center bbox ratio -0.0506 outside [0.45,0.75]"
+   ],
+   "needs_fix": true
+  },
+  {
+   "name": "stanford_toddy",
+   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/stanford_toddy/toddy_mocap.xml",
+   "mjcf_sha256": "b4c7c27f39d3c1bf",
+   "load_ok": true,
+   "nq": 29,
+   "nv": 28,
+   "nu": 22,
+   "nbody": 34,
+   "ngeom": 72,
+   "nmesh": 55,
+   "n_free": 1,
+   "n_hinge": 22,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 1,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.3361
+   ],
+   "has_freejoint": true,
+   "root_body": "torso",
+   "n_root_children": 1,
+   "n_limited": 22,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 55,
+   "n_visual_mesh_geoms": 55,
+   "n_collision_geoms": 16,
+   "n_collision_mesh_geoms": 0,
+   "n_collision_geoms_physics_enabled": 16,
+   "collision_geom_types": [
+    "BOX",
+    "CAPSULE",
+    "SPHERE"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 55,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 0.5614,
+   "min_z_qpos0_m": -0.0,
+   "extent_xy_qpos0_m": [
+    0.175,
+    0.262
+   ],
+   "feet": {
+    "L": {
+     "body": "ank_roll_link",
+     "min_z": -0.0,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "BOX"
+     ]
+    },
+    "R": {
+     "body": "ank_roll_link_2",
+     "min_z": -0.0,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "BOX"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "hand",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "left_sho_pitch",
+      "left_sho_roll",
+      "left_sho_yaw",
+      "left_elbow_roll"
+     ],
+     "top_body": "sho_pitch_link"
+    },
+    "R": {
+     "hand_body": "hand_2",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "right_sho_pitch",
+      "right_sho_roll",
+      "right_sho_yaw",
+      "right_elbow_roll"
+     ],
+     "top_body": "sho_pitch_link_2"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:torso",
+   "height_tpose_m": 0.5614,
+   "armspan_tpose_m": 0.6384,
+   "umr_tpose_qpos_proposed": {
+    "left_sho_roll": -1.570796,
+    "right_sho_roll": -1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.030 dz=-0.168 m",
+    "L: hand-shoulder dy=+0.195 dz=+0.003 dx=+0.019 m",
+    "R qpos0: hand-shoulder dy=-0.030 dz=-0.168 m",
+    "R: hand-shoulder dy=-0.195 dz=+0.003 dx=-0.019 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.5986,
+   "mjcf_source": "GMR assets",
+   "am2_role": "not_in_am2",
+   "xwbc_lafan_extracted": false,
+   "topo_exp_caches": [],
+   "surface_v2_asset": false,
+   "sole_audit_label_feet": null,
+   "sole_audit_predicted_bias_cm": null,
+   "tier": "C_optional_extra",
+   "flags": [
+    "arm bodies have no side tokens (names via joints only); 0.56 m tall"
+   ],
+   "needs_fix": false
+  },
+  {
+   "name": "apptronik_apollo",
+   "mjcf": "/var/tmp/alphamotion/robot_models/menagerie/apptronik_apollo/apptronik_apollo.xml",
+   "mjcf_sha256": "1b9f77a9e743088e",
+   "load_ok": true,
+   "nq": 39,
+   "nv": 38,
+   "nu": 32,
+   "nbody": 37,
+   "ngeom": 78,
+   "nmesh": 44,
+   "n_free": 1,
+   "n_hinge": 32,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 1,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    1.0813
+   ],
+   "has_freejoint": true,
+   "root_body": "base_link",
+   "n_root_children": 2,
+   "n_limited": 32,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 60,
+   "n_visual_mesh_geoms": 60,
+   "n_collision_geoms": 18,
+   "n_collision_mesh_geoms": 0,
+   "n_collision_geoms_physics_enabled": 0,
+   "collision_geom_types": [
+    "BOX",
+    "CAPSULE"
+   ],
+   "floor_geom_in_model": false,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 60,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [
+    "torso_oak_d_pro_w_rear_frame_link",
+    "torso_oak_d_pro_w_front_frame_link"
+   ],
+   "height_qpos0_m": 1.7959,
+   "min_z_qpos0_m": -0.006,
+   "extent_xy_qpos0_m": [
+    0.405,
+    0.634
+   ],
+   "feet": {
+    "L": {
+     "body": "l_foot_link",
+     "min_z": -0.006,
+     "n_collision": 1,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": false,
+     "collision_types": [
+      "BOX"
+     ]
+    },
+    "R": {
+     "body": "r_foot_link",
+     "min_z": -0.006,
+     "n_collision": 1,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": false,
+     "collision_types": [
+      "BOX"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "l_wrist_pitch_link",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "l_shoulder_aa",
+      "l_shoulder_ie",
+      "l_shoulder_fe",
+      "l_elbow_fe",
+      "l_wrist_roll",
+      "l_wrist_yaw",
+      "l_wrist_pitch"
+     ],
+     "top_body": "l_shoulder_aa_link"
+    },
+    "R": {
+     "hand_body": "r_wrist_pitch_link",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "r_shoulder_aa",
+      "r_shoulder_ie",
+      "r_shoulder_fe",
+      "r_elbow_fe",
+      "r_wrist_roll",
+      "r_wrist_yaw",
+      "r_wrist_pitch"
+     ],
+     "top_body": "r_shoulder_aa_link"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:torso_roll_link",
+   "height_tpose_m": 1.7959,
+   "armspan_tpose_m": 1.9387,
+   "umr_tpose_qpos_proposed": {
+    "l_shoulder_aa": 1.570796,
+    "l_elbow_fe": -0.407243,
+    "r_shoulder_aa": -1.570796,
+    "r_elbow_fe": -0.407243
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.067 dz=-0.575 m",
+    "L: hand-shoulder dy=+0.570 dz=+0.040 dx=+0.105 m",
+    "R qpos0: hand-shoulder dy=-0.067 dz=-0.575 m",
+    "R: hand-shoulder dy=-0.570 dz=+0.040 dx=+0.105 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.6228,
+   "mjcf_source": "mujoco_menagerie",
+   "am2_role": "not_in_am2",
+   "xwbc_lafan_extracted": false,
+   "topo_exp_caches": [],
+   "surface_v2_asset": false,
+   "sole_audit_label_feet": null,
+   "sole_audit_predicted_bias_cm": null,
+   "tier": "C_optional_extra",
+   "flags": [
+    "ALL 18 collision geoms have contype=conaffinity=0 (menagerie class collision group 3, no <pair>): no physics contact until contype/conaffinity fixed; UMR point clouds unaffected (visual meshes)",
+    "feet collision geoms not physics-enabled (contype/conaffinity=0)"
+   ],
+   "needs_fix": true
+  },
+  {
+   "name": "toddlerbot_2xm",
+   "mjcf": "/var/tmp/alphamotion/robot_models/menagerie/toddlerbot_2xm/toddlerbot_2xm.xml",
+   "mjcf_sha256": "0599ae55c3562408",
+   "load_ok": true,
+   "nq": 51,
+   "nv": 50,
+   "nu": 30,
+   "nbody": 46,
+   "ngeom": 71,
+   "nmesh": 47,
+   "n_free": 1,
+   "n_hinge": 44,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 13,
+   "n_contact_pairs": 65,
+   "n_keyframes": 1,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.3151
+   ],
+   "has_freejoint": true,
+   "root_body": "torso",
+   "n_root_children": 1,
+   "n_limited": 44,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 45,
+   "n_visual_mesh_geoms": 45,
+   "n_collision_geoms": 26,
+   "n_collision_mesh_geoms": 2,
+   "n_collision_geoms_physics_enabled": 2,
+   "collision_geom_types": [
+    "BOX",
+    "MESH"
+   ],
+   "floor_geom_in_model": false,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 45,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 0.5375,
+   "min_z_qpos0_m": -0.0,
+   "extent_xy_qpos0_m": [
+    0.17,
+    0.262
+   ],
+   "feet": {
+    "L": {
+     "body": "left_ankle_roll_link",
+     "min_z": -0.0,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": false,
+     "collision_types": [
+      "BOX",
+      "MESH"
+     ]
+    },
+    "R": {
+     "body": "right_ankle_roll_link",
+     "min_z": -0.0,
+     "n_collision": 2,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": false,
+     "collision_types": [
+      "BOX",
+      "MESH"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "left_wrist_gear_drive",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "left_shoulder_pitch",
+      "left_shoulder_roll",
+      "left_shoulder_yaw_driven",
+      "left_elbow_roll",
+      "left_elbow_yaw_driven",
+      "left_wrist_pitch_driven",
+      "left_wrist_pitch_drive"
+     ],
+     "top_body": "left_shoulder_pitch_link"
+    },
+    "R": {
+     "hand_body": "right_wrist_gear_drive",
+     "n_hand_dof": 0,
+     "n_collision": 1,
+     "arm_chain_joints": [
+      "right_shoulder_pitch",
+      "right_shoulder_roll",
+      "right_shoulder_yaw_driven",
+      "right_elbow_roll",
+      "right_elbow_yaw_driven",
+      "right_wrist_pitch_driven",
+      "right_wrist_pitch_drive"
+     ],
+     "top_body": "right_shoulder_pitch_link"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:torso",
+   "height_tpose_m": 0.5375,
+   "armspan_tpose_m": 0.6508,
+   "umr_tpose_qpos_proposed": {
+    "left_shoulder_roll": 1.570796,
+    "left_elbow_roll": -0.296706,
+    "right_shoulder_roll": 1.570796,
+    "right_elbow_roll": -0.296706
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.046 dz=-0.148 m",
+    "L: hand-shoulder dy=+0.178 dz=+0.000 dx=-0.000 m",
+    "R qpos0: hand-shoulder dy=-0.046 dz=-0.148 m",
+    "R: hand-shoulder dy=-0.178 dz=+0.000 dx=+0.000 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.5862,
+   "mjcf_source": "mujoco_menagerie",
+   "am2_role": "not_in_am2",
+   "xwbc_lafan_extracted": false,
+   "topo_exp_caches": [],
+   "surface_v2_asset": false,
+   "sole_audit_label_feet": null,
+   "sole_audit_predicted_bias_cm": null,
+   "tier": "C_optional_extra",
+   "flags": [
+    "only 2/26 collision geoms physics-enabled (contacts via 65 explicit <pair>); 13 eq constraints (gear/linkage)",
+    "feet collision geoms not physics-enabled (contype/conaffinity=0)"
+   ],
+   "needs_fix": true
+  },
+  {
+   "name": "robotis_op3",
+   "mjcf": "/var/tmp/alphamotion/robot_models/menagerie/robotis_op3/op3.xml",
+   "mjcf_sha256": "02e07fe80bb0352a",
+   "load_ok": true,
+   "nq": 27,
+   "nv": 26,
+   "nu": 20,
+   "nbody": 22,
+   "ngeom": 50,
+   "nmesh": 48,
+   "n_free": 1,
+   "n_hinge": 20,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 0,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.3
+   ],
+   "has_freejoint": true,
+   "root_body": "body_link",
+   "n_root_children": 1,
+   "n_limited": 0,
+   "unlimited_joints": [
+    "head_pan",
+    "head_tilt",
+    "l_sho_pitch",
+    "l_sho_roll",
+    "l_el",
+    "r_sho_pitch",
+    "r_sho_roll",
+    "r_el",
+    "l_hip_yaw",
+    "l_hip_roll",
+    "l_hip_pitch",
+    "l_knee"
+   ],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 21,
+   "n_visual_mesh_geoms": 21,
+   "n_collision_geoms": 29,
+   "n_collision_mesh_geoms": 25,
+   "n_collision_geoms_physics_enabled": 29,
+   "collision_geom_types": [
+    "BOX",
+    "MESH"
+   ],
+   "floor_geom_in_model": false,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 21,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 0.5109,
+   "min_z_qpos0_m": 0.0208,
+   "extent_xy_qpos0_m": [
+    0.175,
+    0.651
+   ],
+   "feet": {
+    "R": {
+     "body": "r_ank_roll_link",
+     "min_z": 0.0208,
+     "n_collision": 3,
+     "n_collision_on_foot_body": 2,
+     "physics_enabled": true,
+     "collision_types": [
+      "BOX",
+      "MESH"
+     ]
+    },
+    "L": {
+     "body": "l_ank_roll_link",
+     "min_z": 0.0208,
+     "n_collision": 3,
+     "n_collision_on_foot_body": 2,
+     "physics_enabled": true,
+     "collision_types": [
+      "BOX",
+      "MESH"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {
+    "L": {
+     "hand_body": "l_el_link",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "l_sho_pitch",
+      "l_sho_roll",
+      "l_el"
+     ],
+     "top_body": "l_sho_pitch_link"
+    },
+    "R": {
+     "hand_body": "r_el_link",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "r_sho_pitch",
+      "r_sho_roll",
+      "r_el"
+     ],
+     "top_body": "r_sho_pitch_link"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:body_link",
+   "height_tpose_m": 0.5109,
+   "armspan_tpose_m": 0.6508,
+   "umr_tpose_qpos_proposed": {},
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.119 dz=-0.010 m",
+    "L: qpos0 already T-pose (no change)",
+    "R qpos0: hand-shoulder dy=-0.119 dz=-0.010 m",
+    "R: qpos0 already T-pose (no change)"
+   ],
+   "pcc_bbox_ratio_tpose": 0.5464,
+   "mjcf_source": "mujoco_menagerie",
+   "am2_role": "not_in_am2",
+   "xwbc_lafan_extracted": false,
+   "topo_exp_caches": [],
+   "surface_v2_asset": false,
+   "sole_audit_label_feet": null,
+   "sole_audit_predicted_bias_cm": null,
+   "tier": "C_optional_extra",
+   "flags": [
+    "12+ joints without limits (UMR joint-limit box missing)"
+   ],
+   "needs_fix": false
+  },
+  {
+   "name": "berkeley_humanoid",
+   "mjcf": "/var/tmp/alphamotion/robot_models/menagerie/berkeley_humanoid/berkeley_humanoid.xml",
+   "mjcf_sha256": "e5b9396bf23dea75",
+   "load_ok": true,
+   "nq": 19,
+   "nv": 18,
+   "nu": 12,
+   "nbody": 14,
+   "ngeom": 26,
+   "nmesh": 13,
+   "n_free": 1,
+   "n_hinge": 12,
+   "n_slide": 0,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 1,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.6
+   ],
+   "has_freejoint": true,
+   "root_body": "torso",
+   "n_root_children": 1,
+   "n_limited": 12,
+   "unlimited_joints": [],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 13,
+   "n_visual_mesh_geoms": 13,
+   "n_collision_geoms": 13,
+   "n_collision_mesh_geoms": 0,
+   "n_collision_geoms_physics_enabled": 13,
+   "collision_geom_types": [
+    "BOX",
+    "CYLINDER"
+   ],
+   "floor_geom_in_model": false,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 13,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 0.8735,
+   "min_z_qpos0_m": 0.0343,
+   "extent_xy_qpos0_m": [
+    0.226,
+    0.384
+   ],
+   "feet": {},
+   "feet_have_collision": false,
+   "hands": {},
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": false,
+   "umr_point_cloud_center": "body:torso",
+   "height_tpose_m": 0.8735,
+   "armspan_tpose_m": 0.384,
+   "umr_tpose_qpos_proposed": {},
+   "umr_tpose_check": [],
+   "pcc_bbox_ratio_tpose": 0.6476,
+   "mjcf_source": "mujoco_menagerie",
+   "am2_role": "not_in_am2",
+   "xwbc_lafan_extracted": false,
+   "topo_exp_caches": [],
+   "surface_v2_asset": false,
+   "sole_audit_label_feet": null,
+   "sole_audit_predicted_bias_cm": null,
+   "tier": "X_excluded: no arms (legs only)",
+   "flags": [
+    "feet: missing collision geoms or feet not found"
+   ],
+   "needs_fix": true
+  },
+  {
+   "name": "galaxea_r1pro",
+   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/galaxea_r1pro/r1_pro.xml",
+   "mjcf_sha256": "28f62844efc69538",
+   "load_ok": true,
+   "nq": 27,
+   "nv": 27,
+   "nu": 24,
+   "nbody": 26,
+   "ngeom": 33,
+   "nmesh": 36,
+   "n_free": 0,
+   "n_hinge": 25,
+   "n_slide": 2,
+   "n_ball": 0,
+   "n_eq": 0,
+   "n_contact_pairs": 0,
+   "n_keyframes": 0,
+   "has_freejoint": false,
+   "root_body": "base_link",
+   "n_root_children": 1,
+   "n_limited": 21,
+   "unlimited_joints": [
+    "base_x",
+    "base_y",
+    "base_yaw",
+    "wheel_motor_joint1",
+    "wheel_motor_joint2",
+    "wheel_motor_joint3"
+   ],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 0,
+   "n_visual_mesh_geoms": 0,
+   "n_collision_geoms": 32,
+   "n_collision_mesh_geoms": 32,
+   "n_collision_geoms_physics_enabled": 32,
+   "collision_geom_types": [
+    "MESH"
+   ],
+   "floor_geom_in_model": true,
+   "umr_surface_policy": "all_mesh(no visual-only meshes)",
+   "umr_surface_n_geoms": 32,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.6957,
+   "min_z_qpos0_m": -0.0,
+   "extent_xy_qpos0_m": [
+    0.636,
+    0.675
+   ],
+   "feet": {},
+   "feet_have_collision": false,
+   "hands": {
+    "L": {
+     "hand_body": "left_arm_link7",
+     "n_hand_dof": 0,
+     "n_collision": 4,
+     "arm_chain_joints": [
+      "left_arm_joint1",
+      "left_arm_joint2",
+      "left_arm_joint3",
+      "left_arm_joint4",
+      "left_arm_joint5",
+      "left_arm_joint6",
+      "left_arm_joint7"
+     ],
+     "top_body": "left_arm_link1"
+    },
+    "R": {
+     "hand_body": "right_arm_link7",
+     "n_hand_dof": 0,
+     "n_collision": 4,
+     "arm_chain_joints": [
+      "right_arm_joint1",
+      "right_arm_joint2",
+      "right_arm_joint3",
+      "right_arm_joint4",
+      "right_arm_joint5",
+      "right_arm_joint6",
+      "right_arm_joint7"
+     ],
+     "top_body": "right_arm_link1"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:torso_link1",
+   "height_tpose_m": 1.6957,
+   "armspan_tpose_m": 1.9614,
+   "umr_tpose_qpos_proposed": {
+    "left_arm_joint2": 1.570796,
+    "right_arm_joint2": -1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.081 dz=-0.568 m",
+    "L: hand-shoulder dy=+0.649 dz=-0.000 dx=+0.029 m",
+    "R qpos0: hand-shoulder dy=-0.081 dz=-0.568 m",
+    "R: hand-shoulder dy=-0.649 dz=+0.000 dx=+0.029 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.2021,
+   "mjcf_source": "GMR assets (wheeled base)",
+   "am2_role": "not_in_am2",
+   "xwbc_lafan_extracted": false,
+   "topo_exp_caches": [],
+   "surface_v2_asset": false,
+   "sole_audit_label_feet": null,
+   "sole_audit_predicted_bias_cm": null,
+   "tier": "X_excluded: wheeled base, no freejoint, no visual-only meshes",
+   "flags": [
+    "feet: missing collision geoms or feet not found",
+    "point_cloud_center bbox ratio 0.2021 outside [0.45,0.75]",
+    "UMR surface falls back to all_mesh(no visual-only meshes)"
+   ],
+   "needs_fix": true
+  },
+  {
+   "name": "agility_cassie",
+   "mjcf": "/var/tmp/alphamotion/robot_models/menagerie/agility_cassie/cassie.xml",
+   "mjcf_sha256": "92ec84d23a0f62a8",
+   "load_ok": true,
+   "nq": 35,
+   "nv": 32,
+   "nu": 10,
+   "nbody": 26,
+   "ngeom": 44,
+   "nmesh": 25,
+   "n_free": 1,
+   "n_hinge": 20,
+   "n_slide": 0,
+   "n_ball": 2,
+   "n_eq": 4,
+   "n_contact_pairs": 0,
+   "n_keyframes": 1,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    1.1
+   ],
+   "has_freejoint": true,
+   "root_body": "cassie-pelvis",
+   "n_root_children": 1,
+   "n_limited": 16,
+   "unlimited_joints": [
+    "left-heel-spring",
+    "left-plantar-rod",
+    "right-heel-spring",
+    "right-plantar-rod"
+   ],
+   "qpos0_outside_limits": [
+    "left-foot-crank",
+    "left-foot",
+    "right-foot-crank",
+    "right-foot"
+   ],
+   "n_visual_geoms": 25,
+   "n_visual_mesh_geoms": 25,
+   "n_collision_geoms": 19,
+   "n_collision_mesh_geoms": 0,
+   "n_collision_geoms_physics_enabled": 19,
+   "collision_geom_types": [
+    "CAPSULE",
+    "ELLIPSOID"
+   ],
+   "floor_geom_in_model": false,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 25,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.262,
+   "min_z_qpos0_m": -0.0014,
+   "extent_xy_qpos0_m": [
+    0.604,
+    0.53
+   ],
+   "feet": {
+    "L": {
+     "body": "left-foot",
+     "min_z": -0.0154,
+     "n_collision": 4,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "CAPSULE"
+     ]
+    },
+    "R": {
+     "body": "right-foot",
+     "min_z": -0.0154,
+     "n_collision": 4,
+     "n_collision_on_foot_body": 1,
+     "physics_enabled": true,
+     "collision_types": [
+      "CAPSULE"
+     ]
+    }
+   },
+   "feet_have_collision": true,
+   "hands": {},
+   "hand_type": "none/fixed",
+   "hand_like_joints": [
+    "left-heel-spring",
+    "right-heel-spring"
+   ],
+   "hands_have_collision": false,
+   "umr_point_cloud_center": "body:cassie-pelvis",
+   "height_tpose_m": 1.262,
+   "armspan_tpose_m": 0.53,
+   "umr_tpose_qpos_proposed": {},
+   "umr_tpose_check": [],
+   "pcc_bbox_ratio_tpose": 0.8727,
+   "mjcf_source": "mujoco_menagerie (no arms)",
+   "am2_role": "not_in_am2",
+   "xwbc_lafan_extracted": false,
+   "topo_exp_caches": [],
+   "surface_v2_asset": false,
+   "sole_audit_label_feet": null,
+   "sole_audit_predicted_bias_cm": null,
+   "tier": "X_excluded: no arms, closed-chain legs (4 eq), not humanoid",
+   "flags": [
+    "point_cloud_center bbox ratio 0.8727 outside [0.45,0.75]"
+   ],
+   "needs_fix": true
+  },
+  {
+   "name": "rby1",
+   "mjcf": "/var/tmp/alphamotion/robot_models/menagerie/rainbow_robotics_rby1/rby1m_1.3.xml",
+   "mjcf_sha256": "fa6d736f76e27de5",
+   "load_ok": true,
+   "nq": 37,
+   "nv": 36,
+   "nu": 28,
+   "nbody": 35,
+   "ngeom": 129,
+   "nmesh": 47,
+   "n_free": 1,
+   "n_hinge": 26,
+   "n_slide": 4,
+   "n_ball": 0,
+   "n_eq": 2,
+   "n_contact_pairs": 0,
+   "n_keyframes": 0,
+   "qpos0_root_xyz": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "has_freejoint": true,
+   "root_body": "base",
+   "n_root_children": 1,
+   "n_limited": 26,
+   "unlimited_joints": [
+    "wheel_fr",
+    "wheel_fl",
+    "wheel_rr",
+    "wheel_rl"
+   ],
+   "qpos0_outside_limits": [],
+   "n_visual_geoms": 56,
+   "n_visual_mesh_geoms": 56,
+   "n_collision_geoms": 73,
+   "n_collision_mesh_geoms": 11,
+   "n_collision_geoms_physics_enabled": 73,
+   "collision_geom_types": [
+    "MESH",
+    "SPHERE"
+   ],
+   "floor_geom_in_model": false,
+   "umr_surface_policy": "visual_mesh",
+   "umr_surface_n_geoms": 56,
+   "degenerate_meshes": [],
+   "bodies_without_surface_geom": [],
+   "height_qpos0_m": 1.5352,
+   "min_z_qpos0_m": -0.0002,
+   "extent_xy_qpos0_m": [
+    0.695,
+    0.6
+   ],
+   "feet": {},
+   "feet_have_collision": false,
+   "hands": {
+    "L": {
+     "hand_body": "EE_GR_TF_L",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "left_arm_0",
+      "left_arm_1",
+      "left_arm_2",
+      "left_arm_3",
+      "left_arm_4",
+      "left_arm_5",
+      "left_arm_6"
+     ],
+     "top_body": "link_left_arm_0"
+    },
+    "R": {
+     "hand_body": "EE_GR_TF_R",
+     "n_hand_dof": 0,
+     "n_collision": 2,
+     "arm_chain_joints": [
+      "right_arm_0",
+      "right_arm_1",
+      "right_arm_2",
+      "right_arm_3",
+      "right_arm_4",
+      "right_arm_5",
+      "right_arm_6"
+     ],
+     "top_body": "link_right_arm_0"
+    }
+   },
+   "hand_type": "none/fixed",
+   "hand_like_joints": [
+    "gripper_finger_r1",
+    "gripper_finger_r2",
+    "gripper_finger_l1",
+    "gripper_finger_l2"
+   ],
+   "hands_have_collision": true,
+   "umr_point_cloud_center": "body:link_torso_0",
+   "height_tpose_m": 1.5352,
+   "armspan_tpose_m": 1.982,
+   "umr_tpose_qpos_proposed": {
+    "left_arm_1": 1.570796,
+    "right_arm_1": -1.570796
+   },
+   "umr_tpose_check": [
+    "L qpos0: hand-shoulder dy=+0.000 dz=-0.711 m",
+    "L: hand-shoulder dy=+0.711 dz=+0.000 dx=+0.000 m",
+    "R qpos0: hand-shoulder dy=+0.000 dz=-0.711 m",
+    "R: hand-shoulder dy=-0.711 dz=+0.000 dx=+0.000 m"
+   ],
+   "pcc_bbox_ratio_tpose": 0.1828,
+   "mjcf_source": "mujoco_menagerie (wheeled)",
+   "am2_role": "not_in_am2",
+   "xwbc_lafan_extracted": false,
+   "topo_exp_caches": [],
+   "surface_v2_asset": false,
+   "sole_audit_label_feet": null,
+   "sole_audit_predicted_bias_cm": null,
+   "tier": "X_excluded: wheeled base (no legs/feet)",
+   "flags": [
+    "feet: missing collision geoms or feet not found",
+    "point_cloud_center bbox ratio 0.1828 outside [0.45,0.75]"
+   ],
+   "needs_fix": true
+  }
+ ]
+}

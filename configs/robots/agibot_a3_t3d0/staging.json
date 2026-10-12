@@ -1,0 +1,73 @@
+{
+ "name": "agibot_a3_t3d0",
+ "src_mjcf": "/var/tmp/alphamotion/robot_models/agibot_a3/a3_t3d0/mjcf/agibot_a3_t3d0_mjcf.xml",
+ "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/agibot_a3_t3d0/agibot_a3_t3d0.xml",
+ "nq": 38,
+ "nv": 37,
+ "facing_plus_x": true,
+ "locked_joints": [],
+ "tpose": {
+  "left_shoulder_roll_joint": 1.570796,
+  "left_elbow_joint": 1.570796,
+  "right_shoulder_roll_joint": -1.570796,
+  "right_elbow_joint": 1.570796
+ },
+ "tpose_fixed": false,
+ "tpose_metrics_draft": {
+  "L": {
+   "upper_arm_deg": 3.0660596614996054,
+   "forearm_deg": 4.432649744760869,
+   "hand_deg": 4.12722234608557,
+   "tip_minus_shoulder_cm": [
+    1.0,
+    78.8,
+    -0.6
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "R": {
+   "upper_arm_deg": 3.061549700986068,
+   "forearm_deg": 4.432649744761033,
+   "hand_deg": 3.8853334227250294,
+   "tip_minus_shoulder_cm": [
+    0.7,
+    -78.8,
+    -0.5
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "pass": true
+ },
+ "tpose_metrics_final": {
+  "L": {
+   "upper_arm_deg": 3.0660596614996054,
+   "forearm_deg": 4.432649744760869,
+   "hand_deg": 4.12722234608557,
+   "tip_minus_shoulder_cm": [
+    1.0,
+    78.8,
+    -0.6
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "R": {
+   "upper_arm_deg": 3.061549700986068,
+   "forearm_deg": 4.432649744761033,
+   "hand_deg": 3.8853334227250294,
+   "tip_minus_shoulder_cm": [
+    0.7,
+    -78.8,
+    -0.5
+   ],
+   "elbow_axis_vertical": 1.0
+  },
+  "pass": true
+ },
+ "bbox_center_ratio": 0.6247663396856213,
+ "bbox_center_ratio_draft": 0.6248,
+ "exclusions": [],
+ "flagged_nonadjacent_rest_overlaps": [],
+ "remaining_tpose_overlaps": [],
+ "n_collision_geoms": 52,
+ "seconds": 2.9
+}

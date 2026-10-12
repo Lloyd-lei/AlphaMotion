@@ -1,0 +1,68 @@
+{
+ "name": "booster_t1",
+ "src_mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/booster_t1/T1_serial.xml",
+ "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/booster_t1/booster_t1.xml",
+ "nq": 30,
+ "nv": 29,
+ "facing_plus_x": true,
+ "locked_joints": [],
+ "tpose": {},
+ "tpose_fixed": false,
+ "tpose_metrics_draft": {
+  "L": {
+   "upper_arm_deg": 0.1332457586559674,
+   "forearm_deg": 0.0,
+   "hand_deg": 0.05337447093703306,
+   "tip_minus_shoulder_cm": [
+    0.0,
+    50.1,
+    0.0
+   ],
+   "elbow_axis_vertical": 0.0
+  },
+  "R": {
+   "upper_arm_deg": 0.1332457586559674,
+   "forearm_deg": 0.0,
+   "hand_deg": 0.05337447308799398,
+   "tip_minus_shoulder_cm": [
+    0.0,
+    -50.1,
+    0.0
+   ],
+   "elbow_axis_vertical": 0.0
+  },
+  "pass": true
+ },
+ "tpose_metrics_final": {
+  "L": {
+   "upper_arm_deg": 0.1332457586559674,
+   "forearm_deg": 0.0,
+   "hand_deg": 0.05337447093703306,
+   "tip_minus_shoulder_cm": [
+    0.0,
+    50.1,
+    0.0
+   ],
+   "elbow_axis_vertical": 0.0
+  },
+  "R": {
+   "upper_arm_deg": 0.1332457586559674,
+   "forearm_deg": 0.0,
+   "hand_deg": 0.05337447308799398,
+   "tip_minus_shoulder_cm": [
+    0.0,
+    -50.1,
+    0.0
+   ],
+   "elbow_axis_vertical": 0.0
+  },
+  "pass": true
+ },
+ "bbox_center_ratio": 0.5776285605966742,
+ "bbox_center_ratio_draft": 0.5776,
+ "exclusions": [],
+ "flagged_nonadjacent_rest_overlaps": [],
+ "remaining_tpose_overlaps": [],
+ "n_collision_geoms": 15,
+ "seconds": 0.6
+}

@@ -109,10 +109,22 @@ class Projector:
         if len(sel):
             J = g.point_jac(g.all_body[sel], X[sel])[:, 2, :]
             A.extend(J); b.extend(TARGET_LO - z[sel]); kinds += ['g'] * len(sel)
-        # required ground contact: lowest point of the region must come down to <= TARGET_HI
+        # collision-geom lowest support points (robot solid = visual U collision)
+        cz, cP = mm.get('cz', np.zeros(0)), mm.get('cP', np.zeros((0, 3)))
+        csel = np.flatnonzero(cz < ACT)
+        if len(csel):
+            J = g.point_jac(g.cg_body[csel], cP[csel])[:, 2, :]
+            A.extend(J); b.extend(TARGET_LO - cz[csel]); kinds += ['g'] * len(csel)
+        # required ground contact: lowest point of the region (visual or collision) must come down to <= TARGET_HI
         for r in np.flatnonzero(req_ground):
             k = np.flatnonzero(g.all_reg == r)
             i = k[np.argmin(z[k])]
+            kc = np.flatnonzero(g.cg_reg == r) if len(cz) else np.zeros(0, int)
+            if len(kc) and cz[kc].min() < z[i]:
+                ic = kc[np.argmin(cz[kc])]
+                J = g.point_jac(g.cg_body[[ic]], cP[[ic]])[0, 2, :]
+                A.append(-J); b.append(cz[ic] - TARGET_HI); kinds.append('gc')
+                continue
             J = g.point_jac(g.all_body[[i]], X[[i]])[0, 2, :]
             A.append(-J); b.append(z[i] - TARGET_HI); kinds.append('gc')
         # object
@@ -129,9 +141,20 @@ class Projector:
                 J = g.point_jac(g.all_body[sel], X[sel])
                 Jn = np.einsum('ni,niv->nv', on[sel], J)
                 A.extend(Jn); b.extend(TARGET_LO - od[sel]); kinds += ['o'] * len(sel)
+        # robot collision geoms vs object solid geoms (exact convex-convex)
+        opairs = mm.get('obj_pairs', [])
+        oA, ob, oreg, odist = g.obj_pair_rows([pp for pp in opairs if pp[2] < ACT], TARGET_LO) if opairs else ([], [], [], [])
+        A.extend(oA); b.extend(ob); kinds += ['o'] * len(oA)
+        if mm['obj_d'] is not None:
             for r in np.flatnonzero(req_obj):
                 k = np.flatnonzero(g.all_reg == r)
-                if not np.isfinite(od[k]).any():
+                vmin = np.min(od[k]) if np.isfinite(od[k]).any() else np.inf
+                kp = [j for j, rr in enumerate(oreg) if rr == r]
+                if kp and min(odist[j] for j in kp) < vmin:
+                    j = min(kp, key=lambda j: odist[j])
+                    A.append(-np.asarray(oA[j])); b.append(odist[j] - TARGET_HI); kinds.append('oc')
+                    continue
+                if not np.isfinite(vmin):
                     continue
                 i = k[np.argmin(od[k])]
                 J = g.point_jac(g.all_body[[i]], X[[i]])[0]

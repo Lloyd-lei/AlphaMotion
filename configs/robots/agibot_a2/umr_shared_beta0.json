@@ -1,0 +1,41 @@
+{
+ "robot": {
+  "name": "agibot_a2",
+  "xml": "/home/arenalabs/umr_factory_data/robots/agibot_a2/agibot_a2.xml",
+  "point_cloud_center": "body:base_link",
+  "tpose_qpos": {}
+ },
+ "correspondence": {
+  "dataset": {
+   "smpl_center": "bbox_ratio",
+   "bbox_center_ratio": 0.583453,
+   "out": "/home/arenalabs/umr_factory_data/corr/agibot_a2/beta0/correspondence_dataset.npz"
+  },
+  "train": {
+   "out_dir": "/home/arenalabs/umr_factory_data/corr/agibot_a2/beta0/train",
+   "template_name": "auto",
+   "device": "auto"
+  },
+  "smpl_name": "auto"
+ },
+ "smpl_template": {
+  "source": "config",
+  "type": "smplx",
+  "gender": "neutral",
+  "use_betas": true,
+  "use_gender": true,
+  "name": "auto",
+  "betas": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ }
+}

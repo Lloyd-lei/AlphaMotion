@@ -1,0 +1,7 @@
+# Separate environment: do not upgrade the web or training environments.
+mcp==2.3.0
+numpy==1.26.4
+matplotlib==3.9.4
+Pillow==11.3.0
+jsonschema>=4.20,<5
+# Inherit mujoco, scipy and trimesh read-only from the existing UMR environment.

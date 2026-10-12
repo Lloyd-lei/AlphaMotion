@@ -1,0 +1,235 @@
+{
+ "generated_for": "lloyd: 下一代 AlphaMotion 的人体动作数据丰富度/种类盘点（只读, 无 GPU）",
+ "taxonomy": [
+  "locomotion",
+  "dynamic",
+  "ground_contact",
+  "sitting_on_object",
+  "upper_body_manipulation",
+  "whole_body_object",
+  "gesture_social",
+  "idle_posture",
+  "other"
+ ],
+ "contacts": [
+  "feet_only",
+  "hands_ground",
+  "knees",
+  "hips",
+  "back",
+  "object_hands",
+  "object_feet"
+ ],
+ "method": {
+  "classifier": "正则多标签分类(taxo.py)：BONES 用 content_name+动作类型+非站立体位+道具字段；AMASS 用片段名+HumanML3D 描述+BABEL v1.0 act_cat；LAFAN 用动作族名；Mixamo 用片段名+UniML3D 描述",
+  "primary_rule": "主类优先级 whole_body_object > ground_contact > sitting_on_object > dynamic > upper_body_manipulation > locomotion > gesture_social > idle_posture > other；主类小时加起来=总时长",
+  "spot_check": "AMASS 按时长加权抽 30 段人工看：约 24 段主类合理(~80%)；主要误差=推搡恢复/伸手抬臂被判成操作、含糊的'sit'默认判成坐物体",
+  "caveat": "多标签小时会重复计算，不能相加；'物体'在这四个源里都只是文字/推断，没有一个带物体位姿"
+ },
+ "primary_hours_by_source": {
+  "BONES-SEED 原始": {
+   "locomotion": 42.48,
+   "dynamic": 28.3,
+   "ground_contact": 11.07,
+   "sitting_on_object": 2.83,
+   "upper_body_manipulation": 16.43,
+   "whole_body_object": 11.01,
+   "gesture_social": 17.69,
+   "idle_posture": 14.41,
+   "other": 0.0
+  },
+  "BONES-SEED 镜像": {
+   "locomotion": 42.43,
+   "dynamic": 28.3,
+   "ground_contact": 11.05,
+   "sitting_on_object": 2.83,
+   "upper_body_manipulation": 16.43,
+   "whole_body_object": 11.01,
+   "gesture_social": 17.68,
+   "idle_posture": 14.4,
+   "other": 0.0
+  },
+  "AMASS(xwbc)": {
+   "locomotion": 14.62,
+   "dynamic": 10.06,
+   "ground_contact": 1.83,
+   "sitting_on_object": 1.99,
+   "upper_body_manipulation": 9.28,
+   "whole_body_object": 1.33,
+   "gesture_social": 2.29,
+   "idle_posture": 1.24,
+   "other": 1.19
+  },
+  "LAFAN(xwbc)": {
+   "locomotion": 1.61,
+   "dynamic": 2.4,
+   "ground_contact": 0.59,
+   "sitting_on_object": 0.0,
+   "upper_body_manipulation": 0.0,
+   "whole_body_object": 0.0,
+   "gesture_social": 0.0,
+   "idle_posture": 0.0,
+   "other": 0.0
+  },
+  "Mixamo": {
+   "locomotion": 0.34,
+   "dynamic": 0.78,
+   "ground_contact": 0.29,
+   "sitting_on_object": 0.19,
+   "upper_body_manipulation": 0.25,
+   "whole_body_object": 0.04,
+   "gesture_social": 0.13,
+   "idle_posture": 0.34,
+   "other": 0.06
+  }
+ },
+ "primary_hours_total_originals_only": {
+  "locomotion": 59.05,
+  "dynamic": 41.54,
+  "ground_contact": 13.78,
+  "sitting_on_object": 5.01,
+  "upper_body_manipulation": 25.96,
+  "whole_body_object": 12.38,
+  "gesture_social": 20.11,
+  "idle_posture": 15.99,
+  "other": 1.25
+ },
+ "multilabel_hours_by_source": {
+  "BONES-SEED 原始": {
+   "locomotion": 57.77,
+   "dynamic": 30.03,
+   "ground_contact": 11.13,
+   "sitting_on_object": 3.36,
+   "upper_body_manipulation": 22.33,
+   "whole_body_object": 11.01,
+   "gesture_social": 22.63,
+   "idle_posture": 41.16,
+   "other": 0.0
+  },
+  "AMASS(xwbc)": {
+   "locomotion": 26.15,
+   "dynamic": 11.8,
+   "ground_contact": 1.89,
+   "sitting_on_object": 2.24,
+   "upper_body_manipulation": 14.11,
+   "whole_body_object": 1.33,
+   "gesture_social": 9.71,
+   "idle_posture": 23.28,
+   "other": 1.19
+  },
+  "LAFAN(xwbc)": {
+   "locomotion": 2.83,
+   "dynamic": 2.75,
+   "ground_contact": 0.59,
+   "sitting_on_object": 0.0,
+   "upper_body_manipulation": 0.0,
+   "whole_body_object": 0.0,
+   "gesture_social": 0.39,
+   "idle_posture": 0.17,
+   "other": 0.0
+  },
+  "Mixamo": {
+   "locomotion": 0.69,
+   "dynamic": 0.92,
+   "ground_contact": 0.29,
+   "sitting_on_object": 0.19,
+   "upper_body_manipulation": 0.46,
+   "whole_body_object": 0.04,
+   "gesture_social": 0.33,
+   "idle_posture": 1.2,
+   "other": 0.06
+  }
+ },
+ "contact_hours_by_source": {
+  "BONES-SEED 原始": {
+   "feet_only": 103.77,
+   "hands_ground": 4.72,
+   "knees": 6.26,
+   "hips": 8.39,
+   "back": 2.82,
+   "object_hands": 24.62,
+   "object_feet": 3.23
+  },
+  "AMASS(xwbc)": {
+   "feet_only": 28.9,
+   "hands_ground": 1.3,
+   "knees": 0.77,
+   "hips": 2.65,
+   "back": 0.31,
+   "object_hands": 11.76,
+   "object_feet": 1.73
+  },
+  "LAFAN(xwbc)": {
+   "feet_only": 4.01,
+   "hands_ground": 0.59,
+   "knees": 0.49,
+   "hips": 0.59,
+   "back": 0.59,
+   "object_hands": 0.0,
+   "object_feet": 0.0
+  },
+  "Mixamo": {
+   "feet_only": 1.52,
+   "hands_ground": 0.09,
+   "knees": 0.07,
+   "hips": 0.32,
+   "back": 0.1,
+   "object_hands": 0.48,
+   "object_feet": 0.03
+  }
+ },
+ "totals": {
+  "BONES": {
+   "orig": 144.22,
+   "mirror": 144.11
+  },
+  "AMASS_xwbc": 43.83,
+  "LAFAN_xwbc": 4.599,
+  "Mixamo": 2.408,
+  "Objaverse_bipedal_unverified": 13.486,
+  "originals_sum_4_sources": 195.06
+ },
+ "object_hours": {
+  "BONES_prop_text": 29.68,
+  "BONES_manipulated": 25.72,
+  "AMASS_implied": 11.76,
+  "AMASS_GRAB": 3.76,
+  "Mixamo_prop_in_name": 0.241,
+  "with_object_pose": 0.0
+ },
+ "status": {
+  "BONES": {
+   "on_disk_raw": "仅元数据（parquet/csv/temporal_labels v002）+ 10 条样例 BVH；SOMA BVH 全量包 soma_uniform.tar.gz(45.19 GB) 不在本机",
+   "downloader": "soma_uniform.tar.gz 排在 follow-up 队列(PID 3272054, runs=[])，还没开始；主下载器(PID 3258020)卡在 UniMate 模型权重阶段 39.5/45.9 GB，已 26.4 h 无进展（queue status=primary_stall_attention）",
+   "converted_smplx": "不需要（UMR 直接读 SOMA BVH + MHR 体型）；已转 0 条",
+   "retargeted": "厂商自带 G1 CSV（1 台，/var/tmp/arena/raw/bones_seed/g1.tar.gz 23.5 GB，已解压 4 条）；UMR 0 条/0 台；另有 8 月旧缓存 topo_exp/cache_bones_body（500 段 soma_body 关节, 30fps, 非 UMR）",
+   "umr_robots": 0
+  },
+  "AMASS": {
+   "on_disk_raw": "否：原始 AMASS(SMPL-X/SMPL+H) 已不在本机；只有 xwbc 派生的 22 刚体 pos+quat (5.1 GB tar, 13,283 npz)",
+   "converted_smplx": "0",
+   "retargeted": "xwbc/GMR 已重定向 18 台(tar 在盘): berkeley_humanoid_lite, booster_k1, booster_t1, booster_t1_29dof, engineai_pm01, fourier_gr3, fourier_n1, hightorque_hi, kuavo_s45, pal_talos, pnd_adam_lite, tienkung, unitree_g1_23dof, unitree_g1_29dof, unitree_h1, unitree_h1_2, unitree_h2, unitree_r1；我们的缓存 cache_amass_lconv_tfix 用其中 17 台(去掉 berkeley_humanoid_lite)；UMR 0 台",
+   "known_issue": "xwbc 机器人流 4,560 段时间轴错位(KIT 3,985/CMU 503/TotalCapture 35…)，tfix 缓存已修；人体流本身对",
+   "umr_robots": 0
+  },
+  "LAFAN": {
+   "on_disk_raw": "原始 BVH 不在本机；有 xwbc 人体流 77 段 + UMR 样例 lafan1_smplx/dance1_subject2.npz",
+   "converted_smplx": "1 段 (dance1_subject2, UMR 自带样例)",
+   "retargeted": "xwbc/GMR 18 台(xwbc_full/lafan/*.tar.gz)；UMR: 1 段 dance1_subject2 → 3 台(fourier_gr3/unitree_g1_29dof/unitree_h2, out/) + QA 窗口(g1_23dof/h1/r1)",
+   "umr_robots": 3
+  },
+  "UniML3D": {
+   "on_disk_raw": "元数据(clips.csv/skeletons.csv/README)+HF 缓存冒烟样本: Mixamo 特征 npz 129/2,162, Objaverse 90；reload 导出 2 段 + 1.3 GB GLB 样本；全量数据未下载（主下载器在下 UniMate 模型权重, 非数据）",
+   "converted_smplx": "0",
+   "retargeted": "0",
+   "umr_robots": 0
+  }
+ },
+ "outputs": {
+  "bones": "bones_seed/bones_summary.json|bones_summary.md|bones_clip_labels.csv.gz",
+  "xwbc": "xwbc_amass_lafan/xwbc_summary.json|xwbc_summary.md|amass_clip_labels.csv.gz|lafan_clip_labels.csv",
+  "uniml3d": "uniml3d_mixamo/uniml3d_summary.json|uniml3d_summary.md|uniml3d_clip_labels.csv.gz",
+  "scout": "scout_others/scout_summary.json|scout_summary.md",
+  "combined": "core_sources/summary.json|summary.md|scripts/"
+ }
+}

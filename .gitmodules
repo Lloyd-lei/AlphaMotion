@@ -1,0 +1,8 @@
+[submodule "third_party/UMR"]
+	path = third_party/UMR
+	url = git@github.com:hanyang9/UMR.git
+	shallow = true
+[submodule "third_party/hiphi2smplx"]
+	path = third_party/hiphi2smplx
+	url = git@github.com:noitom-robotics/hiphi2smplx.git
+	shallow = true

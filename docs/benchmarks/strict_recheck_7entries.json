@@ -1,0 +1,281 @@
+{
+ "summary": {
+  "entries": 7,
+  "frames_checked": 17972,
+  "factory_gauge_now": "union visual+collision",
+  "violations_decoded": {
+   "ground_pen": 3196,
+   "self_pen": 0,
+   "object_pen": 202,
+   "ground_band": 3195,
+   "object_band": 202
+  },
+  "violations_source_same_frames": {
+   "ground_pen": 3197,
+   "self_pen": 0,
+   "object_pen": 202,
+   "ground_band": 3196,
+   "object_band": 202
+  },
+  "introduced_by_decode": {
+   "ground_pen": 1,
+   "self_pen": 0,
+   "object_pen": 0,
+   "ground_band": 1,
+   "object_band": 0
+  },
+  "worst": {
+   "ground_pen_mm": 6.3495,
+   "self_pen_mm": 0.4084,
+   "object_pen_mm": 4.5396,
+   "band_excess_mm": 5.8495
+  }
+ },
+ "entries": [
+  {
+   "clip": "case3_kick_right__20260330000586_1_1775269234",
+   "robot": "fourier_gr3",
+   "gauge": "visual",
+   "frames_valid": 1906,
+   "frames_checked": 1906,
+   "violations_decoded": {
+    "ground_pen": 1445,
+    "self_pen": 0,
+    "object_pen": 18,
+    "ground_band": 1444,
+    "object_band": 18
+   },
+   "violations_source_same_frames": {
+    "ground_pen": 1445,
+    "self_pen": 0,
+    "object_pen": 18,
+    "ground_band": 1444,
+    "object_band": 18
+   },
+   "introduced_by_decode": {
+    "ground_pen": 0,
+    "self_pen": 0,
+    "object_pen": 0,
+    "ground_band": 0,
+    "object_band": 0
+   },
+   "worst": {
+    "ground_pen_mm": 5.385,
+    "self_pen_mm": 0.0,
+    "object_pen_mm": 4.0071,
+    "band_excess_mm": 4.885
+   },
+   "seconds": 16.7
+  },
+  {
+   "clip": "case3_kick_right__20260330000586_1_1775269234",
+   "robot": "unitree_g1_29dof",
+   "gauge": "visual",
+   "frames_valid": 1762,
+   "frames_checked": 1762,
+   "violations_decoded": {
+    "ground_pen": 1,
+    "self_pen": 0,
+    "object_pen": 17,
+    "ground_band": 1,
+    "object_band": 17
+   },
+   "violations_source_same_frames": {
+    "ground_pen": 1,
+    "self_pen": 0,
+    "object_pen": 17,
+    "ground_band": 1,
+    "object_band": 17
+   },
+   "introduced_by_decode": {
+    "ground_pen": 0,
+    "self_pen": 0,
+    "object_pen": 0,
+    "ground_band": 0,
+    "object_band": 0
+   },
+   "worst": {
+    "ground_pen_mm": 0.569,
+    "self_pen_mm": 0.0,
+    "object_pen_mm": 4.3386,
+    "band_excess_mm": 0.069
+   },
+   "seconds": 20.7
+  },
+  {
+   "clip": "case3_kick_right__20260330000586_1_1775269234",
+   "robot": "unitree_h2",
+   "gauge": "visual",
+   "frames_valid": 1900,
+   "frames_checked": 1900,
+   "violations_decoded": {
+    "ground_pen": 0,
+    "self_pen": 0,
+    "object_pen": 167,
+    "ground_band": 0,
+    "object_band": 167
+   },
+   "violations_source_same_frames": {
+    "ground_pen": 0,
+    "self_pen": 0,
+    "object_pen": 167,
+    "ground_band": 0,
+    "object_band": 167
+   },
+   "introduced_by_decode": {
+    "ground_pen": 0,
+    "self_pen": 0,
+    "object_pen": 0,
+    "ground_band": 0,
+    "object_band": 0
+   },
+   "worst": {
+    "ground_pen_mm": 0.4595,
+    "self_pen_mm": 0.0,
+    "object_pen_mm": 4.5396,
+    "band_excess_mm": 0.0
+   },
+   "seconds": 16.2
+  },
+  {
+   "clip": "lafan1_smplx__dance1_subject2",
+   "robot": "fourier_gr3",
+   "gauge": "visual",
+   "frames_valid": 3940,
+   "frames_checked": 3940,
+   "violations_decoded": {
+    "ground_pen": 1744,
+    "self_pen": 0,
+    "object_pen": 0,
+    "ground_band": 1744,
+    "object_band": 0
+   },
+   "violations_source_same_frames": {
+    "ground_pen": 1745,
+    "self_pen": 0,
+    "object_pen": 0,
+    "ground_band": 1745,
+    "object_band": 0
+   },
+   "introduced_by_decode": {
+    "ground_pen": 1,
+    "self_pen": 0,
+    "object_pen": 0,
+    "ground_band": 1,
+    "object_band": 0
+   },
+   "worst": {
+    "ground_pen_mm": 6.3495,
+    "self_pen_mm": 0.0,
+    "object_pen_mm": 0.0,
+    "band_excess_mm": 5.8495
+   },
+   "seconds": 20.6
+  },
+  {
+   "clip": "lafan1_smplx__dance1_subject2",
+   "robot": "unitree_g1_29dof",
+   "gauge": "visual",
+   "frames_valid": 3942,
+   "frames_checked": 3942,
+   "violations_decoded": {
+    "ground_pen": 6,
+    "self_pen": 0,
+    "object_pen": 0,
+    "ground_band": 6,
+    "object_band": 0
+   },
+   "violations_source_same_frames": {
+    "ground_pen": 6,
+    "self_pen": 0,
+    "object_pen": 0,
+    "ground_band": 6,
+    "object_band": 0
+   },
+   "introduced_by_decode": {
+    "ground_pen": 0,
+    "self_pen": 0,
+    "object_pen": 0,
+    "ground_band": 0,
+    "object_band": 0
+   },
+   "worst": {
+    "ground_pen_mm": 1.0674,
+    "self_pen_mm": 0.0738,
+    "object_pen_mm": 0.0,
+    "band_excess_mm": 0.5674
+   },
+   "seconds": 28.0
+  },
+  {
+   "clip": "lafan1_smplx__dance1_subject2",
+   "robot": "unitree_h2",
+   "gauge": "visual",
+   "frames_valid": 3943,
+   "frames_checked": 3943,
+   "violations_decoded": {
+    "ground_pen": 0,
+    "self_pen": 0,
+    "object_pen": 0,
+    "ground_band": 0,
+    "object_band": 0
+   },
+   "violations_source_same_frames": {
+    "ground_pen": 0,
+    "self_pen": 0,
+    "object_pen": 0,
+    "ground_band": 0,
+    "object_band": 0
+   },
+   "introduced_by_decode": {
+    "ground_pen": 0,
+    "self_pen": 0,
+    "object_pen": 0,
+    "ground_band": 0,
+    "object_band": 0
+   },
+   "worst": {
+    "ground_pen_mm": 0.4686,
+    "self_pen_mm": 0.0,
+    "object_pen_mm": 0.0,
+    "band_excess_mm": 0.0
+   },
+   "seconds": 21.6
+  },
+  {
+   "clip": "pilot_test__omni_carry_166_1775007076__f0-1800s3",
+   "robot": "unitree_g1_29dof",
+   "gauge": "union",
+   "frames_valid": 579,
+   "frames_checked": 579,
+   "violations_decoded": {
+    "ground_pen": 0,
+    "self_pen": 0,
+    "object_pen": 0,
+    "ground_band": 0,
+    "object_band": 0
+   },
+   "violations_source_same_frames": {
+    "ground_pen": 0,
+    "self_pen": 0,
+    "object_pen": 0,
+    "ground_band": 0,
+    "object_band": 0
+   },
+   "introduced_by_decode": {
+    "ground_pen": 0,
+    "self_pen": 0,
+    "object_pen": 0,
+    "ground_band": 0,
+    "object_band": 0
+   },
+   "worst": {
+    "ground_pen_mm": 0.4196,
+    "self_pen_mm": 0.4084,
+    "object_pen_mm": 0.4525,
+    "band_excess_mm": 0.0
+   },
+   "seconds": 7.8
+  }
+ ]
+}

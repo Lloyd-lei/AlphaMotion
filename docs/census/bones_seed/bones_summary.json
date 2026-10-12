@@ -1,0 +1,277 @@
+{
+ "source": "BONES-SEED (bones-studio/seed, metadata v004)",
+ "fps": 120,
+ "clips": {
+  "total": 142220,
+  "originals": 71132,
+  "mirrors": 71088
+ },
+ "hours": {
+  "total": 288.32,
+  "originals": 144.22,
+  "mirrors": 144.11
+ },
+ "clip_seconds_originals": {
+  "median": 5.71,
+  "p90": 12.62,
+  "max": 180.14
+ },
+ "taxonomy_originals": {
+  "locomotion": {
+   "primary_hours": 42.48,
+   "primary_clips": 21178,
+   "primary_share_pct": 29.46,
+   "multilabel_hours": 57.77,
+   "multilabel_clips": 28079
+  },
+  "dynamic": {
+   "primary_hours": 28.3,
+   "primary_clips": 14838,
+   "primary_share_pct": 19.62,
+   "multilabel_hours": 30.03,
+   "multilabel_clips": 15510
+  },
+  "ground_contact": {
+   "primary_hours": 11.07,
+   "primary_clips": 5368,
+   "primary_share_pct": 7.67,
+   "multilabel_hours": 11.13,
+   "multilabel_clips": 5393
+  },
+  "sitting_on_object": {
+   "primary_hours": 2.83,
+   "primary_clips": 936,
+   "primary_share_pct": 1.96,
+   "multilabel_hours": 3.36,
+   "multilabel_clips": 983
+  },
+  "upper_body_manipulation": {
+   "primary_hours": 16.43,
+   "primary_clips": 7305,
+   "primary_share_pct": 11.39,
+   "multilabel_hours": 22.33,
+   "multilabel_clips": 10061
+  },
+  "whole_body_object": {
+   "primary_hours": 11.01,
+   "primary_clips": 5865,
+   "primary_share_pct": 7.63,
+   "multilabel_hours": 11.01,
+   "multilabel_clips": 5865
+  },
+  "gesture_social": {
+   "primary_hours": 17.69,
+   "primary_clips": 10953,
+   "primary_share_pct": 12.27,
+   "multilabel_hours": 22.63,
+   "multilabel_clips": 13058
+  },
+  "idle_posture": {
+   "primary_hours": 14.41,
+   "primary_clips": 4689,
+   "primary_share_pct": 9.99,
+   "multilabel_hours": 41.16,
+   "multilabel_clips": 17007
+  },
+  "other": {
+   "primary_hours": 0.0,
+   "primary_clips": 0,
+   "primary_share_pct": 0.0,
+   "multilabel_hours": 0.0,
+   "multilabel_clips": 0
+  }
+ },
+ "taxonomy_mirrors_primary_hours": {
+  "locomotion": 42.43,
+  "dynamic": 28.3,
+  "ground_contact": 11.05,
+  "sitting_on_object": 2.83,
+  "upper_body_manipulation": 16.43,
+  "whole_body_object": 11.01,
+  "gesture_social": 17.68,
+  "idle_posture": 14.4,
+  "other": 0.0
+ },
+ "contacts_originals": {
+  "hours_any_class": {
+   "feet_only": 103.77,
+   "hands_ground": 4.72,
+   "knees": 6.26,
+   "hips": 8.39,
+   "back": 2.82,
+   "object_hands": 24.62,
+   "object_feet": 3.23
+  },
+  "hours_by_primary_class": {
+   "locomotion": {
+    "feet_only": 41.52,
+    "back": 0.96
+   },
+   "dynamic": {
+    "feet_only": 28.18,
+    "object_hands": 0.08,
+    "object_feet": 0.04
+   },
+   "ground_contact": {
+    "hands_ground": 4.62,
+    "knees": 6.22,
+    "hips": 5.34,
+    "back": 0.61,
+    "object_hands": 0.1
+   },
+   "sitting_on_object": {
+    "hips": 2.83,
+    "object_hands": 1.02
+   },
+   "upper_body_manipulation": {
+    "feet_only": 2.91,
+    "object_hands": 13.53
+   },
+   "whole_body_object": {
+    "feet_only": 0.29,
+    "hands_ground": 0.09,
+    "knees": 0.05,
+    "hips": 0.22,
+    "back": 0.02,
+    "object_hands": 9.9,
+    "object_feet": 3.19
+   },
+   "gesture_social": {
+    "feet_only": 17.69
+   },
+   "idle_posture": {
+    "feet_only": 13.18,
+    "back": 1.23
+   }
+  }
+ },
+ "objects": {
+  "has_prop_hours_originals": 29.68,
+  "manipulated_prop_hours_originals": 25.72,
+  "object_pose_or_mesh_available": false,
+  "note": "道具只在文字字段 content_props 里，没有物体 6DoF 位姿/网格；物体接触标签无法用数据工厂的尺子量",
+  "prop_category_hours_originals": {
+   "box_crate_generic": 13.64,
+   "terrain_env": 13.27,
+   "furniture": 9.71,
+   "articulated_fixture": 3.85,
+   "tool": 2.82,
+   "assistive": 1.44,
+   "instrument": 0.97,
+   "handheld_device": 0.93,
+   "kitchenware_food": 0.91,
+   "person_or_doll": 0.89,
+   "ball_sport_gear": 0.25
+  },
+  "top_props_hours_originals": {
+   "crate": 2.42,
+   "50cm box": 1.76,
+   "door": 1.33,
+   "chair": 1.11,
+   "medium big light object; shelves (scaffolding)": 1.09,
+   "big heavy object; shelves (scaffolding)": 1.08,
+   "big light object; shelves (scaffolding)": 0.96,
+   "small heavy object; shelves (scaffolding)": 0.96,
+   "baby (sandbag)": 0.77,
+   "medium heavy object; shelves (scaffolding)": 0.75,
+   "small item": 0.75,
+   "medium big heavy object; shelves (scaffolding)": 0.74,
+   "medium big light object": 0.68,
+   "wall": 0.66,
+   "small obstacle": 0.59,
+   "crutch": 0.57,
+   "flute": 0.57,
+   "crutches": 0.52,
+   "small light object; shelves (scaffolding)": 0.5,
+   "watering can": 0.47,
+   "cellphone": 0.44,
+   "medium light object; shelves (scaffolding)": 0.41,
+   "fridge; small light object": 0.41,
+   "chair; table": 0.4,
+   "cigarette": 0.35
+  }
+ },
+ "package_category_hours_originals": {
+  "Communication/Communication": 3.47,
+  "Communication/Gestures": 12.92,
+  "Communication/Looking and Pointing": 0.19,
+  "Dances/Dancing": 10.91,
+  "Everyday/Consuming": 2.12,
+  "Everyday/Environments": 1.0,
+  "Everyday/Household": 1.53,
+  "Everyday/Object Interaction": 2.26,
+  "Everyday/Unusual Locomotion": 1.76,
+  "Gaming/Magic": 0.17,
+  "Gaming/Object Interaction": 8.36,
+  "Gaming/Unusual Locomotion": 2.29,
+  "Interactions/Object Interaction": 3.16,
+  "Interactions/Object Manipulation": 12.31,
+  "Locomotion/Advanced Locomotion": 5.9,
+  "Locomotion/Baseline": 20.19,
+  "Locomotion/Basic Locomotion Neutral": 33.91,
+  "Locomotion/Basic Locomotion Styles": 13.01,
+  "Locomotion/Complex Actions": 1.61,
+  "Locomotion/Stunts": 0.68,
+  "Other/Other": 2.6,
+  "Sport/Martial Arts": 0.01,
+  "Sport/Sports": 3.86
+ },
+ "style_hours_originals": {
+  "neutral": 130.07,
+  "injured torso": 6.85,
+  "injured leg": 6.51,
+  "hurry": 0.55,
+  "hurry to neutral": 0.1,
+  "injured torso to neutral": 0.07,
+  "injured leg to neutral": 0.05,
+  "old": 0.02
+ },
+ "actors": {
+  "count": 522,
+  "gender": {
+   "M": 269,
+   "F": 253
+  },
+  "hours_by_gender_originals": {
+   "F": 72.67,
+   "M": 71.55
+  },
+  "height_cm": {
+   "min": 145,
+   "p10": 167.0,
+   "median": 174.0,
+   "p90": 187.0,
+   "max": 199
+  },
+  "weight_kg": {
+   "min": 38,
+   "median": 69.0,
+   "max": 145
+  },
+  "age_yr": {
+   "min": 17,
+   "median": 27.0,
+   "max": 71
+  },
+  "profession": {
+   "actor": 380,
+   "general": 64,
+   "professional": 43,
+   "dancer": 24,
+   "stuntman": 11
+  }
+ },
+ "license": {
+  "name": "BONES-SEED Dataset License Agreement",
+  "training_use": "仅学术用户或年营收<100万美元初创公司内部研发可用；禁止再分发/公开镜像；Results 不得能还原原始数据；§6 禁止用来训练'主要用途是生成人体动作/动画数据、可替代本数据集'的生成模型（明确允许机器人控制策略/VLA/行为克隆/动作跟踪）。AlphaMotion 若定位为'动作生成基础模型'，此条需法务确认。",
+  "open_release_of_retargeted": false
+ },
+ "status": {
+  "on_disk_raw": "仅元数据（parquet/csv/temporal_labels v002）+ 10 条样例 BVH；SOMA BVH 全量包 soma_uniform.tar.gz(45.19 GB) 不在本机",
+  "downloader": "soma_uniform.tar.gz 排在 follow-up 队列(PID 3272054, runs=[])，还没开始；主下载器(PID 3258020)卡在 UniMate 模型权重阶段 39.5/45.9 GB，已 26.4 h 无进展（queue status=primary_stall_attention）",
+  "converted_smplx": "不需要（UMR 直接读 SOMA BVH + MHR 体型）；已转 0 条",
+  "retargeted": "厂商自带 G1 CSV（1 台，/var/tmp/arena/raw/bones_seed/g1.tar.gz 23.5 GB，已解压 4 条）；UMR 0 条/0 台；另有 8 月旧缓存 topo_exp/cache_bones_body（500 段 soma_body 关节, 30fps, 非 UMR）",
+  "umr_robots": 0
+ },
+ "umr_bringup": "下载 soma_uniform.tar.gz(45.2 GB)+soma_shapes+SOMA-X 资产 → UMR defaults_bones_seed.json/批处理适配器直接跑，无需格式转换；镜像是独立 BVH 可直接重定向；29.7 h 道具片段没有物体位姿，只能当'纯身体'数据或补物体标注"
+}
