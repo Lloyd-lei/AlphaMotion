@@ -1,0 +1,29 @@
+# environments / caches
+.venv/
+.mcp-venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.inductor_cache/
+node_modules/
+dist/
+.npm-cache/
+viewer/cache/
+viewer/agent_state/
+viewer/logs/
+*.egg-info/
+# local config (copy configs/sr.example.toml)
+configs/sr.toml
+# data outputs never go into git
+*.npz
+*.npy
+*.pkl
+*.h5
+*.mp4
+*.webm
+*.log
+*.pid
+runs/
+out/
+problems/
+videos/
