@@ -1,0 +1,323 @@
+{
+  "schema": "pilot-model-cpu-numerical-review-v1",
+  "started_at_utc": "2026-10-04T06:13:46.032827+00:00",
+  "finished_at_utc": "2026-10-04T06:13:54.181979+00:00",
+  "wall_seconds": 8.149562916718423,
+  "success": true,
+  "tests_run": 20,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "test_records": [
+    {
+      "test": "test_added_blocks_start_as_exact_identity (__main__.PilotNumerics.test_added_blocks_start_as_exact_identity)",
+      "status": "passed",
+      "seconds": 0.14765149960294366,
+      "detail": null
+    },
+    {
+      "test": "test_auxiliary_hpos_is_returned_raw_not_claimed_xyz (__main__.PilotNumerics.test_auxiliary_hpos_is_returned_raw_not_claimed_xyz)",
+      "status": "passed",
+      "seconds": 0.3988632499240339,
+      "detail": null
+    },
+    {
+      "test": "test_explicit_contact_remains_a_separate_observation (__main__.PilotNumerics.test_explicit_contact_remains_a_separate_observation)",
+      "status": "passed",
+      "seconds": 0.06691704178228974,
+      "detail": null
+    },
+    {
+      "test": "test_forward_zero_one_two_conditions (__main__.PilotNumerics.test_forward_zero_one_two_conditions)",
+      "status": "passed",
+      "seconds": 2.1889924169518054,
+      "detail": null
+    },
+    {
+      "test": "test_hidden_source_gt_perturbation_does_not_leak (__main__.PilotNumerics.test_hidden_source_gt_perturbation_does_not_leak)",
+      "status": "passed",
+      "seconds": 0.10265916679054499,
+      "detail": null
+    },
+    {
+      "test": "test_hidden_source_nan_inf_has_finite_zero_hidden_gradients (__main__.PilotNumerics.test_hidden_source_nan_inf_has_finite_zero_hidden_gradients)",
+      "status": "passed",
+      "seconds": 1.103414332959801,
+      "detail": null
+    },
+    {
+      "test": "test_identity_added_blocks_receive_output_projection_gradients (__main__.PilotNumerics.test_identity_added_blocks_receive_output_projection_gradients)",
+      "status": "passed",
+      "seconds": 0.11818850040435791,
+      "detail": null
+    },
+    {
+      "test": "test_invalid_sparse_padding_nan_inf_has_finite_zero_gradients (__main__.PilotNumerics.test_invalid_sparse_padding_nan_inf_has_finite_zero_gradients)",
+      "status": "passed",
+      "seconds": 0.3532018749974668,
+      "detail": null
+    },
+    {
+      "test": "test_metadata_missing_bits_are_shared_and_effective (__main__.PilotNumerics.test_metadata_missing_bits_are_shared_and_effective)",
+      "status": "passed",
+      "seconds": 0.07167462492361665,
+      "detail": null
+    },
+    {
+      "test": "test_no_condition_matches_zero_and_all_invalid (__main__.PilotNumerics.test_no_condition_matches_zero_and_all_invalid)",
+      "status": "passed",
+      "seconds": 0.12074516713619232,
+      "detail": null
+    },
+    {
+      "test": "test_padding_mask_is_per_batch_member (__main__.PilotNumerics.test_padding_mask_is_per_batch_member)",
+      "status": "passed",
+      "seconds": 1.372693832963705,
+      "detail": null
+    },
+    {
+      "test": "test_pure_condition_all_hidden_contact_none_no_gt_leak (__main__.PilotNumerics.test_pure_condition_all_hidden_contact_none_no_gt_leak)",
+      "status": "passed",
+      "seconds": 0.17737525003030896,
+      "detail": null
+    },
+    {
+      "test": "test_reject_invalid_contracts (__main__.PilotNumerics.test_reject_invalid_contracts)",
+      "status": "passed",
+      "seconds": 0.06496033305302262,
+      "detail": null
+    },
+    {
+      "test": "test_reject_more_than_two_conditions (__main__.PilotNumerics.test_reject_more_than_two_conditions)",
+      "status": "passed",
+      "seconds": 0.01755412481725216,
+      "detail": null
+    },
+    {
+      "test": "test_reject_unsupported_inherited_modes (__main__.PilotNumerics.test_reject_unsupported_inherited_modes)",
+      "status": "passed",
+      "seconds": 0.0279144998639822,
+      "detail": null
+    },
+    {
+      "test": "test_same_model_handles_other_joint_counts_without_new_parameters (__main__.PilotNumerics.test_same_model_handles_other_joint_counts_without_new_parameters)",
+      "status": "passed",
+      "seconds": 0.06423012493178248,
+      "detail": null
+    },
+    {
+      "test": "test_unknown_contact_nan_and_inf_equals_none_after_nonzero_weights (__main__.PilotNumerics.test_unknown_contact_nan_and_inf_equals_none_after_nonzero_weights)",
+      "status": "passed",
+      "seconds": 0.07050787517800927,
+      "detail": null
+    },
+    {
+      "test": "test_visible_nonfinite_rejected (__main__.PilotNumerics.test_visible_nonfinite_rejected)",
+      "status": "passed",
+      "seconds": 0.02337383385747671,
+      "detail": null
+    },
+    {
+      "test": "test_complete_synthetic_383_key_schema (__main__.SyntheticLegacySchema.test_complete_synthetic_383_key_schema)",
+      "status": "passed",
+      "seconds": 0.34263229090720415,
+      "detail": null
+    },
+    {
+      "test": "test_empty_missing_extra_and_bad_shape_references_rejected (__main__.SyntheticLegacySchema.test_empty_missing_extra_and_bad_shape_references_rejected)",
+      "status": "passed",
+      "seconds": 1.1067504580132663,
+      "detail": null
+    }
+  ],
+  "metrics": {
+    "identity_added_blocks": {
+      "max_abs_by_family": {
+        "enc": 0.0,
+        "selfp": 0.0,
+        "selfr": 0.0,
+        "decp": 0.0,
+        "decr": 0.0
+      }
+    },
+    "auxiliary_head_contract": {
+      "raw_hpos_returned": true,
+      "cartesian_semantics_validated": false,
+      "note": "Only an interface check; root-height/auxiliary loss vs FK Cartesian loss remains trainer responsibility."
+    },
+    "contact_observation_boundary": {
+      "hidden_pose_does_not_mask_explicit_contact": true,
+      "note": "Trainer must explicitly pass None for pure-condition mode; hidden GT contact labels must not be supplied accidentally."
+    },
+    "condition_sizes": {
+      "accepted": [
+        0,
+        1,
+        2
+      ],
+      "source_joints": 5,
+      "target_joints": 7
+    },
+    "hidden_source_gt_perturbation": {
+      "latent_max_abs": 0.0,
+      "output_max_abs": 0.0
+    },
+    "hidden_nonfinite_gradients": {
+      "loss": 0.9976291656494141,
+      "all_parameter_gradients_finite": true,
+      "hidden_input_gradient_max_abs": 0.0
+    },
+    "identity_block_gradient_entry": {
+      "output_projection_and_ff_norms": {
+        "enc": [
+          0.21953432261943817,
+          0.48602065443992615
+        ],
+        "selfp": [
+          0.17507721483707428,
+          0.4285966157913208
+        ],
+        "selfr": [
+          0.23681895434856415,
+          0.4698377847671509
+        ],
+        "decp": [
+          0.20814149081707,
+          0.47977423667907715
+        ],
+        "decr": [
+          0.19182559847831726,
+          0.5156843662261963
+        ]
+      },
+      "optimizer_step_executed": false
+    },
+    "invalid_sparse_padding_gradients": {
+      "loss": 1.0610631704330444,
+      "all_parameter_gradients_finite": true,
+      "invalid_value_gradient_max_abs": 0.0
+    },
+    "shared_topology_parameters": {
+      "auxiliary_judge_present": true,
+      "pose_decoder_shared": true,
+      "index_embedding_absent": true,
+      "distinct_position_rotation_fsq": true
+    },
+    "no_condition_equivalence": {
+      "zero_max_abs": 0.0,
+      "invalid_max_abs": 5.364418029785156e-07
+    },
+    "per_batch_condition_mask": {
+      "all_invalid_member_max_abs": 2.60770320892334e-07,
+      "valid_member_dependency_delta": 0.3007652759552002
+    },
+    "pure_condition": {
+      "all_source_hidden": true,
+      "source_contact": null,
+      "source_gt_max_abs_delta": 0.0,
+      "changing_declared_condition_max_abs_delta": 0.8171928524971008,
+      "no_condition_finite": true,
+      "note": "Numerical dependency test on random weights; does not claim learned constraint satisfaction."
+    },
+    "fixed_pilot_flags": {
+      "rejected": [
+        "use_sem",
+        "use_dof",
+        "n_judges",
+        "single_codebook",
+        "rot_only",
+        "rot_head",
+        "vis_residual",
+        "root_head",
+        "contact_chan"
+      ],
+      "non16_judge_rejected": true
+    },
+    "unknown_contacts": {
+      "tested": [
+        "NaN",
+        "+Inf",
+        "-Inf"
+      ],
+      "none_equivalence_max_abs": 0.0,
+      "invalid_contact_gradient_max_abs": 0.0
+    },
+    "synthetic_reference_schema": {
+      "key_count": 383,
+      "loaded_keys": 375,
+      "skipped_keys": 8,
+      "all_accepted_tensors_exact": true,
+      "qwen_projection_preserved": true,
+      "real_checkpoint_loaded": false,
+      "schema_keys_shapes_sha256": "211342ae47f3aa0c53911101ec549515021715b152ed2329f001b431099448e8"
+    },
+    "reference_rejections": {
+      "empty": true,
+      "missing_required": true,
+      "unexpected_key": true,
+      "wrong_shape": true,
+      "synthetic_schema_only": true
+    }
+  },
+  "evidence_scope": {
+    "device": "CPU",
+    "data": "synthetic random tensors and synthetic independent joint graphs",
+    "weights": "random initialization only, including the383-key legacy-schema state_dict",
+    "real_data_batch_executed": false,
+    "real_checkpoint_loaded": false,
+    "optimizer_created": false,
+    "training_step_executed": false,
+    "diagnostic_backward_executed": true,
+    "gpu_used": false,
+    "network_used": false
+  },
+  "runtime": {
+    "python": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+    "torch": "2.9.0",
+    "torch_threads": 1
+  },
+  "source_files": [
+    {
+      "path": "/Users/yudonglei/Documents/be water, robot/.codex-staging/megatron-scale-pilot/pilot_model.py",
+      "bytes": 10841,
+      "sha256": "df6033507084d7e9f5511537a206e4163930d0eb81fef00bf93d7b5dcb00ef35",
+      "sha256_at_import": "df6033507084d7e9f5511537a206e4163930d0eb81fef00bf93d7b5dcb00ef35"
+    },
+    {
+      "path": "/Users/yudonglei/Documents/be water, robot/.codex-staging/megatron-scale-pilot/test_pilot_model.py",
+      "bytes": 20707,
+      "sha256": "b6ca2675d53c2574562fda98b05c41cfc82962650402abe202cd291633adec16",
+      "sha256_at_import": null
+    },
+    {
+      "path": "/Users/yudonglei/Documents/be water, robot/.codex-staging/megatron-scale-pilot/legacy/common.py",
+      "bytes": 7180,
+      "sha256": "007772a2498f4cef12bde35e2410e767c1dda285d4bcc3706e29d2863764ceb6",
+      "sha256_at_import": "007772a2498f4cef12bde35e2410e767c1dda285d4bcc3706e29d2863764ceb6"
+    },
+    {
+      "path": "/Users/yudonglei/Documents/be water, robot/.codex-staging/megatron-scale-pilot/legacy/model.py",
+      "bytes": 15096,
+      "sha256": "d717c185fcd0eee7b5cb216a8faba4bc89a4485c839e4c0e52c940ea9ccf45e0",
+      "sha256_at_import": "d717c185fcd0eee7b5cb216a8faba4bc89a4485c839e4c0e52c940ea9ccf45e0"
+    },
+    {
+      "path": "/Users/yudonglei/Documents/be water, robot/.codex-staging/megatron-scale-pilot/legacy/model_dual.py",
+      "bytes": 15896,
+      "sha256": "ae1ebdd37d62805190ccc2e332177d7e790371997d91fa516ec5ec6099f563dd",
+      "sha256_at_import": "ae1ebdd37d62805190ccc2e332177d7e790371997d91fa516ec5ec6099f563dd"
+    }
+  ],
+  "not_validated": [
+    "Real checkpoint numerical compatibility",
+    "Real motion-data FK/units/joint-order correctness",
+    "Actual trainer loss masks, source-contact observation policy and sparse-SE3 coordinate contract",
+    "Real learned constraint following or retargeting quality",
+    "Remote model upload/state after host outage"
+  ],
+  "superseded_for_current_readiness_by": [
+    "offline_verification.json",
+    "recipe_review.json"
+  ],
+  "historical_scope_note": "Prior interface/source review; preserve original per-version evidence, not final recipe or runtime readiness."
+}

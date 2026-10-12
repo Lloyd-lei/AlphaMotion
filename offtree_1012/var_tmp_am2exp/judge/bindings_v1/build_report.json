@@ -1,0 +1,186 @@
+{
+ "booster_k1": {
+  "n_geoms": 20,
+  "n_rigid": 20,
+  "n_approx": 0,
+  "approx_residual_max_cm": 0.0,
+  "fk_max_error_cm": 1.5226359913005815e-06,
+  "h2_offset_residual_max_cm": null,
+  "selfpen_pairs": 170,
+  "regions_missing": []
+ },
+ "booster_t1": {
+  "n_geoms": 15,
+  "n_rigid": 15,
+  "n_approx": 0,
+  "approx_residual_max_cm": 0.0,
+  "fk_max_error_cm": 8.201599198666418e-07,
+  "h2_offset_residual_max_cm": null,
+  "selfpen_pairs": 100,
+  "regions_missing": [
+   "pelvis",
+   "L_forearm",
+   "R_forearm"
+  ]
+ },
+ "booster_t1_29dof": {
+  "n_geoms": 16,
+  "n_rigid": 16,
+  "n_approx": 0,
+  "approx_residual_max_cm": 0.0,
+  "fk_max_error_cm": 8.201599186463682e-07,
+  "h2_offset_residual_max_cm": null,
+  "selfpen_pairs": 114,
+  "regions_missing": [
+   "pelvis"
+  ]
+ },
+ "fourier_n1": {
+  "n_geoms": 20,
+  "n_rigid": 20,
+  "n_approx": 0,
+  "approx_residual_max_cm": 0.0,
+  "fk_max_error_cm": 9.294823600740516e-07,
+  "h2_offset_residual_max_cm": null,
+  "selfpen_pairs": 176,
+  "regions_missing": [
+   "head"
+  ]
+ },
+ "hightorque_hi": {
+  "n_geoms": 26,
+  "n_rigid": 26,
+  "n_approx": 0,
+  "approx_residual_max_cm": 0.0,
+  "fk_max_error_cm": 9.099838969160028e-07,
+  "h2_offset_residual_max_cm": null,
+  "selfpen_pairs": 297,
+  "regions_missing": []
+ },
+ "pnd_adam_lite": {
+  "n_geoms": 12,
+  "n_rigid": 12,
+  "n_approx": 0,
+  "approx_residual_max_cm": 0.0,
+  "fk_max_error_cm": 1.677866889655192e-06,
+  "h2_offset_residual_max_cm": null,
+  "selfpen_pairs": 58,
+  "regions_missing": [
+   "head",
+   "L_forearm",
+   "R_forearm",
+   "L_hand",
+   "R_hand",
+   "L_thigh",
+   "R_thigh"
+  ]
+ },
+ "tienkung": {
+  "n_geoms": 13,
+  "n_rigid": 13,
+  "n_approx": 0,
+  "approx_residual_max_cm": 0.0,
+  "fk_max_error_cm": 1.9981557106301483e-06,
+  "h2_offset_residual_max_cm": null,
+  "selfpen_pairs": 70,
+  "regions_missing": [
+   "trunk",
+   "head",
+   "L_hand",
+   "R_hand"
+  ]
+ },
+ "unitree_g1_23dof": {
+  "n_geoms": 36,
+  "n_rigid": 36,
+  "n_approx": 0,
+  "approx_residual_max_cm": 0.0,
+  "fk_max_error_cm": 1.7788463285656043e-06,
+  "h2_offset_residual_max_cm": null,
+  "selfpen_pairs": 579,
+  "regions_missing": [
+   "head"
+  ]
+ },
+ "unitree_g1_29dof": {
+  "n_geoms": 36,
+  "n_rigid": 36,
+  "n_approx": 0,
+  "approx_residual_max_cm": 0.0,
+  "fk_max_error_cm": 1.7788463285656043e-06,
+  "h2_offset_residual_max_cm": null,
+  "selfpen_pairs": 579,
+  "regions_missing": [
+   "head"
+  ]
+ },
+ "unitree_h1": {
+  "n_geoms": 20,
+  "n_rigid": 20,
+  "n_approx": 0,
+  "approx_residual_max_cm": 0.0,
+  "fk_max_error_cm": 1.071971725548544e-06,
+  "h2_offset_residual_max_cm": null,
+  "selfpen_pairs": 171,
+  "regions_missing": [
+   "head",
+   "L_hand",
+   "R_hand"
+  ]
+ },
+ "unitree_h1_2": {
+  "n_geoms": 26,
+  "n_rigid": 24,
+  "n_approx": 0,
+  "approx_residual_max_cm": 4.298152189190484e-07,
+  "fk_max_error_cm": 1.6559848413937982e-06,
+  "h2_offset_residual_max_cm": null,
+  "selfpen_pairs": 296,
+  "regions_missing": [
+   "head"
+  ]
+ },
+ "fourier_gr3": {
+  "n_geoms": 22,
+  "n_rigid": 20,
+  "n_approx": 0,
+  "approx_residual_max_cm": 9.592460048495913e-07,
+  "fk_max_error_cm": 0.048493447679373546,
+  "h2_offset_residual_max_cm": null,
+  "selfpen_pairs": 218,
+  "regions_missing": []
+ },
+ "kuavo_s45": {
+  "n_geoms": 28,
+  "n_rigid": 22,
+  "n_approx": 0,
+  "approx_residual_max_cm": 2.9276137153728907e-07,
+  "fk_max_error_cm": 2.1258689386379446e-06,
+  "h2_offset_residual_max_cm": null,
+  "selfpen_pairs": 325,
+  "regions_missing": [
+   "pelvis",
+   "head"
+  ]
+ },
+ "unitree_h2": {
+  "n_geoms": 23,
+  "n_rigid": 23,
+  "n_approx": 0,
+  "approx_residual_max_cm": 0.0,
+  "fk_max_error_cm": null,
+  "h2_offset_residual_max_cm": 5.277848112258477,
+  "selfpen_pairs": 239,
+  "regions_missing": []
+ },
+ "unitree_r1": {
+  "n_geoms": 34,
+  "n_rigid": 34,
+  "n_approx": 0,
+  "approx_residual_max_cm": 0.0,
+  "fk_max_error_cm": 1.050849103395657e-06,
+  "h2_offset_residual_max_cm": null,
+  "selfpen_pairs": 528,
+  "regions_missing": []
+ }
+}

@@ -1,0 +1,216 @@
+{
+  "checked_at_utc": "2026-10-04T03:47:05.642144+00:00",
+  "units": "decimal bytes; GB=1e9; reserve=15GiB plus1GiB overhead",
+  "combined": {
+    "expected_unique_bytes": 200505865539,
+    "complete_blob_bytes": 19687204931,
+    "partial_blob_bytes": 2347299788,
+    "remaining_bytes": 178471360820,
+    "available_bytes": 225213988864,
+    "reserve_bytes": 16106127360,
+    "required_available_bytes": 195651230004,
+    "fits": true,
+    "basis": "HF per-repository blob hashes; snapshot symlinks reuse same repo content"
+  },
+  "phase_verified_logical_bytes": 993928290,
+  "main_status": "running",
+  "current_stage": "unimate_all_models",
+  "state_updated_at_utc": "2026-10-04T03:46:55.518060+00:00",
+  "download_log_mtime_utc": "2026-10-04T02:27:55.701833+00:00",
+  "download_log_bytes": 571,
+  "queue_status": "waiting_primary",
+  "queue_updated_at_utc": "2026-10-04T03:46:35.898670+00:00",
+  "seconds_without_primary_progress": 0,
+  "process_identity": [
+    {
+      "pid": 3258020,
+      "identity_matches": true,
+      "state": "S",
+      "start_ticks": "172790670",
+      "cmdline": "/home/arenalabs/miniconda3/bin/python -u /home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/pretraining_foundation/acquire.py --plan /home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/pretraining_foundation/configs/download_plan.json "
+    },
+    {
+      "pid": 3272054,
+      "identity_matches": true,
+      "state": "S",
+      "start_ticks": "172846036",
+      "cmdline": "/home/arenalabs/miniconda3/bin/python -u /home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/pretraining_foundation/queue_followup.py "
+    }
+  ],
+  "resources": [
+    {
+      "stage": "unimate_smoke_assets",
+      "source": "Linzhan/UniML3D",
+      "revision": "053e8b4b06b6a8ba717a030e675dd5b7fd5be92e",
+      "planned_logical_or_dedup_within_stage_bytes": 346409,
+      "complete_blob_bytes": 346409,
+      "partial_blob_bytes": 0,
+      "verified_bytes": 346409,
+      "verified_files": 5,
+      "status": "verified",
+      "license": "other",
+      "note": "Per-stage cache bytes may overlap; use combined totals, not row sums."
+    },
+    {
+      "stage": "flan_t5_pytorch",
+      "source": "google/flan-t5-base",
+      "revision": "7bcac572ce56db69c1ea7c8af255c5d7c9672fc2",
+      "planned_logical_or_dedup_within_stage_bytes": 993581881,
+      "complete_blob_bytes": 993581881,
+      "partial_blob_bytes": 0,
+      "verified_bytes": 993581881,
+      "verified_files": 9,
+      "status": "verified",
+      "license": "apache-2.0",
+      "note": "Per-stage cache bytes may overlap; use combined totals, not row sums."
+    },
+    {
+      "stage": "unimate_all_models",
+      "source": "Linzhan/UniMate",
+      "revision": "971da7cfc1c8d99c2af6c00be9d2ed5700f99073",
+      "planned_logical_or_dedup_within_stage_bytes": 45909996519,
+      "complete_blob_bytes": 18693276641,
+      "partial_blob_bytes": 2347299788,
+      "verified_bytes": 0,
+      "verified_files": 0,
+      "status": "downloading",
+      "license": "cc-by-nc-4.0",
+      "note": "Per-stage cache bytes may overlap; use combined totals, not row sums."
+    },
+    {
+      "stage": "uniml3d_current_all",
+      "source": "Linzhan/UniML3D",
+      "revision": "053e8b4b06b6a8ba717a030e675dd5b7fd5be92e",
+      "planned_logical_or_dedup_within_stage_bytes": 63590632706,
+      "complete_blob_bytes": 346409,
+      "partial_blob_bytes": 0,
+      "verified_bytes": 0,
+      "verified_files": 0,
+      "status": "queued",
+      "license": "other",
+      "note": "Per-stage cache bytes may overlap; use combined totals, not row sums."
+    },
+    {
+      "stage": "uniml3d_trained_revision",
+      "source": "Linzhan/UniML3D",
+      "revision": "faaa81773b315247b03f183548e3898dbec2ce80",
+      "planned_logical_or_dedup_within_stage_bytes": 53338372726,
+      "complete_blob_bytes": 35,
+      "partial_blob_bytes": 0,
+      "verified_bytes": 0,
+      "verified_files": 0,
+      "status": "queued",
+      "license": "other",
+      "note": "Per-stage cache bytes may overlap; use combined totals, not row sums."
+    },
+    {
+      "stage": "mixamo_raw_all",
+      "source": "Linzhan/Mixamo-Animations-Characters",
+      "revision": "7f134bc734557b1d9516cb476d25ea1f577e45c1",
+      "planned_logical_or_dedup_within_stage_bytes": 18645412524,
+      "complete_blob_bytes": 0,
+      "partial_blob_bytes": 0,
+      "verified_bytes": 0,
+      "verified_files": 0,
+      "status": "queued",
+      "license": "other",
+      "note": "Per-stage cache bytes may overlap; use combined totals, not row sums."
+    },
+    {
+      "stage": "objaverse_raw_all",
+      "source": "Linzhan/Objaverse-XL-Rigged-Animated",
+      "revision": "a2afbb4e49be307d6f8bccdfcd4ee0ccce6ea0aa",
+      "planned_logical_or_dedup_within_stage_bytes": 25114728951,
+      "complete_blob_bytes": 0,
+      "partial_blob_bytes": 0,
+      "verified_bytes": 0,
+      "verified_files": 0,
+      "status": "queued",
+      "license": "other",
+      "note": "Per-stage cache bytes may overlap; use combined totals, not row sums."
+    },
+    {
+      "stage": "truebones_public_annotations",
+      "source": "Linzhan/Truebones-ZOO-Annotations",
+      "revision": "b127ca411ab15e9e3900a92d87f24778db1787a6",
+      "planned_logical_or_dedup_within_stage_bytes": 308198002,
+      "complete_blob_bytes": 0,
+      "partial_blob_bytes": 0,
+      "verified_bytes": 0,
+      "verified_files": 0,
+      "status": "queued",
+      "license": "other",
+      "note": "Per-stage cache bytes may overlap; use combined totals, not row sums."
+    },
+    {
+      "stage": "umr_soma_mid_lod",
+      "source": "nvidia/SOMA-X",
+      "revision": "d281db2d01553f7230c56e764cec00fe27ef23f7",
+      "planned_logical_or_dedup_within_stage_bytes": 755167582,
+      "complete_blob_bytes": 0,
+      "partial_blob_bytes": 0,
+      "verified_bytes": 0,
+      "verified_files": 0,
+      "status": "queued",
+      "license": "apache-2.0",
+      "note": "Per-stage cache bytes may overlap; use combined totals, not row sums."
+    },
+    {
+      "stage": "umr_seed_shape",
+      "source": "bones-studio/seed",
+      "revision": "2f59b2077b9da34dd4e43618e705c7cb962c9a66",
+      "planned_logical_or_dedup_within_stage_bytes": 40559,
+      "complete_blob_bytes": 0,
+      "partial_blob_bytes": 0,
+      "verified_bytes": 0,
+      "verified_files": 0,
+      "status": "queued",
+      "license": "other",
+      "note": "Per-stage cache bytes may overlap; use combined totals, not row sums."
+    },
+    {
+      "stage": "umr_bones_uniform_complete",
+      "source": "bones-studio/seed",
+      "revision": "2f59b2077b9da34dd4e43618e705c7cb962c9a66",
+      "planned_logical_or_dedup_within_stage_bytes": 45188126979,
+      "complete_blob_bytes": 0,
+      "partial_blob_bytes": 0,
+      "verified_bytes": 0,
+      "verified_files": 0,
+      "status": "queued",
+      "license": "other",
+      "note": "Per-stage cache bytes may overlap; use combined totals, not row sums."
+    }
+  ],
+  "source_repositories": {
+    "status": "verified_previous_audit",
+    "UniMate_commit": "2c5b384715aa63d8639b1ed7eb74bfe614570c7a",
+    "UMR_commit": "d1cdaedaf67a827198da71c5fa831f48b2e51f91",
+    "UMR_site_commit": "b9d749900805fad4700df7ba9e229d57961be560",
+    "history_lfs_objects_verified": 278,
+    "full_git_fsck_passed": true,
+    "no_new_source_rehash_this_snapshot": true
+  },
+  "existing_assets": {
+    "XWBC_archive_bytes": 137887102874,
+    "XWBC_archives": 38,
+    "verification": "previous size/metadata checks; no new full archive hash scan",
+    "Alpha1_weights": "existing Megatron; exact source/staging383tensor equality previously verified; CPU3frameforward now succeeds",
+    "SMPLX": "existing verified neutral model reused",
+    "Qwen_SigLIP": "existing caches reused;2missing H2 joint-name SigLIP vectors computed offline in isolated researchdir"
+  },
+  "limitations": [
+    "Truebones commercial raw motion/FBX unavailable publicly.",
+    "UMR does not publish a universal pretrained model checkpoint; source-body models and examples are separate.",
+    "Authorized BONES uniform archive queued; extraction not yet performed.",
+    "Completed blob bytes are present-by-size, not completed phase hash verification."
+  ],
+  "delta_since_031246UTC": {
+    "complete_blob_bytes": 9502646159,
+    "partial_blob_bytes": -201390977,
+    "combined_cached_bytes": 9301255182,
+    "phase_verified_logical_bytes": 0
+  },
+  "failures": [],
+  "new_authorization_required": false
+}

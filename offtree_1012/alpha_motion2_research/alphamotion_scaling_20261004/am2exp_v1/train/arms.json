@@ -1,0 +1,212 @@
+{
+  "schema": "am2exp_arms_v1",
+  "notes": [
+    "name -> {model_class, parent, seed, steps, size, extra, reference_train_jsonl, output_dir} (interfaces.md); every entry is deep-merged over 'defaults'.",
+    "${OUT}, ${ROOT}, ${CODE}, ${ARM} are substituted at load time. Symbols are 'module:attr'; sealed modules by bare name, am2exp code with the am2exp_v1. prefix.",
+    "sampling_assert: 'required' (default) = reference_train_jsonl must exist and every comparable step is asserted (abort on the first mismatch, before the optimizer update); true = assert only if the file exists; false = record only. XWBC step hashes are only comparable between runs on the same device type (torch.rand on the training device); unimate/franka/hand_gripper hashes are numpy-only and always comparable; the domain must always agree.",
+    "Seed-0 A-stream arms reference runs/A_S_seed0 (SF_M: runs/A_M_seed0). V1_new references V1_old, G1/G1_roll reference G0 (identical sampling by construction). SF_s1 and G0 only record their chains.",
+    "Steps > 12 on the GPU require OUT/logs/approvals/<extra.stage>.ok (lloyd approval of the GPU time).",
+    "If the S timing probe exceeds 1.6x SF s/step, switch extra.geometry.params.grouping to 'g128' for S, O, I and all twins BEFORE any of them runs (final_plan.md)."
+  ],
+  "defaults": {
+    "model_class": "pilot_model:ConditionalMegatron",
+    "parent": null,
+    "seed": 0,
+    "steps": 3000,
+    "size": "S",
+    "reference_train_jsonl": "${ROOT}/runs/A_S_seed0/train.jsonl",
+    "output_dir": "${OUT}/runs/${ARM}",
+    "extra": {
+      "base_config": "orchestration/configs/A_S_seed0.json",
+      "t_max": 3000,
+      "lr": 0.0001,
+      "checkpoints": [1000, 3000],
+      "model_kwargs": {},
+      "objective": {"slide_fix": false, "slide_fix_loss": "am2exp_v1.model.slide_fix:slide_fix_loss", "relational": null},
+      "inputs": {"relational_source": false, "roll_relations": false, "sensor_fn": "am2exp_v1.model.ground:source_root_height_sensor"},
+      "geometry": null,
+      "mixture": null,
+      "e2": null,
+      "side_batch": null,
+      "init_checkpoint": null,
+      "init_step": null,
+      "streams": null,
+      "sampling_assert": "required",
+      "initial_eval": true,
+      "quick_eval_at_checkpoints": true,
+      "final_eval": "full",
+      "stage": null,
+      "tier": "core",
+      "auto_gate": null,
+      "lifetime_seconds": 3600,
+      "out_allocation_bytes": 524288000
+    }
+  },
+  "arms": {
+    "Arep": {
+      "parent": "A_S_seed0 (pipeline floor: same recipe through the new launcher)",
+      "steps": 200,
+      "extra": {"checkpoints": [100], "final_eval": "none", "stage": "pipeline", "tier": "core_probe",
+                "lifetime_seconds": 900, "out_allocation_bytes": 104857600,
+                "description": "A recipe, 200 steps, cosine T_max 3000 (identical LR to A0), quick eval at step 100 like the original; losses vs runs/A_S_seed0/train.jsonl must match to bf16 tolerance."}
+    },
+    "SF": {
+      "model_class": "am2exp_v1.model.slide_fix:SFMegatron",
+      "parent": "A_S_seed0",
+      "extra": {"objective": {"slide_fix": true}, "stage": "core_sf",
+                "description": "A recipe + slide fix (LN readout on [qp;qr], margin sigmoid m=0.05, SmoothL1 + 1e-3 logit^2). Base recipe for every new arm."}
+    },
+    "SF_s1": {
+      "model_class": "am2exp_v1.model.slide_fix:SFMegatron",
+      "parent": "SF (seed 1)",
+      "seed": 1,
+      "reference_train_jsonl": null,
+      "extra": {"objective": {"slide_fix": true}, "sampling_assert": false, "stage": "core_sf",
+                "description": "Seed-variance floor: SF with seed 1 (model init seed 1, data stream default_rng(1), combo default_rng(4) as in the original, reenc default_rng(1077)). Sampling differs from seed 0 by design."}
+    },
+    "S": {
+      "model_class": "am2exp_v1.model.dense_surface:DenseSurfaceMegatron",
+      "parent": "SF",
+      "extra": {"objective": {"slide_fix": true},
+                "geometry": {"hook": "am2exp_v1.model.geometry:attach_dense_geometry",
+                             "params": {"grouping": "g256", "require": ["human_smpl", "booster_k1", "booster_t1", "booster_t1_29dof", "fourier_n1", "hightorque_hi", "pnd_adam_lite", "tienkung", "unitree_g1_23dof", "unitree_g1_29dof", "unitree_h1", "unitree_h1_2", "fourier_gr3", "kuavo_s45", "unitree_h2", "unitree_r1", "adroit_pen", "relay_franka_full_v2"]}},
+                "stage": "core_e1",
+                "description": "SF + static dense-surface group tokens (encoder) and target descriptor attachment (decoder), all 18 bodies."}
+    },
+    "O": {
+      "model_class": "am2exp_v1.model.dense_surface:DenseSurfaceMegatron",
+      "parent": "S",
+      "extra": {"objective": {"slide_fix": true,
+                              "relational": {"fn": "am2exp_v1.model.losses_relational:relational_objective", "weights": {}, "roll": false}},
+                "geometry": {"hook": "am2exp_v1.model.geometry:attach_dense_geometry",
+                             "params": {"grouping": "g256", "require": ["human_smpl", "booster_k1", "booster_t1", "booster_t1_29dof", "fourier_n1", "hightorque_hi", "pnd_adam_lite", "tienkung", "unitree_g1_23dof", "unitree_g1_29dof", "unitree_h1", "unitree_h1_2", "fourier_gr3", "kuavo_s45", "unitree_h2", "unitree_r1", "adroit_pen", "relay_franka_full_v2"]}},
+                "stage": "core_e1",
+                "description": "S + target-side relational objective (L_pen beyond GT .5, L_clear .2, L_hcon .2) on XWBC targets; DFaust/PosePrior-trust0 excluded inside the loss."}
+    },
+    "I": {
+      "model_class": "am2exp_v1.model.relational:RelationalInputMegatron",
+      "parent": "S",
+      "extra": {"objective": {"slide_fix": true},
+                "inputs": {"relational_source": true, "roll_relations": false},
+                "geometry": {"hook": "am2exp_v1.model.geometry:attach_dense_geometry",
+                             "params": {"grouping": "g256", "require": ["human_smpl", "booster_k1", "booster_t1", "booster_t1_29dof", "fourier_n1", "hightorque_hi", "pnd_adam_lite", "tienkung", "unitree_g1_23dof", "unitree_g1_29dof", "unitree_h1", "unitree_h1_2", "fourier_gr3", "kuavo_s45", "unitree_h2", "unitree_r1", "adroit_pen", "relay_franka_full_v2"]}},
+                "stage": "core_e1",
+                "description": "S + source relational encoder inputs (ground clearance with root sensor tied to the existing contact dropout; self-contact on the dense surface). Never on cycle/contrast/judge encodes."}
+    },
+    "S_wrong": {
+      "model_class": "am2exp_v1.model.dense_surface:DenseSurfaceMegatron",
+      "parent": "SF (twin of S)",
+      "extra": {"objective": {"slide_fix": true},
+                "geometry": {"hook": "am2exp_v1.model.geometry:attach_dense_geometry",
+                             "params": {"grouping": "g256",
+                                        "derangement": {"booster_k1": "hightorque_hi", "booster_t1": "unitree_g1_29dof", "booster_t1_29dof": "human_smpl", "fourier_gr3": "unitree_g1_23dof", "fourier_n1": "tienkung", "hightorque_hi": "unitree_h1", "human_smpl": "booster_k1", "kuavo_s45": "unitree_h1_2", "pnd_adam_lite": "unitree_h2", "tienkung": "unitree_r1", "unitree_g1_23dof": "pnd_adam_lite", "unitree_g1_29dof": "booster_t1_29dof", "unitree_h1": "kuavo_s45", "unitree_h1_2": "fourier_gr3", "unitree_h2": "fourier_n1", "unitree_r1": "booster_t1", "adroit_pen": "relay_franka_full_v2", "relay_franka_full_v2": "adroit_pen"},
+                                        "require": ["human_smpl", "booster_k1", "booster_t1", "booster_t1_29dof", "fourier_n1", "hightorque_hi", "pnd_adam_lite", "tienkung", "unitree_g1_23dof", "unitree_g1_29dof", "unitree_h1", "unitree_h1_2", "fourier_gr3", "kuavo_s45", "unitree_h2", "unitree_r1", "adroit_pen", "relay_franka_full_v2"]}},
+                "derangement_rule": "numpy default_rng(20261004) permutations of the 16 sorted XWBC bodies until no body maps to its own vendor (first name token; 221st draw); adroit_pen <-> relay_franka_full_v2 swapped. Donor shape is scaled to the receiver's reach and re-anchored to the receiver's nearest rest joint (WP-MODEL geometry.build_dense_static).",
+                "stage": "twins_e1", "tier": "auto_gated",
+                "auto_gate": {"rule": "am2exp_v1.ops.gates:decision_file", "params": {"test": "S", "parent": "SF"}},
+                "description": "Information-free twin of S: identical modules/gradient path, every body gets another (different-vendor) body's static surface. Run iff S beats SF beyond the floor."}
+    },
+    "O_roll": {
+      "model_class": "am2exp_v1.model.dense_surface:DenseSurfaceMegatron",
+      "parent": "S (twin of O)",
+      "extra": {"objective": {"slide_fix": true,
+                              "relational": {"fn": "am2exp_v1.model.losses_relational:relational_objective", "weights": {}, "roll": true}},
+                "geometry": {"hook": "am2exp_v1.model.geometry:attach_dense_geometry",
+                             "params": {"grouping": "g256", "require": ["human_smpl", "booster_k1", "booster_t1", "booster_t1_29dof", "fourier_n1", "hightorque_hi", "pnd_adam_lite", "tienkung", "unitree_g1_23dof", "unitree_g1_29dof", "unitree_h1", "unitree_h1_2", "fourier_gr3", "kuavo_s45", "unitree_h2", "unitree_r1", "adroit_pen", "relay_franka_full_v2"]}},
+                "stage": "twins_e1", "tier": "auto_gated",
+                "auto_gate": {"rule": "am2exp_v1.ops.gates:decision_file", "params": {"test": "O", "parent": "S"}},
+                "description": "Twin of O: relational GT targets rolled by B/2 rows (across clips). Run iff O beats S."}
+    },
+    "I_roll": {
+      "model_class": "am2exp_v1.model.relational:RelationalInputMegatron",
+      "parent": "S (twin of I)",
+      "extra": {"objective": {"slide_fix": true},
+                "model_kwargs": {"roll_relations": true},
+                "inputs": {"relational_source": true, "roll_relations": true},
+                "geometry": {"hook": "am2exp_v1.model.geometry:attach_dense_geometry",
+                             "params": {"grouping": "g256", "require": ["human_smpl", "booster_k1", "booster_t1", "booster_t1_29dof", "fourier_n1", "hightorque_hi", "pnd_adam_lite", "tienkung", "unitree_g1_23dof", "unitree_g1_29dof", "unitree_h1", "unitree_h1_2", "fourier_gr3", "kuavo_s45", "unitree_h2", "unitree_r1", "adroit_pen", "relay_franka_full_v2"]}},
+                "stage": "twins_e1", "tier": "auto_gated",
+                "auto_gate": {"rule": "am2exp_v1.ops.gates:decision_file", "params": {"test": "I", "parent": "S"}},
+                "description": "Twin of I: relational inputs rolled by B/2 rows at train AND eval time (model default roll_relations=True). Run iff I beats S."}
+    },
+    "V1_old": {
+      "parent": "probe (old slide head, positive control)",
+      "steps": 1500,
+      "reference_train_jsonl": null,
+      "extra": {"t_max": 1500, "checkpoints": [500, 1000], "mixture": {"franka_only": true}, "sampling_assert": false,
+                "initial_eval": false, "quick_eval_at_checkpoints": false, "final_eval": "quick",
+                "stage": "probes", "tier": "core_probe", "lifetime_seconds": 1200, "out_allocation_bytes": 209715200,
+                "description": "Franka-only same-body loop (full/masked/sparse 0.4/0.35/0.25), 1500 steps, from scratch, A head; must reproduce saturation."}
+    },
+    "V1_new": {
+      "model_class": "am2exp_v1.model.slide_fix:SFMegatron",
+      "parent": "probe (slide-fix head)",
+      "steps": 1500,
+      "reference_train_jsonl": "${OUT}/runs/V1_old/train_slim.jsonl",
+      "extra": {"t_max": 1500, "checkpoints": [500, 1000], "mixture": {"franka_only": true}, "objective": {"slide_fix": true},
+                "initial_eval": false, "quick_eval_at_checkpoints": false, "final_eval": "quick",
+                "stage": "probes", "tier": "core_probe", "lifetime_seconds": 1200, "out_allocation_bytes": 209715200,
+                "description": "Same stream as V1_old with the slide-fix head; per-step hashes asserted equal to V1_old."}
+    },
+    "SF_M": {
+      "model_class": "am2exp_v1.model.slide_fix:SFMegatron",
+      "parent": "A_M_seed0",
+      "size": "M",
+      "steps": 1000,
+      "reference_train_jsonl": "${ROOT}/runs/A_M_seed0/train.jsonl",
+      "extra": {"base_config": "orchestration/configs/A_M_seed0.json", "t_max": 3000, "checkpoints": [],
+                "objective": {"slide_fix": true}, "final_eval": "quick", "stage": "probes", "tier": "core_probe",
+                "lifetime_seconds": 1800, "out_allocation_bytes": 209715200,
+                "description": "Slide-fix drift test at M: 1000 steps, cosine T_max 3000, identical sampling to A_M_seed0 (which saturates by step 19)."}
+    },
+    "G0": {
+      "model_class": "am2exp_v1.model.slide_fix:SFMegatron",
+      "parent": "SF@3000",
+      "steps": 1500,
+      "reference_train_jsonl": null,
+      "extra": {"t_max": 1500, "checkpoints": [1000], "objective": {"slide_fix": true},
+                "init_checkpoint": "${OUT}/runs/SF/checkpoint_step3000.pt", "init_step": 3000,
+                "mixture": {"xwbc": 0.40, "unimate": 0.25, "franka_extra": 0.10, "hand_gripper": 0.25},
+                "e2": {"fn": "am2exp_v1.e2.xbody_loss:xbody_loss", "w_xb": 0.0, "roll": 0, "batch_size": 64},
+                "streams": {"data": 20003, "combo": 20007, "reenc": 20033},
+                "sampling_assert": false, "initial_eval": false, "stage": "core_e2", "lifetime_seconds": 2400,
+                "description": "E2 control fine-tune: hand_gripper rows drawn, w_xb = 0 (zero-weight loss still backpropagated). Fresh AdamW, cosine 1500."}
+    },
+    "G1": {
+      "model_class": "am2exp_v1.model.slide_fix:SFMegatron",
+      "parent": "SF@3000",
+      "steps": 1500,
+      "reference_train_jsonl": "${OUT}/runs/G0/train_slim.jsonl",
+      "extra": {"t_max": 1500, "checkpoints": [1000], "objective": {"slide_fix": true},
+                "init_checkpoint": "${OUT}/runs/SF/checkpoint_step3000.pt", "init_step": 3000,
+                "mixture": {"xwbc": 0.40, "unimate": 0.25, "franka_extra": 0.10, "hand_gripper": 0.25},
+                "e2": {"fn": "am2exp_v1.e2.xbody_loss:xbody_loss", "w_xb": 0.2, "roll": 0, "batch_size": 64},
+                "streams": {"data": 20003, "combo": 20007, "reenc": 20033},
+                "initial_eval": false, "stage": "core_e2", "lifetime_seconds": 2400,
+                "description": "G0 + cross-body opposition loss w_xb = 0.2; sampling asserted identical to G0 per step."}
+    },
+    "G1_roll": {
+      "model_class": "am2exp_v1.model.slide_fix:SFMegatron",
+      "parent": "SF@3000 (twin of G1)",
+      "steps": 1500,
+      "reference_train_jsonl": "${OUT}/runs/G0/train_slim.jsonl",
+      "extra": {"t_max": 1500, "checkpoints": [1000], "objective": {"slide_fix": true},
+                "init_checkpoint": "${OUT}/runs/SF/checkpoint_step3000.pt", "init_step": 3000,
+                "mixture": {"xwbc": 0.40, "unimate": 0.25, "franka_extra": 0.10, "hand_gripper": 0.25},
+                "e2": {"fn": "am2exp_v1.e2.xbody_loss:xbody_loss", "w_xb": 0.2, "roll": 32, "batch_size": 64},
+                "streams": {"data": 20003, "combo": 20007, "reenc": 20033},
+                "initial_eval": false, "stage": "twins_e2", "tier": "auto_gated", "lifetime_seconds": 2400,
+                "auto_gate": {"rule": "am2exp_v1.ops.gates:decision_file", "params": {"test": "G1", "parent": "G0"}},
+                "description": "Twin of G1: opposition targets rolled by 32 rows. Run iff G1 beats G0."}
+    },
+    "SF_F2": {
+      "model_class": "am2exp_v1.model.slide_fix:SFMegatron",
+      "parent": "SF (fallback F2)",
+      "extra": {"objective": {"slide_fix": true},
+                "side_batch": {"body": "relay_franka_full_v2", "rows": 64, "every": 4, "weight": 1.0, "seed": 1000003,
+                               "modes": [0.4, 0.35, 0.25]},
+                "stage": "fallback_f2", "tier": "gated_fallback",
+                "description": "Only if V1 passes but SF fails the copy test (frequency limit): SF + 64-row Franka side batch every 4th step on a private RNG under fork_rng; main sampling still asserted equal to A_S_seed0."}
+    }
+  }
+}

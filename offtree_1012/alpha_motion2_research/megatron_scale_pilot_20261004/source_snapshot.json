@@ -1,0 +1,21 @@
+{
+  "source_commit": "692bf7704ebc0d4e2b12678c1bc0c011d426fe0b",
+  "files": [
+    {
+      "path": "/home/arenalabs/Desktop/\"be water, robot\"/pose_translator_design/exp_topo/common.py",
+      "snapshot": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/megatron_scale_pilot_20261004/code/legacy/common.py",
+      "sha256": "007772a2498f4cef12bde35e2410e767c1dda285d4bcc3706e29d2863764ceb6"
+    },
+    {
+      "path": "/home/arenalabs/Desktop/\"be water, robot\"/pose_translator_design/exp_topo/model.py",
+      "snapshot": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/megatron_scale_pilot_20261004/code/legacy/model.py",
+      "sha256": "d717c185fcd0eee7b5cb216a8faba4bc89a4485c839e4c0e52c940ea9ccf45e0"
+    },
+    {
+      "path": "/home/arenalabs/Desktop/\"be water, robot\"/pose_translator_design/exp_topo/model_dual.py",
+      "snapshot": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/megatron_scale_pilot_20261004/code/legacy/model_dual.py",
+      "sha256": "ae1ebdd37d62805190ccc2e332177d7e790371997d91fa516ec5ec6099f563dd"
+    }
+  ],
+  "created_at_utc": "2026-10-04T04:49:45.524151+00:00"
+}

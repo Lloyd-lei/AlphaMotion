@@ -1,0 +1,223 @@
+{
+  "schema_version": 1,
+  "status": "proposed supplemental metadata; original trace.json unchanged",
+  "case_id": "g1_fallAndGetUp3_subject1_to_official_h2",
+  "evidence_class": "source-audited checkpoint-forward interpretation; not physics or control validation",
+  "source_commit": "692bf7704ebc0d4e2b12678c1bc0c011d426fe0b",
+  "trace_inputs": [
+    {
+      "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/alpha1/trace.json",
+      "sha256": "64baf768e95945fff8a9f962be5b5b2426441c8269b7d658bd78c367ae77ddd0"
+    },
+    {
+      "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/alpha1/trace.npz",
+      "sha256": "ec409a88300b9552e640e186d7ee34a45f1e9bec38c2b21ef2d5cf54e76f4480"
+    }
+  ],
+  "checkpoint": {
+    "path": "/var/tmp/alphamotion/topo_exp/runs/L_M20k_0903/model.pt",
+    "sha256": "d6585ca0e46d85300b44a3998288396ffd6853639d6ad094f5846e8cce0e8f7d",
+    "strict_load": true,
+    "state_tensor_count": 383,
+    "config_path": "/var/tmp/alphamotion/topo_exp/runs/L_M20k_0903/config.json",
+    "config_sha256": "0e61ed5b012420d5fa186bc09537e9cac32ed14fa4533182c6d44805f5e7ee58"
+  },
+  "config": {
+    "path": "/var/tmp/alphamotion/topo_exp/runs/L_M20k_0903/config.json",
+    "sha256": "0e61ed5b012420d5fa186bc09537e9cac32ed14fa4533182c6d44805f5e7ee58",
+    "values": {
+      "fk_loss": true,
+      "rot_only": false,
+      "rot_head": "free",
+      "root_head": false,
+      "root_pos": true,
+      "w_rootpos": 3.0,
+      "w_hpair": 0.1,
+      "reenc_consistency": 1.0,
+      "reenc_prob": 0.3,
+      "vis_residual": false,
+      "var_floor": 0.0,
+      "fsq_stages": 1,
+      "fsq_levels": "32,32,32,32,32,32,32,32,32,32,32,32,32",
+      "contact_chan": true,
+      "sem_encoder": "siglip",
+      "init": "/var/tmp/alphamotion/topo_exp/runs/L_M20k_0903_s1/model.pt"
+    }
+  },
+  "hpos": {
+    "tensor_key": "predicted_position_head_raw",
+    "shape": [
+      3,
+      36,
+      3
+    ],
+    "root_index": 0,
+    "root_channel0": {
+      "semantic": "predicted target root height above contact ground",
+      "units": "meters",
+      "direct_loss": "w_rootpos * smooth_l1(hpos[:, root, 0], target_gap_root)",
+      "temporal_loss": "w_hpair * mean((30 * (delta hpos_root0 - delta target_gap_root))**2)",
+      "temporal_difference_units": "meters/second",
+      "citation_indices": [
+        1,
+        2
+      ]
+    },
+    "root_channels1_2": {
+      "semantic": "raw auxiliary outputs; no direct world-horizontal displacement or velocity target in active loss",
+      "units": "no metric interpretation justified",
+      "training": "indirectly constrained by active decode-reencode latent consistency",
+      "citation_indices": [
+        1,
+        4
+      ]
+    },
+    "nonroot_channels": {
+      "semantic": "raw auxiliary position-head outputs; no direct XYZ supervision under fk_loss=true",
+      "units": "no metric interpretation justified",
+      "training": "indirectly constrained by active decode-reencode latent consistency",
+      "citation_indices": [
+        3,
+        4
+      ]
+    },
+    "noteworthy_unused_computation": "train_dual.py computes rw_target-rw_source and yaw trigonometry at lines 443-445, but neither enters root loss at lines 451-452.",
+    "gradient_scope_caveat": "Auxiliary channels are not untrained: active re-encoding consistency supplies an indirect gradient path.",
+    "example_frame1800": {
+      "raw_root3": [
+        0.9551299214363098,
+        2.3536744117736816,
+        -0.12802672386169434
+      ],
+      "raw_h2_left_elbow3": [
+        0.7311580181121826,
+        1.4465248584747314,
+        0.34550154209136963
+      ]
+    }
+  },
+  "rotation_fk": {
+    "tensor_key": "predicted_fk_positions_root_relative_cm_y",
+    "shape": [
+      3,
+      36,
+      3
+    ],
+    "semantic": "target-root-relative FK from predicted global rotations and fresh official H2 offsets",
+    "units": "centimeters",
+    "world_translation_included": false,
+    "raw_hpos_used_for_nonroot_fk": false,
+    "interpretation": "Metric kinematic visualization output, distinct from raw hpos."
+  },
+  "attention": {
+    "interpretation": "Per-head softmax recomputed from actual forward-captured inputs and trained projection weights; module-output parity checked.",
+    "heads": 8,
+    "head_dim": 32,
+    "probability_axis": "last dimension; each query row sums to 1",
+    "softmax_output_max_abs_error": 7.152557373046875e-07,
+    "source": "Q,K,V = projections of block-pre-normalized source tokens; learned hop bias enters logits.",
+    "rotation_pool": "Q=projection of LN(learned queries); K,V=projections of LN(final encoder output).",
+    "target_decoder_layer0": "Q=projection of LN(official H2 descriptor); K,V=projections of LN(post-FSQ reconstructed rotation tokens).",
+    "normalization_note": "Pre-LN means normalization BEFORE Q/K/V projection; captured projection inputs are normalized."
+  },
+  "scope_limits": [
+    "Three independent single-frame forwards, not temporal generation.",
+    "Source clip is a training-domain demonstration, not held-out or zero-shot evidence.",
+    "Official H2 query differs from the legacy H2 anonymous training tree.",
+    "Predicted free global rotations and their FK positions are not hardware qpos and have not undergone control, IK, or dynamics validation.",
+    "Non-root hpos vectors and root-specific hpos vector have different supervision semantics; use FK for skeleton visualization.",
+    "Other robot cards are alternative embodiments, not concatenated simultaneous inputs."
+  ],
+  "source_evidence": [
+    {
+      "file": "model_dual.py",
+      "path": "/home/arenalabs/Desktop/\"be water, robot\"/pose_translator_design/exp_topo/model_dual.py",
+      "commit": "692bf7704ebc0d4e2b12678c1bc0c011d426fe0b",
+      "sha256": "ae1ebdd37d62805190ccc2e332177d7e790371997d91fa516ec5ec6099f563dd",
+      "line_start": 226,
+      "line_end": 245,
+      "fact": "rot_only=false returns raw hpos(qp); last_pos carries this tensor.",
+      "snippet": "226:             # reported number already comes through, so any caller that wants\n227:             # positions gets the correct ones.\n228:             from dual_common import fk_pos_torch\n229:             pos = fk_pos_torch(h, g[\"spec\"]) / g[\"reach\"] if \"spec\" in g \\\n230:                 else h.new_zeros(h.shape[0], h.shape[1], 3)\n231:         else:\n232:             pos = self.hpos(qp)\n233:         if self.vis_residual and obs is not None:\n234:             assert vis is not None, \"vis_residual decode with obs needs the visibility mask\"\n235:             R_obs = rot6d_to_matrix(obs[..., :6])\n236:             R_delta = rot6d_to_matrix(self.hrot_res(qr))\n237:             h_res = matrix_to_rot6d(R_obs @ R_delta)\n238:             p_res = obs[..., 6:9] + self.hpos_res(qp)\n239:             m = vis[..., None]\n240:             h = torch.where(m, h_res, h)\n241:             pos = torch.where(m, p_res, pos)\n242:         self.last_pos = pos                         # Y3 root 槽监督从这里读\n243:         if getattr(self, \"root_head\", False):\n244:             # 根 query 在 qr 的下标由调用方 g 提供 (spec.parents<0); 缺省取 0 (根总在 0 位)\n245:             self.last_root_h = self.hroot(qr[:, g.get(\"root_idx\", 0)]).squeeze(-1)"
+    },
+    {
+      "file": "train_dual.py",
+      "path": "/home/arenalabs/Desktop/\"be water, robot\"/pose_translator_design/exp_topo/train_dual.py",
+      "commit": "692bf7704ebc0d4e2b12678c1bc0c011d426fe0b",
+      "sha256": "de909574dc433e99080329c780a52fb3fe9dd91a7474f7d0f7abe58b4eced233",
+      "line_start": 438,
+      "line_end": 452,
+      "fact": "Only target-root channel 0 is directly supervised against root height. Computed world displacement and yaw do not feed this loss.",
+      "snippet": "438:                 pos_out_last = getattr(model, \"last_pos\", None)\n439:                 if args.root_pos and args.w_rootpos > 0 and tgt in rp_tgt and src in rp_tgt:\n440:                     _ri = int(np.where(np.asarray(data[tgt][\"spec\"].parents) < 0)[0][0])\n441:                     _pr = pos_out_last[:, _ri] if pos_out_last is not None else None\n442:                     if _pr is not None:\n443:                         _dw = rp_tgt[tgt][\"rw\"][sel] - rp_tgt[src][\"rw\"][sel]      # 世界偏移\n444:                         _yw = rp_tgt[tgt][\"yaw\"][sel]\n445:                         _c2, _s3 = torch.cos(_yw), torch.sin(_yw)\n446:                         _h = (data[tgt][\"con\"].gap_root(sel) if data[tgt].get(\"con_ok\")\n447:                               else rp_tgt[tgt][\"rw\"][sel][:, 1])\n448:                         # 0901 Y5b (lloyd): 只监督高度。实测水平偏移 98% 是 retarget 原点\n449:                         # 常数 (中位 79cm, 不可学), 姿态真正决定的只有 1.5cm —— 没东西可学,\n450:                         # 硬学只会用噪声梯度淹掉高度 (Y5: 高度被淹到 19.9cm)。\n451:                         _lrp = torch.nn.functional.smooth_l1_loss(_pr[:, 0], _h)\n452:                         term = term + args.w_rootpos * _lrp"
+    },
+    {
+      "file": "train_dual.py",
+      "path": "/home/arenalabs/Desktop/\"be water, robot\"/pose_translator_design/exp_topo/train_dual.py",
+      "commit": "692bf7704ebc0d4e2b12678c1bc0c011d426fe0b",
+      "sha256": "de909574dc433e99080329c780a52fb3fe9dd91a7474f7d0f7abe58b4eced233",
+      "line_start": 552,
+      "line_end": 561,
+      "fact": "Adjacent-frame root channel 0 differences are additionally supervised at 30 fps.",
+      "snippet": "552:             if args.w_hpair > 0 and args.root_pos and b in rp_tgt \\\n553:                     and getattr(model, \"last_pos\", None) is not None:\n554:                 _rib = int(np.where(np.asarray(spec_b.parents) < 0)[0][0])\n555:                 _hp = model.last_pos[:, _rib, 0]                        # [2B4] 解码根高 (m)\n556:                 _hg = (data[b][\"con\"].gap_root(rows) if data[b].get(\"con_ok\")\n557:                        else rp_tgt[b][\"rw\"][rows][:, 1])                # 与主批 w_rootpos 同口径\n558:                 _dh = ((_hp[B4:] - _hp[:B4]) - (_hg[B4:] - _hg[:B4])) * 30.0   # m/s\n559:                 lhp = (_dh ** 2).mean()\n560:                 _acc(\"hpair\", lhp)\n561:                 loss_s = args.w_hpair * lhp"
+    },
+    {
+      "file": "dual_common.py",
+      "path": "/home/arenalabs/Desktop/\"be water, robot\"/pose_translator_design/exp_topo/dual_common.py",
+      "commit": "692bf7704ebc0d4e2b12678c1bc0c011d426fe0b",
+      "sha256": "c8f43065efb0a0188796a572d9b549a55f16b83bf4c3a5d4a28f84d5ba0110cd",
+      "line_start": 389,
+      "line_end": 402,
+      "fact": "fk_loss=true routes XYZ loss through predicted rotation FK/reach, bypassing raw hpos XYZ.",
+      "snippet": "389:     if fk_loss:\n390:         # 0812: the position term is computed by running FK on the PREDICTED\n391:         # rotations instead of reading the discarded hpos head, so the metric\n392:         # error (which knows about lever arms) supervises the head that renders.\n393:         # Same units as before: the cached pose stores gp / reach.\n394:         fk_cm = fk_pos_torch(prot, data[tgt][\"spec\"])                            # [B,J,3] cm\n395:         fkp = fk_cm / data[tgt][\"reach\"]\n396:         fkg = fk_pos_torch(gt[..., :6], data[tgt][\"spec\"]) / data[tgt][\"reach\"]\n397:         pos_j = (fkp - fkg).norm(dim=-1)                                        # [B,J]\n398:     else:\n399:         fk_cm = None\n400:         pos_j = (ppos - gt[..., 6:9]).norm(dim=-1)                              # [B,J]\n401:     if cextras is not None:\n402:         contact_terms(cextras, data, tgt, idx, prot, clog, fk_cm)"
+    },
+    {
+      "file": "train_dual.py",
+      "path": "/home/arenalabs/Desktop/\"be water, robot\"/pose_translator_design/exp_topo/train_dual.py",
+      "commit": "692bf7704ebc0d4e2b12678c1bc0c011d426fe0b",
+      "sha256": "de909574dc433e99080329c780a52fb3fe9dd91a7474f7d0f7abe58b4eced233",
+      "line_start": 502,
+      "line_end": 513,
+      "fact": "All decoded hpos values enter active re-encoding consistency.",
+      "snippet": "502:         if args.reenc_consistency > 0 and float(reenc_rng.random()) < args.reenc_prob:\n503:             # N3e: decode -> re-encode cycle, half batch, one random direction.\n504:             B2 = max(8, args.bs // 2)\n505:             sel2 = sel[:B2]\n506:             a, b = combos[int(reenc_rng.integers(len(combos)))]\n507:             zp_c, zr_c = model.encode(data[a][\"pose\"][sel2], geom(data, a, B2))\n508:             prot_c, ppos_c = model.decode(zp_c, zr_c, geom(data, b, B2))\n509:             re_in = torch.cat([prot_c, ppos_c], -1)                 # decoded pose [B,J,9]\n510:             zp_r, zr_r = model.encode(re_in, geom(data, b, B2))\n511:             lre = ((zp_r - zp_c) ** 2).mean() + ((zr_r - zr_c) ** 2).mean()\n512:             _acc(\"reenc\", lre)\n513:             (args.reenc_consistency * lre).backward()"
+    },
+    {
+      "file": "model.py",
+      "path": "/home/arenalabs/Desktop/\"be water, robot\"/pose_translator_design/exp_topo/model.py",
+      "commit": "692bf7704ebc0d4e2b12678c1bc0c011d426fe0b",
+      "sha256": "d717c185fcd0eee7b5cb216a8faba4bc89a4485c839e4c0e52c940ea9ccf45e0",
+      "line_start": 58,
+      "line_end": 77,
+      "fact": "Actual FSQ bound, round, normalize and reconstruct.",
+      "snippet": "58:     def quantize(self, z):\n59:         # z: [...,f] unbounded -> bounded to [-1,1]-ish then to level grid\n60:         half = (self._levels - 1) / 2\n61:         # bound with tanh scaled so range covers the levels\n62:         zt = torch.tanh(z) * half\n63:         zr = torch.round(zt)\n64:         # straight-through\n65:         zq = zt + (zr - zt).detach()\n66:         # 0902 code_noise (单帧路线, lloyd): 训练时给量化值加 ±noise 格的均匀噪声,\n67:         # 让解码器对 ±1 格抖动平滑 (相邻帧码位跳格 -> 脚点不跳)。eval 时不加, 码本不变。\n68:         if self.training and getattr(self, \"noise\", 0.0) > 0:\n69:             zq = zq + (torch.rand_like(zq) - 0.5) * (2 * self.noise)\n70:         # normalize to [-1,1] for the decoder\n71:         return zq / half\n72: \n73:     def forward(self, z_tokens):\n74:         # z_tokens: [B, K, d]\n75:         f = self.proj_in(z_tokens)\n76:         q = self.quantize(f)\n77:         return self.proj_out(q), q"
+    },
+    {
+      "file": "model.py",
+      "path": "/home/arenalabs/Desktop/\"be water, robot\"/pose_translator_design/exp_topo/model.py",
+      "commit": "692bf7704ebc0d4e2b12678c1bc0c011d426fe0b",
+      "sha256": "d717c185fcd0eee7b5cb216a8faba4bc89a4485c839e4c0e52c940ea9ccf45e0",
+      "line_start": 213,
+      "line_end": 264,
+      "fact": "Self attention, hop bias, pre-LN blocks, cross attention Q/K/V.",
+      "snippet": "213: class GraphBiasAttention(nn.Module):\n214:     \"\"\"MHA with additive per-head bias from clamped hop distance.\"\"\"\n215:     def __init__(self, d_model, n_heads, max_hop=16):\n216:         super().__init__()\n217:         self.h = n_heads; self.dk = d_model // n_heads\n218:         self.q = nn.Linear(d_model, d_model); self.k = nn.Linear(d_model, d_model)\n219:         self.v = nn.Linear(d_model, d_model); self.o = nn.Linear(d_model, d_model)\n220:         self.hop_emb = nn.Embedding(max_hop + 2, n_heads)  # +1 pad/unreachable bucket\n221:         self.max_hop = max_hop\n222: \n223:     def forward(self, x, hop, key_padding_mask=None):\n224:         B, J, D = x.shape\n225:         q = self.q(x).view(B, J, self.h, self.dk).transpose(1, 2)\n226:         k = self.k(x).view(B, J, self.h, self.dk).transpose(1, 2)\n227:         v = self.v(x).view(B, J, self.h, self.dk).transpose(1, 2)\n228:         att = (q @ k.transpose(-1, -2)) / (self.dk ** 0.5)  # [B,h,J,J]\n229:         hb = hop.clamp(max=self.max_hop + 1)               # [B,J,J]\n230:         bias = self.hop_emb(hb).permute(0, 3, 1, 2)         # [B,h,J,J]\n231:         att = att + bias\n232:         if key_padding_mask is not None:\n233:             att = att.masked_fill(key_padding_mask[:, None, None, :], float(\"-inf\"))\n234:         att = att.softmax(-1)\n235:         out = (att @ v).transpose(1, 2).reshape(B, J, D)\n236:         return self.o(out)\n237: \n238: \n239: class EncBlock(nn.Module):\n240:     def __init__(self, d, h):\n241:         super().__init__()\n242:         self.a = GraphBiasAttention(d, h); self.n1 = nn.LayerNorm(d)\n243:         self.ff = nn.Sequential(nn.Linear(d, 4 * d), nn.GELU(), nn.Linear(4 * d, d))\n244:         self.n2 = nn.LayerNorm(d)\n245: \n246:     def forward(self, x, hop, kpm):\n247:         x = x + self.a(self.n1(x), hop, kpm)\n248:         x = x + self.ff(self.n2(x))\n249:         return x\n250: \n251: \n252: class CrossBlock(nn.Module):\n253:     def __init__(self, d, h):\n254:         super().__init__()\n255:         self.mha = nn.MultiheadAttention(d, h, batch_first=True)\n256:         self.n1 = nn.LayerNorm(d); self.nq = nn.LayerNorm(d)\n257:         self.ff = nn.Sequential(nn.Linear(d, 4 * d), nn.GELU(), nn.Linear(4 * d, d))\n258:         self.n2 = nn.LayerNorm(d)\n259: \n260:     def forward(self, q, kv, key_padding_mask=None):\n261:         a, _ = self.mha(self.nq(q), self.n1(kv), self.n1(kv), key_padding_mask=key_padding_mask)\n262:         q = q + a\n263:         q = q + self.ff(self.n2(q))\n264:         return q"
+    },
+    {
+      "file": "model_dual.py",
+      "path": "/home/arenalabs/Desktop/\"be water, robot\"/pose_translator_design/exp_topo/model_dual.py",
+      "commit": "692bf7704ebc0d4e2b12678c1bc0c011d426fe0b",
+      "sha256": "ae1ebdd37d62805190ccc2e332177d7e790371997d91fa516ec5ec6099f563dd",
+      "line_start": 121,
+      "line_end": 141,
+      "fact": "Position and rotation use distinct query banks and FSQ branches.",
+      "snippet": "121:     def encode(self, x, g, joint_mask=None, return_codes=False, con=None):\n122:         \"\"\"joint_mask [B,J] bool (True = pose hidden -> mask token). return_codes: also\n123:         return the quantized grid values (probe input: leakage / partial-obs stability).\n124:         x 可以是 [B,J,9] (老口径) 或 [B,J,10] (v2: 第 10 通道 = 逐关节软接触标签);\n125:         也可以走 con= 显式传 [B,J] / [B,J,1]。9 通道 + con=None => 与既往逐位一致。\"\"\"\n126:         h = self._trunk(x, g, joint_mask, con)\n127:         B = h.shape[0]\n128:         if self.single_codebook:\n129:             z, cp = self.fsqp(self.poolp(self.qp[None].expand(B, -1, -1), h))\n130:             zr, cr = z, cp\n131:             zp = z\n132:         else:\n133:             if self.rot_only:\n134:                 zr, cr = self.fsqr(self.poolr(self.qr[None].expand(B, -1, -1), h))\n135:                 zp, cp = zr, cr           # alias: no separate position code\n136:             else:\n137:                 zp, cp = self.fsqp(self.poolp(self.qp[None].expand(B, -1, -1), h))\n138:                 zr, cr = self.fsqr(self.poolr(self.qr[None].expand(B, -1, -1), h))\n139:         if return_codes:\n140:             return zp, zr, (cp, cr)\n141:         return zp, zr"
+    },
+    {
+      "file": "model_dual.py",
+      "path": "/home/arenalabs/Desktop/\"be water, robot\"/pose_translator_design/exp_topo/model_dual.py",
+      "commit": "692bf7704ebc0d4e2b12678c1bc0c011d426fe0b",
+      "sha256": "ae1ebdd37d62805190ccc2e332177d7e790371997d91fa516ec5ec6099f563dd",
+      "line_start": 156,
+      "line_end": 174,
+      "fact": "Pose projection, masking, signed-contact embedding, descriptor sum, encoder.",
+      "snippet": "156:     def _trunk(self, x, g, joint_mask=None, con=None):\n157:         x, con = self._split_con(x, con)\n158:         h = self.inp(x)\n159:         if joint_mask is not None:\n160:             h = torch.where(joint_mask[..., None], self.mask_tok.expand_as(h), h)\n161:         if con is not None:\n162:             # 顺序是纪律: 接触位必须加在 mask 替换之后。cask 的语义是\n163:             # 「这个关节被遮住了, 但它必须踩在地上」—— 若先加后遮, mask_tok 会把\n164:             # 接触位一起抹掉, cask 退化成普通遮挡, 整个方案静默失效。\n165:             # 0901: NaN = \"这一格没有接触信息\" —— 嵌入贡献置零, 与推理时 con=None\n166:             # 完全等价。之前 dropout 用 -1 当哨兵, 在距离语义里 -1 = \"所有关节确定\n167:             # 悬空\", 30% 的训练步在喂与姿态矛盾的断言; 而考试 con=None 又是模型从没\n168:             # 见过的第三态 -> Y1 无通道评测崩到 40.6°, 翻转方向命中 51% (掷硬币)。\n169:             _v = (~torch.isnan(con)).float()\n170:             h = h + self.con_emb(torch.nan_to_num(con)) * _v\n171:         h = h + self.jf(g[\"rest_off\"], g[\"bonelen\"], g[\"depth\"], g.get(\"sem\"), g.get(\"dof\"))\n172:         for b in self.enc:\n173:             h = b(h, g[\"hop\"], None)\n174:         return h"
+    }
+  ]
+}

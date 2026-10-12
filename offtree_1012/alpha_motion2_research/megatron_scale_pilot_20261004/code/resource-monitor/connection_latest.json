@@ -1,0 +1,20 @@
+{
+  "automation_id": "alphamotion-2",
+  "checked_at_utc": "2026-10-04T05:55:59.053883+00:00",
+  "check_kind": "bounded_connectivity_probe",
+  "ssh_return_code": 255,
+  "ssh_error": "ssh: connect to host 100.117.179.43 port 22: Operation timed out",
+  "peer_online": null,
+  "peer_last_seen_utc": "2026-10-04T04:50:00.1Z",
+  "last_successful_remote_monitor_utc": "2026-10-04T04:17:30.981476+00:00",
+  "current_download_state": "unobserved",
+  "current_content_verification_state": "unobserved",
+  "current_home_space": "unobserved",
+  "remote_process_identity_verified": false,
+  "process_actions": [],
+  "remote_persistence": "pending_reconnection",
+  "notification": "suppressed_known_unchanged_connectivity_failure",
+  "documentation_action": "none; unchanged known offline status",
+  "limits": "No inference of process exit, stalled download or resource completion from SSH failure.",
+  "peer_probe_note": "No new Tailscale probe this check; stored peer last-seen is historical."
+}

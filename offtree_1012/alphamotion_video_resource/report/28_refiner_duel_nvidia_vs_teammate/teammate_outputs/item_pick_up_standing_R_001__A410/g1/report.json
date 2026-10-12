@@ -1,0 +1,370 @@
+{
+  "source": "item_pick_up_standing_R_001__A410",
+  "robot": "g1",
+  "model": "prime",
+  "frames": 106,
+  "fps": 30.0,
+  "input": "SDK soma full-body MotionClip; explicit source geometry, units and floor",
+  "input_representation": "soma",
+  "source_joint_count": 77,
+  "source_fk_max_error_cm": 2.582605780734668e-06,
+  "max_joint_limit_violation_rad": 0.0,
+  "contact_refinement": {
+    "algorithm": "support_aware_contact_residual_v4",
+    "config": {
+      "stable_margin_s": 0.1,
+      "swing_threshold_cm": 3.0,
+      "stable_patch_weight": 20.0,
+      "swing_clearance_weight": 12.0,
+      "flight_root_weight": 5.0,
+      "analytic_vertical_init": 0.0,
+      "flight_vertical_init": 1.0,
+      "freeze_arm_refinement": 0.0,
+      "lower_temporal_reference": 0.0,
+      "swing_clearance_floor": 0.0,
+      "ground_terms_scale": 1.0,
+      "penetration_allowance_cm": 0.0,
+      "root_temporal_reference": 0.0,
+      "root_acceleration_weight": 10.0,
+      "root_velocity_weight": 0.0,
+      "root_reference_weight": 0.012,
+      "slip_allowance_cm_s": 0.0,
+      "root_input_smoothing_s": 0.0,
+      "root_correction_smoothing_s": 0.0,
+      "contact_allowance_cm": 0.0,
+      "root_learning_rate": 0.25,
+      "contact_height_release_cm": 0.0,
+      "penetration_weight": 80.0,
+      "contact_weight": 12.0,
+      "pose_reference_weight": 4.0,
+      "support_slip_weight": 30.0,
+      "support_drift_weight": 0.0,
+      "final_lr_scale": 1.0,
+      "upper_temporal_scale": 1.0,
+      "lower_temporal_scale": 1.0,
+      "release_support": 0.0,
+      "conservative_support": 0.0,
+      "contact_patch_slip": 0.0
+    },
+    "support_roles": [
+      "left_foot",
+      "right_foot",
+      "left_hand",
+      "right_hand"
+    ],
+    "support_frames": [
+      106.0,
+      106.0,
+      0.0,
+      0.0
+    ],
+    "hard_projected_hand_frames": 0,
+    "final_vertical_projection_max_cm": 0.14940528985494594,
+    "stable_support_frames": [
+      100.0,
+      100.0
+    ],
+    "airborne_foot_frames": [
+      0.0,
+      0.0
+    ],
+    "iterations": 100,
+    "seconds": 0.6866885360796005,
+    "history": [
+      {
+        "iteration": 1,
+        "loss": 2172.0252235050007,
+        "penetration_cm": 4.20513596982712
+      },
+      {
+        "iteration": 51,
+        "loss": 24.437506394123982,
+        "penetration_cm": 0.6216678880460549
+      },
+      {
+        "iteration": 100,
+        "loss": 3.4495877277593525,
+        "penetration_cm": 0.15999126467457447
+      }
+    ],
+    "max_root_adjustment_cm": 6.874299356751967,
+    "joint_adjustment_p95_deg": 6.175443165346946,
+    "frozen_arm_joints": []
+  },
+  "body_coordination": {
+    "iterations": 100,
+    "solve_seconds": 0.6534475609660149,
+    "before_terms": [
+      0.06647642451531477,
+      0.22579525603140113,
+      0.02286101267406614,
+      0.11813632291740217,
+      0.00019106691374390591
+    ],
+    "after_terms": [
+      0.021117208925603734,
+      0.055629023648746986,
+      0.02286101267406614,
+      0.007730214576453716,
+      0.00028109924517469043
+    ],
+    "history": [
+      {
+        "iteration": 1,
+        "loss": 0.6423006464915235
+      },
+      {
+        "iteration": 25,
+        "loss": 0.18853643063207481
+      },
+      {
+        "iteration": 50,
+        "loss": 0.15547464030115443
+      },
+      {
+        "iteration": 75,
+        "loss": 0.14983488701213413
+      },
+      {
+        "iteration": 100,
+        "loss": 0.14852392002879178
+      }
+    ],
+    "term_names": [
+      "arm_direction",
+      "near_body_relation",
+      "torso_frame",
+      "palm_axes",
+      "semantic_error_temporal"
+    ],
+    "native_palm_frames": {
+      "left_wrist": {
+        "distal": [
+          1,
+          0,
+          0
+        ],
+        "normal": [
+          0,
+          -1,
+          0
+        ]
+      },
+      "right_wrist": {
+        "distal": [
+          1,
+          0,
+          0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ]
+      }
+    },
+    "relation_tolerance_arm_lengths": 0.15,
+    "anatomical_audit_before": {
+      "arm_segments": {
+        "direction_error_p95_deg": 34.373229750009614,
+        "direction_error_max_deg": 39.1877766912376,
+        "actual_step_max_deg": 4.433806224640042,
+        "source_step_max_deg": 6.021969141322039,
+        "extra_step_p95_deg": 1.112225502974216,
+        "extra_step_max_deg": 1.4971936188488202
+      },
+      "palms": {
+        "direction_error_p95_deg": 48.301255756105036,
+        "direction_error_max_deg": 50.43523086650427,
+        "actual_step_max_deg": 4.8972142345626555,
+        "source_step_max_deg": 7.7746438329944105,
+        "extra_step_p95_deg": 0.8071860792390082,
+        "extra_step_max_deg": 1.4918935626096423
+      },
+      "torso_axes": {
+        "direction_error_p95_deg": 27.22228740333335,
+        "direction_error_max_deg": 28.968307753551684,
+        "actual_step_max_deg": 4.220883074616519,
+        "source_step_max_deg": 5.696682999704189,
+        "extra_step_p95_deg": 0.19433449920807452,
+        "extra_step_max_deg": 0.6554165435564152
+      }
+    },
+    "anatomical_audit_after": {
+      "arm_segments": {
+        "direction_error_p95_deg": 30.989815647077386,
+        "direction_error_max_deg": 49.37775464122786,
+        "actual_step_max_deg": 14.289076378051957,
+        "source_step_max_deg": 6.021969141322039,
+        "extra_step_p95_deg": 1.3179384714881328,
+        "extra_step_max_deg": 11.829621042301541
+      },
+      "palms": {
+        "direction_error_p95_deg": 24.282426566249747,
+        "direction_error_max_deg": 55.10097171398904,
+        "actual_step_max_deg": 15.688003544283799,
+        "source_step_max_deg": 7.7746438329944105,
+        "extra_step_p95_deg": 3.3004105380691047,
+        "extra_step_max_deg": 12.120627957758348
+      },
+      "torso_axes": {
+        "direction_error_p95_deg": 27.22228740333335,
+        "direction_error_max_deg": 28.968307753551684,
+        "actual_step_max_deg": 4.220883074616519,
+        "source_step_max_deg": 5.696682999704189,
+        "extra_step_p95_deg": 0.19433449920807452,
+        "extra_step_max_deg": 0.6554165435564152
+      }
+    },
+    "target": "source body-relative anatomical directions and loose near-body wrist relations; no absolute EE targets",
+    "optimize_trunk": false,
+    "optimized_parameters": "arms only; baseline trunk/head/root/lower-body trajectories retained frame by frame",
+    "source_mapping": "SOMA anatomical names; other adapters require explicit equivalent mapping",
+    "seed_repair_events": [],
+    "branch_speed_guard_deg_s": 720.0,
+    "head_anchor_joint": "head_mocap",
+    "head_anchor_semantics": "native_head_landmark",
+    "visual_review": "pending",
+    "physical_validation": "not performed"
+  },
+  "native_projection": {
+    "geometry_strength": 0.0,
+    "geometry_weight_cm_minus2": 0.0,
+    "native_chain_scale_cm": 92.15350222587585,
+    "iterations": 12,
+    "method": "global",
+    "target": "decoded robot FK, root-relative; no human position targets"
+  },
+  "raw_rotation_fk_penetration_cm": 0.6215193138922848,
+  "before_contact_penetration_cm": 4.171000259158815,
+  "root_height": "Prime decoder pos[:,root,0] metres + explicit contact residual; no render lift",
+  "horizontal_translation": "source XZ guide + contact residual; NOT model-predicted locomotion translation",
+  "ground": "canonical Y=0; explicit source floor; contact corrected in saved motion; no render-only lift",
+  "projection": "native joint-limit projection (12 iterations) + contact residual; no standing recovery",
+  "root_height_cm": [
+    59.786846485825585,
+    79.50244998072766
+  ],
+  "source_root_height_cm": [
+    61.491829,
+    100.682999
+  ],
+  "max_penetration_cm": 0.05000000000000382,
+  "sole_height_min_max_cm": [
+    [
+      -0.05000000000000382,
+      0.21861642879169096
+    ],
+    [
+      -0.011237621816855725,
+      0.09402585025335064
+    ]
+  ],
+  "predicted_support_clearance_p95_cm": null,
+  "predicted_support_slip_p95_cm_s": null,
+  "source_support_clearance_p95_cm": 0.13329593973152867,
+  "source_support_slip_p95_cm_s": 16.58817420395067,
+  "source_contact_scope": "ankle/toe proxy; <8 cm and <25 cm/s; used only during source support intervals",
+  "source_hand_support_scope": "semantic wrist height <25 cm; short gaps closed over three frames; geometry proxy, not force truth",
+  "source_hand_support_frames": [
+    0,
+    19
+  ],
+  "active_hand_support_frames": [
+    0,
+    0
+  ],
+  "support_surface_roles": [
+    "left_foot",
+    "right_foot",
+    "left_hand",
+    "right_hand"
+  ],
+  "support_surface_min_max_cm": [
+    [
+      -0.05000000000000382,
+      0.21861642879169096
+    ],
+    [
+      -0.011237621816855725,
+      0.09402585025335064
+    ],
+    [
+      48.50373012365204,
+      68.48999501995621
+    ],
+    [
+      35.5772050178982,
+      80.4974398782779
+    ]
+  ],
+  "support_surface_geometry": {
+    "algorithm": "mjcf_endpoint_surface_in_descriptor_frame_v1",
+    "robot_or_action_specific_parameters": false,
+    "surfaces": {
+      "left_foot": {
+        "endpoint_joint": "left_ankle_roll_link",
+        "geometry_source": "owned_visual_mesh",
+        "mjcf_bodies": [
+          "left_ankle_roll_link"
+        ],
+        "vertex_count": 6543,
+        "neutral_drop_cm": 3.540915017047572
+      },
+      "right_foot": {
+        "endpoint_joint": "right_ankle_roll_link",
+        "geometry_source": "owned_visual_mesh",
+        "mjcf_bodies": [
+          "right_ankle_roll_link"
+        ],
+        "vertex_count": 6547,
+        "neutral_drop_cm": 3.540915029724735
+      },
+      "left_hand": {
+        "endpoint_joint": "left_wrist_yaw_link",
+        "geometry_source": "owned_visual_mesh",
+        "mjcf_bodies": [
+          "left_wrist_yaw_link"
+        ],
+        "vertex_count": 3188,
+        "neutral_drop_cm": 3.0494200853379025
+      },
+      "right_hand": {
+        "endpoint_joint": "right_wrist_yaw_link",
+        "geometry_source": "owned_visual_mesh",
+        "mjcf_bodies": [
+          "right_wrist_yaw_link"
+        ],
+        "vertex_count": 3425,
+        "neutral_drop_cm": 3.049420229293268
+      }
+    }
+  },
+  "sole_slip_scope": "consecutive broad source support",
+  "source_foot_landmark_heights_cm": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "source_clearance_offset_cm": [
+    0.0,
+    0.0
+  ],
+  "timing_s": {
+    "startup_shared": 2.5843662809347734,
+    "encode_shared": 0.01522954402025789,
+    "decode": 0.03142043494153768,
+    "joint_projection": 0.09307094709947705,
+    "surface_contacts": 1.697393599897623e-05,
+    "render": 0.0
+  },
+  "visual_review": "pending",
+  "surface_contacts": {
+    "kind": "native visual mesh proximity; not force labels",
+    "surfaces": 0,
+    "contact_band_cm": 1.0,
+    "penetration_threshold_cm": 0.5,
+    "ground": "canonical Y=0"
+  }
+}

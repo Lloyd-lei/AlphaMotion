@@ -1,0 +1,245 @@
+{
+ "T": 250,
+ "fps": 25.0,
+ "text": "A person kicks a ball with the right foot, sidesteps to the right, crouches low, then stands up with both arms raised overhead.",
+ "ardy_fk_gauge_cm_mean": 0.6415770881617597,
+ "ardy_rot_fit_deg": 0.20318204164505005,
+ "stance_frac": [
+  0.996,
+  0.888
+ ],
+ "source_g1": {
+  "metrics": {
+   "slip_v_p95_cm_s": 5.50937431979985,
+   "drift_p95_cm": 4.1501834942070115,
+   "pen_frac": 0.0,
+   "pen_p95_cm": 1.0840684009261752,
+   "float_frac": 0.01910828025477707,
+   "contact_f1": 0.9829787234042553,
+   "rooth_jump_frac": 0.0,
+   "joint_jit_p95_deg_s2": 27.62900131871382
+  },
+  "verdict": "needs_human",
+  "failed": []
+ },
+ "robots": {
+  "unitree_g1_29dof": {
+   "metrics": {
+    "self_rot_deg": 4.6619672775268555,
+    "self_hand_cm": 2.988029956817627,
+    "self_foot_cm": 2.2962522506713867,
+    "limit_excess_max_deg": 0.0,
+    "limit_frames_frac": 0.0,
+    "lowest_geom_cm_min": -4.091367462282182,
+    "geom_pen_frac": 0.164,
+    "display_lift_cm_mean": 0.34142238518989165,
+    "display_lift_cm_max": 4.091367462282182,
+    "root_h_cm": [
+     70.50562286376953,
+     79.84930419921875
+    ],
+    "contact_f1_decoded_vs_ardy": 0.9204927211646137,
+    "slip_v_p95_cm_s": 13.529525210666126,
+    "drift_p95_cm": 4.4320851347114045,
+    "pen_frac": 0.0,
+    "pen_p95_cm": 0.6802520638659951,
+    "float_frac": 0.010615711252653927,
+    "contact_f1": 0.9914893617021276,
+    "onset_abs_med_frames": 0.5,
+    "rooth_jump_frac": 0.0,
+    "joint_jit_p95_deg_s2": 30.554870414654992,
+    "joint_v_p95_deg_s": 169.83158573303282
+   },
+   "verdict": "needs_human",
+   "failed": [],
+   "not_evaluated": [
+    "slip_v_p95_cm_s",
+    "drift_p95_cm",
+    "rooth_err_cm",
+    "joint_jit_p95_deg_s2",
+    "rot_deg",
+    "hand_p95_cm"
+   ],
+   "timing": {
+    "decode_ms": 14.325173920951784,
+    "project_ms": 87.69982005469501,
+    "stream_frame_ms_median": 35.64812708646059,
+    "stream_frame_ms_p95": 48.442824685480446
+   }
+  },
+  "unitree_h2": {
+   "metrics": {
+    "limit_excess_max_deg": 0.0,
+    "limit_frames_frac": 0.0,
+    "lowest_geom_cm_min": -17.699208529062822,
+    "geom_pen_frac": 1.0,
+    "display_lift_cm_mean": 7.343832695230349,
+    "display_lift_cm_max": 17.699208529062822,
+    "root_h_cm": [
+     85.04247283935547,
+     98.6040267944336
+    ],
+    "contact_f1_decoded_vs_ardy": 0.98125,
+    "slip_v_p95_cm_s": 20.346030095544883,
+    "drift_p95_cm": 5.069153741816074,
+    "pen_frac": 0.068,
+    "pen_p95_cm": 5.977199203878823,
+    "float_frac": 0.027600849256900213,
+    "contact_f1": 0.9817792068595927,
+    "onset_abs_med_frames": 0.0,
+    "rooth_jump_frac": 0.004016064257028112,
+    "joint_jit_p95_deg_s2": 26.77917116426284,
+    "joint_v_p95_deg_s": 151.15480935497484
+   },
+   "verdict": "fail",
+   "failed": [
+    "pen_frac"
+   ],
+   "not_evaluated": [
+    "slip_v_p95_cm_s",
+    "drift_p95_cm",
+    "rooth_err_cm",
+    "joint_jit_p95_deg_s2",
+    "rot_deg",
+    "hand_p95_cm"
+   ],
+   "timing": {
+    "decode_ms": 16.84259995818138,
+    "project_ms": 150.47636802773923,
+    "stream_frame_ms_median": 42.72248991765082,
+    "stream_frame_ms_p95": 60.066038230434046
+   }
+  },
+  "agibot_a3_t3d0": {
+   "metrics": {
+    "limit_excess_max_deg": 0.0,
+    "limit_frames_frac": 0.0,
+    "lowest_geom_cm_min": -18.734180081233013,
+    "geom_pen_frac": 1.0,
+    "display_lift_cm_mean": 9.745575911770755,
+    "display_lift_cm_max": 18.734180081233013,
+    "root_h_cm": [
+     88.21660614013672,
+     99.35938262939453
+    ],
+    "contact_f1_decoded_vs_ardy": 0.9802289281997919,
+    "slip_v_p95_cm_s": 19.370994273286524,
+    "drift_p95_cm": 4.451104872864822,
+    "pen_frac": 0.112,
+    "pen_p95_cm": 7.6039896466778165,
+    "float_frac": 0.0,
+    "contact_f1": 0.9894957983193278,
+    "onset_abs_med_frames": 0.0,
+    "rooth_jump_frac": 0.0,
+    "joint_jit_p95_deg_s2": 30.31480100946573,
+    "joint_v_p95_deg_s": 167.0580971804698
+   },
+   "verdict": "fail",
+   "failed": [
+    "pen_frac"
+   ],
+   "not_evaluated": [
+    "slip_v_p95_cm_s",
+    "drift_p95_cm",
+    "rooth_err_cm",
+    "joint_jit_p95_deg_s2",
+    "rot_deg",
+    "hand_p95_cm"
+   ],
+   "timing": {
+    "decode_ms": 12.131895986385643,
+    "project_ms": 83.56655202805996,
+    "stream_frame_ms_median": 33.52680499665439,
+    "stream_frame_ms_p95": 43.95803028019145
+   }
+  },
+  "fourier_gr3": {
+   "metrics": {
+    "limit_excess_max_deg": 0.0,
+    "limit_frames_frac": 0.0,
+    "lowest_geom_cm_min": 7.550944010019222,
+    "geom_pen_frac": 0.0,
+    "display_lift_cm_mean": 0.0,
+    "display_lift_cm_max": 0.0,
+    "root_h_cm": [
+     90.80045318603516,
+     102.37995147705078
+    ],
+    "contact_f1_decoded_vs_ardy": 0.9761658031088083,
+    "slip_p95_cm_s": 8.958859381016564,
+    "slip_p50_cm_s": 4.0218056378763585,
+    "stance_frac": 0.804,
+    "foot_sole_min_cm": -1.901322776810996,
+    "slip_v_p95_cm_s": 19.368853058028858,
+    "drift_p95_cm": 5.862423925108248,
+    "pen_frac": 0.0,
+    "pen_p95_cm": 1.5603416068697222,
+    "float_frac": 0.006369426751592357,
+    "contact_f1": 0.9936305732484076,
+    "onset_abs_med_frames": 0.0,
+    "rooth_jump_frac": 0.0,
+    "joint_jit_p95_deg_s2": 27.59108335237388,
+    "joint_v_p95_deg_s": 151.83472341566457
+   },
+   "verdict": "needs_human",
+   "failed": [],
+   "not_evaluated": [
+    "slip_v_p95_cm_s",
+    "drift_p95_cm",
+    "rooth_err_cm",
+    "joint_jit_p95_deg_s2",
+    "rot_deg",
+    "hand_p95_cm"
+   ],
+   "timing": {
+    "decode_ms": 13.162486953660846,
+    "project_ms": 224.63818301912397,
+    "stream_frame_ms_median": 37.37243893556297,
+    "stream_frame_ms_p95": 118.15446519758552
+   }
+  },
+  "pnd_adam_lite": {
+   "metrics": {
+    "limit_excess_max_deg": 0.0,
+    "limit_frames_frac": 0.0,
+    "lowest_geom_cm_min": 3.406279933987638,
+    "geom_pen_frac": 0.0,
+    "display_lift_cm_mean": 0.0,
+    "display_lift_cm_max": 0.0,
+    "root_h_cm": [
+     92.95901489257812,
+     102.5976333618164
+    ],
+    "contact_f1_decoded_vs_ardy": 0.9741468459152016,
+    "slip_v_p95_cm_s": 17.82215825662777,
+    "drift_p95_cm": 5.338493248070688,
+    "pen_frac": 0.032,
+    "pen_p95_cm": 1.3199384137579941,
+    "float_frac": 0.0021231422505307855,
+    "contact_f1": 0.9936575052854123,
+    "onset_abs_med_frames": 0.0,
+    "rooth_jump_frac": 0.0,
+    "joint_jit_p95_deg_s2": 26.27099059508781,
+    "joint_v_p95_deg_s": 136.66114165877565
+   },
+   "verdict": "fail",
+   "failed": [
+    "pen_frac"
+   ],
+   "not_evaluated": [
+    "slip_v_p95_cm_s",
+    "drift_p95_cm",
+    "rooth_err_cm",
+    "joint_jit_p95_deg_s2",
+    "rot_deg",
+    "hand_p95_cm"
+   ],
+   "timing": {
+    "decode_ms": 10.83799300249666,
+    "project_ms": 88.1770740961656,
+    "stream_frame_ms_median": 28.823975939303637,
+    "stream_frame_ms_p95": 85.7837534858845
+   }
+  }
+ }
+}

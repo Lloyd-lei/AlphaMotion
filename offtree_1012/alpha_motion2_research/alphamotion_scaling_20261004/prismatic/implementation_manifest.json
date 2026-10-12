@@ -1,0 +1,257 @@
+{
+  "schema": "shared_A_B_mixed_joint_implementation_v2",
+  "status": "source_refrozen_cpu_amp_verified_awaiting_root_cuda_reacceptance",
+  "active_surface_bodies": [
+    "adroit_pen",
+    "booster_k1",
+    "booster_t1",
+    "fourier_n1",
+    "hightorque_hi",
+    "pnd_adam_lite",
+    "relay_franka_full_v2",
+    "unitree_g1_23dof",
+    "unitree_g1_29dof"
+  ],
+  "active_patches": 864,
+  "archived_surface_body": "relay_franka_arm",
+  "parameter_counts": {
+    "S": {
+      "d_model": 128,
+      "n_heads": 8,
+      "layers": 6,
+      "A": {
+        "total": 6701777,
+        "main_excluding_judge": 6567365,
+        "judge_auxiliary": 134412,
+        "trainable_total": 6701777,
+        "trainable_judge": 134412,
+        "prismatic_shared_parameters": 18561
+      },
+      "B": {
+        "total": 6951649,
+        "main_excluding_judge": 6817237,
+        "judge_auxiliary": 134412,
+        "trainable_total": 6951649,
+        "trainable_judge": 134412,
+        "surface_added": 249872,
+        "shared_skeleton_main": 6567365,
+        "prismatic_shared_parameters": 18561
+      }
+    },
+    "M": {
+      "d_model": 256,
+      "n_heads": 8,
+      "layers": 6,
+      "A": {
+        "total": 26078801,
+        "main_excluding_judge": 25813317,
+        "judge_auxiliary": 265484,
+        "trainable_total": 26078801,
+        "trainable_judge": 265484,
+        "prismatic_shared_parameters": 69889
+      },
+      "B": {
+        "total": 26807777,
+        "main_excluding_judge": 26542293,
+        "judge_auxiliary": 265484,
+        "trainable_total": 26807777,
+        "trainable_judge": 265484,
+        "surface_added": 728976,
+        "shared_skeleton_main": 25813317,
+        "prismatic_shared_parameters": 69889
+      }
+    },
+    "L": {
+      "d_model": 384,
+      "n_heads": 8,
+      "layers": 8,
+      "A": {
+        "total": 75885617,
+        "main_excluding_judge": 75489061,
+        "judge_auxiliary": 396556,
+        "trainable_total": 75885617,
+        "trainable_judge": 396556,
+        "prismatic_shared_parameters": 153985
+      },
+      "B": {
+        "total": 77323073,
+        "main_excluding_judge": 76926517,
+        "judge_auxiliary": 396556,
+        "trainable_total": 77323073,
+        "trainable_judge": 396556,
+        "surface_added": 1437456,
+        "shared_skeleton_main": 75489061,
+        "prismatic_shared_parameters": 153985
+      }
+    }
+  },
+  "tests": {
+    "surface_synthetic": 17,
+    "prismatic_actual_mjcf": 7,
+    "active_real_mesh_bodies": 9
+  },
+  "actual_franka_metrics": {
+    "actual_mujoco_fk_max_m": 1.1920928955078125e-07,
+    "actual_mujoco_rotation_max_abs": 1.1920928955078125e-07,
+    "finger_patch_counts": {
+      "left": 2,
+      "right": 2
+    },
+    "aperture_max_error_m": 3.725290298461914e-09,
+    "actual_asset_backward_gradient_l1": {
+      "ConditionalMegatron": {
+        "slide_head": 3.472158793359995,
+        "source_slide_projection": 0.1276169358752668,
+        "slide_geometry_projection": 0.3157713711261749,
+        "joint_type_embedding": 0.5686954259872437
+      },
+      "SurfaceMegatron": {
+        "slide_head": 4.436607524752617,
+        "source_slide_projection": 0.06673664995469153,
+        "slide_geometry_projection": 0.6261481642723083,
+        "joint_type_embedding": 2.0847296714782715,
+        "patch_geometry": 7.894905135035515,
+        "patch_motion": 1.6584686860442162,
+        "target_surface_attention": 39.1951568478471
+      }
+    }
+  },
+  "source_files": {
+    "base/pilot_model.py": {
+      "sha256": "4820ffd45a3806ef1f8d3723b6ecc8970cdcaf6f225437844f2b7602809e80ae",
+      "bytes": 14730
+    },
+    "surface/__init__.py": {
+      "sha256": "ea82ea46bb951d2a2fa238c43c315df0ef64a3ae22825c96ae6c2cc84495cf66",
+      "bytes": 292
+    },
+    "surface/build_verified_patches.py": {
+      "sha256": "c8d5ff99d889eedd5f18e78fee3860cbd8efcc005523afd9cafdd95015c9169a",
+      "bytes": 20671
+    },
+    "surface/surface_contract.py": {
+      "sha256": "512bebcf7b2460a25ac21683d0aa05c1c06a304d560e094178d813a9aad19e26",
+      "bytes": 9960
+    },
+    "surface/surface_geometry.py": {
+      "sha256": "f15af4b652044e755edbc5199fc1a581f2dcf6dda203e51c5bc40285f344eb9f",
+      "bytes": 11633
+    },
+    "surface/surface_model.py": {
+      "sha256": "4d203b85ffee2d53651705b68a42250e2d5f3a2c02bddf16efe10f3f101ce30f",
+      "bytes": 9406
+    },
+    "surface/test_real_surface_assets.py": {
+      "sha256": "9875425c5407a18bcbf427fdb1b11bc75bbcde21dd44035f89c93d52720558c7",
+      "bytes": 6137
+    },
+    "surface/test_surface_model.py": {
+      "sha256": "8e01434074fa4155ff1e734f61b2ffd3df3605d3011c3674981a5819f63d9cc7",
+      "bytes": 12424
+    },
+    "prismatic/__init__.py": {
+      "sha256": "9960bcabd2b96c6ce3151bbf9e29ae8501006ac748986e0ae641c042714914c8",
+      "bytes": 165
+    },
+    "prismatic/kinematics.py": {
+      "sha256": "43034f8fef15e056650a5b1d52bbaf6e5d8f8a4d02b9c1fe4578127b84a3b5da",
+      "bytes": 9174
+    },
+    "prismatic/test_autocast_geometry.py": {
+      "sha256": "3836b0f2a5b69d787c4e1d42b09c34f7955a15a2f766a12e3eeb090ad52b35f6",
+      "bytes": 6242
+    },
+    "prismatic/test_prismatic_model.py": {
+      "sha256": "031acd1992fb2d8f968f5d11194b8d558dedf868cfd3c297229cdae4ada081fe",
+      "bytes": 10464
+    }
+  },
+  "assets": {
+    "surface/patches/adroit_pen.json": "7afbd91d220e3fad48f5bfac0c06fab1e590cf5e09f1d5bd01079aa71031cd92",
+    "surface/patches/booster_k1.json": "a8ae3ae753fab8ecc25d0be9a5e99fc13880a47295843622e010afb45e54f822",
+    "surface/patches/booster_t1.json": "1d871d9604b9a38d29c4a21b0d1599283855dd927a8bdcf1630f26df899c1cb6",
+    "surface/patches/fourier_n1.json": "37e03bf9d4e04845048c9d90058b40feec1c95abb6e0e8f7484c5845a4a0ee5e",
+    "surface/patches/hightorque_hi.json": "c18615e00bfc90085f86fe2dcfc54e93253dcfcfa9be10af914520c2445662c8",
+    "surface/patches/pnd_adam_lite.json": "43f9de9a28a881b0b9229f650c4a663f8bb06925597eff19de969191d93cf62a",
+    "surface/patches/relay_franka_arm.json": "209412286769a2aa2daf8710694ebdb9fd16f4392604ec9b8b82ff1edc81fba8",
+    "surface/patches/relay_franka_full_v2.json": "a1aa3e9fc20a712bad99e192bd42e37c613ae9e815d4255fada6c1dace1b76a5",
+    "surface/patches/unitree_g1_23dof.json": "f0a824a3f3e5365a2249091feab198d92dba0240b51bd4090e4b747c34f7344f",
+    "surface/patches/unitree_g1_29dof.json": "163452d3fe661f160ee1143350790e1eb60ff1a55c494600a48fcdc7fad0b3b9"
+  },
+  "text_requirements": {
+    "required_surface_texts_incremental_prismatic.json": "9b9badf6554549aa2720d35dfefdbdf6f1cd083e81d37fee48ed9a33dddb119e",
+    "required_surface_texts.json": "fda606c98c5bd7a6188827d309af7543ebd17297bbd06d6fe9f4d54ab15af0ed",
+    "required_surface_texts_v2.json": "cbd4b0ce4cad64a16a6b71b9a64a8f17a069f3cb8e12698c159363880318ea78"
+  },
+  "root_reported_actual_qwen_v2": {
+    "sha256": "1407bb1fba4b90f2596aa4b02932a206100b2f45a95498fe8cdc0e9a62334181",
+    "joint_names": 620,
+    "surface_texts": 227,
+    "provenance": "parent root task reported completed actual encoding; not independently inspected or executed by this CPU implementation subtask"
+  },
+  "boundaries": [
+    "No optimizer/GPU training process started by this subtask.",
+    "Original pilot source not changed.",
+    "Only shared new base/pilot_model.py and owned surface/prismatic directories edited.",
+    "FK/mesh/numeric gradients do not establish learned task success or physical execution.",
+    "Revolute globalR remains unconstrained; actual q projection/refinement belongs to separate verified evaluator.",
+    "No mimic inferred; source soft-limit slide excursions retained; predicted sigmoid slide constrained to true limits.",
+    "XWBC auxiliary InfoNCE/reencode/judge remains rotational-only and is not applied to prismatic external data."
+  ],
+  "autocast_fix": {
+    "reason": "outer bf16 autocast incorrectly lowered static rotation validation and geometry matmul/einsum",
+    "scope": "public static typed metadata validation, rotations, slide decoding, FK, bound surfaces, surface losses/metrics enforce float32; neural transformer/projections retain caller bf16",
+    "parameter_change": false,
+    "cpu_regression": {
+      "passed": true,
+      "device": "cpu",
+      "torch_version": "2.9.0",
+      "batch_size": 2,
+      "autocast_dtype": "torch.bfloat16",
+      "geometry_parity_max_abs": {
+        "rotation": 0.0,
+        "position": 0.0,
+        "bound_position": 0.0,
+        "bound_normal": 0.0,
+        "loss": 0.0,
+        "metric": 0.0,
+        "rotation_gradient": 0.0,
+        "slide_gradient": 0.0
+      },
+      "models": {
+        "ConditionalMegatron": {
+          "neural_projection_dtypes": {
+            "source_projection": "torch.bfloat16",
+            "rotation_head": "torch.bfloat16",
+            "slide_head": "torch.bfloat16"
+          },
+          "geometry_dtype": "torch.float32",
+          "loss": 0.8758407831192017,
+          "gradient_l1": {
+            "slide_head": 3.470428466796875,
+            "source_slide_projection": 0.1326913796365261
+          }
+        },
+        "SurfaceMegatron": {
+          "neural_projection_dtypes": {
+            "source_projection": "torch.bfloat16",
+            "rotation_head": "torch.bfloat16",
+            "slide_head": "torch.bfloat16"
+          },
+          "geometry_dtype": "torch.float32",
+          "loss": 0.850143551826477,
+          "gradient_l1": {
+            "slide_head": 3.781085968017578,
+            "source_slide_projection": 0.017858976731076837,
+            "patch_geometry": 3.4711373150348663,
+            "patch_motion": 0.5228220075368881
+          }
+        }
+      },
+      "asset_sha256": "a1aa3e9fc20a712bad99e192bd42e37c613ae9e815d4255fada6c1dace1b76a5",
+      "evidence": "Real Franka MJCF-derived states/mesh, small random-weight A/B models, unencoded text fixture. Diagnostic backward only; no optimizer/update."
+    },
+    "cuda_regression_command": "python -B prismatic/test_autocast_geometry.py --device cuda --batch-size 128",
+    "cuda_status": "root executes; not claimed passed by this subtask"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "checked_at_utc": "2026-10-04T08:11:19.620383+00:00",
+  "capacity": {
+    "expected_unique_bytes": 200505865539,
+    "complete_blob_bytes": 34079499001,
+    "partial_blob_bytes": 5437741664,
+    "remaining_bytes": 160988624874,
+    "available_bytes": 206705733632,
+    "reserve_bytes": 16106127360,
+    "required_available_bytes": 178168494058,
+    "fits": true,
+    "basis": "HF per-repository blob hashes; snapshot symlinks reuse same repo content"
+  },
+  "extra_allocated_bytes": 6547308544,
+  "extra_budget": "2GiB ground staging +2GiB adapter +2GiB training +100MiB archives/code",
+  "required_total_bytes": 184715802602,
+  "headroom_after_all_budgets": 21989931030,
+  "prep_archive_sha256": "1a53ad421665f8ad39ab92b630a6473f009206aef7f59eeee441512650527e9b",
+  "files_verified": 69,
+  "prior_code_backup": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/megatron_scale_pilot_20261004/review_delivery/code_before_recipe_recovery_20261004T0815Z",
+  "process_actions": []
+}

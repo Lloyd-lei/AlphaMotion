@@ -1,0 +1,13 @@
+{
+  "width_pt": 510,
+  "height_pt": 610,
+  "minimum_font_pt": 9.5,
+  "at_468pt_width_minimum_font_pt": 8.717647058823529,
+  "figures": [
+    "unimate_engineering_doc",
+    "umr_engineering_doc",
+    "alphamotion2_cleaning_proposed_doc"
+  ],
+  "status": "all three PDFs rendered and visually checked; bounds and fonts verified",
+  "inserted_height_pt": 559.7647058823529
+}

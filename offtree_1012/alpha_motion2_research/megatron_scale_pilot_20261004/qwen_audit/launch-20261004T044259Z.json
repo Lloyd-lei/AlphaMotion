@@ -1,0 +1,8 @@
+{
+  "supervisor_pid": 3441353,
+  "created_at_utc": "2026-10-04T04:42:59.886448+00:00",
+  "log": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/megatron_scale_pilot_20261004/qwen_audit/encode-20261004T044259Z.log",
+  "runtime_limit_seconds": 300,
+  "script": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/megatron_scale_pilot_20261004/qwen_audit/encode_qwen_names.py",
+  "cache": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/megatron_scale_pilot_20261004/qwen_audit/qwen3_names_pinned.pt"
+}

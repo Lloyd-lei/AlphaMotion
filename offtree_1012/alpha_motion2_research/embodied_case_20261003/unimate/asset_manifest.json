@@ -1,0 +1,477 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-04T04:00:57.345762+00:00",
+  "label_definitions": {
+    "reference": "upstream data/code/statistics",
+    "derived": "actually computed/rendered from fixture",
+    "schematic_not_executed": "unexecuted model/robot stages; no fabricated numeric values"
+  },
+  "references": [
+    {
+      "label": "reference",
+      "role": "motion",
+      "source_path": "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/motions/Jumping_Up-000.npz",
+      "bytes": 11170,
+      "sha256": "ab19db758e7b275700c8e6c8be1ec6dd0ee237aefe23b9952a25cfb5aa991357",
+      "copied_to_local_assets": false
+    },
+    {
+      "label": "reference",
+      "role": "topology/T-pose",
+      "source_path": "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/cond.npy",
+      "bytes": 167400,
+      "sha256": "519f44cdf3b52649279af9856da8c30bd45095d14f0edc2f1a85bdbdf5dad5bf",
+      "copied_to_local_assets": false
+    },
+    {
+      "label": "reference",
+      "role": "caption",
+      "source_path": "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/captions.json",
+      "bytes": 167483,
+      "sha256": "ba0bc5ccfdafada3c7e7d1a0c0ae4ea780e995152e285e0d39e7562bff59b5dd",
+      "copied_to_local_assets": false
+    },
+    {
+      "label": "reference",
+      "role": "normalization statistics",
+      "source_path": "/home/arenalabs/.cache/huggingface/hub/models--Linzhan--UniMate/snapshots/971da7cfc1c8d99c2af6c00be9d2ed5700f99073/unimate_mixamo_f60/dataset_stats.npy",
+      "bytes": 877,
+      "sha256": "9a3d946da35da85866d828dacbccc4d587503e103882f18364547a3f3765f675",
+      "copied_to_local_assets": false
+    },
+    {
+      "label": "reference",
+      "role": "official resolved config",
+      "source_path": "/home/arenalabs/.cache/huggingface/hub/models--Linzhan--UniMate/snapshots/971da7cfc1c8d99c2af6c00be9d2ed5700f99073/unimate_mixamo_f60/config.json",
+      "bytes": 3168,
+      "sha256": "8cf007b37b9a841b60b1eb9adaa0ab28d52b2a17c36a58c9db9faef1ce0a7ea9",
+      "copied_to_local_assets": false
+    },
+    {
+      "label": "reference",
+      "role": "executed preprocessing",
+      "source_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/utils/motion_utils.py",
+      "bytes": 14789,
+      "sha256": "19bf1e956f075a5c393f462e8ceb5a29e2e55e3b19dccb75369099d65129b74f",
+      "copied_to_local_assets": false
+    },
+    {
+      "label": "reference",
+      "role": "executed numpy decoder",
+      "source_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/utils/rotation_conversions.py",
+      "bytes": 1814,
+      "sha256": "9270e339af1335653b065cb5a4e39c4ccd812de659a6a812678a23501ac01f0e",
+      "copied_to_local_assets": false
+    },
+    {
+      "label": "reference",
+      "role": "executed transforms",
+      "source_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/dataset/transforms.py",
+      "bytes": 5332,
+      "sha256": "c088f342476b22412df2081c86b9e7dcb83c254d0e942a94f6bce877337a8625",
+      "copied_to_local_assets": false
+    },
+    {
+      "label": "reference",
+      "role": "loader semantics",
+      "source_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/dataset/mixture/dataset.py",
+      "bytes": 74196,
+      "sha256": "1ece829236db3e180097ec49c5918b285bf8b09be6b65cc808fb5714b3f6a709",
+      "copied_to_local_assets": false
+    },
+    {
+      "label": "reference",
+      "role": "tensor axis contract",
+      "source_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/dataset/mixture/collate.py",
+      "bytes": 8898,
+      "sha256": "512600e6dfe9193256c2ee4087892c0fd658f9f803d14a0757ba5f502ba9dd34",
+      "copied_to_local_assets": false
+    },
+    {
+      "label": "reference",
+      "role": "official source dependency, not installed",
+      "source_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/reference_dependency/AnimationStructure.py",
+      "bytes": 12809,
+      "sha256": "c13f9334d08408d28050d21a2398d29324906cc9a5c8917be113ffdb3514d905",
+      "copied_to_local_assets": false
+    },
+    {
+      "label": "reference",
+      "role": "official source dependency, not installed",
+      "source_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/reference_dependency/Pivots.py",
+      "bytes": 3282,
+      "sha256": "b6a1e97f4e470a73acebc17476acc268526d5bb4153ec0964d4a0bee2e65f58d",
+      "copied_to_local_assets": false
+    },
+    {
+      "label": "reference",
+      "role": "official source dependency, not installed",
+      "source_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/reference_dependency/Animation.py",
+      "bytes": 22207,
+      "sha256": "a4ef0bf89a3d66869c37a3166d89242f2f0421ac88802adbd35b2fa5658ba1f7",
+      "copied_to_local_assets": false
+    },
+    {
+      "label": "reference",
+      "role": "official source dependency, not installed",
+      "source_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/reference_dependency/Quaternions.py",
+      "bytes": 17925,
+      "sha256": "f4cf5ddadd0482df80158b7878be3450c1bb808ff0135768cdebc8222430a2b6",
+      "copied_to_local_assets": false
+    }
+  ],
+  "assets": [
+    {
+      "label": "reproduction_code_or_notes",
+      "file": "README.md",
+      "absolute_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/README.md",
+      "bytes": 2648,
+      "sha256": "20bc4bdabf2f998641f08555c4068d42880f77be05812fb93da48a30e9626851",
+      "sourcepaths": [
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/motions/Jumping_Up-000.npz",
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/cond.npy",
+        "/home/arenalabs/.cache/huggingface/hub/models--Linzhan--UniMate/snapshots/971da7cfc1c8d99c2af6c00be9d2ed5700f99073/unimate_mixamo_f60/dataset_stats.npy"
+      ],
+      "frame_indexes": [
+        0,
+        3,
+        6
+      ],
+      "joint_index": 9,
+      "units": "canonical body units; standardized arrays dimensionless",
+      "contains_schematic_numeric_output": false,
+      "copied_to_local_assets": true,
+      "local_relative_path": "unimate/README.md"
+    },
+    {
+      "label": "reproduction_code_or_notes",
+      "file": "build_case.py",
+      "absolute_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/build_case.py",
+      "bytes": 20323,
+      "sha256": "8e891840716d849ac176a2544358b3c54c7a5121d68def5de71d048156ba7e57",
+      "sourcepaths": [
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/motions/Jumping_Up-000.npz",
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/cond.npy",
+        "/home/arenalabs/.cache/huggingface/hub/models--Linzhan--UniMate/snapshots/971da7cfc1c8d99c2af6c00be9d2ed5700f99073/unimate_mixamo_f60/dataset_stats.npy"
+      ],
+      "frame_indexes": [
+        0,
+        3,
+        6
+      ],
+      "joint_index": 9,
+      "units": "canonical body units; standardized arrays dimensionless",
+      "contains_schematic_numeric_output": false,
+      "copied_to_local_assets": true,
+      "local_relative_path": "unimate/build_case.py"
+    },
+    {
+      "label": "derived",
+      "file": "derived_preprocessing.npz",
+      "absolute_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/derived_preprocessing.npz",
+      "bytes": 62706,
+      "sha256": "95e30b971ba57b02aca1e4f2ea387a431ee92c60068177a2f37c76623d06aeed",
+      "sourcepaths": [
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/motions/Jumping_Up-000.npz",
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/cond.npy",
+        "/home/arenalabs/.cache/huggingface/hub/models--Linzhan--UniMate/snapshots/971da7cfc1c8d99c2af6c00be9d2ed5700f99073/unimate_mixamo_f60/dataset_stats.npy"
+      ],
+      "frame_indexes": [
+        0,
+        3,
+        6
+      ],
+      "joint_index": 9,
+      "units": "canonical body units; standardized arrays dimensionless",
+      "contains_schematic_numeric_output": false,
+      "copied_to_local_assets": false,
+      "delivery_scope": "remote_only",
+      "reason": "Contains original selected source pose/quaternion arrays; computed model_inputs_derived.npz is the delivered export."
+    },
+    {
+      "label": "derived",
+      "file": "joint_pixels.json",
+      "absolute_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/joint_pixels.json",
+      "bytes": 11033,
+      "sha256": "1f6e30ebe763d7ce750980e92e15ce0c6ad849492b0d36150de2615a99128e58",
+      "sourcepaths": [
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/motions/Jumping_Up-000.npz",
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/cond.npy",
+        "/home/arenalabs/.cache/huggingface/hub/models--Linzhan--UniMate/snapshots/971da7cfc1c8d99c2af6c00be9d2ed5700f99073/unimate_mixamo_f60/dataset_stats.npy"
+      ],
+      "frame_indexes": [
+        0,
+        3,
+        6
+      ],
+      "joint_index": 9,
+      "units": "canonical body units; standardized arrays dimensionless",
+      "contains_schematic_numeric_output": false,
+      "copied_to_local_assets": true,
+      "local_relative_path": "unimate/joint_pixels.json"
+    },
+    {
+      "label": "derived",
+      "file": "left_foot_12d_values.png",
+      "absolute_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/left_foot_12d_values.png",
+      "bytes": 121042,
+      "sha256": "c4adfabf9e82d882d756c4f7a4e23cc38994c8749f29ee586d8a275aee8b524c",
+      "sourcepaths": [
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/motions/Jumping_Up-000.npz",
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/cond.npy",
+        "/home/arenalabs/.cache/huggingface/hub/models--Linzhan--UniMate/snapshots/971da7cfc1c8d99c2af6c00be9d2ed5700f99073/unimate_mixamo_f60/dataset_stats.npy"
+      ],
+      "frame_indexes": [
+        0,
+        3,
+        6
+      ],
+      "joint_index": 9,
+      "units": "canonical body units; standardized arrays dimensionless",
+      "contains_schematic_numeric_output": false,
+      "copied_to_local_assets": true,
+      "local_relative_path": "unimate/left_foot_12d_values.png"
+    },
+    {
+      "label": "derived",
+      "file": "left_foot_12d_values.svg",
+      "absolute_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/left_foot_12d_values.svg",
+      "bytes": 23990,
+      "sha256": "4d5865947cc1bff56f59d8a6d99cc60d0b94e8ef30f8b2b126e78f6a3c7e2b43",
+      "sourcepaths": [
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/motions/Jumping_Up-000.npz",
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/cond.npy",
+        "/home/arenalabs/.cache/huggingface/hub/models--Linzhan--UniMate/snapshots/971da7cfc1c8d99c2af6c00be9d2ed5700f99073/unimate_mixamo_f60/dataset_stats.npy"
+      ],
+      "frame_indexes": [
+        0,
+        3,
+        6
+      ],
+      "joint_index": 9,
+      "units": "canonical body units; standardized arrays dimensionless",
+      "contains_schematic_numeric_output": false,
+      "copied_to_local_assets": true,
+      "local_relative_path": "unimate/left_foot_12d_values.svg"
+    },
+    {
+      "label": "derived",
+      "file": "left_foot_frame_00_crop.png",
+      "absolute_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/left_foot_frame_00_crop.png",
+      "bytes": 5977,
+      "sha256": "82d1b0b606b7443a106384e4588e7eccf1f7ccf618c35ab69564b4544edbad6b",
+      "sourcepaths": [
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/motions/Jumping_Up-000.npz",
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/cond.npy",
+        "/home/arenalabs/.cache/huggingface/hub/models--Linzhan--UniMate/snapshots/971da7cfc1c8d99c2af6c00be9d2ed5700f99073/unimate_mixamo_f60/dataset_stats.npy"
+      ],
+      "frame_indexes": [
+        0,
+        3,
+        6
+      ],
+      "joint_index": 9,
+      "units": "canonical body units; standardized arrays dimensionless",
+      "contains_schematic_numeric_output": false,
+      "copied_to_local_assets": true,
+      "local_relative_path": "unimate/left_foot_frame_00_crop.png"
+    },
+    {
+      "label": "derived",
+      "file": "left_foot_frame_03_crop.png",
+      "absolute_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/left_foot_frame_03_crop.png",
+      "bytes": 7393,
+      "sha256": "9b22866d508e111b400f1ac027457df21cddfb5762670267363f13123bbc3814",
+      "sourcepaths": [
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/motions/Jumping_Up-000.npz",
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/cond.npy",
+        "/home/arenalabs/.cache/huggingface/hub/models--Linzhan--UniMate/snapshots/971da7cfc1c8d99c2af6c00be9d2ed5700f99073/unimate_mixamo_f60/dataset_stats.npy"
+      ],
+      "frame_indexes": [
+        0,
+        3,
+        6
+      ],
+      "joint_index": 9,
+      "units": "canonical body units; standardized arrays dimensionless",
+      "contains_schematic_numeric_output": false,
+      "copied_to_local_assets": true,
+      "local_relative_path": "unimate/left_foot_frame_03_crop.png"
+    },
+    {
+      "label": "derived",
+      "file": "left_foot_frame_06_crop.png",
+      "absolute_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/left_foot_frame_06_crop.png",
+      "bytes": 7892,
+      "sha256": "5ba448678c9a48f76826514664dcf014537ad71ad3fab613197da4bcfdee8f8d",
+      "sourcepaths": [
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/motions/Jumping_Up-000.npz",
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/cond.npy",
+        "/home/arenalabs/.cache/huggingface/hub/models--Linzhan--UniMate/snapshots/971da7cfc1c8d99c2af6c00be9d2ed5700f99073/unimate_mixamo_f60/dataset_stats.npy"
+      ],
+      "frame_indexes": [
+        0,
+        3,
+        6
+      ],
+      "joint_index": 9,
+      "units": "canonical body units; standardized arrays dimensionless",
+      "contains_schematic_numeric_output": false,
+      "copied_to_local_assets": true,
+      "local_relative_path": "unimate/left_foot_frame_06_crop.png"
+    },
+    {
+      "label": "derived",
+      "file": "left_foot_tpose_crop.png",
+      "absolute_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/left_foot_tpose_crop.png",
+      "bytes": 6178,
+      "sha256": "478e73f3b568bc675e2ea92ce14193afcca4f314c2c06fecddb40d7d56aa4c15",
+      "sourcepaths": [
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/motions/Jumping_Up-000.npz",
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/cond.npy",
+        "/home/arenalabs/.cache/huggingface/hub/models--Linzhan--UniMate/snapshots/971da7cfc1c8d99c2af6c00be9d2ed5700f99073/unimate_mixamo_f60/dataset_stats.npy"
+      ],
+      "frame_indexes": [
+        0,
+        3,
+        6
+      ],
+      "joint_index": 9,
+      "units": "canonical body units; standardized arrays dimensionless",
+      "contains_schematic_numeric_output": false,
+      "copied_to_local_assets": true,
+      "local_relative_path": "unimate/left_foot_tpose_crop.png"
+    },
+    {
+      "label": "derived",
+      "file": "model_inputs_derived.npz",
+      "absolute_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/model_inputs_derived.npz",
+      "bytes": 37162,
+      "sha256": "a17bb8449ee839616ecf023f6b082f8890c8ab36506cbbe069fb3cf41139304a",
+      "sourcepaths": [
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/motions/Jumping_Up-000.npz",
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/cond.npy",
+        "/home/arenalabs/.cache/huggingface/hub/models--Linzhan--UniMate/snapshots/971da7cfc1c8d99c2af6c00be9d2ed5700f99073/unimate_mixamo_f60/dataset_stats.npy"
+      ],
+      "frame_indexes": [
+        0,
+        3,
+        6
+      ],
+      "joint_index": 9,
+      "units": "canonical body units; standardized arrays dimensionless",
+      "contains_schematic_numeric_output": false,
+      "copied_to_local_assets": true,
+      "local_relative_path": "unimate/model_inputs_derived.npz"
+    },
+    {
+      "label": "derived",
+      "file": "skeleton_tpose_motion.png",
+      "absolute_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/skeleton_tpose_motion.png",
+      "bytes": 167483,
+      "sha256": "9dc76ad916ee16fa5c4f23f01ab1677eadfb94951a1defead201f9e5b070ed6a",
+      "sourcepaths": [
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/motions/Jumping_Up-000.npz",
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/cond.npy",
+        "/home/arenalabs/.cache/huggingface/hub/models--Linzhan--UniMate/snapshots/971da7cfc1c8d99c2af6c00be9d2ed5700f99073/unimate_mixamo_f60/dataset_stats.npy"
+      ],
+      "frame_indexes": [
+        0,
+        3,
+        6
+      ],
+      "joint_index": 9,
+      "units": "canonical body units; standardized arrays dimensionless",
+      "contains_schematic_numeric_output": false,
+      "copied_to_local_assets": true,
+      "local_relative_path": "unimate/skeleton_tpose_motion.png"
+    },
+    {
+      "label": "derived",
+      "file": "skeleton_tpose_motion.svg",
+      "absolute_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/skeleton_tpose_motion.svg",
+      "bytes": 45208,
+      "sha256": "a1db7671281bdb120f8ed80c3411cb869d59b5875dd785dc9b401653fd633657",
+      "sourcepaths": [
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/motions/Jumping_Up-000.npz",
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/cond.npy",
+        "/home/arenalabs/.cache/huggingface/hub/models--Linzhan--UniMate/snapshots/971da7cfc1c8d99c2af6c00be9d2ed5700f99073/unimate_mixamo_f60/dataset_stats.npy"
+      ],
+      "frame_indexes": [
+        0,
+        3,
+        6
+      ],
+      "joint_index": 9,
+      "units": "canonical body units; standardized arrays dimensionless",
+      "contains_schematic_numeric_output": false,
+      "copied_to_local_assets": true,
+      "local_relative_path": "unimate/skeleton_tpose_motion.svg"
+    },
+    {
+      "label": "derived",
+      "file": "trace.json",
+      "absolute_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/trace.json",
+      "bytes": 31658,
+      "sha256": "8a9024c50bab959f4802a22405c9db71de38aa54ce3cc79401134a4416aaa4f0",
+      "sourcepaths": [
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/motions/Jumping_Up-000.npz",
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/cond.npy",
+        "/home/arenalabs/.cache/huggingface/hub/models--Linzhan--UniMate/snapshots/971da7cfc1c8d99c2af6c00be9d2ed5700f99073/unimate_mixamo_f60/dataset_stats.npy"
+      ],
+      "frame_indexes": [
+        0,
+        3,
+        6
+      ],
+      "joint_index": 9,
+      "units": "canonical body units; standardized arrays dimensionless",
+      "contains_schematic_numeric_output": false,
+      "copied_to_local_assets": true,
+      "local_relative_path": "unimate/trace.json"
+    }
+  ],
+  "schematic_status": {
+    "label": "schematic_not_executed",
+    "model_input_relation": "Real standardized/padded motion array computed. Caption/joint-name embeddings, noisy x_tau, denoiser v_theta and ODE rollout were not computed.",
+    "x_tau": null,
+    "velocity_v_theta": null,
+    "generated_motion": null,
+    "contact_inference": null,
+    "surface_encoder": null,
+    "robot_adaptation": "No native G1/Go2/Franka-to-H2 inference established. This is a UniMate native Mixamo text-to-skeleton preprocessing case."
+  },
+  "source_revisions": {
+    "code": "2c5b384715aa63d8639b1ed7eb74bfe614570c7a",
+    "dataset": "053e8b4b06b6a8ba717a030e675dd5b7fd5be92e",
+    "model_statistics": "971da7cfc1c8d99c2af6c00be9d2ed5700f99073"
+  },
+  "license_sources": [
+    "https://huggingface.co/datasets/Linzhan/UniML3D/blob/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/README.md#licensing",
+    "https://huggingface.co/Linzhan/UniMate/blob/971da7cfc1c8d99c2af6c00be9d2ed5700f99073/LICENSE"
+  ],
+  "qc": {
+    "finite_features": true,
+    "ric_max_abs_error_body_units": 1.7100135196734811e-10,
+    "fk_max_abs_error_body_units": 1.5991813903659668e-07,
+    "normalization_roundtrip_max_abs_error": 1.1102230246251565e-16,
+    "raw_feature_shape": [
+      7,
+      22,
+      12
+    ],
+    "model_motion_array_shape": [
+      1,
+      22,
+      12,
+      60
+    ],
+    "padded_frames_exact_zero": true
+  },
+  "local_delivery": {
+    "file_count_including_manifest": 14,
+    "remote_only_asset_names": [
+      "derived_preprocessing.npz"
+    ]
+  }
+}

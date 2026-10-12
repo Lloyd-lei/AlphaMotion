@@ -1,0 +1,333 @@
+{
+ "gpu": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+ "ardy": {
+  "gpu": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "model": "ARDY-G1-RP-25FPS-Horizon52",
+  "model_load_s": 0.7379878709325567,
+  "fps": 25,
+  "horizon_frames": 52,
+  "frames_per_token": 4,
+  "history_frames": 196,
+  "diffusion_steps": 10,
+  "duration_s": 10.0,
+  "prompts": {
+   "p1_box": {
+    "text": "A person walks forward three steps, stops, crouches down to pick up a heavy box with both hands, stands up slowly, turns around and walks back carrying the box.",
+    "frames": 250,
+    "windows": 5,
+    "text_encode_ms": 61.12139800097793,
+    "generation_ms": 285.83869501017034,
+    "generation_ms_per_window": 57.16773900203407,
+    "inverse_rep_ms": 4.456302965991199,
+    "rtf_generation": 0.028583869501017035,
+    "rtf_text_plus_generation": 0.03469600930111483,
+    "runs_ms": [
+     287.4872300308198,
+     285.83869501017034,
+     283.43054896686226
+    ]
+   },
+   "p2_hurdle": {
+    "text": "A person jogs forward, jumps over a low obstacle, lands, stumbles slightly, regains balance and keeps walking.",
+    "frames": 250,
+    "windows": 5,
+    "text_encode_ms": 60.56729203555733,
+    "generation_ms": 283.58881699386984,
+    "generation_ms_per_window": 56.71776339877397,
+    "inverse_rep_ms": 1.3515700120478868,
+    "rtf_generation": 0.028358881699386985,
+    "rtf_text_plus_generation": 0.03441561090294272,
+    "runs_ms": [
+     283.4258920047432,
+     283.58881699386984,
+     284.9648530827835
+    ]
+   },
+   "p3_wave": {
+    "text": "A person waves hello with the right hand, bows deeply, steps to the left, then does a full spin turn and stops.",
+    "frames": 250,
+    "windows": 5,
+    "text_encode_ms": 60.1329889614135,
+    "generation_ms": 284.1934730531648,
+    "generation_ms_per_window": 56.838694610632956,
+    "inverse_rep_ms": 1.3489449629560113,
+    "rtf_generation": 0.028419347305316478,
+    "rtf_text_plus_generation": 0.03443264620145783,
+    "runs_ms": [
+     283.82171608973294,
+     284.37692497391254,
+     284.1934730531648
+    ]
+   },
+   "p4_kick": {
+    "text": "A person kicks a ball with the right foot, sidesteps to the right, crouches low, then stands up with both arms raised overhead.",
+    "frames": 250,
+    "windows": 5,
+    "text_encode_ms": 62.40229797549546,
+    "generation_ms": 290.1462899753824,
+    "generation_ms_per_window": 58.02925799507648,
+    "inverse_rep_ms": 1.4039180241525173,
+    "rtf_generation": 0.02901462899753824,
+    "rtf_text_plus_generation": 0.03525485879508779,
+    "runs_ms": [
+     291.4401489542797,
+     290.1462899753824,
+     286.4810179453343
+    ]
+   },
+   "p5_sit": {
+    "text": "A person walks in a circle while looking around, sits down on the floor cross-legged, rests for a moment, then stands back up.",
+    "frames": 250,
+    "windows": 5,
+    "text_encode_ms": 60.22173597011715,
+    "generation_ms": 285.6946790125221,
+    "generation_ms_per_window": 57.13893580250442,
+    "inverse_rep_ms": 1.3613379560410976,
+    "rtf_generation": 0.02856946790125221,
+    "rtf_text_plus_generation": 0.03459164149826392,
+    "runs_ms": [
+     284.4536449993029,
+     286.3510970491916,
+     285.6946790125221
+    ]
+   }
+  }
+ },
+ "greenwich_whole_clip_and_streaming": {
+  "megatron_load_s": 0.1978651990648359,
+  "gpu": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "prompts": {
+   "p1_box": {
+    "frames": 250,
+    "fps": 25.0,
+    "seconds": 10.0,
+    "encode_ms": 7.942212978377938,
+    "robots": {
+     "unitree_g1_29dof": {
+      "decode_ms": 14.289908926002681,
+      "project_ms": 225.42498703114688,
+      "stream_frame_ms_median": 35.648256074637175,
+      "stream_frame_ms_p95": 107.38384496653453
+     },
+     "unitree_h2": {
+      "decode_ms": 16.878808033652604,
+      "project_ms": 374.64837299194187,
+      "stream_frame_ms_median": 42.58522798772901,
+      "stream_frame_ms_p95": 82.13123038876779
+     },
+     "agibot_a3_t3d0": {
+      "decode_ms": 12.125478009693325,
+      "project_ms": 236.58821103163064,
+      "stream_frame_ms_median": 35.79234890639782,
+      "stream_frame_ms_p95": 46.5200844919309
+     },
+     "fourier_gr3": {
+      "decode_ms": 13.1649449467659,
+      "project_ms": 224.53605709597468,
+      "stream_frame_ms_median": 109.68052502721548,
+      "stream_frame_ms_p95": 126.50751009350641
+     },
+     "pnd_adam_lite": {
+      "decode_ms": 10.834341053850949,
+      "project_ms": 176.8900480819866,
+      "stream_frame_ms_median": 33.86487206444144,
+      "stream_frame_ms_p95": 97.28309370111674
+     }
+    }
+   },
+   "p2_hurdle": {
+    "frames": 250,
+    "fps": 25.0,
+    "seconds": 10.0,
+    "encode_ms": 7.772678043693304,
+    "robots": {
+     "unitree_g1_29dof": {
+      "decode_ms": 14.297978021204472,
+      "project_ms": 244.6105140261352,
+      "stream_frame_ms_median": 36.00036492571235,
+      "stream_frame_ms_p95": 120.76470408355817
+     },
+     "unitree_h2": {
+      "decode_ms": 16.850759042426944,
+      "project_ms": 116.87715991865844,
+      "stream_frame_ms_median": 42.81968798022717,
+      "stream_frame_ms_p95": 57.11840251460671
+     },
+     "agibot_a3_t3d0": {
+      "decode_ms": 12.129688053391874,
+      "project_ms": 199.8709150357172,
+      "stream_frame_ms_median": 34.2088210163638,
+      "stream_frame_ms_p95": 103.34617086919022
+     },
+     "fourier_gr3": {
+      "decode_ms": 13.17936391569674,
+      "project_ms": 227.40808804519475,
+      "stream_frame_ms_median": 38.5473690694198,
+      "stream_frame_ms_p95": 118.24097159551455
+     },
+     "pnd_adam_lite": {
+      "decode_ms": 10.9546979656443,
+      "project_ms": 174.473149003461,
+      "stream_frame_ms_median": 31.524325953796506,
+      "stream_frame_ms_p95": 98.59829436754808
+     }
+    }
+   },
+   "p3_wave": {
+    "frames": 250,
+    "fps": 25.0,
+    "seconds": 10.0,
+    "encode_ms": 7.759775035083294,
+    "robots": {
+     "unitree_g1_29dof": {
+      "decode_ms": 14.303240925073624,
+      "project_ms": 93.72207801789045,
+      "stream_frame_ms_median": 34.43414799403399,
+      "stream_frame_ms_p95": 43.55363362701609
+     },
+     "unitree_h2": {
+      "decode_ms": 16.841366072185338,
+      "project_ms": 111.18981905747205,
+      "stream_frame_ms_median": 41.308895917609334,
+      "stream_frame_ms_p95": 55.962097679730505
+     },
+     "agibot_a3_t3d0": {
+      "decode_ms": 12.131773983128369,
+      "project_ms": 72.80154596082866,
+      "stream_frame_ms_median": 31.903318944387138,
+      "stream_frame_ms_p95": 45.042450388427824
+     },
+     "fourier_gr3": {
+      "decode_ms": 13.175069005228579,
+      "project_ms": 221.5100700268522,
+      "stream_frame_ms_median": 33.82966900244355,
+      "stream_frame_ms_p95": 107.56661455379799
+     },
+     "pnd_adam_lite": {
+      "decode_ms": 10.834275046363473,
+      "project_ms": 60.84966205526143,
+      "stream_frame_ms_median": 28.81720894947648,
+      "stream_frame_ms_p95": 35.08589923148975
+     }
+    }
+   },
+   "p4_kick": {
+    "frames": 250,
+    "fps": 25.0,
+    "seconds": 10.0,
+    "encode_ms": 7.727634976617992,
+    "robots": {
+     "unitree_g1_29dof": {
+      "decode_ms": 14.325173920951784,
+      "project_ms": 87.69982005469501,
+      "stream_frame_ms_median": 35.64812708646059,
+      "stream_frame_ms_p95": 48.442824685480446
+     },
+     "unitree_h2": {
+      "decode_ms": 16.84259995818138,
+      "project_ms": 150.47636802773923,
+      "stream_frame_ms_median": 42.72248991765082,
+      "stream_frame_ms_p95": 60.066038230434046
+     },
+     "agibot_a3_t3d0": {
+      "decode_ms": 12.131895986385643,
+      "project_ms": 83.56655202805996,
+      "stream_frame_ms_median": 33.52680499665439,
+      "stream_frame_ms_p95": 43.95803028019145
+     },
+     "fourier_gr3": {
+      "decode_ms": 13.162486953660846,
+      "project_ms": 224.63818301912397,
+      "stream_frame_ms_median": 37.37243893556297,
+      "stream_frame_ms_p95": 118.15446519758552
+     },
+     "pnd_adam_lite": {
+      "decode_ms": 10.83799300249666,
+      "project_ms": 88.1770740961656,
+      "stream_frame_ms_median": 28.823975939303637,
+      "stream_frame_ms_p95": 85.7837534858845
+     }
+    }
+   },
+   "p5_sit": {
+    "frames": 250,
+    "fps": 25.0,
+    "seconds": 10.0,
+    "encode_ms": 7.852241047658026,
+    "robots": {
+     "unitree_g1_29dof": {
+      "decode_ms": 14.33108700439334,
+      "project_ms": 249.22704603523016,
+      "stream_frame_ms_median": 115.19987403880805,
+      "stream_frame_ms_p95": 134.07459162408486
+     },
+     "unitree_h2": {
+      "decode_ms": 16.847432008944452,
+      "project_ms": 323.7969109322876,
+      "stream_frame_ms_median": 41.38890595640987,
+      "stream_frame_ms_p95": 161.55407661572096
+     },
+     "agibot_a3_t3d0": {
+      "decode_ms": 12.15359102934599,
+      "project_ms": 200.46372897922993,
+      "stream_frame_ms_median": 99.17500498704612,
+      "stream_frame_ms_p95": 117.89127606898542
+     },
+     "fourier_gr3": {
+      "decode_ms": 13.171483995392919,
+      "project_ms": 227.53223101608455,
+      "stream_frame_ms_median": 112.72830201778561,
+      "stream_frame_ms_p95": 135.39567701518536
+     },
+     "pnd_adam_lite": {
+      "decode_ms": 10.817439993843436,
+      "project_ms": 176.330127986148,
+      "stream_frame_ms_median": 89.46059201844037,
+      "stream_frame_ms_p95": 101.09773981384929
+     }
+    }
+   }
+  }
+ },
+ "greenwich_per_52frame_window": {
+  "window_frames": 52,
+  "window_seconds": 2.08,
+  "robots": {
+   "unitree_g1_29dof": {
+    "encode_ms": 2.5246129371225834,
+    "decode_ms": 4.547062097117305,
+    "project_ms": 43.82102400995791,
+    "total_ms": 50.8926990441978,
+    "rtf": 0.02446764377124894
+   },
+   "fourier_gr3": {
+    "encode_ms": 2.5964759988710284,
+    "decode_ms": 4.418242955580354,
+    "project_ms": 114.33591903187335,
+    "total_ms": 121.35063798632473,
+    "rtf": 0.05834165287804073
+   },
+   "pnd_adam_lite": {
+    "encode_ms": 2.9089469462633133,
+    "decode_ms": 3.6955790128558874,
+    "project_ms": 97.72404201794416,
+    "total_ms": 104.32856797706336,
+    "rtf": 0.05015796537358815
+   },
+   "agibot_a3_t3d0": {
+    "encode_ms": 2.578692976385355,
+    "decode_ms": 3.878951072692871,
+    "project_ms": 98.3400079421699,
+    "total_ms": 104.79765199124813,
+    "rtf": 0.05038348653425391
+   },
+   "unitree_h2": {
+    "encode_ms": 2.5399919832125306,
+    "decode_ms": 4.648530972190201,
+    "project_ms": 62.51498602796346,
+    "total_ms": 69.70350898336619,
+    "rtf": 0.03351130239584913
+   }
+  }
+ }
+}

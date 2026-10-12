@@ -1,0 +1,550 @@
+{
+ "schema": "am2exp_e1_cases_v1_rootbias",
+ "window_frames": 128,
+ "rule": "centre window of every split-0 LAFAN clip matching ^walk\\d_subject\\d$; human_smpl source -> 4 heldout robots; used only for the A0 heldout root bias",
+ "windows": [
+  {
+   "window_id": "walk1_subject1@3855",
+   "clip": "walk1_subject1",
+   "group_id": "lafan::walk1_subject1",
+   "source_dataset": "LAFAN",
+   "cache_index": 0,
+   "clip_start_row": 409734,
+   "source_frames": 7839,
+   "start": 3855,
+   "frames": 128,
+   "split": 0,
+   "kind": "rootbias_train"
+  },
+  {
+   "window_id": "walk1_subject2@3855",
+   "clip": "walk1_subject2",
+   "group_id": "lafan::walk1_subject2",
+   "source_dataset": "LAFAN",
+   "cache_index": 0,
+   "clip_start_row": 417573,
+   "source_frames": 7839,
+   "start": 3855,
+   "frames": 128,
+   "split": 0,
+   "kind": "rootbias_train"
+  },
+  {
+   "window_id": "walk1_subject5@3855",
+   "clip": "walk1_subject5",
+   "group_id": "lafan::walk1_subject5",
+   "source_dataset": "LAFAN",
+   "cache_index": 0,
+   "clip_start_row": 425412,
+   "source_frames": 7839,
+   "start": 3855,
+   "frames": 128,
+   "split": 0,
+   "kind": "rootbias_train"
+  },
+  {
+   "window_id": "walk2_subject1@3508",
+   "clip": "walk2_subject1",
+   "group_id": "lafan::walk2_subject1",
+   "source_dataset": "LAFAN",
+   "cache_index": 0,
+   "clip_start_row": 433251,
+   "source_frames": 7145,
+   "start": 3508,
+   "frames": 128,
+   "split": 0,
+   "kind": "rootbias_train"
+  },
+  {
+   "window_id": "walk2_subject4@3508",
+   "clip": "walk2_subject4",
+   "group_id": "lafan::walk2_subject4",
+   "source_dataset": "LAFAN",
+   "cache_index": 0,
+   "clip_start_row": 447541,
+   "source_frames": 7145,
+   "start": 3508,
+   "frames": 128,
+   "split": 0,
+   "kind": "rootbias_train"
+  },
+  {
+   "window_id": "walk3_subject1@3635",
+   "clip": "walk3_subject1",
+   "group_id": "lafan::walk3_subject1",
+   "source_dataset": "LAFAN",
+   "cache_index": 0,
+   "clip_start_row": 454686,
+   "source_frames": 7398,
+   "start": 3635,
+   "frames": 128,
+   "split": 0,
+   "kind": "rootbias_train"
+  },
+  {
+   "window_id": "walk3_subject2@3635",
+   "clip": "walk3_subject2",
+   "group_id": "lafan::walk3_subject2",
+   "source_dataset": "LAFAN",
+   "cache_index": 0,
+   "clip_start_row": 462084,
+   "source_frames": 7398,
+   "start": 3635,
+   "frames": 128,
+   "split": 0,
+   "kind": "rootbias_train"
+  },
+  {
+   "window_id": "walk3_subject3@3635",
+   "clip": "walk3_subject3",
+   "group_id": "lafan::walk3_subject3",
+   "source_dataset": "LAFAN",
+   "cache_index": 0,
+   "clip_start_row": 469482,
+   "source_frames": 7398,
+   "start": 3635,
+   "frames": 128,
+   "split": 0,
+   "kind": "rootbias_train"
+  },
+  {
+   "window_id": "walk3_subject4@3635",
+   "clip": "walk3_subject4",
+   "group_id": "lafan::walk3_subject4",
+   "source_dataset": "LAFAN",
+   "cache_index": 0,
+   "clip_start_row": 476880,
+   "source_frames": 7398,
+   "start": 3635,
+   "frames": 128,
+   "split": 0,
+   "kind": "rootbias_train"
+  },
+  {
+   "window_id": "walk3_subject5@3635",
+   "clip": "walk3_subject5",
+   "group_id": "lafan::walk3_subject5",
+   "source_dataset": "LAFAN",
+   "cache_index": 0,
+   "clip_start_row": 484278,
+   "source_frames": 7398,
+   "start": 3635,
+   "frames": 128,
+   "split": 0,
+   "kind": "rootbias_train"
+  },
+  {
+   "window_id": "walk4_subject1@2394",
+   "clip": "walk4_subject1",
+   "group_id": "lafan::walk4_subject1",
+   "source_dataset": "LAFAN",
+   "cache_index": 0,
+   "clip_start_row": 491676,
+   "source_frames": 4917,
+   "start": 2394,
+   "frames": 128,
+   "split": 0,
+   "kind": "rootbias_train"
+  }
+ ],
+ "cases": [
+  {
+   "case_id": "human_smpl__fourier_gr3__walk1_subject1@3855",
+   "window_id": "walk1_subject1@3855",
+   "source": "human_smpl",
+   "target": "fourier_gr3",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__kuavo_s45__walk1_subject1@3855",
+   "window_id": "walk1_subject1@3855",
+   "source": "human_smpl",
+   "target": "kuavo_s45",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_h2__walk1_subject1@3855",
+   "window_id": "walk1_subject1@3855",
+   "source": "human_smpl",
+   "target": "unitree_h2",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_r1__walk1_subject1@3855",
+   "window_id": "walk1_subject1@3855",
+   "source": "human_smpl",
+   "target": "unitree_r1",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__fourier_gr3__walk1_subject2@3855",
+   "window_id": "walk1_subject2@3855",
+   "source": "human_smpl",
+   "target": "fourier_gr3",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__kuavo_s45__walk1_subject2@3855",
+   "window_id": "walk1_subject2@3855",
+   "source": "human_smpl",
+   "target": "kuavo_s45",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_h2__walk1_subject2@3855",
+   "window_id": "walk1_subject2@3855",
+   "source": "human_smpl",
+   "target": "unitree_h2",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_r1__walk1_subject2@3855",
+   "window_id": "walk1_subject2@3855",
+   "source": "human_smpl",
+   "target": "unitree_r1",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__fourier_gr3__walk1_subject5@3855",
+   "window_id": "walk1_subject5@3855",
+   "source": "human_smpl",
+   "target": "fourier_gr3",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__kuavo_s45__walk1_subject5@3855",
+   "window_id": "walk1_subject5@3855",
+   "source": "human_smpl",
+   "target": "kuavo_s45",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_h2__walk1_subject5@3855",
+   "window_id": "walk1_subject5@3855",
+   "source": "human_smpl",
+   "target": "unitree_h2",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_r1__walk1_subject5@3855",
+   "window_id": "walk1_subject5@3855",
+   "source": "human_smpl",
+   "target": "unitree_r1",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__fourier_gr3__walk2_subject1@3508",
+   "window_id": "walk2_subject1@3508",
+   "source": "human_smpl",
+   "target": "fourier_gr3",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__kuavo_s45__walk2_subject1@3508",
+   "window_id": "walk2_subject1@3508",
+   "source": "human_smpl",
+   "target": "kuavo_s45",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_h2__walk2_subject1@3508",
+   "window_id": "walk2_subject1@3508",
+   "source": "human_smpl",
+   "target": "unitree_h2",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_r1__walk2_subject1@3508",
+   "window_id": "walk2_subject1@3508",
+   "source": "human_smpl",
+   "target": "unitree_r1",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__fourier_gr3__walk2_subject4@3508",
+   "window_id": "walk2_subject4@3508",
+   "source": "human_smpl",
+   "target": "fourier_gr3",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__kuavo_s45__walk2_subject4@3508",
+   "window_id": "walk2_subject4@3508",
+   "source": "human_smpl",
+   "target": "kuavo_s45",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_h2__walk2_subject4@3508",
+   "window_id": "walk2_subject4@3508",
+   "source": "human_smpl",
+   "target": "unitree_h2",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_r1__walk2_subject4@3508",
+   "window_id": "walk2_subject4@3508",
+   "source": "human_smpl",
+   "target": "unitree_r1",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__fourier_gr3__walk3_subject1@3635",
+   "window_id": "walk3_subject1@3635",
+   "source": "human_smpl",
+   "target": "fourier_gr3",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__kuavo_s45__walk3_subject1@3635",
+   "window_id": "walk3_subject1@3635",
+   "source": "human_smpl",
+   "target": "kuavo_s45",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_h2__walk3_subject1@3635",
+   "window_id": "walk3_subject1@3635",
+   "source": "human_smpl",
+   "target": "unitree_h2",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_r1__walk3_subject1@3635",
+   "window_id": "walk3_subject1@3635",
+   "source": "human_smpl",
+   "target": "unitree_r1",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__fourier_gr3__walk3_subject2@3635",
+   "window_id": "walk3_subject2@3635",
+   "source": "human_smpl",
+   "target": "fourier_gr3",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__kuavo_s45__walk3_subject2@3635",
+   "window_id": "walk3_subject2@3635",
+   "source": "human_smpl",
+   "target": "kuavo_s45",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_h2__walk3_subject2@3635",
+   "window_id": "walk3_subject2@3635",
+   "source": "human_smpl",
+   "target": "unitree_h2",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_r1__walk3_subject2@3635",
+   "window_id": "walk3_subject2@3635",
+   "source": "human_smpl",
+   "target": "unitree_r1",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__fourier_gr3__walk3_subject3@3635",
+   "window_id": "walk3_subject3@3635",
+   "source": "human_smpl",
+   "target": "fourier_gr3",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__kuavo_s45__walk3_subject3@3635",
+   "window_id": "walk3_subject3@3635",
+   "source": "human_smpl",
+   "target": "kuavo_s45",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_h2__walk3_subject3@3635",
+   "window_id": "walk3_subject3@3635",
+   "source": "human_smpl",
+   "target": "unitree_h2",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_r1__walk3_subject3@3635",
+   "window_id": "walk3_subject3@3635",
+   "source": "human_smpl",
+   "target": "unitree_r1",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__fourier_gr3__walk3_subject4@3635",
+   "window_id": "walk3_subject4@3635",
+   "source": "human_smpl",
+   "target": "fourier_gr3",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__kuavo_s45__walk3_subject4@3635",
+   "window_id": "walk3_subject4@3635",
+   "source": "human_smpl",
+   "target": "kuavo_s45",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_h2__walk3_subject4@3635",
+   "window_id": "walk3_subject4@3635",
+   "source": "human_smpl",
+   "target": "unitree_h2",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_r1__walk3_subject4@3635",
+   "window_id": "walk3_subject4@3635",
+   "source": "human_smpl",
+   "target": "unitree_r1",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__fourier_gr3__walk3_subject5@3635",
+   "window_id": "walk3_subject5@3635",
+   "source": "human_smpl",
+   "target": "fourier_gr3",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__kuavo_s45__walk3_subject5@3635",
+   "window_id": "walk3_subject5@3635",
+   "source": "human_smpl",
+   "target": "kuavo_s45",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_h2__walk3_subject5@3635",
+   "window_id": "walk3_subject5@3635",
+   "source": "human_smpl",
+   "target": "unitree_h2",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_r1__walk3_subject5@3635",
+   "window_id": "walk3_subject5@3635",
+   "source": "human_smpl",
+   "target": "unitree_r1",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__fourier_gr3__walk4_subject1@2394",
+   "window_id": "walk4_subject1@2394",
+   "source": "human_smpl",
+   "target": "fourier_gr3",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__kuavo_s45__walk4_subject1@2394",
+   "window_id": "walk4_subject1@2394",
+   "source": "human_smpl",
+   "target": "kuavo_s45",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_h2__walk4_subject1@2394",
+   "window_id": "walk4_subject1@2394",
+   "source": "human_smpl",
+   "target": "unitree_h2",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  },
+  {
+   "case_id": "human_smpl__unitree_r1__walk4_subject1@2394",
+   "window_id": "walk4_subject1@2394",
+   "source": "human_smpl",
+   "target": "unitree_r1",
+   "target_heldout": true,
+   "kind": "rootbias_train",
+   "primary": false
+  }
+ ],
+ "manifest_sha256": "2418f6b062605aca31c956aad2a393e29f6c8b225b720ae00692640c449492dd",
+ "sha256": "c87c9269da2b182ed14da766fe64f4bcf6bd045779c868c23b9acc4d634f9e1b"
+}

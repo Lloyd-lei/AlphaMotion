@@ -1,0 +1,234 @@
+{
+  "schema": "required_surface_texts_v1",
+  "frozen": true,
+  "encoder": "Qwen3-Embedding-0.6B",
+  "reason": "full Franka v2 with real slide finger meshes; new body ID changes exact body-linked prompts",
+  "texts": [
+    {
+      "key": "4e4f99fa5263c1b18053a8fd736bf80e619e5bf5a15b505cf95bf9732070bc28",
+      "prompt": "Robot relay_franka_full_v2. Surface on panda0 link0. Local function: the named rigid mechanical link, with no additional functional label inferred. This is a geometric patch rigidly attached to its verified joint frame, not a pressure measurement.",
+      "body": "relay_franka_full_v2",
+      "joint_name": "panda0_link0",
+      "patch_ids": [
+        "9309aa838114f35b2fa6ba081faa5fcdc4f16f01bcfd6d7dbfd87414b0f1b5c9:compiled:12829afe689ff666a4202bf52976edfeafed1d4a74122bf6f00c2fab58c3db41:geom:0:face:1941:bary:0.333333333,0.333333333,0.333333333",
+        "9309aa838114f35b2fa6ba081faa5fcdc4f16f01bcfd6d7dbfd87414b0f1b5c9:compiled:12829afe689ff666a4202bf52976edfeafed1d4a74122bf6f00c2fab58c3db41:geom:0:face:3866:bary:0.333333333,0.333333333,0.333333333",
+        "9309aa838114f35b2fa6ba081faa5fcdc4f16f01bcfd6d7dbfd87414b0f1b5c9:compiled:12829afe689ff666a4202bf52976edfeafed1d4a74122bf6f00c2fab58c3db41:geom:0:face:4035:bary:0.333333333,0.333333333,0.333333333",
+        "9309aa838114f35b2fa6ba081faa5fcdc4f16f01bcfd6d7dbfd87414b0f1b5c9:compiled:12829afe689ff666a4202bf52976edfeafed1d4a74122bf6f00c2fab58c3db41:geom:0:face:5311:bary:0.333333333,0.333333333,0.333333333",
+        "9309aa838114f35b2fa6ba081faa5fcdc4f16f01bcfd6d7dbfd87414b0f1b5c9:compiled:12829afe689ff666a4202bf52976edfeafed1d4a74122bf6f00c2fab58c3db41:geom:0:face:7194:bary:0.333333333,0.333333333,0.333333333",
+        "9309aa838114f35b2fa6ba081faa5fcdc4f16f01bcfd6d7dbfd87414b0f1b5c9:compiled:12829afe689ff666a4202bf52976edfeafed1d4a74122bf6f00c2fab58c3db41:geom:0:face:10328:bary:0.333333333,0.333333333,0.333333333",
+        "9309aa838114f35b2fa6ba081faa5fcdc4f16f01bcfd6d7dbfd87414b0f1b5c9:compiled:12829afe689ff666a4202bf52976edfeafed1d4a74122bf6f00c2fab58c3db41:geom:0:face:10929:bary:0.333333333,0.333333333,0.333333333",
+        "9309aa838114f35b2fa6ba081faa5fcdc4f16f01bcfd6d7dbfd87414b0f1b5c9:compiled:12829afe689ff666a4202bf52976edfeafed1d4a74122bf6f00c2fab58c3db41:geom:0:face:11682:bary:0.333333333,0.333333333,0.333333333",
+        "9309aa838114f35b2fa6ba081faa5fcdc4f16f01bcfd6d7dbfd87414b0f1b5c9:compiled:12829afe689ff666a4202bf52976edfeafed1d4a74122bf6f00c2fab58c3db41:geom:0:face:12320:bary:0.333333333,0.333333333,0.333333333",
+        "9309aa838114f35b2fa6ba081faa5fcdc4f16f01bcfd6d7dbfd87414b0f1b5c9:compiled:12829afe689ff666a4202bf52976edfeafed1d4a74122bf6f00c2fab58c3db41:geom:0:face:13322:bary:0.333333333,0.333333333,0.333333333",
+        "9309aa838114f35b2fa6ba081faa5fcdc4f16f01bcfd6d7dbfd87414b0f1b5c9:compiled:12829afe689ff666a4202bf52976edfeafed1d4a74122bf6f00c2fab58c3db41:geom:0:face:13550:bary:0.333333333,0.333333333,0.333333333",
+        "9309aa838114f35b2fa6ba081faa5fcdc4f16f01bcfd6d7dbfd87414b0f1b5c9:compiled:12829afe689ff666a4202bf52976edfeafed1d4a74122bf6f00c2fab58c3db41:geom:0:face:13984:bary:0.333333333,0.333333333,0.333333333",
+        "9309aa838114f35b2fa6ba081faa5fcdc4f16f01bcfd6d7dbfd87414b0f1b5c9:compiled:12829afe689ff666a4202bf52976edfeafed1d4a74122bf6f00c2fab58c3db41:geom:0:face:15014:bary:0.333333333,0.333333333,0.333333333",
+        "9309aa838114f35b2fa6ba081faa5fcdc4f16f01bcfd6d7dbfd87414b0f1b5c9:compiled:12829afe689ff666a4202bf52976edfeafed1d4a74122bf6f00c2fab58c3db41:geom:0:face:16195:bary:0.333333333,0.333333333,0.333333333"
+      ],
+      "source": {
+        "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/data/models/relay_robot_only_derived.xml",
+        "xml_sha256": "6176b4140f7d8a35156dc20cdec4767609c740aea486323e2c2a9cb85c80ab94",
+        "function_role_origin": "deterministic conservative description from verified model link name; no contact/tactile labels"
+      }
+    },
+    {
+      "key": "990682a598c6a7064ff5b4fd60479677d1f0c43e90afc9efff2427079296bac2",
+      "prompt": "Robot relay_franka_full_v2. Surface on panda0 link1. Local function: the named rigid mechanical link, with no additional functional label inferred. This is a geometric patch rigidly attached to its verified joint frame, not a pressure measurement.",
+      "body": "relay_franka_full_v2",
+      "joint_name": "panda0_link1",
+      "patch_ids": [
+        "ead5671c2a8b55eef02e6b95e2f685b836a2e1565334f7a81163011e3a130020:compiled:8d960f0c769765eda79e5212f1a4a4cf899192f86a4715ef6d72c7d365cbb618:geom:2:face:947:bary:0.333333333,0.333333333,0.333333333",
+        "ead5671c2a8b55eef02e6b95e2f685b836a2e1565334f7a81163011e3a130020:compiled:8d960f0c769765eda79e5212f1a4a4cf899192f86a4715ef6d72c7d365cbb618:geom:2:face:2629:bary:0.333333333,0.333333333,0.333333333",
+        "ead5671c2a8b55eef02e6b95e2f685b836a2e1565334f7a81163011e3a130020:compiled:8d960f0c769765eda79e5212f1a4a4cf899192f86a4715ef6d72c7d365cbb618:geom:2:face:3660:bary:0.333333333,0.333333333,0.333333333",
+        "ead5671c2a8b55eef02e6b95e2f685b836a2e1565334f7a81163011e3a130020:compiled:8d960f0c769765eda79e5212f1a4a4cf899192f86a4715ef6d72c7d365cbb618:geom:2:face:4314:bary:0.333333333,0.333333333,0.333333333",
+        "ead5671c2a8b55eef02e6b95e2f685b836a2e1565334f7a81163011e3a130020:compiled:8d960f0c769765eda79e5212f1a4a4cf899192f86a4715ef6d72c7d365cbb618:geom:2:face:5040:bary:0.333333333,0.333333333,0.333333333",
+        "ead5671c2a8b55eef02e6b95e2f685b836a2e1565334f7a81163011e3a130020:compiled:8d960f0c769765eda79e5212f1a4a4cf899192f86a4715ef6d72c7d365cbb618:geom:2:face:7128:bary:0.333333333,0.333333333,0.333333333",
+        "ead5671c2a8b55eef02e6b95e2f685b836a2e1565334f7a81163011e3a130020:compiled:8d960f0c769765eda79e5212f1a4a4cf899192f86a4715ef6d72c7d365cbb618:geom:2:face:7224:bary:0.333333333,0.333333333,0.333333333",
+        "ead5671c2a8b55eef02e6b95e2f685b836a2e1565334f7a81163011e3a130020:compiled:8d960f0c769765eda79e5212f1a4a4cf899192f86a4715ef6d72c7d365cbb618:geom:2:face:7349:bary:0.333333333,0.333333333,0.333333333",
+        "ead5671c2a8b55eef02e6b95e2f685b836a2e1565334f7a81163011e3a130020:compiled:8d960f0c769765eda79e5212f1a4a4cf899192f86a4715ef6d72c7d365cbb618:geom:2:face:9773:bary:0.333333333,0.333333333,0.333333333",
+        "ead5671c2a8b55eef02e6b95e2f685b836a2e1565334f7a81163011e3a130020:compiled:8d960f0c769765eda79e5212f1a4a4cf899192f86a4715ef6d72c7d365cbb618:geom:2:face:11225:bary:0.333333333,0.333333333,0.333333333",
+        "ead5671c2a8b55eef02e6b95e2f685b836a2e1565334f7a81163011e3a130020:compiled:8d960f0c769765eda79e5212f1a4a4cf899192f86a4715ef6d72c7d365cbb618:geom:2:face:12213:bary:0.333333333,0.333333333,0.333333333"
+      ],
+      "source": {
+        "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/data/models/relay_robot_only_derived.xml",
+        "xml_sha256": "6176b4140f7d8a35156dc20cdec4767609c740aea486323e2c2a9cb85c80ab94",
+        "function_role_origin": "deterministic conservative description from verified model link name; no contact/tactile labels"
+      }
+    },
+    {
+      "key": "801f7e907ac7d1ceebc734a0d3d7e6ce8da934657c3c7efe42417b6bed2e47e9",
+      "prompt": "Robot relay_franka_full_v2. Surface on panda0 link2. Local function: the named rigid mechanical link, with no additional functional label inferred. This is a geometric patch rigidly attached to its verified joint frame, not a pressure measurement.",
+      "body": "relay_franka_full_v2",
+      "joint_name": "panda0_link2",
+      "patch_ids": [
+        "f6455febcb22ed165b462f337c73c9dc428aa82b4e46f35f860f5c860705d528:compiled:5627b3560df946439cdfce3ed95964769ce6f64e8cf6b873b1c140d9740bf919:geom:4:face:51:bary:0.333333333,0.333333333,0.333333333",
+        "f6455febcb22ed165b462f337c73c9dc428aa82b4e46f35f860f5c860705d528:compiled:5627b3560df946439cdfce3ed95964769ce6f64e8cf6b873b1c140d9740bf919:geom:4:face:481:bary:0.333333333,0.333333333,0.333333333",
+        "f6455febcb22ed165b462f337c73c9dc428aa82b4e46f35f860f5c860705d528:compiled:5627b3560df946439cdfce3ed95964769ce6f64e8cf6b873b1c140d9740bf919:geom:4:face:1510:bary:0.333333333,0.333333333,0.333333333",
+        "f6455febcb22ed165b462f337c73c9dc428aa82b4e46f35f860f5c860705d528:compiled:5627b3560df946439cdfce3ed95964769ce6f64e8cf6b873b1c140d9740bf919:geom:4:face:3201:bary:0.333333333,0.333333333,0.333333333",
+        "f6455febcb22ed165b462f337c73c9dc428aa82b4e46f35f860f5c860705d528:compiled:5627b3560df946439cdfce3ed95964769ce6f64e8cf6b873b1c140d9740bf919:geom:4:face:4597:bary:0.333333333,0.333333333,0.333333333",
+        "f6455febcb22ed165b462f337c73c9dc428aa82b4e46f35f860f5c860705d528:compiled:5627b3560df946439cdfce3ed95964769ce6f64e8cf6b873b1c140d9740bf919:geom:4:face:4737:bary:0.333333333,0.333333333,0.333333333",
+        "f6455febcb22ed165b462f337c73c9dc428aa82b4e46f35f860f5c860705d528:compiled:5627b3560df946439cdfce3ed95964769ce6f64e8cf6b873b1c140d9740bf919:geom:4:face:7346:bary:0.333333333,0.333333333,0.333333333",
+        "f6455febcb22ed165b462f337c73c9dc428aa82b4e46f35f860f5c860705d528:compiled:5627b3560df946439cdfce3ed95964769ce6f64e8cf6b873b1c140d9740bf919:geom:4:face:7493:bary:0.333333333,0.333333333,0.333333333",
+        "f6455febcb22ed165b462f337c73c9dc428aa82b4e46f35f860f5c860705d528:compiled:5627b3560df946439cdfce3ed95964769ce6f64e8cf6b873b1c140d9740bf919:geom:4:face:9796:bary:0.333333333,0.333333333,0.333333333",
+        "f6455febcb22ed165b462f337c73c9dc428aa82b4e46f35f860f5c860705d528:compiled:5627b3560df946439cdfce3ed95964769ce6f64e8cf6b873b1c140d9740bf919:geom:4:face:11426:bary:0.333333333,0.333333333,0.333333333",
+        "f6455febcb22ed165b462f337c73c9dc428aa82b4e46f35f860f5c860705d528:compiled:5627b3560df946439cdfce3ed95964769ce6f64e8cf6b873b1c140d9740bf919:geom:4:face:12407:bary:0.333333333,0.333333333,0.333333333"
+      ],
+      "source": {
+        "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/data/models/relay_robot_only_derived.xml",
+        "xml_sha256": "6176b4140f7d8a35156dc20cdec4767609c740aea486323e2c2a9cb85c80ab94",
+        "function_role_origin": "deterministic conservative description from verified model link name; no contact/tactile labels"
+      }
+    },
+    {
+      "key": "dbaddacdf84cda188e89609daf6b42db7e5af716a2665e9e91e10c4c88c3f9c5",
+      "prompt": "Robot relay_franka_full_v2. Surface on panda0 link3. Local function: the named rigid mechanical link, with no additional functional label inferred. This is a geometric patch rigidly attached to its verified joint frame, not a pressure measurement.",
+      "body": "relay_franka_full_v2",
+      "joint_name": "panda0_link3",
+      "patch_ids": [
+        "60027188106f799b964dbcffd22b9da11fb4c76015d65bdfa9a52c0bdad9a5b8:compiled:e2668ac9adff310e5814a7127459aa77ab3d3ed55cc319b908e1f412e2cc96bf:geom:6:face:473:bary:0.333333333,0.333333333,0.333333333",
+        "60027188106f799b964dbcffd22b9da11fb4c76015d65bdfa9a52c0bdad9a5b8:compiled:e2668ac9adff310e5814a7127459aa77ab3d3ed55cc319b908e1f412e2cc96bf:geom:6:face:1174:bary:0.333333333,0.333333333,0.333333333",
+        "60027188106f799b964dbcffd22b9da11fb4c76015d65bdfa9a52c0bdad9a5b8:compiled:e2668ac9adff310e5814a7127459aa77ab3d3ed55cc319b908e1f412e2cc96bf:geom:6:face:2778:bary:0.333333333,0.333333333,0.333333333",
+        "60027188106f799b964dbcffd22b9da11fb4c76015d65bdfa9a52c0bdad9a5b8:compiled:e2668ac9adff310e5814a7127459aa77ab3d3ed55cc319b908e1f412e2cc96bf:geom:6:face:3917:bary:0.333333333,0.333333333,0.333333333",
+        "60027188106f799b964dbcffd22b9da11fb4c76015d65bdfa9a52c0bdad9a5b8:compiled:e2668ac9adff310e5814a7127459aa77ab3d3ed55cc319b908e1f412e2cc96bf:geom:6:face:5942:bary:0.333333333,0.333333333,0.333333333",
+        "60027188106f799b964dbcffd22b9da11fb4c76015d65bdfa9a52c0bdad9a5b8:compiled:e2668ac9adff310e5814a7127459aa77ab3d3ed55cc319b908e1f412e2cc96bf:geom:6:face:6404:bary:0.333333333,0.333333333,0.333333333",
+        "60027188106f799b964dbcffd22b9da11fb4c76015d65bdfa9a52c0bdad9a5b8:compiled:e2668ac9adff310e5814a7127459aa77ab3d3ed55cc319b908e1f412e2cc96bf:geom:6:face:8385:bary:0.333333333,0.333333333,0.333333333",
+        "60027188106f799b964dbcffd22b9da11fb4c76015d65bdfa9a52c0bdad9a5b8:compiled:e2668ac9adff310e5814a7127459aa77ab3d3ed55cc319b908e1f412e2cc96bf:geom:6:face:9944:bary:0.333333333,0.333333333,0.333333333",
+        "60027188106f799b964dbcffd22b9da11fb4c76015d65bdfa9a52c0bdad9a5b8:compiled:e2668ac9adff310e5814a7127459aa77ab3d3ed55cc319b908e1f412e2cc96bf:geom:6:face:10220:bary:0.333333333,0.333333333,0.333333333",
+        "60027188106f799b964dbcffd22b9da11fb4c76015d65bdfa9a52c0bdad9a5b8:compiled:e2668ac9adff310e5814a7127459aa77ab3d3ed55cc319b908e1f412e2cc96bf:geom:6:face:11742:bary:0.333333333,0.333333333,0.333333333",
+        "60027188106f799b964dbcffd22b9da11fb4c76015d65bdfa9a52c0bdad9a5b8:compiled:e2668ac9adff310e5814a7127459aa77ab3d3ed55cc319b908e1f412e2cc96bf:geom:6:face:13040:bary:0.333333333,0.333333333,0.333333333"
+      ],
+      "source": {
+        "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/data/models/relay_robot_only_derived.xml",
+        "xml_sha256": "6176b4140f7d8a35156dc20cdec4767609c740aea486323e2c2a9cb85c80ab94",
+        "function_role_origin": "deterministic conservative description from verified model link name; no contact/tactile labels"
+      }
+    },
+    {
+      "key": "aa087f29e54ca608cbee68aa28083a0b9c0bdaa091dc6eaf6f2371fef936d37b",
+      "prompt": "Robot relay_franka_full_v2. Surface on panda0 link4. Local function: the named rigid mechanical link, with no additional functional label inferred. This is a geometric patch rigidly attached to its verified joint frame, not a pressure measurement.",
+      "body": "relay_franka_full_v2",
+      "joint_name": "panda0_link4",
+      "patch_ids": [
+        "9d428c713864a405f428b424f1a3ee08e4f4290394d9d093191f2e94b15d6082:compiled:84a4fea9c776394ad699f7dc647ba008484dfadad6531834d3c7ff7a2f776010:geom:8:face:705:bary:0.333333333,0.333333333,0.333333333",
+        "9d428c713864a405f428b424f1a3ee08e4f4290394d9d093191f2e94b15d6082:compiled:84a4fea9c776394ad699f7dc647ba008484dfadad6531834d3c7ff7a2f776010:geom:8:face:1321:bary:0.333333333,0.333333333,0.333333333",
+        "9d428c713864a405f428b424f1a3ee08e4f4290394d9d093191f2e94b15d6082:compiled:84a4fea9c776394ad699f7dc647ba008484dfadad6531834d3c7ff7a2f776010:geom:8:face:3096:bary:0.333333333,0.333333333,0.333333333",
+        "9d428c713864a405f428b424f1a3ee08e4f4290394d9d093191f2e94b15d6082:compiled:84a4fea9c776394ad699f7dc647ba008484dfadad6531834d3c7ff7a2f776010:geom:8:face:4434:bary:0.333333333,0.333333333,0.333333333",
+        "9d428c713864a405f428b424f1a3ee08e4f4290394d9d093191f2e94b15d6082:compiled:84a4fea9c776394ad699f7dc647ba008484dfadad6531834d3c7ff7a2f776010:geom:8:face:6934:bary:0.333333333,0.333333333,0.333333333",
+        "9d428c713864a405f428b424f1a3ee08e4f4290394d9d093191f2e94b15d6082:compiled:84a4fea9c776394ad699f7dc647ba008484dfadad6531834d3c7ff7a2f776010:geom:8:face:8581:bary:0.333333333,0.333333333,0.333333333",
+        "9d428c713864a405f428b424f1a3ee08e4f4290394d9d093191f2e94b15d6082:compiled:84a4fea9c776394ad699f7dc647ba008484dfadad6531834d3c7ff7a2f776010:geom:8:face:9766:bary:0.333333333,0.333333333,0.333333333",
+        "9d428c713864a405f428b424f1a3ee08e4f4290394d9d093191f2e94b15d6082:compiled:84a4fea9c776394ad699f7dc647ba008484dfadad6531834d3c7ff7a2f776010:geom:8:face:11418:bary:0.333333333,0.333333333,0.333333333",
+        "9d428c713864a405f428b424f1a3ee08e4f4290394d9d093191f2e94b15d6082:compiled:84a4fea9c776394ad699f7dc647ba008484dfadad6531834d3c7ff7a2f776010:geom:8:face:13061:bary:0.333333333,0.333333333,0.333333333",
+        "9d428c713864a405f428b424f1a3ee08e4f4290394d9d093191f2e94b15d6082:compiled:84a4fea9c776394ad699f7dc647ba008484dfadad6531834d3c7ff7a2f776010:geom:8:face:13705:bary:0.333333333,0.333333333,0.333333333",
+        "9d428c713864a405f428b424f1a3ee08e4f4290394d9d093191f2e94b15d6082:compiled:84a4fea9c776394ad699f7dc647ba008484dfadad6531834d3c7ff7a2f776010:geom:8:face:14284:bary:0.333333333,0.333333333,0.333333333"
+      ],
+      "source": {
+        "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/data/models/relay_robot_only_derived.xml",
+        "xml_sha256": "6176b4140f7d8a35156dc20cdec4767609c740aea486323e2c2a9cb85c80ab94",
+        "function_role_origin": "deterministic conservative description from verified model link name; no contact/tactile labels"
+      }
+    },
+    {
+      "key": "3fe80d11c374edcdb7c24f2fdcb0b0f1fe727da1ec48f57806693656cbd1fce2",
+      "prompt": "Robot relay_franka_full_v2. Surface on panda0 link5. Local function: the named rigid mechanical link, with no additional functional label inferred. This is a geometric patch rigidly attached to its verified joint frame, not a pressure measurement.",
+      "body": "relay_franka_full_v2",
+      "joint_name": "panda0_link5",
+      "patch_ids": [
+        "73137c203d79e91a51cd57acde3fd009b810d9b647f71d95ef08ca6ce480ade9:compiled:8242369a8d9a023b4768056cab2ef33b24dc452ad9fd32bc1ed26c5b868cd2b3:geom:10:face:59:bary:0.333333333,0.333333333,0.333333333",
+        "73137c203d79e91a51cd57acde3fd009b810d9b647f71d95ef08ca6ce480ade9:compiled:8242369a8d9a023b4768056cab2ef33b24dc452ad9fd32bc1ed26c5b868cd2b3:geom:10:face:1238:bary:0.333333333,0.333333333,0.333333333",
+        "73137c203d79e91a51cd57acde3fd009b810d9b647f71d95ef08ca6ce480ade9:compiled:8242369a8d9a023b4768056cab2ef33b24dc452ad9fd32bc1ed26c5b868cd2b3:geom:10:face:2986:bary:0.333333333,0.333333333,0.333333333",
+        "73137c203d79e91a51cd57acde3fd009b810d9b647f71d95ef08ca6ce480ade9:compiled:8242369a8d9a023b4768056cab2ef33b24dc452ad9fd32bc1ed26c5b868cd2b3:geom:10:face:3227:bary:0.333333333,0.333333333,0.333333333",
+        "73137c203d79e91a51cd57acde3fd009b810d9b647f71d95ef08ca6ce480ade9:compiled:8242369a8d9a023b4768056cab2ef33b24dc452ad9fd32bc1ed26c5b868cd2b3:geom:10:face:3335:bary:0.333333333,0.333333333,0.333333333",
+        "73137c203d79e91a51cd57acde3fd009b810d9b647f71d95ef08ca6ce480ade9:compiled:8242369a8d9a023b4768056cab2ef33b24dc452ad9fd32bc1ed26c5b868cd2b3:geom:10:face:4069:bary:0.333333333,0.333333333,0.333333333",
+        "73137c203d79e91a51cd57acde3fd009b810d9b647f71d95ef08ca6ce480ade9:compiled:8242369a8d9a023b4768056cab2ef33b24dc452ad9fd32bc1ed26c5b868cd2b3:geom:10:face:6760:bary:0.333333333,0.333333333,0.333333333",
+        "73137c203d79e91a51cd57acde3fd009b810d9b647f71d95ef08ca6ce480ade9:compiled:8242369a8d9a023b4768056cab2ef33b24dc452ad9fd32bc1ed26c5b868cd2b3:geom:10:face:8536:bary:0.333333333,0.333333333,0.333333333",
+        "73137c203d79e91a51cd57acde3fd009b810d9b647f71d95ef08ca6ce480ade9:compiled:8242369a8d9a023b4768056cab2ef33b24dc452ad9fd32bc1ed26c5b868cd2b3:geom:10:face:10520:bary:0.333333333,0.333333333,0.333333333",
+        "73137c203d79e91a51cd57acde3fd009b810d9b647f71d95ef08ca6ce480ade9:compiled:8242369a8d9a023b4768056cab2ef33b24dc452ad9fd32bc1ed26c5b868cd2b3:geom:10:face:12979:bary:0.333333333,0.333333333,0.333333333",
+        "73137c203d79e91a51cd57acde3fd009b810d9b647f71d95ef08ca6ce480ade9:compiled:8242369a8d9a023b4768056cab2ef33b24dc452ad9fd32bc1ed26c5b868cd2b3:geom:10:face:14414:bary:0.333333333,0.333333333,0.333333333",
+        "73137c203d79e91a51cd57acde3fd009b810d9b647f71d95ef08ca6ce480ade9:compiled:8242369a8d9a023b4768056cab2ef33b24dc452ad9fd32bc1ed26c5b868cd2b3:geom:10:face:16154:bary:0.333333333,0.333333333,0.333333333",
+        "73137c203d79e91a51cd57acde3fd009b810d9b647f71d95ef08ca6ce480ade9:compiled:8242369a8d9a023b4768056cab2ef33b24dc452ad9fd32bc1ed26c5b868cd2b3:geom:10:face:17697:bary:0.333333333,0.333333333,0.333333333"
+      ],
+      "source": {
+        "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/data/models/relay_robot_only_derived.xml",
+        "xml_sha256": "6176b4140f7d8a35156dc20cdec4767609c740aea486323e2c2a9cb85c80ab94",
+        "function_role_origin": "deterministic conservative description from verified model link name; no contact/tactile labels"
+      }
+    },
+    {
+      "key": "f0d54f91957662b375ba707244d83097d6cb20116f9a2e9d1c2b2fe744a3d25f",
+      "prompt": "Robot relay_franka_full_v2. Surface on panda0 link6. Local function: the named rigid mechanical link, with no additional functional label inferred. This is a geometric patch rigidly attached to its verified joint frame, not a pressure measurement.",
+      "body": "relay_franka_full_v2",
+      "joint_name": "panda0_link6",
+      "patch_ids": [
+        "7278c6bbc121f4f51fca15a1d59ceb8e031c085c20a087c61218763e49957a61:compiled:d0728af69a8ba53a6c886bea2745d0c8dd2dbd2df19c0c4dd576eea37d2213a1:geom:12:face:1801:bary:0.333333333,0.333333333,0.333333333",
+        "7278c6bbc121f4f51fca15a1d59ceb8e031c085c20a087c61218763e49957a61:compiled:d0728af69a8ba53a6c886bea2745d0c8dd2dbd2df19c0c4dd576eea37d2213a1:geom:12:face:4127:bary:0.333333333,0.333333333,0.333333333",
+        "7278c6bbc121f4f51fca15a1d59ceb8e031c085c20a087c61218763e49957a61:compiled:d0728af69a8ba53a6c886bea2745d0c8dd2dbd2df19c0c4dd576eea37d2213a1:geom:12:face:6118:bary:0.333333333,0.333333333,0.333333333",
+        "7278c6bbc121f4f51fca15a1d59ceb8e031c085c20a087c61218763e49957a61:compiled:d0728af69a8ba53a6c886bea2745d0c8dd2dbd2df19c0c4dd576eea37d2213a1:geom:12:face:8775:bary:0.333333333,0.333333333,0.333333333",
+        "7278c6bbc121f4f51fca15a1d59ceb8e031c085c20a087c61218763e49957a61:compiled:d0728af69a8ba53a6c886bea2745d0c8dd2dbd2df19c0c4dd576eea37d2213a1:geom:12:face:11515:bary:0.333333333,0.333333333,0.333333333",
+        "7278c6bbc121f4f51fca15a1d59ceb8e031c085c20a087c61218763e49957a61:compiled:d0728af69a8ba53a6c886bea2745d0c8dd2dbd2df19c0c4dd576eea37d2213a1:geom:12:face:12729:bary:0.333333333,0.333333333,0.333333333",
+        "7278c6bbc121f4f51fca15a1d59ceb8e031c085c20a087c61218763e49957a61:compiled:d0728af69a8ba53a6c886bea2745d0c8dd2dbd2df19c0c4dd576eea37d2213a1:geom:12:face:14154:bary:0.333333333,0.333333333,0.333333333",
+        "7278c6bbc121f4f51fca15a1d59ceb8e031c085c20a087c61218763e49957a61:compiled:d0728af69a8ba53a6c886bea2745d0c8dd2dbd2df19c0c4dd576eea37d2213a1:geom:12:face:19038:bary:0.333333333,0.333333333,0.333333333",
+        "7278c6bbc121f4f51fca15a1d59ceb8e031c085c20a087c61218763e49957a61:compiled:d0728af69a8ba53a6c886bea2745d0c8dd2dbd2df19c0c4dd576eea37d2213a1:geom:12:face:20899:bary:0.333333333,0.333333333,0.333333333",
+        "7278c6bbc121f4f51fca15a1d59ceb8e031c085c20a087c61218763e49957a61:compiled:d0728af69a8ba53a6c886bea2745d0c8dd2dbd2df19c0c4dd576eea37d2213a1:geom:12:face:21395:bary:0.333333333,0.333333333,0.333333333"
+      ],
+      "source": {
+        "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/data/models/relay_robot_only_derived.xml",
+        "xml_sha256": "6176b4140f7d8a35156dc20cdec4767609c740aea486323e2c2a9cb85c80ab94",
+        "function_role_origin": "deterministic conservative description from verified model link name; no contact/tactile labels"
+      }
+    },
+    {
+      "key": "5d4ac95c0a6daa359b09ea92993d9d61c47d31e0f375232c3a06848cd6faa510",
+      "prompt": "Robot relay_franka_full_v2. Surface on panda0 link7. Local function: the named rigid mechanical link, with no additional functional label inferred. This is a geometric patch rigidly attached to its verified joint frame, not a pressure measurement.",
+      "body": "relay_franka_full_v2",
+      "joint_name": "panda0_link7",
+      "patch_ids": [
+        "3fce4a10775f0089afde0bfc67b26b8c1f29d6138b64aaaaf2da85cc1a14a9be:compiled:ba610dd1d99523329e5cddac1073333557498de46419fc7786b90bc0917d064c:geom:14:face:983:bary:0.333333333,0.333333333,0.333333333",
+        "3fce4a10775f0089afde0bfc67b26b8c1f29d6138b64aaaaf2da85cc1a14a9be:compiled:ba610dd1d99523329e5cddac1073333557498de46419fc7786b90bc0917d064c:geom:14:face:1417:bary:0.333333333,0.333333333,0.333333333",
+        "3fce4a10775f0089afde0bfc67b26b8c1f29d6138b64aaaaf2da85cc1a14a9be:compiled:ba610dd1d99523329e5cddac1073333557498de46419fc7786b90bc0917d064c:geom:14:face:1707:bary:0.333333333,0.333333333,0.333333333",
+        "3fce4a10775f0089afde0bfc67b26b8c1f29d6138b64aaaaf2da85cc1a14a9be:compiled:ba610dd1d99523329e5cddac1073333557498de46419fc7786b90bc0917d064c:geom:14:face:3640:bary:0.333333333,0.333333333,0.333333333",
+        "3fce4a10775f0089afde0bfc67b26b8c1f29d6138b64aaaaf2da85cc1a14a9be:compiled:ba610dd1d99523329e5cddac1073333557498de46419fc7786b90bc0917d064c:geom:14:face:9885:bary:0.333333333,0.333333333,0.333333333",
+        "2cebeea31d5cd743b669182a62e9deeaaf387ef2beacc9177aeaa19fcfb7de2c:compiled:ea57df81b94627937fdb628df7b86baa1b2a17bcd7e26a44ee70774999ab2cec:geom:16:face:427:bary:0.333333333,0.333333333,0.333333333",
+        "2cebeea31d5cd743b669182a62e9deeaaf387ef2beacc9177aeaa19fcfb7de2c:compiled:ea57df81b94627937fdb628df7b86baa1b2a17bcd7e26a44ee70774999ab2cec:geom:16:face:942:bary:0.333333333,0.333333333,0.333333333",
+        "2cebeea31d5cd743b669182a62e9deeaaf387ef2beacc9177aeaa19fcfb7de2c:compiled:ea57df81b94627937fdb628df7b86baa1b2a17bcd7e26a44ee70774999ab2cec:geom:16:face:1774:bary:0.333333333,0.333333333,0.333333333",
+        "2cebeea31d5cd743b669182a62e9deeaaf387ef2beacc9177aeaa19fcfb7de2c:compiled:ea57df81b94627937fdb628df7b86baa1b2a17bcd7e26a44ee70774999ab2cec:geom:16:face:2643:bary:0.333333333,0.333333333,0.333333333",
+        "2cebeea31d5cd743b669182a62e9deeaaf387ef2beacc9177aeaa19fcfb7de2c:compiled:ea57df81b94627937fdb628df7b86baa1b2a17bcd7e26a44ee70774999ab2cec:geom:16:face:3514:bary:0.333333333,0.333333333,0.333333333",
+        "2cebeea31d5cd743b669182a62e9deeaaf387ef2beacc9177aeaa19fcfb7de2c:compiled:ea57df81b94627937fdb628df7b86baa1b2a17bcd7e26a44ee70774999ab2cec:geom:16:face:6568:bary:0.333333333,0.333333333,0.333333333"
+      ],
+      "source": {
+        "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/data/models/relay_robot_only_derived.xml",
+        "xml_sha256": "6176b4140f7d8a35156dc20cdec4767609c740aea486323e2c2a9cb85c80ab94",
+        "function_role_origin": "deterministic conservative description from verified model link name; no contact/tactile labels"
+      }
+    },
+    {
+      "key": "c14325dd13b13f7486e0314b4858bcc9702a8f97e9e723d947068ef3f8295918",
+      "prompt": "Robot relay_franka_full_v2. Surface on panda0 leftfinger. Local function: a hand digit or articulated hand link when identified by the asset name; no tactile state is implied. This is a geometric patch rigidly attached to its verified joint frame, not a pressure measurement.",
+      "body": "relay_franka_full_v2",
+      "joint_name": "panda0_leftfinger",
+      "patch_ids": [
+        "2d07a740392f3b9b0816f65d64fff9927d3d57c897870fc4b6ff9c56fff3a0c8:compiled:9f3e4e2c4f763d6c5343b4e40cfa5d7a10645aa28c998fc0ca765e6a68a83083:geom:18:face:4:bary:0.333333333,0.333333333,0.333333333",
+        "2d07a740392f3b9b0816f65d64fff9927d3d57c897870fc4b6ff9c56fff3a0c8:compiled:9f3e4e2c4f763d6c5343b4e40cfa5d7a10645aa28c998fc0ca765e6a68a83083:geom:18:face:15:bary:0.333333333,0.333333333,0.333333333"
+      ],
+      "source": {
+        "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/data/models/relay_robot_only_derived.xml",
+        "xml_sha256": "6176b4140f7d8a35156dc20cdec4767609c740aea486323e2c2a9cb85c80ab94",
+        "function_role_origin": "deterministic conservative description from verified model link name; no contact/tactile labels"
+      }
+    },
+    {
+      "key": "9af6c87505bcce5803d3fe3a1fb0786f790332c1c68ff16d14e4729a5d528429",
+      "prompt": "Robot relay_franka_full_v2. Surface on panda0 rightfinger. Local function: a hand digit or articulated hand link when identified by the asset name; no tactile state is implied. This is a geometric patch rigidly attached to its verified joint frame, not a pressure measurement.",
+      "body": "relay_franka_full_v2",
+      "joint_name": "panda0_rightfinger",
+      "patch_ids": [
+        "2d07a740392f3b9b0816f65d64fff9927d3d57c897870fc4b6ff9c56fff3a0c8:compiled:9f3e4e2c4f763d6c5343b4e40cfa5d7a10645aa28c998fc0ca765e6a68a83083:geom:32:face:4:bary:0.333333333,0.333333333,0.333333333",
+        "2d07a740392f3b9b0816f65d64fff9927d3d57c897870fc4b6ff9c56fff3a0c8:compiled:9f3e4e2c4f763d6c5343b4e40cfa5d7a10645aa28c998fc0ca765e6a68a83083:geom:32:face:15:bary:0.333333333,0.333333333,0.333333333"
+      ],
+      "source": {
+        "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/data/models/relay_robot_only_derived.xml",
+        "xml_sha256": "6176b4140f7d8a35156dc20cdec4767609c740aea486323e2c2a9cb85c80ab94",
+        "function_role_origin": "deterministic conservative description from verified model link name; no contact/tactile labels"
+      }
+    }
+  ]
+}

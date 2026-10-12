@@ -1,0 +1,26 @@
+{
+  "model_parameters_total_across_six": 219748694,
+  "checkpoint_steps": [
+    100,
+    250,
+    500,
+    1000,
+    1500,
+    2000,
+    2500,
+    3000
+  ],
+  "intermediate_policy": "each8 checkpoint model float32 weights only, no Adam",
+  "final_policy": "one extra final model+Adam checkpoint perrun",
+  "weights_bytes_upper_bound": 7031958208,
+  "final_model_adam_tensor_bytes_upper_bound": 2636984328,
+  "max_atomic_temporary_tensor_bytes": 927876876,
+  "conservative_peak_including_extra_atomic_duplicate_bytes": 10596819412,
+  "additional_data_actual_bytes": 952452617,
+  "geometry_temp_budget_bytes": 1073741824,
+  "total_experiment_budget_bytes": 16106127360,
+  "existing_pilot": "already consumes measured free space; preserved and not double-counted as future allocation",
+  "serialization_overhead_and_eval_budget_bytes": 2147483648,
+  "conservative_requested_bytes": 14770497501,
+  "fits_experiment_budget": true
+}

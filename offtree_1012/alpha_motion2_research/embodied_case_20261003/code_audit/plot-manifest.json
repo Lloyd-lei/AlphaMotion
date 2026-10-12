@@ -1,0 +1,484 @@
+{
+  "schema_version": 1,
+  "case_id": "g1_fallAndGetUp3_subject1_to_official_h2",
+  "created_at_utc": "2026-10-04T04:01:04.408661+00:00",
+  "classification": "actual checkpoint forward tensors and audited code semantics",
+  "source_commit": "692bf7704ebc0d4e2b12678c1bc0c011d426fe0b",
+  "input_trace_hashes": {
+    "trace.json": "64baf768e95945fff8a9f962be5b5b2426441c8269b7d658bd78c367ae77ddd0",
+    "trace.npz": "ec409a88300b9552e640e186d7ee34a45f1e9bec38c2b21ef2d5cf54e76f4480"
+  },
+  "frame_selection": {
+    "batch": 0,
+    "clip_frame": 1800,
+    "fps": 30,
+    "selection_rule": "First saved frame and rotation latent slot 0; no search for preferred results."
+  },
+  "matrices": {
+    "encoder_layer0_attention": [
+      "G1 joint query",
+      "G1 joint key"
+    ],
+    "rotation_pool_attention": [
+      "learned rotation query slot",
+      "G1 joint key"
+    ],
+    "target_rotation_decoder_layer0_attention": [
+      "official H2 joint query",
+      "post-FSQ rotation latent key"
+    ]
+  },
+  "source_joint_names": [
+    "pelvis",
+    "left_hip_pitch_link",
+    "left_hip_roll_link",
+    "left_hip_yaw_link",
+    "left_knee_link",
+    "left_ankle_pitch_link",
+    "left_ankle_roll_link",
+    "left_toe_link",
+    "right_hip_pitch_link",
+    "right_hip_roll_link",
+    "right_hip_yaw_link",
+    "right_knee_link",
+    "right_ankle_pitch_link",
+    "right_ankle_roll_link",
+    "right_toe_link",
+    "waist_yaw_link",
+    "waist_roll_link",
+    "head_link",
+    "head_mocap",
+    "imu_in_torso",
+    "left_shoulder_pitch_link",
+    "left_shoulder_roll_link",
+    "left_shoulder_yaw_link",
+    "left_elbow_link",
+    "left_wrist_roll_link",
+    "left_wrist_pitch_link",
+    "left_wrist_yaw_link",
+    "left_rubber_hand",
+    "right_shoulder_pitch_link",
+    "right_shoulder_roll_link",
+    "right_shoulder_yaw_link",
+    "right_elbow_link",
+    "right_wrist_roll_link",
+    "right_wrist_pitch_link",
+    "right_wrist_yaw_link",
+    "right_rubber_hand"
+  ],
+  "target_joint_names": [
+    "pelvis",
+    "left_hip_pitch_link",
+    "left_hip_roll_link",
+    "left_hip_yaw_link",
+    "left_knee_link",
+    "left_ankle_roll_link",
+    "left_ankle_pitch_link",
+    "right_hip_pitch_link",
+    "right_hip_roll_link",
+    "right_hip_yaw_link",
+    "right_knee_link",
+    "right_ankle_roll_link",
+    "right_ankle_pitch_link",
+    "waist_yaw_link",
+    "waist_roll_link",
+    "head_pitch_link",
+    "head_yaw_link",
+    "camera",
+    "imu_in_torso",
+    "left_shoulder_pitch_link",
+    "left_shoulder_roll_link",
+    "left_shoulder_yaw_link",
+    "left_elbow_link",
+    "left_wrist_roll_link",
+    "left_wrist_pitch_link",
+    "left_wrist_yaw_link",
+    "left_hand_link",
+    "right_shoulder_pitch_link",
+    "right_shoulder_roll_link",
+    "right_shoulder_yaw_link",
+    "right_elbow_link",
+    "right_wrist_roll_link",
+    "right_wrist_pitch_link",
+    "right_wrist_yaw_link",
+    "right_hand_link",
+    "imu_in_pelvis"
+  ],
+  "latent_slot_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127
+  ],
+  "plots": [
+    {
+      "tensor_keys": [
+        "source_pose_embedding",
+        "source_descriptor_embedding256",
+        "source_combined_token256"
+      ],
+      "selection": {
+        "batch": 0,
+        "source_joint": 23,
+        "joint_name": "left_elbow_link"
+      },
+      "display_shape": [
+        3,
+        256
+      ],
+      "color_scale": {
+        "type": "linear_diverging",
+        "min": -2.1843628883361816,
+        "max": 2.1843628883361816,
+        "center": 0
+      },
+      "qkv_origin": "Encoder input is layer-normalized before first Q/K/V projections.",
+      "stem": "01-source-token256",
+      "files": [
+        {
+          "file": "01-source-token256.png",
+          "sha256": "fbdb8c0e5c4387677dbdd0d0da1c4d7d9490858b3977fd28bb3e755200416fe6",
+          "bytes": 98124
+        },
+        {
+          "file": "01-source-token256.svg",
+          "sha256": "7be5f09cc0069c988cc8888005d4556da862dcfc2c7bb014f38c81cf8014d20d",
+          "bytes": 19672
+        }
+      ],
+      "source_frame": 1800,
+      "source_clip": "fallAndGetUp3_subject1",
+      "classification": "actual_forward_tensor_visualization",
+      "synthetic_values": false,
+      "layout_qa": {
+        "title_subtitle_gap_png_pixels": 16.473,
+        "png_dpi": 170
+      }
+    },
+    {
+      "tensor_keys": [
+        "encoder_layer0_attention"
+      ],
+      "selection": {
+        "batch": 0,
+        "head": 0
+      },
+      "display_shape": [
+        36,
+        36
+      ],
+      "color_scale": {
+        "type": "linear_sequential",
+        "min": 0,
+        "max": 1
+      },
+      "query_origin": "projected LN(source encoder input)",
+      "key_value_origin": "projected same LN(source encoder input); logits include learned hop bias",
+      "softmax_axis": "last dimension / each query row across keys",
+      "row_sum_max_abs_error": 1.7881393432617188e-07,
+      "selected_row": 23,
+      "global_min": 5.558764470947608e-08,
+      "global_max": 0.9021880030632019,
+      "stem": "02-encoder-attention",
+      "files": [
+        {
+          "file": "02-encoder-attention.png",
+          "sha256": "8c025f4a404a1ed04670a7e1b5a02f18a159cc6a87339f8a4b84b1e148f8142f",
+          "bytes": 150075
+        },
+        {
+          "file": "02-encoder-attention.svg",
+          "sha256": "fde5bc055dd21fd83d9c0f2a4c3c7259b0261f7411f3368398dbb2446bd0e65b",
+          "bytes": 36432
+        }
+      ],
+      "source_frame": 1800,
+      "source_clip": "fallAndGetUp3_subject1",
+      "classification": "actual_forward_tensor_visualization",
+      "synthetic_values": false
+    },
+    {
+      "tensor_keys": [
+        "rotation_pool_attention"
+      ],
+      "selection": {
+        "batch": 0,
+        "head": 0
+      },
+      "display_shape": [
+        128,
+        36
+      ],
+      "color_scale": {
+        "type": "linear_sequential",
+        "min": 0,
+        "max": 1
+      },
+      "query_origin": "projected LN(128 learned rotation queries)",
+      "key_value_origin": "projected LN(final source encoder output)",
+      "softmax_axis": "last dimension / each query row across keys",
+      "row_sum_max_abs_error": 2.384185791015625e-07,
+      "selected_row": 0,
+      "global_min": 2.9172875315452984e-07,
+      "global_max": 0.9184721112251282,
+      "stem": "03-rotation-pool-attention",
+      "files": [
+        {
+          "file": "03-rotation-pool-attention.png",
+          "sha256": "7a6419dde87c4ad372e1c1a34473ce7438a4792506e923fef31bca71945cb752",
+          "bytes": 152355
+        },
+        {
+          "file": "03-rotation-pool-attention.svg",
+          "sha256": "f1370bbccc6cbe6d48601ec9b6a89b560aad1629ebc370632053e21c04c9b3c5",
+          "bytes": 42250
+        }
+      ],
+      "source_frame": 1800,
+      "source_clip": "fallAndGetUp3_subject1",
+      "classification": "actual_forward_tensor_visualization",
+      "synthetic_values": false
+    },
+    {
+      "tensor_keys": [
+        "target_rotation_decoder_layer0_attention"
+      ],
+      "selection": {
+        "batch": 0,
+        "head": 0
+      },
+      "display_shape": [
+        36,
+        128
+      ],
+      "color_scale": {
+        "type": "linear_sequential",
+        "min": 0,
+        "max": 1
+      },
+      "query_origin": "projected LN(official H2 descriptor query)",
+      "key_value_origin": "projected LN(128 post-FSQ reconstructed rotation tokens)",
+      "softmax_axis": "last dimension / each query row across keys",
+      "row_sum_max_abs_error": 1.1920928955078125e-07,
+      "selected_row": 22,
+      "global_min": 1.1071846302002086e-06,
+      "global_max": 0.19563758373260498,
+      "stem": "04-target-decoder-attention",
+      "files": [
+        {
+          "file": "04-target-decoder-attention.png",
+          "sha256": "020183a887e2c72597df99de0a4fead497d1fc534c43d002889a5a061c1f7080",
+          "bytes": 159915
+        },
+        {
+          "file": "04-target-decoder-attention.svg",
+          "sha256": "d447aaea50319286ca19f04a3c43bb34fecb64a3c58bc64b38dd46783ff4c094",
+          "bytes": 57043
+        }
+      ],
+      "source_frame": 1800,
+      "source_clip": "fallAndGetUp3_subject1",
+      "classification": "actual_forward_tensor_visualization",
+      "synthetic_values": false
+    },
+    {
+      "tensor_keys": [
+        "rotation_fsq_pre",
+        "rotation_fsq_1"
+      ],
+      "selection": {
+        "batch": 0,
+        "rotation_slot": 0,
+        "stage": 0
+      },
+      "display_shape": [
+        13
+      ],
+      "pre_units": "unbounded projection activation",
+      "post_units": "normalized rounded scalar grid",
+      "formula": "q=round(15.5*tanh(f))/15.5",
+      "raw_strip_scale": {
+        "min": -3.0318925380706787,
+        "max": 3.0318925380706787
+      },
+      "numpy_reconstruction_max_abs_error": 0.0,
+      "stem": "05-fsq13",
+      "files": [
+        {
+          "file": "05-fsq13.png",
+          "sha256": "cdfdeac91a94f9414e97e0eb2787d5de0d89ac0a51532f0b7dba3db14c0736ea",
+          "bytes": 146058
+        },
+        {
+          "file": "05-fsq13.svg",
+          "sha256": "b46f8a3fec8629eb84c27d8952b6cec7bed2d8a3d06e768008feedd70bfdd8d3",
+          "bytes": 24940
+        }
+      ],
+      "source_frame": 1800,
+      "source_clip": "fallAndGetUp3_subject1",
+      "classification": "actual_forward_tensor_visualization",
+      "synthetic_values": false,
+      "layout_qa": {
+        "title_subtitle_gap_png_pixels": 25.924999999999905,
+        "png_dpi": 170
+      }
+    }
+  ],
+  "evidence_limits": [
+    "Single-frame kinematic forward, not temporal generation or control.",
+    "Attention probability is not causal contribution or semantic correspondence.",
+    "Latent slot indices have no assigned human semantic labels.",
+    "No claim of held-out generalization, hardware feasibility or physics validation.",
+    "Full heatmaps share linear [0,1]; row bars have explicitly independent y scales."
+  ],
+  "supporting_files": [
+    {
+      "file": "hpos-semantics.json",
+      "sha256": "cbb61ee585fb3b515f2aad42d40e62ad50d5ee1d52933ac192c4931389e7c45d",
+      "bytes": 21079
+    },
+    {
+      "file": "selected-tensor-values.json",
+      "sha256": "792632a88aa1db1b5630eb36da1a244448ddc0c6d692af6e82251e219fcacd90",
+      "bytes": 28525
+    },
+    {
+      "file": "render_evidence.py",
+      "sha256": "4d173fbd74339234aa8f9b6072dbceaa85598c70aac0510d0eec48455caaa8ba",
+      "bytes": 18953
+    }
+  ],
+  "layout_refinement": {
+    "changed_plots": [
+      "01-source-token256",
+      "05-fsq13"
+    ],
+    "change": "Only increase title/subtitle vertical spacing. Other plot files and trace inputs unchanged.",
+    "updated_at_utc": "2026-10-04T04:09:10.837890+00:00"
+  }
+}

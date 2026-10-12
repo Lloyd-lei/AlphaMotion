@@ -1,0 +1,8 @@
+{
+  "pid": 3786310,
+  "start_ticks": "175220092",
+  "boot_id": "438a1cf6-b87e-4825-9786-844661433f9e",
+  "command_line": "/home/arenalabs/miniconda3/envs/ardy/bin/python -u /home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/orchestration/encode_features.py --pilot-root /home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/megatron_scale_pilot_20261004 --extend /home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/qwen/frozen_features.pt --names-file /home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/data/all_required_qwen_names_v2.json --surface-file /home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/surface/required_surface_texts_v2.json --output-stem frozen_features_v2 ",
+  "cwd": "/home/arenalabs",
+  "hostname": "lloyd"
+}

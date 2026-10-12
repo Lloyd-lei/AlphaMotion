@@ -1,0 +1,327 @@
+{
+ "schema": "am2exp_j1_collision_binding_v1",
+ "body": "tienkung",
+ "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/tienkung/mjcf/tienkung.xml",
+ "xml_sha256": "e42ae617c0c98e9b3f3d150a780f27342ee7f21ac8490cc73c0291a3c3976e1f",
+ "mujoco_version": "3.6.0",
+ "am2_static_spec": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/megatron_scale_pilot_20261004/data_xwbc/static/tienkung_spec.npz",
+ "am2_static_spec_sha256": "c51220a5e9de3065bd07b2b426f20ae0547ad70d7c1f0aa6a176be7327345fcf",
+ "am2_joint_names": [
+  "Base_link",
+  "hip_roll_l_link",
+  "hip_pitch_l_link",
+  "hip_yaw_l_link",
+  "knee_pitch_l_link",
+  "ankle_pitch_l_link",
+  "hip_roll_r_link",
+  "hip_pitch_r_link",
+  "hip_yaw_r_link",
+  "knee_pitch_r_link",
+  "ankle_pitch_r_link",
+  "shoulder_pitch_l_link",
+  "shoulder_roll_l_link",
+  "shoulder_yaw_l_link",
+  "elbow_pitch_l_link",
+  "left_hand",
+  "shoulder_pitch_r_link",
+  "shoulder_roll_r_link",
+  "shoulder_yaw_r_link",
+  "elbow_pitch_r_link",
+  "right_hand",
+  "head"
+ ],
+ "node_body": [
+  "Base_link",
+  "hip_roll_l_link",
+  "hip_pitch_l_link",
+  "hip_yaw_l_link",
+  "knee_pitch_l_link",
+  "ankle_pitch_l_link",
+  "hip_roll_r_link",
+  "hip_pitch_r_link",
+  "hip_yaw_r_link",
+  "knee_pitch_r_link",
+  "ankle_pitch_r_link",
+  "shoulder_pitch_l_link",
+  "shoulder_roll_l_link",
+  "shoulder_yaw_l_link",
+  "elbow_pitch_l_link",
+  "left_hand",
+  "shoulder_pitch_r_link",
+  "shoulder_roll_r_link",
+  "shoulder_yaw_r_link",
+  "elbow_pitch_r_link",
+  "right_hand",
+  "head"
+ ],
+ "node_frame_body": [
+  "Base_link",
+  "hip_roll_l_link",
+  "hip_pitch_l_link",
+  "hip_yaw_l_link",
+  "knee_pitch_l_link",
+  "ankle_roll_l_link",
+  "hip_roll_r_link",
+  "hip_pitch_r_link",
+  "hip_yaw_r_link",
+  "knee_pitch_r_link",
+  "ankle_roll_r_link",
+  "shoulder_pitch_l_link",
+  "shoulder_roll_l_link",
+  "shoulder_yaw_l_link",
+  "elbow_pitch_l_link",
+  "left_hand",
+  "shoulder_pitch_r_link",
+  "shoulder_roll_r_link",
+  "shoulder_yaw_r_link",
+  "elbow_pitch_r_link",
+  "right_hand",
+  "head"
+ ],
+ "random_states": 16,
+ "fk_max_error_cm": 1.9981557106301483e-06,
+ "h2_node_map": null,
+ "h2_offset_residual_cm": null,
+ "h2_offset_residual_max_cm": null,
+ "n_geoms": 13,
+ "n_rigid": 13,
+ "n_chain": 0,
+ "n_approx": 0,
+ "chain_geoms": [],
+ "approx_residual_max_cm": 0.0,
+ "geoms": [
+  {
+   "geom": 2,
+   "body": "Base_link",
+   "node": "Base_link",
+   "region": "pelvis",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -19.504376419105036,
+   "rest_centre_cm": [
+    0.0,
+    -10.999999999999998,
+    -2.0
+   ]
+  },
+  {
+   "geom": 6,
+   "body": "hip_yaw_l_link",
+   "node": "hip_yaw_l_link",
+   "region": "L_thigh",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -43.040000000000006,
+   "rest_centre_cm": [
+    14.984999999999998,
+    -33.040000000000006,
+    0.0
+   ]
+  },
+  {
+   "geom": 8,
+   "body": "knee_pitch_l_link",
+   "node": "knee_pitch_l_link",
+   "region": "L_shin",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -83.17,
+   "rest_centre_cm": [
+    14.995714999999999,
+    -68.17,
+    0.0
+   ]
+  },
+  {
+   "geom": 11,
+   "body": "ankle_roll_l_link",
+   "node": "ankle_pitch_l_link",
+   "region": "L_foot",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -98.87004879037381,
+   "rest_centre_cm": [
+    17.495714999999997,
+    -97.37000000000002,
+    3.5000000000000004
+   ]
+  },
+  {
+   "geom": 12,
+   "body": "ankle_roll_l_link",
+   "node": "ankle_pitch_l_link",
+   "region": "L_foot",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -98.87004879037381,
+   "rest_centre_cm": [
+    12.495714999999999,
+    -97.37000000000002,
+    3.5000000000000004
+   ]
+  },
+  {
+   "geom": 16,
+   "body": "hip_yaw_r_link",
+   "node": "hip_yaw_r_link",
+   "region": "R_thigh",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -43.040000000000006,
+   "rest_centre_cm": [
+    -15.0,
+    -33.040000000000006,
+    0.0
+   ]
+  },
+  {
+   "geom": 18,
+   "body": "knee_pitch_r_link",
+   "node": "knee_pitch_r_link",
+   "region": "R_shin",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -83.17,
+   "rest_centre_cm": [
+    -14.964998,
+    -68.17,
+    0.0
+   ]
+  },
+  {
+   "geom": 21,
+   "body": "ankle_roll_r_link",
+   "node": "ankle_pitch_r_link",
+   "region": "R_foot",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -98.87004879037381,
+   "rest_centre_cm": [
+    -12.390017,
+    -97.37000000000002,
+    3.5000000000000004
+   ]
+  },
+  {
+   "geom": 22,
+   "body": "ankle_roll_r_link",
+   "node": "ankle_pitch_r_link",
+   "region": "R_foot",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -98.87004879037381,
+   "rest_centre_cm": [
+    -17.390017,
+    -97.37000000000002,
+    3.5000000000000004
+   ]
+  },
+  {
+   "geom": 25,
+   "body": "shoulder_roll_l_link",
+   "node": "shoulder_roll_l_link",
+   "region": "L_upper_arm",
+   "type": 2,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": 34.8132343401025,
+   "rest_centre_cm": [
+    21.306221521961106,
+    38.3132343401025,
+    0.0
+   ]
+  },
+  {
+   "geom": 28,
+   "body": "elbow_pitch_l_link",
+   "node": "elbow_pitch_l_link",
+   "region": "L_forearm",
+   "type": 2,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": 6.9197819271009795,
+   "rest_centre_cm": [
+    23.746572415504954,
+    10.41978192710098,
+    1.9997999999999996
+   ]
+  },
+  {
+   "geom": 31,
+   "body": "shoulder_roll_r_link",
+   "node": "shoulder_roll_r_link",
+   "region": "R_upper_arm",
+   "type": 2,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": 34.8132343401025,
+   "rest_centre_cm": [
+    -21.306221521961106,
+    38.3132343401025,
+    0.0
+   ]
+  },
+  {
+   "geom": 34,
+   "body": "elbow_pitch_r_link",
+   "node": "elbow_pitch_r_link",
+   "region": "R_forearm",
+   "type": 2,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": 6.9197819271009795,
+   "rest_centre_cm": [
+    -23.746572415504954,
+    10.41978192710098,
+    2.0002999999999997
+   ]
+  }
+ ],
+ "regions_present": [
+  "L_foot",
+  "L_forearm",
+  "L_shin",
+  "L_thigh",
+  "L_upper_arm",
+  "R_foot",
+  "R_forearm",
+  "R_shin",
+  "R_thigh",
+  "R_upper_arm",
+  "pelvis"
+ ],
+ "regions_missing": [
+  "trunk",
+  "head",
+  "L_hand",
+  "R_hand"
+ ],
+ "selfpen_pairs": 70,
+ "selfpen_candidate_pairs": 70,
+ "selfpen_excluded": [],
+ "selfpen_rule": "hop(anchor)>=2, rest distance > -0.5 cm at qpos0, penetrating (<-1cm) in <=50% of 32 random q",
+ "independence": "vendor MJCF collision geometry only; no visual surface, sole table, labels or loss",
+ "npz_sha256": "70e19ec3fbda2ab9104eef878fdaa557a7514ecc018b4237a64fa003f1895762"
+}

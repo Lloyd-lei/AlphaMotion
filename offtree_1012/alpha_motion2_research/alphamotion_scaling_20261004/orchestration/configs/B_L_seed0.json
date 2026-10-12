@@ -1,0 +1,191 @@
+{
+  "seed": 0,
+  "model": {
+    "d_model": 384,
+    "n_heads": 8,
+    "enc_layers": 8,
+    "dec_layers": 8,
+    "n_latent": 128,
+    "n_latent_p": 4,
+    "fsq_stages": 1,
+    "fsq_levels": [
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32
+    ],
+    "use_sem": true,
+    "sem_dim": 1024,
+    "use_dof": true,
+    "n_judges": 12,
+    "single_codebook": false,
+    "rot_only": false,
+    "rot_head": "free",
+    "vis_residual": false,
+    "root_head": false,
+    "contact_chan": true
+  },
+  "qwen_cache": "qwen_audit/qwen3_names_pinned.pt",
+  "qwen_sha256": "462b84e41da470acf811d024bdead2f0b41fb8d054ef713e2f5401ebf48bc3ec",
+  "qwen_revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+  "batch_size": 128,
+  "steps": 3000,
+  "minimum_useful_steps": 1000,
+  "max_training_seconds": 14400,
+  "checkpoint_every": 500,
+  "mixture": {
+    "xwbc": 0.55,
+    "unimate": 0.45,
+    "modes": [
+      0.4,
+      0.35,
+      0.25
+    ],
+    "modes_scope": "UniMate same-body tasks only; XWBC main always retains original per-row mask_prob/mix",
+    "unpaired_scope": "legacy unimate task key also routes separately attributed D4RL same-body examples; no fake cross-body pairs"
+  },
+  "condition_dropout": 0.35,
+  "contact_dropout": 0.3,
+  "optimizer": {
+    "lr": 0.0001,
+    "weight_decay": 0.0001,
+    "clip_norm": 1.0,
+    "schedule": "CosineAnnealingLR over planned steps; no warmup"
+  },
+  "loss": {
+    "position": 5.0,
+    "condition_position": 10.0,
+    "condition_rotation": 1.0,
+    "root_height": 3.0,
+    "penetration": 200.0,
+    "contact_geometry": 1.0,
+    "slide_normalized": 1.0
+  },
+  "eval": {
+    "frames_per_body": 192,
+    "quick_frames": 64,
+    "batch_size": 32
+  },
+  "explicit_recipe_departures": [
+    "from-scratch shared dual FSQ; no old checkpoint warmstart",
+    "frozen pinned Qwen1024 geometry text; trainable shared projection",
+    "training-only 12-body XWBC judge and paired auxiliaries;4 whole humanoid holdouts",
+    "independent data/mask RNG shared across all6 runs",
+    "same-body UniMate/Adroit/Franka tasks; no invented cross-body pairs",
+    "static geometry-only normalization; no heldout motion normalizer",
+    "same shared prismatic input/head and typed FK in A/B; true limits; no GT slide fill",
+    "A/B surface information+structure+loss package comparison; same fixed mesh evaluation",
+    "batch128/3000updates/checkpoints at common exposure; timed/FLOP estimates separate",
+    "temporal loss disabled unless actual complete world/time/contact evidence"
+  ],
+  "coordinate_frame": "root-centered canonical Y-up, original canonical orientation retained; not a root-orientation-rotated body frame",
+  "world_anchor": null,
+  "recipe": {
+    "w_contrast": 0.5,
+    "tau": 0.1,
+    "contrast_sample": 6,
+    "reenc_consistency": 1.0,
+    "reenc_prob": 0.3,
+    "n_judges": 12,
+    "judge_mode": "grad",
+    "w_judge": 0.1,
+    "w_pen": 200.0,
+    "w_cgeo": 1.0,
+    "mask_prob": 0.3,
+    "mask_mix": "rand:0.25,ee:0.15,root:0.10,sparse:0.25,cask:0.15,cgive:0.10",
+    "combo_sample": 8,
+    "source_row_duplicates": "stable dedup for InfoNCE only; judge and cycle retain original batch weighting",
+    "temporal_slip_hpair": "disabled: no complete adjacent/world/time payload"
+  },
+  "xwbc_sparse_extra": {
+    "probability": 0.25,
+    "weight": 1.0,
+    "directions": 1,
+    "scope": "additional same-body pure-SE3 task; never replaces eight original XWBC directions"
+  },
+  "recipe_status": "original applicable single-frame losses with12 training-body auxiliary classes; from-scratch scaling",
+  "train_allowed": "only_with_matching_validation_receipt",
+  "run_id": "B_L_seed0",
+  "group": "B",
+  "size": "L",
+  "model_kind": "SurfaceMegatron",
+  "initialization": {
+    "protocol": "from_scratch",
+    "seed": 0,
+    "warmstart": false,
+    "corresponding_A_B_backbone_initialization": "identical random initialization before adding surface modules",
+    "training_mask_seed_per_step": "seed*1000000+step, reset before each full step"
+  },
+  "checkpoint_steps": [
+    100,
+    250,
+    500,
+    1000,
+    1500,
+    2000,
+    2500,
+    3000
+  ],
+  "checkpoint_policy": "intermediate model weights only; final full optimizer checkpoint",
+  "xwbc_body_holdout": [
+    "kuavo_s45",
+    "fourier_gr3",
+    "unitree_h2",
+    "unitree_r1"
+  ],
+  "normalization": "static geometry-only max root-to-joint path length; no motion fitting",
+  "frozen_qwen_parameters": 595776512,
+  "data_manifest_sha256": "d9758a8cd83a1d2efc3e89c8e5827319646891d8db9dcbc28f20c80652a17537",
+  "readiness": "exact source/data/config CUDA receipt is mandatory",
+  "surface": {
+    "enabled": true,
+    "max_patches": 96,
+    "weights": {
+      "position": 1.0,
+      "normal": 0.1,
+      "penetration": 1.0,
+      "contact": 0.1
+    },
+    "contact_policy": "only true available patch labels/source/partner validity; unavailable is not negative",
+    "required_real_training_bodies": 2
+  },
+  "pilot_data_root": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/megatron_scale_pilot_20261004",
+  "extended_qwen_sha256": "1407bb1fba4b90f2596aa4b02932a206100b2f45a95498fe8cdc0e9a62334181",
+  "representation": "shared typed prismatic q plus global rotational kinematics, same for A/B",
+  "run_interpretation": "fixed recipe and exposure, not scaling law or convergence proof",
+  "loss_normalization": {
+    "main": "mean rotation/position over all valid joint-frames; direction mean1/8",
+    "conditions": "mean over valid supplied sparse joints; zero when unavailable",
+    "root_height": "mean over valid height frames only",
+    "ground": "legacy valid ground/sole masks; unknown excluded",
+    "slides": "mean absolute normalized q error over actual slide joint-frames; zero for no sliders",
+    "surface": "area-weighted per-frame, mean over valid frames; no missing-patch negative",
+    "auxiliary": "original independent weights, no divide by8; InfoNCE duplicates deduplicated"
+  },
+  "extended_qwen_cache": "qwen/frozen_features_v2.pt",
+  "data_contract_version": "external_manifest_v2; full Fraka J11 real 7hinge+2slide; original v1 excluded",
+  "refinement": "No GT slides fill predictions; 0..100 curve separate raw/projected/constrained plus default valid q baseline",
+  "judge_body_order": [
+    "booster_k1",
+    "booster_t1",
+    "booster_t1_29dof",
+    "fourier_n1",
+    "hightorque_hi",
+    "human_smpl",
+    "pnd_adam_lite",
+    "tienkung",
+    "unitree_g1_23dof",
+    "unitree_g1_29dof",
+    "unitree_h1",
+    "unitree_h1_2"
+  ]
+}

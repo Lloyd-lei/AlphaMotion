@@ -1,0 +1,19 @@
+{
+  "version": "alpha1-transformer-redraw-v1",
+  "status": "frozen_after_QA",
+  "files": {
+    "alphamotion1_blocks.pdf": "ec607fad2088967eba89b59e2857fc3a20b79b160b0232fc4106e6e25d584e84",
+    "alphamotion1_blocks.png": "45c1635f3667066fcb6f304bafbc5a2db75939efeff956de57b9f3c42e4bef63",
+    "alphamotion1_blocks.svg": "f246d07ec4a45d5f1fa37426088d994eb9b9acb65ed86c1f41a519a82842b53c",
+    "alphamotion1_blocks_preview.png": "0b5819b83da6f5572e95450ad692635edc12988db78a3bf4304e83bf1440afd8",
+    "alphamotion1_path.pdf": "48b7e634fb3e4447516fae072ec9ca0526d948f48e9ac2236f18b234886e2130",
+    "alphamotion1_path.png": "0547c05e8a6ca8fa73113091c8bfe4ecb9f50782aaefe198d5ce45dc22a36dc2",
+    "alphamotion1_path.svg": "414f2aad72e53e15720cbd2e7afd6d0599d19ae0cb9f879d3ab15c2107fc263b",
+    "alphamotion1_path_preview.png": "2337a36c3226a07819e5983fa5d0af03f0a9cee17f024b97476fbd48a5e35d95",
+    "build.py": "13a09d6e4484a0a602bb3e323f64e921b18fdbb530b2fa1a0a3d4c0bd2adbb5b",
+    "finalize.py": "97e664381cc42ba11240243cde9489fd642f5ca32009546d01b208fae6c47c60",
+    "render.sh": "fe38399dfec64484dae4797b29bce3059af4ff2a4e55a92ee1d5ca845c9bdb51",
+    "source-map.json": "39b6e369c8e9d0211c4e5731da8c2d05cf2b5633640209b1988a328a3fb16146",
+    "\u4e2d\u6587\u8bfb\u56fe\u8bf4\u660e.md": "741f2a418ebc426c0a5fa429734566e96fc6736ef0e15e7ea76d6cd29d2030b7"
+  }
+}

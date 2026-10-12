@@ -1,0 +1,16 @@
+{
+  "source_kind": "Original remote run config bytes recovered from successful SSH p.read_text() output after removing print-added terminal newline; not CLI defaults",
+  "remote_path": "/var/tmp/alphamotion/topo_exp/runs/L_M20k_0903/config.json",
+  "captured_at_utc": "2026-10-04T04:50:16.869Z",
+  "source_rollout": "/Users/yudonglei/.codex/sessions/2026/10/03/rollout-2026-10-03T22-12-22-01a104af-07bb-79d0-9dca-5665da524bbc.jsonl",
+  "tool_command_id": "exec-d6bcba5c-0b49-43a1-ad4b-cc90b241a8bb",
+  "snapshot_sha256": "0e61ed5b012420d5fa186bc09537e9cac32ed14fa4533182c6d44805f5e7ee58",
+  "original_remote_byte_hash_previously_audited": "0e61ed5b012420d5fa186bc09537e9cac32ed14fa4533182c6d44805f5e7ee58",
+  "hash_distinction": "Recovered bytes exactly match the independently audited original config SHA256. Current remote revalidation remains required.",
+  "run_checkpoint_sha256": "d6585ca0e46d85300b44a3998288396ffd6853639d6ad094f5846e8cce0e8f7d",
+  "independent_local_snapshot": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/verified-megatron-config.json",
+  "shared_keys_checked": 73,
+  "shared_value_mismatches": {},
+  "remote_revalidation": "required_before_training",
+  "snapshot_file": "L_M20k_0903.config.json"
+}

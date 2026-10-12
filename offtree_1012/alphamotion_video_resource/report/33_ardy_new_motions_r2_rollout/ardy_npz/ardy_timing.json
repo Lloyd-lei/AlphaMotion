@@ -1,0 +1,88 @@
+{
+ "gpu": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+ "model": "ARDY-G1-RP-25FPS-Horizon52",
+ "model_load_s": 0.6621047669323161,
+ "fps": 25,
+ "horizon_frames": 52,
+ "frames_per_token": 4,
+ "history_frames": 196,
+ "diffusion_steps": 10,
+ "duration_s": 8.0,
+ "prompts": {
+  "n1_walkturn": {
+   "text": "A person walks forward, turns around and walks back.",
+   "frames": 200,
+   "windows": 4,
+   "text_encode_ms": 59.93246199795976,
+   "generation_ms": 230.09850905509666,
+   "generation_ms_per_window": 57.524627263774164,
+   "inverse_rep_ms": 4.369572037830949,
+   "rtf_generation": 0.028762313631887082,
+   "rtf_text_plus_generation": 0.03625387138163205,
+   "runs_ms": [
+    229.78131705895066,
+    230.41570105124265
+   ]
+  },
+  "n2_jacks": {
+   "text": "A person does three jumping jacks.",
+   "frames": 200,
+   "windows": 4,
+   "text_encode_ms": 60.09263452142477,
+   "generation_ms": 229.7120094881393,
+   "generation_ms_per_window": 57.428002372034825,
+   "inverse_rep_ms": 1.3525690883398056,
+   "rtf_generation": 0.028714001186017413,
+   "rtf_text_plus_generation": 0.03622558050119551,
+   "runs_ms": [
+    229.41968101076782,
+    230.00433796551079
+   ]
+  },
+  "n3_squat": {
+   "text": "A person squats down and stands up, twice.",
+   "frames": 200,
+   "windows": 4,
+   "text_encode_ms": 59.05344500206411,
+   "generation_ms": 230.10146751767024,
+   "generation_ms_per_window": 57.52536687941756,
+   "inverse_rep_ms": 1.391403959132731,
+   "rtf_generation": 0.02876268343970878,
+   "rtf_text_plus_generation": 0.036144364064966794,
+   "runs_ms": [
+    230.00238405074924,
+    230.20055098459125
+   ]
+  },
+  "n4_sidestep": {
+   "text": "A person side-steps to the left, then side-steps back to the right.",
+   "frames": 200,
+   "windows": 4,
+   "text_encode_ms": 59.29457501042634,
+   "generation_ms": 230.5899364873767,
+   "generation_ms_per_window": 57.64748412184417,
+   "inverse_rep_ms": 1.3762239832431078,
+   "rtf_generation": 0.028823742060922086,
+   "rtf_text_plus_generation": 0.03623556393722538,
+   "runs_ms": [
+    230.4709400050342,
+    230.70893296971917
+   ]
+  },
+  "n5_runstop": {
+   "text": "A person runs forward and stops abruptly.",
+   "frames": 200,
+   "windows": 4,
+   "text_encode_ms": 58.743449044413865,
+   "generation_ms": 229.8186799744144,
+   "generation_ms_per_window": 57.4546699936036,
+   "inverse_rep_ms": 1.3640910619869828,
+   "rtf_generation": 0.0287273349968018,
+   "rtf_text_plus_generation": 0.036070266127353534,
+   "runs_ms": [
+    230.09134992025793,
+    229.5460100285709
+   ]
+  }
+ }
+}

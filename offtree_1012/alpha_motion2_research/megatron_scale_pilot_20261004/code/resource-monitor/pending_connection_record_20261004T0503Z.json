@@ -1,0 +1,15 @@
+{
+  "observed_at_utc": "2026-10-04T05:06:02.968535+00:00",
+  "kind": "connection_failure",
+  "tailscale_host": "lloyd",
+  "peer_online": false,
+  "last_seen_utc": "2026-10-04T04:50:00.1Z",
+  "ssh_result": "port_22_connect_timeout",
+  "download_process_identity_verified": false,
+  "download_current_state": "unobserved",
+  "space_current_state": "unobserved",
+  "remote_persist": "pending_connection_recovery",
+  "process_actions": [],
+  "do_not_infer": "SSH failure is not proof download or extraction exited",
+  "last_successful_monitor_utc": "2026-10-04T04:17:30Z"
+}

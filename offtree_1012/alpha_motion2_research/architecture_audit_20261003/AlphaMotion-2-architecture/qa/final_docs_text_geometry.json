@@ -1,0 +1,1316 @@
+[
+  {
+    "page": 1,
+    "text_chars": 7,
+    "image_count": 0,
+    "font_sizes": [
+      26.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "Tab 1 "
+    ],
+    "tail": [
+      "Tab 1 "
+    ]
+  },
+  {
+    "page": 2,
+    "text_chars": 1215,
+    "image_count": 0,
+    "font_sizes": [
+      11.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "AlphaMotion-2: Unified Skeleton-Surface Motion Mapping Foundation Model ",
+      " ",
+      "一，一期项目介绍 "
+    ],
+    "tail": [
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " "
+    ]
+  },
+  {
+    "page": 3,
+    "text_chars": 8,
+    "image_count": 0,
+    "font_sizes": [],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      " ",
+      " ",
+      " "
+    ],
+    "tail": [
+      " ",
+      " ",
+      " ",
+      " "
+    ]
+  },
+  {
+    "page": 4,
+    "text_chars": 17,
+    "image_count": 0,
+    "font_sizes": [
+      26.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "值得重视的竞品：Unimate "
+    ],
+    "tail": [
+      "值得重视的竞品：Unimate "
+    ]
+  },
+  {
+    "page": 5,
+    "text_chars": 1150,
+    "image_count": 0,
+    "font_sizes": [
+      11.0,
+      12.0,
+      16.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      " ",
+      "Unimate是近期发现的一个和我们核心功能一样开源研究项目，值得我们高度重视。我下载他们",
+      "的权重后进行了一定的评估，下面是一些项目介绍和具体的技术细节： "
+    ],
+    "tail": [
+      "骨架条件包括静止姿态、骨骼长度、父子关系、关节名称、图距离与图谱位置编码。图关系偏置、",
+      "Spec-RoPE 与全局骨架条件共同帮助模型适应不同拓扑。模型主要编码骨架；mesh 在后续动画",
+      "阶段使用。 ",
+      "2.2 能否 mapping 到 G1/H2？ ",
+      "支持在目标骨架上生成和补全动作，但发布模型没有直接输出满足 G1/H2 关节轴、限位与接触",
+      "约束的完整电机关节角接口。本次使用 URDF 适配，并以同一最近轴转换规则把通用三维旋转转",
+      "为机器人单轴关节角；这不是优化精修。 "
+    ]
+  },
+  {
+    "page": 6,
+    "text_chars": 1094,
+    "image_count": 0,
+    "font_sizes": [
+      11.0,
+      12.0,
+      16.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "H2 使用 H2.urdf 树结构，未验证 H2_loop 闭链执行。通用骨架动画和机器人可执行动作需要分开",
+      "评价。 ",
+      "2.3 给双手双脚轨迹，能否学习式补全其余动作？ "
+    ],
+    "tail": [
+      "四、Pelvis / root 的表示与输入 ",
+      "发布代码使用 Y 向上，水平面是 X/Z。根节点通常对应 pelvis，每帧同样有 12 个特征： ",
+      "位置 3 维：[0, 高度Y, 0]，直接水平位置被去除。 ",
+      "旋转 6 维：朝向的 6D 表示，定义朝向坐标系。 ",
+      "位移 3 维：朝向系下的逐帧 ΔX、ΔY、ΔZ。 ",
+      "因此，直接位置通道只保留高度，但完整根表示包含水平运动。解码通过朝向与 ΔX、ΔZ 积分恢",
+      "复水平路径；高度直接读取位置通道，不积分 ΔY。初始世界水平位置由外部放置决定。 "
+    ]
+  },
+  {
+    "page": 7,
+    "text_chars": 1001,
+    "image_count": 0,
+    "font_sizes": [
+      11.0,
+      12.0,
+      16.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "根朝向不等于完整 pelvis 倾斜姿态；完整根旋转还涉及子节点中保存的父旋转。固定根的 12 个",
+      "通道不等于锁定完整 pelvis pose，腕踝旋转通道也不能直接作为全局末端朝向。 ",
+      "普通文字生成不要求输入真实 pelvis。修正后的 Nymeria 没有真实 pelvis 输入：根高度生成，水"
+    ],
+    "tail": [
+      "定。 ",
+      "当前测到的能力范围是粗粒度手部动画生成。尚未测试物体接触、抓取与搬运，因此不能据此认",
+      "定可靠 manipulation。数据量本身也无法给出模型能力上限，定向数据能否提升需要另做训练实",
+      "验。 ",
+      "手部动画与生成面板 ",
+      "访问码：Hand-c944f5c255。该地址为临时 Cloudflare 分享入口。 ",
+      " "
+    ]
+  },
+  {
+    "page": 8,
+    "text_chars": 1063,
+    "image_count": 0,
+    "font_sizes": [
+      10.5,
+      11.0,
+      12.0,
+      16.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "六、SOMA 与 Nymeria：裸模型测评设置及结果 ",
+      "评价按“没有精修器”进行：肯定动作先验与跨骨架生成，不把轻微滑脚单独当成失败；同时检查大",
+      "幅姿态错误与末端追踪。这里是基于SOMA(全身输入)和Egocentric(手脚四点轨迹输入)的无精修"
+    ],
+    "tail": [
+      "H2 在取油、拿饮料上的原始骨架误差与 G1 接近，单轴转换后才明显拉大，因此不能仅凭 H2 ",
+      "mesh 判定生成先验更差。当前结果尚不能可靠满足四末端 manipulation 需求。 ",
+      "6.2 SOMA locomotion → G1 ",
+      "SOMA 测的是行走与蹲行，不作为 manipulation 证据。比较相同窗口与种子下的稀疏四末端输",
+      "入、全身对应位置输入，以及后者的机器人关节转换。G1 全身输入包含 19 个对应位置，旋转仍",
+      "生成。 ",
+      " "
+    ]
+  },
+  {
+    "page": 9,
+    "text_chars": 746,
+    "image_count": 0,
+    "font_sizes": [
+      10.5,
+      11.0,
+      12.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "动作 / G1 ",
+      "稀疏输入原始 FK ",
+      "全身输入原始 FK "
+    ],
+    "tail": [
+      "善，身体翻转和持续大幅偏离不能假定轻量精修一定能解决。 ",
+      "此次没有筛选机器人可达轨迹，不能把全部误差归因于模型；只测试四末端位置，没有验证朝向、",
+      "抓取、接触力或闭链执行。MuJoCo 视频均为运动学回放，没有物理仿真执行。 ",
+      "所有全身视频为 0.5 倍速，每四秒切换一个独立窗口；切换处不作为动作抖动证据。它们检验当前",
+      "补全与机器人适配流程，不能代表所有文字动画质量，也不能据此推断精修后上限。 ",
+      " ",
+      " "
+    ]
+  },
+  {
+    "page": 10,
+    "text_chars": 9,
+    "image_count": 0,
+    "font_sizes": [
+      26.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "资源与工程日志 "
+    ],
+    "tail": [
+      "资源与工程日志 "
+    ]
+  },
+  {
+    "page": 11,
+    "text_chars": 831,
+    "image_count": 0,
+    "font_sizes": [
+      10.0,
+      11.0,
+      12.0,
+      14.0,
+      23.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "资源与基础工程准备 ",
+      "阶段记录 — ",
+      " "
+    ],
+    "tail": [
+      "基础工程已完成什么 ",
+      "数据读取与缓存：已有数据适配器、按需读取的 PyTorch 数据加载器、可恢复缓存和缺失模态标",
+      "记，真实动作窗口已读通。 ",
+      "训练与评测划分：索引覆盖 240,444 条“源动作序列 × 本体”记录；其中 171,504 条可用于训练。",
+      "已分别留出动作序列和两种 G1 本体，交叉泄漏、重叠和缺失引用检查均为零。 ",
+      "基础验收：31 项测试全部通过，真实样本的运动学与缓存检查通过。17 个机器人模型可成功编",
+      "译。这些是工程与数据检查，尚未运行二代训练、仿真闭环或真机实验。 "
+    ]
+  },
+  {
+    "page": 12,
+    "text_chars": 556,
+    "image_count": 0,
+    "font_sizes": [
+      10.0,
+      11.0,
+      14.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "接下来最重要的两件事 ",
+      "完成资源下载与逐阶段校验。下载器支持恢复；每 15 分钟检查一次，仅在阶段完成、失败或空间",
+      "不足时更新。当前约 200.5 GB 的去重下载计划已排定，解压空间另行核算。 "
+    ],
+    "tail": [
+      "齐。 ",
+      "工程入口 ",
+      "全部工程位于 ArenaLabs 的 AlphaMotion-2 项目中。先读 pretraining_foundation/README.md；",
+      "数据配置见 configs/pretraining_data.json。完整路径、版本、哈希、进程状态和校验报告保留在该",
+      "目录的 manifests 与 logs 中。 ",
+      "页面维护方式：这里只保留当前状态和有意义的进展，不再逐次追加原始下载日志。 ",
+      " "
+    ]
+  },
+  {
+    "page": 13,
+    "text_chars": 11,
+    "image_count": 0,
+    "font_sizes": [
+      26.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "架构对照与研究假设 "
+    ],
+    "tail": [
+      "架构对照与研究假设 "
+    ]
+  },
+  {
+    "page": 14,
+    "text_chars": 1099,
+    "image_count": 0,
+    "font_sizes": [
+      11.0,
+      20.0,
+      26.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "AlphaMotion-2 架构对照与研究假设 ",
+      " ",
+      "核心研究假设：文本语义锚定局部表面 "
+    ],
+    "tail": [
+      "未在本轮执行完整权重加载验证。 ",
+      "UniMate：默认配置使用 google/flan-t5-base；文本既用于动作描述，也用于关节名称条件。默认 ",
+      "graph＋adaLN 变体把动作文本向量、时间向量与 T-pose 汇聚条件注入时空 Transformer。 ",
+      "UMR：当前对应网络为 PointNetTemplateResidualAE，公开主路径没有文本编码分支。新人体模",
+      "板／机器人组合在缺少兼容 correspondence slots 时触发训练；对应关系可跨该组合的不同动作",
+      "复用。 ",
+      " "
+    ]
+  },
+  {
+    "page": 15,
+    "text_chars": 1309,
+    "image_count": 0,
+    "font_sizes": [
+      10.5,
+      11.0,
+      16.0,
+      20.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "图稿与技术附录 ",
+      "本轮交付已整理在“模型结构图”“逐层计算与伪代码”和“预训练与清洗管线”三个页签。包括五张",
+      "模型/候选架构图、三张工程流程图、各不同计算层的形状与公式、源码批注及伪代码；并记录可"
+    ],
+    "tail": [
+      "AlphaMotion-1 的 LAFAN/AMASS 多本体缓存先作为骨架通路的训练资产。机器人表面可以由可用的 ",
+      "mesh、刚体绑定和相同关节运动经 FK 生成。UniMate 的训练特征缓存不是完整 mesh 缓存，但其原始 ",
+      "rig 与现有 skin 提取/LBS 工具可用于派生表面序列。每条样本必须标记 observed、derived、pseudo 或 ",
+      "missing；若缺少 mesh 或有效绑定，表面损失 mask 为零，不能用零填充值伪造完整监督。 ",
+      "人体皮肤变形与刚体机器人表面应走各自的几何适配器。若只根据骨架拟合出人体 mesh，拟合结果属",
+      "于派生或伪监督，不能称实测接触。缺少物体、灵巧手或触觉记录的样本不能凭网络接口被计为具有这",
+      "些标签。 "
+    ]
+  },
+  {
+    "page": 16,
+    "text_chars": 1928,
+    "image_count": 0,
+    "font_sizes": [
+      9.0,
+      10.5,
+      16.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "神经结构：双路编码、共享语义与目标条件解码 ",
+      "骨架 token 由局部/全局运动特征、骨架几何、DOF 描述、部位文本嵌入组成。保留 AlphaMotion-1 的拓",
+      "扑距离偏置思想，同时加入时序建模。表面 token 由局部点集编码器得到，包含规范姿态与动态位置、"
+    ],
+    "tail": [
+      "阶段 A：静态几何与局部语义对应。参考 UMR 的规范模板重建、覆盖、邻域保持与防塌缩思路，但训练",
+      "跨本体共享网络。区域语义监督、几何增强、同一表面的不同采样一致性与跨视图一致性可并用；",
+      "Chamfer 本身不保证语义一致，也不能仅因两个表面重合便判定左右侧和指尖对应正确。 ",
+      "阶段 B：骨架与表面的同步运动预训练。用统一时间戳和同一 FK/LBS 状态构造双路输入；训练重建、",
+      "遮挡补全、跨本体映射、表面对应与关节—表面一致性。接触、非穿透和时序项仅在对应场景及标签可",
+      "用时启用。人体和机器人之间没有可验证 dense correspondence 的数据，不伪造逐点真值，可使用区",
+      "域级、关系级和几何循环约束。 "
+    ]
+  },
+  {
+    "page": 17,
+    "text_chars": 1772,
+    "image_count": 0,
+    "font_sizes": [
+      10.5,
+      16.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "阶段 C：动作生成与约束补全。优先把生成器视为共享表示上的可替换模块，比较 flow matching 与 ",
+      "diffusion；FSQ 是表示量化选择，能够与二者组合。首轮控制变量应区分“连续表示 vs FSQ 表示”和“flow ",
+      "vs diffusion 生成器”，保持数据、编码器/解码器容量及训练预算可比，同时报告采样步数、模型函数评估"
+    ],
+    "tail": [
+      "d1cdaedaf67a827198da71c5fa831f48b2e51f91，区分 PointNet 对应学习、表面绑定与受约束优化。",
+      "UMR 的浏览器 demo 默认执行真实 WASM 对应训练和优化；UniMate 核查的公开 interactive 页面主",
+      "要是模型结果动画回放，两者可复用的边界不同。 ",
+      "上述设计的贡献是一个待验证的研究主张。尚无 AlphaMotion-2 已训练权重、优于 UniMate 的结果、",
+      "跨末端执行器成功率或 sim2real 完成结论。 ",
+      " ",
+      " "
+    ]
+  },
+  {
+    "page": 18,
+    "text_chars": 7,
+    "image_count": 0,
+    "font_sizes": [
+      26.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "模型结构图 "
+    ],
+    "tail": [
+      "模型结构图 "
+    ]
+  },
+  {
+    "page": 19,
+    "text_chars": 161,
+    "image_count": 1,
+    "font_sizes": [
+      11.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "模型结构图与源码索引 ",
+      "依据实际源码与有效配置绘制。前三个模型为已实现系统；AlphaMotion-2 为待验证的研究方案。逐层公",
+      "式、张量形状及伪代码见相邻页签。 "
+    ],
+    "tail": [
+      "模型结构图与源码索引 ",
+      "依据实际源码与有效配置绘制。前三个模型为已实现系统；AlphaMotion-2 为待验证的研究方案。逐层公",
+      "式、张量形状及伪代码见相邻页签。 ",
+      "三个已实现系统的计算流程 ",
+      " ",
+      "图 1｜按表示、核心计算与输出对照三个系统。UMR 的学习对应与几何优化分开绘制；这些模块并非彼此",
+      "等价的神经网络层。 "
+    ]
+  },
+  {
+    "page": 20,
+    "text_chars": 93,
+    "image_count": 1,
+    "font_sizes": [
+      11.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "AlphaMotion-1：实际双流 FSQ 配置 ",
+      " ",
+      "图 2｜采用实际 megatron 配置和权重形状。根位置损失仅监督离地高度；接触输出存在，但当前接触 "
+    ],
+    "tail": [
+      "AlphaMotion-1：实际双流 FSQ 配置 ",
+      " ",
+      "图 2｜采用实际 megatron 配置和权重形状。根位置损失仅监督离地高度；接触输出存在，但当前接触 ",
+      "BCE 权重为零。 "
+    ]
+  },
+  {
+    "page": 21,
+    "text_chars": 102,
+    "image_count": 1,
+    "font_sizes": [
+      11.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "UniMate：默认 Graph AdaLN 流匹配 ",
+      " ",
+      "图 3｜60 帧运动加 T-pose 前缀，经 10 个空间—时间块预测速度场。FFN 实际宽度为 1365；文本交叉注"
+    ],
+    "tail": [
+      "UniMate：默认 Graph AdaLN 流匹配 ",
+      " ",
+      "图 3｜60 帧运动加 T-pose 前缀，经 10 个空间—时间块预测速度场。FFN 实际宽度为 1365；文本交叉注",
+      "意力变体另见附录。 "
+    ]
+  },
+  {
+    "page": 22,
+    "text_chars": 98,
+    "image_count": 1,
+    "font_sizes": [
+      11.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "UMR：表面对应学习与约束拟合 ",
+      " ",
+      "图 4｜上部为 PointNet 模板残差网络，下部为绑定、Jacobian 与约束求解。Python pipeline 配置与浏览器"
+    ],
+    "tail": [
+      "UMR：表面对应学习与约束拟合 ",
+      " ",
+      "图 4｜上部为 PointNet 模板残差网络，下部为绑定、Jacobian 与约束求解。Python pipeline 配置与浏览器",
+      "训练配方分别记录。 "
+    ]
+  },
+  {
+    "page": 23,
+    "text_chars": 105,
+    "image_count": 1,
+    "font_sizes": [
+      11.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "AlphaMotion-2：联合骨架—表面候选方案 ",
+      " ",
+      "图 5｜局部语义锚定表面对应是核心研究假设。保留纯 surface 消融；完整方案联合 skeleton。表示瓶颈"
+    ],
+    "tail": [
+      "AlphaMotion-2：联合骨架—表面候选方案 ",
+      " ",
+      "图 5｜局部语义锚定表面对应是核心研究假设。保留纯 surface 消融；完整方案联合 skeleton。表示瓶颈",
+      "与生成过程为两个独立待选设计轴。 "
+    ]
+  },
+  {
+    "page": 24,
+    "text_chars": 1060,
+    "image_count": 0,
+    "font_sizes": [
+      11.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "图中编号对应的源码 ",
+      "图中的 A、U、R 编号用于定位模块；完整计算与伪代码在“逐层计算与伪代码”页签。源文件与逐文件校验",
+      "值随可编辑 SVG、矢量 PDF 一并归档。 "
+    ],
+    "tail": [
+      "R5  Python recipe, optimizer ",
+      "R6  Clarabel step ",
+      "R7  Slot compatibility, train or reuse, pipeline stages ",
+      "制图与版本说明：图为基于固定源码重新绘制的可编辑矢量图。AlphaMotion-1 的冻结 SigLIP、UniMate ",
+      "的 FLAN-T5，以及已缓存 Qwen embedding 的内部层结构见逐层附录。候选方案尚未完成实现或性能验",
+      "证。 ",
+      " "
+    ]
+  },
+  {
+    "page": 25,
+    "text_chars": 10,
+    "image_count": 0,
+    "font_sizes": [
+      26.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "逐层计算与伪代码 "
+    ],
+    "tail": [
+      "逐层计算与伪代码 "
+    ]
+  },
+  {
+    "page": 26,
+    "text_chars": 1758,
+    "image_count": 0,
+    "font_sizes": [
+      9.0,
+      9.5,
+      11.0,
+      12.0,
+      16.0,
+      22.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "逐层计算与伪代码 ",
+      "阅读方式：每种不同计算单独展开；重复模块注明次数。先读各模型的主路径，再按编号核查公式",
+      "与源码。冻结文本塔的内部结构在文末单列。 "
+    ],
+    "tail": [
+      "输入 [B,J,15+19]；sem [B,J,768] → 输出 [B,J,256]；重复：源与目标各计算一次；同一组参数。 ",
+      "g=Linear(34,256)([rest_offset3, normalize(offset)3, bone_length1, sin(depth/10^k)4, ",
+      "cos(depth/10^k)4, DOF19]) + Linear(256,256)(GELU(Linear(768,256)(sem)))，k=0..3。 ",
+      "有效 use_dof=true：3个DOF槽各含axis3、limited1、half_range/π、center/π，共18，再加",
+      "DOF_count/3。use_sem=true，因此无joint-index embedding。几何尺度来自数据spec/reach，须",
+      "保留原预处理。 ",
+      "源码：model.py:176–210；model_dual.py:67–70 "
+    ]
+  },
+  {
+    "page": 27,
+    "text_chars": 1507,
+    "image_count": 0,
+    "font_sizes": [
+      9.0,
+      9.5,
+      11.0,
+      12.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "A03  姿态嵌入与遮挡 ",
+      "输入 [B,Js,9] → 输出 [B,Js,256]；重复：1。 ",
+      "h=Linear(9,256)([global_rotation6D, root_relative_position/reach]); 若 joint_mask 为 True，"
+    ],
+    "tail": [
+      "A07  两组潜变量查询池化 ",
+      "输入 learned Qp [4,256], Qr [128,256]；source H [B,Js,256] → 输出 zp_pre [B,4,256]；zr_pre [B,128,256]；重",
+      "复：position 1次，rotation 1次。 ",
+      "CrossBlock(Q,H): Q←Q+MHA8(LN256(Q),LN256(H),LN256(H)); ",
+      "Q←Q+Linear(1024,256)(GELU(Linear(256,1024)(LN256(Q))))。 ",
+      "MHA每头32，内部Q/K/V/O线性投影。position/rotation查询与pool参数独立。 ",
+      "源码：model.py:252–264；model_dual.py:83–93；model_dual.py:121–141 "
+    ]
+  },
+  {
+    "page": 28,
+    "text_chars": 1626,
+    "image_count": 0,
+    "font_sizes": [
+      9.0,
+      9.5,
+      11.0,
+      12.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "A08  独立 FSQ 瓶颈 ",
+      "输入 [B,K,256]，K=4或128 → 输出 grid [B,K,13]；decoded latent [B,K,256]；重复：position与rotation各1；每",
+      "流1 stage。 "
+    ],
+    "tail": [
+      "height+偏移，但实际448–451只监督第0维高度；剩余2维不可标成经训练验证的速度/位移。骨架",
+      "点位置指标在fk_loss打开时来自旋转FK，与hpos槽不同。 ",
+      "源码：model_dual.py:98–98；model_dual.py:231–245；train_dual.py:438–453 ",
+      "A12  接触输出头 ",
+      "输入 Hr [B,Jt,256] → 输出 contact logits [B,Jt]；重复：结构存在，ret_con=True才输出。 ",
+      "logits=squeeze(Linear(256,1)(LN256(Hr)))；soft labels监督由外部loss决定；输出不是自动",
+      "sigmoid后的概率。 "
+    ]
+  },
+  {
+    "page": 29,
+    "text_chars": 1372,
+    "image_count": 0,
+    "font_sizes": [
+      8.5,
+      9.0,
+      9.5,
+      11.0,
+      12.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "当前config w_cbce=0：此头结构/权重存在，却没有该BCE训练信号；w_cgeo=1为从旋转FK高度",
+      "计算的几何接触监督，不能将hcon标成已训练接触预测能力。 ",
+      "源码：model_dual.py:111–114；model_dual.py:246–251 "
+    ],
+    "tail": [
+      "    p = SelfBlock_p[k](CrossBlock_p[k](p, z_p), hop_t) ",
+      "    r = SelfBlock_r[k](CrossBlock_r[k](r, z_r), hop_t) ",
+      "rot6 = Linear256to6(LN(r)) ",
+      "raw_pos = Linear256to3(LN(p)) ",
+      "root_height = raw_pos[:, root_index, 0]  # actual root_pos loss: metres ",
+      "contact_logits = Linear256to1(LN(r))   # requested with ret_con ",
+      "# No independent hroot in this checkpoint; JudgeHead is an auxiliary branch. "
+    ]
+  },
+  {
+    "page": 30,
+    "text_chars": 1763,
+    "image_count": 0,
+    "font_sizes": [
+      9.0,
+      9.5,
+      11.0,
+      12.0,
+      16.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "UniMate：默认GraphAdaLN + flow matching ",
+      "固定仓库SHA 2c5b384715aa63d8639b1ed7eb74bfe614570c7a 的 ",
+      "configs/uniml3d_60frames_graph_adaln.json；本附录核查的是发布配置/实现，不声称所有公开"
+    ],
+    "tail": [
+      "组fuse MLP，non-root共享。 ",
+      "p=Linear(512,512)(SiLU(Linear(12,512)(parent_raw))); ",
+      "fused=Linear(512,512)(SiLU(Linear(1024,512)(concat(child_emb,p))))。 ",
+      "root不拼parent。 ",
+      "源码：unimate/models/denoiser/blocks/common.py:242–248；unimate/models/denoiser/blocks/common.py:271–280 ",
+      "U05  时间前缀与关节条件 ",
+      "输入 motion[B,T,J,512]；tpose[B,J,512] → 输出 H[B,T+1,J,512]；重复：1。 "
+    ]
+  },
+  {
+    "page": 31,
+    "text_chars": 1852,
+    "image_count": 0,
+    "font_sizes": [
+      9.0,
+      9.5,
+      11.0,
+      12.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "H=concat_time(tpose,motion)；",
+      "H+=Embedding(max_depth+1,512)(depth)+Linear(768,512)(joint_name_emb)，关节条件广播到",
+      "每帧。 "
+    ],
+    "tail": [
+      "该谱模块参数。 ",
+      "源码：unimate/models/denoiser/rope.py:197–244；unimate/models/denoiser/rope.py:324–350；",
+      "unimate/models/denoiser/rope.py:399–414；unimate/models/denoiser/graph_adaln.py:38–56 ",
+      "U09  GraphAdaLN modulation ",
+      "输入 y[B,512] → 输出 9组[B,512]：shift/scale/gate×3；重复：10。 ",
+      "m=Linear(512,4608)(SiLU(y))；split成空间、时间、FFN的β、γ、α。每路先RMSNorm，再",
+      "(1+γ)⊙RMS(x)+β，输出乘α后residual加回。 "
+    ]
+  },
+  {
+    "page": 32,
+    "text_chars": 1779,
+    "image_count": 0,
+    "font_sizes": [
+      9.0,
+      9.5,
+      11.0,
+      12.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "RMS(x)=w⊙x/sqrt(mean(x²)+1e−6)，统计float32；无减均值。adaLN是模块名，实际norm是",
+      "RMSNorm。 ",
+      "源码：unimate/models/denoiser/blocks/graph.py:281–287；unimate/models/denoiser/blocks/graph.py:299–341 "
+    ],
+    "tail": [
+      "源码：unimate/models/denoiser/blocks/common.py:469–491；unimate/models/denoiser/blocks/common.py:493–511 ",
+      "U14  root聚合 ",
+      "输入 root[B·61,1,512]；nonroot[B·61,J−1,512] → 输出 root_agg[B·61,1,512]；重复：每帧一次，共享参数。 ",
+      "r←r+MHA4(RMS512(r), RMS512(joints), joints)。Q/K做norm，V用原始joint features；mask剔除",
+      "padding。 ",
+      "4头×128；不可误写Q/K/V全norm。 ",
+      "源码：unimate/models/denoiser/blocks/common.py:474–479；unimate/models/denoiser/blocks/common.py:514–533 "
+    ]
+  },
+  {
+    "page": 33,
+    "text_chars": 1906,
+    "image_count": 0,
+    "font_sizes": [
+      8.5,
+      9.0,
+      9.5,
+      11.0,
+      12.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "U15  两组velocity输出头 ",
+      "输入 root/nonroot 512 → 输出 [B,J,12,T]；重复：root与nonroot各1组MLP。 ",
+      "root_out与joint_out分别Linear512→512→SiLU→Linear512→12，拼joint轴；重排[B,J,12,T+1]并"
+    ],
+    "tail": [
+      "velocity = concatenate_joint(RootMLP(h.root), JointMLP(h.joints)) ",
+      "velocity = rearrange_and_remove_tpose_prefix(velocity) ",
+      "x1_hat = xt + (1-t) * velocity ",
+      "loss = masked_feature_MSE(velocity, target_velocity) ",
+      "loss += .5 * masked_rotation_geodesic(denorm(x1_hat), denorm(clean_motion)) ",
+      "loss += .1 * masked_adjacent_velocity_smoothness(denorm(x1_hat)) ",
+      "# Inference: solve dx/dt = CFG(v_theta(x,t,conditions)) from noise at t=0 to t=1. "
+    ]
+  },
+  {
+    "page": 34,
+    "text_chars": 1333,
+    "image_count": 0,
+    "font_sizes": [
+      9.0,
+      9.5,
+      11.0,
+      12.0,
+      16.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "UMR：静态表面对应网络 + 约束重定向 ",
+      "固定仓库SHA d1cdaedaf67a827198da71c5fa831f48b2e51f91 的 ",
+      "humanoid_retarget_defaults.json。Python pipeline500epochs,batch2；standaloneCLI默认"
+    ],
+    "tail": [
+      "源码：scripts/train_correspondence_template_residual_ae.py:262–278 ",
+      "R06  模板残差decoder第二层 ",
+      "输入 [B,512] → 输出 [B,512]；重复：1。 ",
+      "Linear(512,512)→ReLU。 ",
+      "源码：scripts/train_correspondence_template_residual_ae.py:262–278 ",
+      "R07  点残差输出与模板相加 ",
+      "输入 [B,512]；固定模板T[N,3] → 输出 slots S[B,N,3]；重复：1。 "
+    ]
+  },
+  {
+    "page": 35,
+    "text_chars": 1928,
+    "image_count": 0,
+    "font_sizes": [
+      9.0,
+      9.5,
+      11.0,
+      12.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "δ=reshape(Linear(512,3N)(h),[B,N,3]); S=T+δ；N4096时最终Linear512→12288。输出Linear权重",
+      "/bias默认全0初始化。 ",
+      "T是register_buffer非学习参数；NN无文本塔、attention、时序动作输入。不能把“template residual”"
+    ],
+    "tail": [
+      "contact把cost直接乘残差/J而非sqrt(cost)，其二次目标权重实际平方；不能统一套sqrt(w)。 ",
+      "源码：scripts/retarget_smpl_to_humanoid_surface_vector.py:1770–1809；",
+      "scripts/retarget_smpl_to_humanoid_surface_vector.py:1811–1837；",
+      "scripts/retarget_smpl_to_humanoid_surface_vector.py:1839–1868；",
+      "scripts/retarget_smpl_to_humanoid_surface_vector.py:1890–1918 ",
+      "R11  Clarabel约束步（非神经） ",
+      "输入 J,r；box/inequality/SOC约束 → 输出 Δq[nv]→新qpos[nq]；重复：有效默认每帧1次；pose_init15次。 "
+    ]
+  },
+  {
+    "page": 36,
+    "text_chars": 1586,
+    "image_count": 0,
+    "font_sizes": [
+      8.5,
+      9.0,
+      11.0,
+      12.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "P=JᵀJ+λI，g=Jᵀr；min_Δq .5ΔqᵀPΔq+gᵀΔq，约束lower≤Δq≤upper、AΔq≤b、可选",
+      "||Δq_group||₂≤step。软不等式引入非负slack并以.5Σcost·slack²惩罚。随后",
+      "mj_integratePos(q,Δq,1)并clamp关节范围。 "
+    ],
+    "tail": [
+      "    source_points, source_normals, contact = update_source_surface(bindings, source_frame) ",
+      "    for iteration in configured_iteration_count: ",
+      "        robot_points, robot_normals, J = geometric_FK_and_Jacobian(q, bindings) ",
+      "        r, J, box, inequalities, cones = build_residuals_and_constraints(...) ",
+      "        dq = Clarabel(J.T @ J + damping*I, J.T @ r, box, inequalities, cones) ",
+      "        q = clamp_joint_ranges(mj_integratePos(q, dq, dt=1)) ",
+      "    save(q) "
+    ]
+  },
+  {
+    "page": 37,
+    "text_chars": 2330,
+    "image_count": 0,
+    "font_sizes": [
+      9.0,
+      11.0,
+      12.0,
+      16.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "变体、训练目标与实现差异 ",
+      "AlphaMotion-1 可选 ResidualFSQ（当前megatron未启用） ",
+      "先f=Win(z)，acc=0。stage k使用s_k=abs(stage_scale[k])+1；u_k=tanh((f−acc)·s_k)·a；"
+    ],
+    "tail": [
+      "Lsmooth只对反归一化xhat1的9:12通道做相邻帧差平方，分母max(T_valid−1,1)·J_valid·3，无GT",
+      "，代码没有除Δt²。总L=Lflow+.5Lgeo+.1Lsmooth。一般生成调用sample_ode()默认dopri5、50个",
+      "保存采样点、atol1e−6、rtol1e−3；自适应ODE的50并非50次网络计算。",
+      "scheduler.diffusion_steps=100不能当flow NFE。inbetween/edit路径使用另一Euler clamp ",
+      "sampler。 ",
+      "源码：unimate/models/flow/transport.py:95–157；unimate/models/flow/transport.py:200–287；",
+      "unimate/utils/geo_utils.py:6–22；unimate/models/flow/transport.py:476–508；unimate/inference/generate.py:86–114 "
+    ]
+  },
+  {
+    "page": 38,
+    "text_chars": 765,
+    "image_count": 0,
+    "font_sizes": [
+      9.0,
+      11.0,
+      12.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "AlphaMotion-1 loss/物理含义边界 ",
+      "DualTranslator本身不内置训练总目标。dual_common.run_dir返回全局旋转geodesic_deg与位",
+      "置欧氏范数；位置是按reach归一、未平方，fk_loss=true时从旋转做目标骨架FK再比位置；可叠加"
+    ],
+    "tail": [
+      "point cloud输入无序，但输出索引绑定有序canonical template，因此跨网格对应是同slot索引。",
+      "pipeline检查缓存的template/robot/training_mode；不兼容则重新执行静态对应训练，再进行运动",
+      "重定向。UMR这条已公开主路径适配新的机器人不需要先获得其动作监督，但不等于已经实现一",
+      "套固定NN权重读任意新mesh的zero-shot能力。AlphaMotion-2的局部区域文本语义锚定是新增",
+      "研究假设，不能反写成UMR现有层。 ",
+      "源码：scripts/humanoid_retarget_pipeline.py:420–464；scripts/humanoid_retarget_pipeline.py:890–942；",
+      "scripts/humanoid_retarget_pipeline.py:1034–1056 "
+    ]
+  },
+  {
+    "page": 39,
+    "text_chars": 1306,
+    "image_count": 0,
+    "font_sizes": [
+      9.0,
+      9.5,
+      11.0,
+      12.0,
+      16.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "冻结文本编码器：内部计算 ",
+      "固定上游Transformers v4.51.3实现 + ArenaLabs checkpoint缓存config的依赖结构核查；不是已",
+      "锁定历史runtime版本，也未运行模型加载/数值等价验证。 "
+    ],
+    "tail": [
+      "argmax/EOS索引 ",
+      "源码：Final LN, last-position head ",
+      "AlphaMotion normalization + cache ",
+      "[B,768] ",
+      "get_text_features仅返回上述head输出；调用端e←e/||e||₂，再按joint name缓存。图不应加入",
+      "SigLIP vision tower。 ",
+      "源码：AlphaMotion normalization + cache "
+    ]
+  },
+  {
+    "page": 40,
+    "text_chars": 1480,
+    "image_count": 0,
+    "font_sizes": [
+      8.5,
+      9.0,
+      9.5,
+      11.0,
+      12.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "文本接口伪代码 ",
+      "H = token(ids) + position(ids) ",
+      "for layer in layers_12: "
+    ],
+    "tail": [
+      "Final RMS and caller pooling ",
+      "[B,L,768]→[B,768] or token sequence ",
+      "Z=RMS(H); pooled=sum_i(mask_i Z_i)/max(sum_i mask_i,1)；pool=False输出完整Z及调用方保",
+      "留mask；空文本mask全0使pooled=0；无额外L2归一化 ",
+      "源码：Final RMS and caller pooling ",
+      "缓存或cross-attention路径可先pool=False存token，再在adaLN分支求相同masked mean。 ",
+      "第一层bias共享证据：T5Stack第896行仅i==0，1153–1158行传递position_bias。 "
+    ]
+  },
+  {
+    "page": 41,
+    "text_chars": 1356,
+    "image_count": 0,
+    "font_sizes": [
+      8.5,
+      9.0,
+      9.5,
+      11.0,
+      12.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "gated-gelu→gelu_new映射在configuration_t5.py:135–136；不是ReLU FFN，也不是SiLU ",
+      "SwiGLU。 ",
+      "文本接口伪代码 "
+    ],
+    "tail": [
+      "Pre-RMS SwiGLU ×28 ",
+      "two [B,L,1024]→[B,L,3072] branches→[B,L,1024] ",
+      "U=RMS(H); H←H+Wdown(SiLU(Wgate U) ⊙ Wup U)；gate/up:1024→3072，down:3072→1024；",
+      "均无bias。 ",
+      "源码：Pre-RMS SwiGLU ×28 ",
+      "Final RMS, last token, caller L2 ",
+      "[B,L,1024]→[B,1024] "
+    ]
+  },
+  {
+    "page": 42,
+    "text_chars": 692,
+    "image_count": 0,
+    "font_sizes": [
+      8.5,
+      9.0,
+      11.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "Z=RMS(H); e=Z[:,-1,:]; e←e/||e||₂。AutoModel返回hidden states，不运行词表LMhead；不使用",
+      "mean pooling。 ",
+      "源码：Final RMS, last token, caller L2 "
+    ],
+    "tail": [
+      "    V = split8(Wv(U)) ",
+      "    A = softmax(Q @ repeat2(K).T / sqrt(128) + causal_pad_mask) ",
+      "    H = H + Wo(concat(A @ repeat2(V))) ",
+      "    U = rms2(H) ",
+      "    H = H + Wdown(silu(Wgate(U)) * Wup(U)) ",
+      "return normalize(final_rms(H)[:, -1], dim=-1) ",
+      " "
+    ]
+  },
+  {
+    "page": 43,
+    "text_chars": 10,
+    "image_count": 0,
+    "font_sizes": [
+      26.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "预训练与清洗管线 "
+    ],
+    "tail": [
+      "预训练与清洗管线 "
+    ]
+  },
+  {
+    "page": 44,
+    "text_chars": 178,
+    "image_count": 0,
+    "font_sizes": [
+      11.0,
+      22.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "预训练代码与生产数据清洗管线 ",
+      "这里展示工程模块之间的调用与数据流；神经网络内部的层结构见“模型结构图”和“逐层计算与伪代码”。 ",
+      "可复用的核心组合是：UniMate 的数据预处理、缓存与 LBS；UMR 的表面绑定、受约束重定向和接触可视"
+    ],
+    "tail": [
+      "预训练代码与生产数据清洗管线 ",
+      "这里展示工程模块之间的调用与数据流；神经网络内部的层结构见“模型结构图”和“逐层计算与伪代码”。 ",
+      "可复用的核心组合是：UniMate 的数据预处理、缓存与 LBS；UMR 的表面绑定、受约束重定向和接触可视",
+      "化；AlphaMotion 已有的本体条件离线物理检查。本轮数据适配、索引、缓存和加载器为它们提供共同入",
+      "口。 "
+    ]
+  },
+  {
+    "page": 45,
+    "text_chars": 95,
+    "image_count": 1,
+    "font_sizes": [
+      10.0,
+      16.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "UniMate：从原始资产到训练与生成 ",
+      " ",
+      "原始 rig 先导出、标注与提取特征，再进入文本缓存、Dataset、训练及采样。预览和 mesh 恢复在模型计算之后，可拆成"
+    ],
+    "tail": [
+      "UniMate：从原始资产到训练与生成 ",
+      " ",
+      "原始 rig 先导出、标注与提取特征，再进入文本缓存、Dataset、训练及采样。预览和 mesh 恢复在模型计算之后，可拆成",
+      "独立消费者。 "
+    ]
+  },
+  {
+    "page": 46,
+    "text_chars": 94,
+    "image_count": 1,
+    "font_sizes": [
+      10.0,
+      16.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "UMR：静态对应学习与动作重定向 ",
+      " ",
+      "UMR 按配置编排模板、对应训练与动作优化。对应关系可复用，逐帧求解与 viewer 分离；它没有 UniMate 式通用动作"
+    ],
+    "tail": [
+      "UMR：静态对应学习与动作重定向 ",
+      " ",
+      "UMR 按配置编排模板、对应训练与动作优化。对应关系可复用，逐帧求解与 viewer 分离；它没有 UniMate 式通用动作",
+      "生成预训练循环。 "
+    ]
+  },
+  {
+    "page": 47,
+    "text_chars": 85,
+    "image_count": 1,
+    "font_sizes": [
+      10.0,
+      16.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "AlphaMotion-2：拟议的生产清洗管线 ",
+      " ",
+      "该图是目标工程方案。已有基础模块与需要新增的发布、审查、故障恢复和吞吐验收必须分别实施；当前尚未达到生产验"
+    ],
+    "tail": [
+      "AlphaMotion-2：拟议的生产清洗管线 ",
+      " ",
+      "该图是目标工程方案。已有基础模块与需要新增的发布、审查、故障恢复和吞吐验收必须分别实施；当前尚未达到生产验",
+      "收。 "
+    ]
+  },
+  {
+    "page": 48,
+    "text_chars": 2105,
+    "image_count": 0,
+    "font_sizes": [
+      9.0,
+      11.0,
+      12.0,
+      16.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "源码中的现有模块 ",
+      "U1  原始资产导出与并行worker ",
+      "入口：data_process/scripts/run_export.sh → motion_export/export_*.py "
+    ],
+    "tail": [
+      "U4  Dataset、采样、collate ",
+      "入口：dataset.factory → Mixture/MotionDataset → MixtureSampler → mixture_batch_collate ",
+      "输入：feature目录、cond、text cache、split配置、保存的stats（推理）。输出：motion[B,J,12,T] + cond：",
+      "joint/time/text masks、topology、mean/std、caption。 ",
+      "复用变长padding/masks、train/eval按配置分离、topology增删/合并增强、统计值随run保存。 ",
+      "默认配置test_split_ratio=0，存在eval map不自动证明已做完整holdout benchmark；MixtureLoader载入策",
+      "略不等同大规模流式数据仓库。 "
+    ]
+  },
+  {
+    "page": 49,
+    "text_chars": 2080,
+    "image_count": 0,
+    "font_sizes": [
+      9.0,
+      11.0,
+      12.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "源码：U-dataset · unimate/dataset/factory.py:11–105；U-item · unimate/dataset/mixture/dataset.py:827–920；U-splits · ",
+      "unimate/dataset/mixture/dataset.py:1017–1148；U-collate · unimate/dataset/mixture/collate.py:62–211 ",
+      "U5  训练控制与模型工厂 "
+    ],
+    "tail": [
+      "不是通用大数据预训练框架；缺slots时retarget阶段可以触发静态训练。 ",
+      "源码：R-entry · scripts/humanoid_retarget_pipeline.py:1034–1068；R-compatible · ",
+      "scripts/humanoid_retarget_pipeline.py:390–511 ",
+      "R2  canonical表面训练数据 ",
+      "入口：build_correspondence_dataset / build_correspondence_ae_dataset.py ",
+      "输入：SMPL-X/SOMA模板、robot MJCF/visual mesh、采样姿态/点数。输出：静态表面点云NPZ、mesh ",
+      "metadata、sample face ids、模板配置。 "
+    ]
+  },
+  {
+    "page": 50,
+    "text_chars": 2189,
+    "image_count": 0,
+    "font_sizes": [
+      9.0,
+      11.0,
+      12.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "复用外表面采点、根坐标转换、robot visual geom提取与模板metadata。 ",
+      "应保留visual/collision区别；单位与shape/betas信息属于资产版本，缺手指动作不能由静态mesh弥补。 ",
+      "源码：R-build · scripts/humanoid_retarget_pipeline.py:698–885 "
+    ],
+    "tail": [
+      "入口：AlphaMotion1 physeval.evaluate；release service + LiveViewer ",
+      "输入：带fps世界qpos + 每个robot MJCF；异步播放/编辑请求。输出：关节限制、滑移/穿透、jerk、平衡/逆动",
+      "力学报告；SQLite job/结果与review UI。 ",
+      "优先把physeval封装为embodiment条件指标worker；服务与同步viewer作为审核壳。 ",
+      "physeval是离线一致性，非闭环sim/real。已有服务重启把unfinished job标failed，不自动恢复执行。 ",
+      "源码：A-physics · physeval.py:364–538；A-serv · src/alphamotion/service/app.py:111–151；A-jobs · ",
+      "src/alphamotion/service/app.py:661–710 "
+    ]
+  },
+  {
+    "page": 51,
+    "text_chars": 445,
+    "image_count": 0,
+    "font_sizes": [
+      9.0,
+      11.0,
+      12.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "F1  本轮基础工程已实现 ",
+      "入口：pretraining_foundation dataset/cache/index_existing/loader ",
+      "输入：旧XWBC/Alpha1缓存、UniML3D样本、manifest与holdout配置。输出：带坐标/来源/missing mask样"
+    ],
+    "tail": [
+      "输入：旧XWBC/Alpha1缓存、UniML3D样本、manifest与holdout配置。输出：带坐标/来源/missing mask样",
+      "本；hash校验缓存；SQLite索引；mmap窗口batch。 ",
+      "作为统一schema、缓存、分组split和DataLoader起点；已有按输入fingerprint重用与atomic index替换。 ",
+      "主任务报告31项基础测试通过；本附录没有重跑该测试。surface/binding/region仍未绑定，不是生产级清",
+      "洗系统验收。 ",
+      "源码：F-schema · dataset.py:25–101；F-cache · cache.py:11–63；F-index · index_existing.py:291–344；F-loader · ",
+      "loader.py:24–109 "
+    ]
+  },
+  {
+    "page": 52,
+    "text_chars": 1231,
+    "image_count": 0,
+    "font_sizes": [
+      10.0,
+      11.0,
+      12.0,
+      16.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "共用接口：让评测能直接进入清洗 ",
+      "AssetRecord ",
+      "同名文件内容变更会失效；保留原始动作及对应资产，避免错误复用与跨split泄漏。 "
+    ],
+    "tail": [
+      "quarantine，不无限重跑。 ",
+      "必要字段：输入hash+adapter/model/metric revision+config hash+seed、资源需求、尝试次数、lease、阶段产物校验、",
+      "committed marker ",
+      "DatasetRelease ",
+      "train和eval读取同一版本化release但分区严格隔离；人工审核不覆盖原始指标，保留理由与变更记录。 ",
+      "必要字段：不可变sample manifest、source-sequence与body split、所有依赖hash、metric/policy版本、批准记录与",
+      "exclusion reasons "
+    ]
+  },
+  {
+    "page": 53,
+    "text_chars": 1363,
+    "image_count": 0,
+    "font_sizes": [
+      11.0,
+      12.0,
+      16.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "生产化还要完成的验收 ",
+      "指标计算与筛选政策分开：指标输出数值、单位、有效性和原因；政策再决定通过、人工复核或拒绝。人",
+      "工复核保留修改理由和旧结果，训练读取不可变的数据发布版本。 "
+    ],
+    "tail": [
+      "保留人工核对的bind pose、跨单位/坐标、短序列、缺模态、左右手、遮挡contact、坏quaternion、旧缓存、",
+      "被杀worker等样本。几何QC、离线动力学、闭环sim、真实机器人分别记录证据。 ",
+      "验收：每次adapter/metric/policy升级都跑固定回归集并给差异；性能、吞吐、故障恢复和sim/real各有实测",
+      "记录，31个基础测试不能替代这些验收。 ",
+      "代码复用与数据来源 ",
+      "UniMate 主仓库采用 MIT 许可；UMR 主分支为 MIT 式许可文本。各素材、权重和第三方依赖分别保留自",
+      "己的许可；官网脚本的公开可读性不能替代其来源与许可确认。 "
+    ]
+  },
+  {
+    "page": 54,
+    "text_chars": 380,
+    "image_count": 0,
+    "font_sizes": [
+      11.0,
+      12.0
+    ],
+    "replacement_chars": 0,
+    "text_outside_page": [],
+    "head": [
+      "UniMate 已审官网客户端回放动画；UMR Studio 默认在浏览器执行对应训练和优化，另有可选服务器计算",
+      "分支。AlphaMotion 现有 FastAPI、SQLite 和 LiveViewer 可作为任务服务与审核界面参考，指标计算应独",
+      "立于浏览器渲染。 "
+    ],
+    "tail": [
+      "局部表面文本、绑定与缺失模态 ",
+      "UniMate 原始 rig 与 LBS 工具可派生连续表面，训练特征缓存尚未包含完整 mesh 绑定。机器人使用刚体",
+      "绑定，人体使用各自蒙皮适配；保存固定 face ID 与重心坐标，确保跨帧采样对应同一表面点。掌面、指腹、",
+      "脚底等局部语义仍需新建区域归属、文本和来源记录。 ",
+      "逐字段区分原始记录、确定性派生、规则或模型伪标签、缺失四类来源。没有接触、物体或触觉记录的样",
+      "本，不把填零当作真值；离线几何、离线动力学、仿真闭环与实机评测分别保存证据。 ",
+      " "
+    ]
+  }
+]

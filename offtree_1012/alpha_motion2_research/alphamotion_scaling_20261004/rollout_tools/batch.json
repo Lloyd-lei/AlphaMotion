@@ -1,0 +1,100 @@
+{
+  "jobs": [
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/adroit_pen/A_M_seed0",
+      "view": "full"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/adroit_pen/A_M_seed0",
+      "view": "detail"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/relay_franka_full_v2/B_L_seed0",
+      "view": "full"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/relay_franka_full_v2/B_L_seed0",
+      "view": "detail"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/adroit_pen/A_S_seed0",
+      "view": "full"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/adroit_pen/A_S_seed0",
+      "view": "detail"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/adroit_pen/B_S_seed0",
+      "view": "full"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/adroit_pen/B_S_seed0",
+      "view": "detail"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/adroit_pen/B_M_seed0",
+      "view": "full"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/adroit_pen/B_M_seed0",
+      "view": "detail"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/adroit_pen/A_L_seed0",
+      "view": "full"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/adroit_pen/A_L_seed0",
+      "view": "detail"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/adroit_pen/B_L_seed0",
+      "view": "full"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/adroit_pen/B_L_seed0",
+      "view": "detail"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/relay_franka_full_v2/A_S_seed0",
+      "view": "full"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/relay_franka_full_v2/A_S_seed0",
+      "view": "detail"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/relay_franka_full_v2/B_S_seed0",
+      "view": "full"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/relay_franka_full_v2/B_S_seed0",
+      "view": "detail"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/relay_franka_full_v2/A_M_seed0",
+      "view": "full"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/relay_franka_full_v2/A_M_seed0",
+      "view": "detail"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/relay_franka_full_v2/B_M_seed0",
+      "view": "full"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/relay_franka_full_v2/B_M_seed0",
+      "view": "detail"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/relay_franka_full_v2/A_L_seed0",
+      "view": "full"
+    },
+    {
+      "bundle": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/reports/rollout_mesh_v1/bundles/relay_franka_full_v2/A_L_seed0",
+      "view": "detail"
+    }
+  ]
+}

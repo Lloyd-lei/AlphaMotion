@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "device": "cuda",
+  "torch_version": "2.11.0+cu128",
+  "batch_size": 128,
+  "autocast_dtype": "torch.bfloat16",
+  "geometry_parity_max_abs": {
+    "rotation": 0.0,
+    "position": 0.0,
+    "bound_position": 0.0,
+    "bound_normal": 0.0,
+    "loss": 0.0,
+    "metric": 0.0,
+    "rotation_gradient": 0.0,
+    "slide_gradient": 0.0
+  },
+  "models": {
+    "ConditionalMegatron": {
+      "neural_projection_dtypes": {
+        "source_projection": "torch.bfloat16",
+        "rotation_head": "torch.bfloat16",
+        "slide_head": "torch.bfloat16"
+      },
+      "geometry_dtype": "torch.float32",
+      "loss": 0.8758407831192017,
+      "gradient_l1": {
+        "slide_head": 3.470428466796875,
+        "source_slide_projection": 0.13289429247379303
+      }
+    },
+    "SurfaceMegatron": {
+      "neural_projection_dtypes": {
+        "source_projection": "torch.bfloat16",
+        "rotation_head": "torch.bfloat16",
+        "slide_head": "torch.bfloat16"
+      },
+      "geometry_dtype": "torch.float32",
+      "loss": 0.8498674631118774,
+      "gradient_l1": {
+        "slide_head": 3.781085968017578,
+        "source_slide_projection": 0.01780510414391756,
+        "patch_geometry": 3.4603843092918396,
+        "patch_motion": 0.5215164385735989
+      }
+    }
+  },
+  "asset_sha256": "a1aa3e9fc20a712bad99e192bd42e37c613ae9e815d4255fada6c1dace1b76a5",
+  "evidence": "Real Franka MJCF-derived states/mesh, small random-weight A/B models, unencoded text fixture. Diagnostic backward only; no optimizer/update."
+}

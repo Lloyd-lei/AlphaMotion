@@ -1,0 +1,102 @@
+[
+  {
+    "file": "01_implemented_systems.pdf",
+    "pages": 1,
+    "width_pt": 1140.0,
+    "height_pt": 900.0,
+    "raster_images": 0,
+    "text_characters": 2159,
+    "has_replacement_char": false,
+    "sha256": "9eec9c69aca21a2f1f98b1132d935a6704f2676078c74090a15e816c339c8f50"
+  },
+  {
+    "file": "02_alphamotion1_layers.pdf",
+    "pages": 1,
+    "width_pt": 1140.0,
+    "height_pt": 1110.0,
+    "raster_images": 0,
+    "text_characters": 2750,
+    "has_replacement_char": false,
+    "sha256": "de08afd61b88cd2a547dbea8c9c8cb600c24039ad14466ba4a5ff96866f5e249"
+  },
+  {
+    "file": "03_unimate_layers.pdf",
+    "pages": 1,
+    "width_pt": 1140.0,
+    "height_pt": 1180.0,
+    "raster_images": 0,
+    "text_characters": 3073,
+    "has_replacement_char": false,
+    "sha256": "d749713a1699a3b1a9d30521eaf5c15b254c8f15fbfd6e4d74c4c406d216333b"
+  },
+  {
+    "file": "04_umr_layers.pdf",
+    "pages": 1,
+    "width_pt": 1140.0,
+    "height_pt": 1100.0,
+    "raster_images": 0,
+    "text_characters": 2869,
+    "has_replacement_char": false,
+    "sha256": "11350e5974a01ee84fc0a5e79e2355fc4e5ce008b75baf4c5cb0f64119b7fdf2"
+  },
+  {
+    "file": "05_alphamotion2_proposed.pdf",
+    "pages": 1,
+    "width_pt": 1140.0,
+    "height_pt": 1120.0,
+    "raster_images": 0,
+    "text_characters": 3191,
+    "has_replacement_char": false,
+    "sha256": "297b4dda798c1d078b57c412ad2815c8d84adc70d83a03cabeb68075fd36ccc0"
+  },
+  {
+    "file": "paper_01_comparison.pdf",
+    "pages": 1,
+    "width_pt": 510.0,
+    "height_pt": 500.0,
+    "raster_images": 0,
+    "text_characters": 1488,
+    "has_replacement_char": false,
+    "sha256": "be8e4b08300cef96efb8b4bde48724289f8058617042c07762cfcbee26ae9e0e"
+  },
+  {
+    "file": "paper_02_alphamotion1.pdf",
+    "pages": 1,
+    "width_pt": 510.0,
+    "height_pt": 652.0,
+    "raster_images": 0,
+    "text_characters": 1542,
+    "has_replacement_char": false,
+    "sha256": "f89da6e1103364e855e769974e129294265495eb183a412a4090ef7603d426de"
+  },
+  {
+    "file": "paper_03_unimate.pdf",
+    "pages": 1,
+    "width_pt": 510.0,
+    "height_pt": 651.0,
+    "raster_images": 0,
+    "text_characters": 1594,
+    "has_replacement_char": false,
+    "sha256": "949fa13c7ae9ddf980ba796e742a874af94d2c414bc0ed7897fb18aa2bc0b196"
+  },
+  {
+    "file": "paper_04_umr.pdf",
+    "pages": 1,
+    "width_pt": 510.0,
+    "height_pt": 565.0,
+    "raster_images": 0,
+    "text_characters": 1365,
+    "has_replacement_char": false,
+    "sha256": "4bf14dc6cec0695568425cc65a3a48ac0beec781ae4c25b863ce8f8c7007940c"
+  },
+  {
+    "file": "paper_05_alphamotion2_proposed.pdf",
+    "pages": 1,
+    "width_pt": 510.0,
+    "height_pt": 580.0,
+    "raster_images": 0,
+    "text_characters": 1673,
+    "has_replacement_char": false,
+    "sha256": "e22eb1879c87381677dbbc7ce43bc878491ef504661a907f9befb3afd49041fa"
+  }
+]

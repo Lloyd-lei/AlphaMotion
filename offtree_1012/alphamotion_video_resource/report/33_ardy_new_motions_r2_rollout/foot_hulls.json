@@ -1,0 +1,92 @@
+{
+ "unitree_g1_29dof": {
+  "left_ankle_roll_link": {
+   "bodies": [
+    "left_ankle_roll_link"
+   ],
+   "geoms": 4,
+   "hull_points": 44,
+   "neutral_drop_cm": 3.5000006304998528
+  },
+  "right_ankle_roll_link": {
+   "bodies": [
+    "right_ankle_roll_link"
+   ],
+   "geoms": 4,
+   "hull_points": 44,
+   "neutral_drop_cm": 3.5000006304998528
+  }
+ },
+ "unitree_h2": {
+  "left_ankle_pitch_link": {
+   "bodies": [
+    "left_ankle_pitch_link"
+   ],
+   "geoms": 1,
+   "hull_points": 830,
+   "neutral_drop_cm": 5.429999942720523
+  },
+  "right_ankle_pitch_link": {
+   "bodies": [
+    "right_ankle_pitch_link"
+   ],
+   "geoms": 1,
+   "hull_points": 839,
+   "neutral_drop_cm": 5.429999940869964
+  }
+ },
+ "agibot_a3_t3d0": {
+  "left_ankle_pitch_Link": {
+   "bodies": [
+    "left_ankle_roll_Link"
+   ],
+   "geoms": 13,
+   "hull_points": 84,
+   "neutral_drop_cm": 6.899999828846179
+  },
+  "right_ankle_pitch_Link": {
+   "bodies": [
+    "right_ankle_roll_Link"
+   ],
+   "geoms": 13,
+   "hull_points": 84,
+   "neutral_drop_cm": 6.9000003751108245
+  }
+ },
+ "fourier_gr3": {
+  "left_foot_pitch_link": {
+   "bodies": [
+    "left_foot_roll_link"
+   ],
+   "geoms": 2,
+   "hull_points": 76,
+   "neutral_drop_cm": 6.809554196143556
+  },
+  "right_foot_pitch_link": {
+   "bodies": [
+    "right_foot_pitch_link"
+   ],
+   "geoms": 2,
+   "hull_points": 76,
+   "neutral_drop_cm": 6.809554196143556
+  }
+ },
+ "pnd_adam_lite": {
+  "anklePitchLeft": {
+   "bodies": [
+    "toeLeft"
+   ],
+   "geoms": 2,
+   "hull_points": 76,
+   "neutral_drop_cm": 6.501175437687535
+  },
+  "anklePitchRight": {
+   "bodies": [
+    "toeRight"
+   ],
+   "geoms": 2,
+   "hull_points": 76,
+   "neutral_drop_cm": 6.501175437687535
+  }
+ }
+}

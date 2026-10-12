@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-04T08:39:27.726384+00:00",
+  "deadline": "2026-10-05T08:00:00-04:00",
+  "runs": [
+    {
+      "run_id": "A_S_seed0",
+      "group": "A",
+      "size": "S",
+      "main_parameters": 6548804,
+      "auxiliary_parameters": 134412,
+      "frozen_qwen_parameters": 595776512,
+      "config": "orchestration/configs/A_S_seed0.json",
+      "steps": 3000,
+      "batch_effective": 128,
+      "status": "architecture_frozen_data_cuda_pending"
+    },
+    {
+      "run_id": "A_M_seed0",
+      "group": "A",
+      "size": "M",
+      "main_parameters": 25743428,
+      "auxiliary_parameters": 265484,
+      "frozen_qwen_parameters": 595776512,
+      "config": "orchestration/configs/A_M_seed0.json",
+      "steps": 3000,
+      "batch_effective": 128,
+      "status": "architecture_frozen_data_cuda_pending"
+    },
+    {
+      "run_id": "A_L_seed0",
+      "group": "A",
+      "size": "L",
+      "main_parameters": 75335076,
+      "auxiliary_parameters": 396556,
+      "frozen_qwen_parameters": 595776512,
+      "config": "orchestration/configs/A_L_seed0.json",
+      "steps": 3000,
+      "batch_effective": 128,
+      "status": "architecture_frozen_data_cuda_pending"
+    },
+    {
+      "run_id": "B_S_seed0",
+      "group": "B",
+      "size": "S",
+      "main_parameters": 6798676,
+      "auxiliary_parameters": 134412,
+      "frozen_qwen_parameters": 595776512,
+      "config": "orchestration/configs/B_S_seed0.json",
+      "steps": 3000,
+      "batch_effective": 128,
+      "status": "architecture_frozen_data_cuda_pending"
+    },
+    {
+      "run_id": "B_M_seed0",
+      "group": "B",
+      "size": "M",
+      "main_parameters": 26472404,
+      "auxiliary_parameters": 265484,
+      "frozen_qwen_parameters": 595776512,
+      "config": "orchestration/configs/B_M_seed0.json",
+      "steps": 3000,
+      "batch_effective": 128,
+      "status": "architecture_frozen_data_cuda_pending"
+    },
+    {
+      "run_id": "B_L_seed0",
+      "group": "B",
+      "size": "L",
+      "main_parameters": 76772532,
+      "auxiliary_parameters": 396556,
+      "frozen_qwen_parameters": 595776512,
+      "config": "orchestration/configs/B_L_seed0.json",
+      "steps": 3000,
+      "batch_effective": 128,
+      "status": "architecture_frozen_data_cuda_pending"
+    }
+  ],
+  "queue_order": [
+    "A_S_seed0",
+    "B_S_seed0",
+    "A_M_seed0",
+    "B_M_seed0",
+    "A_L_seed0",
+    "B_L_seed0"
+  ],
+  "gpu_owner_policy": "one flock held across each authorized validate/train/eval process; existing services/downloads untouched",
+  "capacity_budget": {
+    "download_fixed_plan_bytes": 200505865539,
+    "reserve_and_download_overhead_bytes": 17179869184,
+    "scaling_checkpoints_eval_allocation_bytes": 12884901888,
+    "new_data_allocation_bytes": 2147483648,
+    "patch_and_temp_allocation_bytes": 1073741824
+  },
+  "comparison": {
+    "initialization": "all random from scratch seed0; preliminary26M warmstart run excluded",
+    "fixed_exposure": "same3000steps,batch128,body/clip splits,step RNG,optimizer recipe and sample schedule",
+    "fixed_compute": "saved checkpoints at100,250,500,1000,1500,2000,2500,3000; report measured GPU seconds and analytic dense FLOPs; only common covered budgets compared",
+    "scaling_claim": "six short single-seed directional experiments; not evidence of a scaling law",
+    "uncertainty": "clip cluster bootstrap, no pseudoreplication of frames"
+  },
+  "data_freeze_pending": [
+    "Adroit full payload/Qwen audit",
+    "Franka exactMJL qpos payload instead of noisy Minari observations",
+    "multi-body surface binding/frame hashes",
+    "trajectory/DOF evaluation contracts"
+  ],
+  "estimated_total_gpu_hours_provisional": [
+    2,
+    5
+  ],
+  "estimate_basis": "actual M warmstart3000updates800s; L/B throughput still requires actual full-loss CUDA profiling",
+  "updated_at_utc": "2026-10-04T09:09:49.822749+00:00",
+  "readiness": "frozen features and mixed joint representation available; real6model CUDA gate pending",
+  "prismatic_parameter_counts": {
+    "S": {
+      "d_model": 128,
+      "n_heads": 8,
+      "layers": 6,
+      "A": {
+        "total": 6701777,
+        "main_excluding_judge": 6567365,
+        "judge_auxiliary": 134412,
+        "trainable_total": 6701777,
+        "trainable_judge": 134412,
+        "prismatic_shared_parameters": 18561
+      },
+      "B": {
+        "total": 6951649,
+        "main_excluding_judge": 6817237,
+        "judge_auxiliary": 134412,
+        "trainable_total": 6951649,
+        "trainable_judge": 134412,
+        "surface_added": 249872,
+        "shared_skeleton_main": 6567365,
+        "prismatic_shared_parameters": 18561
+      }
+    },
+    "M": {
+      "d_model": 256,
+      "n_heads": 8,
+      "layers": 6,
+      "A": {
+        "total": 26078801,
+        "main_excluding_judge": 25813317,
+        "judge_auxiliary": 265484,
+        "trainable_total": 26078801,
+        "trainable_judge": 265484,
+        "prismatic_shared_parameters": 69889
+      },
+      "B": {
+        "total": 26807777,
+        "main_excluding_judge": 26542293,
+        "judge_auxiliary": 265484,
+        "trainable_total": 26807777,
+        "trainable_judge": 265484,
+        "surface_added": 728976,
+        "shared_skeleton_main": 25813317,
+        "prismatic_shared_parameters": 69889
+      }
+    },
+    "L": {
+      "d_model": 384,
+      "n_heads": 8,
+      "layers": 8,
+      "A": {
+        "total": 75885617,
+        "main_excluding_judge": 75489061,
+        "judge_auxiliary": 396556,
+        "trainable_total": 75885617,
+        "trainable_judge": 396556,
+        "prismatic_shared_parameters": 153985
+      },
+      "B": {
+        "total": 77323073,
+        "main_excluding_judge": 76926517,
+        "judge_auxiliary": 396556,
+        "trainable_total": 77323073,
+        "trainable_judge": 396556,
+        "surface_added": 1437456,
+        "shared_skeleton_main": 75489061,
+        "prismatic_shared_parameters": 153985
+      }
+    }
+  },
+  "initial_milestone_steps": 3000,
+  "extension_policy": "After all6 initial results and real eval, inspect last-segment slopes and actual time/capacity. Extend only all6 under one versioned equal continuation schedule if deadline/QA budget permits; never call3000 underoptimization capacity failure."
+}

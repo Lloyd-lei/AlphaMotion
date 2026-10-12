@@ -1,0 +1,19 @@
+{
+  "training_status": "not_started_remote_offline",
+  "pending_resource_monitor_record": "resource-monitor/connection_latest.json",
+  "archive": {
+    "local_path": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/AlphaMotion-hand-surface-review.zip",
+    "bytes": 33036209,
+    "sha256": "53d5f741961633808eafae2f2e0c410b5e08bb607efe5ffd1c2e87f31d6dab87",
+    "remote_destination": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/hand_surface_case_20261004/review_delivery",
+    "status": "pending_connection_recovery"
+  },
+  "previous_model_upload": "failed SSH connection before remote write; final revised source has not been uploaded",
+  "required_recipe_work": [
+    "read-only identity and completion checks before any supplement",
+    "source-validated static/true sole/contact ground supplement, preserving original caches",
+    "UniMate actual all-frame FK audit",
+    "real full-loss CUDA preflight and receipt before bounded training"
+  ],
+  "current_download_monitor_remote_archive": "pending reconnection; no current process or space inference"
+}

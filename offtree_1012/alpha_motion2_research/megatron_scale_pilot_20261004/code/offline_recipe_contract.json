@@ -1,0 +1,281 @@
+{
+  "schema_version": 1,
+  "scope": "Local source audit only; no SSH, source changes, model forward or training. Proposed pilot differences are explicit.",
+  "source_snapshot": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1",
+  "source_sha256": {
+    "common.py": "007772a2498f4cef12bde35e2410e767c1dda285d4bcc3706e29d2863764ceb6",
+    "model.py": "d717c185fcd0eee7b5cb216a8faba4bc89a4485c839e4c0e52c940ea9ccf45e0",
+    "train_ae.py": "04788d44311974ae867984fa0fbd4d8fdf5b899cc7507a82b131d25f4370ba4c",
+    "train_dual.py": "de909574dc433e99080329c780a52fb3fe9dd91a7474f7d0f7abe58b4eced233",
+    "dual_common.py": "c8f43065efb0a0188796a572d9b549a55f16b83bf4c3a5d4a28f84d5ba0110cd",
+    "model_dual.py": "ae1ebdd37d62805190ccc2e332177d7e790371997d91fa516ec5ec6099f563dd"
+  },
+  "rotation_and_fk": {
+    "rot6_order": "Concatenate matrix column0 xyz then column1 xyz; NOT row-major reshape of first two columns.",
+    "rot6_to_matrix": "Gram-Schmidt: normalize a1; normalize a2-dot(b1,a2)*b1; b3=cross(b1,b2); stack as columns.",
+    "geodesic_deg": "rad2deg(acos(clamp((trace(Rpred.T@Rgt)-1)/2,-1+1e-6,1-1e-6)))",
+    "geodesic_zero_note": "The clamp creates a small positive floor even for identical rotations; preserve for old-scale comparisons.",
+    "global_rotation_fk": "p_root=0; p_j=p_parent + R_global_parent @ rest_offset_j. Do NOT multiply parent rotation into an already-global predicted rotation again.",
+    "fk_input_units": "XWBC rest_offsets and positions are centimeters; Y-up; root-relative.",
+    "citations": [
+      {
+        "file": "common.py",
+        "lines": [
+          16,
+          31
+        ]
+      },
+      {
+        "file": "common.py",
+        "lines": [
+          91,
+          96
+        ]
+      },
+      {
+        "file": "dual_common.py",
+        "lines": [
+          294,
+          316
+        ]
+      }
+    ]
+  },
+  "static_descriptor": {
+    "rest_off": "Raw spec.rest_offsets float32[J,3], including the original root offset. No reach division.",
+    "norm_bonelen": "l_j=norm(rest_offsets[j]); height=sum_j(l_j) or 1.0; bonelen_j=l_j/height. Sum includes root offset.",
+    "height_warning": "This code variable is total offset length, not standing height, not skeleton diameter, not reach.",
+    "hop": "int64[J,J], undirected parent-child shortest-path distances, diagonal0; disconnected=1000000.",
+    "depth": "hop[first index where parents<0,:], raw integer edge count; do not rescale.",
+    "depth_embedding": "concat(sin(depth/[1,10,100,1000]),cos(depth/[1,10,100,1000])) in that order.",
+    "joint_feature_order": "raw offset3 | normalized offset direction3 | norm_bonelen1 | depth sine4 | depth cosine4 | dof19 =34D",
+    "attention_hop": "GraphBiasAttention clamps hop to max_hop+1 (default17) only when indexing hop embedding.",
+    "root_offset_note": "FK ignores root offset by setting p_root=0; descriptor and norm_bonelen still use it. Preserve first-cache spec for warmstart.",
+    "citations": [
+      {
+        "file": "common.py",
+        "lines": [
+          101,
+          115
+        ]
+      },
+      {
+        "file": "model.py",
+        "lines": [
+          19,
+          40
+        ]
+      },
+      {
+        "file": "train_ae.py",
+        "lines": [
+          26,
+          36
+        ]
+      },
+      {
+        "file": "model.py",
+        "lines": [
+          176,
+          205
+        ]
+      },
+      {
+        "file": "model.py",
+        "lines": [
+          213,
+          234
+        ]
+      }
+    ]
+  },
+  "loss_contract": {
+    "main": "For each source->target direction: mean(geodesic_deg)/30 + w_pos*mean(norm((FKpred_cm-FKgt_cm)/target_reach_cm,dim=-1)); old w_pos=5.",
+    "reduction": "Euclidean xyz norm, then batch/joint mean, NOT coordinate MSE. Main direction terms are divided by len(step_combos) before backward.",
+    "old_rootpos": "w_rootpos*smooth_l1(raw_hpos[:,target_root,0],target_root_gap_m), default beta=1.0 in meters and mean reduction; old stage2 w_rootpos=3.",
+    "rootpos_channels": "Only root channel0 has a direct height target. Root channels1/2 and nonroot hpos are not XYZ-supervised when fk_loss=true.",
+    "rootpos_pilot_fix": "Compute only on root_height_valid & isfinite values, independently of the old if-cex block; no fake root height for UniMate. Select valid rows BEFORE arithmetic.",
+    "old_contact_geometry": "h=FKpred_y_cm/100 + GT_root_gap_m + rotated sole offset y (meters); trust-mask rows. pen=mean(relu(-h)^2); cgeo=BCEWithLogits((thr-h)/(thr/3),contact_soft).",
+    "contact_inheritance_limit": "Original sole/contact fields omitted from first minimal transfer; source-sealed supplement now required before loader accepts XWBC. Never replace sole with joint-center geometry.",
+    "old_reencoding": "With probability0.3: mean((zp_re-zp)^2)+mean((zr_re-zr)^2), weighted1.0; reencode cat(predicted_global_rot6,raw_hpos). Original latent targets are not detached.",
+    "old_contrast": "Flatten and concatenate decoder-ready zp,zr; L2 normalize per row; similarity/tau (tau0.1); 0.5*(CE(sim,arangeB)+CE(sim.T,arangeB)); average over unordered body pairs; old weight0.5.",
+    "contrast_pairing_limit": "Only same physical source motion+timestamp across bodies is a positive pair. Never align unpaired UniMate rows by incidental array index; avoid duplicate sampled rows becoming false negatives.",
+    "old_judge": "Original onehot BCEWithLogits, grad mode, w.1 restored with reinitialized16class auxiliary head and verified current body map; historical class mapping unproven.",
+    "citations": [
+      {
+        "file": "dual_common.py",
+        "lines": [
+          382,
+          400
+        ]
+      },
+      {
+        "file": "dual_common.py",
+        "lines": [
+          442,
+          455
+        ]
+      },
+      {
+        "file": "train_dual.py",
+        "lines": [
+          418,
+          452
+        ]
+      },
+      {
+        "file": "train_dual.py",
+        "lines": [
+          500,
+          513
+        ]
+      },
+      {
+        "file": "train_dual.py",
+        "lines": [
+          609,
+          644
+        ]
+      },
+      {
+        "file": "dual_common.py",
+        "lines": [
+          755,
+          792
+        ]
+      }
+    ]
+  },
+  "selected_single_frame_pilot_policy": {
+    "parent_requested": {
+      "d_model": 256,
+      "heads": 8,
+      "encoder_layers": 6,
+      "decoder_layers": 6,
+      "position_slots": 4,
+      "rotation_slots": 128,
+      "batch_size": 128,
+      "steps": 3000,
+      "max_wall_seconds": 1800
+    },
+    "inherit": [
+      "global6 convention",
+      "topology hops and exact static descriptor construction",
+      "dual FSQ levels13x32 and compatible old tensors",
+      "rot_deg/30 and FK/reach position scale",
+      "valid-only root height regression in meters",
+      "XWBC InfoNCE.5 tau.1 6bodies, exact duplicate rows stable-deduplicated",
+      "unconditional raw-hpos reencoding1.0 at probability.3",
+      "16class judge grad/.1, new current label map and reinitializedhead",
+      "ground pen200/contactgeometry1 with source-sealed true soles and trust masks",
+      "original 8combo mean, maskprob.3 six-mode policy and independent contact input",
+      "AdamWlr1e-4 wd1e-4 cosine clip1"
+    ],
+    "explicitly_disable": [
+      "temporal world-slip and hpair derivative losses: missing complete adjacent/world-root/time observations",
+      "UniMate cross-body contrast/judge/metric-ground terms: genuine absent supervision"
+    ],
+    "cannot_copy_adjacent_loss": "Old hpair/slip uses r,r+1 and hardcoded30fps. Current subsampling has >=3 original-frame gaps and only sparse rows; table-neighbor rows may be different clips.",
+    "future_temporal_requirements": [
+      "same source group",
+      "actual timestamp delta",
+      "both-frame validity",
+      "world root displacement for world-slip",
+      "contact states with correct target geometry"
+    ],
+    "preprocessing_precision": "Old full-data PoseStore stores pose9 fp16 then casts gathered batches to fp32; extracted payload is full fp32 by request. Weight compatibility does not imply bit-identical old inputs.",
+    "metric_eval": "Derive positions from predicted rotations via FK. Do not copy old evaluate()/eval_dual pos_cm, which reads raw hpos by default.",
+    "nonmetric_external_data": "Retain normalized geometric losses only if scale is unknown; never label normalized UniMate values centimeters/meters.",
+    "citations": [
+      {
+        "file": "train_dual.py",
+        "lines": [
+          552,
+          561
+        ]
+      },
+      {
+        "file": "train_dual.py",
+        "lines": [
+          573,
+          605
+        ]
+      },
+      {
+        "file": "dual_common.py",
+        "lines": [
+          112,
+          155
+        ]
+      },
+      {
+        "file": "dual_common.py",
+        "lines": [
+          529,
+          539
+        ]
+      }
+    ],
+    "raw_hpos_cycle": "Raw decoded hpos feeds unconditional cycle, while metric XYZ loss remains independent rotation FK.",
+    "extra_sparse_task": "Additional XWBC same-body pure-SE3 branch with probability.25 weight1; does not replace original8direction main branch."
+  },
+  "xwbc_completion_contract": {
+    "local_extractor_script": "/Users/yudonglei/Documents/be water, robot/.codex-staging/megatron-scale-pilot/extract_xwbc_pilot.py",
+    "remote_data_root": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/megatron_scale_pilot_20261004/data_xwbc",
+    "required_final_files": [
+      "manifest.json",
+      "checks.json",
+      "chosen_split.json",
+      "row_table.npz"
+    ],
+    "manifest_schema": {
+      "status": "complete",
+      "rows": 30322,
+      "bodies": 16,
+      "fps": 30.0,
+      "body_payloads": "list[16] of body,J,payload(relative path),payload_sha256,payload_bytes,reach_cm,source_rotations(list),source_contacts(list),static_descriptor(relative path), static_files{spec,dof,descriptor}: each path+sha256; spec/dof also source_path+source_sha256",
+      "normalizer_policy": "string",
+      "contract": "field semantic dictionary",
+      "chosen_split_sha256": "SHA256 string",
+      "row_table_sha256": "SHA256 string",
+      "source_code": "list of path+sha256",
+      "checks": "list[16] per-body checks",
+      "scope_notes": "list of strings",
+      "total_bytes_before_final_manifest": "integer; size observed before final manifest/checks writes",
+      "static_seal": {
+        "schema_version": 1,
+        "mode": "verified_during_extraction OR source_revalidated_at_seal_time",
+        "source_cache_manifest_sha256": "must match chosen_split.source_sequence_files[0].manifest_sha256"
+      }
+    },
+    "checks_schema": {
+      "all_pass": true,
+      "checks": "list[16]: body,rows,J,pose9_all_finite,position_root_max_abs_cm,pose9_position_formula_max_abs_error,invalid_contact_is_nan,invalid_root_height_is_nan,contact_valid_values_finite,root_height_valid_count,contact_valid_fraction,row_content_sha256,elapsed_seconds",
+      "split_checks": {
+        "train_eval_group_intersection": 0,
+        "train_eval_row_intersection": 0,
+        "amass_train_in_old_exclude_set": 0,
+        "amass_eval_all_in_old_exclude_set": true,
+        "same_row_table_for_all_bodies": true
+      }
+    },
+    "loader_acceptance": [
+      "Require both final JSON files; progress.json or existing partial payloads are not completion.",
+      "manifest.status==complete; rows==30322; bodies==16; exact unique body-name coverage matches chosen_split.body_names; both check lists cover16.",
+      "checks.all_pass is true; inspect actual per-body finite/formula/root/validity checks too.",
+      "Verify chosen_split and row_table SHA256 against manifest, then every payload file SHA256 before accepting data.",
+      "Validate each NPZ row count/J/required fields and identical row_ids/split/group_index across all bodies against row_table.",
+      "Independently verify group split disjointness and declared old-heldout membership from chosen_split.",
+      "Require sealed hashes for every static spec/dof/descriptor; validate derived descriptor against copied spec. Legacy spec joint_names is a NumPy object array, narrowly read only after its byte SHA256 matches seal. Motion payloads forbid pickle.",
+      "For this initial single-frame pilot, derivative losses stay off even when selected row order happens to be sorted."
+    ],
+    "current_status": "Last remotely confirmed extraction was9/16; host subsequently Tailscale Offline. No final completion claim.",
+    "local_legacy_seal_helper": "/Users/yudonglei/Documents/be water, robot/.codex-staging/megatron-scale-pilot/seal_xwbc_static.py",
+    "legacy_seal_policy": "A completed pre-seal extraction requires source manifest digest validation and byte comparisons to verified original cache_lafan_v3 spec/dof; no payload re-extraction. Newly observed DOF/descriptor hashes are explicitly source_revalidated_at_seal_time, not historical trusted hashes."
+  },
+  "actual_reference_config": {
+    "path": "reference_recipe/L_M20k_0903.config.json",
+    "sha256": "0e61ed5b012420d5fa186bc09537e9cac32ed14fa4533182c6d44805f5e7ee58",
+    "source": "exact hash-matched original run snapshot, not defaults"
+  }
+}

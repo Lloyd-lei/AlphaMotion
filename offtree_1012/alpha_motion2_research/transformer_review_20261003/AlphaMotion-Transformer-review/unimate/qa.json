@@ -1,0 +1,36 @@
+{
+  "status": "final frozen",
+  "visual_review": "Both final renders inspected; crossing text lines and QKV spacing corrected.",
+  "figures": [
+    {
+      "file": "unimate_01_main.pdf",
+      "pages": 1,
+      "size_pt": [
+        510.0,
+        640.0
+      ],
+      "embedded_raster_images": 0,
+      "min_text_font_pt": 8.0,
+      "png_pixels": [
+        1700,
+        2134
+      ],
+      "sha256": "7627cff32e4b1220814c33fc1b22ae2ec191a2193992c14cdfd0a3b10d309984"
+    },
+    {
+      "file": "unimate_02_block.pdf",
+      "pages": 1,
+      "size_pt": [
+        510.0,
+        640.0
+      ],
+      "embedded_raster_images": 0,
+      "min_text_font_pt": 8.0,
+      "png_pixels": [
+        1700,
+        2134
+      ],
+      "sha256": "a00c2a9c9f7883588349b074d60f6224c1d2af5a53f74962931f20007d2d863e"
+    }
+  ]
+}

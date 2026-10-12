@@ -1,0 +1,1792 @@
+{
+  "title": "训练、评测与工具链工程架构审计",
+  "status": "source_audit_and_proposal",
+  "modules": [
+    {
+      "id": "U1",
+      "name": "原始资产导出与并行worker",
+      "entry": "data_process/scripts/run_export.sh → motion_export/export_*.py",
+      "inputs": "Truebones FBX、Mixamo animation FBX、Objaverse GLB",
+      "outputs": "export motions NPZ、joint_names与summary、每asset完成marker",
+      "reuse": "复用worker分片、失败不合并summary、asset级完成marker；把原mesh及骨骼映射保留给surface adapter。",
+      "boundary": "Mixamo animation-only文件缺mesh，需要先把动作应用到人物rig；Blender版本与模型资产必须成为lineage。",
+      "sources": [
+        "U-pre",
+        "U-export",
+        "U-marker"
+      ]
+    },
+    {
+      "id": "U2",
+      "name": "标注、canonical化与前置清洗",
+      "entry": "render → vlm_caption / joint_annotation → feature_extraction.extract_features",
+      "inputs": "导出NPZ、多视图render、caption、clean/facing joints、人工patch列表",
+      "outputs": "motions NPZ、cond.npy、captions.json、filtered_clips.json、metadata.txt",
+      "reuse": "活动度/断裂统计、人工activity_keep、按object并行、阈值与metadata变更失效、失败对象隔离，可拆成可配置预处理步骤。",
+      "boundary": "当前canonical diameter scaling和grounding不是物理世界坐标；过滤在配置空间计算，指标不能直接标厘米。",
+      "sources": [
+        "U-pre",
+        "U-extract",
+        "U-resume",
+        "U-workers",
+        "U-activity",
+        "U-jump",
+        "U-format"
+      ]
+    },
+    {
+      "id": "U3",
+      "name": "文本embedding缓存",
+      "entry": "unimate.tools.precompute_text_emb + utils.text_emb_cache",
+      "inputs": "cond joint names、captions、encoder type/version",
+      "outputs": "joint_emb_cache.npz、caption_emb_cache.npz：pooled/tokens/mask",
+      "reuse": "复用按需加载encoder、补缺项、版本/维数核对、write-then-rename；生产key加入文本内容与encoder revision hash。",
+      "boundary": "当前缓存metadata记录encoder名称/格式，不是全链路输入内容寻址；已有同clip-key文字变更需显式失效，不能只检查key存在。",
+      "sources": [
+        "U-text",
+        "U-tcache"
+      ]
+    },
+    {
+      "id": "U4",
+      "name": "Dataset、采样、collate",
+      "entry": "dataset.factory → Mixture/MotionDataset → MixtureSampler → mixture_batch_collate",
+      "inputs": "feature目录、cond、text cache、split配置、保存的stats（推理）",
+      "outputs": "motion[B,J,12,T] + cond：joint/time/text masks、topology、mean/std、caption",
+      "reuse": "复用变长padding/masks、train/eval按配置分离、topology增删/合并增强、统计值随run保存。",
+      "boundary": "默认配置test_split_ratio=0，存在eval map不自动证明已做完整holdout benchmark；MixtureLoader载入策略不等同大规模流式数据仓库。",
+      "sources": [
+        "U-config",
+        "U-dataset",
+        "U-item",
+        "U-splits",
+        "U-collate"
+      ]
+    },
+    {
+      "id": "U5",
+      "name": "训练控制与模型工厂",
+      "entry": "training.train → models.factory + DiffusionTrainer",
+      "inputs": "JSON config、DataLoader、模型类、flow或DDPM",
+      "outputs": "梯度更新、EMA、TensorBoard loss/grad/lr、周期可视化",
+      "reuse": "复用Accelerate、分布式一致nonfinite skip、梯度累计/clip、EMA、配置落盘及保存归一化stats。",
+      "boundary": "training.diff_model选择flow/diffusion；这些是训练工程能力，不代表surface模型或物理验收已经存在。",
+      "sources": [
+        "U-config",
+        "U-train",
+        "U-loop",
+        "U-trainer"
+      ]
+    },
+    {
+      "id": "U6",
+      "name": "checkpoint与恢复",
+      "entry": "_save_checkpoint_and_visualize / _resume_from_checkpoint",
+      "inputs": "model、optimizer、LR scheduler、EMA、tracker",
+      "outputs": "checkpoint_step_*.pt + config.json + dataset_stats.npy",
+      "reuse": "复用明确run bundle与多状态恢复；生产将checkpoint提交与昂贵预览解耦。",
+      "boundary": "当前先visualize再save；保存字典未含RNG与DataLoader精确游标，不能称bitwise精确中断续训。",
+      "sources": [
+        "U-checkpoint"
+      ]
+    },
+    {
+      "id": "U7",
+      "name": "推理、诊断预览与mesh恢复",
+      "entry": "inference.sample / generate → visualization；data_process.mesh_animation",
+      "inputs": "checkpoint/config/stats、文本/Tpose、可选已知帧或编辑约束",
+      "outputs": "motion特征NPY、RIC与FK预览MP4；可另做GLB/FBX或逐帧LBS vertices",
+      "reuse": "复用统一generator调用、双重建对比、纯NumPy LBS和bind矩阵抽取。",
+      "boundary": "已审路径提供采样预览与数据过滤，未找到集成机器人动力学/sim/real benchmark runner；官网已审客户端播放已有animation而非在线模型API。",
+      "sources": [
+        "U-infer",
+        "U-output",
+        "U-lbs",
+        "U-viz"
+      ]
+    },
+    {
+      "id": "R1",
+      "name": "配置驱动stage编排",
+      "entry": "scripts/humanoid_retarget_pipeline.py",
+      "inputs": "defaults + robot/motion overrides、stage/force参数",
+      "outputs": "build → train → retarget → optional view；可单独运行",
+      "reuse": "复用阶段边界和兼容性检查；缓存存在但template/robot不符会重建。",
+      "boundary": "不是通用大数据预训练框架；缺slots时retarget阶段可以触发静态训练。",
+      "sources": [
+        "R-entry",
+        "R-compatible"
+      ]
+    },
+    {
+      "id": "R2",
+      "name": "canonical表面训练数据",
+      "entry": "build_correspondence_dataset / build_correspondence_ae_dataset.py",
+      "inputs": "SMPL-X/SOMA模板、robot MJCF/visual mesh、采样姿态/点数",
+      "outputs": "静态表面点云NPZ、mesh metadata、sample face ids、模板配置",
+      "reuse": "复用外表面采点、根坐标转换、robot visual geom提取与模板metadata。",
+      "boundary": "应保留visual/collision区别；单位与shape/betas信息属于资产版本，缺手指动作不能由静态mesh弥补。",
+      "sources": [
+        "R-build"
+      ]
+    },
+    {
+      "id": "R3",
+      "name": "静态对应训练与slots缓存",
+      "entry": "train_correspondence → train_correspondence_template_residual_ae.py",
+      "inputs": "canonical pointcloud/template + effective train config",
+      "outputs": "checkpoint-latest/final.pt；correspondence_slots_latest/final.npz",
+      "reuse": "复用模板残差基线、表面重建/排斥/边平滑损失、checkpoint及有序slots导出。",
+      "boundary": "Python有效默认500epochs/batch2；浏览器60另算。当前主模型无文本局部region锚定。",
+      "sources": [
+        "R-default",
+        "R-train",
+        "R-loop",
+        "R-save"
+      ]
+    },
+    {
+      "id": "R4",
+      "name": "slot绑定与重定向job",
+      "entry": "retarget_motion → surface_vector.py 或 batch.py",
+      "inputs": "slots、source motion、robot model、solver配置、optional stream chunk size",
+      "outputs": "每帧source目标、MuJoCo几何FK/Jacobian、Clarabel dq、最终qpos",
+      "reuse": "复用material-point绑定、接触overlay所需数据、约束solver作为baseline/pseudo-label生产器。",
+      "boundary": "有流式chunk脚本选择，不等于集群调度；动力学闭环控制不在该solver链内。",
+      "sources": [
+        "R-bind",
+        "R-jobs",
+        "R-solve"
+      ]
+    },
+    {
+      "id": "R5",
+      "name": "结果、检查与可视化",
+      "entry": "surface_vector.main → NPZ；visualize_result → GLFW/Viser",
+      "inputs": "优化qpos、frame ids/fps、来源信息",
+      "outputs": "最终qpos NPZ、cost日志、LQR前后temporal summary、surface/contact同步视图",
+      "reuse": "复用同步viewer、slot/normal/contact overlay、视频导出与结果兼容性检查。",
+      "boundary": "保存的final qpos和展示不是物理可执行性证明；solver cost不能替代统一QC metric suite。",
+      "sources": [
+        "R-results",
+        "R-viewentry",
+        "R-view",
+        "R-compatible"
+      ]
+    },
+    {
+      "id": "A1",
+      "name": "已有离线物理QC与产品服务",
+      "entry": "AlphaMotion1 physeval.evaluate；release service + LiveViewer",
+      "inputs": "带fps世界qpos + 每个robot MJCF；异步播放/编辑请求",
+      "outputs": "关节限制、滑移/穿透、jerk、平衡/逆动力学报告；SQLite job/结果与review UI",
+      "reuse": "优先把physeval封装为embodiment条件指标worker；服务与同步viewer作为审核壳。",
+      "boundary": "physeval是离线一致性，非闭环sim/real。已有服务重启把unfinished job标failed，不自动恢复执行。",
+      "sources": [
+        "A-physics",
+        "A-serv",
+        "A-jobs"
+      ]
+    },
+    {
+      "id": "F1",
+      "name": "本轮基础工程已实现",
+      "entry": "pretraining_foundation dataset/cache/index_existing/loader",
+      "inputs": "旧XWBC/Alpha1缓存、UniML3D样本、manifest与holdout配置",
+      "outputs": "带坐标/来源/missing mask样本；hash校验缓存；SQLite索引；mmap窗口batch",
+      "reuse": "作为统一schema、缓存、分组split和DataLoader起点；已有按输入fingerprint重用与atomic index替换。",
+      "boundary": "主任务报告31项基础测试通过；本附录没有重跑该测试。surface/binding/region仍未绑定，不是生产级清洗系统验收。",
+      "sources": [
+        "F-schema",
+        "F-cache",
+        "F-index",
+        "F-loader"
+      ]
+    }
+  ],
+  "contracts": [
+    {
+      "interface": "AssetRecord",
+      "fields": "corpus/source sequence/embodiment、raw hash/revision/license、mesh与物理模型hash、joint map、派生链",
+      "purpose": "同名文件内容变更会失效；保留原始动作及对应资产，避免错误复用与跨split泄漏。"
+    },
+    {
+      "interface": "MotionEnvelope",
+      "fields": "timestamps/fps、length unit、up axis/handedness、world↔canonical transform、rotation convention、root trajectory、parents/DOFs、valid frame/joint masks",
+      "purpose": "m与topology-normalized明确分支；仅在有尺度锚点时换算。物理指标始终消费world坐标，不读取viewer normalization。"
+    },
+    {
+      "interface": "SurfaceBinding",
+      "fields": "mesh revision、faces/face id+barycentric、geom/link-local或LBS weights+inverse bind、joint map、sampling seed、point mask；region文本与membership另带来源",
+      "purpose": "geometry每asset缓存，motion窗口只引用；固定material points才能比较接触与表面轨迹，缺失region不补零真值。"
+    },
+    {
+      "interface": "MetricResult",
+      "fields": "metric name/version/unit、per-frame值+summary、valid/unknown mask、asset/clip/version、reason codes、参数/置信度、evidence tier",
+      "purpose": "指标只测量；pass/review/reject由独立PolicyVersion决定。未知执行器范围是unknown，不是pass。"
+    },
+    {
+      "interface": "JobSpec / StageResult",
+      "fields": "输入hash+adapter/model/metric revision+config hash+seed、资源需求、尝试次数、lease、阶段产物校验、committed marker",
+      "purpose": "同spec幂等；临时产物校验后提交引用，读者只见committed。瞬态错误有限重试；schema/数据错误进入quarantine，不无限重跑。"
+    },
+    {
+      "interface": "DatasetRelease",
+      "fields": "不可变sample manifest、source-sequence与body split、所有依赖hash、metric/policy版本、批准记录与exclusion reasons",
+      "purpose": "train和eval读取同一版本化release但分区严格隔离；人工审核不覆盖原始指标，保留理由与变更记录。"
+    }
+  ],
+  "production_requirements": [
+    {
+      "component": "纯指标内核与分级worker",
+      "implementation": "先把finite/shape、SO(3)、FK残差、骨长、速度/加速度、surface穿透/滑移写成无副作用、固定输入得固定输出的CPU函数；适合向量化者批处理。模型、MuJoCo/逆动力学、sim tracking各自独立worker进程，保留每robot资产。",
+      "acceptance": "同golden clip重复运行及不同worker数结果在预先登记的数值容差内一致；逐帧reason定位可重现。"
+    },
+    {
+      "component": "内容寻址与原子发布",
+      "implementation": "key包含raw bytes hash、代码/配置/资产revision、采样seed和metric version；临时目录写完，验证内容hash后原子提交manifest指针。目录存在或进程退出0不视为完成。",
+      "acceptance": "在任意阶段中断不暴露半成品；相同job重放复用相同产物；改输入内容但不改文件名必须失效。"
+    },
+    {
+      "component": "调度、恢复与资源预算",
+      "implementation": "每stage申请CPU/GPU/RAM/disk预算；有限队列长度和高水位暂停上游；每clip/job有lease与heartbeat；阶段级resume、退避重试、最大尝试次数、dead-letter/quarantine。下载、渲染、模型训练各用独立资源池。",
+      "acceptance": "worker中断后lease可回收且不重复提交；磁盘不足时不会继续制造孤立产物；慢viewer不阻塞指标提交。"
+    },
+    {
+      "component": "阈值政策与人工审核",
+      "implementation": "PolicyVersion按任务/本体和metric单位解释结果，输出accept/review/reject；界面显示坏帧、raw-vs-derived、surface/contact overlay与reason；人工覆盖附原因且保留旧政策。",
+      "acceptance": "同指标换policy只重算决策、不重跑FK/模型；unknown和测量失败不会被视为成功；审核样本可以按来源与错误类型分层抽样。"
+    },
+    {
+      "component": "可观测性",
+      "implementation": "结构化事件带job/clip/stage/attempt；记录吞吐、排队延迟、阶段耗时、缓存命中、失败/重试、各reason占比、GPU/RAM/disk；一条trace把输入、计算、审核和release相连。",
+      "acceptance": "能由任一发布样本追到原文件、模型/指标版本、计算日志与审核理由；报警针对状态变化而不是轮询噪音。"
+    },
+    {
+      "component": "golden clips与失败集",
+      "implementation": "保留人工核对的bind pose、跨单位/坐标、短序列、缺模态、左右手、遮挡contact、坏quaternion、旧缓存、被杀worker等样本。几何QC、离线动力学、闭环sim、真实机器人分别记录证据。",
+      "acceptance": "每次adapter/metric/policy升级都跑固定回归集并给差异；性能、吞吐、故障恢复和sim/real各有实测记录，31个基础测试不能替代这些验收。"
+    }
+  ],
+  "sources": {
+    "U-config": {
+      "project": "UniMate",
+      "path": "configs/uniml3d_60frames_graph_adaln.json",
+      "start": 18,
+      "end": 81,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UniMate/configs/uniml3d_60frames_graph_adaln.json",
+      "sha256": "c06d95e77821a8d06d98edd544628e5857672715cb5f1389d34b031f3d327c67",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/configs/uniml3d_60frames_graph_adaln.json#L18-L81"
+    },
+    "U-marker": {
+      "project": "UniMate",
+      "path": "data_process/motion_export/export_general.py",
+      "start": 92,
+      "end": 180,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/source/UniMate/data_process/motion_export/export_general.py",
+      "sha256": "d18d3eff2a734a943d9a1267a5071050b99cc454b5022fd8412f0f3b7cd6709c",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/data_process/motion_export/export_general.py#L92-L180"
+    },
+    "R-default": {
+      "project": "UMR",
+      "path": "humanoid_retarget_defaults.json",
+      "start": 61,
+      "end": 79,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UMR/humanoid_retarget_defaults.json",
+      "sha256": "6d25c63520e25c88bfbe472312b9698f97032b1777b37e80d3f55521924173a2",
+      "url": "https://github.com/hanyang9/UMR/blob/d1cdaedaf67a827198da71c5fa831f48b2e51f91/humanoid_retarget_defaults.json#L61-L79"
+    },
+    "U-pre": {
+      "project": "UniMate",
+      "path": "data_process/README.md",
+      "start": 67,
+      "end": 80,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UniMate/data_process/README.md",
+      "sha256": "752d08d830a0a6c1936fabe2ab244b7ebb99203278a7b4ac0f157d6144e047b5",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/data_process/README.md#L67-L80"
+    },
+    "U-export": {
+      "project": "UniMate",
+      "path": "data_process/scripts/run_export.sh",
+      "start": 75,
+      "end": 126,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/source/UniMate/data_process/scripts/run_export.sh",
+      "sha256": "da3c73445eb4981604660f56e53782974dabf30c6da66690ccd3e08637cbf069",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/data_process/scripts/run_export.sh#L75-L126"
+    },
+    "U-extract": {
+      "project": "UniMate",
+      "path": "data_process/feature_extraction/extract_features.py",
+      "start": 369,
+      "end": 423,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/source/UniMate/data_process/feature_extraction/extract_features.py",
+      "sha256": "50badcbb3b29adaed2781b1ebc81903d82140ec7c0c7d2176c461dbf9f498442",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/data_process/feature_extraction/extract_features.py#L369-L423"
+    },
+    "U-resume": {
+      "project": "UniMate",
+      "path": "data_process/feature_extraction/extract_features.py",
+      "start": 511,
+      "end": 566,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/source/UniMate/data_process/feature_extraction/extract_features.py",
+      "sha256": "50badcbb3b29adaed2781b1ebc81903d82140ec7c0c7d2176c461dbf9f498442",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/data_process/feature_extraction/extract_features.py#L511-L566"
+    },
+    "U-workers": {
+      "project": "UniMate",
+      "path": "data_process/feature_extraction/extract_features.py",
+      "start": 646,
+      "end": 726,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/source/UniMate/data_process/feature_extraction/extract_features.py",
+      "sha256": "50badcbb3b29adaed2781b1ebc81903d82140ec7c0c7d2176c461dbf9f498442",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/data_process/feature_extraction/extract_features.py#L646-L726"
+    },
+    "U-activity": {
+      "project": "UniMate",
+      "path": "data_process/utils/skeleton.py",
+      "start": 468,
+      "end": 526,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UniMate/data_process/utils/skeleton.py",
+      "sha256": "687c73eb628162cbe330d5e17612037fdd33193c3d07d38bb5a84d747499aa1c",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/data_process/utils/skeleton.py#L468-L526"
+    },
+    "U-jump": {
+      "project": "UniMate",
+      "path": "data_process/utils/motion_features.py",
+      "start": 506,
+      "end": 543,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UniMate/data_process/utils/motion_features.py",
+      "sha256": "b830dd4cb865af4f3fcd8eb9b20b3e9ca92e486c635fd2fe1f429b17e73656e7",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/data_process/utils/motion_features.py#L506-L543"
+    },
+    "U-format": {
+      "project": "UniMate",
+      "path": "data_process/utils/motion_features.py",
+      "start": 563,
+      "end": 590,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UniMate/data_process/utils/motion_features.py",
+      "sha256": "b830dd4cb865af4f3fcd8eb9b20b3e9ca92e486c635fd2fe1f429b17e73656e7",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/data_process/utils/motion_features.py#L563-L590"
+    },
+    "U-text": {
+      "project": "UniMate",
+      "path": "unimate/tools/precompute_text_emb.py",
+      "start": 192,
+      "end": 241,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UniMate/unimate/tools/precompute_text_emb.py",
+      "sha256": "c01ac5a6b3ac174b27ff5860de4fd8c6d24e4fc724a5a186d274993c7255efff",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/tools/precompute_text_emb.py#L192-L241"
+    },
+    "U-tcache": {
+      "project": "UniMate",
+      "path": "unimate/utils/text_emb_cache.py",
+      "start": 138,
+      "end": 243,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UniMate/unimate/utils/text_emb_cache.py",
+      "sha256": "7fe753eb9cc5a10a0cbe2a4087dc7b392d83195843917e09ea70c9d7b5b45353",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/utils/text_emb_cache.py#L138-L243"
+    },
+    "U-dataset": {
+      "project": "UniMate",
+      "path": "unimate/dataset/factory.py",
+      "start": 11,
+      "end": 105,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/source/UniMate/unimate/dataset/factory.py",
+      "sha256": "180b9b9cb1a92e4aeff8ecc88c63eca7cc5c494d696c4795c6826306ba15dd52",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/dataset/factory.py#L11-L105"
+    },
+    "U-item": {
+      "project": "UniMate",
+      "path": "unimate/dataset/mixture/dataset.py",
+      "start": 827,
+      "end": 920,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/source/UniMate/unimate/dataset/mixture/dataset.py",
+      "sha256": "1ece829236db3e180097ec49c5918b285bf8b09be6b65cc808fb5714b3f6a709",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/dataset/mixture/dataset.py#L827-L920"
+    },
+    "U-splits": {
+      "project": "UniMate",
+      "path": "unimate/dataset/mixture/dataset.py",
+      "start": 1017,
+      "end": 1148,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/source/UniMate/unimate/dataset/mixture/dataset.py",
+      "sha256": "1ece829236db3e180097ec49c5918b285bf8b09be6b65cc808fb5714b3f6a709",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/dataset/mixture/dataset.py#L1017-L1148"
+    },
+    "U-collate": {
+      "project": "UniMate",
+      "path": "unimate/dataset/mixture/collate.py",
+      "start": 62,
+      "end": 211,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/source/UniMate/unimate/dataset/mixture/collate.py",
+      "sha256": "512600e6dfe9193256c2ee4087892c0fd658f9f803d14a0757ba5f502ba9dd34",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/dataset/mixture/collate.py#L62-L211"
+    },
+    "U-train": {
+      "project": "UniMate",
+      "path": "unimate/training/train.py",
+      "start": 79,
+      "end": 142,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UniMate/unimate/training/train.py",
+      "sha256": "80e9bb455a08720ea05374976128f8258caca69160c63bff53706447d6b1a143",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/training/train.py#L79-L142"
+    },
+    "U-loop": {
+      "project": "UniMate",
+      "path": "unimate/training/train.py",
+      "start": 187,
+      "end": 267,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UniMate/unimate/training/train.py",
+      "sha256": "80e9bb455a08720ea05374976128f8258caca69160c63bff53706447d6b1a143",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/training/train.py#L187-L267"
+    },
+    "U-checkpoint": {
+      "project": "UniMate",
+      "path": "unimate/training/train.py",
+      "start": 337,
+      "end": 411,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UniMate/unimate/training/train.py",
+      "sha256": "80e9bb455a08720ea05374976128f8258caca69160c63bff53706447d6b1a143",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/training/train.py#L337-L411"
+    },
+    "U-trainer": {
+      "project": "UniMate",
+      "path": "unimate/training/trainer.py",
+      "start": 143,
+      "end": 170,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UniMate/unimate/training/trainer.py",
+      "sha256": "aca7eae16bb21e4201f922df72fbeb14245a4cf6bd75109a55743e6663aa5ce2",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/training/trainer.py#L143-L170"
+    },
+    "U-viz": {
+      "project": "UniMate",
+      "path": "unimate/training/trainer.py",
+      "start": 176,
+      "end": 253,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UniMate/unimate/training/trainer.py",
+      "sha256": "aca7eae16bb21e4201f922df72fbeb14245a4cf6bd75109a55743e6663aa5ce2",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/training/trainer.py#L176-L253"
+    },
+    "U-infer": {
+      "project": "UniMate",
+      "path": "unimate/inference/generate.py",
+      "start": 78,
+      "end": 125,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UniMate/unimate/inference/generate.py",
+      "sha256": "a321c478056638e6c9bfca268c949a83315d25e1b89a8c832c42c509201c5e00",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/inference/generate.py#L78-L125"
+    },
+    "U-output": {
+      "project": "UniMate",
+      "path": "unimate/utils/visualization.py",
+      "start": 30,
+      "end": 176,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UniMate/unimate/utils/visualization.py",
+      "sha256": "885e35e8bf30d205bdc0c3892fbaeea85bae7463916cfcd4caabe953e1974364",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/utils/visualization.py#L30-L176"
+    },
+    "U-lbs": {
+      "project": "UniMate",
+      "path": "data_process/mesh_animation/animate_lbs.py",
+      "start": 80,
+      "end": 349,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UniMate/data_process/mesh_animation/animate_lbs.py",
+      "sha256": "ac4a2ed0ad75a48f746e85bffe29e764b187cb1c2daea37f798372106899bebe",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/data_process/mesh_animation/animate_lbs.py#L80-L349"
+    },
+    "R-entry": {
+      "project": "UMR",
+      "path": "scripts/humanoid_retarget_pipeline.py",
+      "start": 1034,
+      "end": 1068,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UMR/scripts/humanoid_retarget_pipeline.py",
+      "sha256": "520fe066345eda0fca5d97bd2f12c32c1cadd09c9b41b68cc0185d60e62077d0",
+      "url": "https://github.com/hanyang9/UMR/blob/d1cdaedaf67a827198da71c5fa831f48b2e51f91/scripts/humanoid_retarget_pipeline.py#L1034-L1068"
+    },
+    "R-compatible": {
+      "project": "UMR",
+      "path": "scripts/humanoid_retarget_pipeline.py",
+      "start": 390,
+      "end": 511,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UMR/scripts/humanoid_retarget_pipeline.py",
+      "sha256": "520fe066345eda0fca5d97bd2f12c32c1cadd09c9b41b68cc0185d60e62077d0",
+      "url": "https://github.com/hanyang9/UMR/blob/d1cdaedaf67a827198da71c5fa831f48b2e51f91/scripts/humanoid_retarget_pipeline.py#L390-L511"
+    },
+    "R-build": {
+      "project": "UMR",
+      "path": "scripts/humanoid_retarget_pipeline.py",
+      "start": 698,
+      "end": 885,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UMR/scripts/humanoid_retarget_pipeline.py",
+      "sha256": "520fe066345eda0fca5d97bd2f12c32c1cadd09c9b41b68cc0185d60e62077d0",
+      "url": "https://github.com/hanyang9/UMR/blob/d1cdaedaf67a827198da71c5fa831f48b2e51f91/scripts/humanoid_retarget_pipeline.py#L698-L885"
+    },
+    "R-train": {
+      "project": "UMR",
+      "path": "scripts/humanoid_retarget_pipeline.py",
+      "start": 890,
+      "end": 942,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UMR/scripts/humanoid_retarget_pipeline.py",
+      "sha256": "520fe066345eda0fca5d97bd2f12c32c1cadd09c9b41b68cc0185d60e62077d0",
+      "url": "https://github.com/hanyang9/UMR/blob/d1cdaedaf67a827198da71c5fa831f48b2e51f91/scripts/humanoid_retarget_pipeline.py#L890-L942"
+    },
+    "R-loop": {
+      "project": "UMR",
+      "path": "scripts/train_correspondence_template_residual_ae.py",
+      "start": 644,
+      "end": 746,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UMR/scripts/train_correspondence_template_residual_ae.py",
+      "sha256": "90cb6e79f869fc424dad57252604fe33e8b2317f638a1cab63475d3b280d0df6",
+      "url": "https://github.com/hanyang9/UMR/blob/d1cdaedaf67a827198da71c5fa831f48b2e51f91/scripts/train_correspondence_template_residual_ae.py#L644-L746"
+    },
+    "R-save": {
+      "project": "UMR",
+      "path": "scripts/train_correspondence_template_residual_ae.py",
+      "start": 773,
+      "end": 823,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UMR/scripts/train_correspondence_template_residual_ae.py",
+      "sha256": "90cb6e79f869fc424dad57252604fe33e8b2317f638a1cab63475d3b280d0df6",
+      "url": "https://github.com/hanyang9/UMR/blob/d1cdaedaf67a827198da71c5fa831f48b2e51f91/scripts/train_correspondence_template_residual_ae.py#L773-L823"
+    },
+    "R-bind": {
+      "project": "UMR",
+      "path": "scripts/retarget_smpl_to_humanoid_surface_vector.py",
+      "start": 627,
+      "end": 712,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UMR/scripts/retarget_smpl_to_humanoid_surface_vector.py",
+      "sha256": "d767f5ca84866ed17efac811545a7e6603c9dd678a68e3a6e14f0e86a0753a6f",
+      "url": "https://github.com/hanyang9/UMR/blob/d1cdaedaf67a827198da71c5fa831f48b2e51f91/scripts/retarget_smpl_to_humanoid_surface_vector.py#L627-L712"
+    },
+    "R-jobs": {
+      "project": "UMR",
+      "path": "scripts/humanoid_retarget_pipeline.py",
+      "start": 945,
+      "end": 1009,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UMR/scripts/humanoid_retarget_pipeline.py",
+      "sha256": "520fe066345eda0fca5d97bd2f12c32c1cadd09c9b41b68cc0185d60e62077d0",
+      "url": "https://github.com/hanyang9/UMR/blob/d1cdaedaf67a827198da71c5fa831f48b2e51f91/scripts/humanoid_retarget_pipeline.py#L945-L1009"
+    },
+    "R-solve": {
+      "project": "UMR",
+      "path": "scripts/retarget_smpl_to_humanoid_surface_vector.py",
+      "start": 2700,
+      "end": 2754,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UMR/scripts/retarget_smpl_to_humanoid_surface_vector.py",
+      "sha256": "d767f5ca84866ed17efac811545a7e6603c9dd678a68e3a6e14f0e86a0753a6f",
+      "url": "https://github.com/hanyang9/UMR/blob/d1cdaedaf67a827198da71c5fa831f48b2e51f91/scripts/retarget_smpl_to_humanoid_surface_vector.py#L2700-L2754"
+    },
+    "R-results": {
+      "project": "UMR",
+      "path": "scripts/retarget_smpl_to_humanoid_surface_vector.py",
+      "start": 2826,
+      "end": 2876,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UMR/scripts/retarget_smpl_to_humanoid_surface_vector.py",
+      "sha256": "d767f5ca84866ed17efac811545a7e6603c9dd678a68e3a6e14f0e86a0753a6f",
+      "url": "https://github.com/hanyang9/UMR/blob/d1cdaedaf67a827198da71c5fa831f48b2e51f91/scripts/retarget_smpl_to_humanoid_surface_vector.py#L2826-L2876"
+    },
+    "R-viewentry": {
+      "project": "UMR",
+      "path": "scripts/humanoid_retarget_pipeline.py",
+      "start": 1012,
+      "end": 1031,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UMR/scripts/humanoid_retarget_pipeline.py",
+      "sha256": "520fe066345eda0fca5d97bd2f12c32c1cadd09c9b41b68cc0185d60e62077d0",
+      "url": "https://github.com/hanyang9/UMR/blob/d1cdaedaf67a827198da71c5fa831f48b2e51f91/scripts/humanoid_retarget_pipeline.py#L1012-L1031"
+    },
+    "R-view": {
+      "project": "UMR",
+      "path": "scripts/visualize_robot_retarget_result.py",
+      "start": 1742,
+      "end": 2043,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UMR/scripts/visualize_robot_retarget_result.py",
+      "sha256": "a75d35b39692f221d882c783ba4a1fca79875fcae6ce70cf8c36ebe3ac78261e",
+      "url": "https://github.com/hanyang9/UMR/blob/d1cdaedaf67a827198da71c5fa831f48b2e51f91/scripts/visualize_robot_retarget_result.py#L1742-L2043"
+    },
+    "A-physics": {
+      "project": "AlphaMotion1",
+      "path": "physeval.py",
+      "start": 364,
+      "end": 538,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/physeval.py",
+      "sha256": "da7389e3d73a44ecac7037c34535ace5de8a1cd8fc62d9c864bcec1e50a116d7",
+      "url": null
+    },
+    "A-serv": {
+      "project": "AlphaMotion-release",
+      "path": "src/alphamotion/service/app.py",
+      "start": 111,
+      "end": 151,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/tool-audit/audit-source/AlphaMotion-release/src/alphamotion/service/app.py",
+      "sha256": "2f38a33b960125cd5eeab21ec87e40bc2cc8edfeb8b4a7d6d3b837d25c3d6b81",
+      "url": null
+    },
+    "A-jobs": {
+      "project": "AlphaMotion-release",
+      "path": "src/alphamotion/service/app.py",
+      "start": 661,
+      "end": 710,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/tool-audit/audit-source/AlphaMotion-release/src/alphamotion/service/app.py",
+      "sha256": "2f38a33b960125cd5eeab21ec87e40bc2cc8edfeb8b4a7d6d3b837d25c3d6b81",
+      "url": null
+    },
+    "F-schema": {
+      "project": "Foundation",
+      "path": "dataset.py",
+      "start": 25,
+      "end": 101,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/source/Foundation/dataset.py",
+      "sha256": "9c5b16ca40d63ac23e241744c46247e0e19a0da825d93c5af9c3d77cf39a5125",
+      "url": null
+    },
+    "F-cache": {
+      "project": "Foundation",
+      "path": "cache.py",
+      "start": 11,
+      "end": 63,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/source/Foundation/cache.py",
+      "sha256": "025dc45ba045d56947b455418a401b8cdcb44c66a2ae8b49c89bddf81834f4ca",
+      "url": null
+    },
+    "F-index": {
+      "project": "Foundation",
+      "path": "index_existing.py",
+      "start": 291,
+      "end": 344,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/source/Foundation/index_existing.py",
+      "sha256": "d8cd3888f48b243a3959d400951bc35e2b2e7ab24bc177cd749594a500c6440e",
+      "url": null
+    },
+    "F-loader": {
+      "project": "Foundation",
+      "path": "loader.py",
+      "start": 24,
+      "end": 109,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/source/Foundation/loader.py",
+      "sha256": "65c2fe76ac19c534995813ff204226e9392b26c9a243d54c04bd810a93c7b007",
+      "url": null
+    }
+  },
+  "figures": [
+    {
+      "name": "unimate_engineering",
+      "nodes": [
+        {
+          "id": "u1",
+          "x": 55,
+          "y": 205,
+          "w": 320,
+          "h": 120,
+          "title": "Raw rigged assets",
+          "lines": [
+            "FBX / GLB; animation clips",
+            "Original mesh + skeleton",
+            "Truebones / Mixamo / Objaverse"
+          ],
+          "kind": "data"
+        },
+        {
+          "id": "u2",
+          "x": 455,
+          "y": 205,
+          "w": 320,
+          "h": 120,
+          "title": "Export + render",
+          "lines": [
+            "Blender workers; motion NPZ",
+            "Multi-view frames; joint names",
+            "Mixamo: attach a character rig"
+          ],
+          "kind": "compute"
+        },
+        {
+          "id": "u3",
+          "x": 855,
+          "y": 205,
+          "w": 320,
+          "h": 120,
+          "title": "Annotate + extract",
+          "lines": [
+            "Captions; names; facing",
+            "Canonicalize; trim; activity/jump QC",
+            "Per-object workers + resume"
+          ],
+          "kind": "compute"
+        },
+        {
+          "id": "u4",
+          "x": 1255,
+          "y": 205,
+          "w": 320,
+          "h": 120,
+          "title": "Feature corpus",
+          "lines": [
+            "Clip NPZ + cond.npy + captions",
+            "Filter report + cached cond_parts",
+            "Mesh stays in source assets"
+          ],
+          "kind": "artifact"
+        },
+        {
+          "id": "u5",
+          "x": 55,
+          "y": 455,
+          "w": 320,
+          "h": 120,
+          "title": "Text feature cache",
+          "lines": [
+            "Joint vectors; caption tokens",
+            "Encoder / format validation",
+            "Atomic write; encode misses"
+          ],
+          "kind": "data"
+        },
+        {
+          "id": "u6",
+          "x": 455,
+          "y": 455,
+          "w": 320,
+          "h": 120,
+          "title": "Mixture + collate",
+          "lines": [
+            "Split / sampler / topology aug",
+            "Normalization; variable padding",
+            "Motion + condition + valid masks"
+          ],
+          "kind": "compute"
+        },
+        {
+          "id": "u7",
+          "x": 855,
+          "y": 455,
+          "w": 320,
+          "h": 120,
+          "title": "Train + model factory",
+          "lines": [
+            "JSON config; graph/full backbone",
+            "Accelerate; flow or DDPM; EMA",
+            "Global NaN guard; loss logging"
+          ],
+          "kind": "compute"
+        },
+        {
+          "id": "u8",
+          "x": 1255,
+          "y": 455,
+          "w": 320,
+          "h": 120,
+          "title": "Saved run bundle",
+          "lines": [
+            "Model + optimizer + LR + EMA",
+            "Step / epoch; config + data stats",
+            "Restore path; sample previews"
+          ],
+          "kind": "artifact"
+        },
+        {
+          "id": "u9",
+          "x": 55,
+          "y": 705,
+          "w": 320,
+          "h": 120,
+          "title": "Generation conditions",
+          "lines": [
+            "Text + target topology / T-pose",
+            "Optional known frames / edits",
+            "Saved normalization contract"
+          ],
+          "kind": "data"
+        },
+        {
+          "id": "u10",
+          "x": 455,
+          "y": 705,
+          "w": 320,
+          "h": 120,
+          "title": "Sampling entry",
+          "lines": [
+            "Text / in-between / edit / expand",
+            "CFG + flow ODE or diffusion",
+            "Load matching run configuration"
+          ],
+          "kind": "compute"
+        },
+        {
+          "id": "u11",
+          "x": 855,
+          "y": 705,
+          "w": 320,
+          "h": 120,
+          "title": "Reconstruct + inspect",
+          "lines": [
+            "Denormalize; RIC and rotation FK",
+            "NPY motion + MP4 comparisons",
+            "Preview is not physics validation"
+          ],
+          "kind": "review"
+        },
+        {
+          "id": "u12",
+          "x": 1255,
+          "y": 705,
+          "w": 320,
+          "h": 120,
+          "title": "Optional mesh animation",
+          "lines": [
+            "Generated motion + source rig",
+            "Blender or pure NumPy LBS",
+            "GLB / FBX / surface trajectories"
+          ],
+          "kind": "artifact"
+        }
+      ],
+      "edges": [
+        {
+          "source": "u1",
+          "target": "u2",
+          "points": [
+            [
+              375,
+              265.0
+            ],
+            [
+              455,
+              265.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "u2",
+          "target": "u3",
+          "points": [
+            [
+              775,
+              265.0
+            ],
+            [
+              855,
+              265.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "u3",
+          "target": "u4",
+          "points": [
+            [
+              1175,
+              265.0
+            ],
+            [
+              1255,
+              265.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "u5",
+          "target": "u6",
+          "points": [
+            [
+              375,
+              515.0
+            ],
+            [
+              455,
+              515.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "u6",
+          "target": "u7",
+          "points": [
+            [
+              775,
+              515.0
+            ],
+            [
+              855,
+              515.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "u7",
+          "target": "u8",
+          "points": [
+            [
+              1175,
+              515.0
+            ],
+            [
+              1255,
+              515.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "u9",
+          "target": "u10",
+          "points": [
+            [
+              375,
+              765.0
+            ],
+            [
+              455,
+              765.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "u10",
+          "target": "u11",
+          "points": [
+            [
+              775,
+              765.0
+            ],
+            [
+              855,
+              765.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "u11",
+          "target": "u12",
+          "points": [
+            [
+              1175,
+              765.0
+            ],
+            [
+              1255,
+              765.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "u4",
+          "target": "u6",
+          "points": [
+            [
+              1415.0,
+              325
+            ],
+            [
+              1415,
+              375
+            ],
+            [
+              615,
+              375
+            ],
+            [
+              615.0,
+              455
+            ]
+          ],
+          "label": "clips + topology",
+          "dashed": false
+        },
+        {
+          "source": "u4",
+          "target": "u5",
+          "points": [
+            [
+              1415.0,
+              325
+            ],
+            [
+              1415,
+              398
+            ],
+            [
+              215,
+              398
+            ],
+            [
+              215.0,
+              455
+            ]
+          ],
+          "label": "names / captions",
+          "dashed": false
+        },
+        {
+          "source": "u8",
+          "target": "u10",
+          "points": [
+            [
+              1415.0,
+              575
+            ],
+            [
+              1415,
+              630
+            ],
+            [
+              615,
+              630
+            ],
+            [
+              615.0,
+              705
+            ]
+          ],
+          "label": "weights + config + stats",
+          "dashed": false
+        }
+      ]
+    },
+    {
+      "name": "umr_engineering",
+      "nodes": [
+        {
+          "id": "r1",
+          "x": 55,
+          "y": 205,
+          "w": 320,
+          "h": 120,
+          "title": "Config + geometry",
+          "lines": [
+            "Defaults + robot / motion config",
+            "SMPL-X / SOMA; robot MJCF",
+            "Mesh, shape and sampling pose"
+          ],
+          "kind": "data"
+        },
+        {
+          "id": "r2",
+          "x": 455,
+          "y": 205,
+          "w": 320,
+          "h": 120,
+          "title": "Build surface dataset",
+          "lines": [
+            "Exterior surface sampling",
+            "Canonical frame + mesh metadata",
+            "Static point-cloud NPZ"
+          ],
+          "kind": "compute"
+        },
+        {
+          "id": "r3",
+          "x": 855,
+          "y": 205,
+          "w": 320,
+          "h": 120,
+          "title": "Train correspondence",
+          "lines": [
+            "PointNet template-residual AE",
+            "Reconstruction + regularizers",
+            "Pipeline default: 500 epochs"
+          ],
+          "kind": "compute"
+        },
+        {
+          "id": "r4",
+          "x": 1255,
+          "y": 205,
+          "w": 320,
+          "h": 120,
+          "title": "Correspondence artifacts",
+          "lines": [
+            "Model / optimizer checkpoint",
+            "Ordered reconstructed slots NPZ",
+            "Template / robot reuse checks"
+          ],
+          "kind": "artifact"
+        },
+        {
+          "id": "r5",
+          "x": 55,
+          "y": 455,
+          "w": 320,
+          "h": 120,
+          "title": "Source motion",
+          "lines": [
+            "Sequence + frame range + fps",
+            "Body / object motion if present",
+            "Source model and shape"
+          ],
+          "kind": "data"
+        },
+        {
+          "id": "r6",
+          "x": 455,
+          "y": 455,
+          "w": 320,
+          "h": 120,
+          "title": "Bind + update surfaces",
+          "lines": [
+            "Source and robot slot binding",
+            "Source target points / normals",
+            "Robot FK + point Jacobians"
+          ],
+          "kind": "compute"
+        },
+        {
+          "id": "r7",
+          "x": 855,
+          "y": 455,
+          "w": 320,
+          "h": 120,
+          "title": "Constrained solver",
+          "lines": [
+            "Clarabel per-frame update",
+            "Contact / limits / smoothness",
+            "Optional chunks; LQR filtering"
+          ],
+          "kind": "compute"
+        },
+        {
+          "id": "r8",
+          "x": 1255,
+          "y": 455,
+          "w": 320,
+          "h": 120,
+          "title": "Retarget result",
+          "lines": [
+            "Final qpos NPZ + frame metadata",
+            "Solver cost / temporal logs",
+            "Result compatibility checks"
+          ],
+          "kind": "artifact"
+        },
+        {
+          "id": "r9",
+          "x": 55,
+          "y": 705,
+          "w": 720,
+          "h": 120,
+          "title": "GLFW / Viser inspection",
+          "lines": [
+            "Synchronized source / robot; slots and contact overlays",
+            "Playback / video / human inspection; uses geometric FK",
+            "This path is not closed-loop dynamics simulation"
+          ],
+          "kind": "review"
+        },
+        {
+          "id": "r10",
+          "x": 855,
+          "y": 705,
+          "w": 720,
+          "h": 120,
+          "title": "Browser Studio: separate runtime",
+          "lines": [
+            "Client loads source pack + robot; WASM correspondence",
+            "Then MuJoCo Jacobians + Clarabel; browser default 60 epochs",
+            "Optional server API branch exists; backend availability unverified"
+          ],
+          "kind": "review"
+        }
+      ],
+      "edges": [
+        {
+          "source": "r1",
+          "target": "r2",
+          "points": [
+            [
+              375,
+              265.0
+            ],
+            [
+              455,
+              265.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "r2",
+          "target": "r3",
+          "points": [
+            [
+              775,
+              265.0
+            ],
+            [
+              855,
+              265.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "r3",
+          "target": "r4",
+          "points": [
+            [
+              1175,
+              265.0
+            ],
+            [
+              1255,
+              265.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "r5",
+          "target": "r6",
+          "points": [
+            [
+              375,
+              515.0
+            ],
+            [
+              455,
+              515.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "r6",
+          "target": "r7",
+          "points": [
+            [
+              775,
+              515.0
+            ],
+            [
+              855,
+              515.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "r7",
+          "target": "r8",
+          "points": [
+            [
+              1175,
+              515.0
+            ],
+            [
+              1255,
+              515.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "r4",
+          "target": "r6",
+          "points": [
+            [
+              1415.0,
+              325
+            ],
+            [
+              1415,
+              390
+            ],
+            [
+              615,
+              390
+            ],
+            [
+              615.0,
+              455
+            ]
+          ],
+          "label": "ordered slots + geometry references",
+          "dashed": false
+        },
+        {
+          "source": "r8",
+          "target": "r9",
+          "points": [
+            [
+              1415.0,
+              575
+            ],
+            [
+              1415,
+              620
+            ],
+            [
+              415,
+              620
+            ],
+            [
+              415.0,
+              705
+            ]
+          ],
+          "label": "saved result + source references",
+          "dashed": false
+        }
+      ]
+    },
+    {
+      "name": "alphamotion2_cleaning_proposed",
+      "nodes": [
+        {
+          "id": "p1",
+          "x": 55,
+          "y": 205,
+          "w": 320,
+          "h": 120,
+          "title": "Asset intake + lineage",
+          "lines": [
+            "Raw bytes / revision / source hash",
+            "Clip group + body + asset links",
+            "Immutable input manifest"
+          ],
+          "kind": "data"
+        },
+        {
+          "id": "p2",
+          "x": 455,
+          "y": 205,
+          "w": 320,
+          "h": 120,
+          "title": "Canonical adapters",
+          "lines": [
+            "Units / frames / timestamps",
+            "Skeleton + root + valid masks",
+            "direct / derived / pseudo / missing"
+          ],
+          "kind": "proposed"
+        },
+        {
+          "id": "p3",
+          "x": 855,
+          "y": 205,
+          "w": 320,
+          "h": 120,
+          "title": "Fast deterministic QC",
+          "lines": [
+            "Finite / SO(3) / FK / time checks",
+            "CPU kernels; batched execution",
+            "Versioned metrics + reason codes"
+          ],
+          "kind": "proposed"
+        },
+        {
+          "id": "p4",
+          "x": 1255,
+          "y": 205,
+          "w": 320,
+          "h": 120,
+          "title": "Budgeted work queue",
+          "lines": [
+            "Stage leases; idempotent job key",
+            "CPU / GPU / RAM / disk quotas",
+            "Backpressure; bounded retry"
+          ],
+          "kind": "proposed"
+        },
+        {
+          "id": "p5",
+          "x": 55,
+          "y": 455,
+          "w": 320,
+          "h": 120,
+          "title": "Surface + region cache",
+          "lines": [
+            "Rigid FK / LBS material points",
+            "Mesh binding + region text source",
+            "Asset hash + sample seed + version"
+          ],
+          "kind": "proposed"
+        },
+        {
+          "id": "p6",
+          "x": 455,
+          "y": 455,
+          "w": 320,
+          "h": 120,
+          "title": "Model / retarget workers",
+          "lines": [
+            "Pinned model + condition schema",
+            "Baseline UMR / new shared model",
+            "Motion and correspondence lineage"
+          ],
+          "kind": "proposed"
+        },
+        {
+          "id": "p7",
+          "x": 855,
+          "y": 455,
+          "w": 320,
+          "h": 120,
+          "title": "Evidence metric workers",
+          "lines": [
+            "Geometry QC; offline dynamics",
+            "Separate sim / real evidence jobs",
+            "Per-frame values + validity + units"
+          ],
+          "kind": "proposed"
+        },
+        {
+          "id": "p8",
+          "x": 1255,
+          "y": 455,
+          "w": 320,
+          "h": 120,
+          "title": "Policy + review gate",
+          "lines": [
+            "Policy version; accept/review/reject",
+            "Unknown is distinct from pass",
+            "Reasons and overrides retained"
+          ],
+          "kind": "review"
+        },
+        {
+          "id": "p9",
+          "x": 55,
+          "y": 705,
+          "w": 320,
+          "h": 120,
+          "title": "Quarantine + retry",
+          "lines": [
+            "Invalid data: isolate with reason",
+            "Transient failure: bounded retry",
+            "Resume from committed stages"
+          ],
+          "kind": "review"
+        },
+        {
+          "id": "p10",
+          "x": 455,
+          "y": 705,
+          "w": 320,
+          "h": 120,
+          "title": "Versioned dataset release",
+          "lines": [
+            "Validated artifacts; atomic manifest",
+            "Input / metric / policy references",
+            "Source-group + embodiment split"
+          ],
+          "kind": "artifact"
+        },
+        {
+          "id": "p11",
+          "x": 855,
+          "y": 705,
+          "w": 320,
+          "h": 120,
+          "title": "Train + benchmark readers",
+          "lines": [
+            "Mmap / bounded streaming windows",
+            "Same schema; disjoint partitions",
+            "Golden clips + failure regression"
+          ],
+          "kind": "data"
+        },
+        {
+          "id": "p12",
+          "x": 1255,
+          "y": 705,
+          "w": 320,
+          "h": 120,
+          "title": "Review + operations UI",
+          "lines": [
+            "Surface / skeleton / contact replay",
+            "Bad frames + trace to raw input",
+            "Queue / cache / failure telemetry"
+          ],
+          "kind": "review"
+        }
+      ],
+      "edges": [
+        {
+          "source": "p1",
+          "target": "p2",
+          "points": [
+            [
+              375,
+              265.0
+            ],
+            [
+              455,
+              265.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "p2",
+          "target": "p3",
+          "points": [
+            [
+              775,
+              265.0
+            ],
+            [
+              855,
+              265.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "p3",
+          "target": "p4",
+          "points": [
+            [
+              1175,
+              265.0
+            ],
+            [
+              1255,
+              265.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "p5",
+          "target": "p6",
+          "points": [
+            [
+              375,
+              515.0
+            ],
+            [
+              455,
+              515.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "p6",
+          "target": "p7",
+          "points": [
+            [
+              775,
+              515.0
+            ],
+            [
+              855,
+              515.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "p7",
+          "target": "p8",
+          "points": [
+            [
+              1175,
+              515.0
+            ],
+            [
+              1255,
+              515.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "p10",
+          "target": "p11",
+          "points": [
+            [
+              775,
+              765.0
+            ],
+            [
+              855,
+              765.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "p11",
+          "target": "p12",
+          "points": [
+            [
+              1175,
+              765.0
+            ],
+            [
+              1255,
+              765.0
+            ]
+          ],
+          "label": null,
+          "dashed": false
+        },
+        {
+          "source": "p4",
+          "target": "p5",
+          "points": [
+            [
+              1415.0,
+              325
+            ],
+            [
+              1415,
+              390
+            ],
+            [
+              215,
+              390
+            ],
+            [
+              215.0,
+              455
+            ]
+          ],
+          "label": "validated jobs + bounded resource grants",
+          "dashed": false
+        },
+        {
+          "source": "p8",
+          "target": "p10",
+          "points": [
+            [
+              1415.0,
+              575
+            ],
+            [
+              1415,
+              620
+            ],
+            [
+              615,
+              620
+            ],
+            [
+              615.0,
+              705
+            ]
+          ],
+          "label": "accepted / reviewed",
+          "dashed": false
+        },
+        {
+          "source": "p8",
+          "target": "p9",
+          "points": [
+            [
+              1415.0,
+              575
+            ],
+            [
+              1415,
+              648
+            ],
+            [
+              215,
+              648
+            ],
+            [
+              215.0,
+              705
+            ]
+          ],
+          "label": "rejected or failed stages",
+          "dashed": true
+        },
+        {
+          "source": "p8",
+          "target": "p12",
+          "points": [
+            [
+              1415.0,
+              575
+            ],
+            [
+              1595,
+              575
+            ],
+            [
+              1595,
+              681
+            ],
+            [
+              1415,
+              681
+            ],
+            [
+              1415.0,
+              705
+            ]
+          ],
+          "label": "review",
+          "dashed": true
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "未修改模型、启动训练或部署服务",
+    "diagram arrows是实际调用/产物流程；目标图全标Proposed",
+    "基础工程31项测试由主任务报告，本附录未重跑",
+    "UMR browser details继承已完成tool audit，Python入口独立核查",
+    "不将统一运动学表示等同统一动力学控制"
+  ],
+  "document_figures": [
+    {
+      "name": "alphamotion2_cleaning_proposed_doc",
+      "width_pt": 510,
+      "height_pt": 610,
+      "minimum_font_pt": 9.5,
+      "insertion_width_pt": 468,
+      "insertion_height_pt": 559.7647058823529,
+      "inserted_minimum_font_pt": 8.717647058823529
+    },
+    {
+      "name": "umr_engineering_doc",
+      "width_pt": 510,
+      "height_pt": 610,
+      "minimum_font_pt": 9.5,
+      "insertion_width_pt": 468,
+      "insertion_height_pt": 559.7647058823529,
+      "inserted_minimum_font_pt": 8.717647058823529
+    },
+    {
+      "name": "unimate_engineering_doc",
+      "width_pt": 510,
+      "height_pt": 610,
+      "minimum_font_pt": 9.5,
+      "insertion_width_pt": 468,
+      "insertion_height_pt": 559.7647058823529,
+      "inserted_minimum_font_pt": 8.717647058823529
+    }
+  ]
+}

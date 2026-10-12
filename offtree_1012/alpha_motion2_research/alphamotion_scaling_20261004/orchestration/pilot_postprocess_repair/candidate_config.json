@@ -1,0 +1,133 @@
+{
+  "seed": 0,
+  "model": {
+    "d_model": 256,
+    "n_heads": 8,
+    "enc_layers": 6,
+    "dec_layers": 6,
+    "n_latent": 128,
+    "n_latent_p": 4,
+    "fsq_stages": 1,
+    "fsq_levels": [
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32,
+      32
+    ],
+    "use_sem": true,
+    "sem_dim": 1024,
+    "use_dof": true,
+    "n_judges": 16,
+    "single_codebook": false,
+    "rot_only": false,
+    "rot_head": "free",
+    "vis_residual": false,
+    "root_head": false,
+    "contact_chan": true
+  },
+  "reference_checkpoint": "/var/tmp/alphamotion/topo_exp/runs/L_M20k_0903/model.pt",
+  "reference_sha256": "d6585ca0e46d85300b44a3998288396ffd6853639d6ad094f5846e8cce0e8f7d",
+  "qwen_cache": "qwen_audit/qwen3_names_pinned.pt",
+  "qwen_sha256": "462b84e41da470acf811d024bdead2f0b41fb8d054ef713e2f5401ebf48bc3ec",
+  "qwen_revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+  "batch_size": 128,
+  "steps": 3000,
+  "minimum_useful_steps": 1000,
+  "max_training_seconds": 1800,
+  "checkpoint_every": 500,
+  "mixture": {
+    "xwbc": 0.55,
+    "unimate": 0.45,
+    "modes": [
+      0.4,
+      0.35,
+      0.25
+    ],
+    "modes_scope": "UniMate same-body tasks only; XWBC main always retains original per-row mask_prob/mix"
+  },
+  "condition_dropout": 0.35,
+  "contact_dropout": 0.3,
+  "optimizer": {
+    "lr": 0.0001,
+    "weight_decay": 0.0001,
+    "clip_norm": 1.0,
+    "schedule": "CosineAnnealingLR over planned steps; no warmup"
+  },
+  "loss": {
+    "position": 5.0,
+    "condition_position": 10.0,
+    "condition_rotation": 1.0,
+    "root_height": 3.0,
+    "penetration": 200.0,
+    "contact_geometry": 1.0
+  },
+  "eval": {
+    "frames_per_body": 192,
+    "quick_frames": 64,
+    "batch_size": 32
+  },
+  "explicit_recipe_departures": [
+    "encoder and decoder depth 4->6; compatible reference warmstart",
+    "frozen SigLIP768 -> independently recomputed pinned frozen Qwen1024; entire semantic projection reinitialized",
+    "new shared C<=2 sparse current-frame target SE3 tokens after both FSQ memories",
+    "explicit unknown-mechanics and nonmetric-length bits",
+    "mixed XWBC verified pairing and UniMate same-body tasks; no invented cross-body UniMate targets",
+    "full float32 extracted pose9 versus old huge-cache fp16 roundtrip",
+    "source group splits and entire new-body holdouts replace random frame split",
+    "only root raw-hpos channel0 supervises valid root height; raw-hpos is never XYZ output",
+    "XWBC original single-frame auxiliary losses, mask/contact policy, eight-direction mean and AdamW recipe restored; same-row InfoNCE duplicates deduplicated",
+    "XWBC pure target-SE3 completion added as an extra branch at probability .25 and weight1; original main branch is retained",
+    "Only temporal world-slip2/hpair.1 disabled: sparse selected rows lack complete adjacent/world-root/time supervision",
+    "UniMate same-body normalized kinematic losses and sparse conditions only; no fabricated cross-body positives, judge labels or metric floor targets",
+    "batch256->128, steps8000->3000 and max1800s bounded budget; group-balanced source rows instead of old uniform row sampling"
+  ],
+  "coordinate_frame": "root-centered canonical Y-up, original canonical orientation retained; not a root-orientation-rotated body frame",
+  "world_anchor": null,
+  "expand_gate": {
+    "finite_and_split_fk_checks": true,
+    "minimum_completed_steps": 1000,
+    "selected_endpoint_position_improvement_fraction_vs_no_se3": 0.1,
+    "selected_endpoint_rotation_improvement_fraction_vs_no_se3": 0.1,
+    "old_domain_fullbody_regression_fraction_max_vs_reference": 0.1,
+    "heldout_new_body_regression_fraction_max_vs_initial": 0.1,
+    "qualitative_paired_review_required": true,
+    "decision": "Continue only if checks and measured gate pass; otherwise inspect failure before scale-up. A single mixed-change run cannot isolate causal gains."
+  },
+  "reference_siglip_cache": "/var/tmp/alphamotion/topo_exp/siglip_names.pt",
+  "reference_config": "/var/tmp/alphamotion/topo_exp/runs/L_M20k_0903/config.json",
+  "reference_config_sha256": "0e61ed5b012420d5fa186bc09537e9cac32ed14fa4533182c6d44805f5e7ee58",
+  "recipe": {
+    "w_contrast": 0.5,
+    "tau": 0.1,
+    "contrast_sample": 6,
+    "reenc_consistency": 1.0,
+    "reenc_prob": 0.3,
+    "n_judges": 16,
+    "judge_mode": "grad",
+    "w_judge": 0.1,
+    "w_pen": 200.0,
+    "w_cgeo": 1.0,
+    "mask_prob": 0.3,
+    "mask_mix": "rand:0.25,ee:0.15,root:0.10,sparse:0.25,cask:0.15,cgive:0.10",
+    "combo_sample": 8,
+    "source_row_duplicates": "stable dedup for InfoNCE only; judge and cycle retain original batch weighting",
+    "temporal_slip_hpair": "disabled: no complete adjacent/world/time payload"
+  },
+  "xwbc_sparse_extra": {
+    "probability": 0.25,
+    "weight": 1.0,
+    "directions": 1,
+    "scope": "additional same-body pure-SE3 task; never replaces eight original XWBC directions"
+  },
+  "recipe_status": "restored_single_frame_recipe_pending_live_data_and_cuda_validation",
+  "train_allowed": false
+}

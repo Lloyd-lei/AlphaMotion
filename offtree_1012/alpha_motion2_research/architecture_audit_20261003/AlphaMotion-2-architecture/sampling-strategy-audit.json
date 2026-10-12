@@ -1,0 +1,328 @@
+{
+  "recommendation": "synchronized skeleton/surface short windows as primary; single-frame/static correspondence as auxiliary",
+  "status": "proposal_only_no_model_or_config_changed",
+  "facts": [
+    {
+      "model": "AlphaMotion-1 主FSQ路径",
+      "fact": "当前推荐megatron的tdec=0；主批从训练行随机抽独立帧。存在接触均衡采样分支，但仍抽行。",
+      "refs": [
+        "aconfig",
+        "abatch"
+      ]
+    },
+    {
+      "model": "AlphaMotion-1 数据可复用性",
+      "fact": "sequences.json的start/len提供片段边界，代码据此找同片段相邻帧/窗口；root_world.pt在root_pos路径中加载。不能仅凭帧数或行号假定时间顺序、fps和root齐全。",
+      "refs": [
+        "aseqs",
+        "awindow",
+        "aroot"
+      ]
+    },
+    {
+      "model": "AlphaMotion-1 独立时序实验",
+      "fact": "tdec>1可把K帧窗口压平后在解码器融合相邻码；当前megatron未启用。train_latent_diffusion.py另取64帧默认窗口，其中末8帧是噪声目标chunk，前56帧为干净上下文；Transformer调用没有因果attention mask。",
+      "refs": [
+        "atdec",
+        "adiff",
+        "adiffwindow"
+      ]
+    },
+    {
+      "model": "UniMate 窗口",
+      "fact": "已审默认配置T-pose条件，max_motion_length=60；长片段均匀随机选择合法起点，截取连续60帧，短片段补零并使用有效长度mask。first_frame条件分支会多取1帧作为条件且默认从0开始。",
+      "refs": [
+        "ucfg",
+        "ucrop",
+        "upad",
+        "uitem",
+        "umasks"
+      ]
+    },
+    {
+      "model": "UniMate 时间尺度",
+      "fact": "Dataset要求30fps，显式非30fps报错；旧feature缺fps字段会警告并按30fps假设。特征中的速度为每帧差分，不能直接混用不同fps。60帧约2秒。",
+      "refs": [
+        "ufps",
+        "ufpsdelta"
+      ]
+    },
+    {
+      "model": "UniMate 生成方式",
+      "fact": "窗口内每关节的时间注意力只按有效长度mask，不屏蔽未来帧；从[B,J,D,T]整块噪声开始，ODE或DDPM迭代共同生成整个窗口，不是逐帧因果自回归。整段生成也不等于一次网络forward。",
+      "refs": [
+        "utime",
+        "uattn",
+        "ugen"
+      ]
+    },
+    {
+      "model": "UMR",
+      "fact": "训练样本是canonical静态点云，训练表面对应；运动阶段逐帧优化qpos，用前帧warm start，可加一阶差分与二阶差分正则以及后置LQR。它不是学习时序运动生成器。",
+      "refs": [
+        "rdata",
+        "rtrain",
+        "rseq",
+        "rsmooth",
+        "rfilter"
+      ]
+    },
+    {
+      "model": "评测划分",
+      "fact": "Alpha1旧默认split_indices随机划分帧；tdec源码明确注明一些val窗口其余帧可能来自训练行。UniMate已审默认test_split_ratio=0。二代必须重新以完整source动作组及本体留出来评测，不照搬这些配置作为严谨泛化验证。",
+      "refs": [
+        "asplit",
+        "aleak",
+        "ucfg"
+      ]
+    }
+  ],
+  "minimal_experiments": [
+    "主训练单位建议为同步skeleton+surface的连续短窗口；继续使用Alpha1原数据，通过片段索引重新组织读取，而不是因为单帧训练过就丢弃数据。单帧重建/映射和静态表面对应保留作辅助任务。",
+    "先固定一个候选表示与骨干，做T=1、16、60三个时间上下文对照（30fps时约0、0.5、2秒上下文），固定完整动作划分，按总有效帧数/计算预算报告可比结果；不同时更换FSQ和生成器，避免归因混乱。T=1表示单帧，不表示0秒采样间隔。",
+    "窗口长度优选后，再比较局部surface区域文本：正确文本、无文本、打乱区域文本，并保留surface-only和skeleton-only消融；完整主模型仍联合skeleton+surface。用完整未见本体留出衡量核心thesis，不能把时间平滑提升当成zero-shot证明。",
+    "单帧/静态辅助可从同一有效窗口抽帧，或使用只有静态mesh的资产；训练权重与混合比例先不锁定，必须逐任务报告有效样本数和损失归一化。",
+    "先比较单帧精度/EE误差分位数、表面对应/穿透、接触保持和世界系滑移、速度/加速度/jerk及窗口边界抖动。离线动力学、闭环sim和真机证据分开。",
+    "是否连续窗口、是否因果预测、是否FSQ量化、是否flow/diffusion是不同设计轴；保留FSQ时也可以加时序encoder/decoder或学习token/latent序列生成，未授权锁定最终架构。"
+  ],
+  "reuse_conditions": [
+    "时间：保留source sequence id、原始frame index或timestamp、fps/重采样映射；窗口不跨片段，skeleton/surface/contact/物体必须对齐同一时刻。缺字段时先核对原缓存，不能按行号猜。",
+    "世界运动：保留root position/orientation trajectory和world↔canonical变换、尺度与轴约定；用真实dt算导数。仅有root-relative姿态不足以判断世界系接触滑移。",
+    "表面：对同一窗口追踪相同mesh物质点；rigid body用固定link-local点，LBS用固定face+barycentric/bind/weights，避免每帧随机重新采点。区域文本需与该版本mesh的membership对应且带来源。",
+    "缺模态：frame/joint/point有效性与模态availability分开；缺mesh/contact/tactile/region不是零值真值。允许局部可用数据训练相应任务，不伪造密集监督。",
+    "划分：先按完整原始动作/主体等source group划train/eval，再抽窗口；同一动作映射到20个本体的派生样本共用source group。再单独设完整本体holdout，报告seen-body新动作与unseen-body结果。"
+  ],
+  "sources": {
+    "aconfig": {
+      "project": "AlphaMotion1",
+      "path": "verified-megatron-config.json",
+      "start": 59,
+      "end": 65,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/verified-megatron-config.json",
+      "url": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/verified-megatron-config.json:59",
+      "sha256": "feca8f218451d8372303640496e72fa7e4369f81fcda068309e1cb8ab7ce5936"
+    },
+    "abatch": {
+      "project": "AlphaMotion1",
+      "path": "train_dual.py",
+      "start": 358,
+      "end": 371,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/train_dual.py",
+      "url": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/train_dual.py:358",
+      "sha256": "de909574dc433e99080329c780a52fb3fe9dd91a7474f7d0f7abe58b4eced233"
+    },
+    "asplit": {
+      "project": "AlphaMotion1",
+      "path": "dual_common.py",
+      "start": 237,
+      "end": 242,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/dual_common.py",
+      "url": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/dual_common.py:237",
+      "sha256": "c8f43065efb0a0188796a572d9b549a55f16b83bf4c3a5d4a28f84d5ba0110cd"
+    },
+    "aseqs": {
+      "project": "AlphaMotion1",
+      "path": "dual_common.py",
+      "start": 610,
+      "end": 638,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/dual_common.py",
+      "url": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/dual_common.py:610",
+      "sha256": "c8f43065efb0a0188796a572d9b549a55f16b83bf4c3a5d4a28f84d5ba0110cd"
+    },
+    "aroot": {
+      "project": "AlphaMotion1",
+      "path": "train_dual.py",
+      "start": 276,
+      "end": 299,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/train_dual.py",
+      "url": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/train_dual.py:276",
+      "sha256": "de909574dc433e99080329c780a52fb3fe9dd91a7474f7d0f7abe58b4eced233"
+    },
+    "atdec": {
+      "project": "AlphaMotion1",
+      "path": "train_dual.py",
+      "start": 149,
+      "end": 158,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/train_dual.py",
+      "url": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/train_dual.py:149",
+      "sha256": "de909574dc433e99080329c780a52fb3fe9dd91a7474f7d0f7abe58b4eced233"
+    },
+    "awindow": {
+      "project": "AlphaMotion1",
+      "path": "tdec.py",
+      "start": 25,
+      "end": 48,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/tdec.py",
+      "url": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/tdec.py:25",
+      "sha256": "c632f44649312d0974e21c748cb1fa3f6c38223af5986a73af13cb4e64b8feef"
+    },
+    "aleak": {
+      "project": "AlphaMotion1",
+      "path": "train_dual.py",
+      "start": 328,
+      "end": 335,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/train_dual.py",
+      "url": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/train_dual.py:328",
+      "sha256": "de909574dc433e99080329c780a52fb3fe9dd91a7474f7d0f7abe58b4eced233"
+    },
+    "adiff": {
+      "project": "AlphaMotion1",
+      "path": "train_latent_diffusion.py",
+      "start": 32,
+      "end": 53,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/train_latent_diffusion.py",
+      "url": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/train_latent_diffusion.py:32",
+      "sha256": "8fd7a6beb0f75f83f30fb82802dbbdad962ab91412b1a651c9bb71d312315e6e"
+    },
+    "adiffwindow": {
+      "project": "AlphaMotion1",
+      "path": "train_latent_diffusion.py",
+      "start": 78,
+      "end": 115,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/train_latent_diffusion.py",
+      "url": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/train_latent_diffusion.py:78",
+      "sha256": "8fd7a6beb0f75f83f30fb82802dbbdad962ab91412b1a651c9bb71d312315e6e"
+    },
+    "ucfg": {
+      "project": "UniMate",
+      "path": "configs/uniml3d_60frames_graph_adaln.json",
+      "start": 18,
+      "end": 38,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UniMate/configs/uniml3d_60frames_graph_adaln.json",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/configs/uniml3d_60frames_graph_adaln.json#L18-L38",
+      "sha256": "c06d95e77821a8d06d98edd544628e5857672715cb5f1389d34b031f3d327c67"
+    },
+    "ucrop": {
+      "project": "UniMate",
+      "path": "unimate/dataset/transforms.py",
+      "start": 17,
+      "end": 62,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/source/UniMate/unimate/dataset/transforms.py",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/dataset/transforms.py#L17-L62",
+      "sha256": "c088f342476b22412df2081c86b9e7dcb83c254d0e942a94f6bce877337a8625"
+    },
+    "upad": {
+      "project": "UniMate",
+      "path": "unimate/dataset/transforms.py",
+      "start": 114,
+      "end": 124,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/source/UniMate/unimate/dataset/transforms.py",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/dataset/transforms.py#L114-L124",
+      "sha256": "c088f342476b22412df2081c86b9e7dcb83c254d0e942a94f6bce877337a8625"
+    },
+    "uitem": {
+      "project": "UniMate",
+      "path": "unimate/dataset/mixture/dataset.py",
+      "start": 856,
+      "end": 906,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/source/UniMate/unimate/dataset/mixture/dataset.py",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/dataset/mixture/dataset.py#L856-L906",
+      "sha256": "1ece829236db3e180097ec49c5918b285bf8b09be6b65cc808fb5714b3f6a709"
+    },
+    "ufps": {
+      "project": "UniMate",
+      "path": "unimate/dataset/mixture/dataset.py",
+      "start": 629,
+      "end": 651,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/source/UniMate/unimate/dataset/mixture/dataset.py",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/dataset/mixture/dataset.py#L629-L651",
+      "sha256": "1ece829236db3e180097ec49c5918b285bf8b09be6b65cc808fb5714b3f6a709"
+    },
+    "umasks": {
+      "project": "UniMate",
+      "path": "unimate/dataset/mixture/collate.py",
+      "start": 168,
+      "end": 182,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/source/UniMate/unimate/dataset/mixture/collate.py",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/dataset/mixture/collate.py#L168-L182",
+      "sha256": "512600e6dfe9193256c2ee4087892c0fd658f9f803d14a0757ba5f502ba9dd34"
+    },
+    "utime": {
+      "project": "UniMate",
+      "path": "unimate/models/denoiser/graph_adaln.py",
+      "start": 72,
+      "end": 104,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UniMate/unimate/models/denoiser/graph_adaln.py",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/models/denoiser/graph_adaln.py#L72-L104",
+      "sha256": "f3e7e8fe32dc367f1b5525436aa8573f1dec2dbe5f7239a42d246f407ca08ee2"
+    },
+    "uattn": {
+      "project": "UniMate",
+      "path": "unimate/models/denoiser/blocks/graph.py",
+      "start": 222,
+      "end": 241,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UniMate/unimate/models/denoiser/blocks/graph.py",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/models/denoiser/blocks/graph.py#L222-L241",
+      "sha256": "1eb728af464b64fb262eca1e26a94ebdabf994303c2d9ffcab0feee464762628"
+    },
+    "ugen": {
+      "project": "UniMate",
+      "path": "unimate/inference/generate.py",
+      "start": 101,
+      "end": 125,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UniMate/unimate/inference/generate.py",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/inference/generate.py#L101-L125",
+      "sha256": "a321c478056638e6c9bfca268c949a83315d25e1b89a8c832c42c509201c5e00"
+    },
+    "ufpsdelta": {
+      "project": "UniMate",
+      "path": "unimate/dataset/mixture/dataset.py",
+      "start": 71,
+      "end": 79,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/source/UniMate/unimate/dataset/mixture/dataset.py",
+      "url": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/dataset/mixture/dataset.py#L71-L79",
+      "sha256": "1ece829236db3e180097ec49c5918b285bf8b09be6b65cc808fb5714b3f6a709"
+    },
+    "rdata": {
+      "project": "UMR",
+      "path": "scripts/train_correspondence_template_residual_ae.py",
+      "start": 217,
+      "end": 241,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UMR/scripts/train_correspondence_template_residual_ae.py",
+      "url": "https://github.com/hanyang9/UMR/blob/d1cdaedaf67a827198da71c5fa831f48b2e51f91/scripts/train_correspondence_template_residual_ae.py#L217-L241",
+      "sha256": "90cb6e79f869fc424dad57252604fe33e8b2317f638a1cab63475d3b280d0df6"
+    },
+    "rtrain": {
+      "project": "UMR",
+      "path": "scripts/train_correspondence_template_residual_ae.py",
+      "start": 650,
+      "end": 669,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UMR/scripts/train_correspondence_template_residual_ae.py",
+      "url": "https://github.com/hanyang9/UMR/blob/d1cdaedaf67a827198da71c5fa831f48b2e51f91/scripts/train_correspondence_template_residual_ae.py#L650-L669",
+      "sha256": "90cb6e79f869fc424dad57252604fe33e8b2317f638a1cab63475d3b280d0df6"
+    },
+    "rseq": {
+      "project": "UMR",
+      "path": "scripts/retarget_smpl_to_humanoid_surface_vector.py",
+      "start": 2700,
+      "end": 2751,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UMR/scripts/retarget_smpl_to_humanoid_surface_vector.py",
+      "url": "https://github.com/hanyang9/UMR/blob/d1cdaedaf67a827198da71c5fa831f48b2e51f91/scripts/retarget_smpl_to_humanoid_surface_vector.py#L2700-L2751",
+      "sha256": "d767f5ca84866ed17efac811545a7e6603c9dd678a68e3a6e14f0e86a0753a6f"
+    },
+    "rsmooth": {
+      "project": "UMR",
+      "path": "scripts/retarget_smpl_to_humanoid_surface_vector.py",
+      "start": 1910,
+      "end": 1918,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UMR/scripts/retarget_smpl_to_humanoid_surface_vector.py",
+      "url": "https://github.com/hanyang9/UMR/blob/d1cdaedaf67a827198da71c5fa831f48b2e51f91/scripts/retarget_smpl_to_humanoid_surface_vector.py#L1910-L1918",
+      "sha256": "d767f5ca84866ed17efac811545a7e6603c9dd678a68e3a6e14f0e86a0753a6f"
+    },
+    "rfilter": {
+      "project": "UMR",
+      "path": "scripts/retarget_smpl_to_humanoid_surface_vector.py",
+      "start": 2826,
+      "end": 2848,
+      "local": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/UMR/scripts/retarget_smpl_to_humanoid_surface_vector.py",
+      "url": "https://github.com/hanyang9/UMR/blob/d1cdaedaf67a827198da71c5fa831f48b2e51f91/scripts/retarget_smpl_to_humanoid_surface_vector.py#L2826-L2848",
+      "sha256": "d767f5ca84866ed17efac811545a7e6603c9dd678a68e3a6e14f0e86a0753a6f"
+    }
+  },
+  "validation": {
+    "line_ranges_valid": true,
+    "source_refs": 25,
+    "remote_data_fields_not_audited": true
+  },
+  "causal_boundary": "连续裁窗不等于因果自回归；离线可读整段，在线低延迟需另测因果或有限look-ahead。"
+}

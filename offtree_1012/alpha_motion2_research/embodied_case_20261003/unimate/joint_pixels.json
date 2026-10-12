@@ -1,0 +1,481 @@
+{
+  "image": "skeleton_tpose_motion.png",
+  "width_px": 2400,
+  "height_px": 1080,
+  "pixel_origin": "top-left",
+  "plot_axis_order": [
+    "source_X",
+    "source_Z",
+    "source_Y"
+  ],
+  "panels": [
+    {
+      "label": "T-pose conditioning",
+      "source_frame_index": null,
+      "joint_index": 9,
+      "joint_name": "mixamorig:LeftFoot",
+      "joint_source_xyz_body_units": [
+        0.08152824980218654,
+        0.0644093411624944,
+        -0.023500767108212566
+      ],
+      "joint_pixel_xy": [
+        364.5533628646743,
+        664.3690494004495
+      ],
+      "projection_matrix_plot_coordinates": [
+        [
+          0.6665211198365925,
+          0.2098762606831321,
+          0.0,
+          -1.1102230246251565e-16
+        ],
+        [
+          -0.058822672847123406,
+          0.1027993335642122,
+          0.8230151249313704,
+          -0.6254914949478421
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -10.0
+        ],
+        [
+          -0.2767389177965775,
+          0.48363283992051176,
+          -0.17493726515783578,
+          10.132952321519957
+        ]
+      ],
+      "axes": {
+        "X": {
+          "source_origin_xyz": [
+            -0.63,
+            0.08,
+            0.3
+          ],
+          "source_endpoint_xyz": [
+            -0.45999999999999996,
+            0.08,
+            0.3
+          ],
+          "origin_pixel_xy": [
+            245.3717409420721,
+            632.800076143396
+          ],
+          "endpoint_pixel_xy": [
+            278.14262020974996,
+            636.3840978743505
+          ]
+        },
+        "Y": {
+          "source_origin_xyz": [
+            -0.63,
+            0.08,
+            0.3
+          ],
+          "source_endpoint_xyz": [
+            -0.63,
+            0.25,
+            0.3
+          ],
+          "origin_pixel_xy": [
+            245.3717409420721,
+            632.800076143396
+          ],
+          "endpoint_pixel_xy": [
+            245.0738808806956,
+            592.230653547595
+          ]
+        },
+        "Z": {
+          "source_origin_xyz": [
+            -0.63,
+            0.08,
+            0.3
+          ],
+          "source_endpoint_xyz": [
+            -0.63,
+            0.08,
+            0.47
+          ],
+          "origin_pixel_xy": [
+            245.3717409420721,
+            632.800076143396
+          ],
+          "endpoint_pixel_xy": [
+            256.5254474544924,
+            626.6135465218758
+          ]
+        }
+      },
+      "crop_bbox_xyxy": [
+        229,
+        529,
+        499,
+        799
+      ],
+      "joint_pixel_xy_in_crop": [
+        135.55336286467428,
+        135.3690494004495
+      ],
+      "crop_file": "left_foot_tpose_crop.png",
+      "crop_rendered_width_px": 270,
+      "crop_rendered_height_px": 270,
+      "crop_pixel_accuracy_note": "Pixel coordinates use the requested figure bbox; raster rounding is below one pixel."
+    },
+    {
+      "label": "Frame 0  /  0.000 s",
+      "source_frame_index": 0,
+      "joint_index": 9,
+      "joint_name": "mixamorig:LeftFoot",
+      "joint_source_xyz_body_units": [
+        0.2191138799127963,
+        0.06467878736755094,
+        0.12477411012095817
+      ],
+      "joint_pixel_xy": [
+        987.099337863646,
+        661.5674042550611
+      ],
+      "projection_matrix_plot_coordinates": [
+        [
+          0.6665211198365925,
+          0.2098762606831321,
+          0.0,
+          -1.1102230246251565e-16
+        ],
+        [
+          -0.058822672847123406,
+          0.1027993335642122,
+          0.8230151249313704,
+          -0.6254914949478421
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -10.0
+        ],
+        [
+          -0.2767389177965775,
+          0.48363283992051176,
+          -0.17493726515783578,
+          10.132952321519957
+        ]
+      ],
+      "axes": {
+        "X": {
+          "source_origin_xyz": [
+            -0.63,
+            0.08,
+            0.3
+          ],
+          "source_endpoint_xyz": [
+            -0.45999999999999996,
+            0.08,
+            0.3
+          ],
+          "origin_pixel_xy": [
+            830.9717409420721,
+            632.8000761433959
+          ],
+          "endpoint_pixel_xy": [
+            863.7426202097499,
+            636.3840978743503
+          ]
+        },
+        "Y": {
+          "source_origin_xyz": [
+            -0.63,
+            0.08,
+            0.3
+          ],
+          "source_endpoint_xyz": [
+            -0.63,
+            0.25,
+            0.3
+          ],
+          "origin_pixel_xy": [
+            830.9717409420721,
+            632.8000761433959
+          ],
+          "endpoint_pixel_xy": [
+            830.6738808806956,
+            592.2306535475949
+          ]
+        },
+        "Z": {
+          "source_origin_xyz": [
+            -0.63,
+            0.08,
+            0.3
+          ],
+          "source_endpoint_xyz": [
+            -0.63,
+            0.08,
+            0.47
+          ],
+          "origin_pixel_xy": [
+            830.9717409420721,
+            632.8000761433959
+          ],
+          "endpoint_pixel_xy": [
+            842.1254474544924,
+            626.6135465218757
+          ]
+        }
+      },
+      "crop_bbox_xyxy": [
+        852,
+        526,
+        1122,
+        796
+      ],
+      "joint_pixel_xy_in_crop": [
+        135.09933786364604,
+        135.5674042550611
+      ],
+      "crop_file": "left_foot_frame_00_crop.png",
+      "crop_rendered_width_px": 269,
+      "crop_rendered_height_px": 270,
+      "crop_pixel_accuracy_note": "Pixel coordinates use the requested figure bbox; raster rounding is below one pixel."
+    },
+    {
+      "label": "Frame 3  /  0.100 s",
+      "source_frame_index": 3,
+      "joint_index": 9,
+      "joint_name": "mixamorig:LeftFoot",
+      "joint_source_xyz_body_units": [
+        0.2239624566864666,
+        0.21023012003366415,
+        0.13512544063600207
+      ],
+      "joint_pixel_xy": [
+        1574.442610392722,
+        625.5442648177643
+      ],
+      "projection_matrix_plot_coordinates": [
+        [
+          0.6665211198365925,
+          0.2098762606831321,
+          0.0,
+          -1.1102230246251565e-16
+        ],
+        [
+          -0.058822672847123406,
+          0.1027993335642122,
+          0.8230151249313704,
+          -0.6254914949478421
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -10.0
+        ],
+        [
+          -0.2767389177965775,
+          0.48363283992051176,
+          -0.17493726515783578,
+          10.132952321519957
+        ]
+      ],
+      "axes": {
+        "X": {
+          "source_origin_xyz": [
+            -0.63,
+            0.08,
+            0.3
+          ],
+          "source_endpoint_xyz": [
+            -0.45999999999999996,
+            0.08,
+            0.3
+          ],
+          "origin_pixel_xy": [
+            1416.5717409420722,
+            632.8000761433959
+          ],
+          "endpoint_pixel_xy": [
+            1449.34262020975,
+            636.3840978743503
+          ]
+        },
+        "Y": {
+          "source_origin_xyz": [
+            -0.63,
+            0.08,
+            0.3
+          ],
+          "source_endpoint_xyz": [
+            -0.63,
+            0.25,
+            0.3
+          ],
+          "origin_pixel_xy": [
+            1416.5717409420722,
+            632.8000761433959
+          ],
+          "endpoint_pixel_xy": [
+            1416.2738808806957,
+            592.2306535475949
+          ]
+        },
+        "Z": {
+          "source_origin_xyz": [
+            -0.63,
+            0.08,
+            0.3
+          ],
+          "source_endpoint_xyz": [
+            -0.63,
+            0.08,
+            0.47
+          ],
+          "origin_pixel_xy": [
+            1416.5717409420722,
+            632.8000761433959
+          ],
+          "endpoint_pixel_xy": [
+            1427.7254474544925,
+            626.6135465218757
+          ]
+        }
+      },
+      "crop_bbox_xyxy": [
+        1439,
+        490,
+        1709,
+        760
+      ],
+      "joint_pixel_xy_in_crop": [
+        135.44261039272192,
+        135.54426481776432
+      ],
+      "crop_file": "left_foot_frame_03_crop.png",
+      "crop_rendered_width_px": 269,
+      "crop_rendered_height_px": 270,
+      "crop_pixel_accuracy_note": "Pixel coordinates use the requested figure bbox; raster rounding is below one pixel."
+    },
+    {
+      "label": "Frame 6  /  0.200 s",
+      "source_frame_index": 6,
+      "joint_index": 9,
+      "joint_name": "mixamorig:LeftFoot",
+      "joint_source_xyz_body_units": [
+        0.1869612926976994,
+        0.3952596870374371,
+        0.11485491249701354
+      ],
+      "joint_pixel_xy": [
+        2151.4563090277943,
+        579.8350400076408
+      ],
+      "projection_matrix_plot_coordinates": [
+        [
+          0.6665211198365925,
+          0.2098762606831321,
+          0.0,
+          -1.1102230246251565e-16
+        ],
+        [
+          -0.058822672847123406,
+          0.1027993335642122,
+          0.8230151249313704,
+          -0.6254914949478421
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -10.0
+        ],
+        [
+          -0.2767389177965775,
+          0.48363283992051176,
+          -0.17493726515783578,
+          10.132952321519957
+        ]
+      ],
+      "axes": {
+        "X": {
+          "source_origin_xyz": [
+            -0.63,
+            0.08,
+            0.3
+          ],
+          "source_endpoint_xyz": [
+            -0.45999999999999996,
+            0.08,
+            0.3
+          ],
+          "origin_pixel_xy": [
+            2002.1717409420723,
+            632.8000761433959
+          ],
+          "endpoint_pixel_xy": [
+            2034.9426202097502,
+            636.3840978743503
+          ]
+        },
+        "Y": {
+          "source_origin_xyz": [
+            -0.63,
+            0.08,
+            0.3
+          ],
+          "source_endpoint_xyz": [
+            -0.63,
+            0.25,
+            0.3
+          ],
+          "origin_pixel_xy": [
+            2002.1717409420723,
+            632.8000761433959
+          ],
+          "endpoint_pixel_xy": [
+            2001.8738808806959,
+            592.2306535475949
+          ]
+        },
+        "Z": {
+          "source_origin_xyz": [
+            -0.63,
+            0.08,
+            0.3
+          ],
+          "source_endpoint_xyz": [
+            -0.63,
+            0.08,
+            0.47
+          ],
+          "origin_pixel_xy": [
+            2002.1717409420723,
+            632.8000761433959
+          ],
+          "endpoint_pixel_xy": [
+            2013.3254474544926,
+            626.6135465218757
+          ]
+        }
+      },
+      "crop_bbox_xyxy": [
+        2016,
+        444,
+        2286,
+        714
+      ],
+      "joint_pixel_xy_in_crop": [
+        135.4563090277943,
+        135.83504000764083
+      ],
+      "crop_file": "left_foot_frame_06_crop.png",
+      "crop_rendered_width_px": 269,
+      "crop_rendered_height_px": 270,
+      "crop_pixel_accuracy_note": "Pixel coordinates use the requested figure bbox; raster rounding is below one pixel."
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "documentId": "1gH9WaPSgqUcTdrPYeBCNaLkWrVoG0qzNsiJLPVsniBU",
+  "revision": "ANLCKQk3NpP3gc8TRkG9jnilgecGM4QqN9I_Kq7kia-XAb2tsXCEfvXGHE8mjlym45zyQ4OihcuOjDXnEJDFPqPHAfihL-zCsn0ffml4Yt0",
+  "tabs": [
+    {
+      "tab": "Tab 1",
+      "id": "t.0",
+      "inlineImages": 0,
+      "tables": 0,
+      "links": 0,
+      "paragraphs": 33
+    },
+    {
+      "tab": "值得重视的竞品：Unimate",
+      "id": "t.me103qzijjl",
+      "inlineImages": 0,
+      "tables": 2,
+      "links": 9,
+      "paragraphs": 81
+    },
+    {
+      "tab": "资源与工程日志",
+      "id": "t.hzsrv1bxz2d",
+      "inlineImages": 0,
+      "tables": 1,
+      "links": 0,
+      "paragraphs": 21
+    },
+    {
+      "tab": "架构对照与研究假设",
+      "id": "t.4dddmgwucfb3",
+      "inlineImages": 0,
+      "tables": 0,
+      "links": 0,
+      "paragraphs": 59
+    },
+    {
+      "tab": "模型结构图",
+      "id": "t.wzskid5v13m9",
+      "inlineImages": 5,
+      "tables": 0,
+      "links": 25,
+      "paragraphs": 44
+    },
+    {
+      "tab": "逐层计算与伪代码",
+      "id": "t.pgpaifrooqhe",
+      "inlineImages": 0,
+      "tables": 0,
+      "links": 88,
+      "paragraphs": 393
+    },
+    {
+      "tab": "预训练与清洗管线",
+      "id": "t.x70wlrv4pvqb",
+      "inlineImages": 3,
+      "tables": 0,
+      "links": 36,
+      "paragraphs": 143
+    }
+  ],
+  "expectedModelImages": 5,
+  "expectedEngineeringImages": 3,
+  "sourceLayers": 40,
+  "validatedLayerCitations": 107,
+  "originalTabsPreserved": true
+}

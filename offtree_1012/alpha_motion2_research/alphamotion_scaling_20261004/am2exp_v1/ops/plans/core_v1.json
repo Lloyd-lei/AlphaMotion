@@ -1,0 +1,24 @@
+{
+  "schema": "am2exp_queue_plan_v1",
+  "name": "core_v1",
+  "notes": "Ordered GPU queue for final_plan.md. Each stage needs OUT/logs/approvals/<stage>.ok (lloyd's OK for the GPU hours) before any of its jobs start; twins are auto-gated by OUT/judge/decisions/<test>_vs_<parent>.json. Eval/judge jobs (argv) are inserted by WP-JUDGE/WP-E2 before the gated twins once their runners exist.",
+  "max_queue_seconds": 86400,
+  "out_allocation_bytes": 8000000000,
+  "jobs": [
+    {"id": "Arep", "arm": "Arep"},
+    {"id": "V1_old", "arm": "V1_old"},
+    {"id": "V1_new", "arm": "V1_new"},
+    {"id": "SF_M", "arm": "SF_M"},
+    {"id": "SF", "arm": "SF"},
+    {"id": "SF_s1", "arm": "SF_s1"},
+    {"id": "S", "arm": "S"},
+    {"id": "O", "arm": "O"},
+    {"id": "I", "arm": "I"},
+    {"id": "G0", "arm": "G0"},
+    {"id": "G1", "arm": "G1"},
+    {"id": "S_wrong", "arm": "S_wrong"},
+    {"id": "O_roll", "arm": "O_roll"},
+    {"id": "I_roll", "arm": "I_roll"},
+    {"id": "G1_roll", "arm": "G1_roll"}
+  ]
+}

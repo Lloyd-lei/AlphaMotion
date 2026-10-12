@@ -1,0 +1,46 @@
+{
+  "checked_at_utc": "2026-10-04T09:08:48.944866+00:00",
+  "remaining_combined_bytes": 160988624874,
+  "complete_blob_bytes": 34079499001,
+  "partial_blob_bytes": 5437741664,
+  "free_home_bytes": 205345308672,
+  "required_available_bytes": 178168494058,
+  "fits_with_reserve": true,
+  "combined_expected_unique_bytes": 200505865539,
+  "initial_download_identities": [
+    {
+      "pid": 3258020,
+      "exists": true,
+      "state": "S",
+      "start_ticks": "172790670",
+      "cmdline": "/home/arenalabs/miniconda3/bin/python -u /home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/pretraining_foundation/acquire.py --plan /home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/pretraining_foundation/configs/download_plan.json ",
+      "argv": [
+        "/home/arenalabs/miniconda3/bin/python",
+        "-u",
+        "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/pretraining_foundation/acquire.py",
+        "--plan",
+        "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/pretraining_foundation/configs/download_plan.json"
+      ],
+      "boot_id": "438a1cf6-b87e-4825-9786-844661433f9e",
+      "matches_initial_identity": true
+    },
+    {
+      "pid": 3272054,
+      "exists": true,
+      "state": "S",
+      "start_ticks": "172846036",
+      "cmdline": "/home/arenalabs/miniconda3/bin/python -u /home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/pretraining_foundation/queue_followup.py ",
+      "argv": [
+        "/home/arenalabs/miniconda3/bin/python",
+        "-u",
+        "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/pretraining_foundation/queue_followup.py"
+      ],
+      "boot_id": "438a1cf6-b87e-4825-9786-844661433f9e",
+      "matches_initial_identity": true
+    }
+  ],
+  "pilot_processes": [],
+  "original_pids_are_not_authority": "Discover current task-owned identities and recorded exit state before any action.",
+  "process_actions": [],
+  "archive_extraction": "not included; separately budget before extraction"
+}

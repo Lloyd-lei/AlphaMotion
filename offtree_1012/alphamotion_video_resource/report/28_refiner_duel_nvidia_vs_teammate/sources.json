@@ -1,0 +1,85 @@
+{
+ "schema": "alphamotion.sources.v1",
+ "sources": [
+  {
+   "id": "Neutral_throw_ball_001__A057",
+   "format": "soma",
+   "path": "/tmp/claude-1000/-home-arenalabs-Desktop--be-water--robot-/eff459e5-3969-4f6d-9ec8-eae021b0a07a/scratchpad/soma-retargeter/assets/motions/bvh/Neutral_throw_ball_001__A057.bvh",
+   "options": {
+    "bind_path": "/tmp/claude-1000/-home-arenalabs-Desktop--be-water--robot-/eff459e5-3969-4f6d-9ec8-eae021b0a07a/scratchpad/refiner_duel/soma_base_skel_minimal.bvh"
+   }
+  },
+  {
+   "id": "Neutral_walk_forward_002__A057",
+   "format": "soma",
+   "path": "/tmp/claude-1000/-home-arenalabs-Desktop--be-water--robot-/eff459e5-3969-4f6d-9ec8-eae021b0a07a/scratchpad/soma-retargeter/assets/motions/bvh/Neutral_walk_forward_002__A057.bvh",
+   "options": {
+    "bind_path": "/tmp/claude-1000/-home-arenalabs-Desktop--be-water--robot-/eff459e5-3969-4f6d-9ec8-eae021b0a07a/scratchpad/refiner_duel/soma_base_skel_minimal.bvh"
+   }
+  },
+  {
+   "id": "big_light_one_hand_pick_up_front_low_R_005__A508",
+   "format": "soma",
+   "path": "/tmp/claude-1000/-home-arenalabs-Desktop--be-water--robot-/eff459e5-3969-4f6d-9ec8-eae021b0a07a/scratchpad/soma-retargeter/assets/motions/bvh/big_light_one_hand_pick_up_front_low_R_005__A508.bvh",
+   "options": {
+    "bind_path": "/tmp/claude-1000/-home-arenalabs-Desktop--be-water--robot-/eff459e5-3969-4f6d-9ec8-eae021b0a07a/scratchpad/refiner_duel/soma_base_skel_minimal.bvh"
+   }
+  },
+  {
+   "id": "body_stretch_1_004__A069",
+   "format": "soma",
+   "path": "/tmp/claude-1000/-home-arenalabs-Desktop--be-water--robot-/eff459e5-3969-4f6d-9ec8-eae021b0a07a/scratchpad/soma-retargeter/assets/motions/bvh/body_stretch_1_004__A069.bvh",
+   "options": {
+    "bind_path": "/tmp/claude-1000/-home-arenalabs-Desktop--be-water--robot-/eff459e5-3969-4f6d-9ec8-eae021b0a07a/scratchpad/refiner_duel/soma_base_skel_minimal.bvh"
+   }
+  },
+  {
+   "id": "dance_basic_chaines_180_R_001__A306",
+   "format": "soma",
+   "path": "/tmp/claude-1000/-home-arenalabs-Desktop--be-water--robot-/eff459e5-3969-4f6d-9ec8-eae021b0a07a/scratchpad/soma-retargeter/assets/motions/bvh/dance_basic_chaines_180_R_001__A306.bvh",
+   "options": {
+    "bind_path": "/tmp/claude-1000/-home-arenalabs-Desktop--be-water--robot-/eff459e5-3969-4f6d-9ec8-eae021b0a07a/scratchpad/refiner_duel/soma_base_skel_minimal.bvh"
+   }
+  },
+  {
+   "id": "dance_hiphop_shuffle_square_R_fast_002__A318",
+   "format": "soma",
+   "path": "/tmp/claude-1000/-home-arenalabs-Desktop--be-water--robot-/eff459e5-3969-4f6d-9ec8-eae021b0a07a/scratchpad/soma-retargeter/assets/motions/bvh/dance_hiphop_shuffle_square_R_fast_002__A318.bvh",
+   "options": {
+    "bind_path": "/tmp/claude-1000/-home-arenalabs-Desktop--be-water--robot-/eff459e5-3969-4f6d-9ec8-eae021b0a07a/scratchpad/refiner_duel/soma_base_skel_minimal.bvh"
+   }
+  },
+  {
+   "id": "high_jump_R_001__A277",
+   "format": "soma",
+   "path": "/tmp/claude-1000/-home-arenalabs-Desktop--be-water--robot-/eff459e5-3969-4f6d-9ec8-eae021b0a07a/scratchpad/soma-retargeter/assets/motions/bvh/high_jump_R_001__A277.bvh",
+   "options": {
+    "bind_path": "/tmp/claude-1000/-home-arenalabs-Desktop--be-water--robot-/eff459e5-3969-4f6d-9ec8-eae021b0a07a/scratchpad/refiner_duel/soma_base_skel_minimal.bvh"
+   }
+  },
+  {
+   "id": "item_pick_up_standing_R_001__A410",
+   "format": "soma",
+   "path": "/tmp/claude-1000/-home-arenalabs-Desktop--be-water--robot-/eff459e5-3969-4f6d-9ec8-eae021b0a07a/scratchpad/soma-retargeter/assets/motions/bvh/item_pick_up_standing_R_001__A410.bvh",
+   "options": {
+    "bind_path": "/tmp/claude-1000/-home-arenalabs-Desktop--be-water--robot-/eff459e5-3969-4f6d-9ec8-eae021b0a07a/scratchpad/refiner_duel/soma_base_skel_minimal.bvh"
+   }
+  },
+  {
+   "id": "small_light_one_hand_pick_up_front_low_002__A507",
+   "format": "soma",
+   "path": "/tmp/claude-1000/-home-arenalabs-Desktop--be-water--robot-/eff459e5-3969-4f6d-9ec8-eae021b0a07a/scratchpad/soma-retargeter/assets/motions/bvh/small_light_one_hand_pick_up_front_low_002__A507.bvh",
+   "options": {
+    "bind_path": "/tmp/claude-1000/-home-arenalabs-Desktop--be-water--robot-/eff459e5-3969-4f6d-9ec8-eae021b0a07a/scratchpad/refiner_duel/soma_base_skel_minimal.bvh"
+   }
+  },
+  {
+   "id": "wave_R_001__A428",
+   "format": "soma",
+   "path": "/tmp/claude-1000/-home-arenalabs-Desktop--be-water--robot-/eff459e5-3969-4f6d-9ec8-eae021b0a07a/scratchpad/soma-retargeter/assets/motions/bvh/wave_R_001__A428.bvh",
+   "options": {
+    "bind_path": "/tmp/claude-1000/-home-arenalabs-Desktop--be-water--robot-/eff459e5-3969-4f6d-9ec8-eae021b0a07a/scratchpad/refiner_duel/soma_base_skel_minimal.bvh"
+   }
+  }
+ ]
+}

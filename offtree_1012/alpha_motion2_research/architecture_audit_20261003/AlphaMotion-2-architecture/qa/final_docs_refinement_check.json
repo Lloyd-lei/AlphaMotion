@@ -1,0 +1,46 @@
+{
+  "old_pages": 54,
+  "new_pages": 54,
+  "text_changed_pages": [],
+  "text_geometry_changed_pages": [],
+  "image_shapes": [
+    {
+      "page": 45,
+      "images": [
+        [
+          1700,
+          2034
+        ]
+      ]
+    },
+    {
+      "page": 46,
+      "images": [
+        [
+          1700,
+          2034
+        ]
+      ]
+    },
+    {
+      "page": 47,
+      "images": [
+        [
+          1700,
+          2034
+        ]
+      ]
+    }
+  ],
+  "pdf_sha256": "8224e9464c34318c5ae034b1292b4bc8e07ecb6f4431b97379ae293e3a33a777",
+  "visually_inspected_refined_pages": [
+    29,
+    36,
+    42,
+    45,
+    46,
+    47
+  ],
+  "visual_result": "PASS: high-resolution engineering figures and darker pseudocode; no clipping or caption movement",
+  "basis": "All 40 edited pages were visually inspected in preceding final_docs_visual_review.json; all 54 page texts and text bounding boxes unchanged after refinement."
+}

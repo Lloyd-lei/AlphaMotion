@@ -1,0 +1,19 @@
+{
+  "pid": 3701076,
+  "argv": [
+    "/home/arenalabs/miniconda3/envs/ardy/bin/python",
+    "-u",
+    "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/megatron_scale_pilot_20261004/code/train_pilot.py",
+    "--config",
+    "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/megatron_scale_pilot_20261004/code/candidate_config.json",
+    "--root",
+    "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/megatron_scale_pilot_20261004",
+    "--capacity-receipt",
+    "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/megatron_scale_pilot_20261004/preflight/current_remote_state.json",
+    "--action",
+    "validate"
+  ],
+  "start_ticks": "174896919",
+  "training_launched": false,
+  "mode": "validate_no_optimizer"
+}

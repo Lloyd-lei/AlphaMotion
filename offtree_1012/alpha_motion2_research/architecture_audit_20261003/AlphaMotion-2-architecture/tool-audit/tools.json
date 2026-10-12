@@ -1,0 +1,274 @@
+{
+  "audit_type": "read_only_source_audit",
+  "unimate_commit": "2c5b384715aa63d8639b1ed7eb74bfe614570c7a",
+  "umr_commit": "d1cdaedaf67a827198da71c5fa831f48b2e51f91",
+  "umr_website_commit": "b9d749900805fad4700df7ba9e229d57961be560",
+  "modules": [
+    {
+      "id": "unimate_reconstruction_view",
+      "project": "UniMate",
+      "path": "unimate/utils/visualization.py",
+      "lines": [
+        30,
+        176
+      ],
+      "role": "离线生成结果检查",
+      "mechanism": "反归一化后分别从RIC位置通道和旋转FK恢复关节；保存NPY、MP4、T-pose与文本标题。",
+      "reuse": "保留两种重建并列，量化位置头与FK一致性，不只看一条渲染轨迹。",
+      "engineering_cost": "低：接入统一motion envelope、fps与单位元数据。",
+      "evidence_limit": "可视化不是物理追踪；inference默认可关闭RIC，需显式开启双视图。",
+      "source": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/utils/visualization.py#L30-L176"
+    },
+    {
+      "id": "unimate_numpy_lbs",
+      "project": "UniMate",
+      "path": "data_process/mesh_animation/animate_lbs.py",
+      "lines": [
+        80,
+        349
+      ],
+      "role": "surface派生与渲染",
+      "mechanism": "Blender只抽取rig/mesh/skin；纯NumPy按bind inverse、运动骨架和weights做LBS，可输出逐帧顶点NPZ。",
+      "reuse": "抽成离线SurfaceAdapter的参考实现；重用稳定face+barycentric采样形成跨帧material-point轨迹。",
+      "engineering_cost": "中：补三角化、骨骼裁剪/重排映射、canonical与world变换、分块缓存。",
+      "evidence_limit": "derived surface而非真实扫描或新dense对应标注；原素材必须确有rigged mesh。",
+      "source": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/data_process/mesh_animation/animate_lbs.py#L80-L349"
+    },
+    {
+      "id": "unimate_activity_qc",
+      "project": "UniMate",
+      "path": "data_process/utils/skeleton.py",
+      "lines": [
+        468,
+        526
+      ],
+      "role": "数据清洗",
+      "mechanism": "根轨迹时间标准差、root-relative关节标准差、最活跃四分之一关节均值。",
+      "reuse": "作为低活动筛选并保留人工activity_keep例外。",
+      "engineering_cost": "低：批处理与阈值/版本写入manifest。",
+      "evidence_limit": "这是活动度，不是动作质量或稳定性。",
+      "source": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/data_process/utils/skeleton.py#L468-L526"
+    },
+    {
+      "id": "unimate_discontinuity_qc",
+      "project": "UniMate",
+      "path": "data_process/utils/motion_features.py",
+      "lines": [
+        506,
+        543
+      ],
+      "role": "数据清洗",
+      "mechanism": "逐帧平均关节位移除序列bbox最大extent；max/median比及绝对阈值共同识别断裂，拒绝非有限值。",
+      "reuse": "作为快速前置QC。",
+      "engineering_cost": "低：阈值可配置并存储原始统计。",
+      "evidence_limit": "单位为body/frame；不能直接报告厘米或每秒速度；extent还受root行程影响。",
+      "source": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/data_process/utils/motion_features.py#L506-L543"
+    },
+    {
+      "id": "unimate_browser",
+      "project": "UniMate website",
+      "path": "viewer.js",
+      "lines": [
+        264,
+        276
+      ],
+      "role": "公开在线展示",
+      "mechanism": "interactive.js第64行导入viewer.js；GLTF/FBX/封装rig加载animation，AnimationMixer播放第一clip。",
+      "reuse": "借鉴同步多本体、mesh/skeleton切换、共享时间轴、显示文本。",
+      "engineering_cost": "中：自主结果manifest与model API、负载隔离需另接；网站素材协议单列。",
+      "evidence_limit": "已核查这条客户端链未见实时模型推理调用；画面groundAndNormalize会改变展示缩放和地面位置，不可拿来做物理QC。",
+      "source": "https://linzhanmou.com/unimate/viewer.js?v=207"
+    },
+    {
+      "id": "umr_python_viewer",
+      "project": "UMR",
+      "path": "scripts/visualize_robot_retarget_result.py",
+      "lines": [
+        1742,
+        2043
+      ],
+      "role": "对应与contact可视化",
+      "mechanism": "源/机器人surface slot颜色和重叠显示，地面/物体/自接触overlay，同步qpos回放；GLFW或Viser。",
+      "reuse": "最适合joint+surface一体viewer的调试层。",
+      "engineering_cost": "中：统一slot ids、人体/机器人/物体时间轴和有效性mask。",
+      "evidence_limit": "回放用mj_forward；不是控制闭环或真实机器人实验。",
+      "source": "https://github.com/hanyang9/UMR/blob/d1cdaedaf67a827198da71c5fa831f48b2e51f91/scripts/visualize_robot_retarget_result.py#L1742-L2043"
+    },
+    {
+      "id": "umr_viser",
+      "project": "UMR",
+      "path": "scripts/viser_mujoco_viewer.py",
+      "lines": [
+        525,
+        1184
+      ],
+      "role": "远端无桌面可视化",
+      "mechanism": "主机做MuJoCo运动学与Viser服务；浏览器渲染、截图和录屏。",
+      "reuse": "复用用于远端ArenaLabs数据审核。",
+      "engineering_cost": "低至中：依赖和内网接入、长序列流式装载。",
+      "evidence_limit": "无需把远端渲染当动态仿真。",
+      "source": "https://github.com/hanyang9/UMR/blob/d1cdaedaf67a827198da71c5fa831f48b2e51f91/scripts/viser_mujoco_viewer.py#L525-L1184"
+    },
+    {
+      "id": "umr_surface_binding",
+      "project": "UMR",
+      "path": "scripts/retarget_smpl_to_humanoid_surface_vector.py",
+      "lines": [
+        627,
+        712
+      ],
+      "role": "robot surface adapter",
+      "mechanism": "采集visual geoms成根坐标mesh；slot投影绑定face、geom id、局部位置与局部法向。",
+      "reuse": "复用robot rigid-link表面绑定，随后qpos经FK追踪material point。",
+      "engineering_cost": "中：visual/collision mesh区分、单位与根坐标保存。",
+      "evidence_limit": "slot跨本体对应由UMR训练得到，属于模型伪标签，不是人工GT。",
+      "source": "https://github.com/hanyang9/UMR/blob/d1cdaedaf67a827198da71c5fa831f48b2e51f91/scripts/retarget_smpl_to_humanoid_surface_vector.py#L627-L712"
+    },
+    {
+      "id": "umr_online_compute",
+      "project": "UMR website",
+      "path": "static/js/browser-umr-runtime-exact-v1.js",
+      "lines": [
+        138,
+        305
+      ],
+      "role": "浏览器内真实计算",
+      "mechanism": "4096 exterior surface samples→WASM correspondence训练→mesh binding→MuJoCo Jacobian+Clarabel约束优化→qpos。",
+      "reuse": "借鉴分阶段可观测进度、取消、几何/对应/动作overlay；可保留算法baseline。",
+      "engineering_cost": "中高：worker/WASM资产、cross-origin isolation、多线程、内存与Python一致性验收。",
+      "evidence_limit": "浏览器使用60epochs；Python有效默认500epochs；两者不可当同一耗时配置。",
+      "source": "https://github.com/hanyang9/UMR/blob/b9d749900805fad4700df7ba9e229d57961be560/static/js/browser-umr-runtime-exact-v1.js#L138-L305"
+    },
+    {
+      "id": "umr_server_branch",
+      "project": "UMR website",
+      "path": "static/js/mujoco-viewer.js",
+      "lines": [
+        2740,
+        2805
+      ],
+      "role": "可选服务器计算",
+      "mechanism": "默认startBrowserRetargeting；显式compute=server才打包robot文件/T-pose并POST /api/retarget/jobs。",
+      "reuse": "服务器异步任务协议可借鉴。",
+      "engineering_cost": "中高：当前website分支没有serve_umr.py；需找到真实后端实现或重建。",
+      "evidence_limit": "静态客户端存在分支不代表当前站点配置了在线server；本次未发起上传或执行。",
+      "source": "https://github.com/hanyang9/UMR/blob/b9d749900805fad4700df7ba9e229d57961be560/static/js/mujoco-viewer.js#L2740-L2805"
+    },
+    {
+      "id": "alpha1_mesh_viewer",
+      "project": "AlphaMotion-1",
+      "path": "viser_mesh_viewer.py",
+      "lines": [
+        26,
+        135
+      ],
+      "role": "原研究交互viewer",
+      "mechanism": "由qpos FK得到真实G1 visual mesh逐帧pose；GT/model对照，human用capsule/line，slider/play。",
+      "reuse": "可重用robot mesh提取与轨迹对齐适配。",
+      "engineering_cost": "中：将G1 mapper、硬编码路径与人体capsule解耦到统一schema。",
+      "evidence_limit": "这是旧研究demo，不应直接标为当前Greenwich线上实现。",
+      "source": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/viser_mesh_viewer.py:26"
+    },
+    {
+      "id": "alpha1_capsule_render",
+      "project": "AlphaMotion-1",
+      "path": "render_mesh.py",
+      "lines": [
+        1,
+        99
+      ],
+      "role": "拓扑通用预览",
+      "mechanism": "每个bone独立free capsule，世界joint位置直接摆放；cm→m，Y-up→Z-up。",
+      "reuse": "适合无mesh样本快速fallback预览。",
+      "engineering_cost": "低。",
+      "evidence_limit": "capsule是显示代理，不是真实mesh监督，不能标记surface_available=true。",
+      "source": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/render_mesh.py:1"
+    },
+    {
+      "id": "alpha1_contact_labels",
+      "project": "AlphaMotion-1",
+      "path": "contact_label.py",
+      "lines": [
+        252,
+        436
+      ],
+      "role": "接触伪标签",
+      "mechanism": "session floor校正、geometry gap和速度等规则；contact_low为免速度门槛训练分支，另存trust mask。",
+      "reuse": "可重用contact proxy和不可信mask；surface contact另派生时保持来源。",
+      "engineering_cost": "中：结合surface采样重新定义、保存阈值/坐标与置信度。",
+      "evidence_limit": "geometry heuristic不是触觉/接触力真值；unknown不是no-contact。",
+      "source": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/contact_label.py:252"
+    },
+    {
+      "id": "alpha1_physical_qc",
+      "project": "AlphaMotion-1",
+      "path": "physeval.py",
+      "lines": [
+        376,
+        538
+      ],
+      "role": "本体条件离线物理一致性",
+      "mechanism": "MJCF+世界qpos+fps→关节限制、接触滑移/穿透、自碰撞、jerk、CoM/ICP；逆动力学加摩擦锥可行接触力拟合、扭矩与floating-base residual。",
+      "reuse": "作为清洗基建最有价值的现成物理QC模块，保留每帧/汇总与vendor baseline。",
+      "engineering_cost": "中：schema与质量标志、robot-specific mass/friction/actuator版本、退化条件与性能批量化。",
+      "evidence_limit": "离线一致性分析，不是闭环sim tracking或sim2real成功率；未知执行器限值需mask。",
+      "source": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/physeval.py:376"
+    },
+    {
+      "id": "alpha1_smpl_bridge",
+      "project": "AlphaMotion-1",
+      "path": "export_smpl_params.py",
+      "lines": [
+        27,
+        45
+      ],
+      "role": "human surface派生入口",
+      "mechanism": "human_smpl本地rot6d→22body轴角、root_world厘米→米，写SMPL-X body params。",
+      "reuse": "接入既有SMPL-X模型，产出可追踪的body surface。",
+      "engineering_cost": "中：补原始betas/gender/hand参数及模板版本；缺失时明确default。",
+      "evidence_limit": "只导出body22，不恢复已丢失手指/形状；default shape是派生近似，不是原始人体mesh。",
+      "source": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/export_smpl_params.py:27"
+    },
+    {
+      "id": "alphamotion_release_service",
+      "project": "AlphaMotion release",
+      "path": "src/alphamotion/service/app.py",
+      "lines": [
+        111,
+        160
+      ],
+      "role": "现有产品服务复用",
+      "mechanism": "FastAPI warm pool + async job runner + SQLite结果记录；three LiveViewer负责源/目标/本体；play/timeline/jump异步任务和结果API，前端在assets/frontend。",
+      "reuse": "作为Alpha2服务壳和数据清洗结果审核入口，接入新的model adapter、surface overlay、eval结果。",
+      "engineering_cost": "中：新schema/模型装载/新增surface输出；保留现有接口且区分codebook版本。",
+      "evidence_limit": "源码核查，没有本次触发服务。重启会将unfinished jobs标failed，持久化的是记录和产物，不是任意任务续跑。",
+      "source": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/tool-audit/audit-source/AlphaMotion-release/src/alphamotion/service/app.py:111"
+    },
+    {
+      "id": "alphamotion_release_liveviewer",
+      "project": "AlphaMotion release",
+      "path": "src/alphamotion/viz/live.py",
+      "lines": [
+        273,
+        398
+      ],
+      "role": "现有live mesh展示",
+      "mechanism": "set_trace载入robot qpos/mesh，set_smplx_skin可载入逐帧人体vertices/faces，源目标可链接相机与播放。",
+      "reuse": "在已有skeleton/robot/human mesh视图增加surface sample、region text、对应和contact overlay。",
+      "engineering_cost": "低至中：overlay缓存与frame/point有效mask；帧数据流式化。",
+      "evidence_limit": "mesh显示与ground-safe显示处理不是surface预训练或physics benchmark。",
+      "source": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/tool-audit/audit-source/AlphaMotion-release/src/alphamotion/viz/live.py:273"
+    }
+  ],
+  "executed_inference": false,
+  "executed_simulation": false,
+  "wrote_google_docs": false,
+  "license_facts": {
+    "unimate_main": "MIT License copyright 2026 Linzhan Mou; retain copyright/permission notice",
+    "umr_main": "MIT-form permission text copyright 2026 Hanyang Cao and UMR contributors",
+    "umr_website_branch": "Same GitHub repository gh-pages snapshot has no root LICENSE; found vendor/coi-serviceworker license files only. Site-specific license scope not independently confirmed.",
+    "unimate_website": "Public client JS retrieved from author website; not proven tracked in licensed main repository."
+  },
+  "alphamotion_release_commit": "fd9a2badafa1a3c220667c0e861905354971e2f9",
+  "alphamotion_release_note": "Codec wrapper explicitly keeps timeline/Atlas/Equator on greenwich C1 [T,256,20], even though megatron is recommended v2 [T,132,13]. Do not infer all editor APIs execute megatron."
+}

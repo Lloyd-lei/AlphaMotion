@@ -1,0 +1,108 @@
+{
+  "variant": "thface_070",
+  "tau_cm": 0.2,
+  "pad_source": "mjcf",
+  "frozen_utc": "2026-10-04T19:11:14Z",
+  "evidence": {
+    "criterion": "mean over {hammer, relocate} of median |c_A - d_obj| (mm) on DEV grasp frames (g=1), raw c_A",
+    "table": {
+      "vf_ffmf": {
+        "family": "planned",
+        "hammer_dev_median_abs_err_mm": 21.28421401977539,
+        "hammer_dev_median_cA_grasp_mm": 28.721736907958984,
+        "hammer_dev_AN_BA": 0.4649696821175824,
+        "hammer_dev_AN_TPR": 0.02604920405209841,
+        "tau_cm": 1.0,
+        "relocate_dev_median_abs_err_mm": 38.22438049316406,
+        "relocate_dev_median_cA_grasp_mm": 31.775617599487305,
+        "relocate_dev_AN_BA": 0.0006976744186046512,
+        "relocate_dev_AN_TPR": 0.0013953488372093023,
+        "criterion_mm": 29.754297256469727
+      },
+      "vf_ffmfrf": {
+        "family": "planned",
+        "hammer_dev_median_abs_err_mm": 20.96919822692871,
+        "hammer_dev_median_cA_grasp_mm": 29.046894073486328,
+        "hammer_dev_AN_BA": 0.4661138468773078,
+        "hammer_dev_AN_TPR": 0.02604920405209841,
+        "tau_cm": 1.0,
+        "relocate_dev_median_abs_err_mm": 37.88896179199219,
+        "relocate_dev_median_cA_grasp_mm": 32.11103820800781,
+        "relocate_dev_AN_BA": 0.0,
+        "relocate_dev_AN_TPR": 0.0,
+        "criterion_mm": 29.42908000946045
+      },
+      "vf_all4": {
+        "family": "planned",
+        "hammer_dev_median_abs_err_mm": 21.71348762512207,
+        "hammer_dev_median_cA_grasp_mm": 28.315383911132812,
+        "hammer_dev_AN_BA": 0.4661138468773078,
+        "hammer_dev_AN_TPR": 0.02604920405209841,
+        "tau_cm": 1.0,
+        "relocate_dev_median_abs_err_mm": 37.917449951171875,
+        "relocate_dev_median_cA_grasp_mm": 32.082550048828125,
+        "relocate_dev_AN_BA": 0.0,
+        "relocate_dev_AN_TPR": 0.0,
+        "criterion_mm": 29.815468788146973
+      },
+      "gap_ffmf": {
+        "family": "planned",
+        "hammer_dev_median_abs_err_mm": 32.47562026977539,
+        "hammer_dev_median_cA_grasp_mm": 17.52437973022461,
+        "hammer_dev_AN_BA": 0.37704230373959186,
+        "hammer_dev_AN_TPR": 0.014954172696575013,
+        "tau_cm": 1.0,
+        "relocate_dev_median_abs_err_mm": 55.98314666748047,
+        "relocate_dev_median_cA_grasp_mm": 14.016851425170898,
+        "relocate_dev_AN_BA": 0.0,
+        "relocate_dev_AN_TPR": 0.0,
+        "criterion_mm": 44.22938346862793
+      },
+      "thface_050": {
+        "family": "thumb_facing",
+        "hammer_dev_median_abs_err_mm": 2.942790985107422,
+        "hammer_dev_median_cA_grasp_mm": 52.93472671508789,
+        "hammer_dev_AN_BA": 0.9319318556884251,
+        "hammer_dev_AN_TPR": 0.9691268692715871,
+        "tau_cm": 0.2,
+        "relocate_dev_median_abs_err_mm": 23.708906173706055,
+        "relocate_dev_median_cA_grasp_mm": 46.29109191894531,
+        "relocate_dev_AN_BA": 0.0,
+        "relocate_dev_AN_TPR": 0.0,
+        "criterion_mm": 13.325848579406738
+      },
+      "thface_060": {
+        "family": "thumb_facing",
+        "hammer_dev_median_abs_err_mm": 3.0113906860351562,
+        "hammer_dev_median_cA_grasp_mm": 53.011390686035156,
+        "hammer_dev_AN_BA": 0.9138735910436129,
+        "hammer_dev_AN_TPR": 0.8895320791123975,
+        "tau_cm": 0.2,
+        "relocate_dev_median_abs_err_mm": 23.654991149902344,
+        "relocate_dev_median_cA_grasp_mm": 46.345008850097656,
+        "relocate_dev_AN_BA": 0.013255813953488372,
+        "relocate_dev_AN_TPR": 0.026511627906976743,
+        "criterion_mm": 13.33319091796875
+      },
+      "thface_070": {
+        "family": "thumb_facing",
+        "hammer_dev_median_abs_err_mm": 7.092109680175781,
+        "hammer_dev_median_cA_grasp_mm": 57.09210968017578,
+        "hammer_dev_AN_BA": 0.7645923781958515,
+        "hammer_dev_AN_TPR": 0.5291847563917028,
+        "tau_cm": 0.2,
+        "relocate_dev_median_abs_err_mm": 8.776256561279297,
+        "relocate_dev_median_cA_grasp_mm": 76.83164978027344,
+        "relocate_dev_AN_BA": 0.3713953488372093,
+        "relocate_dev_AN_TPR": 0.7427906976744186,
+        "criterion_mm": 7.934183120727539
+      }
+    },
+    "best_planned_variant": "vf_ffmfrf",
+    "data_sha256": {
+      "hammer": "8a5ee216a758e81218406c33f2618baffe3fbfdff8af4929dbbfd66c426155a5",
+      "relocate": "7dfcb938600f975a1e80e4adc8ebe0d07d109cf6aad213e9d3c43415f1c1c3e0"
+    },
+    "note": "Planned virtual-finger variants were evaluated first; all were far from the object size on these enveloping grasps, so the thumb-facing family (thumb pads vs any facing phalanx/palm pad) was added in Stage-0 and the whole table re-ranked by the same criterion on DEV only.  Test untouched by selection."
+  }
+}

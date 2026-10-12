@@ -1,0 +1,262 @@
+{
+ "T": 200,
+ "fps": 20.0,
+ "text": "A person jogs forward, jumps over a low obstacle, lands, stumbles slightly, regains balance and keeps walking.",
+ "ardy_fk_gauge_cm_mean": 2.4361907875712372e-05,
+ "ardy_fk_gauge_cm_max": 0.00014250625929378076,
+ "stance_frac": [
+  0.56,
+  0.585
+ ],
+ "source_core": {
+  "joint_speed_per_sec_m_s": [
+   0.6418309807777405,
+   2.846101760864258,
+   2.1297976970672607,
+   0.704236626625061,
+   0.0284594614058733,
+   0.014106927439570427,
+   0.2554325461387634,
+   2.576169013977051,
+   3.269158363342285,
+   1.2997355461120605
+  ],
+  "skate_p95_cm_s_labeled_contact": 18.255596160888672,
+  "root_h_cm": [
+   75.64875793457031,
+   150.60739135742188
+  ],
+  "min_joint_y_cm": 2.5902152061462402
+ },
+ "robots": {
+  "unitree_g1_29dof": {
+   "metrics": {
+    "limit_excess_max_deg": 0.0,
+    "limit_frames_frac": 0.0,
+    "lowest_geom_cm_min": -11.934689622283853,
+    "geom_pen_frac": 0.015,
+    "display_lift_cm_mean": 0.11164670081023513,
+    "display_lift_cm_max": 11.934689622283853,
+    "root_h_cm": [
+     45.26591491699219,
+     86.4047622680664
+    ],
+    "contact_f1_decoded_vs_ardy": 0.7533460803059273,
+    "slip_v_p95_cm_s": 133.23006135871105,
+    "drift_p95_cm": 38.128629647306596,
+    "pen_frac": 0.0,
+    "pen_p95_cm": 0.0,
+    "float_frac": 0.48034934497816595,
+    "contact_f1": 0.6380697050938338,
+    "onset_abs_med_frames": 4.5,
+    "rooth_jump_frac": 0.06532663316582915,
+    "joint_jit_p95_deg_s2": 111.80066238098041,
+    "joint_v_p95_deg_s": 341.8186672129101
+   },
+   "verdict": "fail",
+   "failed": [
+    "contact_f1",
+    "float_frac",
+    "rooth_jump_frac"
+   ],
+   "not_evaluated": [
+    "slip_v_p95_cm_s",
+    "drift_p95_cm",
+    "rooth_err_cm",
+    "joint_jit_p95_deg_s2",
+    "rot_deg",
+    "hand_p95_cm"
+   ],
+   "timing": {
+    "decode_ms": 12.082722038030624,
+    "project_ms": 218.3600850403309,
+    "stream_frame_ms_median": 37.561110919341445,
+    "stream_frame_ms_p95": 121.77465616259724
+   }
+  },
+  "unitree_h2": {
+   "metrics": {
+    "limit_excess_max_deg": 0.0,
+    "limit_frames_frac": 0.0,
+    "lowest_geom_cm_min": -29.593947367621276,
+    "geom_pen_frac": 0.61,
+    "display_lift_cm_mean": 3.141464795649237,
+    "display_lift_cm_max": 29.593947367621276,
+    "root_h_cm": [
+     52.94316864013672,
+     100.30204010009766
+    ],
+    "contact_f1_decoded_vs_ardy": 0.7537190082644628,
+    "slip_v_p95_cm_s": 175.3012358799031,
+    "drift_p95_cm": 44.39896530700562,
+    "pen_frac": 0.01,
+    "pen_p95_cm": 0.0,
+    "float_frac": 0.868995633187773,
+    "contact_f1": 0.20618556701030927,
+    "onset_abs_med_frames": 5.0,
+    "rooth_jump_frac": 0.08040201005025126,
+    "joint_jit_p95_deg_s2": 115.45625846033592,
+    "joint_v_p95_deg_s": 309.4241900448907
+   },
+   "verdict": "fail",
+   "failed": [
+    "contact_f1",
+    "float_frac",
+    "rooth_jump_frac"
+   ],
+   "not_evaluated": [
+    "slip_v_p95_cm_s",
+    "drift_p95_cm",
+    "rooth_err_cm",
+    "joint_jit_p95_deg_s2",
+    "rot_deg",
+    "hand_p95_cm"
+   ],
+   "timing": {
+    "decode_ms": 13.715291977860034,
+    "project_ms": 110.40335905272514,
+    "stream_frame_ms_median": 40.420867037028074,
+    "stream_frame_ms_p95": 54.858346085529774
+   }
+  },
+  "agibot_a3_t3d0": {
+   "metrics": {
+    "limit_excess_max_deg": 0.0,
+    "limit_frames_frac": 0.0,
+    "lowest_geom_cm_min": -31.865662782858372,
+    "geom_pen_frac": 0.99,
+    "display_lift_cm_mean": 8.211061212350549,
+    "display_lift_cm_max": 31.865662782858372,
+    "root_h_cm": [
+     55.149288177490234,
+     108.45071411132812
+    ],
+    "contact_f1_decoded_vs_ardy": 0.7512355848434926,
+    "slip_v_p95_cm_s": 157.1737905958498,
+    "drift_p95_cm": 42.565760493497415,
+    "pen_frac": 0.025,
+    "pen_p95_cm": 2.962811855908134,
+    "float_frac": 0.008733624454148471,
+    "contact_f1": 0.7868284228769498,
+    "onset_abs_med_frames": 5.0,
+    "rooth_jump_frac": 0.08040201005025126,
+    "joint_jit_p95_deg_s2": 130.46047156230065,
+    "joint_v_p95_deg_s": 340.00623016960304
+   },
+   "verdict": "fail",
+   "failed": [
+    "contact_f1",
+    "pen_frac",
+    "rooth_jump_frac"
+   ],
+   "not_evaluated": [
+    "slip_v_p95_cm_s",
+    "drift_p95_cm",
+    "rooth_err_cm",
+    "joint_jit_p95_deg_s2",
+    "rot_deg",
+    "hand_p95_cm"
+   ],
+   "timing": {
+    "decode_ms": 9.935940033756196,
+    "project_ms": 172.9871790157631,
+    "stream_frame_ms_median": 35.30792600940913,
+    "stream_frame_ms_p95": 50.912920746486634
+   }
+  },
+  "fourier_gr3": {
+   "metrics": {
+    "limit_excess_max_deg": 0.0,
+    "limit_frames_frac": 0.0,
+    "lowest_geom_cm_min": -2.811811755936248,
+    "geom_pen_frac": 0.005,
+    "display_lift_cm_mean": 0.014059058779681239,
+    "display_lift_cm_max": 2.811811755936248,
+    "root_h_cm": [
+     61.09485626220703,
+     106.43962860107422
+    ],
+    "contact_f1_decoded_vs_ardy": 0.7281399046104928,
+    "slip_p95_cm_s": 0.0,
+    "slip_p50_cm_s": 0.0,
+    "stance_frac": 0.0,
+    "foot_sole_min_cm": -1.7956187536206065,
+    "slip_v_p95_cm_s": 154.40041110496801,
+    "drift_p95_cm": 40.447694641553696,
+    "pen_frac": 0.0,
+    "pen_p95_cm": 0.0,
+    "float_frac": 0.9650655021834061,
+    "contact_f1": 0.06374501992031872,
+    "onset_abs_med_frames": 2.5,
+    "rooth_jump_frac": 0.07035175879396985,
+    "joint_jit_p95_deg_s2": 106.89052354033922,
+    "joint_v_p95_deg_s": 306.957968524157
+   },
+   "verdict": "fail",
+   "failed": [
+    "contact_f1",
+    "float_frac",
+    "rooth_jump_frac"
+   ],
+   "not_evaluated": [
+    "slip_v_p95_cm_s",
+    "drift_p95_cm",
+    "rooth_err_cm",
+    "joint_jit_p95_deg_s2",
+    "rot_deg",
+    "hand_p95_cm"
+   ],
+   "timing": {
+    "decode_ms": 11.188752017915249,
+    "project_ms": 191.3573369383812,
+    "stream_frame_ms_median": 109.91919098887593,
+    "stream_frame_ms_p95": 135.9706356539391
+   }
+  },
+  "pnd_adam_lite": {
+   "metrics": {
+    "limit_excess_max_deg": 0.0,
+    "limit_frames_frac": 0.0,
+    "lowest_geom_cm_min": -10.683321962564714,
+    "geom_pen_frac": 0.01,
+    "display_lift_cm_mean": 0.07951045011300144,
+    "display_lift_cm_max": 10.683321962564714,
+    "root_h_cm": [
+     60.267364501953125,
+     110.2217788696289
+    ],
+    "contact_f1_decoded_vs_ardy": 0.731629392971246,
+    "slip_v_p95_cm_s": 157.96970546962785,
+    "drift_p95_cm": 36.84535765585228,
+    "pen_frac": 0.005,
+    "pen_p95_cm": 0.0,
+    "float_frac": 0.8209606986899564,
+    "contact_f1": 0.271523178807947,
+    "onset_abs_med_frames": 3.0,
+    "rooth_jump_frac": 0.06030150753768844,
+    "joint_jit_p95_deg_s2": 128.38304997186077,
+    "joint_v_p95_deg_s": 301.4410583386212
+   },
+   "verdict": "fail",
+   "failed": [
+    "contact_f1",
+    "float_frac",
+    "rooth_jump_frac"
+   ],
+   "not_evaluated": [
+    "slip_v_p95_cm_s",
+    "drift_p95_cm",
+    "rooth_err_cm",
+    "joint_jit_p95_deg_s2",
+    "rot_deg",
+    "hand_p95_cm"
+   ],
+   "timing": {
+    "decode_ms": 8.826966979540884,
+    "project_ms": 157.6028660638258,
+    "stream_frame_ms_median": 29.926336952485144,
+    "stream_frame_ms_p95": 56.690958305262015
+   }
+  }
+ }
+}

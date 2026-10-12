@@ -1,0 +1,92 @@
+{
+  "prepared_at_utc": "2026-10-04T06:17:57.665468+00:00",
+  "status": "offline_recipe_restored_pending_live_validation_training_blocked",
+  "config": "candidate_config.json",
+  "parameters": 26009940,
+  "state_keys": 547,
+  "offline_tests_passed": 101,
+  "actual_pilot_training": false,
+  "real_checkpoint_loaded": false,
+  "actual_gpu_batch_verified": false,
+  "new_trained_checkpoint": false,
+  "xwbc": {
+    "planned_unique_source_frame_rows": 30322,
+    "train_rows": 24744,
+    "eval_rows": 5578,
+    "planned_bodies": 16,
+    "last_remotely_confirmed_completed_bodies": 9,
+    "all16_current_status": "unknown_after_disconnect"
+  },
+  "unimate": {
+    "downloaded_native_motion_files": 218,
+    "motion_bytes": 33540276,
+    "selected_bodies": 10,
+    "all_real_frames_fk_audited": false,
+    "actual_included_body_file_frame_counts": "pending_remote_adapter"
+  },
+  "supervision": {
+    "xwbc": "verified source-frame paired mapping plus same-body tasks",
+    "unimate": "same-body reconstruction/masked/sparse completion only"
+  },
+  "missing_remote_steps": [
+    "download and extraction process identity/ownership/exit verification",
+    "completed16body XWBC receipt, source static seal and actual sole/contact/ground backfill",
+    "all218 UniMate native motion FK audit and support/quarantine counts",
+    "pinned real reference/Qwen/SigLIP load",
+    "full restored8direction+aux real CUDA finite backward/batch128 capacity/time profile and hash-bound recipe-validation receipt",
+    "bounded training to checkpoint + heldout reference/initial/final evaluation",
+    "paired actual motion visual inspection",
+    "pending remote artifact archival"
+  ],
+  "new_server_connection": "address and username not supplied or located; see connection_lookup.json",
+  "primary_download_monitor": "last successful 2026-10-04T04:17:30.981476+00:00; current transfer/capacity unobserved",
+  "parameter_counts": {
+    "main_excluding_judge": 25743428,
+    "judge_auxiliary": 266512,
+    "total": 26009940
+  },
+  "reference_recipe": {
+    "actual_config_hash": "0e61ed5b012420d5fa186bc09537e9cac32ed14fa4533182c6d44805f5e7ee58",
+    "ground_and_auxiliary_restored_in_code": true,
+    "old_judge_weight_reuse": false,
+    "current_body_label_mapping_required": true,
+    "temporal_slip_hpair": "disabled with explicit missing adjacent/world/time supervision rationale"
+  },
+  "training_recipe_gate": {
+    "train_allowed": false,
+    "implementation_revision": "restored_single_frame_recipe_v2",
+    "reference_run": "L_M20k_0903",
+    "reference_config_sha256": "0e61ed5b012420d5fa186bc09537e9cac32ed14fa4533182c6d44805f5e7ee58",
+    "source": "hash-matched actual run config, not CLI defaults",
+    "verified_active_reference_flags": {
+      "w_contrast": 0.5,
+      "tau": 0.1,
+      "contrast_sample": 6,
+      "reenc_consistency": 1.0,
+      "reenc_prob": 0.3,
+      "judge_mode": "grad",
+      "n_judges": 16,
+      "w_judge": 0.1,
+      "w_pen": 200.0,
+      "w_cgeo": 1.0,
+      "slip_pairs": true,
+      "w_slip_w": 2.0,
+      "w_hpair": 0.1
+    },
+    "blockers": [
+      "No matching real CUDA recipe-validation run; offline tests do not authorize data readiness"
+    ],
+    "temporal_exceptions": [
+      "World-slip and hpair disabled: sparse rows lack complete adjacent world-root/ground/time supervision."
+    ],
+    "online_requirements": [
+      "Hash-check actual original run config/checkpoint and pinned text vectors",
+      "Validate completed XWBC pairing, source-revalidated sole/contact/ground seal and all-frame FK",
+      "Validate UniMate payload and valid-only modality masks",
+      "Run all restored losses forward/backward on real CUDA payloads without optimizer updates",
+      "Persist current verified 16-body auxiliary-judge label map; head reinitialized, old labels not guessed"
+    ],
+    "no_config_override": true,
+    "does_not_require_new_user_permission": true
+  }
+}

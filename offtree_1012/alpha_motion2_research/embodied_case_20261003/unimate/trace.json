@@ -1,0 +1,1201 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-04T04:00:57.345762+00:00",
+  "evidence_label": "derived_from_real_reference_sample",
+  "neural_model_executed": false,
+  "robot_retargeting_executed": false,
+  "physics_or_real_robot_executed": false,
+  "sample": {
+    "dataset": "Linzhan/UniML3D",
+    "revision": "053e8b4b06b6a8ba717a030e675dd5b7fd5be92e",
+    "object_type": "mixamo",
+    "clip": "Jumping_Up-000",
+    "caption": "An object jumps up from an idle pose.",
+    "fps": 30,
+    "source_frame_count": 8,
+    "source_frame_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "source_last_frame_time_seconds": 0.23333333333333334,
+    "caption_source": "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/captions.json",
+    "scope": "Released short feature clip, not the complete original Mixamo animation."
+  },
+  "joint": {
+    "index": 9,
+    "raw_name": "mixamorig:LeftFoot",
+    "clean_name": "Left Foot",
+    "parent_index": 6,
+    "parent_raw_name": "mixamorig:LeftLeg",
+    "rotation_feature_source_joint": 6
+  },
+  "coordinates": {
+    "up": "+Y",
+    "canonical_forward": "+Z",
+    "quaternion_order": "WXYZ",
+    "position_units": "canonical body units; skeleton leaf-to-leaf diameter normalized to2.0; not asserted meters",
+    "local_delta_units": "canonical body units/frame, no fps multiplier",
+    "rotation_6d_units": "dimensionless",
+    "normalized_feature_units": "dimensionless standardized channels",
+    "scale_factor_from_cond": 0.008935116090106018,
+    "ground_height_mode": "per_motion",
+    "loader_global_y_subtraction": -4.163336342344337e-17
+  },
+  "preprocessing": {
+    "code_repo": "https://github.com/Friedrich-M/UniMate",
+    "code_commit": "2c5b384715aa63d8639b1ed7eb74bfe614570c7a",
+    "dependency": {
+      "repo": "https://github.com/inbar-2344/Motion",
+      "commit": "ac236251f90e5ca37c444c53ad383fc85de6d833"
+    },
+    "execution": "Unmodified official numpy function bodies compiled from AST; official Motion quaternion/FK files on local sys.path. No installation, torch or neural execution.",
+    "window_start_source_frame": 0,
+    "displayed_feature_rows": [
+      0,
+      3,
+      6
+    ],
+    "source_to_feature_relation": "Feature row t uses pose t and delta to t+1. Eight source poses produce7 feature rows; source frame7 has no feature row.",
+    "realignment_applied": false,
+    "realignment_reason": "Official loader realigns only if crop_start>0; this sample uses start0.",
+    "raw_feature_shape": [
+      7,
+      22,
+      12
+    ],
+    "normalized_shape": [
+      7,
+      22,
+      12
+    ],
+    "temporal_padded_shape": [
+      60,
+      22,
+      12
+    ],
+    "batch_motion_array_shape": [
+      1,
+      22,
+      12,
+      60
+    ],
+    "batch_axes": [
+      "batch",
+      "joint",
+      "feature",
+      "time"
+    ],
+    "time_valid_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "time_padded_indices": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59
+    ],
+    "joint_valid_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "normalization_stats_source": "/home/arenalabs/.cache/huggingface/hub/models--Linzhan--UniMate/snapshots/971da7cfc1c8d99c2af6c00be9d2ed5700f99073/unimate_mixamo_f60/dataset_stats.npy",
+    "model_config_source": "/home/arenalabs/.cache/huggingface/hub/models--Linzhan--UniMate/snapshots/971da7cfc1c8d99c2af6c00be9d2ed5700f99073/unimate_mixamo_f60/config.json",
+    "normalization_mean_for_selected_joint": [
+      0.004378096205785277,
+      0.7289839391062418,
+      0.06604796422729678,
+      0.8552105668562048,
+      -0.00041921048736390313,
+      -0.011294831098927224,
+      -0.0012516170193783305,
+      0.8568652122121726,
+      0.03533301697121635,
+      0.0001560536556851928,
+      -0.0003841781153816042,
+      0.005194266171369199
+    ],
+    "normalization_std_for_selected_joint": [
+      0.17359920417777722,
+      0.44948188318400767,
+      0.18030303748430881,
+      0.3065768599838745,
+      0.24210268289393652,
+      0.3404174749458205,
+      0.2567018504924897,
+      0.2735682985853328,
+      0.351847360981997,
+      0.017869261333841664,
+      0.018437008660096205,
+      0.028845775228364713
+    ],
+    "channel_names": [
+      "rifke_x",
+      "rifke_y_absolute_height",
+      "rifke_z",
+      "parent_tpose_rot_col0_x",
+      "parent_tpose_rot_col0_y",
+      "parent_tpose_rot_col0_z",
+      "parent_tpose_rot_col1_x",
+      "parent_tpose_rot_col1_y",
+      "parent_tpose_rot_col1_z",
+      "delta_x_destination_facing",
+      "delta_y_destination_facing",
+      "delta_z_destination_facing"
+    ],
+    "functions": {
+      "rotation_6d_to_matrix_np": {
+        "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/utils/rotation_conversions.py",
+        "line_start": 37,
+        "line_end": 53
+      },
+      "compute_rots_from_tpos": {
+        "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/utils/motion_utils.py",
+        "line_start": 36,
+        "line_end": 73
+      },
+      "compute_cont6d_params": {
+        "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/utils/motion_utils.py",
+        "line_start": 76,
+        "line_end": 113
+      },
+      "compute_rifke": {
+        "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/utils/motion_utils.py",
+        "line_start": 116,
+        "line_end": 133
+      },
+      "compute_local_velocity": {
+        "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/utils/motion_utils.py",
+        "line_start": 136,
+        "line_end": 151
+      },
+      "compute_unimate_motion_feats": {
+        "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/utils/motion_utils.py",
+        "line_start": 154,
+        "line_end": 179
+      },
+      "realign_unimate_clip": {
+        "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/utils/motion_utils.py",
+        "line_start": 186,
+        "line_end": 225
+      },
+      "hml_rotations_to_bvh_quaternions": {
+        "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/utils/motion_utils.py",
+        "line_start": 232,
+        "line_end": 252
+      },
+      "fk_global_positions": {
+        "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/utils/motion_utils.py",
+        "line_start": 255,
+        "line_end": 283
+      },
+      "recover_unimate_root_quat_and_pos": {
+        "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/utils/motion_utils.py",
+        "line_start": 290,
+        "line_end": 312
+      },
+      "recover_unimate_joint_pos_from_ric": {
+        "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/utils/motion_utils.py",
+        "line_start": 315,
+        "line_end": 336
+      },
+      "recover_unimate_joint_pos_from_rot": {
+        "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/utils/motion_utils.py",
+        "line_start": 339,
+        "line_end": 355
+      },
+      "recover_unimate_anim_from_rot": {
+        "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/utils/motion_utils.py",
+        "line_start": 358,
+        "line_end": 389
+      },
+      "apply_cropping": {
+        "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/dataset/transforms.py",
+        "line_start": 17,
+        "line_end": 62
+      },
+      "apply_normalization": {
+        "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/dataset/transforms.py",
+        "line_start": 94,
+        "line_end": 107
+      },
+      "apply_padding": {
+        "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/dataset/transforms.py",
+        "line_start": 114,
+        "line_end": 124
+      },
+      "build_parent_features": {
+        "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/UniMate/unimate/dataset/transforms.py",
+        "line_start": 131,
+        "line_end": 144
+      }
+    }
+  },
+  "tpose": {
+    "joint_names": [
+      "mixamorig:Hips",
+      "mixamorig:Spine",
+      "mixamorig:RightUpLeg",
+      "mixamorig:LeftUpLeg",
+      "mixamorig:Spine1",
+      "mixamorig:RightLeg",
+      "mixamorig:LeftLeg",
+      "mixamorig:Spine2",
+      "mixamorig:RightFoot",
+      "mixamorig:LeftFoot",
+      "mixamorig:LeftShoulder",
+      "mixamorig:RightShoulder",
+      "mixamorig:Neck",
+      "mixamorig:RightToeBase",
+      "mixamorig:LeftToeBase",
+      "mixamorig:LeftArm",
+      "mixamorig:RightArm",
+      "mixamorig:Head",
+      "mixamorig:LeftForeArm",
+      "mixamorig:RightForeArm",
+      "mixamorig:LeftHand",
+      "mixamorig:RightHand"
+    ],
+    "clean_joint_names": [
+      "Hips",
+      "Spine",
+      "Right Thigh",
+      "Left Thigh",
+      "Spine",
+      "Right Shin",
+      "Left Shin",
+      "Spine",
+      "Right Foot",
+      "Left Foot",
+      "Left Shoulder",
+      "Right Shoulder",
+      "Neck",
+      "Right Toe",
+      "Left Toe",
+      "Left Upper Arm",
+      "Right Upper Arm",
+      "Head",
+      "Left Forearm",
+      "Right Forearm",
+      "Left Hand",
+      "Right Hand"
+    ],
+    "parents": [
+      -1,
+      0,
+      0,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      7,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      15,
+      16,
+      18,
+      19
+    ],
+    "selected_joint_xyz": [
+      0.08152824980218654,
+      0.0644093411624944,
+      -0.023500767108212566
+    ],
+    "selected_joint_local_quaternion_wxyz": [
+      0.8408192992210388,
+      0.5405496954917908,
+      0.014366384595632553,
+      0.024950917810201645
+    ]
+  },
+  "frames": [
+    {
+      "feature_row_index": 0,
+      "source_pose_frame": 0,
+      "source_delta_destination_frame": 1,
+      "source_time_seconds": 0.0,
+      "world_position_before_loader_grounding": [
+        0.2191138799127963,
+        0.0646787873675509,
+        0.12477411012095817
+      ],
+      "world_position_after_loader_grounding": [
+        0.2191138799127963,
+        0.06467878736755094,
+        0.12477411012095817
+      ],
+      "root_xz_removed_position": [
+        0.2191138799127963,
+        0.06467878736755094,
+        0.12477411012095817
+      ],
+      "root_facing_quaternion_wxyz": [
+        0.9999999999999989,
+        -0.0,
+        -4.8540717571566606e-08,
+        0.0
+      ],
+      "destination_root_facing_quaternion_wxyz": [
+        0.9998796170175394,
+        -0.0,
+        -0.015516168111324787,
+        0.0
+      ],
+      "world_delta_to_next_frame": [
+        0.006103736046472574,
+        0.03244670284312462,
+        0.003208395934100619
+      ],
+      "source_joint_local_quaternion_wxyz": [
+        0.8144484162330627,
+        0.5789316892623901,
+        -0.02323729358613491,
+        -0.03117605298757553
+      ],
+      "tpose_relative_parent_quaternion_wxyz": [
+        0.9466913523327352,
+        0.2972557625490372,
+        -0.11791828546012102,
+        -0.038859436040996044
+      ],
+      "tpose_relative_parent_rotation_matrix": [
+        [
+          0.9691704530869737,
+          0.0034720034054666255,
+          -0.24636675517517093
+        ],
+        [
+          -0.1436795232113145,
+          0.8202579625487743,
+          -0.5536542869743745
+        ],
+        [
+          0.2001620030699122,
+          0.5719832340791872,
+          0.7954686370054789
+        ]
+      ],
+      "raw_feature_12d": [
+        0.2191138677995456,
+        0.06467878736755095,
+        0.12477413139284751,
+        0.9691704530869737,
+        -0.1436795232113145,
+        0.2001620030699122,
+        0.0034720034054666255,
+        0.8202579625487743,
+        0.5719832340791872,
+        0.006001245044037759,
+        0.03244670284312462,
+        0.003396241469091129
+      ],
+      "normalized_feature_12d": [
+        1.2369628801630708,
+        -1.477935321959883,
+        0.3257081410548144,
+        0.37171718125354614,
+        -0.5917336851104287,
+        0.6211691517966111,
+        0.01840119350827646,
+        -0.13381393185065857,
+        1.5252358739033705,
+        0.3271087304142037,
+        1.780705404210344,
+        -0.062332341150257264
+      ]
+    },
+    {
+      "feature_row_index": 3,
+      "source_pose_frame": 3,
+      "source_delta_destination_frame": 4,
+      "source_time_seconds": 0.1,
+      "world_position_before_loader_grounding": [
+        0.2239624566864666,
+        0.2102301200336641,
+        0.13512544063600207
+      ],
+      "world_position_after_loader_grounding": [
+        0.2239624566864666,
+        0.21023012003366415,
+        0.13512544063600207
+      ],
+      "root_xz_removed_position": [
+        0.21651893641081726,
+        0.21023012003366415,
+        0.18977369653605325
+      ],
+      "root_facing_quaternion_wxyz": [
+        0.9999216155771089,
+        -0.0,
+        -0.012520491270890772,
+        0.0
+      ],
+      "destination_root_facing_quaternion_wxyz": [
+        0.9999362093118479,
+        -0.0,
+        -0.011295012485705256,
+        0.0
+      ],
+      "world_delta_to_next_frame": [
+        -0.011025873851693901,
+        0.062201779744741614,
+        -0.001548228860481643
+      ],
+      "source_joint_local_quaternion_wxyz": [
+        0.887827455997467,
+        0.4481438398361206,
+        -0.05943675339221954,
+        -0.08600486814975739
+      ],
+      "tpose_relative_parent_quaternion_wxyz": [
+        0.8042870388780208,
+        0.5916177053430807,
+        -0.04134598435732258,
+        -0.037439081073689914
+      ],
+      "tpose_relative_parent_rotation_matrix": [
+        [
+          0.9937776515964951,
+          0.011301498851413756,
+          -0.11080728907010907
+        ],
+        [
+          -0.1091455325758079,
+          0.2971738405632076,
+          -0.9485646847757176
+        ],
+        [
+          0.022208824959877436,
+          0.9547565054026209,
+          0.29655822950185806
+        ]
+      ],
+      "raw_feature_12d": [
+        0.2116993048942718,
+        0.21023012003366415,
+        0.1951356195795932,
+        0.9937776515964951,
+        -0.1091455325758079,
+        0.022208824959877436,
+        0.011301498851413756,
+        0.2971738405632076,
+        0.9547565054026209,
+        -0.010988088251535619,
+        0.06220177974474161,
+        -0.001796892699734887
+      ],
+      "normalized_feature_12d": [
+        1.1942520685531237,
+        -1.1541150788945405,
+        0.715948312093913,
+        0.45198155120898154,
+        -0.4490917687850499,
+        0.09841931899687868,
+        0.04890154023708275,
+        -2.0458926510974487,
+        2.6131316883131284,
+        -0.623648717147334,
+        3.3945830917560915,
+        -0.24236335531830389
+      ]
+    },
+    {
+      "feature_row_index": 6,
+      "source_pose_frame": 6,
+      "source_delta_destination_frame": 7,
+      "source_time_seconds": 0.2,
+      "world_position_before_loader_grounding": [
+        0.1869612926976994,
+        0.395259687037437,
+        0.11485491249701354
+      ],
+      "world_position_after_loader_grounding": [
+        0.1869612926976994,
+        0.3952596870374371,
+        0.11485491249701354
+      ],
+      "root_xz_removed_position": [
+        0.19276019705969535,
+        0.3952596870374371,
+        0.19191099379618554
+      ],
+      "root_facing_quaternion_wxyz": [
+        0.9996313981198143,
+        -0.0,
+        -0.027148994328069356,
+        0.0
+      ],
+      "destination_root_facing_quaternion_wxyz": [
+        0.9988497630778772,
+        -0.0,
+        -0.047949460886109685,
+        0.0
+      ],
+      "world_delta_to_next_frame": [
+        -0.0019804226299246774,
+        0.0584163211205877,
+        -0.018598100442486803
+      ],
+      "source_joint_local_quaternion_wxyz": [
+        0.874291718006134,
+        0.47874560952186584,
+        -0.04328976199030876,
+        -0.06739930063486099
+      ],
+      "tpose_relative_parent_quaternion_wxyz": [
+        0.5669544536840915,
+        0.823627704325531,
+        0.014129091377361827,
+        0.0008144512708623969
+      ],
+      "tpose_relative_parent_rotation_matrix": [
+        [
+          0.9995994109890735,
+          0.02235070322135863,
+          0.017362707617426497
+        ],
+        [
+          0.02419772987486413,
+          -0.3567261884037738,
+          -0.933895548964561
+        ],
+        [
+          -0.01467948974592097,
+          0.9339415787791152,
+          -0.35712412409185323
+        ]
+      ],
+      "raw_feature_12d": [
+        0.18205950236296548,
+        0.3952596870374372,
+        0.2020907239575373,
+        0.9995994109890735,
+        0.02419772987486413,
+        -0.01467948974592097,
+        0.02235070322135863,
+        -0.3567261884037738,
+        0.9339415787791152,
+        -0.00018982976093971497,
+        0.05841632112058769,
+        -0.018702282708905005
+      ],
+      "normalized_feature_12d": [
+        1.0235150961592112,
+        -0.7424643006850301,
+        0.7545228390402456,
+        0.47097111028034966,
+        0.10167975037687847,
+        -0.009942670092163848,
+        0.09194448811122805,
+        -4.436155091403607,
+        2.5539727207272644,
+        -0.019356335450187702,
+        3.1892646101117834,
+        -0.8284245679338227
+      ]
+    }
+  ],
+  "qc": {
+    "finite_features": true,
+    "ric_max_abs_error_body_units": 1.7100135196734811e-10,
+    "fk_max_abs_error_body_units": 1.5991813903659668e-07,
+    "normalization_roundtrip_max_abs_error": 1.1102230246251565e-16,
+    "raw_feature_shape": [
+      7,
+      22,
+      12
+    ],
+    "model_motion_array_shape": [
+      1,
+      22,
+      12,
+      60
+    ],
+    "padded_frames_exact_zero": true
+  },
+  "pixel_annotations": {
+    "image": "skeleton_tpose_motion.png",
+    "width_px": 2400,
+    "height_px": 1080,
+    "pixel_origin": "top-left",
+    "plot_axis_order": [
+      "source_X",
+      "source_Z",
+      "source_Y"
+    ],
+    "panels": [
+      {
+        "label": "T-pose conditioning",
+        "source_frame_index": null,
+        "joint_index": 9,
+        "joint_name": "mixamorig:LeftFoot",
+        "joint_source_xyz_body_units": [
+          0.08152824980218654,
+          0.0644093411624944,
+          -0.023500767108212566
+        ],
+        "joint_pixel_xy": [
+          364.5533628646743,
+          664.3690494004495
+        ],
+        "projection_matrix_plot_coordinates": [
+          [
+            0.6665211198365925,
+            0.2098762606831321,
+            0.0,
+            -1.1102230246251565e-16
+          ],
+          [
+            -0.058822672847123406,
+            0.1027993335642122,
+            0.8230151249313704,
+            -0.6254914949478421
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            -10.0
+          ],
+          [
+            -0.2767389177965775,
+            0.48363283992051176,
+            -0.17493726515783578,
+            10.132952321519957
+          ]
+        ],
+        "axes": {
+          "X": {
+            "source_origin_xyz": [
+              -0.63,
+              0.08,
+              0.3
+            ],
+            "source_endpoint_xyz": [
+              -0.45999999999999996,
+              0.08,
+              0.3
+            ],
+            "origin_pixel_xy": [
+              245.3717409420721,
+              632.800076143396
+            ],
+            "endpoint_pixel_xy": [
+              278.14262020974996,
+              636.3840978743505
+            ]
+          },
+          "Y": {
+            "source_origin_xyz": [
+              -0.63,
+              0.08,
+              0.3
+            ],
+            "source_endpoint_xyz": [
+              -0.63,
+              0.25,
+              0.3
+            ],
+            "origin_pixel_xy": [
+              245.3717409420721,
+              632.800076143396
+            ],
+            "endpoint_pixel_xy": [
+              245.0738808806956,
+              592.230653547595
+            ]
+          },
+          "Z": {
+            "source_origin_xyz": [
+              -0.63,
+              0.08,
+              0.3
+            ],
+            "source_endpoint_xyz": [
+              -0.63,
+              0.08,
+              0.47
+            ],
+            "origin_pixel_xy": [
+              245.3717409420721,
+              632.800076143396
+            ],
+            "endpoint_pixel_xy": [
+              256.5254474544924,
+              626.6135465218758
+            ]
+          }
+        },
+        "crop_bbox_xyxy": [
+          229,
+          529,
+          499,
+          799
+        ],
+        "joint_pixel_xy_in_crop": [
+          135.55336286467428,
+          135.3690494004495
+        ],
+        "crop_file": "left_foot_tpose_crop.png",
+        "crop_rendered_width_px": 270,
+        "crop_rendered_height_px": 270,
+        "crop_pixel_accuracy_note": "Pixel coordinates use the requested figure bbox; raster rounding is below one pixel."
+      },
+      {
+        "label": "Frame 0  /  0.000 s",
+        "source_frame_index": 0,
+        "joint_index": 9,
+        "joint_name": "mixamorig:LeftFoot",
+        "joint_source_xyz_body_units": [
+          0.2191138799127963,
+          0.06467878736755094,
+          0.12477411012095817
+        ],
+        "joint_pixel_xy": [
+          987.099337863646,
+          661.5674042550611
+        ],
+        "projection_matrix_plot_coordinates": [
+          [
+            0.6665211198365925,
+            0.2098762606831321,
+            0.0,
+            -1.1102230246251565e-16
+          ],
+          [
+            -0.058822672847123406,
+            0.1027993335642122,
+            0.8230151249313704,
+            -0.6254914949478421
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            -10.0
+          ],
+          [
+            -0.2767389177965775,
+            0.48363283992051176,
+            -0.17493726515783578,
+            10.132952321519957
+          ]
+        ],
+        "axes": {
+          "X": {
+            "source_origin_xyz": [
+              -0.63,
+              0.08,
+              0.3
+            ],
+            "source_endpoint_xyz": [
+              -0.45999999999999996,
+              0.08,
+              0.3
+            ],
+            "origin_pixel_xy": [
+              830.9717409420721,
+              632.8000761433959
+            ],
+            "endpoint_pixel_xy": [
+              863.7426202097499,
+              636.3840978743503
+            ]
+          },
+          "Y": {
+            "source_origin_xyz": [
+              -0.63,
+              0.08,
+              0.3
+            ],
+            "source_endpoint_xyz": [
+              -0.63,
+              0.25,
+              0.3
+            ],
+            "origin_pixel_xy": [
+              830.9717409420721,
+              632.8000761433959
+            ],
+            "endpoint_pixel_xy": [
+              830.6738808806956,
+              592.2306535475949
+            ]
+          },
+          "Z": {
+            "source_origin_xyz": [
+              -0.63,
+              0.08,
+              0.3
+            ],
+            "source_endpoint_xyz": [
+              -0.63,
+              0.08,
+              0.47
+            ],
+            "origin_pixel_xy": [
+              830.9717409420721,
+              632.8000761433959
+            ],
+            "endpoint_pixel_xy": [
+              842.1254474544924,
+              626.6135465218757
+            ]
+          }
+        },
+        "crop_bbox_xyxy": [
+          852,
+          526,
+          1122,
+          796
+        ],
+        "joint_pixel_xy_in_crop": [
+          135.09933786364604,
+          135.5674042550611
+        ],
+        "crop_file": "left_foot_frame_00_crop.png",
+        "crop_rendered_width_px": 269,
+        "crop_rendered_height_px": 270,
+        "crop_pixel_accuracy_note": "Pixel coordinates use the requested figure bbox; raster rounding is below one pixel."
+      },
+      {
+        "label": "Frame 3  /  0.100 s",
+        "source_frame_index": 3,
+        "joint_index": 9,
+        "joint_name": "mixamorig:LeftFoot",
+        "joint_source_xyz_body_units": [
+          0.2239624566864666,
+          0.21023012003366415,
+          0.13512544063600207
+        ],
+        "joint_pixel_xy": [
+          1574.442610392722,
+          625.5442648177643
+        ],
+        "projection_matrix_plot_coordinates": [
+          [
+            0.6665211198365925,
+            0.2098762606831321,
+            0.0,
+            -1.1102230246251565e-16
+          ],
+          [
+            -0.058822672847123406,
+            0.1027993335642122,
+            0.8230151249313704,
+            -0.6254914949478421
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            -10.0
+          ],
+          [
+            -0.2767389177965775,
+            0.48363283992051176,
+            -0.17493726515783578,
+            10.132952321519957
+          ]
+        ],
+        "axes": {
+          "X": {
+            "source_origin_xyz": [
+              -0.63,
+              0.08,
+              0.3
+            ],
+            "source_endpoint_xyz": [
+              -0.45999999999999996,
+              0.08,
+              0.3
+            ],
+            "origin_pixel_xy": [
+              1416.5717409420722,
+              632.8000761433959
+            ],
+            "endpoint_pixel_xy": [
+              1449.34262020975,
+              636.3840978743503
+            ]
+          },
+          "Y": {
+            "source_origin_xyz": [
+              -0.63,
+              0.08,
+              0.3
+            ],
+            "source_endpoint_xyz": [
+              -0.63,
+              0.25,
+              0.3
+            ],
+            "origin_pixel_xy": [
+              1416.5717409420722,
+              632.8000761433959
+            ],
+            "endpoint_pixel_xy": [
+              1416.2738808806957,
+              592.2306535475949
+            ]
+          },
+          "Z": {
+            "source_origin_xyz": [
+              -0.63,
+              0.08,
+              0.3
+            ],
+            "source_endpoint_xyz": [
+              -0.63,
+              0.08,
+              0.47
+            ],
+            "origin_pixel_xy": [
+              1416.5717409420722,
+              632.8000761433959
+            ],
+            "endpoint_pixel_xy": [
+              1427.7254474544925,
+              626.6135465218757
+            ]
+          }
+        },
+        "crop_bbox_xyxy": [
+          1439,
+          490,
+          1709,
+          760
+        ],
+        "joint_pixel_xy_in_crop": [
+          135.44261039272192,
+          135.54426481776432
+        ],
+        "crop_file": "left_foot_frame_03_crop.png",
+        "crop_rendered_width_px": 269,
+        "crop_rendered_height_px": 270,
+        "crop_pixel_accuracy_note": "Pixel coordinates use the requested figure bbox; raster rounding is below one pixel."
+      },
+      {
+        "label": "Frame 6  /  0.200 s",
+        "source_frame_index": 6,
+        "joint_index": 9,
+        "joint_name": "mixamorig:LeftFoot",
+        "joint_source_xyz_body_units": [
+          0.1869612926976994,
+          0.3952596870374371,
+          0.11485491249701354
+        ],
+        "joint_pixel_xy": [
+          2151.4563090277943,
+          579.8350400076408
+        ],
+        "projection_matrix_plot_coordinates": [
+          [
+            0.6665211198365925,
+            0.2098762606831321,
+            0.0,
+            -1.1102230246251565e-16
+          ],
+          [
+            -0.058822672847123406,
+            0.1027993335642122,
+            0.8230151249313704,
+            -0.6254914949478421
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            -10.0
+          ],
+          [
+            -0.2767389177965775,
+            0.48363283992051176,
+            -0.17493726515783578,
+            10.132952321519957
+          ]
+        ],
+        "axes": {
+          "X": {
+            "source_origin_xyz": [
+              -0.63,
+              0.08,
+              0.3
+            ],
+            "source_endpoint_xyz": [
+              -0.45999999999999996,
+              0.08,
+              0.3
+            ],
+            "origin_pixel_xy": [
+              2002.1717409420723,
+              632.8000761433959
+            ],
+            "endpoint_pixel_xy": [
+              2034.9426202097502,
+              636.3840978743503
+            ]
+          },
+          "Y": {
+            "source_origin_xyz": [
+              -0.63,
+              0.08,
+              0.3
+            ],
+            "source_endpoint_xyz": [
+              -0.63,
+              0.25,
+              0.3
+            ],
+            "origin_pixel_xy": [
+              2002.1717409420723,
+              632.8000761433959
+            ],
+            "endpoint_pixel_xy": [
+              2001.8738808806959,
+              592.2306535475949
+            ]
+          },
+          "Z": {
+            "source_origin_xyz": [
+              -0.63,
+              0.08,
+              0.3
+            ],
+            "source_endpoint_xyz": [
+              -0.63,
+              0.08,
+              0.47
+            ],
+            "origin_pixel_xy": [
+              2002.1717409420723,
+              632.8000761433959
+            ],
+            "endpoint_pixel_xy": [
+              2013.3254474544926,
+              626.6135465218757
+            ]
+          }
+        },
+        "crop_bbox_xyxy": [
+          2016,
+          444,
+          2286,
+          714
+        ],
+        "joint_pixel_xy_in_crop": [
+          135.4563090277943,
+          135.83504000764083
+        ],
+        "crop_file": "left_foot_frame_06_crop.png",
+        "crop_rendered_width_px": 269,
+        "crop_rendered_height_px": 270,
+        "crop_pixel_accuracy_note": "Pixel coordinates use the requested figure bbox; raster rounding is below one pixel."
+      }
+    ]
+  },
+  "schematic_not_executed": {
+    "label": "schematic_not_executed",
+    "model_input_relation": "Real standardized/padded motion array computed. Caption/joint-name embeddings, noisy x_tau, denoiser v_theta and ODE rollout were not computed.",
+    "x_tau": null,
+    "velocity_v_theta": null,
+    "generated_motion": null,
+    "contact_inference": null,
+    "surface_encoder": null,
+    "robot_adaptation": "No native G1/Go2/Franka-to-H2 inference established. This is a UniMate native Mixamo text-to-skeleton preprocessing case."
+  },
+  "caveats": [
+    "Official rotation_conversions.py prose says first two rows; executable Motion encoding and numpy decoding use first two columns. This trace follows code.",
+    "Local displacement is not physical m/s and is distinct from neural flow-matching velocity v_theta.",
+    "No textured mesh loaded. Only actual canonical skeletons shown; no fabricated surface encoder.",
+    "Caption is a dataset reference, not a generated neural response."
+  ]
+}

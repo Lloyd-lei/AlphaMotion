@@ -1,0 +1,732 @@
+{
+  "pdf": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-google-docs-before-clarity-refinement.pdf",
+  "pdf_sha256": "d9262e6bc65585343e91b366a1b505e059571af54cab439d4d6bd60c0bb87af8",
+  "total_pages": 54,
+  "edited_pages": [
+    11,
+    12,
+    14,
+    15,
+    16,
+    17,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54
+  ],
+  "edited_pages_count": 40,
+  "all_edited_pages_visually_inspected": true,
+  "all_export_pages_rendered": true,
+  "preexisting_user_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "automatic_tab_cover_pages": [
+    10,
+    13,
+    18,
+    25,
+    43
+  ],
+  "method": {
+    "renderer": "Poppler pdftoppm, 120 dpi for all pages",
+    "visual_review": "40 edited pages individually inspected through 20 two-page contact sheets at original image detail; additional 180 dpi-equivalent zoom renders for pages22,36,45,47; original pages and tab covers reviewed in overview sheets",
+    "text_geometry_support": "PyMuPDF text spans; no text bbox outside page and no extracted replacement-character glyphs. This supports, but does not replace, visual review."
+  },
+  "verdict": "PASS — no mandatory visual/layout fixes identified in edited pages",
+  "must_fix_issues": [],
+  "optional_improvements": [
+    {
+      "id": "optional_block_pagination",
+      "pages": [
+        28,
+        29,
+        30,
+        31,
+        34,
+        35,
+        36,
+        40,
+        41,
+        42,
+        48,
+        49,
+        50
+      ],
+      "severity": "optional",
+      "description": "少数层模块跨页：A12、U05、R07、R11、Qwen Final RMS，以及工程U4/R2。标题通常已与形状或首段同页，并非只有孤立标题；可对模块整体设置keep-with-next或手动分页，以减少翻页。",
+      "required_for_delivery": false
+    },
+    {
+      "id": "optional_code_contrast",
+      "pages": [
+        29,
+        33,
+        36,
+        40,
+        41,
+        42
+      ],
+      "severity": "optional",
+      "description": "8.5pt等宽伪代码采用偏浅灰色；屏幕放大可读且行未裁切。可改深灰/黑或略增字号，改善纸面阅读。",
+      "required_for_delivery": false
+    },
+    {
+      "id": "optional_engineering_raster_resolution",
+      "pages": [
+        45,
+        46,
+        47
+      ],
+      "severity": "optional",
+      "description": "工程图嵌入PNG为780×932，显示510×609.75pt，约110ppi；整页可读，放大有软化。用于正式印刷可重新嵌入2–3倍分辨率PNG或使用已有矢量PDF/SVG。模型图19–23为1700px宽、约240ppi。",
+      "required_for_delivery": false
+    }
+  ],
+  "figures": [
+    {
+      "page": 19,
+      "pixel_width": 1700,
+      "pixel_height": 1667,
+      "width_pt": 510.0,
+      "height_pt": 500.25,
+      "effective_ppi": 240.0,
+      "caption_same_page": true,
+      "visual_readability": "pass"
+    },
+    {
+      "page": 20,
+      "pixel_width": 1700,
+      "pixel_height": 2174,
+      "width_pt": 510.0,
+      "height_pt": 651.75,
+      "effective_ppi": 240.0,
+      "caption_same_page": true,
+      "visual_readability": "pass"
+    },
+    {
+      "page": 21,
+      "pixel_width": 1700,
+      "pixel_height": 2170,
+      "width_pt": 510.0,
+      "height_pt": 651.0,
+      "effective_ppi": 240.0,
+      "caption_same_page": true,
+      "visual_readability": "pass"
+    },
+    {
+      "page": 22,
+      "pixel_width": 1700,
+      "pixel_height": 1884,
+      "width_pt": 510.0,
+      "height_pt": 564.75,
+      "effective_ppi": 240.0,
+      "caption_same_page": true,
+      "visual_readability": "pass"
+    },
+    {
+      "page": 23,
+      "pixel_width": 1700,
+      "pixel_height": 1934,
+      "width_pt": 510.0,
+      "height_pt": 579.75,
+      "effective_ppi": 240.0,
+      "caption_same_page": true,
+      "visual_readability": "pass"
+    },
+    {
+      "page": 45,
+      "pixel_width": 780,
+      "pixel_height": 932,
+      "width_pt": 510.0,
+      "height_pt": 609.75,
+      "effective_ppi": 110.1,
+      "caption_same_page": true,
+      "visual_readability": "pass"
+    },
+    {
+      "page": 46,
+      "pixel_width": 780,
+      "pixel_height": 932,
+      "width_pt": 510.0,
+      "height_pt": 609.75,
+      "effective_ppi": 110.1,
+      "caption_same_page": true,
+      "visual_readability": "pass"
+    },
+    {
+      "page": 47,
+      "pixel_width": 780,
+      "pixel_height": 932,
+      "width_pt": 510.0,
+      "height_pt": 609.75,
+      "effective_ppi": 110.1,
+      "caption_same_page": true,
+      "visual_readability": "pass"
+    }
+  ],
+  "page_reviews": [
+    {
+      "page": 1,
+      "category": "preexisting_user_content",
+      "visual_review": "overview_contact_sheet_only",
+      "result": "preserved_scope",
+      "must_fix": false,
+      "notes": "原用户内容；只确认整体导出包含该页，不对其内容作本轮重写或技术验收。"
+    },
+    {
+      "page": 2,
+      "category": "preexisting_user_content",
+      "visual_review": "overview_contact_sheet_only",
+      "result": "preserved_scope",
+      "must_fix": false,
+      "notes": "原用户内容；只确认整体导出包含该页，不对其内容作本轮重写或技术验收。"
+    },
+    {
+      "page": 3,
+      "category": "preexisting_user_content",
+      "visual_review": "overview_contact_sheet_only",
+      "result": "preserved_scope",
+      "must_fix": false,
+      "notes": "原用户内容；只确认整体导出包含该页，不对其内容作本轮重写或技术验收。 第3页原本空白，现导出仍为空白。"
+    },
+    {
+      "page": 4,
+      "category": "preexisting_user_content",
+      "visual_review": "overview_contact_sheet_only",
+      "result": "preserved_scope",
+      "must_fix": false,
+      "notes": "原用户内容；只确认整体导出包含该页，不对其内容作本轮重写或技术验收。"
+    },
+    {
+      "page": 5,
+      "category": "preexisting_user_content",
+      "visual_review": "overview_contact_sheet_only",
+      "result": "preserved_scope",
+      "must_fix": false,
+      "notes": "原用户内容；只确认整体导出包含该页，不对其内容作本轮重写或技术验收。"
+    },
+    {
+      "page": 6,
+      "category": "preexisting_user_content",
+      "visual_review": "overview_contact_sheet_only",
+      "result": "preserved_scope",
+      "must_fix": false,
+      "notes": "原用户内容；只确认整体导出包含该页，不对其内容作本轮重写或技术验收。"
+    },
+    {
+      "page": 7,
+      "category": "preexisting_user_content",
+      "visual_review": "overview_contact_sheet_only",
+      "result": "preserved_scope",
+      "must_fix": false,
+      "notes": "原用户内容；只确认整体导出包含该页，不对其内容作本轮重写或技术验收。"
+    },
+    {
+      "page": 8,
+      "category": "preexisting_user_content",
+      "visual_review": "overview_contact_sheet_only",
+      "result": "preserved_scope",
+      "must_fix": false,
+      "notes": "原用户内容；只确认整体导出包含该页，不对其内容作本轮重写或技术验收。"
+    },
+    {
+      "page": 9,
+      "category": "preexisting_user_content",
+      "visual_review": "overview_contact_sheet_only",
+      "result": "preserved_scope",
+      "must_fix": false,
+      "notes": "原用户内容；只确认整体导出包含该页，不对其内容作本轮重写或技术验收。"
+    },
+    {
+      "page": 10,
+      "category": "automatic_google_docs_tab_cover",
+      "visual_review": "overview_contact_sheet",
+      "result": "expected",
+      "must_fix": false,
+      "notes": "Google Docs tab自动封页，标题+留白属预期；非编辑内容缺失。"
+    },
+    {
+      "page": 11,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-11.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-11-12.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "资源日志已重排为摘要、完整状态表、基础工程结果；表格边框/状态色/文字均清楚，整表无跨页割裂。"
+    },
+    {
+      "page": 12,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-12.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-11-12.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "后续事项、缺失资源、工程入口分段明确；路径在正文内自然换行，无长日志堆叠。"
+    },
+    {
+      "page": 13,
+      "category": "automatic_google_docs_tab_cover",
+      "visual_review": "overview_contact_sheet",
+      "result": "expected",
+      "must_fix": false,
+      "notes": "Google Docs tab自动封页，标题+留白属预期；非编辑内容缺失。"
+    },
+    {
+      "page": 14,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-14.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-14-15.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "研究假设、方向、文本接口层级清楚；中文/英文混排正常。"
+    },
+    {
+      "page": 15,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-15.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-14-15.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "交付导航与候选方案明确；标题未孤立；输入接口段落自然换行。"
+    },
+    {
+      "page": 16,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-16.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-16-17.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "神经结构、计算草案、预训练阶段可读；公式与伪代码未裁切。"
+    },
+    {
+      "page": 17,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-17.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-16-17.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "承接阶段C/D自然；最小对照、证据边界完整；无乱码或遮挡。"
+    },
+    {
+      "page": 18,
+      "category": "automatic_google_docs_tab_cover",
+      "visual_review": "overview_contact_sheet",
+      "result": "expected",
+      "must_fix": false,
+      "notes": "Google Docs tab自动封页，标题+留白属预期；非编辑内容缺失。"
+    },
+    {
+      "page": 19,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-19.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-19-20.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "三模型比较图完整；所有列、箭头、图内文字可读；图1中文说明同页。"
+    },
+    {
+      "page": 20,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-20.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-19-20.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "Alpha1双流图完整；底部输出头/脚注与图2中文说明同页，无裁切。"
+    },
+    {
+      "page": 21,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-21.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-21-22.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "UniMate图中10块标记、条件支路、各层公式均可读；图3中文说明同页。"
+    },
+    {
+      "page": 22,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-22.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-21-22.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "UMR网络/优化两阶段图完整；标题长行已额外放大确认未裁切；图4中文说明同页。"
+    },
+    {
+      "page": 23,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-23.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-23-24.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "Alpha2候选图完整；局部语义、surface、tactile虚线接口及脚注清楚；图5中文说明同页。"
+    },
+    {
+      "page": 24,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-24.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-23-24.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "编号与源码索引分行清楚；链接样式可识别，说明段完整。"
+    },
+    {
+      "page": 25,
+      "category": "automatic_google_docs_tab_cover",
+      "visual_review": "overview_contact_sheet",
+      "result": "expected",
+      "must_fix": false,
+      "notes": "Google Docs tab自动封页，标题+留白属预期；非编辑内容缺失。"
+    },
+    {
+      "page": 26,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-26.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-26-27.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "逐层附录导语、有效配置、A01/A02完整，底部源码行未裁切。"
+    },
+    {
+      "page": 27,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-27.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-26-27.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "A03–A07层级和输入输出加粗一致；公式/来源可读。"
+    },
+    {
+      "page": 28,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-28.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-28-29.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "A08–A12可读；A12的解释跨至29页，标题和主要公式仍在本页。"
+    },
+    {
+      "page": 29,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-29.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-28-29.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "承接A12解释，A13与完整Alpha1伪代码可读；等宽代码略浅，未裁切。"
+    },
+    {
+      "page": 30,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-30.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-30-31.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "UniMate开篇与U01–U05可读；U05标题/输入输出留本页，公式到31页，属可选分页改善。"
+    },
+    {
+      "page": 31,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-31.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-30-31.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "承接U05，U06–U09可读；底部调制公式解释至32页，无内容丢失。"
+    },
+    {
+      "page": 32,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-32.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-32-33.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "U09延续与U10–U14完整可读；来源长行正常换行。"
+    },
+    {
+      "page": 33,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-33.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-32-33.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "U15/U16与完整UniMate伪代码同页；等宽代码略浅但可读。"
+    },
+    {
+      "page": 34,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-34.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-34-35.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "UMR R01–R07可读；R07标题/形状后公式到35页，属可选分页改善。"
+    },
+    {
+      "page": 35,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-35.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-34-35.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "承接R07，R08–R11清楚；R11标题/形状后公式到36页，属可选分页改善。"
+    },
+    {
+      "page": 36,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-36.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-36-37.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "承接约束公式与完整UMR伪代码；已额外放大确认最长代码行无裁切。"
+    },
+    {
+      "page": 37,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-37.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-36-37.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "变体/训练目标模块分节明确；较密但字体与公式可读，未重叠。"
+    },
+    {
+      "page": 38,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-38.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-38-39.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "Alpha1 loss与UMR兼容性段完整；留白是本节收束，无孤立标题。"
+    },
+    {
+      "page": 39,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-39.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-38-39.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "冻结文本塔章节与SigLIP内部层表述清楚，shape/公式/链接对齐正常。"
+    },
+    {
+      "page": 40,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-40.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-40-41.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "SigLIP伪代码和T5层计算可读；最后两条T5注记承接41页。"
+    },
+    {
+      "page": 41,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-41.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-40-41.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "T5伪代码与Qwen逐层计算清楚；Qwen最终RMS标题/shape在页尾，公式到42页，属可选分页改善。"
+    },
+    {
+      "page": 42,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-42.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-42-44.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "承接Qwen最终RMS与注意事项，完整Qwen伪代码可读；后半页留白是附录收束。"
+    },
+    {
+      "page": 43,
+      "category": "automatic_google_docs_tab_cover",
+      "visual_review": "overview_contact_sheet",
+      "result": "expected",
+      "must_fix": false,
+      "notes": "Google Docs tab自动封页，标题+留白属预期；非编辑内容缺失。"
+    },
+    {
+      "page": 44,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-44.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-42-44.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "独立工程引言页；后续610pt图自动落到下一页，非缺失内容或孤立图注。"
+    },
+    {
+      "page": 45,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-45.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-45-46.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "UniMate工程图与中文说明同页；全部节点/箭头/标签可读。嵌入PNG放大略软，属于可选印刷清晰度改善。"
+    },
+    {
+      "page": 46,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-46.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-45-46.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "UMR工程图与中文说明同页，browser分支清楚，未裁切。嵌入PNG放大略软。"
+    },
+    {
+      "page": 47,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-47.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-47-48.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "Alpha2工程图完整，阶段/节点/说明可读；中文说明同页。嵌入PNG放大略软。"
+    },
+    {
+      "page": 48,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-48.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-47-48.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "U1–U4模块说明、输入输出、来源清楚；U4来源续49页，属可选分页改善。"
+    },
+    {
+      "page": 49,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-49.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-49-50.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "U5–U7、R1及R2开头可读；R2说明续50页，非内容缺失。"
+    },
+    {
+      "page": 50,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-50.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-49-50.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "R2承接、R3–R5与A1均清楚；页底来源完整。"
+    },
+    {
+      "page": 51,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-51.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-51-52.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "F1基础工程短节完整；作为模块清单收束留白合理。"
+    },
+    {
+      "page": 52,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-52.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-51-52.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "六个共用接口的标题、说明和必要字段层级清楚，均未割裂/裁切。"
+    },
+    {
+      "page": 53,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-53.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-53-54.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "生产验收各模块清楚；代码复用说明续54页。"
+    },
+    {
+      "page": 54,
+      "category": "edited_content",
+      "visual_review": "full_page_at_120dpi",
+      "render": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-pages/page-54.png",
+      "viewed_contact_sheet": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/qa/final-docs-sheets/pages-53-54.png",
+      "result": "pass",
+      "must_fix": false,
+      "notes": "承接代码复用与局部表面文本/缺模态说明；结尾完整，无孤立图注。"
+    }
+  ],
+  "supporting_checks": {
+    "text_outside_page_count": 0,
+    "replacement_character_count": 0,
+    "figure_count": 8,
+    "all_figure_captions_same_page": true
+  },
+  "scope_limitations": [
+    "只读审阅该PDF导出，不编辑Google Docs或重新导出。",
+    "未在此次视觉QA中逐一打开外部源码超链接，也未重新验证技术计算或实验结果。",
+    "整体54页包含原始内容和自动tab封页；新增/编辑内容实际40页。"
+  ],
+  "reviewed_at_utc": "2026-10-04T03:05:56.517395+00:00",
+  "subsequent_refinement": "See final_docs_refinement_check.json for high-resolution engineering images and darker code; text and page geometry unchanged."
+}

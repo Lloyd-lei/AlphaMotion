@@ -1,0 +1,1274 @@
+{
+  "schema": "actual-run-recipe-source-audit-v2",
+  "created_at_utc": "2026-10-04T06:17:57.663110+00:00",
+  "reference_config_sha256": "0e61ed5b012420d5fa186bc09537e9cac32ed14fa4533182c6d44805f5e7ee58",
+  "reference_config_source": "hash-matched actual L_M20k_0903 config bytes, not CLI defaults",
+  "reference_sources": {
+    "train_dual.py": {
+      "path": "/Users/yudonglei/Documents/be water, robot/.codex-staging/megatron-scale-pilot/reference_recipe/source/train_dual.py",
+      "sha256": "de909574dc433e99080329c780a52fb3fe9dd91a7474f7d0f7abe58b4eced233",
+      "bytes": 49401
+    },
+    "dual_common.py": {
+      "path": "/Users/yudonglei/Documents/be water, robot/.codex-staging/megatron-scale-pilot/reference_recipe/source/dual_common.py",
+      "sha256": "c8f43065efb0a0188796a572d9b549a55f16b83bf4c3a5d4a28f84d5ba0110cd",
+      "bytes": 54411
+    },
+    "masking.py": {
+      "path": "/Users/yudonglei/Documents/be water, robot/.codex-staging/megatron-scale-pilot/reference_recipe/source/masking.py",
+      "sha256": "75dc05aa0bf8c8e2e67dfec60c5a49ccb584268a04b3791225a119efdb73c65b",
+      "bytes": 6136
+    }
+  },
+  "reference_source_snapshot_available": true,
+  "current_source_inventory": {
+    "train_pilot.py:objective": {
+      "file": "train_pilot.py",
+      "symbol": "objective",
+      "present": true,
+      "file_sha256": "105b9298b0708dd3d6fce9fc2105824155be0b909f7956e62274347f531de57c",
+      "start_line": 21,
+      "end_line": 44,
+      "symbol_sha256": "197b62a73753180e4c31f19b544977023df2b72db03398888b834b823f2e4217",
+      "calls": [
+        "(predicted - ground_truth_fk).norm",
+        "F.smooth_l1_loss",
+        "FloatingPointError",
+        "angle_degrees",
+        "aux.float",
+        "bool",
+        "fk",
+        "ground_losses",
+        "len",
+        "pe.mean",
+        "pe[batch[v], ix[v]].mean",
+        "re.mean",
+        "re[batch[v], ix[v]].mean",
+        "rot.float",
+        "rv.any",
+        "target.float",
+        "terms.update",
+        "tgt.ground_batch",
+        "tgt.tensor",
+        "tgt.tensor('root_height_m', rows, rot.device).float",
+        "tgt.tensor('root_height_valid', rows, rot.device).bool",
+        "torch.arange",
+        "torch.arange(len(rows), device=rot.device)[:, None].expand_as",
+        "torch.isfinite",
+        "v.any",
+        "weights.get"
+      ]
+    },
+    "train_pilot.py:preflight": {
+      "file": "train_pilot.py",
+      "symbol": "preflight",
+      "present": true,
+      "file_sha256": "105b9298b0708dd3d6fce9fc2105824155be0b909f7956e62274347f531de57c",
+      "start_line": 164,
+      "end_line": 219,
+      "symbol_sha256": "cd8f20b9d83af4be2bfdb26195dd55e6f567781afc7bcfd2e539bed4678a4e24",
+      "calls": [
+        "FloatingPointError",
+        "ValueError",
+        "all",
+        "autocast",
+        "b.eligible",
+        "backward_training_step",
+        "batch_profiles.append",
+        "bool",
+        "float",
+        "forward",
+        "len",
+        "loss.backward",
+        "loss.detach",
+        "make_inputs",
+        "max",
+        "min",
+        "model.eval",
+        "model.parameters",
+        "model.train",
+        "model.zero_grad",
+        "next",
+        "np.random.default_rng",
+        "objective",
+        "recipe_profiles.append",
+        "reports.append",
+        "sample_rows",
+        "str",
+        "time.monotonic",
+        "torch.allclose",
+        "torch.cuda.max_memory_allocated",
+        "torch.cuda.reset_peak_memory_stats",
+        "torch.cuda.synchronize",
+        "torch.full_like",
+        "torch.isfinite",
+        "torch.isfinite(g).all",
+        "torch.nn.utils.clip_grad_norm_",
+        "torch.no_grad",
+        "training_recipe_status",
+        "write_json"
+      ]
+    },
+    "train_pilot.py:main": {
+      "file": "train_pilot.py",
+      "symbol": "main",
+      "present": true,
+      "file_sha256": "105b9298b0708dd3d6fce9fc2105824155be0b909f7956e62274347f531de57c",
+      "start_line": 249,
+      "end_line": 325,
+      "symbol_sha256": "18266636f899d6c1242d8f3fd52767b1779b3dac3b071b3514344a7da653302f",
+      "calls": [
+        "(root / 'pilot_train.lock').open",
+        "ConditionalMegatron",
+        "Path",
+        "Path(__file__).parent.rglob",
+        "RuntimeError",
+        "ValueError",
+        "any",
+        "argparse.ArgumentParser",
+        "args.root.resolve",
+        "assert_training_recipe_ready",
+        "b.eligible",
+        "backward_training_step",
+        "capacity_guard",
+        "datetime.datetime.now",
+        "datetime.datetime.now(datetime.timezone.utc).strftime",
+        "evaluate",
+        "evaluate_reference",
+        "f.relative_to",
+        "f.write",
+        "fcntl.flock",
+        "float",
+        "history.open",
+        "json.dumps",
+        "len",
+        "load_bodies",
+        "load_reference_weights",
+        "lock.close",
+        "model.named_parameters",
+        "model.parameters",
+        "model.state_dict",
+        "model.to",
+        "n.startswith",
+        "np.random.default_rng",
+        "np.random.seed",
+        "optimizer.step",
+        "optimizer.zero_grad",
+        "p.add_argument",
+        "p.numel",
+        "p.parse_args",
+        "paired_summary",
+        "plot_outputs",
+        "preflight",
+        "print",
+        "process_identity",
+        "random.seed",
+        "range",
+        "read_json",
+        "repr",
+        "rng.random",
+        "run.mkdir",
+        "save_checkpoint",
+        "scheduler.step",
+        "set",
+        "sha256",
+        "str",
+        "sum",
+        "time.monotonic",
+        "torch.cuda.get_device_name",
+        "torch.cuda.is_available",
+        "torch.device",
+        "torch.load",
+        "torch.manual_seed",
+        "torch.nn.utils.clip_grad_norm_",
+        "torch.optim.AdamW",
+        "torch.optim.lr_scheduler.CosineAnnealingLR",
+        "torch.set_num_threads",
+        "traceback.format_exc",
+        "training_recipe_status",
+        "write_json",
+        "write_validation_receipt"
+      ]
+    },
+    "recipe_training.py:make_reference_inputs": {
+      "file": "recipe_training.py",
+      "symbol": "make_reference_inputs",
+      "present": true,
+      "file_sha256": "89782f8da9569ce3687751acc4fdc2e95d7184f4a91fd91fcdb5703c4bfbd8b5",
+      "start_line": 11,
+      "end_line": 30,
+      "symbol_sha256": "d9c5f5fc9aecf0c60ca2aed4b11ca01bdacbcf292879904fe4164839b2147c90",
+      "calls": [
+        "SkeletonSpec",
+        "ValueError",
+        "float",
+        "hidden.any",
+        "len",
+        "make_inputs",
+        "parse_mix",
+        "sample_joint_mask",
+        "src.ground_batch",
+        "src.tensor",
+        "src.tensor('contact_sdist', rows, device).float",
+        "src.tensor('contact_valid', rows, device).bool",
+        "torch.full_like",
+        "torch.rand",
+        "torch.where",
+        "torch.zeros_like"
+      ]
+    },
+    "recipe_training.py:xwbc_combos": {
+      "file": "recipe_training.py",
+      "symbol": "xwbc_combos",
+      "present": true,
+      "file_sha256": "89782f8da9569ce3687751acc4fdc2e95d7184f4a91fd91fcdb5703c4bfbd8b5",
+      "start_line": 33,
+      "end_line": 36,
+      "symbol_sha256": "849ea390c2ba55ba996159b180e201a27e4e21caf0486c4a4a23638c3e88f1dd",
+      "calls": [
+        "ValueError",
+        "int",
+        "itertools.product",
+        "len",
+        "list",
+        "rng.choice",
+        "set"
+      ]
+    },
+    "recipe_training.py:backward_training_step": {
+      "file": "recipe_training.py",
+      "symbol": "backward_training_step",
+      "present": true,
+      "file_sha256": "89782f8da9569ce3687751acc4fdc2e95d7184f4a91fd91fcdb5703c4bfbd8b5",
+      "start_line": 39,
+      "end_line": 92,
+      "symbol_sha256": "68a4816051e4d08d5ee4cd2a64cf2be157a5ff224588fc12bf8ab8a21b5f314b",
+      "calls": [
+        "(scale * loss).backward",
+        "ForcedReenc",
+        "ValueError",
+        "autocast_fn",
+        "aux.get",
+        "aux['total'].backward",
+        "aux['total'].detach",
+        "aux[key].detach",
+        "auxiliary_losses",
+        "b.eligible",
+        "directions.append",
+        "float",
+        "forward_fn",
+        "inputs['condition']['valid'].sum",
+        "int",
+        "len",
+        "loss.detach",
+        "make_inputs",
+        "make_reference_inputs",
+        "metrics.get",
+        "objective_fn",
+        "reenc_rng.integers",
+        "rng.choice",
+        "rng.integers",
+        "rng.random",
+        "run",
+        "sample_rows",
+        "set",
+        "str",
+        "terms.items",
+        "v.detach",
+        "xwbc_combos"
+      ]
+    },
+    "recipe_auxiliary.py:contrast_loss": {
+      "file": "recipe_auxiliary.py",
+      "symbol": "contrast_loss",
+      "present": true,
+      "file_sha256": "cb3060b25682073891abfffcea9c0ce804f2565d41a7292bac3a7a5e326f57a6",
+      "start_line": 50,
+      "end_line": 75,
+      "symbol_sha256": "6a09a12a96b63be9156a0cf98841b63b481fb09ddf608dca9bccd96e99ee9d02",
+      "calls": [
+        "F.cross_entropy",
+        "F.normalize",
+        "ValueError",
+        "_stable_unique_indices",
+        "combinations",
+        "iter",
+        "len",
+        "list",
+        "logits.t",
+        "losses.append",
+        "next",
+        "np.isfinite",
+        "sum",
+        "torch.arange",
+        "torch.cat",
+        "torch.cat([zp.reshape(batch, -1), zr.reshape(batch, -1)], -1).float",
+        "torch.stack",
+        "torch.stack(losses).mean",
+        "v.index_select",
+        "v.sum",
+        "vectors.values",
+        "vectors[b].t",
+        "zp.reshape",
+        "zr.reshape",
+        "zs.items",
+        "zs.values"
+      ]
+    },
+    "recipe_auxiliary.py:judge_loss": {
+      "file": "recipe_auxiliary.py",
+      "symbol": "judge_loss",
+      "present": true,
+      "file_sha256": "cb3060b25682073891abfffcea9c0ce804f2565d41a7292bac3a7a5e326f57a6",
+      "start_line": 78,
+      "end_line": 94,
+      "symbol_sha256": "277465918943cc1a964a3ed41498bb8dd5404b30f3b472857ab9af39829cdcb3",
+      "calls": [
+        "F.binary_cross_entropy_with_logits",
+        "ValueError",
+        "iter",
+        "len",
+        "logits.float",
+        "losses.append",
+        "model.judge_logits",
+        "model.set_judge_body_order",
+        "names.index",
+        "next",
+        "next(iter(zs.values()))[0].sum",
+        "set",
+        "target.float",
+        "torch.stack",
+        "torch.stack(losses).mean",
+        "torch.zeros_like",
+        "tuple",
+        "zs.items",
+        "zs.values"
+      ]
+    },
+    "recipe_auxiliary.py:cycle_consistency": {
+      "file": "recipe_auxiliary.py",
+      "symbol": "cycle_consistency",
+      "present": true,
+      "file_sha256": "cb3060b25682073891abfffcea9c0ce804f2565d41a7292bac3a7a5e326f57a6",
+      "start_line": 97,
+      "end_line": 107,
+      "symbol_sha256": "aa255531ec34903da79a81b91f86a63a4ad774e95992a8b5750d07b793ace253",
+      "calls": [
+        "(zp_re - zp).square",
+        "(zp_re - zp).square().mean",
+        "(zr_re - zr).square",
+        "(zr_re - zr).square().mean",
+        "ValueError",
+        "model.decode",
+        "model.encode",
+        "torch.cat"
+      ]
+    },
+    "recipe_auxiliary.py:auxiliary_losses": {
+      "file": "recipe_auxiliary.py",
+      "symbol": "auxiliary_losses",
+      "present": true,
+      "file_sha256": "cb3060b25682073891abfffcea9c0ce804f2565d41a7292bac3a7a5e326f57a6",
+      "start_line": 134,
+      "end_line": 173,
+      "symbol_sha256": "e0d3ce0761c4ac7d090143b044fa12ddfb5a813505336c1f97fcea870a95b579",
+      "calls": [
+        "AuxiliaryRecipe.from_mapping",
+        "ValueError",
+        "_paired_bodies",
+        "any",
+        "bodies_by_name[n].geom",
+        "bodies_by_name[n].tensor",
+        "bodies_by_name[n].tensor('pose9', rows, device).float",
+        "cfg.validate",
+        "combo_rng.choice",
+        "contrast_loss",
+        "cycle_consistency",
+        "diagnostics.update",
+        "float",
+        "int",
+        "judge_loss",
+        "len",
+        "list",
+        "max",
+        "min",
+        "model.encode",
+        "model.parameters",
+        "model.set_judge_body_order",
+        "next",
+        "next(model.parameters()).sum",
+        "product",
+        "reenc_rng.integers",
+        "reenc_rng.random",
+        "source.geom",
+        "source.tensor",
+        "source.tensor('pose9', sub, device).float",
+        "target.geom"
+      ]
+    },
+    "recipe_auxiliary.py:_paired_bodies": {
+      "file": "recipe_auxiliary.py",
+      "symbol": "_paired_bodies",
+      "present": true,
+      "file_sha256": "cb3060b25682073891abfffcea9c0ce804f2565d41a7292bac3a7a5e326f57a6",
+      "start_line": 110,
+      "end_line": 131,
+      "symbol_sha256": "213f42dbfefc0a1219f097f3d513fa090e13b6a838fff4ee6596ddbab9142cbf",
+      "calls": [
+        "ValueError",
+        "any",
+        "isinstance",
+        "len",
+        "np.any",
+        "np.array_equal",
+        "np.asarray",
+        "set",
+        "tuple"
+      ]
+    },
+    "recipe_ground.py:ground_losses": {
+      "file": "recipe_ground.py",
+      "symbol": "ground_losses",
+      "present": true,
+      "file_sha256": "bb03a94cefb8db40a500970f6184106b032001cebb10ef0b865149906f80e8c9",
+      "start_line": 20,
+      "end_line": 82,
+      "symbol_sha256": "68bb699b9727e58cb3db79c648435449a4cb20ee823574f2ab94c85e69c1f2c8",
+      "calls": [
+        "((js < 0) | (js >= J)).any",
+        "((soft[cv] < 0) | (soft[cv] > 1)).any",
+        "(cv & ~torch.isfinite(soft)).any",
+        "(gv & ~(rv & trust)).any",
+        "(rv & ~torch.isfinite(root)).any",
+        "F.binary_cross_entropy_with_logits",
+        "F.smooth_l1_loss",
+        "ValueError",
+        "_mat",
+        "any",
+        "bool",
+        "ground.get",
+        "h.index_add",
+        "int",
+        "len",
+        "pred_fk_cm.float",
+        "pred_global_rot6.float",
+        "pred_root_height_m.float",
+        "rot.reshape",
+        "rot.reshape(-1)[:0].sum",
+        "rows.any",
+        "rows.sum",
+        "rv.any",
+        "rv.sum",
+        "tensor",
+        "torch.as_tensor",
+        "torch.as_tensor(ground['contact_valid']).any",
+        "torch.as_tensor(ground['ground_valid']).any",
+        "torch.as_tensor(ground['root_height_valid']).any",
+        "torch.einsum",
+        "torch.isfinite",
+        "torch.isfinite(off).all",
+        "torch.isfinite(pos[rows]).all",
+        "torch.isfinite(pred[rv]).all",
+        "torch.isfinite(rot[rows]).all",
+        "torch.relu",
+        "torch.relu(-h).square",
+        "torch.relu(-h).square().mean",
+        "torch.unique",
+        "valid.any",
+        "valid.sum"
+      ]
+    },
+    "pilot_model.py:load_reference_weights": {
+      "file": "pilot_model.py",
+      "symbol": "load_reference_weights",
+      "present": true,
+      "file_sha256": "df6033507084d7e9f5511537a206e4163930d0eb81fef00bf93d7b5dcb00ef35",
+      "start_line": 120,
+      "end_line": 157,
+      "symbol_sha256": "19cfefc10b4806a8b1cd4e503a80cf3aacdecdef83c67588a12540778b53a7d7",
+      "calls": [
+        "DualTranslator",
+        "KeyError",
+        "ValueError",
+        "initialize_added_identity_blocks",
+        "initialize_new_judge",
+        "int",
+        "k.startswith",
+        "key.startswith",
+        "list",
+        "model.load_state_dict",
+        "model.set_judge_body_order",
+        "model.state_dict",
+        "model_parameter_counts",
+        "reference.items",
+        "set",
+        "sorted",
+        "state.update",
+        "template.state_dict"
+      ]
+    },
+    "pilot_model.py:set_judge_body_order": {
+      "file": "pilot_model.py",
+      "symbol": "set_judge_body_order",
+      "present": true,
+      "file_sha256": "df6033507084d7e9f5511537a206e4163930d0eb81fef00bf93d7b5dcb00ef35",
+      "start_line": 32,
+      "end_line": 40,
+      "symbol_sha256": "579605f3a6dbb40fda5eb69c6d327bd235d265d2fda23a12234e87817cb61627",
+      "calls": [
+        "ValueError",
+        "all",
+        "isinstance",
+        "len",
+        "set",
+        "tuple"
+      ]
+    },
+    "pilot_model.py:judge_logits": {
+      "file": "pilot_model.py",
+      "symbol": "judge_logits",
+      "present": true,
+      "file_sha256": "df6033507084d7e9f5511537a206e4163930d0eb81fef00bf93d7b5dcb00ef35",
+      "start_line": 42,
+      "end_line": 47,
+      "symbol_sha256": "a5401b993dec4463b6047f3fe9bd9e3c68a47673ee1921f5fdde551719374003",
+      "calls": [
+        "ValueError",
+        "self.judge",
+        "zp.detach",
+        "zr.detach"
+      ]
+    },
+    "recipe_gate.py:reference_config": {
+      "file": "recipe_gate.py",
+      "symbol": "reference_config",
+      "present": true,
+      "file_sha256": "9e6df573354b70cad354b9a5de6542651d5a89b68e0b82018890828176b7d411",
+      "start_line": 18,
+      "end_line": 20,
+      "symbol_sha256": "ff3a0ac4efa9b9a4b3e4411925ef708fa325a1444ac24835b356a234483cb9a3",
+      "calls": [
+        "REFERENCE_CONFIG.read_text",
+        "RuntimeError",
+        "json.loads",
+        "sha256"
+      ]
+    },
+    "recipe_gate.py:training_recipe_status": {
+      "file": "recipe_gate.py",
+      "symbol": "training_recipe_status",
+      "present": true,
+      "file_sha256": "9e6df573354b70cad354b9a5de6542651d5a89b68e0b82018890828176b7d411",
+      "start_line": 88,
+      "end_line": 117,
+      "symbol_sha256": "7cda0096cdcf7347aad9ebebf9441402b05fa63acf75873af915f675ab97c4c1",
+      "calls": [
+        "(Path(root) / 'data_xwbc/chosen_split.json').read_text",
+        "(vr / 'exit_status.json').read_text",
+        "(vr / 'real_batch_preflight.json').read_text",
+        "(vr / 'recipe_validation_receipt.json').read_text",
+        "Path",
+        "Path(root).resolve",
+        "Path(validation_run).resolve",
+        "ValueError",
+        "blockers.append",
+        "check_full_report",
+        "code_hashes",
+        "config_blockers",
+        "configuration_digest",
+        "json.loads",
+        "len",
+        "live_evidence_paths",
+        "receipt['live_files_sha256'].items",
+        "receipt['validation_artifacts'].items",
+        "reference_config",
+        "runtime_identity",
+        "set",
+        "sha256",
+        "str"
+      ]
+    },
+    "recipe_gate.py:assert_training_recipe_ready": {
+      "file": "recipe_gate.py",
+      "symbol": "assert_training_recipe_ready",
+      "present": true,
+      "file_sha256": "9e6df573354b70cad354b9a5de6542651d5a89b68e0b82018890828176b7d411",
+      "start_line": 120,
+      "end_line": 123,
+      "symbol_sha256": "e1277b7cc275be17fad0985a5a10df3fbb31c0cbb4a848e0aaacb191acf1535d",
+      "calls": [
+        "'; '.join",
+        "RuntimeError",
+        "training_recipe_status"
+      ]
+    },
+    "xwbc_contract.py:validate_xwbc": {
+      "file": "xwbc_contract.py",
+      "symbol": "validate_xwbc",
+      "present": true,
+      "file_sha256": "dfd4a20c15cb599470b079e4204e8f763b8ff3905378646e242a6d0cf5b75944",
+      "start_line": 113,
+      "end_line": 216,
+      "symbol_sha256": "8cd2af784c149f2a69d03c4c7981e09e86315d4c019f57bb10b81887fcfb1dce",
+      "calls": [
+        "(root / 'payloads').glob",
+        "(row['split'] == 0).sum",
+        "Path",
+        "ROW_FIELDS.values",
+        "_check_terminal_rows",
+        "all",
+        "body_map",
+        "checks.get",
+        "counts.get",
+        "desc.get",
+        "e.get",
+        "entries.items",
+        "enumerate",
+        "g.get",
+        "hashlib.sha256",
+        "hashlib.sha256(tab.tobytes()).hexdigest",
+        "int",
+        "isinstance",
+        "len",
+        "load_dof",
+        "load_legacy_spec",
+        "load_npz",
+        "m.get",
+        "m.get('ground_recipe_seal', {}).get",
+        "max",
+        "min",
+        "np.array_equal",
+        "np.asarray",
+        "np.floor",
+        "np.floor(np.linspace(0, length - 1, k)).astype",
+        "np.floor(np.linspace(0, length - 1, k)).astype(np.int64).tolist",
+        "np.isfinite",
+        "np.linspace",
+        "np.unique",
+        "p.get",
+        "p.stat",
+        "r.get",
+        "read_json",
+        "rec.get",
+        "reconstructed.append",
+        "require",
+        "row['frame_index'].astype",
+        "seal.get",
+        "set",
+        "sha256",
+        "source_sequence_files[0].get",
+        "split.get",
+        "str",
+        "tab.tobytes",
+        "type",
+        "validate_descriptor",
+        "validate_ground_payload",
+        "validate_ground_static",
+        "verify_file",
+        "zip"
+      ]
+    }
+  },
+  "current_source_sha256": {
+    "test_recipe_gate.py": "35c0821f7b2091a1f591252fe6b3bffa7d0eeb56704711719e2f1ca48fe0819a",
+    "audit_recipe.py": "7324bf74996d0b92e52dffc279e410311dfe53414b53215972c84fb3230daf9e",
+    "recipe_gate.py": "9e6df573354b70cad354b9a5de6542651d5a89b68e0b82018890828176b7d411",
+    "recipe_training.py": "89782f8da9569ce3687751acc4fdc2e95d7184f4a91fd91fcdb5703c4bfbd8b5",
+    "recipe_ground.py": "bb03a94cefb8db40a500970f6184106b032001cebb10ef0b865149906f80e8c9",
+    "pilot_model.py": "df6033507084d7e9f5511537a206e4163930d0eb81fef00bf93d7b5dcb00ef35",
+    "train_pilot.py": "105b9298b0708dd3d6fce9fc2105824155be0b909f7956e62274347f531de57c",
+    "xwbc_contract.py": "dfd4a20c15cb599470b079e4204e8f763b8ff3905378646e242a6d0cf5b75944",
+    "recipe_auxiliary.py": "cb3060b25682073891abfffcea9c0ce804f2565d41a7292bac3a7a5e326f57a6"
+  },
+  "rows": [
+    {
+      "term": "rotation and FK position",
+      "actual_run_flags": {
+        "w_pos": 5.0,
+        "fk_loss": true,
+        "rot_head": "free",
+        "rot_only": false
+      },
+      "actual_source_semantics": "Global geodesic degrees mean over B*J, divided by30; Euclidean FK(predrot)-FK(GTrot) / target reach mean over B*J, multiplied by5. Neither position MSE nor raw-hpos Cartesian loss.",
+      "current_configuration": {
+        "position_weight": 5.0
+      },
+      "current_source_connections": [
+        {
+          "symbol": "train_pilot.py:objective",
+          "present": true,
+          "expected_calls": [
+            "fk",
+            "angle_degrees"
+          ],
+          "missing_expected_calls": [],
+          "connected": true
+        }
+      ],
+      "all_expected_connections_present": true,
+      "explicit_differences": [],
+      "legacy_source_evidence": [
+        "dual_common.py:349-455",
+        "train_dual.py:426"
+      ],
+      "assessment_scope": "source-level inspection; exact current file/function hashes above; not execution proof"
+    },
+    {
+      "term": "root height",
+      "actual_run_flags": {
+        "root_pos": true,
+        "w_rootpos": 3.0,
+        "root_head": false,
+        "w_root": 0.0
+      },
+      "actual_source_semantics": "SmoothL1 on raw hpos[:,root_index,0] against metric GT gap_root; weighted3. Raw hpos channels are not XYZ. Legacy root-pos branch did not filter trust itself.",
+      "current_configuration": {
+        "weight": 3.0
+      },
+      "current_source_connections": [
+        {
+          "symbol": "train_pilot.py:objective",
+          "present": true,
+          "expected_calls": [],
+          "missing_expected_calls": [],
+          "connected": true
+        },
+        {
+          "symbol": "recipe_ground.py:ground_losses",
+          "present": true,
+          "expected_calls": [],
+          "missing_expected_calls": [],
+          "connected": true
+        }
+      ],
+      "all_expected_connections_present": true,
+      "explicit_differences": [
+        "Explicit valid/finite selection is retained; no supervision on unknown UniMate ground."
+      ],
+      "legacy_source_evidence": [
+        "train_dual.py:438-452"
+      ],
+      "assessment_scope": "source-level inspection; exact current file/function hashes above; not execution proof"
+    },
+    {
+      "term": "InfoNCE",
+      "actual_run_flags": {
+        "w_contrast": 0.5,
+        "tau": 0.1,
+        "contrast_sample": 6
+      },
+      "actual_source_semantics": "Six distinct XWBC bodies; full unconditional pose encodes on the same source rows. Flatten and concatenate both FSQ latents, L2 normalize, symmetric row-diagonal CE at tau .1 averaged over all15 unordered body pairs; weight .5. Original row sampling used replacement.",
+      "current_configuration": {
+        "w_contrast": 0.5,
+        "tau": 0.1,
+        "contrast_sample": 6
+      },
+      "current_source_connections": [
+        {
+          "symbol": "recipe_auxiliary.py:contrast_loss",
+          "present": true,
+          "expected_calls": [
+            "_stable_unique_indices",
+            "F.cross_entropy"
+          ],
+          "missing_expected_calls": [],
+          "connected": true
+        },
+        {
+          "symbol": "recipe_auxiliary.py:auxiliary_losses",
+          "present": true,
+          "expected_calls": [
+            "contrast_loss"
+          ],
+          "missing_expected_calls": [],
+          "connected": true
+        },
+        {
+          "symbol": "recipe_training.py:backward_training_step",
+          "present": true,
+          "expected_calls": [
+            "auxiliary_losses"
+          ],
+          "missing_expected_calls": [],
+          "connected": true
+        }
+      ],
+      "all_expected_connections_present": true,
+      "explicit_differences": [
+        "Stable deduplication of verified original source-row identity only for InfoNCE fixes repeated-row false negatives; judge and cycle retain original batch weighting.",
+        "UniMate contributes no cross-body positives."
+      ],
+      "legacy_source_evidence": [
+        "train_dual.py:371",
+        "train_dual.py:609-633"
+      ],
+      "assessment_scope": "source-level inspection; exact current file/function hashes above; not execution proof"
+    },
+    {
+      "term": "unconditional reencoding",
+      "actual_run_flags": {
+        "reenc_consistency": 1.0,
+        "reenc_prob": 0.3
+      },
+      "actual_source_semantics": "Probability .3; independent direction from full body-product including self; max(8,B//2) first rows. Full9 pose, no contact/mask/target conditions. Decode raw hpos then encode concatenated predicted rot+raw hpos; sum mean squared errors of both latents, no detach, weight1, not divided by8 or event probability.",
+      "current_configuration": {
+        "reenc_consistency": 1.0,
+        "reenc_prob": 0.3
+      },
+      "current_source_connections": [
+        {
+          "symbol": "recipe_auxiliary.py:cycle_consistency",
+          "present": true,
+          "expected_calls": [
+            "model.encode",
+            "model.decode"
+          ],
+          "missing_expected_calls": [],
+          "connected": true
+        },
+        {
+          "symbol": "recipe_auxiliary.py:auxiliary_losses",
+          "present": true,
+          "expected_calls": [
+            "cycle_consistency"
+          ],
+          "missing_expected_calls": [],
+          "connected": true
+        }
+      ],
+      "all_expected_connections_present": true,
+      "explicit_differences": [
+        "Half-batch count is capped only for explicit tiny synthetic test batches."
+      ],
+      "legacy_source_evidence": [
+        "train_dual.py:502-513"
+      ],
+      "assessment_scope": "source-level inspection; exact current file/function hashes above; not execution proof"
+    },
+    {
+      "term": "auxiliary16-class judge",
+      "actual_run_flags": {
+        "judge_mode": "grad",
+        "n_judges": 16,
+        "w_judge": 0.1
+      },
+      "actual_source_semantics": "Same six unconditional body encodes used for contrast. Independent sigmoid BCEWithLogits against16-dimensional one-hot targets, mean over B*16 then mean over body encodes; grad mode does not detach; weight .1. Original class identity depended on cache-manifest body order and launch exclusion environment.",
+      "current_configuration": {
+        "model_n_judges": 16,
+        "judge_mode": "grad",
+        "w_judge": 0.1
+      },
+      "current_source_connections": [
+        {
+          "symbol": "recipe_auxiliary.py:judge_loss",
+          "present": true,
+          "expected_calls": [
+            "F.binary_cross_entropy_with_logits",
+            "model.judge_logits"
+          ],
+          "missing_expected_calls": [],
+          "connected": true
+        },
+        {
+          "symbol": "pilot_model.py:load_reference_weights",
+          "present": true,
+          "expected_calls": [],
+          "missing_expected_calls": [],
+          "connected": true
+        }
+      ],
+      "all_expected_connections_present": true,
+      "explicit_differences": [
+        "Authorized entire-judge reinitialization if original label mapping is unproven; use and record verified current chosen_split.body_names. Do not infer mapping from output shape or permute old columns silently.",
+        "No UniMate judge classes."
+      ],
+      "legacy_source_evidence": [
+        "train_dual.py:207-209",
+        "train_dual.py:634-644"
+      ],
+      "assessment_scope": "source-level inspection; exact current file/function hashes above; not execution proof"
+    },
+    {
+      "term": "ground penetration and cgeo",
+      "actual_run_flags": {
+        "w_pen": 200.0,
+        "w_cgeo": 1.0,
+        "w_contact": 0.0,
+        "w_cbce": 0.0
+      },
+      "actual_source_semantics": "Trusted target rows only. h=fk_cm.Y/100 + GT root gap + (R_global @ sole_offset_m).Y at mapped soles. pen=mean(relu(-h)^2) over all trusted rows*joints, weight200. cgeo=BCEWithLogits((thr-h)/(thr/3), soft) over trusted rows*joints, weight1. cgeo uses soft without hard weighting. cmaint/contact-count normalization and hcon BCE were inactive.",
+      "current_configuration": {
+        "penetration": 200.0,
+        "contact_geometry": 1.0
+      },
+      "current_source_connections": [
+        {
+          "symbol": "recipe_ground.py:ground_losses",
+          "present": true,
+          "expected_calls": [
+            "F.binary_cross_entropy_with_logits"
+          ],
+          "missing_expected_calls": [],
+          "connected": true
+        },
+        {
+          "symbol": "train_pilot.py:objective",
+          "present": true,
+          "expected_calls": [
+            "ground_losses"
+          ],
+          "missing_expected_calls": [],
+          "connected": true
+        }
+      ],
+      "all_expected_connections_present": true,
+      "explicit_differences": [
+        "Explicit measurement validity allows unknown values to remain NaN; select valid fields before arithmetic.",
+        "UniMate nonmetric lengths and unknown ground cannot supply these losses."
+      ],
+      "legacy_source_evidence": [
+        "dual_common.py:46-60",
+        "dual_common.py:737-794"
+      ],
+      "assessment_scope": "source-level inspection; exact current file/function hashes above; not execution proof"
+    },
+    {
+      "term": "source masks and contact observation",
+      "actual_run_flags": {
+        "mask_prob": 0.3,
+        "mask_mix": "rand:0.25,ee:0.15,root:0.10,sparse:0.25,cask:0.15,cgive:0.10",
+        "con_dropout": 0.3,
+        "contact_chan": true
+      },
+      "actual_source_semantics": "Six family weights rand.25/ee.15/root.10/sparse.25/cask.15/cgive.10; family mask enabled per-row with probability .3; root always visible. Sparse samples1..3 from whole joint set plus root, not leaf-only. Contact input is actual signed distance (unless historical AM_OLDCHAN override); sampler con_over is discarded. Any row with a hidden joint bypasses .3 contact dropout; hidden pose joints retain declared contact observations.",
+      "current_configuration": {
+        "mask_prob": 0.3,
+        "mask_mix": "rand:0.25,ee:0.15,root:0.10,sparse:0.25,cask:0.15,cgive:0.10",
+        "contact_dropout": 0.3
+      },
+      "current_source_connections": [
+        {
+          "symbol": "recipe_training.py:make_reference_inputs",
+          "present": true,
+          "expected_calls": [
+            "sample_joint_mask",
+            "parse_mix"
+          ],
+          "missing_expected_calls": [],
+          "connected": true
+        },
+        {
+          "symbol": "recipe_training.py:backward_training_step",
+          "present": true,
+          "expected_calls": [
+            "make_reference_inputs"
+          ],
+          "missing_expected_calls": [],
+          "connected": true
+        }
+      ],
+      "all_expected_connections_present": true,
+      "explicit_differences": [
+        "Pure target-SE3 tasks separately hide every source pose/root and omit contact.",
+        "New target-SE3 tokens and condition losses are explicit added inputs/objectives."
+      ],
+      "legacy_source_evidence": [
+        "masking.py:28-115",
+        "train_dual.py:376-411"
+      ],
+      "assessment_scope": "source-level inspection; exact current file/function hashes above; not execution proof"
+    },
+    {
+      "term": "main direction mean",
+      "actual_run_flags": {
+        "combo_sample": 8,
+        "self_only": false
+      },
+      "actual_source_semantics": "Draw8 distinct ordered directions from training-body Cartesian product including self; reuse one row batch across every direction; backward main losses scaled1/8. Auxiliary losses are additional and not divided by8. Clip accumulated gradients once.",
+      "current_configuration": {
+        "combo_sample": 8,
+        "sparse_extra": {
+          "probability": 0.25,
+          "weight": 1.0,
+          "directions": 1,
+          "scope": "additional same-body pure-SE3 task; never replaces eight original XWBC directions"
+        }
+      },
+      "current_source_connections": [
+        {
+          "symbol": "recipe_training.py:xwbc_combos",
+          "present": true,
+          "expected_calls": [
+            "itertools.product"
+          ],
+          "missing_expected_calls": [],
+          "connected": true
+        },
+        {
+          "symbol": "recipe_training.py:backward_training_step",
+          "present": true,
+          "expected_calls": [
+            "xwbc_combos"
+          ],
+          "missing_expected_calls": [],
+          "connected": true
+        },
+        {
+          "symbol": "train_pilot.py:main",
+          "present": true,
+          "expected_calls": [
+            "backward_training_step"
+          ],
+          "missing_expected_calls": [],
+          "connected": true
+        }
+      ],
+      "all_expected_connections_present": true,
+      "explicit_differences": [
+        "Additional pure-SE3 same-body direction with probability.25 and weight1 never replaces original eight directions.",
+        "UniMate full/masked/sparse tasks remain same-body only."
+      ],
+      "legacy_source_evidence": [
+        "train_dual.py:247",
+        "train_dual.py:371-375",
+        "train_dual.py:500-501"
+      ],
+      "assessment_scope": "source-level inspection; exact current file/function hashes above; not execution proof"
+    },
+    {
+      "term": "temporal world-slip and height derivative",
+      "actual_run_flags": {
+        "slip_pairs": true,
+        "w_slip_w": 2.0,
+        "w_hpair": 0.1,
+        "w_slip_c": 0.0,
+        "slip_w": 0.0,
+        "tdec": 0
+      },
+      "actual_source_semantics": "Old single-frame model (tdec0) nevertheless used adjacent-frame auxiliary pairs: world foot slip weight2 and root-height velocity MSE weight.1 at30Hz. Requires actual adjacent rows, reliable sequence boundaries, world-root/ground and sole data.",
+      "current_configuration": {
+        "policy": "disabled: no complete adjacent/world/time payload"
+      },
+      "current_source_connections": [],
+      "all_expected_connections_present": null,
+      "explicit_differences": [
+        "Explicit temporal exception: disabled for sparsely selected nonadjacent single frames; do not fabricate adjacent pairs or apply hardcoded30Hz to row neighbors."
+      ],
+      "legacy_source_evidence": [
+        "train_dual.py:515-608"
+      ],
+      "assessment_scope": "source-level inspection; exact current file/function hashes above; not execution proof"
+    },
+    {
+      "term": "optimizer and bounded scale",
+      "actual_run_flags": {
+        "lr": 0.0001,
+        "bs": 256,
+        "steps": 8000,
+        "enc_layers": 4,
+        "dec_layers": 4
+      },
+      "actual_source_semantics": "Original AdamW lr1e-4 weight_decay1e-4; CosineAnnealingLR over8000 steps; no warmup, one gradient clip1 after all main and auxiliary backwards.",
+      "current_configuration": {
+        "optimizer": {
+          "lr": 0.0001,
+          "weight_decay": 0.0001,
+          "clip_norm": 1.0,
+          "schedule": "CosineAnnealingLR over planned steps; no warmup"
+        },
+        "batch_size": 128,
+        "steps": 3000,
+        "model": {
+          "d_model": 256,
+          "n_heads": 8,
+          "enc_layers": 6,
+          "dec_layers": 6,
+          "n_latent": 128,
+          "n_latent_p": 4,
+          "fsq_stages": 1,
+          "fsq_levels": [
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32
+          ],
+          "use_sem": true,
+          "sem_dim": 1024,
+          "use_dof": true,
+          "n_judges": 16,
+          "single_codebook": false,
+          "rot_only": false,
+          "rot_head": "free",
+          "vis_residual": false,
+          "root_head": false,
+          "contact_chan": true
+        }
+      },
+      "current_source_connections": [
+        {
+          "symbol": "train_pilot.py:main",
+          "present": true,
+          "expected_calls": [
+            "torch.optim.AdamW",
+            "torch.optim.lr_scheduler.CosineAnnealingLR",
+            "torch.nn.utils.clip_grad_norm_"
+          ],
+          "missing_expected_calls": [],
+          "connected": true
+        }
+      ],
+      "all_expected_connections_present": true,
+      "explicit_differences": [
+        "Authorized bounded batch256->128 and steps8000->3000/time budget; depth4->6; frozen SigLIP768->pinned frozen Qwen1024 with fresh projection; source-group sampling/splits and UniMate mixture.",
+        "Mixture55% XWBC applies original XWBC objectives on those steps; its global update frequency differs from the old all-XWBC run."
+      ],
+      "legacy_source_evidence": [
+        "train_dual.py:241-242",
+        "train_dual.py:660-661"
+      ],
+      "assessment_scope": "source-level inspection; exact current file/function hashes above; not execution proof"
+    },
+    {
+      "term": "inactive original objectives",
+      "actual_run_flags": {
+        "w_align": 0.0,
+        "dof_loss": false,
+        "var_floor": 0.0,
+        "var_norm": false,
+        "arm_boost": 0.0,
+        "ee_boost": 0.0,
+        "ee_fk_w": 0.0,
+        "w_root": 0.0
+      },
+      "actual_source_semantics": "Do not add originally inactive objectives from CLI defaults.",
+      "current_configuration": {
+        "old_values_retained_in_reference": true
+      },
+      "current_source_connections": [],
+      "all_expected_connections_present": null,
+      "explicit_differences": [],
+      "legacy_source_evidence": [],
+      "assessment_scope": "source-level inspection; exact current file/function hashes above; not execution proof"
+    }
+  ],
+  "source_connection_summary": {
+    "complete_rows": 9,
+    "total_rows": 9
+  },
+  "training_gate": {
+    "train_allowed": false,
+    "implementation_revision": "restored_single_frame_recipe_v2",
+    "reference_run": "L_M20k_0903",
+    "reference_config_sha256": "0e61ed5b012420d5fa186bc09537e9cac32ed14fa4533182c6d44805f5e7ee58",
+    "source": "hash-matched actual run config, not CLI defaults",
+    "verified_active_reference_flags": {
+      "w_contrast": 0.5,
+      "tau": 0.1,
+      "contrast_sample": 6,
+      "reenc_consistency": 1.0,
+      "reenc_prob": 0.3,
+      "judge_mode": "grad",
+      "n_judges": 16,
+      "w_judge": 0.1,
+      "w_pen": 200.0,
+      "w_cgeo": 1.0,
+      "slip_pairs": true,
+      "w_slip_w": 2.0,
+      "w_hpair": 0.1
+    },
+    "blockers": [
+      "No matching real CUDA recipe-validation run; offline tests do not authorize data readiness"
+    ],
+    "temporal_exceptions": [
+      "World-slip and hpair disabled: sparse rows lack complete adjacent world-root/ground/time supervision."
+    ],
+    "online_requirements": [
+      "Hash-check actual original run config/checkpoint and pinned text vectors",
+      "Validate completed XWBC pairing, source-revalidated sole/contact/ground seal and all-frame FK",
+      "Validate UniMate payload and valid-only modality masks",
+      "Run all restored losses forward/backward on real CUDA payloads without optimizer updates",
+      "Persist current verified 16-body auxiliary-judge label map; head reinitialized, old labels not guessed"
+    ],
+    "no_config_override": true,
+    "does_not_require_new_user_permission": true
+  },
+  "numerical_tests": {
+    "executed_by_this_build": false,
+    "independent_test_file": "test_recipe_gate.py"
+  },
+  "current_real_training": false,
+  "online_verification_performed": false,
+  "limitations": [
+    "Static presence/call checks are necessary evidence, not proof of correct reductions or numerical behavior.",
+    "Real source hashes, complete ground/static seal, FK, environment and all-loss real-batch forward/backward must pass an independent hash-bound validation receipt before training.",
+    "Offline synthetic tests do not prove real-data correctness or trained quality."
+  ],
+  "explicit_recipe_departures": [
+    "encoder and decoder depth 4->6; compatible reference warmstart",
+    "frozen SigLIP768 -> independently recomputed pinned frozen Qwen1024; entire semantic projection reinitialized",
+    "new shared C<=2 sparse current-frame target SE3 tokens after both FSQ memories",
+    "explicit unknown-mechanics and nonmetric-length bits",
+    "mixed XWBC verified pairing and UniMate same-body tasks; no invented cross-body UniMate targets",
+    "full float32 extracted pose9 versus old huge-cache fp16 roundtrip",
+    "source group splits and entire new-body holdouts replace random frame split",
+    "only root raw-hpos channel0 supervises valid root height; raw-hpos is never XYZ output",
+    "XWBC original single-frame auxiliary losses, mask/contact policy, eight-direction mean and AdamW recipe restored; same-row InfoNCE duplicates deduplicated",
+    "XWBC pure target-SE3 completion added as an extra branch at probability .25 and weight1; original main branch is retained",
+    "Only temporal world-slip2/hpair.1 disabled: sparse selected rows lack complete adjacent/world-root/time supervision",
+    "UniMate same-body normalized kinematic losses and sparse conditions only; no fabricated cross-body positives, judge labels or metric floor targets",
+    "batch256->128, steps8000->3000 and max1800s bounded budget; group-balanced source rows instead of old uniform row sampling"
+  ],
+  "final_offline_verification": {
+    "path": "offline_verification.json",
+    "sha256": "6c787a517852d8d813ff083920922575d6e0b2eee1df508a4fba439481eb7510",
+    "tests_passed": 101,
+    "success": true,
+    "scope": "CPU synthetic numerical/gradient/contract tests; no real payload, CUDA or trained checkpoint"
+  },
+  "prior_independent_offline_test_result": {
+    "success": true,
+    "test_modules": [
+      "test_recipe_gate",
+      "test_pilot_model"
+    ],
+    "tests_run": 36,
+    "failures": [],
+    "errors": [],
+    "wall_seconds": 15.178984582889825,
+    "source_sha256_at_start": {
+      "pilot_model.py": "df6033507084d7e9f5511537a206e4163930d0eb81fef00bf93d7b5dcb00ef35",
+      "train_pilot.py": "105b9298b0708dd3d6fce9fc2105824155be0b909f7956e62274347f531de57c",
+      "recipe_auxiliary.py": "cb3060b25682073891abfffcea9c0ce804f2565d41a7292bac3a7a5e326f57a6",
+      "recipe_training.py": "89782f8da9569ce3687751acc4fdc2e95d7184f4a91fd91fcdb5703c4bfbd8b5",
+      "recipe_ground.py": "96374bc3bb617a452a15589f9b8540f2742d703b432df418f4caa0497e978988",
+      "recipe_gate.py": "9e6df573354b70cad354b9a5de6542651d5a89b68e0b82018890828176b7d411",
+      "audit_recipe.py": "7324bf74996d0b92e52dffc279e410311dfe53414b53215972c84fb3230daf9e",
+      "test_recipe_gate.py": "35c0821f7b2091a1f591252fe6b3bffa7d0eeb56704711719e2f1ca48fe0819a",
+      "test_pilot_model.py": "b6ca2675d53c2574562fda98b05c41cfc82962650402abe202cd291633adec16",
+      "candidate_config.json": "cbeeb16178fe65e5303c76d425a3206c48367025e1a62e3cd37fa7a7bae8cc12"
+    },
+    "source_sha256_at_finish": {
+      "pilot_model.py": "df6033507084d7e9f5511537a206e4163930d0eb81fef00bf93d7b5dcb00ef35",
+      "train_pilot.py": "105b9298b0708dd3d6fce9fc2105824155be0b909f7956e62274347f531de57c",
+      "recipe_auxiliary.py": "cb3060b25682073891abfffcea9c0ce804f2565d41a7292bac3a7a5e326f57a6",
+      "recipe_training.py": "89782f8da9569ce3687751acc4fdc2e95d7184f4a91fd91fcdb5703c4bfbd8b5",
+      "recipe_ground.py": "96374bc3bb617a452a15589f9b8540f2742d703b432df418f4caa0497e978988",
+      "recipe_gate.py": "9e6df573354b70cad354b9a5de6542651d5a89b68e0b82018890828176b7d411",
+      "audit_recipe.py": "7324bf74996d0b92e52dffc279e410311dfe53414b53215972c84fb3230daf9e",
+      "test_recipe_gate.py": "35c0821f7b2091a1f591252fe6b3bffa7d0eeb56704711719e2f1ca48fe0819a",
+      "test_pilot_model.py": "b6ca2675d53c2574562fda98b05c41cfc82962650402abe202cd291633adec16",
+      "candidate_config.json": "cbeeb16178fe65e5303c76d425a3206c48367025e1a62e3cd37fa7a7bae8cc12"
+    },
+    "sources_stable_during_tests": true,
+    "scope": "CPU synthetic numerical/model-schema and fail-closed recipe-gate tests only; no CUDA run, real payload, real checkpoint, optimizer training, network or remote access"
+  }
+}

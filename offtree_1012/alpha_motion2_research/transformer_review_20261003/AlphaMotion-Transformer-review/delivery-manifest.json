@@ -1,0 +1,159 @@
+{
+  "files": [
+    {
+      "path": "AlphaMotion-2-review-editable.docx",
+      "bytes": 5006768,
+      "sha256": "efaea959477ffdcd5e96f56c3aca34f7705a84e89d06b8eb772792a3b4016ce0"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1089,
+      "sha256": "dd351e2e49ef7297e57d0e73cddfa03ad5d555c32685bdbb706edd51290ab424"
+    },
+    {
+      "path": "Transformer-style-models-review.pdf",
+      "bytes": 142208,
+      "sha256": "7d09297524d94b75282865475964ac4f49da92654825d36fdd08966c0253a055"
+    },
+    {
+      "path": "alphamotion1/alphamotion1_blocks.pdf",
+      "bytes": 4309,
+      "sha256": "ec607fad2088967eba89b59e2857fc3a20b79b160b0232fc4106e6e25d584e84"
+    },
+    {
+      "path": "alphamotion1/alphamotion1_blocks.png",
+      "bytes": 203770,
+      "sha256": "45c1635f3667066fcb6f304bafbc5a2db75939efeff956de57b9f3c42e4bef63"
+    },
+    {
+      "path": "alphamotion1/alphamotion1_blocks.svg",
+      "bytes": 14835,
+      "sha256": "f246d07ec4a45d5f1fa37426088d994eb9b9acb65ed86c1f41a519a82842b53c"
+    },
+    {
+      "path": "alphamotion1/alphamotion1_blocks_preview.png",
+      "bytes": 107677,
+      "sha256": "0b5819b83da6f5572e95450ad692635edc12988db78a3bf4304e83bf1440afd8"
+    },
+    {
+      "path": "alphamotion1/alphamotion1_path.pdf",
+      "bytes": 4679,
+      "sha256": "48b7e634fb3e4447516fae072ec9ca0526d948f48e9ac2236f18b234886e2130"
+    },
+    {
+      "path": "alphamotion1/alphamotion1_path.png",
+      "bytes": 279113,
+      "sha256": "0547c05e8a6ca8fa73113091c8bfe4ecb9f50782aaefe198d5ce45dc22a36dc2"
+    },
+    {
+      "path": "alphamotion1/alphamotion1_path.svg",
+      "bytes": 16786,
+      "sha256": "414f2aad72e53e15720cbd2e7afd6d0599d19ae0cb9f879d3ab15c2107fc263b"
+    },
+    {
+      "path": "alphamotion1/alphamotion1_path_preview.png",
+      "bytes": 135177,
+      "sha256": "2337a36c3226a07819e5983fa5d0af03f0a9cee17f024b97476fbd48a5e35d95"
+    },
+    {
+      "path": "alphamotion1/build.py",
+      "bytes": 10399,
+      "sha256": "13a09d6e4484a0a602bb3e323f64e921b18fdbb530b2fa1a0a3d4c0bd2adbb5b"
+    },
+    {
+      "path": "alphamotion1/finalize.py",
+      "bytes": 10206,
+      "sha256": "97e664381cc42ba11240243cde9489fd642f5ca32009546d01b208fae6c47c60"
+    },
+    {
+      "path": "alphamotion1/manifest.json",
+      "bytes": 1358,
+      "sha256": "3ddb0584ec70bb1758b9889ab9bdad56a6c6217ec814ab85a41d9cc59fa01006"
+    },
+    {
+      "path": "alphamotion1/render.sh",
+      "bytes": 369,
+      "sha256": "fe38399dfec64484dae4797b29bce3059af4ff2a4e55a92ee1d5ca845c9bdb51"
+    },
+    {
+      "path": "alphamotion1/source-map.json",
+      "bytes": 10224,
+      "sha256": "39b6e369c8e9d0211c4e5731da8c2d05cf2b5633640209b1988a328a3fb16146"
+    },
+    {
+      "path": "alphamotion1/中文读图说明.md",
+      "bytes": 8131,
+      "sha256": "741f2a418ebc426c0a5fa429734566e96fc6736ef0e15e7ea76d6cd29d2030b7"
+    },
+    {
+      "path": "google-docs-review.pdf",
+      "bytes": 4118185,
+      "sha256": "30455bc1e7d17365338523ed6fa21936db607a21e22666d2269fc51c89b2e06b"
+    },
+    {
+      "path": "root-final-qa.json",
+      "bytes": 664,
+      "sha256": "6dd1d3e3d96f8b57ad81f2cfaeb4d7d04184bbf04f289b6208a74fd0867d5810"
+    },
+    {
+      "path": "unimate/README_zh.md",
+      "bytes": 2123,
+      "sha256": "7d3a83f12780acc36ae238f7f90e14242932180bb7de019ffdb72bf2cd218436"
+    },
+    {
+      "path": "unimate/draw_unimate.py",
+      "bytes": 11957,
+      "sha256": "9a7fc10ae49045f5aba73229d5da8b071d83be4156f290fc6834a0878a81326b"
+    },
+    {
+      "path": "unimate/qa.json",
+      "bytes": 813,
+      "sha256": "bcd210f7b0490aac5b5f86e96dba1e3d4cef7ab4bdcd5c3b49d5b6c44d5f40f6"
+    },
+    {
+      "path": "unimate/source-map.md",
+      "bytes": 3105,
+      "sha256": "4fbf052f1d9949c230c46b72e0b6277b318e4c5d6901e9fae0ef3afbccbff228"
+    },
+    {
+      "path": "unimate/unimate_01_main.pdf",
+      "bytes": 68789,
+      "sha256": "7627cff32e4b1220814c33fc1b22ae2ec191a2193992c14cdfd0a3b10d309984"
+    },
+    {
+      "path": "unimate/unimate_01_main.png",
+      "bytes": 286654,
+      "sha256": "bf72c02126f37e75af4c4878492bdd75e9b30141d49d834c9391aaf1ea005b03"
+    },
+    {
+      "path": "unimate/unimate_01_main.svg",
+      "bytes": 17582,
+      "sha256": "be1c5c2db1646bb30cd152116465d350cd60d188c609cb4722cbe8c7bcf42dc7"
+    },
+    {
+      "path": "unimate/unimate_01_main_preview.png",
+      "bytes": 88323,
+      "sha256": "288e4dec199700fcbeea29806560d17cd21328cec6af63d9a2eb53a007924001"
+    },
+    {
+      "path": "unimate/unimate_02_block.pdf",
+      "bytes": 67710,
+      "sha256": "a00c2a9c9f7883588349b074d60f6224c1d2af5a53f74962931f20007d2d863e"
+    },
+    {
+      "path": "unimate/unimate_02_block.png",
+      "bytes": 261121,
+      "sha256": "6a1f78f9b79b9c65b7a9a1d620780f3d6aa1a66fd6aee0873d2692aa14b3db76"
+    },
+    {
+      "path": "unimate/unimate_02_block.svg",
+      "bytes": 17474,
+      "sha256": "7441e3adce078ba34378562300f55f0eb4142e62a6419ab276ffe107173a37b3"
+    },
+    {
+      "path": "unimate/unimate_02_block_preview.png",
+      "bytes": 80161,
+      "sha256": "15cda60f6e887aeac755fe760cd02efc3b1bf758de24fcb68839bea696a606fb"
+    }
+  ]
+}

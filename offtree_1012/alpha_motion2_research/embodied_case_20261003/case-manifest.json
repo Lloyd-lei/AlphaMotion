@@ -1,0 +1,1313 @@
+{
+  "schema": "embodied-case-delivery-v1",
+  "created_at_utc": "2026-10-04T04:13:43.955961+00:00",
+  "local_root": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/embodied-case/assets",
+  "remote_root": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003",
+  "entry_count": 128,
+  "bytes_total": 13343112,
+  "manifest_self_hash_excluded": true,
+  "classifications": {
+    "observed": "Existing reference/provenance or values captured from actual execution. Observed does not imply real robot measurement.",
+    "derived": "Numerically computed/rendered from observed source and execution records.",
+    "schematic_not_executed": "Explicitly unexecuted architecture stage; no fabricated numeric output."
+  },
+  "primary_case": {
+    "source": "Unitree G1",
+    "target": "Unitree H2",
+    "clip": "fallAndGetUp3_subject1",
+    "frames": [
+      1800,
+      2000,
+      2600
+    ],
+    "fps": 30,
+    "selected_source_node": "left_elbow_link",
+    "selected_source_index": 23,
+    "selected_target_index": 22,
+    "actual_cpu_neural_forward": true,
+    "temporal_generation": false,
+    "source_reference_is_XWBC_retargeted_motion": true
+  },
+  "alternative_inputs": {
+    "bodies": [
+      "Unitree Go2",
+      "Franka Emika Panda"
+    ],
+    "role": "Alternative single-body reference keyframes and descriptor/text cards; not one concatenated multi-body input.",
+    "neural_motion_decode_executed": false
+  },
+  "source_versions": {
+    "alpha1_code_commit": "692bf7704ebc0d4e2b12678c1bc0c011d426fe0b",
+    "alpha1_weights": {
+      "path": "/var/tmp/alphamotion/topo_exp/runs/L_M20k_0903/model.pt",
+      "sha256": "d6585ca0e46d85300b44a3998288396ffd6853639d6ad094f5846e8cce0e8f7d",
+      "strict_load": true,
+      "state_tensor_count": 383,
+      "config_path": "/var/tmp/alphamotion/topo_exp/runs/L_M20k_0903/config.json",
+      "config_sha256": "0e61ed5b012420d5fa186bc09537e9cac32ed14fa4533182c6d44805f5e7ee58"
+    },
+    "siglip_snapshot": "7fd15f0689c79d79e38b1c2e2e2370a7bf2761ed",
+    "g1_xml_sha256": "85a25128d42ad3cc8dd071c089806a2773a59ee0689edcc646aeb0201ae8f4c8",
+    "h2_official_revision": "f3772ce54c56ef2d34c6aee8100bc768896c7d19",
+    "h2_derived_mjcf_sha256": "8254a2ce7ca7bec5476e1f81d6b0957eba4b2f0e2c658fd894e940a068015e23",
+    "go2_panda_menagerie_revision": "4d038b3feae26ec82b46a4d586379114012a8ac7",
+    "unimate": {
+      "code": "2c5b384715aa63d8639b1ed7eb74bfe614570c7a",
+      "dataset": "053e8b4b06b6a8ba717a030e675dd5b7fd5be92e",
+      "model_statistics": "971da7cfc1c8d99c2af6c00be9d2ed5700f99073"
+    }
+  },
+  "submanifests": [
+    "geometry/geometry_manifest.json",
+    "code_audit/plot-manifest.json",
+    "unimate/asset_manifest.json"
+  ],
+  "validation": "validation.json",
+  "license_scope": {
+    "G1": "GMR software MIT license copied; asset-specific robot and source motion redistribution rights not re-audited. No new blanket distribution grant asserted.",
+    "H2": "Official Unitree URDF/mesh BSD-3-Clause; locally converted MJCF identified separately.",
+    "Go2": "Model-specific Unitree BSD-3-Clause file copied.",
+    "Panda": "Model-specific Apache-2.0 file copied.",
+    "UniMate": "Model/statistics source license cc-by-nc-4.0; dataset licensing is source-dependent. See pinned model LICENSE and UniML3D README links in submanifest.",
+    "AlphaMotion1": "Existing authorized checkpoint used; weights remain remote and no public redistribution grant is asserted.",
+    "SigLIP": "Existing cached google/siglip-base-patch16-224 used offline; weights remain remote."
+  },
+  "license_evidence": [
+    "geometry/LICENSE_GMR_software.txt",
+    "geometry/LICENSE_Unitree_H2.txt",
+    "geometry/LICENSE_Unitree_Go2.txt",
+    "geometry/LICENSE_Franka_Panda.txt"
+  ],
+  "coordinate_conventions": {
+    "raw_zup_meter": true,
+    "raw_quaternion_order": "wxyz",
+    "cache_yup_cm": true,
+    "AX_zup_to_yup": [
+      [
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "matrix_global_zup": "AX.T @ matrix_global_yup @ AX",
+    "position_zup_meter": "positions_yup_cm @ AX / 100",
+    "rot6d": "first two matrix columns concatenated; Gram-Schmidt if input is 6D",
+    "camera": "each projection JSON is exact rendered camera; pixels top-left origin; arrows are projected actual MJCF axis",
+    "render_gauge": "reference G1 keeps raw root position. H2 predictions use root-relative positions at origin; no hidden floor snap."
+  },
+  "unexecuted_stages": {
+    "classification": "schematic_not_executed",
+    "UniMate": {
+      "label": "schematic_not_executed",
+      "model_input_relation": "Real standardized/padded motion array computed. Caption/joint-name embeddings, noisy x_tau, denoiser v_theta and ODE rollout were not computed.",
+      "x_tau": null,
+      "velocity_v_theta": null,
+      "generated_motion": null,
+      "contact_inference": null,
+      "surface_encoder": null,
+      "robot_adaptation": "No native G1/Go2/Franka-to-H2 inference established. This is a UniMate native Mixamo text-to-skeleton preprocessing case."
+    },
+    "simulation": false,
+    "physical_robot_control": false,
+    "model_training": false,
+    "surface_semantic_encoder": false
+  },
+  "limits": [
+    "H2 uses fresh descriptor from locally converted MJCF bound to official URDF/meshes; the older anonymous H2 cache is not used.",
+    "H2 rotation outputs are unconstrained and converted by Gram-Schmidt and FK. No IK, joint-limit/manifold projection or valid-command guarantee. One ambiguous merged waist_roll_link mesh is omitted.",
+    "Root hpos channel0 is supervised ground-clearance height in meters; other raw hpos channels are not metric coordinates. Diagram geometry uses rotation-derived FK.",
+    "Panda finger slide joints are not established as supported by the legacy hinge-oriented descriptor.",
+    "UniMate has only native Mixamo preprocessing, no neural forward, flow velocity, ODE generation or robot retargeting.",
+    "Private weights, raw source motions, and full geometry source assets remain remote; local files are derived presentation material, traces and reproduction code.",
+    "Downloading resources and passing software checks are distinct from training, simulation and physical validation."
+  ],
+  "remote_only_references": [
+    {
+      "label": "derived",
+      "file": "derived_preprocessing.npz",
+      "absolute_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/derived_preprocessing.npz",
+      "bytes": 62706,
+      "sha256": "95e30b971ba57b02aca1e4f2ea387a431ee92c60068177a2f37c76623d06aeed",
+      "sourcepaths": [
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/motions/Jumping_Up-000.npz",
+        "/home/arenalabs/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e/features/mixamo/cond.npy",
+        "/home/arenalabs/.cache/huggingface/hub/models--Linzhan--UniMate/snapshots/971da7cfc1c8d99c2af6c00be9d2ed5700f99073/unimate_mixamo_f60/dataset_stats.npy"
+      ],
+      "frame_indexes": [
+        0,
+        3,
+        6
+      ],
+      "joint_index": 9,
+      "units": "canonical body units; standardized arrays dimensionless",
+      "contains_schematic_numeric_output": false,
+      "copied_to_local_assets": false,
+      "delivery_scope": "remote_only",
+      "reason": "Contains original selected source pose/quaternion arrays; computed model_inputs_derived.npz is the delivered export."
+    }
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 5205,
+      "sha256": "369241bc7bb13f13f866f315277f7364a0281fe7a14d35d849bcac2091d66f78",
+      "classification": "derived",
+      "evidence_kind": "computed_asset",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/README.md"
+    },
+    {
+      "path": "alpha1/alternative_input_cards_trace.json",
+      "bytes": 6636,
+      "sha256": "c04a4798157c38bc8aee7622077bacb857ea0b051083ce3cd15ed4231cfc668c",
+      "classification": "observed",
+      "evidence_kind": "actual_execution_trace_or_configuration_evidence",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/alpha1/alternative_input_cards_trace.json"
+    },
+    {
+      "path": "alpha1/alternative_input_cards_trace.npz",
+      "bytes": 4849,
+      "sha256": "16d2aa34e1a27e95b4b743d4e4d7aa0e47c42d7e0e43373d948208c57162fd86",
+      "classification": "observed",
+      "evidence_kind": "actual_execution_trace_or_configuration_evidence",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/alpha1/alternative_input_cards_trace.npz"
+    },
+    {
+      "path": "alpha1/build_alpha1_trace.py",
+      "bytes": 14394,
+      "sha256": "0853bd83574d74163be213b3f82eeba2ae112e81dffb9c2545ef58996cb7bf0a",
+      "classification": "observed",
+      "evidence_kind": "reproduction_code",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/alpha1/build_alpha1_trace.py"
+    },
+    {
+      "path": "alpha1/joint_name_semantics_trace.json",
+      "bytes": 6467,
+      "sha256": "084678893a0cd69bfa1e251d5e6929aae14e09d7437a78d15a1b81312a3275c8",
+      "classification": "observed",
+      "evidence_kind": "actual_execution_trace_or_configuration_evidence",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/alpha1/joint_name_semantics_trace.json"
+    },
+    {
+      "path": "alpha1/joint_name_semantics_trace.npz",
+      "bytes": 20983,
+      "sha256": "0bde1fe8c9c25722b5df5199b3873d73cb2882a283ea282cf6611ffc64d7d67d",
+      "classification": "observed",
+      "evidence_kind": "actual_execution_trace_or_configuration_evidence",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/alpha1/joint_name_semantics_trace.npz"
+    },
+    {
+      "path": "alpha1/reach_scan.json",
+      "bytes": 806,
+      "sha256": "9b1c0d56f6eeada82b3fbb21d7f1e0ac57f2f056c326fa8f46c850cd426a8653",
+      "classification": "observed",
+      "evidence_kind": "actual_execution_trace_or_configuration_evidence",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/alpha1/reach_scan.json"
+    },
+    {
+      "path": "alpha1/trace.json",
+      "bytes": 35874,
+      "sha256": "64baf768e95945fff8a9f962be5b5b2426441c8269b7d658bd78c367ae77ddd0",
+      "classification": "observed",
+      "evidence_kind": "actual_execution_trace_or_configuration_evidence",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/alpha1/trace.json"
+    },
+    {
+      "path": "alpha1/trace.npz",
+      "bytes": 6277644,
+      "sha256": "ec409a88300b9552e640e186d7ee34a45f1e9bec38c2b21ef2d5cf54e76f4480",
+      "classification": "observed",
+      "evidence_kind": "actual_execution_trace_or_configuration_evidence",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/alpha1/trace.npz"
+    },
+    {
+      "path": "code_audit/01-source-token256.png",
+      "bytes": 98124,
+      "sha256": "fbdb8c0e5c4387677dbdd0d0da1c4d7d9490858b3977fd28bb3e755200416fe6",
+      "classification": "derived",
+      "evidence_kind": "actual_tensor_visualization_or_code_audit",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/code_audit/01-source-token256.png"
+    },
+    {
+      "path": "code_audit/01-source-token256.svg",
+      "bytes": 19672,
+      "sha256": "7be5f09cc0069c988cc8888005d4556da862dcfc2c7bb014f38c81cf8014d20d",
+      "classification": "derived",
+      "evidence_kind": "actual_tensor_visualization_or_code_audit",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/code_audit/01-source-token256.svg"
+    },
+    {
+      "path": "code_audit/02-encoder-attention.png",
+      "bytes": 150075,
+      "sha256": "8c025f4a404a1ed04670a7e1b5a02f18a159cc6a87339f8a4b84b1e148f8142f",
+      "classification": "derived",
+      "evidence_kind": "actual_tensor_visualization_or_code_audit",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/code_audit/02-encoder-attention.png"
+    },
+    {
+      "path": "code_audit/02-encoder-attention.svg",
+      "bytes": 36432,
+      "sha256": "fde5bc055dd21fd83d9c0f2a4c3c7259b0261f7411f3368398dbb2446bd0e65b",
+      "classification": "derived",
+      "evidence_kind": "actual_tensor_visualization_or_code_audit",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/code_audit/02-encoder-attention.svg"
+    },
+    {
+      "path": "code_audit/03-rotation-pool-attention.png",
+      "bytes": 152355,
+      "sha256": "7a6419dde87c4ad372e1c1a34473ce7438a4792506e923fef31bca71945cb752",
+      "classification": "derived",
+      "evidence_kind": "actual_tensor_visualization_or_code_audit",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/code_audit/03-rotation-pool-attention.png"
+    },
+    {
+      "path": "code_audit/03-rotation-pool-attention.svg",
+      "bytes": 42250,
+      "sha256": "f1370bbccc6cbe6d48601ec9b6a89b560aad1629ebc370632053e21c04c9b3c5",
+      "classification": "derived",
+      "evidence_kind": "actual_tensor_visualization_or_code_audit",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/code_audit/03-rotation-pool-attention.svg"
+    },
+    {
+      "path": "code_audit/04-target-decoder-attention.png",
+      "bytes": 159915,
+      "sha256": "020183a887e2c72597df99de0a4fead497d1fc534c43d002889a5a061c1f7080",
+      "classification": "derived",
+      "evidence_kind": "actual_tensor_visualization_or_code_audit",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/code_audit/04-target-decoder-attention.png"
+    },
+    {
+      "path": "code_audit/04-target-decoder-attention.svg",
+      "bytes": 57043,
+      "sha256": "d447aaea50319286ca19f04a3c43bb34fecb64a3c58bc64b38dd46783ff4c094",
+      "classification": "derived",
+      "evidence_kind": "actual_tensor_visualization_or_code_audit",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/code_audit/04-target-decoder-attention.svg"
+    },
+    {
+      "path": "code_audit/05-fsq13.png",
+      "bytes": 146058,
+      "sha256": "cdfdeac91a94f9414e97e0eb2787d5de0d89ac0a51532f0b7dba3db14c0736ea",
+      "classification": "derived",
+      "evidence_kind": "actual_tensor_visualization_or_code_audit",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/code_audit/05-fsq13.png"
+    },
+    {
+      "path": "code_audit/05-fsq13.svg",
+      "bytes": 24940,
+      "sha256": "b46f8a3fec8629eb84c27d8952b6cec7bed2d8a3d06e768008feedd70bfdd8d3",
+      "classification": "derived",
+      "evidence_kind": "actual_tensor_visualization_or_code_audit",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/code_audit/05-fsq13.svg"
+    },
+    {
+      "path": "code_audit/README.md",
+      "bytes": 2500,
+      "sha256": "1c7b72f10d13d3372f5bc0ae83200e34e1a14acbf51225cbb9b7f0926586aee0",
+      "classification": "derived",
+      "evidence_kind": "actual_tensor_visualization_or_code_audit",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/code_audit/README.md"
+    },
+    {
+      "path": "code_audit/hpos-semantics.json",
+      "bytes": 21079,
+      "sha256": "cbb61ee585fb3b515f2aad42d40e62ad50d5ee1d52933ac192c4931389e7c45d",
+      "classification": "derived",
+      "evidence_kind": "actual_tensor_visualization_or_code_audit",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/code_audit/hpos-semantics.json"
+    },
+    {
+      "path": "code_audit/plot-manifest.json",
+      "bytes": 11626,
+      "sha256": "38a71c5694759bbbdb1e54d0f0fb1a406dd39c518604d58f1369241921a0128d",
+      "classification": "derived",
+      "evidence_kind": "actual_tensor_visualization_or_code_audit",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/code_audit/plot-manifest.json"
+    },
+    {
+      "path": "code_audit/render_evidence.py",
+      "bytes": 18953,
+      "sha256": "4d173fbd74339234aa8f9b6072dbceaa85598c70aac0510d0eec48455caaa8ba",
+      "classification": "observed",
+      "evidence_kind": "reproduction_code",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/code_audit/render_evidence.py"
+    },
+    {
+      "path": "code_audit/selected-tensor-values.json",
+      "bytes": 28525,
+      "sha256": "792632a88aa1db1b5630eb36da1a244448ddc0c6d692af6e82251e219fcacd90",
+      "classification": "derived",
+      "evidence_kind": "actual_tensor_visualization_or_code_audit",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/code_audit/selected-tensor-values.json"
+    },
+    {
+      "path": "geometry/LICENSE_Franka_Panda.txt",
+      "bytes": 10173,
+      "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9",
+      "classification": "observed",
+      "evidence_kind": "copied_license_text",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/LICENSE_Franka_Panda.txt"
+    },
+    {
+      "path": "geometry/LICENSE_GMR_software.txt",
+      "bytes": 1055,
+      "sha256": "c5a85c0b0012230739a0ab8f30eafba7f8ee7a1b29e025d01e27fa330298e522",
+      "classification": "observed",
+      "evidence_kind": "copied_license_text",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/LICENSE_GMR_software.txt"
+    },
+    {
+      "path": "geometry/LICENSE_Unitree_Go2.txt",
+      "bytes": 1537,
+      "sha256": "7e2dfda59b98e38d123f539b59ecb637ffd8908d19e09f7765884a309f010d40",
+      "classification": "observed",
+      "evidence_kind": "copied_license_text",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/LICENSE_Unitree_Go2.txt"
+    },
+    {
+      "path": "geometry/LICENSE_Unitree_H2.txt",
+      "bytes": 1558,
+      "sha256": "84aac59fd3246e3ddc49d1387644e8fcf43b0def4f0b9fe687f372e90446df2d",
+      "classification": "observed",
+      "evidence_kind": "copied_license_text",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/LICENSE_Unitree_H2.txt"
+    },
+    {
+      "path": "geometry/README.md",
+      "bytes": 4557,
+      "sha256": "d8b5855406e280a4bae35e7ff4648526553b6a99a3ed86b83cdcfe05782bc9d4",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/README.md"
+    },
+    {
+      "path": "geometry/build_case_assets.py",
+      "bytes": 11391,
+      "sha256": "a2865a475888d3fce4d51b9b22ad99da595d8731da67df0b6e51dacf7fba4330",
+      "classification": "observed",
+      "evidence_kind": "reproduction_code",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/build_case_assets.py"
+    },
+    {
+      "path": "geometry/case_geometry_trace.json",
+      "bytes": 17801,
+      "sha256": "987e00f2ffa9fd16c0f67add6f8796459b88b8213e870648a3a35a56bca63f59",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/case_geometry_trace.json"
+    },
+    {
+      "path": "geometry/g1_reference_frame_1800_joint_closeup.png",
+      "bytes": 156336,
+      "sha256": "f02809dec97099d17544f1f5c7d5497331e583faeac77433a67742f7f1be7cb4",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_1800_joint_closeup.png"
+    },
+    {
+      "path": "geometry/g1_reference_frame_1800_mesh.png",
+      "bytes": 82357,
+      "sha256": "f4a9f2513b21f1fe2f8c1d06b1914b85bf1fe9754814d094c39bd8884996d77c",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_1800_mesh.png"
+    },
+    {
+      "path": "geometry/g1_reference_frame_1800_mesh_skeleton.png",
+      "bytes": 96827,
+      "sha256": "5b042721e1b02dca0dff24b085c6b0ea6b5f1ff65e3d055bb7511de1cbff67e1",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_1800_mesh_skeleton.png"
+    },
+    {
+      "path": "geometry/g1_reference_frame_1800_mesh_skeleton_transparent.png",
+      "bytes": 97029,
+      "sha256": "5be42a2ab8d2e83d95c29f60fa060ca93c67d46811618f48983c412e31416602",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_1800_mesh_skeleton_transparent.png"
+    },
+    {
+      "path": "geometry/g1_reference_frame_1800_mesh_transparent.png",
+      "bytes": 89024,
+      "sha256": "ad84b98925343081a245098fef16bafd7baa004ea75abbe30db5eb9cefe3c268",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_1800_mesh_transparent.png"
+    },
+    {
+      "path": "geometry/g1_reference_frame_1800_projection.json",
+      "bytes": 10061,
+      "sha256": "1a6934fc124934c19ed75bd69fdf9ae717291eab0e69f66a4f4a7dca8d03a3d3",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_1800_projection.json"
+    },
+    {
+      "path": "geometry/g1_reference_frame_1800_skeleton.png",
+      "bytes": 10434,
+      "sha256": "d05d4eb448986deb04f2d5098b7abe94f87d51d9f45f8be31bbbb0de0de899dc",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_1800_skeleton.png"
+    },
+    {
+      "path": "geometry/g1_reference_frame_1800_skeleton_transparent.png",
+      "bytes": 11498,
+      "sha256": "d016d5664c295ec4d5fd9960dcbcfbd62b9b88c781f581ca7b292440d90a6a3e",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_1800_skeleton_transparent.png"
+    },
+    {
+      "path": "geometry/g1_reference_frame_2000_joint_closeup.png",
+      "bytes": 101442,
+      "sha256": "00557117be188d34ed262b292f77e503e7d99e64837eaf01601621a9f788f000",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_2000_joint_closeup.png"
+    },
+    {
+      "path": "geometry/g1_reference_frame_2000_mesh.png",
+      "bytes": 73752,
+      "sha256": "49f5d438b5885db533a33f42085675c587e034c9bf8cd142040d94bef89a09c7",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_2000_mesh.png"
+    },
+    {
+      "path": "geometry/g1_reference_frame_2000_mesh_skeleton.png",
+      "bytes": 85520,
+      "sha256": "766275c77b9899c7d0837ce37788b5cc10a3659e4a6d1ac0825f56f1b44557d7",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_2000_mesh_skeleton.png"
+    },
+    {
+      "path": "geometry/g1_reference_frame_2000_mesh_skeleton_transparent.png",
+      "bytes": 85718,
+      "sha256": "2ddfa1f2e85655716984ba0b163919a1085e7e3393a4f524fd961e9173c94f5f",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_2000_mesh_skeleton_transparent.png"
+    },
+    {
+      "path": "geometry/g1_reference_frame_2000_mesh_transparent.png",
+      "bytes": 80125,
+      "sha256": "a7013cd9a497b43419d225a1a39dc2d581a884e5175c5be8c70c35e991de1b02",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_2000_mesh_transparent.png"
+    },
+    {
+      "path": "geometry/g1_reference_frame_2000_projection.json",
+      "bytes": 10044,
+      "sha256": "a5279e3f7421f1626ac4a81762f7428d84773f3e7aa0540037400a982912e221",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_2000_projection.json"
+    },
+    {
+      "path": "geometry/g1_reference_frame_2000_skeleton.png",
+      "bytes": 9741,
+      "sha256": "99a219eeb7a2de04eafddcb1bb94b5483722b8f94e293a783866121a283bcede",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_2000_skeleton.png"
+    },
+    {
+      "path": "geometry/g1_reference_frame_2000_skeleton_transparent.png",
+      "bytes": 10588,
+      "sha256": "324e8762826786f0695f1f680c2207b162c5acc2fd2bfb7e80e23ff11bf08f57",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_2000_skeleton_transparent.png"
+    },
+    {
+      "path": "geometry/g1_reference_frame_2600_joint_closeup.png",
+      "bytes": 135680,
+      "sha256": "d5ea55607c61ccd05a3b9858a6a5123a0bd571f98d98c1d6de47fce66ac8fc41",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_2600_joint_closeup.png"
+    },
+    {
+      "path": "geometry/g1_reference_frame_2600_mesh.png",
+      "bytes": 101610,
+      "sha256": "4259011f1c7d48a61ecc8c1032de92735bd6833d009ac3aa770b570be066f4a7",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_2600_mesh.png"
+    },
+    {
+      "path": "geometry/g1_reference_frame_2600_mesh_skeleton.png",
+      "bytes": 118222,
+      "sha256": "07e52b2d11c188a0cf8091723db89e8e27aa5c97970a9f65e75d69b0b0667c79",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_2600_mesh_skeleton.png"
+    },
+    {
+      "path": "geometry/g1_reference_frame_2600_mesh_skeleton_transparent.png",
+      "bytes": 118743,
+      "sha256": "933ac99c0582fa5ceec8ed558a58cdb7e259fecb1ef8ba64163926b8c4356c82",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_2600_mesh_skeleton_transparent.png"
+    },
+    {
+      "path": "geometry/g1_reference_frame_2600_mesh_transparent.png",
+      "bytes": 110321,
+      "sha256": "413039e99c497a469335c9c1eebe84c36d9b775cdd56601b21a4b4c1fc96daff",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_2600_mesh_transparent.png"
+    },
+    {
+      "path": "geometry/g1_reference_frame_2600_projection.json",
+      "bytes": 9988,
+      "sha256": "11448d578f159da0de3aac02e03cd0ca2cab53b28db48a2cd7e2a1847a164a61",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_2600_projection.json"
+    },
+    {
+      "path": "geometry/g1_reference_frame_2600_skeleton.png",
+      "bytes": 10725,
+      "sha256": "f5cb6df166f08e316f0a8c354aa09eab9b97d2e160becffcb32fe6d74bc0ddd5",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_2600_skeleton.png"
+    },
+    {
+      "path": "geometry/g1_reference_frame_2600_skeleton_transparent.png",
+      "bytes": 11745,
+      "sha256": "1c88c65a9a1cd924a0b38e1ba4808c319b6fcf4e0bfea87323ead16ab6e0d6c2",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/g1_reference_frame_2600_skeleton_transparent.png"
+    },
+    {
+      "path": "geometry/geometry_manifest.json",
+      "bytes": 110752,
+      "sha256": "f097d1dc4b68eca3f2bace7f8d32e5a86a188cc9e575e21950f88c2664b2f5ae",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/geometry_manifest.json"
+    },
+    {
+      "path": "geometry/go2_reference_data.npz",
+      "bytes": 4471,
+      "sha256": "c187ddca173b02cf24900566c827946351de58052491521a83439e5b212a8b9e",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/go2_reference_data.npz"
+    },
+    {
+      "path": "geometry/go2_reference_joint_closeup.png",
+      "bytes": 252846,
+      "sha256": "584551fcb5b205b7af5d62dd66dec31b0a724b20f1a64f7d2d8751edc28fd2ef",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/go2_reference_joint_closeup.png"
+    },
+    {
+      "path": "geometry/go2_reference_mesh.png",
+      "bytes": 161329,
+      "sha256": "ad0805800c337dcefca0f183925ae792b081ebe509c031dee5c01f84101bd319",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/go2_reference_mesh.png"
+    },
+    {
+      "path": "geometry/go2_reference_mesh_skeleton.png",
+      "bytes": 182861,
+      "sha256": "294958cf792de682e8525e8a6fa273ade5beaa4b3a08fb9726101ed23c14d7d5",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/go2_reference_mesh_skeleton.png"
+    },
+    {
+      "path": "geometry/go2_reference_mesh_skeleton_transparent.png",
+      "bytes": 182904,
+      "sha256": "cf519ce64a335ce233a75a0fdac66f94c6be0790be027b66c91321787a663d52",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/go2_reference_mesh_skeleton_transparent.png"
+    },
+    {
+      "path": "geometry/go2_reference_mesh_transparent.png",
+      "bytes": 179664,
+      "sha256": "83e2fb7fa92009355f6a90fa7514ed97caa68b20530a0f35548936b104ee4b74",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/go2_reference_mesh_transparent.png"
+    },
+    {
+      "path": "geometry/go2_reference_projection.json",
+      "bytes": 4874,
+      "sha256": "4681972731a6c5f2f38ba4ed84932044680cddc7973c33cb84c3ac750f00bd81",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/go2_reference_projection.json"
+    },
+    {
+      "path": "geometry/go2_reference_skeleton.png",
+      "bytes": 8939,
+      "sha256": "e5eec24d9418e1cbf4cd81c0cc30a993a3136e2c41826e625a5ffe529868678b",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/go2_reference_skeleton.png"
+    },
+    {
+      "path": "geometry/go2_reference_skeleton_transparent.png",
+      "bytes": 9365,
+      "sha256": "b9066c228feb2ac6f36507cd11a3aee8869ac3f9adbc2b9099e40e27a2f80c54",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/go2_reference_skeleton_transparent.png"
+    },
+    {
+      "path": "geometry/h2_fresh_geometry_descriptor.npz",
+      "bytes": 4051,
+      "sha256": "1c3552173c86d06f8de786b410ec952e3d849ea5e213c0d75f2d1c838f3003d2",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_fresh_geometry_descriptor.npz"
+    },
+    {
+      "path": "geometry/h2_official_neutral_reference_joint_closeup.png",
+      "bytes": 179302,
+      "sha256": "9e0c0265c7e1c9c560de25bc0a91674eaa486accb0b7477144da7a6015d9d216",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_official_neutral_reference_joint_closeup.png"
+    },
+    {
+      "path": "geometry/h2_official_neutral_reference_mesh.png",
+      "bytes": 80941,
+      "sha256": "23fc66c9091afbea46f1c9def6ef765072cf8cf2f18abc026b96fd7b1e432021",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_official_neutral_reference_mesh.png"
+    },
+    {
+      "path": "geometry/h2_official_neutral_reference_mesh_skeleton.png",
+      "bytes": 94616,
+      "sha256": "372b35d84c9ee060baccbb4eef4ebd8c063c3de74c736576cc947c0fcabd332e",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_official_neutral_reference_mesh_skeleton.png"
+    },
+    {
+      "path": "geometry/h2_official_neutral_reference_mesh_skeleton_transparent.png",
+      "bytes": 94768,
+      "sha256": "ac50acabcffdae22142c83c2bd234d54e1e3d1bfc471e9e48cabce455c1708ad",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_official_neutral_reference_mesh_skeleton_transparent.png"
+    },
+    {
+      "path": "geometry/h2_official_neutral_reference_mesh_transparent.png",
+      "bytes": 87629,
+      "sha256": "1fce9345b496b1387c19012b8a1beacb0e67b493450f6e8f0a2d298eb197b42e",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_official_neutral_reference_mesh_transparent.png"
+    },
+    {
+      "path": "geometry/h2_official_neutral_reference_projection.json",
+      "bytes": 9362,
+      "sha256": "5de8c689c12d9799d4ca18072a1f5580cbce5a87299e5f92b67e94789df8848e",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_official_neutral_reference_projection.json"
+    },
+    {
+      "path": "geometry/h2_official_neutral_reference_skeleton.png",
+      "bytes": 9733,
+      "sha256": "5db0b783315c597629fcc9acb0f0047fe4697a179c33ec0f0c9555424a36bc76",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_official_neutral_reference_skeleton.png"
+    },
+    {
+      "path": "geometry/h2_official_neutral_reference_skeleton_transparent.png",
+      "bytes": 10873,
+      "sha256": "51fff0ace56aa35698dc8450b290b5843bf6b09940cd1c529be63345e40571af",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_official_neutral_reference_skeleton_transparent.png"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_1800_joint_closeup.png",
+      "bytes": 159607,
+      "sha256": "85d6039362890a824e1b1ca043fc4d378e2613deee1765f62d94736ad5addb6a",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_1800_joint_closeup.png"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_1800_mesh.png",
+      "bytes": 76673,
+      "sha256": "7f984eeffbdb9a12165eeea33b98a4597900ec35942b5583c72cf895ea32d944",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_1800_mesh.png"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_1800_mesh_skeleton.png",
+      "bytes": 91183,
+      "sha256": "a47b047dc341f04dfa2964670878cfa2008eb3d8cf9cd0dfd0e983d4d108a606",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_1800_mesh_skeleton.png"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_1800_mesh_skeleton_transparent.png",
+      "bytes": 91226,
+      "sha256": "0c53720e89c9ed1dfa0733c9022d93639b0b599a2c2febee5125cd348972343a",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_1800_mesh_skeleton_transparent.png"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_1800_mesh_transparent.png",
+      "bytes": 82950,
+      "sha256": "4f15b955940770424b484ba6041ffc6cabeb8a1ba73b4c2bbb9a9cefaac4836b",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_1800_mesh_transparent.png"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_1800_projection.json",
+      "bytes": 10518,
+      "sha256": "083cd72dc3dbbc4484f8a929a502f23c7923945247b8e4f65544a21a39d47952",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_1800_projection.json"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_1800_skeleton.png",
+      "bytes": 10233,
+      "sha256": "32038a5bddcddd3348bff3cd496fb02fd097c8417dbc2a0dc81ccfd0be8ee7cb",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_1800_skeleton.png"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_1800_skeleton_transparent.png",
+      "bytes": 11349,
+      "sha256": "66622e8083d42080ea2604d3a574bbe390054cda57591fb0454479f9792e9a45",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_1800_skeleton_transparent.png"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_2000_joint_closeup.png",
+      "bytes": 90541,
+      "sha256": "a25de15217bda1d3d9b578108bead009fe5d6d41e15d2c71faaa8557f23cdc24",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_2000_joint_closeup.png"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_2000_mesh.png",
+      "bytes": 65207,
+      "sha256": "5d6d6413099397325924a77420876c1a0010e074755c0f28ce2b5c93f0673a55",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_2000_mesh.png"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_2000_mesh_skeleton.png",
+      "bytes": 78480,
+      "sha256": "1249e617d8e51c768605e451349a85e6c708f77f50e114d694f12b44136db19b",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_2000_mesh_skeleton.png"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_2000_mesh_skeleton_transparent.png",
+      "bytes": 78522,
+      "sha256": "2c6e026b43df22d5e4a01cc08d291e23c7f0d99077914055bf7070a1990ab4ca",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_2000_mesh_skeleton_transparent.png"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_2000_mesh_transparent.png",
+      "bytes": 70633,
+      "sha256": "298526a56e3331ea5713699437cfbc40d874af146f4d7494f04f7e30f607d326",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_2000_mesh_transparent.png"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_2000_projection.json",
+      "bytes": 10506,
+      "sha256": "40db74f5f482da5a75641272a6bacad45562fef9fbb417168959dcd1499e99c2",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_2000_projection.json"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_2000_skeleton.png",
+      "bytes": 9960,
+      "sha256": "4ece747a5bcd2daca2919d5e471004ca5493fac13331b79972c6082dcc475ebe",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_2000_skeleton.png"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_2000_skeleton_transparent.png",
+      "bytes": 10854,
+      "sha256": "864dfaee6dca4520050b60a2cebcd07b113cf50fcb964a2a37516664a4b418a1",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_2000_skeleton_transparent.png"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_2600_joint_closeup.png",
+      "bytes": 140894,
+      "sha256": "238015d6153560718a4782617e5f83f11539cd0481e5921803f0a46034e3672b",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_2600_joint_closeup.png"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_2600_mesh.png",
+      "bytes": 94747,
+      "sha256": "397b69616503ef890a8199ddcf7a3deb27b2c4ba7b7b32c709decb07c161b0f0",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_2600_mesh.png"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_2600_mesh_skeleton.png",
+      "bytes": 110531,
+      "sha256": "3713f574da564e7ccb1c9d47031876eab28553610a230d0172920ca27856f681",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_2600_mesh_skeleton.png"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_2600_mesh_skeleton_transparent.png",
+      "bytes": 110813,
+      "sha256": "d41bc03b5b64d32d265e4fd3225550a51aef00a7e0fe16036c4b626c2d127c23",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_2600_mesh_skeleton_transparent.png"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_2600_mesh_transparent.png",
+      "bytes": 102637,
+      "sha256": "f6e93b8da110c2868dde85f953a66d75823ca70544b23b4586ba4cb85341fe46",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_2600_mesh_transparent.png"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_2600_projection.json",
+      "bytes": 10531,
+      "sha256": "b2d364cb8c613372dc73ce2da5480ae168ab49e35441772844d6db99bfa6bd82",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_2600_projection.json"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_2600_skeleton.png",
+      "bytes": 10580,
+      "sha256": "3e421ac4ae7c1f44e2c089efbd48be4b2fdaa4159392046df02e89f127558b1b",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_2600_skeleton.png"
+    },
+    {
+      "path": "geometry/h2_predicted_frame_2600_skeleton_transparent.png",
+      "bytes": 11728,
+      "sha256": "3b325819f655fed82de4391956aa7fba941d752b82fc1eeabdebd310fe734564",
+      "classification": "derived",
+      "evidence_kind": "derived_from_actual_prediction_without_joint_manifold_projection",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_predicted_frame_2600_skeleton_transparent.png"
+    },
+    {
+      "path": "geometry/h2_urdf_mjcf_binding_check.json",
+      "bytes": 9282,
+      "sha256": "cdcb9d58ae8f54f3375592587cc45ace6b7d6dd9ff454886c40023e2867c4818",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/h2_urdf_mjcf_binding_check.json"
+    },
+    {
+      "path": "geometry/panda_reference_data.npz",
+      "bytes": 4714,
+      "sha256": "1fe0f5742c447c1d86515578eb99f685d19baebc11afa70a00e8dee3ba65475d",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/panda_reference_data.npz"
+    },
+    {
+      "path": "geometry/panda_reference_joint_closeup.png",
+      "bytes": 90284,
+      "sha256": "58f66ae81e0d8ef64150a3f884f4c817a5dd3e86120e8cfe3a9e340cbe0ffc38",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/panda_reference_joint_closeup.png"
+    },
+    {
+      "path": "geometry/panda_reference_mesh.png",
+      "bytes": 87799,
+      "sha256": "1c8034e714ab72e2046a2d377a8a98435becb07f7360ea6c791f40fda6994b48",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/panda_reference_mesh.png"
+    },
+    {
+      "path": "geometry/panda_reference_mesh_skeleton.png",
+      "bytes": 96371,
+      "sha256": "0e1699365aaf4fe4b53ef0f4ff38618063a107c70e88a50ef8a95b67014dd4ea",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/panda_reference_mesh_skeleton.png"
+    },
+    {
+      "path": "geometry/panda_reference_mesh_skeleton_transparent.png",
+      "bytes": 96484,
+      "sha256": "97e03f1b75e188ca3fdf2f92b249ca897238f58904bff57ecca769f0f2024f0f",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/panda_reference_mesh_skeleton_transparent.png"
+    },
+    {
+      "path": "geometry/panda_reference_mesh_transparent.png",
+      "bytes": 93671,
+      "sha256": "8ee15a09d7043e0f0e20b53b1467fd05a39b1101f8647da3194231632fb8f190",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/panda_reference_mesh_transparent.png"
+    },
+    {
+      "path": "geometry/panda_reference_projection.json",
+      "bytes": 4770,
+      "sha256": "fc23db6d0a1187c623b8778a89efb3eda9c1dec6f8e1d3e41f2539841cde5624",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/panda_reference_projection.json"
+    },
+    {
+      "path": "geometry/panda_reference_skeleton.png",
+      "bytes": 7701,
+      "sha256": "32768a7395a652d6aa3edd4b7b700212aeca24c1ea9f5972f81d7c2127661d72",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/panda_reference_skeleton.png"
+    },
+    {
+      "path": "geometry/panda_reference_skeleton_transparent.png",
+      "bytes": 8116,
+      "sha256": "3b82be102be2f5011ed208cefa3392cf89c53861416d75cbb38f56c0e0e7f29d",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/panda_reference_skeleton_transparent.png"
+    },
+    {
+      "path": "geometry/render_case.py",
+      "bytes": 17725,
+      "sha256": "5ab714bebb7f5fe8f9c52528f26ffb024bc0372c9748ce77f3851693b54d70a1",
+      "classification": "observed",
+      "evidence_kind": "reproduction_code",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/render_case.py"
+    },
+    {
+      "path": "geometry/renderer_validation.json",
+      "bytes": 971,
+      "sha256": "5952abcd7001360581c41621034abc467d0a3c11199ff31ae98ed4e7a852d518",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/renderer_validation.json"
+    },
+    {
+      "path": "geometry/source_derived_frames.npz",
+      "bytes": 13670,
+      "sha256": "316b71752b1da837a7795b23198b42f31bf08a3da532189eb3e6d49784cb0af3",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/source_derived_frames.npz"
+    },
+    {
+      "path": "geometry/supplemental_geometry_sources.json",
+      "bytes": 52092,
+      "sha256": "54fefc4501a708df463fca03bda1885a0016f849a9669f4c3c42607eee1fdfda",
+      "classification": "derived",
+      "evidence_kind": "derived_render_or_geometry_provenance",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/geometry/supplemental_geometry_sources.json"
+    },
+    {
+      "path": "resource-status-latest.json",
+      "bytes": 8440,
+      "sha256": "eced2b9bc44e505f9f8d80893f4d4a5d4f4ef9ed67b743a679d833660faa025f",
+      "classification": "observed",
+      "evidence_kind": "historical_resource_snapshot_not_current_completion",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/resource-status-latest.json"
+    },
+    {
+      "path": "unimate/README.md",
+      "bytes": 2648,
+      "sha256": "20bc4bdabf2f998641f08555c4068d42880f77be05812fb93da48a30e9626851",
+      "classification": "derived",
+      "evidence_kind": "actual_native_sample_preprocessing_only",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/README.md"
+    },
+    {
+      "path": "unimate/asset_manifest.json",
+      "bytes": 23650,
+      "sha256": "0a39509ef9255a08fc1e51dbac82b104a095b63e13cb5e435f2cd7e25a5fdd2f",
+      "classification": "derived",
+      "evidence_kind": "actual_native_sample_preprocessing_only",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/asset_manifest.json"
+    },
+    {
+      "path": "unimate/build_case.py",
+      "bytes": 20323,
+      "sha256": "8e891840716d849ac176a2544358b3c54c7a5121d68def5de71d048156ba7e57",
+      "classification": "observed",
+      "evidence_kind": "reproduction_code",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/build_case.py"
+    },
+    {
+      "path": "unimate/joint_pixels.json",
+      "bytes": 11033,
+      "sha256": "1f6e30ebe763d7ce750980e92e15ce0c6ad849492b0d36150de2615a99128e58",
+      "classification": "derived",
+      "evidence_kind": "actual_native_sample_preprocessing_only",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/joint_pixels.json"
+    },
+    {
+      "path": "unimate/left_foot_12d_values.png",
+      "bytes": 121042,
+      "sha256": "c4adfabf9e82d882d756c4f7a4e23cc38994c8749f29ee586d8a275aee8b524c",
+      "classification": "derived",
+      "evidence_kind": "actual_native_sample_preprocessing_only",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/left_foot_12d_values.png"
+    },
+    {
+      "path": "unimate/left_foot_12d_values.svg",
+      "bytes": 23990,
+      "sha256": "4d5865947cc1bff56f59d8a6d99cc60d0b94e8ef30f8b2b126e78f6a3c7e2b43",
+      "classification": "derived",
+      "evidence_kind": "actual_native_sample_preprocessing_only",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/left_foot_12d_values.svg"
+    },
+    {
+      "path": "unimate/left_foot_frame_00_crop.png",
+      "bytes": 5977,
+      "sha256": "82d1b0b606b7443a106384e4588e7eccf1f7ccf618c35ab69564b4544edbad6b",
+      "classification": "derived",
+      "evidence_kind": "actual_native_sample_preprocessing_only",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/left_foot_frame_00_crop.png"
+    },
+    {
+      "path": "unimate/left_foot_frame_03_crop.png",
+      "bytes": 7393,
+      "sha256": "9b22866d508e111b400f1ac027457df21cddfb5762670267363f13123bbc3814",
+      "classification": "derived",
+      "evidence_kind": "actual_native_sample_preprocessing_only",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/left_foot_frame_03_crop.png"
+    },
+    {
+      "path": "unimate/left_foot_frame_06_crop.png",
+      "bytes": 7892,
+      "sha256": "5ba448678c9a48f76826514664dcf014537ad71ad3fab613197da4bcfdee8f8d",
+      "classification": "derived",
+      "evidence_kind": "actual_native_sample_preprocessing_only",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/left_foot_frame_06_crop.png"
+    },
+    {
+      "path": "unimate/left_foot_tpose_crop.png",
+      "bytes": 6178,
+      "sha256": "478e73f3b568bc675e2ea92ce14193afcca4f314c2c06fecddb40d7d56aa4c15",
+      "classification": "derived",
+      "evidence_kind": "actual_native_sample_preprocessing_only",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/left_foot_tpose_crop.png"
+    },
+    {
+      "path": "unimate/model_inputs_derived.npz",
+      "bytes": 37162,
+      "sha256": "a17bb8449ee839616ecf023f6b082f8890c8ab36506cbbe069fb3cf41139304a",
+      "classification": "derived",
+      "evidence_kind": "actual_native_sample_preprocessing_only",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/model_inputs_derived.npz"
+    },
+    {
+      "path": "unimate/skeleton_tpose_motion.png",
+      "bytes": 167483,
+      "sha256": "9dc76ad916ee16fa5c4f23f01ab1677eadfb94951a1defead201f9e5b070ed6a",
+      "classification": "derived",
+      "evidence_kind": "actual_native_sample_preprocessing_only",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/skeleton_tpose_motion.png"
+    },
+    {
+      "path": "unimate/skeleton_tpose_motion.svg",
+      "bytes": 45208,
+      "sha256": "a1db7671281bdb120f8ed80c3411cb869d59b5875dd785dc9b401653fd633657",
+      "classification": "derived",
+      "evidence_kind": "actual_native_sample_preprocessing_only",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/skeleton_tpose_motion.svg"
+    },
+    {
+      "path": "unimate/trace.json",
+      "bytes": 31658,
+      "sha256": "8a9024c50bab959f4802a22405c9db71de38aa54ce3cc79401134a4416aaa4f0",
+      "classification": "derived",
+      "evidence_kind": "actual_native_sample_preprocessing_only",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/unimate/trace.json"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 11195,
+      "sha256": "e0b014010bb9921e3bf38f87bd96c9abf7635eb2261a4d50cc8235dc0bf322a2",
+      "classification": "derived",
+      "evidence_kind": "computed_asset",
+      "local_exists": true,
+      "remote_path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/embodied_case_20261003/validation.json"
+    }
+  ]
+}

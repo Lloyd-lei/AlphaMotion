@@ -1,0 +1,321 @@
+{
+ "human_smpl": {
+  "label_feet": [],
+  "label_sole_drop_cm": [],
+  "j_floor_name": "L_Toe",
+  "h0_lafan_cm": 1.442718505859375,
+  "mjcf": "ERR 'human_smpl'",
+  "predicted_bias_cm": null
+ },
+ "booster_k1": {
+  "label_feet": [
+   "Left_Ankle_Cross",
+   "Right_Ankle_Cross"
+  ],
+  "label_sole_drop_cm": [
+   8.8,
+   8.8
+  ],
+  "j_floor_name": "Right_Ankle_Cross",
+  "h0_lafan_cm": -4.3304443359375,
+  "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/booster_k1/K1_serial.xml",
+  "true_drop_cm": {
+   "Left_Ankle_Cross": 2.400000000000002,
+   "Right_Ankle_Cross": 2.400000000000002
+  },
+  "pelvis_z_rest_cm": 0.0,
+  "lowest_point_rest_cm": -52.269,
+  "predicted_bias_cm": 6.399999999999999
+ },
+ "booster_t1": {
+  "label_feet": [
+   "left_foot_link",
+   "right_foot_link"
+  ],
+  "label_sole_drop_cm": [
+   10.15,
+   10.15
+  ],
+  "j_floor_name": "left_foot_link",
+  "h0_lafan_cm": -6.2103271484375,
+  "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/booster_t1/T1_serial.xml",
+  "true_drop_cm": {
+   "left_foot_link": 3.0000388201777195,
+   "right_foot_link": 3.0000388201777195
+  },
+  "pelvis_z_rest_cm": 168.0,
+  "lowest_point_rest_cm": 100.66456117982227,
+  "predicted_bias_cm": 7.149961179822281
+ },
+ "booster_t1_29dof": {
+  "label_feet": [
+   "left_foot_link",
+   "right_foot_link"
+  ],
+  "label_sole_drop_cm": [
+   12.65,
+   12.65
+  ],
+  "j_floor_name": "right_foot_link",
+  "h0_lafan_cm": -8.82568359375,
+  "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/booster_t1_29dof/t1_mocap.xml",
+  "true_drop_cm": {
+   "left_foot_link": 3.0,
+   "right_foot_link": 3.0
+  },
+  "pelvis_z_rest_cm": 70.0,
+  "lowest_point_rest_cm": 2.6645999999999876,
+  "predicted_bias_cm": 9.65
+ },
+ "engineai_pm01": {
+  "label_feet": [
+   "LINK_ANKLE_ROLL_L",
+   "LINK_ANKLE_ROLL_R"
+  ],
+  "label_sole_drop_cm": [
+   13.86,
+   13.86
+  ],
+  "j_floor_name": "LINK_ANKLE_ROLL_R",
+  "h0_lafan_cm": -8.026123046875,
+  "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/engineai_pm01/pm_v2.xml",
+  "true_drop_cm": {
+   "LINK_ANKLE_ROLL_L": 4.631,
+   "LINK_ANKLE_ROLL_R": 4.631
+  },
+  "pelvis_z_rest_cm": 82.0,
+  "lowest_point_rest_cm": -0.1360000000000054,
+  "predicted_bias_cm": 9.229
+ },
+ "fourier_gr3": {
+  "label_feet": [
+   "right_foot_pitch_link",
+   "left_foot_pitch_link"
+  ],
+  "label_sole_drop_cm": [
+   16.8,
+   16.8
+  ],
+  "j_floor_name": "right_foot_pitch_link",
+  "h0_lafan_cm": -9.8388671875,
+  "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/fourier_gr3v2_1_1/mjcf/gr3v2_1_1_dummy_hand.xml",
+  "true_drop_cm": {
+   "right_foot_pitch_link": 6.80955379517415,
+   "left_foot_pitch_link": 6.80955379517415
+  },
+  "pelvis_z_rest_cm": 0.0,
+  "lowest_point_rest_cm": -92.70331020230186,
+  "predicted_bias_cm": 9.99044620482585
+ },
+ "fourier_n1": {
+  "label_feet": [
+   "left_foot_roll_link",
+   "right_foot_roll_link"
+  ],
+  "label_sole_drop_cm": [
+   4.45,
+   4.42
+  ],
+  "j_floor_name": "right_foot_roll_link",
+  "h0_lafan_cm": 1.06353759765625,
+  "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/fourier_n1/n1_mocap.xml",
+  "true_drop_cm": {
+   "left_foot_roll_link": 4.446614209010225,
+   "right_foot_roll_link": 4.419999992917457
+  },
+  "pelvis_z_rest_cm": 70.0,
+  "lowest_point_rest_cm": 0.05339156871079706,
+  "predicted_bias_cm": 0.016692899036159226
+ },
+ "hightorque_hi": {
+  "label_feet": [
+   "l_ankle_roll_link",
+   "r_ankle_roll_link"
+  ],
+  "label_sole_drop_cm": [
+   4.4,
+   4.4
+  ],
+  "j_floor_name": "r_ankle_roll_link",
+  "h0_lafan_cm": 2.106780931353569,
+  "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/hightorque_hi/hi_25dof.xml",
+  "true_drop_cm": {
+   "l_ankle_roll_link": 4.400000077625764,
+   "r_ankle_roll_link": 4.400000077625761
+  },
+  "pelvis_z_rest_cm": 68.8,
+  "lowest_point_rest_cm": -0.005000077625767936,
+  "predicted_bias_cm": -7.762576181846725e-08
+ },
+ "kuavo_s45": {
+  "label_feet": [
+   "leg_l5_link",
+   "leg_r5_link"
+  ],
+  "label_sole_drop_cm": [
+   10.75,
+   10.75
+  ],
+  "j_floor_name": "leg_r5_link",
+  "h0_lafan_cm": -1.678466796875,
+  "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/kuavo_s45/biped_s45_collision.xml",
+  "true_drop_cm": {
+   "leg_l5_link": 6.05,
+   "leg_r5_link": 6.05
+  },
+  "pelvis_z_rest_cm": 85.0,
+  "lowest_point_rest_cm": -3.519999999999995,
+  "predicted_bias_cm": 4.7
+ },
+ "pal_talos": {
+  "label": "no contact npz: [Errno 2] No such file or directory: '/var/tmp/alphamotion/topo_exp/cache_lafan_v3/pal_talos_contact.npz'"
+ },
+ "pnd_adam_lite": {
+  "label_feet": [
+   "anklePitchLeft",
+   "anklePitchRight"
+  ],
+  "label_sole_drop_cm": [
+   15.9,
+   15.9
+  ],
+  "j_floor_name": "anklePitchRight",
+  "h0_lafan_cm": -2.24609375,
+  "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/pnd_adam_lite/scene.xml",
+  "true_drop_cm": {
+   "anklePitchLeft": 6.501176159442418,
+   "anklePitchRight": 6.501176159442418
+  },
+  "pelvis_z_rest_cm": 93.0,
+  "lowest_point_rest_cm": 0.06701947415944133,
+  "predicted_bias_cm": 9.398823840557583
+ },
+ "tienkung": {
+  "label_feet": [
+   "ankle_pitch_l_link",
+   "ankle_pitch_r_link"
+  ],
+  "label_sole_drop_cm": [
+   15.7,
+   15.7
+  ],
+  "j_floor_name": "ankle_pitch_r_link",
+  "h0_lafan_cm": -5.7220458984375,
+  "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/tienkung/mjcf/tienkung.xml",
+  "true_drop_cm": {
+   "ankle_pitch_l_link": 5.7000487903738035,
+   "ankle_pitch_r_link": 5.7000487903738035
+  },
+  "pelvis_z_rest_cm": 100.0,
+  "lowest_point_rest_cm": 1.1299512096261881,
+  "predicted_bias_cm": 9.999951209626197
+ },
+ "unitree_g1_23dof": {
+  "label_feet": [
+   "left_ankle_roll_link",
+   "right_ankle_roll_link"
+  ],
+  "label_sole_drop_cm": [
+   3.54,
+   3.54
+  ],
+  "j_floor_name": "right_ankle_roll_link",
+  "h0_lafan_cm": 2.88848876953125,
+  "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/unitree_g1/g1_mocap_29dof.xml",
+  "true_drop_cm": {
+   "left_ankle_roll_link": 3.4999999999999996,
+   "right_ankle_roll_link": 3.4999999999999996
+  },
+  "pelvis_z_rest_cm": 79.3,
+  "lowest_point_rest_cm": 0.11362475778252572,
+  "predicted_bias_cm": 0.04000000000000048
+ },
+ "unitree_g1_29dof": {
+  "label_feet": [
+   "left_ankle_roll_link",
+   "right_ankle_roll_link"
+  ],
+  "label_sole_drop_cm": [
+   3.54,
+   3.54
+  ],
+  "j_floor_name": "right_ankle_roll_link",
+  "h0_lafan_cm": 1.2507247738540173,
+  "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/unitree_g1/g1_mocap_29dof.xml",
+  "true_drop_cm": {
+   "left_ankle_roll_link": 3.4999999999999996,
+   "right_ankle_roll_link": 3.4999999999999996
+  },
+  "pelvis_z_rest_cm": 79.3,
+  "lowest_point_rest_cm": 0.11362475778252572,
+  "predicted_bias_cm": 0.04000000000000048
+ },
+ "unitree_h1": {
+  "label_feet": [
+   "left_ankle_link",
+   "right_ankle_link"
+  ],
+  "label_sole_drop_cm": [
+   7.0,
+   7.0
+  ],
+  "j_floor_name": "right_ankle_link",
+  "h0_lafan_cm": 4.676666110754013,
+  "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/unitree_h1/h1.xml",
+  "true_drop_cm": {
+   "left_ankle_link": 7.0000009614582055,
+   "right_ankle_link": 7.0000009614582055
+  },
+  "pelvis_z_rest_cm": 110.00000000000001,
+  "lowest_point_rest_cm": 5.579999038541797,
+  "predicted_bias_cm": -9.614582054950915e-07
+ },
+ "unitree_h1_2": {
+  "label_feet": [
+   "left_ankle_roll_link",
+   "right_ankle_roll_link"
+  ],
+  "label_sole_drop_cm": [
+   4.5,
+   4.5
+  ],
+  "j_floor_name": "right_ankle_roll_link",
+  "h0_lafan_cm": -0.5877494812011719,
+  "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/unitree_h1_2/h1_2_handless.xml",
+  "true_drop_cm": {
+   "left_ankle_roll_link": 4.499999982058495,
+   "right_ankle_roll_link": 4.499999982058495
+  },
+  "pelvis_z_rest_cm": 103.0,
+  "lowest_point_rest_cm": 0.1800000179415024,
+  "predicted_bias_cm": 1.7941505170426808e-08
+ },
+ "unitree_h2": {
+  "label_feet": [],
+  "label_sole_drop_cm": [],
+  "j_floor_name": "body16",
+  "h0_lafan_cm": 3.686370700597763,
+  "mjcf": "/var/tmp/alphamotion/robot_models/unitree_ros/robots/h2_description/unitree_h2_mjcf.xml",
+  "true_drop_cm": {
+   "body16": "body not in MJCF",
+   "body15": "body not in MJCF"
+  },
+  "pelvis_z_rest_cm": 0.0,
+  "lowest_point_rest_cm": -103.88215634912008,
+  "predicted_bias_cm": null
+ },
+ "unitree_r1": {
+  "label_feet": [],
+  "label_sole_drop_cm": [],
+  "j_floor_name": "right_ankle_constraint_B_link",
+  "h0_lafan_cm": 1.809387281537056,
+  "mjcf": "/var/tmp/alphamotion/robot_models/unitree_ros/robots/r1_description/unitree_r1_mjcf.xml",
+  "true_drop_cm": {
+   "right_ankle_constraint_B_link": 0.499696983983422,
+   "left_ankle_constraint_A_link": 0.4987064534805796
+  },
+  "pelvis_z_rest_cm": 0.0,
+  "lowest_point_rest_cm": -74.08079407401631,
+  "predicted_bias_cm": -0.4992017187320008
+ }
+}

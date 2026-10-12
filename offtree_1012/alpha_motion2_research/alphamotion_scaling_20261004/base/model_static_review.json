@@ -1,0 +1,126 @@
+{
+  "schema": "pilot-model-static-review-v2",
+  "created_at_utc": "2026-10-04T04:57:49.782333+00:00",
+  "source_path": "/Users/yudonglei/Documents/be water, robot/.codex-staging/megatron-scale-pilot/pilot_model.py",
+  "source_sha256": "2bd80231395885e8d139f9bf387b199063909dc1febbd8034f7af82cde774702",
+  "source_bytes": 6453,
+  "scope": "Read-only static review of the revised local file, compared with previously read old DualTranslator/EncBlock/CrossBlock source. Wrote only this review JSON.",
+  "verdict": "PRIMARY_REVIEW_FINDINGS_FIXED_STATICALLY; runtime verification pending; one constructor-contract issue remains",
+  "runtime_executed": false,
+  "gpu_used": false,
+  "training_started": false,
+  "runtime_blocker": "Remote host became unreachable before the initial tiny CPU probe connected. Probe returned SSH exit255 timeout; no numeric or gradient result was obtained.",
+  "static_checks": [
+    {
+      "topic": "Sparse SE3 budget",
+      "status": "STATIC_OK",
+      "lines": [
+        43,
+        54
+      ],
+      "evidence": "C<=2 enforced; shapes, batch count, bool validity, int64 indices, in-range valid indices and finite valid values checked. Zero conditions permitted."
+    },
+    {
+      "topic": "Invalid sparse padding",
+      "status": "STATIC_OK",
+      "lines": [
+        53,
+        60
+      ],
+      "evidence": "Invalid indices replaced by zero before gather; invalid values zeroed before projection; invalid tokens zeroed and marked as key_padding_mask=True. Latent keys remain unmasked, avoiding all-masked attention for positive latent length."
+    },
+    {
+      "topic": "Hidden source pose",
+      "status": "STATIC_OK_WITH_CALLER_BOUNDARY",
+      "lines": [
+        24,
+        35
+      ],
+      "evidence": "All hidden pose channels zeroed before input projection and replaced by mask token; visible nonfinite values rejected. This removes hidden pose GT dependence and avoids 0*NaN input-projection gradient contamination in the intended finite-descriptor path. Explicit source_contact remains independently observable even on hidden joints; caller must not accidentally pass hidden contact labels as observed inputs."
+    },
+    {
+      "topic": "Contact invalid mask",
+      "status": "STATIC_OK",
+      "lines": [
+        32,
+        35
+      ],
+      "evidence": "NaN and Inf contacts are replaced with zero before con_emb; output including bias is multiplied by finite mask. This fixes Inf->floatmax overflow and masks unknown contact contribution."
+    },
+    {
+      "topic": "Reference checkpoint coverage",
+      "status": "STATIC_OK_SCHEMA_ONLY",
+      "lines": [
+        83,
+        105
+      ],
+      "evidence": "Reference keys and shapes must exactly match hard-coded known old model schema before any allowed judge/semantic-projection exclusions. Empty or missing-key references now reject. Actual383-key checkpoint compatibility and numerical values were not executed here."
+    },
+    {
+      "topic": "Added residual identity",
+      "status": "STATIC_OK_PROOF_ONLY",
+      "lines": [
+        72,
+        80
+      ],
+      "evidence": "For previously read pre-norm residual EncBlock/CrossBlock implementation, zero attention output and FF output weights/biases make added blocks algebraically identity for finite activations. No numerical equality test executed."
+    },
+    {
+      "topic": "Qwen and metadata modules",
+      "status": "STATIC_OK",
+      "lines": [
+        12,
+        21
+      ],
+      "evidence": "Sparse-condition MLP and two missingness-bit projection are shared across joints/bodies. Whole model is correctly not claimed identical to reference because Qwen projection and new conditioning are new."
+    },
+    {
+      "topic": "Dual FSQ and shared decoding",
+      "status": "STATIC_OK_UNDER_FIXED_PILOT_FLAGS",
+      "lines": [
+        6,
+        10,
+        68,
+        70
+      ],
+      "evidence": "Uses inherited encode/FSQ, then shared topology-conditioned decoder; no body-specific branches introduced locally. Requires single_codebook=False, rot_only=False, use_sem=True and n_judges=0 for the promised pilot."
+    },
+    {
+      "topic": "Old hpos semantics",
+      "status": "DOWNSTREAM_PENDING",
+      "lines": [
+        63,
+        66
+      ],
+      "evidence": "Returns inherited raw hpos tensor without FK or XYZ conversion. Old train_dual.py137-139 defines root_pos channels as height/forward-speed/side-speed; later449-451 supervise root channel0 height only. Trainer must treat this as auxiliary/root slots and use FK for position supervision, not generic per-joint Cartesian XYZ."
+    }
+  ],
+  "findings": [
+    {
+      "priority": "P2",
+      "title": "Constrain inherited modes that conditional decoder does not implement",
+      "lines": [
+        9,
+        10,
+        61,
+        66
+      ],
+      "trigger": "Constructing with root_head=True, rot_head=angles, rot_only=True, vis_residual=True, or n_judges>0 remains accepted through **kwargs.",
+      "impact": "decode_conditional bypasses the corresponding parent branches: root-head output is never assigned, angle head returns9 raw values instead of converted6D, rot_only computes an untrained position path, visible residual is ignored. n_judges>0 also allocates per-body judge parameters even though local docstring claims none. These do not affect a caller that explicitly freezes the intended pilot flags.",
+      "recommendation": "Assert the supported pilot configuration in constructor (at least use_sem=True, n_judges=0, single_codebook=False, rot_only=False, rot_head=free, vis_residual=False, root_head=False), or implement the advertised alternatives. Explicit trainer configuration alone must be inspected before marking this resolved."
+    }
+  ],
+  "not_tested": [
+    "Remote revised file upload/hash; this review covers only local SHA shown above.",
+    "Tiny CPU forward/diagnostic backward: masked source perturbation invariance, NaN/Inf padding gradients, all-invalid condition equals no-condition, C=0/1/2 cases.",
+    "Actual checkpoint load with383 expectedkeys, allowed exclusions and allnew-layer identity.",
+    "Trainer geometry construction and absence of dynamic target GT in static descriptors.",
+    "Trainer losses and root/height versus FK position semantics; mechanics/nonmetric missingness population.",
+    "Actual sparse SE3 values coordinate/order/unit contract and optional source-contact observability policy."
+  ],
+  "superseded_for_current_readiness_by": [
+    "offline_verification.json",
+    "recipe_review.json"
+  ],
+  "historical_scope_note": "Prior interface/source review; preserve original per-version evidence, not final recipe or runtime readiness."
+}

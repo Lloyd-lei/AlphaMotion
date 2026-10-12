@@ -1,0 +1,24 @@
+{
+  "checked_at_utc": "2026-10-04T05:35:51.291729+00:00",
+  "requested_key_comment": "greenwich-h2-a100-20260914",
+  "supplied_public_key_fingerprint": "SHA256:KOhf0k09frWDTm3Y65E9Mczx/2GPUQL9pP3T93wPIdA",
+  "sources_checked": [
+    "~/.ssh/config and all existing Include files",
+    "~/.ssh/**/*.pub fingerprints",
+    "current project connection references",
+    "task memory registry"
+  ],
+  "host_alias_found": false,
+  "matching_public_key_found": false,
+  "candidate_target_identity_established": false,
+  "ssh_attempt_to_new_server": false,
+  "missing_required_information": [
+    "server IP or DNS hostname",
+    "login username"
+  ],
+  "port": "provide if not default SSH port22",
+  "private_keys_read_or_exported": false,
+  "ssh_config_or_authorized_keys_changed": false,
+  "host_key_verification_bypassed": false,
+  "result": "cannot locate target from public key alone"
+}

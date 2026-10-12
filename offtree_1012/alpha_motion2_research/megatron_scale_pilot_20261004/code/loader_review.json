@@ -1,0 +1,67 @@
+{
+  "scope": "Offline loader acceptance, legacy static compatibility and synthetic regression tests. No SSH, training, remote extraction mutation or real data validation.",
+  "status": "local_checks_passed",
+  "test_command": "python3 -m unittest discover -s .codex-staging/megatron-scale-pilot -p test_pilot_data.py -q",
+  "tests_passed": 14,
+  "fixes": [
+    "Require terminal manifest/checks and exact 16-body coverage with pinned J/counts.",
+    "Verify payload/static/chosen split/row table hashes; derive full row table from unique source clip groups and timestamps.",
+    "Validate valid root/contact values are finite and unknown values NaN before model masking.",
+    "Verify raw descriptor offsets, root-inclusive bone normalization, hop/depth and dof shape; retain FK normalized tolerance2e-5.",
+    "Read legacy object joint_names only from SHA-verified spec; DOF reader loads only numeric dof and leaves object metadata untouched.",
+    "Use fixed per-row endpoint permutation prefixes for matched one/two-condition eval.",
+    "Local extractor emits static_files/static_seal; standalone helper adds current-source seal to completed old extraction without re-extraction."
+  ],
+  "source_evidence": [
+    {
+      "file": "source-snapshot/AlphaMotion1/prep_gmr_cache.py",
+      "lines": [
+        71,
+        74
+      ],
+      "fact": "joint_names written as dtype=object"
+    },
+    {
+      "file": "source-snapshot/AlphaMotion1/prep_dof_features.py",
+      "lines": [
+        353,
+        356
+      ],
+      "fact": "dof numeric plus object joint_names/slot_joints"
+    },
+    {
+      "file": "source-snapshot/AlphaMotion1/common.py",
+      "lines": [
+        104,
+        115
+      ],
+      "fact": "norm_bonelen includes root offset; preserves raw spec offsets"
+    }
+  ],
+  "untouched": [
+    "endpoint_policy implementation",
+    "model",
+    "trainer",
+    "remote source or process",
+    "training services"
+  ],
+  "remaining_verification": [
+    "Actual remote extraction completion still unknown since last confirmed9/16 before host offline.",
+    "A pre-seal completed extraction must be compared with verified original LAFAN static sources using seal_xwbc_static.py; newly measured DOF/descriptor SHA is not historical provenance.",
+    "No real 16-body/UniMate/Qwen loader pass has run locally; foreign-domain group-index global uniqueness should be confirmed by its payload producer.",
+    "Loader checks chosen_split declared old exclusions and source digests, but does not re-open the original600-clip exclude_set offline. Original extraction asserts old stage1/stage2 config exclusion and membership; restore-time source audit remains the external provenance boundary."
+  ],
+  "sha256_at_review": {
+    "pilot_data.py": "dbd309178d0a9901ddc0a8310c1ca408d926974f8147da2c9284005ded345c76",
+    "xwbc_contract.py": "0a7ff7e6bb9294728010aa6a2ac449964220455ac7296746ed7ad042c1753237",
+    "extract_xwbc_pilot.py": "7ca9cd4a4ca01da5982ac289c25c5cca9266c603f6c39f945e4c619d9fccfe7e",
+    "seal_xwbc_static.py": "378f02d2ee60f016a704207afc93d6669062420141e64cd9cdd1238cc78612ac",
+    "test_pilot_data.py": "df7ed1d004483582437905410240d537501d238a75e8bffb72fc60fdb6cfca38",
+    "offline_recipe_contract.json": "e3dd86d22e56c17619a98188037c0595d169294ee347fd52ee2a29d5f6de699b"
+  },
+  "superseded_for_current_readiness_by": [
+    "offline_verification.json",
+    "recipe_review.json"
+  ],
+  "historical_scope_note": "Prior interface/source review; preserve original per-version evidence, not final recipe or runtime readiness."
+}

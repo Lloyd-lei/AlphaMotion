@@ -1,0 +1,39 @@
+IDENTITY [{"pid": 3258020, "exists": true, "state": "S", "start_ticks": "172790670", "cmdline": "/home/arenalabs/miniconda3/bin/python -u /home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/pretraining_foundation/acquire.py --plan /home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/pretraining_foundation/configs/download_plan.json ", "identity_matches": true}, {"pid": 3272054, "exists": true, "state": "S", "start_ticks": "172846036", "cmdline": "/home/arenalabs/miniconda3/bin/python -u /home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/pretraining_foundation/queue_followup.py ", "identity_matches": true}]
+{
+  "checked_at_utc": "2026-10-04T04:17:30.981476+00:00",
+  "state_age_seconds": 3.362307,
+  "current_stage": "unimate_all_models",
+  "queue_status": "waiting_primary",
+  "seconds_without_primary_progress": 0,
+  "stages": [
+    {
+      "id": "unimate_smoke_assets",
+      "status": "verified",
+      "verified_files": 5,
+      "verified_bytes": 346409
+    },
+    {
+      "id": "flan_t5_pytorch",
+      "status": "verified",
+      "verified_files": 9,
+      "verified_bytes": 993581881
+    },
+    {
+      "id": "unimate_all_models",
+      "status": "downloading",
+      "verified_files": 0,
+      "verified_bytes": 0
+    }
+  ],
+  "complete_blob_bytes": 24430508279,
+  "partial_blob_bytes": 5602489797,
+  "content_verified_unique_bytes": 993928290,
+  "remaining_combined_bytes": 170472867463,
+  "free_home_bytes": 217118056448,
+  "required_available_bytes": 187652736647,
+  "headroom_after_remaining_and_reserve_bytes": 29465319801,
+  "fits_with_reserve": true,
+  "bytes_growth_since_previous": 2292313335,
+  "meaningful_findings": []
+}
+EVIDENCE /home/arenalabs/Desktop/"be water, robot"/alpha_motion2/pretraining_foundation/logs/monitor/heartbeat_latest.json

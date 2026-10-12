@@ -1,0 +1,33 @@
+{
+ "n": 1080,
+ "heldout_bias": {
+  "fourier_gr3": -11.19206817964568,
+  "kuavo_s45": 1.5727510567520184,
+  "unitree_h2": -11.438670974256084,
+  "unitree_r1": 0.03797045800528309
+ },
+ "seconds": 38.71625995635986,
+ "delta_col_cm": {
+  "booster_k1": 6.4,
+  "booster_t1": 7.149961179822281,
+  "booster_t1_29dof": 9.65,
+  "fourier_gr3": 9.99044620482585,
+  "fourier_n1": 0.016692899036159226,
+  "hightorque_hi": -7.762576181846725e-08,
+  "kuavo_s45": 4.7,
+  "pnd_adam_lite": 9.398823840557583,
+  "tienkung": 9.999951209626197,
+  "unitree_g1_23dof": 0.04000000000000048,
+  "unitree_g1_29dof": 0.04000000000000048,
+  "unitree_h1": -9.614582054950915e-07,
+  "unitree_h1_2": 1.7941505170426808e-08,
+  "unitree_h2": -5.43,
+  "unitree_r1": -4.384469233317674
+ },
+ "report32_sha256": {
+  "results.json": "c9cdd506ba04d21cbf0bcee1d032cc0d6f446aa1fbb4ddce3c5bc7a04b863af8",
+  "sole_audit.json": "d0f54b920a8bfb25f927159bd6ab4c5d94a4fa7bf93d7540f5414fd9b53b5436",
+  "cache_gauge.json": "7dcccccc03f09a9ffdb0dd0a2c915d42abc710989976620842459f41b325301f"
+ },
+ "selfpen": true
+}

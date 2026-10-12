@@ -1,0 +1,308 @@
+{
+  "schema": "embodied-case-delivery-validation-v1",
+  "checked_at_utc": "2026-10-04T04:13:43.955961+00:00",
+  "submanifest_checked_entries": 97,
+  "submanifest_checked_files": [
+    "alpha1/trace.json",
+    "alpha1/trace.npz",
+    "code_audit/01-source-token256.png",
+    "code_audit/01-source-token256.svg",
+    "code_audit/02-encoder-attention.png",
+    "code_audit/02-encoder-attention.svg",
+    "code_audit/03-rotation-pool-attention.png",
+    "code_audit/03-rotation-pool-attention.svg",
+    "code_audit/04-target-decoder-attention.png",
+    "code_audit/04-target-decoder-attention.svg",
+    "code_audit/05-fsq13.png",
+    "code_audit/05-fsq13.svg",
+    "code_audit/hpos-semantics.json",
+    "code_audit/render_evidence.py",
+    "code_audit/selected-tensor-values.json",
+    "geometry/build_case_assets.py",
+    "geometry/g1_reference_frame_1800_joint_closeup.png",
+    "geometry/g1_reference_frame_1800_mesh.png",
+    "geometry/g1_reference_frame_1800_mesh_skeleton.png",
+    "geometry/g1_reference_frame_1800_mesh_skeleton_transparent.png",
+    "geometry/g1_reference_frame_1800_mesh_transparent.png",
+    "geometry/g1_reference_frame_1800_skeleton.png",
+    "geometry/g1_reference_frame_1800_skeleton_transparent.png",
+    "geometry/g1_reference_frame_2000_joint_closeup.png",
+    "geometry/g1_reference_frame_2000_mesh.png",
+    "geometry/g1_reference_frame_2000_mesh_skeleton.png",
+    "geometry/g1_reference_frame_2000_mesh_skeleton_transparent.png",
+    "geometry/g1_reference_frame_2000_mesh_transparent.png",
+    "geometry/g1_reference_frame_2000_skeleton.png",
+    "geometry/g1_reference_frame_2000_skeleton_transparent.png",
+    "geometry/g1_reference_frame_2600_joint_closeup.png",
+    "geometry/g1_reference_frame_2600_mesh.png",
+    "geometry/g1_reference_frame_2600_mesh_skeleton.png",
+    "geometry/g1_reference_frame_2600_mesh_skeleton_transparent.png",
+    "geometry/g1_reference_frame_2600_mesh_transparent.png",
+    "geometry/g1_reference_frame_2600_skeleton.png",
+    "geometry/g1_reference_frame_2600_skeleton_transparent.png",
+    "geometry/go2_reference_data.npz",
+    "geometry/go2_reference_joint_closeup.png",
+    "geometry/go2_reference_mesh.png",
+    "geometry/go2_reference_mesh_skeleton.png",
+    "geometry/go2_reference_mesh_skeleton_transparent.png",
+    "geometry/go2_reference_mesh_transparent.png",
+    "geometry/go2_reference_skeleton.png",
+    "geometry/go2_reference_skeleton_transparent.png",
+    "geometry/h2_fresh_geometry_descriptor.npz",
+    "geometry/h2_official_neutral_reference_joint_closeup.png",
+    "geometry/h2_official_neutral_reference_mesh.png",
+    "geometry/h2_official_neutral_reference_mesh_skeleton.png",
+    "geometry/h2_official_neutral_reference_mesh_skeleton_transparent.png",
+    "geometry/h2_official_neutral_reference_mesh_transparent.png",
+    "geometry/h2_official_neutral_reference_skeleton.png",
+    "geometry/h2_official_neutral_reference_skeleton_transparent.png",
+    "geometry/h2_predicted_frame_1800_joint_closeup.png",
+    "geometry/h2_predicted_frame_1800_mesh.png",
+    "geometry/h2_predicted_frame_1800_mesh_skeleton.png",
+    "geometry/h2_predicted_frame_1800_mesh_skeleton_transparent.png",
+    "geometry/h2_predicted_frame_1800_mesh_transparent.png",
+    "geometry/h2_predicted_frame_1800_skeleton.png",
+    "geometry/h2_predicted_frame_1800_skeleton_transparent.png",
+    "geometry/h2_predicted_frame_2000_joint_closeup.png",
+    "geometry/h2_predicted_frame_2000_mesh.png",
+    "geometry/h2_predicted_frame_2000_mesh_skeleton.png",
+    "geometry/h2_predicted_frame_2000_mesh_skeleton_transparent.png",
+    "geometry/h2_predicted_frame_2000_mesh_transparent.png",
+    "geometry/h2_predicted_frame_2000_skeleton.png",
+    "geometry/h2_predicted_frame_2000_skeleton_transparent.png",
+    "geometry/h2_predicted_frame_2600_joint_closeup.png",
+    "geometry/h2_predicted_frame_2600_mesh.png",
+    "geometry/h2_predicted_frame_2600_mesh_skeleton.png",
+    "geometry/h2_predicted_frame_2600_mesh_skeleton_transparent.png",
+    "geometry/h2_predicted_frame_2600_mesh_transparent.png",
+    "geometry/h2_predicted_frame_2600_skeleton.png",
+    "geometry/h2_predicted_frame_2600_skeleton_transparent.png",
+    "geometry/panda_reference_data.npz",
+    "geometry/panda_reference_joint_closeup.png",
+    "geometry/panda_reference_mesh.png",
+    "geometry/panda_reference_mesh_skeleton.png",
+    "geometry/panda_reference_mesh_skeleton_transparent.png",
+    "geometry/panda_reference_mesh_transparent.png",
+    "geometry/panda_reference_skeleton.png",
+    "geometry/panda_reference_skeleton_transparent.png",
+    "geometry/render_case.py",
+    "geometry/source_derived_frames.npz",
+    "unimate/README.md",
+    "unimate/build_case.py",
+    "unimate/joint_pixels.json",
+    "unimate/left_foot_12d_values.png",
+    "unimate/left_foot_12d_values.svg",
+    "unimate/left_foot_frame_00_crop.png",
+    "unimate/left_foot_frame_03_crop.png",
+    "unimate/left_foot_frame_06_crop.png",
+    "unimate/left_foot_tpose_crop.png",
+    "unimate/model_inputs_derived.npz",
+    "unimate/skeleton_tpose_motion.png",
+    "unimate/skeleton_tpose_motion.svg",
+    "unimate/trace.json"
+  ],
+  "missing_local_delivery_references": [],
+  "remote_only_omission": "unimate/derived_preprocessing.npz intentionally retained remotely and explicitly tagged",
+  "npz_validation": [
+    {
+      "path": "unimate/model_inputs_derived.npz",
+      "array_count": 14,
+      "finite_float_arrays": 8
+    },
+    {
+      "path": "alpha1/trace.npz",
+      "array_count": 69,
+      "finite_float_arrays": 60
+    },
+    {
+      "path": "alpha1/joint_name_semantics_trace.npz",
+      "array_count": 4,
+      "finite_float_arrays": 3
+    },
+    {
+      "path": "alpha1/alternative_input_cards_trace.npz",
+      "array_count": 10,
+      "finite_float_arrays": 8
+    },
+    {
+      "path": "geometry/source_derived_frames.npz",
+      "array_count": 11,
+      "finite_float_arrays": 8
+    },
+    {
+      "path": "geometry/h2_fresh_geometry_descriptor.npz",
+      "array_count": 10,
+      "finite_float_arrays": 5
+    },
+    {
+      "path": "geometry/panda_reference_data.npz",
+      "array_count": 17,
+      "finite_float_arrays": 11
+    },
+    {
+      "path": "geometry/go2_reference_data.npz",
+      "array_count": 17,
+      "finite_float_arrays": 11
+    }
+  ],
+  "attention_all_frames_heads_max_row_sum_errors": {
+    "encoder_layer0_attention": 2.384185791015625e-07,
+    "rotation_pool_attention": 3.5762786865234375e-07,
+    "target_rotation_decoder_layer0_attention": 2.384185791015625e-07
+  },
+  "fsq_all_frames_max_abs_recompute_errors": {
+    "position": 0.0,
+    "rotation": 0.0
+  },
+  "fsq_recompute_basis": "Saved float32 PyTorch tanh bounds, then round / 15.5. Independent CPU PyTorch recompute of tanh+round matches all values exactly. NumPy tanh near saturation differs enough to cross rounding at 8 of 4992 rotation entries; this is an implementation precision effect, not altered output.",
+  "rendered_anchor_checks": [
+    {
+      "path": "geometry/g1_reference_frame_1800_mesh_skeleton.png",
+      "anchor_pixel": [
+        582.0830769532097,
+        389.85045225623503
+      ],
+      "nearest_highlight_pixel_error": 0.171073983468548
+    },
+    {
+      "path": "geometry/g1_reference_frame_2000_mesh_skeleton.png",
+      "anchor_pixel": [
+        723.6603329014832,
+        640.957605079956
+      ],
+      "nearest_highlight_pixel_error": 0.34230259575460065
+    },
+    {
+      "path": "geometry/g1_reference_frame_2600_mesh_skeleton.png",
+      "anchor_pixel": [
+        352.41899649885653,
+        356.9989814735244
+      ],
+      "nearest_highlight_pixel_error": 0.4189977368079822
+    },
+    {
+      "path": "geometry/go2_reference_mesh_skeleton.png",
+      "anchor_pixel": [
+        633.0128602431126,
+        508.58637385250717
+      ],
+      "nearest_highlight_pixel_error": 0.4138260211038939
+    },
+    {
+      "path": "geometry/h2_official_neutral_reference_mesh_skeleton.png",
+      "anchor_pixel": [
+        520.9591809381828,
+        321.35971277639896
+      ],
+      "nearest_highlight_pixel_error": 0.3620213768719807
+    },
+    {
+      "path": "geometry/h2_predicted_frame_1800_mesh_skeleton.png",
+      "anchor_pixel": [
+        598.6099906019498,
+        373.2224835021499
+      ],
+      "nearest_highlight_pixel_error": 0.4490058343678458
+    },
+    {
+      "path": "geometry/h2_predicted_frame_2000_mesh_skeleton.png",
+      "anchor_pixel": [
+        741.0176172837239,
+        623.6968157348413
+      ],
+      "nearest_highlight_pixel_error": 0.30369568209911985
+    },
+    {
+      "path": "geometry/h2_predicted_frame_2600_mesh_skeleton.png",
+      "anchor_pixel": [
+        350.52554056383855,
+        339.48936991506383
+      ],
+      "nearest_highlight_pixel_error": 0.6816118179229486
+    },
+    {
+      "path": "geometry/panda_reference_mesh_skeleton.png",
+      "anchor_pixel": [
+        402.82532599556333,
+        300.9332684694871
+      ],
+      "nearest_highlight_pixel_error": 0.1869869112813471
+    }
+  ],
+  "renderer_validation": {
+    "g1_reference_vs_actual_model_input_fk_max_cm": 2.7524700271897018e-05,
+    "g1_reference_vs_actual_model_input_rotation_max_abs": 2.980232238769531e-07,
+    "camera_projection_marker_test": [
+      {
+        "expected": [
+          399.9999876671913,
+          399.999999107649
+        ],
+        "measured": [
+          400.0,
+          400.0
+        ],
+        "error_pixels": 1.2365049964166875e-05,
+        "pixels": 60
+      },
+      {
+        "expected": [
+          481.79144148861985,
+          331.6005442914367
+        ],
+        "measured": [
+          481.94,
+          331.52666666666664
+        ],
+        "error_pixels": 0.1659142391271666,
+        "pixels": 75
+      },
+      {
+        "expected": [
+          337.6442176812842,
+          478.36522878184746
+        ],
+        "measured": [
+          337.55172413793105,
+          478.44827586206895
+        ],
+        "error_pixels": 0.12430556341265284,
+        "pixels": 58
+      }
+    ],
+    "camera_projection_marker_max_error_pixels": 0.1659142391271666,
+    "passed": true
+  },
+  "h2_binding": {
+    "movable_joints_checked": 31,
+    "max_origin_translation_error_m": 0.0,
+    "max_origin_rotation_abs_error": 4.5933813619392083e-07,
+    "max_axis_abs_error": 0.0,
+    "max_limit_error_rad": 4.013579999906369e-06,
+    "scope": "kinematic binding only, not dynamic equivalence"
+  },
+  "alpha1_forward_numeric_validation": {
+    "all_floating_arrays_finite": true,
+    "attention_max_output_error": 7.152557373046875e-07
+  },
+  "unimate_preprocessing_validation": {
+    "finite_features": true,
+    "ric_max_abs_error_body_units": 1.7100135196734811e-10,
+    "fk_max_abs_error_body_units": 1.5991813903659668e-07,
+    "normalization_roundtrip_max_abs_error": 1.1102230246251565e-16,
+    "raw_feature_shape": [
+      7,
+      22,
+      12
+    ],
+    "model_motion_array_shape": [
+      1,
+      22,
+      12,
+      60
+    ],
+    "padded_frames_exact_zero": true
+  },
+  "visual_qa": "Final Panda lighting and 01/05 chart header spacing checked after final render; constituent G1/H2/Go2/Panda and UniMate panels visually reviewed. Final composed diagrams belong to the main task.",
+  "passed": true
+}

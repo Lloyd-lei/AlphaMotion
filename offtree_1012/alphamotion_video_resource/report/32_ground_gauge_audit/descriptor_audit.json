@@ -1,0 +1,133 @@
+{
+ "human_smpl": {
+  "cache_J": 22,
+  "cache_rest_drop_cm": -10.548508644104004,
+  "cache_low_joint": "R_Hip",
+  "v2_equal_cache": true,
+  "mjcf": "ERR No module named 'refiner_suite'"
+ },
+ "booster_k1": {
+  "cache_J": 21,
+  "cache_rest_drop_cm": -49.868995666503906,
+  "cache_low_joint": "Left_Ankle_Cross",
+  "v2_equal_cache": true,
+  "mjcf": "ERR No module named 'refiner_suite'"
+ },
+ "booster_t1": {
+  "cache_J": 24,
+  "cache_rest_drop_cm": -64.33539581298828,
+  "cache_low_joint": "left_foot_link",
+  "v2_equal_cache": true,
+  "mjcf": "ERR No module named 'refiner_suite'"
+ },
+ "booster_t1_29dof": {
+  "cache_J": 32,
+  "cache_rest_drop_cm": -66.33539581298828,
+  "cache_low_joint": "left_toe_link",
+  "v2_equal_cache": true,
+  "mjcf": "ERR No module named 'refiner_suite'"
+ },
+ "engineai_pm01": {
+  "cache_J": 25,
+  "cache_rest_drop_cm": -77.5050048828125,
+  "cache_low_joint": "LINK_ANKLE_ROLL_L",
+  "v2_equal_cache": "ERR [Errno 2] No such file or directory: '/home/arenalabs/Desktop/arena-datagrid/packages/alphamotion/src/alphamotion/assets/embodiments_v2/engineai_pm01_spec.npz'",
+  "mjcf": "ERR No module named 'refiner_suite'"
+ },
+ "fourier_gr3": {
+  "cache_J": 32,
+  "cache_rest_drop_cm": -85.89375305175781,
+  "cache_low_joint": "right_foot_pitch_link",
+  "v2_equal_cache": true,
+  "mjcf": "ERR No module named 'refiner_suite'"
+ },
+ "fourier_n1": {
+  "cache_J": 27,
+  "cache_rest_drop_cm": -65.49999237060547,
+  "cache_low_joint": "left_foot_roll_link",
+  "v2_equal_cache": true,
+  "mjcf": "ERR No module named 'refiner_suite'"
+ },
+ "hightorque_hi": {
+  "cache_J": 26,
+  "cache_rest_drop_cm": -64.40499877929688,
+  "cache_low_joint": "l_ankle_pitch_link",
+  "v2_equal_cache": true,
+  "mjcf": "ERR No module named 'refiner_suite'"
+ },
+ "kuavo_s45": {
+  "cache_J": 20,
+  "cache_rest_drop_cm": -82.47000122070312,
+  "cache_low_joint": "leg_l5_link",
+  "v2_equal_cache": true,
+  "mjcf": "ERR No module named 'refiner_suite'"
+ },
+ "pal_talos": {
+  "cache_J": 33,
+  "cache_rest_drop_cm": -97.60498809814453,
+  "cache_low_joint": "body17",
+  "v2_equal_cache": "ERR [Errno 2] No such file or directory: '/home/arenalabs/Desktop/arena-datagrid/packages/alphamotion/src/alphamotion/assets/embodiments_v2/pal_talos_spec.npz'",
+  "mjcf": "ERR No module named 'refiner_suite'"
+ },
+ "pnd_adam_lite": {
+  "cache_J": 24,
+  "cache_rest_drop_cm": -86.43180847167969,
+  "cache_low_joint": "anklePitchLeft",
+  "v2_equal_cache": true,
+  "mjcf": "ERR No module named 'refiner_suite'"
+ },
+ "tienkung": {
+  "cache_J": 22,
+  "cache_rest_drop_cm": -93.16999816894531,
+  "cache_low_joint": "ankle_pitch_l_link",
+  "v2_equal_cache": true,
+  "mjcf": "ERR No module named 'refiner_suite'"
+ },
+ "unitree_g1_23dof": {
+  "cache_J": 36,
+  "cache_rest_drop_cm": -77.68637084960938,
+  "cache_low_joint": "left_toe_link",
+  "v2_equal_cache": true,
+  "mjcf": "ERR No module named 'refiner_suite'"
+ },
+ "unitree_g1_29dof": {
+  "cache_J": 36,
+  "cache_rest_drop_cm": -77.68637084960938,
+  "cache_low_joint": "left_toe_link",
+  "v2_equal_cache": true,
+  "mjcf": "ERR No module named 'refiner_suite'"
+ },
+ "unitree_h1": {
+  "cache_J": 20,
+  "cache_rest_drop_cm": -97.41999816894531,
+  "cache_low_joint": "left_ankle_link",
+  "v2_equal_cache": true,
+  "mjcf": "ERR No module named 'refiner_suite'"
+ },
+ "unitree_h1_2": {
+  "cache_J": 26,
+  "cache_rest_drop_cm": -98.31999969482422,
+  "cache_low_joint": "left_ankle_roll_link",
+  "v2_equal_cache": true,
+  "mjcf": "ERR No module named 'refiner_suite'"
+ },
+ "unitree_h2": {
+  "cache_J": 32,
+  "cache_rest_drop_cm": -98.4522705078125,
+  "cache_low_joint": "body15",
+  "v2_equal_cache": true,
+  "mjcf": "/var/tmp/alphamotion/robot_models/unitree_ros/robots/h2_description/unitree_h2_mjcf.xml",
+  "mjcf_J": 36,
+  "mjcf_rest_drop_cm": -98.4521484375,
+  "mjcf_low_joint": "left_ankle_roll_link",
+  "names_equal": false,
+  "name_overlap": 0
+ },
+ "unitree_r1": {
+  "cache_J": 38,
+  "cache_rest_drop_cm": -69.69632720947266,
+  "cache_low_joint": "left_ankle_constraint_A_link",
+  "v2_equal_cache": true,
+  "mjcf": "ERR No module named 'refiner_suite'"
+ }
+}

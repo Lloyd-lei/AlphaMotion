@@ -1,0 +1,15 @@
+{
+  "schema": "qwen-cache-postrun-verification-v1",
+  "created_at_utc": "2026-10-04T04:44:26.298385+00:00",
+  "entry_count": 380,
+  "all_per_name_hashes_verified": true,
+  "npz_torch_exact_match": true,
+  "prompt_hashes_and_masks_verified": true,
+  "legacy_cache_unchanged": true,
+  "worker_pid": 3441354,
+  "worker_exited": true,
+  "gpu_processes_after_exit": "2409058, /home/arenalabs/tmp/greenwich_workbench_0911/venv/bin/python, 892 MiB",
+  "cache_sha256": "087d1473bb6acf98f398cc7f8352d0ba1c77ad168f2277d2390d74a057377d82",
+  "npz_sha256": "68eefe6900f64161334afa9e1cee36fff7927a3e415c4eaaa10b91b9c143d90e",
+  "manifest_sha256": "396179da9bd58e267a8c8671bd024ebca9b127703b883d0df20e2914374f0a70"
+}

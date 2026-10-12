@@ -1,0 +1,253 @@
+{
+  "version": "alpha1-transformer-redraw-v1",
+  "status": "frozen_after_QA",
+  "sources": {
+    "config": {
+      "path": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/verified-megatron-config.json",
+      "start": 1,
+      "end": 76,
+      "sha256": "feca8f218451d8372303640496e72fa7e4369f81fcda068309e1cb8ab7ce5936",
+      "purpose": "Actual current megatron run settings, not constructor defaults."
+    },
+    "source_inputs": {
+      "path": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/model_dual.py",
+      "start": 65,
+      "end": 88,
+      "sha256": "ae1ebdd37d62805190ccc2e332177d7e790371997d91fa516ec5ec6099f563dd",
+      "purpose": "JointFeature, pose projection, mask token and source encoder construction."
+    },
+    "dual_latent": {
+      "path": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/model_dual.py",
+      "start": 88,
+      "end": 102,
+      "sha256": "ae1ebdd37d62805190ccc2e332177d7e790371997d91fa516ec5ec6099f563dd",
+      "purpose": "Independent query banks and FSQ modules for two streams."
+    },
+    "heads": {
+      "path": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/model_dual.py",
+      "start": 101,
+      "end": 125,
+      "sha256": "ae1ebdd37d62805190ccc2e332177d7e790371997d91fa516ec5ec6099f563dd",
+      "purpose": "Decoder stacks and separate position, rotation and contact heads."
+    },
+    "pool": {
+      "path": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/model_dual.py",
+      "start": 127,
+      "end": 146,
+      "sha256": "ae1ebdd37d62805190ccc2e332177d7e790371997d91fa516ec5ec6099f563dd",
+      "purpose": "CrossBlock learned-query pooling followed by stream-specific FSQ."
+    },
+    "trunk_order": {
+      "path": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/model_dual.py",
+      "start": 155,
+      "end": 174,
+      "sha256": "ae1ebdd37d62805190ccc2e332177d7e790371997d91fa516ec5ec6099f563dd",
+      "purpose": "Pose embedding -> pose mask replacement -> finite contact embedding -> morphology sum -> encoder."
+    },
+    "target_queries": {
+      "path": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/model_dual.py",
+      "start": 209,
+      "end": 216,
+      "sha256": "ae1ebdd37d62805190ccc2e332177d7e790371997d91fa516ec5ec6099f563dd",
+      "purpose": "Same JointFeature builds target queries; CrossBlock then EncBlock at every decoder depth."
+    },
+    "optional_contact": {
+      "path": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/model_dual.py",
+      "start": 242,
+      "end": 251,
+      "sha256": "ae1ebdd37d62805190ccc2e332177d7e790371997d91fa516ec5ec6099f563dd",
+      "purpose": "Contact logit returned only when ret_con=True; root head conditional."
+    },
+    "fsq": {
+      "path": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/model.py",
+      "start": 43,
+      "end": 78,
+      "sha256": "d717c185fcd0eee7b5cb216a8faba4bc89a4485c839e4c0e52c940ea9ccf45e0",
+      "purpose": "Linear -> tanh-bound -> round with STE -> normalize -> Linear."
+    },
+    "joint_feature": {
+      "path": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/model.py",
+      "start": 175,
+      "end": 208,
+      "sha256": "d717c185fcd0eee7b5cb216a8faba4bc89a4485c839e4c0e52c940ea9ccf45e0",
+      "purpose": "Geometry15 + DOF19 projection; SigLIP768 ->256 ->GELU ->256, added."
+    },
+    "hop_attention": {
+      "path": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/model.py",
+      "start": 213,
+      "end": 236,
+      "sha256": "d717c185fcd0eee7b5cb216a8faba4bc89a4485c839e4c0e52c940ea9ccf45e0",
+      "purpose": "Independent Wq/Wk/Wv, per-head learned hop bias, softmax times V, concat and output projection."
+    },
+    "encblock": {
+      "path": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/model.py",
+      "start": 239,
+      "end": 249,
+      "sha256": "d717c185fcd0eee7b5cb216a8faba4bc89a4485c839e4c0e52c940ea9ccf45e0",
+      "purpose": "Pre-norm attention residual and pre-norm 4D GELU FFN residual."
+    },
+    "crossblock": {
+      "path": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/model.py",
+      "start": 252,
+      "end": 264,
+      "sha256": "d717c185fcd0eee7b5cb216a8faba4bc89a4485c839e4c0e52c940ea9ccf45e0",
+      "purpose": "Separate q/kv LayerNorms, standard MHA projections, attention residual and FFN residual."
+    },
+    "root_height": {
+      "path": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/train_dual.py",
+      "start": 438,
+      "end": 452,
+      "sha256": "de909574dc433e99080329c780a52fb3fe9dd91a7474f7d0f7abe58b4eced233",
+      "purpose": "Only first position-head channel at root joint is supervised for root height."
+    },
+    "text": {
+      "path": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/semantics.py",
+      "start": 36,
+      "end": 49,
+      "sha256": "df47db4039a529a9efcb4a63b25968971802db4923d478946787d4cdd65239e5",
+      "purpose": "Frozen cached SigLIP text inference; no_grad/eval."
+    },
+    "judge": {
+      "path": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/model_dual.py",
+      "start": 13,
+      "end": 24,
+      "sha256": "ae1ebdd37d62805190ccc2e332177d7e790371997d91fa516ec5ec6099f563dd",
+      "purpose": "Training auxiliary mean/max pooled two-stream JudgeHead, omitted from main inference path."
+    }
+  },
+  "verified_tensor_shapes": {
+    "inp.weight": [
+      256,
+      9
+    ],
+    "jf.proj.weight": [
+      256,
+      34
+    ],
+    "jf.sem_proj.0.weight": [
+      256,
+      768
+    ],
+    "jf.sem_proj.2.weight": [
+      256,
+      256
+    ],
+    "qp": [
+      4,
+      256
+    ],
+    "qr": [
+      128,
+      256
+    ],
+    "fsqp.proj_in.weight": [
+      13,
+      256
+    ],
+    "fsqr.proj_out.weight": [
+      256,
+      13
+    ],
+    "hpos.1.weight": [
+      3,
+      256
+    ],
+    "hrot.1.weight": [
+      6,
+      256
+    ],
+    "hcon.1.weight": [
+      1,
+      256
+    ]
+  },
+  "operators": {
+    "overview": {
+      "source_encoder": "4 distinct EncBlocks; each body uses the same stack",
+      "pool_position": "1 CrossBlock, Q learned[4,256], K/V H[B,J_s,256]",
+      "pool_rotation": "1 CrossBlock, Q learned[128,256], K/V same H",
+      "fsq": "separate modules per stream, one stage each; 256->13->256; configured levels[32]*13",
+      "decoder": "4 layers per stream; each layer = CrossBlock then hop EncBlock; no cross-stream weight tying",
+      "queries": "J_t target queries from the same JointFeature object used on source morphology",
+      "heads": "separate LayerNorm+Linear modules for pos3, global rot6, optional contact1"
+    },
+    "block_detail": {
+      "encoder_attention": "Q=LN(x)Wq+bq, K=LN(x)Wk+bk, V=LN(x)Wv+bv; softmax(QK^T/sqrt(32)+hop_bias)V",
+      "cross_attention": "Q from LN_q(q); K,V from LN_kv(memory); independent MHA projections, no hop bias in cross-attention",
+      "residual": "x + attention(LN(x)), then x + FFN(LN(x)); CrossBlock residual carrier is q, never memory kv",
+      "ffn": "Linear256->1024, GELU, Linear1024->256; own FFN for each EncBlock and CrossBlock"
+    }
+  },
+  "original_source_root": "/home/arenalabs/Desktop/be water, robot/pose_translator_design/exp_topo",
+  "source_run": "L_M20k_0903",
+  "deployed_model": "megatron",
+  "figures": [
+    {
+      "name": "alphamotion1_path",
+      "pdf_pages": 1,
+      "size_pt": [
+        510,
+        640
+      ],
+      "body_font_pt": 9.1,
+      "minimum_annotation_font_pt": 8.5,
+      "png_dpi": 240,
+      "png_pixels": [
+        1700,
+        2134
+      ],
+      "bounds": "pass",
+      "rendered_visual_review": "pass",
+      "changes_verified": [
+        "correct pre-norm",
+        "independent Q/K/V projections",
+        "softmax output multiplied by V",
+        "contact after mask",
+        "body-shared decoder",
+        "separate memory per stream",
+        "no causal mask",
+        "FSQ purpose label fits"
+      ]
+    },
+    {
+      "name": "alphamotion1_blocks",
+      "pdf_pages": 1,
+      "size_pt": [
+        510,
+        640
+      ],
+      "body_font_pt": 9.1,
+      "minimum_annotation_font_pt": 8.5,
+      "png_dpi": 240,
+      "png_pixels": [
+        1700,
+        2134
+      ],
+      "bounds": "pass",
+      "rendered_visual_review": "pass",
+      "changes_verified": [
+        "correct pre-norm",
+        "independent Q/K/V projections",
+        "softmax output multiplied by V",
+        "contact after mask",
+        "body-shared decoder",
+        "separate memory per stream",
+        "no causal mask",
+        "FSQ purpose label fits"
+      ]
+    }
+  ],
+  "body_weights_shared": true,
+  "runtime": "single-frame",
+  "omissions": [
+    "training-only JudgeHead",
+    "disabled vis_residual and root_head",
+    "separate temporal/latent diffusion experiments"
+  ],
+  "not_claimed": [
+    "centimeter-uniform FSQ quantization",
+    "causal Transformer",
+    "contact head BCE trained",
+    "per-body decoder parameters"
+  ]
+}

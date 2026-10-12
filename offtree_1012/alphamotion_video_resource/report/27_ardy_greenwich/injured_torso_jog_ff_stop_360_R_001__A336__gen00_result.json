@@ -1,0 +1,258 @@
+{
+ "T": 125,
+ "fps": 25.0,
+ "text": "figure with an injured torso stops jogging backwards while holding their left side",
+ "ardy_fk_gauge_cm_mean": 0.6580787465343774,
+ "stance_frac": [
+  0.624,
+  0.648
+ ],
+ "source_g1": {
+  "metrics": {
+   "slip_v_p95_cm_s": 19.842685333860516,
+   "drift_p95_cm": 2.8164301511280434,
+   "pen_frac": 0.0,
+   "pen_p95_cm": 0.25549300886983844,
+   "float_frac": 0.22641509433962265,
+   "contact_f1": 0.7834394904458599,
+   "rooth_jump_frac": 0.0,
+   "joint_jit_p95_deg_s2": 17.762558450050786
+  },
+  "verdict": "fail",
+  "failed": [
+   "contact_f1",
+   "float_frac"
+  ]
+ },
+ "robots": {
+  "unitree_g1_29dof": {
+   "nocon": {
+    "metrics": {
+     "self_rot_deg": 6.255497455596924,
+     "self_hand_cm": 2.828469753265381,
+     "self_foot_cm": 2.351520299911499,
+     "lowest_geom_cm_min": 1.4363888236945277,
+     "geom_pen_frac": 0.0,
+     "display_lift_cm_mean": 0.0,
+     "display_lift_cm_max": 0.0,
+     "root_h_cm": [
+      76.68708801269531,
+      80.54286193847656
+     ],
+     "contact_thr_cm": 3.108,
+     "slip_v_p95_cm_s": 19.23981540617588,
+     "drift_p95_cm": 3.321570140785146,
+     "pen_frac": 0.0,
+     "pen_p95_cm": 0.0,
+     "float_frac": 1.0,
+     "contact_f1": 0.0,
+     "onset_abs_med_frames": NaN,
+     "rooth_jump_frac": 0.0,
+     "joint_jit_p95_deg_s2": 39.59698225964652,
+     "joint_v_p95_deg_s": 92.56730905156364
+    },
+    "verdict": "fail",
+    "failed": [
+     "contact_f1",
+     "float_frac"
+    ],
+    "not_evaluated": [
+     "slip_v_p95_cm_s",
+     "drift_p95_cm",
+     "onset_abs_med_frames",
+     "rooth_err_cm",
+     "joint_jit_p95_deg_s2",
+     "rot_deg",
+     "hand_p95_cm"
+    ]
+   },
+   "con": {
+    "metrics": {
+     "self_rot_deg": 6.213553428649902,
+     "self_hand_cm": 3.0895071029663086,
+     "self_foot_cm": 2.172191858291626,
+     "lowest_geom_cm_min": -1.3942349714671831,
+     "geom_pen_frac": 0.144,
+     "display_lift_cm_mean": 0.16919135102821475,
+     "display_lift_cm_max": 1.3942349714671831,
+     "root_h_cm": [
+      72.43727111816406,
+      77.41951751708984
+     ],
+     "contact_thr_cm": 3.108,
+     "slip_v_p95_cm_s": 20.132037190471955,
+     "drift_p95_cm": 2.808496346596058,
+     "pen_frac": 0.0,
+     "pen_p95_cm": 0.0,
+     "float_frac": 0.2389937106918239,
+     "contact_f1": 0.8231292517006803,
+     "onset_abs_med_frames": 3.0,
+     "rooth_jump_frac": 0.0,
+     "joint_jit_p95_deg_s2": 41.575007701445,
+     "joint_v_p95_deg_s": 93.2905418867456
+    },
+    "verdict": "fail",
+    "failed": [
+     "contact_f1",
+     "float_frac"
+    ],
+    "not_evaluated": [
+     "slip_v_p95_cm_s",
+     "drift_p95_cm",
+     "rooth_err_cm",
+     "joint_jit_p95_deg_s2",
+     "rot_deg",
+     "hand_p95_cm"
+    ]
+   }
+  },
+  "unitree_h2": {
+   "nocon": {
+    "metrics": {
+     "lowest_geom_cm_min": -7.245968137550726,
+     "geom_pen_frac": 1.0,
+     "display_lift_cm_mean": 4.098707913642352,
+     "display_lift_cm_max": 7.245968137550726,
+     "root_h_cm": [
+      93.5689468383789,
+      99.73470306396484
+     ],
+     "contact_thr_cm": 3.94,
+     "slip_v_p95_cm_s": 38.3340008698339,
+     "drift_p95_cm": 4.842781877627067,
+     "pen_frac": 0.0,
+     "pen_p95_cm": 0.0,
+     "float_frac": 0.779874213836478,
+     "contact_f1": 0.36082474226804123,
+     "onset_abs_med_frames": 2.0,
+     "rooth_jump_frac": 0.0,
+     "joint_jit_p95_deg_s2": 28.07745485533402,
+     "joint_v_p95_deg_s": 78.22105675910824
+    },
+    "verdict": "fail",
+    "failed": [
+     "contact_f1",
+     "float_frac"
+    ],
+    "not_evaluated": [
+     "slip_v_p95_cm_s",
+     "drift_p95_cm",
+     "rooth_err_cm",
+     "joint_jit_p95_deg_s2",
+     "rot_deg",
+     "hand_p95_cm"
+    ]
+   },
+   "con": {
+    "metrics": {
+     "lowest_geom_cm_min": -12.19038569681048,
+     "geom_pen_frac": 1.0,
+     "display_lift_cm_mean": 8.886435972730565,
+     "display_lift_cm_max": 12.19038569681048,
+     "root_h_cm": [
+      87.25425720214844,
+      95.57264709472656
+     ],
+     "contact_thr_cm": 3.94,
+     "slip_v_p95_cm_s": 37.80024917264304,
+     "drift_p95_cm": 4.38951879383284,
+     "pen_frac": 0.0,
+     "pen_p95_cm": 1.8769014714275216,
+     "float_frac": 0.006289308176100629,
+     "contact_f1": 0.9321533923303835,
+     "onset_abs_med_frames": 0.0,
+     "rooth_jump_frac": 0.03225806451612903,
+     "joint_jit_p95_deg_s2": 27.579207630094245,
+     "joint_v_p95_deg_s": 82.42145291411485
+    },
+    "verdict": "fail",
+    "failed": [
+     "rooth_jump_frac"
+    ],
+    "not_evaluated": [
+     "slip_v_p95_cm_s",
+     "drift_p95_cm",
+     "rooth_err_cm",
+     "joint_jit_p95_deg_s2",
+     "rot_deg",
+     "hand_p95_cm"
+    ]
+   }
+  },
+  "fourier_gr3": {
+   "nocon": {
+    "metrics": {
+     "lowest_geom_cm_min": 12.582014166939368,
+     "geom_pen_frac": 0.0,
+     "display_lift_cm_mean": 0.0,
+     "display_lift_cm_max": 0.0,
+     "root_h_cm": [
+      99.77794647216797,
+      104.3654556274414
+     ],
+     "contact_thr_cm": 3.436,
+     "slip_v_p95_cm_s": 38.47692258145118,
+     "drift_p95_cm": 5.294587585933591,
+     "pen_frac": 0.0,
+     "pen_p95_cm": 0.0,
+     "float_frac": 1.0,
+     "contact_f1": 0.0,
+     "onset_abs_med_frames": NaN,
+     "rooth_jump_frac": 0.0,
+     "joint_jit_p95_deg_s2": 38.09706826626364,
+     "joint_v_p95_deg_s": 88.79512597183474
+    },
+    "verdict": "fail",
+    "failed": [
+     "contact_f1",
+     "float_frac"
+    ],
+    "not_evaluated": [
+     "slip_v_p95_cm_s",
+     "drift_p95_cm",
+     "onset_abs_med_frames",
+     "rooth_err_cm",
+     "joint_jit_p95_deg_s2",
+     "rot_deg",
+     "hand_p95_cm"
+    ]
+   },
+   "con": {
+    "metrics": {
+     "lowest_geom_cm_min": 9.518552338730462,
+     "geom_pen_frac": 0.0,
+     "display_lift_cm_mean": 0.0,
+     "display_lift_cm_max": 0.0,
+     "root_h_cm": [
+      95.45970916748047,
+      101.32357788085938
+     ],
+     "contact_thr_cm": 3.436,
+     "slip_v_p95_cm_s": 34.90583720532291,
+     "drift_p95_cm": 7.238072075696154,
+     "pen_frac": 0.0,
+     "pen_p95_cm": 0.0,
+     "float_frac": 0.4025157232704403,
+     "contact_f1": 0.7335907335907336,
+     "onset_abs_med_frames": 5.0,
+     "rooth_jump_frac": 0.0,
+     "joint_jit_p95_deg_s2": 31.983758920559115,
+     "joint_v_p95_deg_s": 90.55763462911644
+    },
+    "verdict": "fail",
+    "failed": [
+     "contact_f1",
+     "float_frac"
+    ],
+    "not_evaluated": [
+     "slip_v_p95_cm_s",
+     "drift_p95_cm",
+     "rooth_err_cm",
+     "joint_jit_p95_deg_s2",
+     "rot_deg",
+     "hand_p95_cm"
+    ]
+   }
+  }
+ }
+}

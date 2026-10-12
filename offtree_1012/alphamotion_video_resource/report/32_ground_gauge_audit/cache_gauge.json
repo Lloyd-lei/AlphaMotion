@@ -1,0 +1,1012 @@
+{
+ "human_smpl": {
+  "lafan": {
+   "N_sampled": 62075,
+   "stance_frac": 0.7996455900120821,
+   "h0_m": 0.01442718505859375,
+   "sole_drop_cm": [],
+   "feet_joints": [
+    "L_Ankle",
+    "R_Ankle",
+    "L_Toe",
+    "R_Toe"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.27313232421875,
+    "p50": 0.643157958984375,
+    "p90": 1.9500732421875
+   },
+   "stance_low_raw_cm": {
+    "p10": 1.169586181640625,
+    "p50": 2.08587646484375,
+    "p90": 3.392791748046875
+   },
+   "all_low_raw_cm_p50": 2.29034423828125,
+   "pen_frac_raw_lt_-0.5cm": 0.0,
+   "pen_frac_gap_lt_-0.5cm": 0.041627064035440996,
+   "untrusted_frac": 0.0
+  },
+  "amass": {
+   "N_sampled": 591713,
+   "stance_frac": 0.7937615026203582,
+   "h0_m": 0.02120056189596653,
+   "sole_drop_cm": [],
+   "feet_joints": [
+    "L_Ankle",
+    "R_Ankle",
+    "L_Toe",
+    "R_Toe"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -5.4595947265625,
+    "p50": 0.499725341796875,
+    "p90": 3.04718017578125
+   },
+   "stance_low_raw_cm": {
+    "p10": -3.339538812637329,
+    "p50": 2.619781494140625,
+    "p90": 5.167236328125
+   },
+   "all_low_raw_cm_p50": 2.889862060546875,
+   "pen_frac_raw_lt_-0.5cm": 0.19593113553361174,
+   "pen_frac_gap_lt_-0.5cm": 0.35448266304779513,
+   "untrusted_frac": 0.004748923887087152
+  }
+ },
+ "booster_k1": {
+  "lafan": {
+   "N_sampled": 62075,
+   "stance_frac": 0.6857833266210229,
+   "h0_m": -0.043304443359375,
+   "sole_drop_cm": [
+    8.8,
+    8.8
+   ],
+   "feet_joints": [
+    "Left_Ankle_Cross",
+    "Right_Ankle_Cross"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.299072265625,
+    "p50": 0.482177734375,
+    "p90": 1.5289306640625
+   },
+   "stance_low_raw_cm": {
+    "p10": -4.6295166015625,
+    "p50": -3.8482666015625,
+    "p90": -2.801513671875
+   },
+   "all_low_raw_cm_p50": -3.5430908203125,
+   "pen_frac_raw_lt_-0.5cm": 0.7963431333064841,
+   "pen_frac_gap_lt_-0.5cm": 0.05235602094240838,
+   "untrusted_frac": 0.0
+  },
+  "amass": {
+   "N_sampled": 591713,
+   "stance_frac": 0.7684164451347191,
+   "h0_m": -0.08013916015625,
+   "sole_drop_cm": [
+    8.8,
+    8.8
+   ],
+   "feet_joints": [
+    "Left_Ankle_Cross",
+    "Right_Ankle_Cross"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.360107421875,
+    "p50": 0.628662109375,
+    "p90": 2.1728515625
+   },
+   "stance_low_raw_cm": {
+    "p10": -8.3740234375,
+    "p50": -7.38525390625,
+    "p90": -5.841064453125
+   },
+   "all_low_raw_cm_p50": -7.03125,
+   "pen_frac_raw_lt_-0.5cm": 0.9569740735795901,
+   "pen_frac_gap_lt_-0.5cm": 0.04369516978670403,
+   "untrusted_frac": 0.03910848671568818
+  }
+ },
+ "booster_t1": {
+  "lafan": {
+   "N_sampled": 62075,
+   "stance_frac": 0.697849375755135,
+   "h0_m": -0.062103271484375,
+   "sole_drop_cm": [
+    10.15,
+    10.15
+   ],
+   "feet_joints": [
+    "Ankle_Cross_Left",
+    "left_foot_link",
+    "Ankle_Cross_Right",
+    "right_foot_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.2471923828125,
+    "p50": 0.457763671875,
+    "p90": 1.4862060546875
+   },
+   "stance_low_raw_cm": {
+    "p10": -6.45751953125,
+    "p50": -5.7525634765625,
+    "p90": -4.72412109375
+   },
+   "all_low_raw_cm_p50": -5.4901123046875,
+   "pen_frac_raw_lt_-0.5cm": 0.8292710430930326,
+   "pen_frac_gap_lt_-0.5cm": 0.04078936770036246,
+   "untrusted_frac": 0.0
+  },
+  "amass": {
+   "N_sampled": 591713,
+   "stance_frac": 0.8102999258086269,
+   "h0_m": -0.09448852390050888,
+   "sole_drop_cm": [
+    10.15,
+    10.15
+   ],
+   "feet_joints": [
+    "Ankle_Cross_Left",
+    "left_foot_link",
+    "Ankle_Cross_Right",
+    "right_foot_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.20084381103515625,
+    "p50": 0.830841064453125,
+    "p90": 2.313232421875
+   },
+   "stance_low_raw_cm": {
+    "p10": -9.649696350097656,
+    "p50": -8.618011474609375,
+    "p90": -7.1356201171875
+   },
+   "all_low_raw_cm_p50": -8.379974365234375,
+   "pen_frac_raw_lt_-0.5cm": 0.9778456785637631,
+   "pen_frac_gap_lt_-0.5cm": 0.02767726921666416,
+   "untrusted_frac": 0.010807604362249942
+  }
+ },
+ "booster_t1_29dof": {
+  "lafan": {
+   "N_sampled": 62075,
+   "stance_frac": 0.6515183246073298,
+   "h0_m": -0.0882568359375,
+   "sole_drop_cm": [
+    12.65,
+    12.65
+   ],
+   "feet_joints": [
+    "Ankle_Cross_Left",
+    "left_foot_link",
+    "left_toe_link",
+    "Ankle_Cross_Right",
+    "right_foot_link",
+    "right_toe_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.30517578125,
+    "p50": 0.47607421875,
+    "p90": 1.446533203125
+   },
+   "stance_low_raw_cm": {
+    "p10": -9.130859375,
+    "p50": -8.349609375,
+    "p90": -7.379150390625
+   },
+   "all_low_raw_cm_p50": -8.0322265625,
+   "pen_frac_raw_lt_-0.5cm": 0.8479903342730568,
+   "pen_frac_gap_lt_-0.5cm": 0.046363270237615786,
+   "untrusted_frac": 0.0
+  },
+  "amass": {
+   "N_sampled": 591713,
+   "stance_frac": 0.7930297289395366,
+   "h0_m": -0.0841064453125,
+   "sole_drop_cm": [
+    12.65,
+    12.65
+   ],
+   "feet_joints": [
+    "Ankle_Cross_Left",
+    "left_foot_link",
+    "left_toe_link",
+    "Ankle_Cross_Right",
+    "right_foot_link",
+    "right_toe_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -1.85546875,
+    "p50": 0.445556640625,
+    "p90": 2.3651123046875
+   },
+   "stance_low_raw_cm": {
+    "p10": -10.26611328125,
+    "p50": -7.965087890625,
+    "p90": -6.0455322265625
+   },
+   "all_low_raw_cm_p50": -7.476806640625,
+   "pen_frac_raw_lt_-0.5cm": 0.9718816385646419,
+   "pen_frac_gap_lt_-0.5cm": 0.2442248184508368,
+   "untrusted_frac": 0.009247726516064377
+  }
+ },
+ "engineai_pm01": {
+  "lafan": {
+   "N_sampled": 62075,
+   "stance_frac": 0.6593958920660491,
+   "h0_m": -0.08026123046875,
+   "sole_drop_cm": [
+    13.86,
+    13.86
+   ],
+   "feet_joints": [
+    "LINK_ANKLE_PITCH_L",
+    "LINK_ANKLE_ROLL_L",
+    "LINK_ANKLE_PITCH_R",
+    "LINK_ANKLE_ROLL_R"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.286865234375,
+    "p50": 0.421142578125,
+    "p90": 1.611328125
+   },
+   "stance_low_raw_cm": {
+    "p10": -8.31298828125,
+    "p50": -7.60498046875,
+    "p90": -6.414794921875
+   },
+   "all_low_raw_cm_p50": -7.2265625,
+   "pen_frac_raw_lt_-0.5cm": 0.8233427305678614,
+   "pen_frac_gap_lt_-0.5cm": 0.03347563431333065,
+   "untrusted_frac": 0.0
+  },
+  "amass": {
+   "N_sampled": 591713,
+   "stance_frac": 0.5506926499840294,
+   "h0_m": -0.845751941204071,
+   "sole_drop_cm": [
+    13.86,
+    13.86
+   ],
+   "feet_joints": [
+    "LINK_ANKLE_PITCH_L",
+    "LINK_ANKLE_ROLL_L",
+    "LINK_ANKLE_PITCH_R",
+    "LINK_ANKLE_ROLL_R"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -4.437255859375,
+    "p50": -1.89971923828125,
+    "p90": 2.69012451171875
+   },
+   "stance_low_raw_cm": {
+    "p10": -89.012451171875,
+    "p50": -86.47491455078125,
+    "p90": -81.88507080078125
+   },
+   "all_low_raw_cm_p50": -82.91046142578125,
+   "pen_frac_raw_lt_-0.5cm": 0.9996197480873329,
+   "pen_frac_gap_lt_-0.5cm": 0.3777726701965311,
+   "untrusted_frac": 0.06875292582721691
+  }
+ },
+ "fourier_gr3": {
+  "lafan": {
+   "N_sampled": 62075,
+   "stance_frac": 0.6349899315344342,
+   "h0_m": -0.098388671875,
+   "sole_drop_cm": [
+    16.8,
+    16.8
+   ],
+   "feet_joints": [
+    "right_foot_pitch_link",
+    "left_foot_pitch_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.3662109375,
+    "p50": 0.4150390625,
+    "p90": 1.611328125
+   },
+   "stance_low_raw_cm": {
+    "p10": -10.205078125,
+    "p50": -9.423828125,
+    "p90": -8.2275390625
+   },
+   "all_low_raw_cm_p50": -8.984375,
+   "pen_frac_raw_lt_-0.5cm": 0.8289810712847362,
+   "pen_frac_gap_lt_-0.5cm": 0.04731373338703181,
+   "untrusted_frac": 0.0
+  },
+  "amass": {
+   "N_sampled": 591713,
+   "stance_frac": 0.7819398931576625,
+   "h0_m": -0.1619873046875,
+   "sole_drop_cm": [
+    16.8,
+    16.8
+   ],
+   "feet_joints": [
+    "right_foot_pitch_link",
+    "left_foot_pitch_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.341796875,
+    "p50": 0.5126953125,
+    "p90": 2.0263671875
+   },
+   "stance_low_raw_cm": {
+    "p10": -16.54052734375,
+    "p50": -15.68603515625,
+    "p90": -14.17236328125
+   },
+   "all_low_raw_cm_p50": -15.49072265625,
+   "pen_frac_raw_lt_-0.5cm": 0.9691962150569617,
+   "pen_frac_gap_lt_-0.5cm": 0.03583325024124871,
+   "untrusted_frac": 0.006416962277320255
+  }
+ },
+ "fourier_n1": {
+  "lafan": {
+   "N_sampled": 62075,
+   "stance_frac": 0.7269271043093033,
+   "h0_m": 0.0106353759765625,
+   "sole_drop_cm": [
+    4.45,
+    4.42
+   ],
+   "feet_joints": [
+    "left_foot_roll_link",
+    "right_foot_roll_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.336456298828125,
+    "p50": 0.6805419921875,
+    "p90": 1.99127197265625
+   },
+   "stance_low_raw_cm": {
+    "p10": 0.727081298828125,
+    "p50": 1.74407958984375,
+    "p90": 3.0548095703125
+   },
+   "all_low_raw_cm_p50": 2.10723876953125,
+   "pen_frac_raw_lt_-0.5cm": 0.006427708417237213,
+   "pen_frac_gap_lt_-0.5cm": 0.056641159887233186,
+   "untrusted_frac": 0.0
+  },
+  "amass": {
+   "N_sampled": 591713,
+   "stance_frac": 0.8473330820854029,
+   "h0_m": -0.04205017164349556,
+   "sole_drop_cm": [
+    4.45,
+    4.42
+   ],
+   "feet_joints": [
+    "left_foot_roll_link",
+    "right_foot_roll_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.3849029541015625,
+    "p50": 0.6343841552734375,
+    "p90": 2.22320556640625
+   },
+   "stance_low_raw_cm": {
+    "p10": -4.5899200439453125,
+    "p50": -3.5706329345703125,
+    "p90": -1.9818116426467896
+   },
+   "all_low_raw_cm_p50": -3.37188720703125,
+   "pen_frac_raw_lt_-0.5cm": 0.8862269377214967,
+   "pen_frac_gap_lt_-0.5cm": 0.06392626154909559,
+   "untrusted_frac": 0.007245066442684207
+  }
+ },
+ "hightorque_hi": {
+  "lafan": {
+   "N_sampled": 62075,
+   "stance_frac": 0.5764639548932743,
+   "h0_m": 0.02106780931353569,
+   "sole_drop_cm": [
+    4.4,
+    4.4
+   ],
+   "feet_joints": [
+    "l_ankle_pitch_link",
+    "l_ankle_roll_link",
+    "r_ankle_pitch_link",
+    "r_ankle_roll_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.587615966796875,
+    "p50": 1.287078857421875,
+    "p90": 3.204345703125
+   },
+   "stance_low_raw_cm": {
+    "p10": 1.5191650390625,
+    "p50": 3.39385986328125,
+    "p90": 5.311126708984375
+   },
+   "all_low_raw_cm_p50": 4.278106689453125,
+   "pen_frac_raw_lt_-0.5cm": 0.03370116794200564,
+   "pen_frac_gap_lt_-0.5cm": 0.09406363270237615,
+   "untrusted_frac": 0.0
+  },
+  "amass": {
+   "N_sampled": 591713,
+   "stance_frac": 0.8622271270024489,
+   "h0_m": -0.04385528713464737,
+   "sole_drop_cm": [
+    4.4,
+    4.4
+   ],
+   "feet_joints": [
+    "l_ankle_pitch_link",
+    "l_ankle_roll_link",
+    "r_ankle_pitch_link",
+    "r_ankle_roll_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.4730224609375,
+    "p50": 0.5340576171875,
+    "p90": 2.27508544921875
+   },
+   "stance_low_raw_cm": {
+    "p10": -4.858551025390625,
+    "p50": -3.851471185684204,
+    "p90": -2.110443353652954
+   },
+   "all_low_raw_cm_p50": -3.659210443496704,
+   "pen_frac_raw_lt_-0.5cm": 0.8968452611316635,
+   "pen_frac_gap_lt_-0.5cm": 0.0813215190472408,
+   "untrusted_frac": 0.005854189446572916
+  }
+ },
+ "kuavo_s45": {
+  "lafan": {
+   "N_sampled": 62075,
+   "stance_frac": 0.6465726943213854,
+   "h0_m": -0.01678466796875,
+   "sole_drop_cm": [
+    10.75,
+    10.75
+   ],
+   "feet_joints": [
+    "leg_l5_link",
+    "leg_r5_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.384521484375,
+    "p50": 0.685882568359375,
+    "p90": 2.22930908203125
+   },
+   "stance_low_raw_cm": {
+    "p10": -2.06298828125,
+    "p50": -0.992584228515625,
+    "p90": 0.55084228515625
+   },
+   "all_low_raw_cm_p50": -0.464630126953125,
+   "pen_frac_raw_lt_-0.5cm": 0.49188884414015305,
+   "pen_frac_gap_lt_-0.5cm": 0.05946033024567056,
+   "untrusted_frac": 0.0
+  },
+  "amass": {
+   "N_sampled": 591713,
+   "stance_frac": 0.7533111491550802,
+   "h0_m": -0.10272826999425888,
+   "sole_drop_cm": [
+    10.75,
+    10.75
+   ],
+   "feet_joints": [
+    "leg_l5_link",
+    "leg_r5_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.487518310546875,
+    "p50": 0.482940673828125,
+    "p90": 2.3193359375
+   },
+   "stance_low_raw_cm": {
+    "p10": -10.760345458984375,
+    "p50": -9.789886474609375,
+    "p90": -7.9534912109375
+   },
+   "all_low_raw_cm_p50": -9.356536865234375,
+   "pen_frac_raw_lt_-0.5cm": 0.8446814587477375,
+   "pen_frac_gap_lt_-0.5cm": 0.07228504359376928,
+   "untrusted_frac": 0.0350659863819115
+  }
+ },
+ "pal_talos": {
+  "lafan": {
+   "err": "[Errno 2] No such file or directory: '/var/tmp/alphamotion/topo_exp/cache_lafan_"
+  },
+  "amass": {
+   "err": "[Errno 2] No such file or directory: '/var/tmp/alphamotion/topo_exp/cache_amass_"
+  }
+ },
+ "pnd_adam_lite": {
+  "lafan": {
+   "N_sampled": 62075,
+   "stance_frac": 0.5845509464357632,
+   "h0_m": -0.0224609375,
+   "sole_drop_cm": [
+    15.9,
+    15.9
+   ],
+   "feet_joints": [
+    "anklePitchLeft",
+    "anklePitchRight"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.4486083984375,
+    "p50": 0.804901123046875,
+    "p90": 2.2857666015625
+   },
+   "stance_low_raw_cm": {
+    "p10": -2.6947021484375,
+    "p50": -1.441192626953125,
+    "p90": 0.0396728515625
+   },
+   "all_low_raw_cm_p50": -0.95672607421875,
+   "pen_frac_raw_lt_-0.5cm": 0.5896737817156665,
+   "pen_frac_gap_lt_-0.5cm": 0.08244865082561417,
+   "untrusted_frac": 0.0
+  },
+  "amass": {
+   "N_sampled": 591713,
+   "stance_frac": 0.8261488255285924,
+   "h0_m": -0.1494140625,
+   "sole_drop_cm": [
+    15.9,
+    15.9
+   ],
+   "feet_joints": [
+    "anklePitchLeft",
+    "anklePitchRight"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.45166015625,
+    "p50": 0.6591796875,
+    "p90": 2.593994140625
+   },
+   "stance_low_raw_cm": {
+    "p10": -15.39306640625,
+    "p50": -14.2822265625,
+    "p90": -12.347412109375
+   },
+   "all_low_raw_cm_p50": -14.0625,
+   "pen_frac_raw_lt_-0.5cm": 0.9780028493543322,
+   "pen_frac_gap_lt_-0.5cm": 0.07760012032860525,
+   "untrusted_frac": 0.0076016582363409285
+  }
+ },
+ "tienkung": {
+  "lafan": {
+   "N_sampled": 62075,
+   "stance_frac": 0.6567539267015707,
+   "h0_m": -0.057220458984375,
+   "sole_drop_cm": [
+    15.7,
+    15.7
+   ],
+   "feet_joints": [
+    "ankle_pitch_l_link",
+    "ankle_pitch_r_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.8453369140625,
+    "p50": 2.3712158203125,
+    "p90": 4.08935546875
+   },
+   "stance_low_raw_cm": {
+    "p10": -6.5673828125,
+    "p50": -3.350830078125,
+    "p90": -1.6326904296875
+   },
+   "all_low_raw_cm_p50": -2.80914306640625,
+   "pen_frac_raw_lt_-0.5cm": 0.7652678211840516,
+   "pen_frac_gap_lt_-0.5cm": 0.10766008860249698,
+   "untrusted_frac": 0.0
+  },
+  "amass": {
+   "N_sampled": 591713,
+   "stance_frac": 0.6438628186299777,
+   "h0_m": -0.132843017578125,
+   "sole_drop_cm": [
+    15.7,
+    15.7
+   ],
+   "feet_joints": [
+    "ankle_pitch_l_link",
+    "ankle_pitch_r_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -1.0223388671875,
+    "p50": 1.4312744140625,
+    "p90": 4.3548583984375
+   },
+   "stance_low_raw_cm": {
+    "p10": -14.306640625,
+    "p50": -11.85302734375,
+    "p90": -8.929443359375
+   },
+   "all_low_raw_cm_p50": -10.565185546875,
+   "pen_frac_raw_lt_-0.5cm": 0.9361497888334378,
+   "pen_frac_gap_lt_-0.5cm": 0.11905433884332438,
+   "untrusted_frac": 0.030553663684928335
+  }
+ },
+ "unitree_g1_23dof": {
+  "lafan": {
+   "N_sampled": 62075,
+   "stance_frac": 0.6972049939589207,
+   "h0_m": 0.0288848876953125,
+   "sole_drop_cm": [
+    3.54,
+    3.54
+   ],
+   "feet_joints": [
+    "left_ankle_pitch_link",
+    "left_ankle_roll_link",
+    "left_toe_link",
+    "right_ankle_pitch_link",
+    "right_ankle_roll_link",
+    "right_toe_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -1.02081298828125,
+    "p50": 1.22222900390625,
+    "p90": 2.92510986328125
+   },
+   "stance_low_raw_cm": {
+    "p10": 1.86767578125,
+    "p50": 4.1107177734375,
+    "p90": 5.8135986328125
+   },
+   "all_low_raw_cm_p50": 4.5196533203125,
+   "pen_frac_raw_lt_-0.5cm": 0.014514699959726138,
+   "pen_frac_gap_lt_-0.5cm": 0.11653644784534836,
+   "untrusted_frac": 0.0
+  },
+  "amass": {
+   "N_sampled": 591713,
+   "stance_frac": 0.9008505812784239,
+   "h0_m": -0.035797119140625,
+   "sole_drop_cm": [
+    3.54,
+    3.54
+   ],
+   "feet_joints": [
+    "left_ankle_pitch_link",
+    "left_ankle_roll_link",
+    "left_toe_link",
+    "right_ankle_pitch_link",
+    "right_ankle_roll_link",
+    "right_toe_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.40283203125,
+    "p50": 0.65155029296875,
+    "p90": 2.29949951171875
+   },
+   "stance_low_raw_cm": {
+    "p10": -3.9825439453125,
+    "p50": -2.92816162109375,
+    "p90": -1.28021240234375
+   },
+   "all_low_raw_cm_p50": -2.81982421875,
+   "pen_frac_raw_lt_-0.5cm": 0.893110342345022,
+   "pen_frac_gap_lt_-0.5cm": 0.07372662084490285,
+   "untrusted_frac": 0.0076016582363409285
+  }
+ },
+ "unitree_g1_29dof": {
+  "lafan": {
+   "N_sampled": 62075,
+   "stance_frac": 0.7108336689488522,
+   "h0_m": 0.012507247738540173,
+   "sole_drop_cm": [
+    3.54,
+    3.54
+   ],
+   "feet_joints": [
+    "left_ankle_pitch_link",
+    "left_ankle_roll_link",
+    "left_toe_link",
+    "right_ankle_pitch_link",
+    "right_ankle_roll_link",
+    "right_toe_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.66741943359375,
+    "p50": 0.946807861328125,
+    "p90": 2.459716796875
+   },
+   "stance_low_raw_cm": {
+    "p10": 0.5833053588867188,
+    "p50": 2.1975326538085938,
+    "p90": 3.7104415893554688
+   },
+   "all_low_raw_cm_p50": 2.5286483764648438,
+   "pen_frac_raw_lt_-0.5cm": 0.04032219089810713,
+   "pen_frac_gap_lt_-0.5cm": 0.09388642770841724,
+   "untrusted_frac": 0.0
+  },
+  "amass": {
+   "N_sampled": 591713,
+   "stance_frac": 0.8830598617911048,
+   "h0_m": -0.023421477526426315,
+   "sole_drop_cm": [
+    3.54,
+    3.54
+   ],
+   "feet_joints": [
+    "left_ankle_pitch_link",
+    "left_ankle_roll_link",
+    "left_toe_link",
+    "right_ankle_pitch_link",
+    "right_ankle_roll_link",
+    "right_toe_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -1.24969482421875,
+    "p50": 0.52490234375,
+    "p90": 2.459716796875
+   },
+   "stance_low_raw_cm": {
+    "p10": -3.5918426513671875,
+    "p50": -1.817245364189148,
+    "p90": 0.11756904423236847
+   },
+   "all_low_raw_cm_p50": -1.629562258720398,
+   "pen_frac_raw_lt_-0.5cm": 0.7370363672929274,
+   "pen_frac_gap_lt_-0.5cm": 0.21007819669332936,
+   "untrusted_frac": 0.0013570768260964352
+  }
+ },
+ "unitree_h1": {
+  "lafan": {
+   "N_sampled": 62075,
+   "stance_frac": 0.5754007249295208,
+   "h0_m": 0.04676666110754013,
+   "sole_drop_cm": [
+    7.0,
+    7.0
+   ],
+   "feet_joints": [
+    "left_ankle_link",
+    "right_ankle_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.42877197265625,
+    "p50": 1.21307373046875,
+    "p90": 2.84881591796875
+   },
+   "stance_low_raw_cm": {
+    "p10": 4.247894287109375,
+    "p50": 5.889739990234375,
+    "p90": 7.525482177734375
+   },
+   "all_low_raw_cm_p50": 6.469573974609375,
+   "pen_frac_raw_lt_-0.5cm": 0.014176399516713652,
+   "pen_frac_gap_lt_-0.5cm": 0.08204591220298027,
+   "untrusted_frac": 0.0
+  },
+  "amass": {
+   "N_sampled": 591713,
+   "stance_frac": 0.6909025152396516,
+   "h0_m": -0.06518249213695526,
+   "sole_drop_cm": [
+    7.0,
+    7.0
+   ],
+   "feet_joints": [
+    "left_ankle_link",
+    "right_ankle_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.872802734375,
+    "p50": 0.7015228271484375,
+    "p90": 3.955078125
+   },
+   "stance_low_raw_cm": {
+    "p10": -7.391051769256592,
+    "p50": -5.816726207733154,
+    "p90": -2.563171148300171
+   },
+   "all_low_raw_cm_p50": -4.653625011444092,
+   "pen_frac_raw_lt_-0.5cm": 0.7367744159753123,
+   "pen_frac_gap_lt_-0.5cm": 0.1286434470765388,
+   "untrusted_frac": 0.028417492939989488
+  }
+ },
+ "unitree_h1_2": {
+  "lafan": {
+   "N_sampled": 62075,
+   "stance_frac": 0.6087797019734192,
+   "h0_m": -0.005877494812011719,
+   "sole_drop_cm": [
+    4.5,
+    4.5
+   ],
+   "feet_joints": [
+    "left_ankle_pitch_link",
+    "left_ankle_roll_link",
+    "right_ankle_pitch_link",
+    "right_ankle_roll_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.6549835205078125,
+    "p50": 1.074981689453125,
+    "p90": 2.9449462890625
+   },
+   "stance_low_raw_cm": {
+    "p10": -1.2427330017089844,
+    "p50": 0.4872322082519531,
+    "p90": 2.357196807861328
+   },
+   "all_low_raw_cm_p50": 1.1944770812988281,
+   "pen_frac_raw_lt_-0.5cm": 0.15983890455094643,
+   "pen_frac_gap_lt_-0.5cm": 0.089536850583971,
+   "untrusted_frac": 0.0
+  },
+  "amass": {
+   "N_sampled": 591713,
+   "stance_frac": 0.8165326771593661,
+   "h0_m": -0.0419158935546875,
+   "sole_drop_cm": [
+    4.5,
+    4.5
+   ],
+   "feet_joints": [
+    "left_ankle_pitch_link",
+    "left_ankle_roll_link",
+    "right_ankle_pitch_link",
+    "right_ankle_roll_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.68206787109375,
+    "p50": 1.02386474609375,
+    "p90": 3.7841796875
+   },
+   "stance_low_raw_cm": {
+    "p10": -4.8736572265625,
+    "p50": -3.167724609375,
+    "p90": -0.40740966796875
+   },
+   "all_low_raw_cm_p50": -2.6824951171875,
+   "pen_frac_raw_lt_-0.5cm": 0.7556112507245911,
+   "pen_frac_gap_lt_-0.5cm": 0.1126677967190175,
+   "untrusted_frac": 0.010636913503674924
+  }
+ },
+ "unitree_h2": {
+  "lafan": {
+   "N_sampled": 62075,
+   "stance_frac": 0.6195569875151027,
+   "h0_m": 0.03686370700597763,
+   "sole_drop_cm": [],
+   "feet_joints": [
+    "body15",
+    "body16"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.32329559326171875,
+    "p50": 0.9674072265625,
+    "p90": 2.47802734375
+   },
+   "stance_low_raw_cm": {
+    "p10": 3.363075017929077,
+    "p50": 4.653778076171875,
+    "p90": 6.164398193359375
+   },
+   "all_low_raw_cm_p50": 5.196990966796875,
+   "pen_frac_raw_lt_-0.5cm": 0.014434152235199355,
+   "pen_frac_gap_lt_-0.5cm": 0.057688280306081356,
+   "untrusted_frac": 0.0
+  },
+  "amass": {
+   "N_sampled": 591713,
+   "stance_frac": 0.8324424171853585,
+   "h0_m": 0.013216018676757812,
+   "sole_drop_cm": [],
+   "feet_joints": [
+    "body15",
+    "body16"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.49591064453125,
+    "p50": 1.32598876953125,
+    "p90": 4.010009765625
+   },
+   "stance_low_raw_cm": {
+    "p10": 0.8256912231445312,
+    "p50": 2.6475906372070312,
+    "p90": 5.331611633300781
+   },
+   "all_low_raw_cm_p50": 3.0992507934570312,
+   "pen_frac_raw_lt_-0.5cm": 2.3660119010398623e-05,
+   "pen_frac_gap_lt_-0.5cm": 0.08302335760748876,
+   "untrusted_frac": 0.009061825580982672
+  }
+ },
+ "unitree_r1": {
+  "lafan": {
+   "N_sampled": 62075,
+   "stance_frac": 0.6966894885219492,
+   "h0_m": 0.01809387281537056,
+   "sole_drop_cm": [],
+   "feet_joints": [
+    "left_ankle_A_link",
+    "left_ankle_A_rod_link",
+    "left_ankle_B_link",
+    "left_ankle_B_rod_link",
+    "left_ankle_pitch_link",
+    "left_ankle_constraint_A_link",
+    "left_ankle_constraint_B_link",
+    "right_ankle_A_link",
+    "right_ankle_A_rod_link",
+    "right_ankle_B_link",
+    "right_ankle_B_rod_link",
+    "right_ankle_pitch_link",
+    "right_ankle_constraint_A_link",
+    "right_ankle_constraint_B_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.3894805908203125,
+    "p50": 0.6290435791015625,
+    "p90": 1.7852783203125
+   },
+   "stance_low_raw_cm": {
+    "p10": 1.419906735420227,
+    "p50": 2.4384307861328125,
+    "p90": 3.59466552734375
+   },
+   "all_low_raw_cm_p50": 2.71575927734375,
+   "pen_frac_raw_lt_-0.5cm": 0.027498993153443414,
+   "pen_frac_gap_lt_-0.5cm": 0.07067257349979864,
+   "untrusted_frac": 0.0
+  },
+  "amass": {
+   "N_sampled": 591713,
+   "stance_frac": 0.8607889297683168,
+   "h0_m": -0.0021503448951989412,
+   "sole_drop_cm": [],
+   "feet_joints": [
+    "left_ankle_A_link",
+    "left_ankle_A_rod_link",
+    "left_ankle_B_link",
+    "left_ankle_B_rod_link",
+    "left_ankle_pitch_link",
+    "left_ankle_constraint_A_link",
+    "left_ankle_constraint_B_link",
+    "right_ankle_A_link",
+    "right_ankle_A_rod_link",
+    "right_ankle_B_link",
+    "right_ankle_B_rod_link",
+    "right_ankle_pitch_link",
+    "right_ankle_constraint_A_link",
+    "right_ankle_constraint_B_link"
+   ],
+   "stance_low_gap_cm": {
+    "p10": -0.26836395263671875,
+    "p50": 0.989532470703125,
+    "p90": 2.824554443359375
+   },
+   "stance_low_raw_cm": {
+    "p10": -0.4833984076976776,
+    "p50": 0.7744979858398438,
+    "p90": 2.6095199584960938
+   },
+   "all_low_raw_cm_p50": 1.0407638549804688,
+   "pen_frac_raw_lt_-0.5cm": 0.08271577606035359,
+   "pen_frac_gap_lt_-0.5cm": 0.04116015703558989,
+   "untrusted_frac": 0.0076016582363409285
+  }
+ }
+}

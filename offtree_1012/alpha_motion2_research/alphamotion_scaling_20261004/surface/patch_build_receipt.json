@@ -1,0 +1,300 @@
+{
+  "schema": "verified_mesh_patch_build_v1",
+  "bodies": {
+    "unitree_g1_29dof": {
+      "patches": 96,
+      "sha256": "163452d3fe661f160ee1143350790e1eb60ff1a55c494600a48fcdc7fad0b3b9",
+      "binding_audit": {
+        "status": "passed",
+        "mujoco_version": "3.6.0",
+        "random_q_states": 8,
+        "random_q_fk_max_native": 1.7788463285656043e-06,
+        "rigid_frame_rotation_max_abs": 1.4432899320127035e-15,
+        "rigid_frame_translation_max_native": 1.931529905492269e-14,
+        "source_geoms_considered": 35,
+        "bound_mesh_geoms": 34,
+        "omitted_geoms": [
+          {
+            "geom": 35,
+            "reason": "no_rigid_cached_frame_across_random_q"
+          }
+        ],
+        "mesh_scope": "visual_mesh",
+        "represented_surface_area_native2": 26502.586632892773,
+        "source_xmls": [
+          {
+            "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/unitree_g1/g1_mocap_29dof.xml",
+            "sha256": "85a25128d42ad3cc8dd071c089806a2773a59ee0689edcc646aeb0201ae8f4c8"
+          }
+        ],
+        "evidence_boundary": "Actual source mesh and compiled frame consistency at deterministic geometry-only random q. No grasp success, contact, tactile or real-robot execution measured.",
+        "q_to_cached_fk_verified": true,
+        "global_rot_to_q_projection_implemented": false
+      }
+    },
+    "unitree_g1_23dof": {
+      "patches": 96,
+      "sha256": "f0a824a3f3e5365a2249091feab198d92dba0240b51bd4090e4b747c34f7344f",
+      "binding_audit": {
+        "status": "passed",
+        "mujoco_version": "3.6.0",
+        "random_q_states": 8,
+        "random_q_fk_max_native": 1.7788463285656043e-06,
+        "rigid_frame_rotation_max_abs": 1.4432899320127035e-15,
+        "rigid_frame_translation_max_native": 1.931529905492269e-14,
+        "source_geoms_considered": 35,
+        "bound_mesh_geoms": 34,
+        "omitted_geoms": [
+          {
+            "geom": 35,
+            "reason": "no_rigid_cached_frame_across_random_q"
+          }
+        ],
+        "mesh_scope": "visual_mesh",
+        "represented_surface_area_native2": 26502.586632892773,
+        "source_xmls": [
+          {
+            "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/unitree_g1/g1_mocap_29dof.xml",
+            "sha256": "85a25128d42ad3cc8dd071c089806a2773a59ee0689edcc646aeb0201ae8f4c8"
+          }
+        ],
+        "evidence_boundary": "Actual source mesh and compiled frame consistency at deterministic geometry-only random q. No grasp success, contact, tactile or real-robot execution measured.",
+        "q_to_cached_fk_verified": true,
+        "global_rot_to_q_projection_implemented": false
+      }
+    },
+    "booster_t1": {
+      "patches": 96,
+      "sha256": "1d871d9604b9a38d29c4a21b0d1599283855dd927a8bdcf1630f26df899c1cb6",
+      "binding_audit": {
+        "status": "passed",
+        "mujoco_version": "3.6.0",
+        "random_q_states": 8,
+        "random_q_fk_max_native": 8.201599198666418e-07,
+        "rigid_frame_rotation_max_abs": 1.3322676295501878e-15,
+        "rigid_frame_translation_max_native": 2.9092698722743544e-14,
+        "source_geoms_considered": 24,
+        "bound_mesh_geoms": 24,
+        "omitted_geoms": [],
+        "mesh_scope": "visual_mesh",
+        "represented_surface_area_native2": 18559.985062301508,
+        "source_xmls": [
+          {
+            "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/booster_t1/T1_serial.xml",
+            "sha256": "7cbbe63c8664e5fddf13ad906ead53f49f1318766b653dc02908b54eadca8ba5"
+          }
+        ],
+        "evidence_boundary": "Actual source mesh and compiled frame consistency at deterministic geometry-only random q. No grasp success, contact, tactile or real-robot execution measured.",
+        "q_to_cached_fk_verified": true,
+        "global_rot_to_q_projection_implemented": false
+      }
+    },
+    "booster_k1": {
+      "patches": 96,
+      "sha256": "a8ae3ae753fab8ecc25d0be9a5e99fc13880a47295843622e010afb45e54f822",
+      "binding_audit": {
+        "status": "passed",
+        "mujoco_version": "3.6.0",
+        "random_q_states": 8,
+        "random_q_fk_max_native": 1.5226359913005815e-06,
+        "rigid_frame_rotation_max_abs": 1.3322676295501878e-15,
+        "rigid_frame_translation_max_native": 1.6252637485051747e-14,
+        "source_geoms_considered": 23,
+        "bound_mesh_geoms": 21,
+        "omitted_geoms": [
+          {
+            "geom": 30,
+            "reason": "no_rigid_cached_frame_across_random_q"
+          },
+          {
+            "geom": 41,
+            "reason": "no_rigid_cached_frame_across_random_q"
+          }
+        ],
+        "mesh_scope": "visual_mesh",
+        "represented_surface_area_native2": 15740.7529688719,
+        "source_xmls": [
+          {
+            "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/booster_k1/K1_serial.xml",
+            "sha256": "8d3429c3271163050fdd20c5eef0f7ffeada1ffb4be2784e1039cbb067cb48da"
+          }
+        ],
+        "evidence_boundary": "Actual source mesh and compiled frame consistency at deterministic geometry-only random q. No grasp success, contact, tactile or real-robot execution measured.",
+        "q_to_cached_fk_verified": true,
+        "global_rot_to_q_projection_implemented": false
+      }
+    },
+    "fourier_n1": {
+      "patches": 96,
+      "sha256": "37e03bf9d4e04845048c9d90058b40feec1c95abb6e0e8f7484c5845a4a0ee5e",
+      "binding_audit": {
+        "status": "passed",
+        "mujoco_version": "3.6.0",
+        "random_q_states": 8,
+        "random_q_fk_max_native": 9.294823600740516e-07,
+        "rigid_frame_rotation_max_abs": 1.5543122344752192e-15,
+        "rigid_frame_translation_max_native": 2.0048211745338475e-14,
+        "source_geoms_considered": 29,
+        "bound_mesh_geoms": 27,
+        "omitted_geoms": [
+          {
+            "geom": 10,
+            "reason": "no_rigid_cached_frame_across_random_q"
+          },
+          {
+            "geom": 20,
+            "reason": "no_rigid_cached_frame_across_random_q"
+          }
+        ],
+        "mesh_scope": "visual_mesh",
+        "represented_surface_area_native2": 48817.30988620469,
+        "source_xmls": [
+          {
+            "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/fourier_n1/n1_mocap.xml",
+            "sha256": "d2bbf71eec5921a407db2ae86d9a01d01c7b2bea3846707f56bfd58818a719cc"
+          }
+        ],
+        "evidence_boundary": "Actual source mesh and compiled frame consistency at deterministic geometry-only random q. No grasp success, contact, tactile or real-robot execution measured.",
+        "q_to_cached_fk_verified": true,
+        "global_rot_to_q_projection_implemented": false
+      }
+    },
+    "pnd_adam_lite": {
+      "patches": 96,
+      "sha256": "43f9de9a28a881b0b9229f650c4a663f8bb06925597eff19de969191d93cf62a",
+      "binding_audit": {
+        "status": "passed",
+        "mujoco_version": "3.6.0",
+        "random_q_states": 8,
+        "random_q_fk_max_native": 1.6664085119514504e-06,
+        "rigid_frame_rotation_max_abs": 1.5543122344752192e-15,
+        "rigid_frame_translation_max_native": 4.9938515068363976e-14,
+        "source_geoms_considered": 73,
+        "bound_mesh_geoms": 71,
+        "omitted_geoms": [
+          {
+            "geom": 19,
+            "reason": "no_rigid_cached_frame_across_random_q"
+          },
+          {
+            "geom": 40,
+            "reason": "no_rigid_cached_frame_across_random_q"
+          }
+        ],
+        "mesh_scope": "visual_mesh",
+        "represented_surface_area_native2": 51543.49373236313,
+        "source_xmls": [
+          {
+            "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/pnd_adam_lite/scene.xml",
+            "sha256": "b358da0ad62b25eb72b9985a0852ba5d3a5d39bdb4fab664a303c705428174c5"
+          },
+          {
+            "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/pnd_adam_lite/adam_lite.xml",
+            "sha256": "a6e8319e51dd33c1d6fb13907673f8c3bceebaacb7b3c7cbc60416f15fa26468"
+          }
+        ],
+        "evidence_boundary": "Actual source mesh and compiled frame consistency at deterministic geometry-only random q. No grasp success, contact, tactile or real-robot execution measured.",
+        "q_to_cached_fk_verified": true,
+        "global_rot_to_q_projection_implemented": false
+      }
+    },
+    "hightorque_hi": {
+      "patches": 96,
+      "sha256": "c18615e00bfc90085f86fe2dcfc54e93253dcfcfa9be10af914520c2445662c8",
+      "binding_audit": {
+        "status": "passed",
+        "mujoco_version": "3.6.0",
+        "random_q_states": 8,
+        "random_q_fk_max_native": 8.996899529320974e-07,
+        "rigid_frame_rotation_max_abs": 1.5543122344752192e-15,
+        "rigid_frame_translation_max_native": 1.5202456209914874e-14,
+        "source_geoms_considered": 26,
+        "bound_mesh_geoms": 26,
+        "omitted_geoms": [],
+        "mesh_scope": "visual_mesh",
+        "represented_surface_area_native2": 15381.57786875588,
+        "source_xmls": [
+          {
+            "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/hightorque_hi/hi_25dof.xml",
+            "sha256": "3d33aaa5cad01913e59249a384c0369f60041f2f57a4cd952b2569022cfb8cdf"
+          }
+        ],
+        "evidence_boundary": "Actual source mesh and compiled frame consistency at deterministic geometry-only random q. No grasp success, contact, tactile or real-robot execution measured.",
+        "q_to_cached_fk_verified": true,
+        "global_rot_to_q_projection_implemented": false
+      }
+    },
+    "adroit_pen": {
+      "patches": 96,
+      "sha256": "d8c56fa605763527a44dfd58eac88431ff623d2b3f32e2fdcf514b5847f7dec1",
+      "binding_audit": {
+        "status": "passed",
+        "mujoco_version": "3.6.0",
+        "random_q_states": 8,
+        "random_q_fk_max_native": 3.356589068483857e-16,
+        "rigid_frame_rotation_max_abs": 1.2212453270876722e-15,
+        "rigid_frame_translation_max_native": 1.9685556450617817e-16,
+        "source_geoms_considered": 23,
+        "bound_mesh_geoms": 23,
+        "omitted_geoms": [],
+        "mesh_scope": "visual_mesh",
+        "represented_surface_area_native2": 0.17034103306047146,
+        "source_xmls": [
+          {
+            "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/data/models/Gymnasium-Robotics/gymnasium_robotics/envs/assets/adroit_hand/adroit_pen.xml",
+            "sha256": "20d5b6b4a24dc25fddca593d1f61107953a9e21ff2982c8065b0ba28b3250bdf"
+          },
+          {
+            "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/data/models/Gymnasium-Robotics/gymnasium_robotics/envs/assets/adroit_hand/adroit_model.xml",
+            "sha256": "680af02828ee4fe9ef5a56f8a4d9020d2ea15a99768b2bda770d22e67e187a02"
+          },
+          {
+            "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/data/models/Gymnasium-Robotics/gymnasium_robotics/envs/assets/adroit_hand/adroit_assets.xml",
+            "sha256": "29f9f05bf6d738b44c3927ec01aa30c259db388dd115ed9597930be119f3ac79"
+          }
+        ],
+        "evidence_boundary": "Actual source mesh and compiled frame consistency at deterministic geometry-only random q. No grasp success, contact, tactile or real-robot execution measured.",
+        "q_to_cached_fk_verified": true,
+        "global_rot_to_q_projection_implemented": false
+      }
+    },
+    "relay_franka_arm": {
+      "patches": 96,
+      "sha256": "209412286769a2aa2daf8710694ebdb9fd16f4392604ec9b8b82ff1edc81fba8",
+      "binding_audit": {
+        "status": "passed",
+        "mujoco_version": "3.6.0",
+        "random_q_states": 8,
+        "random_q_fk_max_native": 1.102214411500534e-15,
+        "rigid_frame_rotation_max_abs": 1.887379141862766e-15,
+        "rigid_frame_translation_max_native": 3.6208794644970034e-16,
+        "source_geoms_considered": 11,
+        "bound_mesh_geoms": 9,
+        "omitted_geoms": [
+          {
+            "geom": 18,
+            "reason": "excluded_prismatic_body_or_descendant_unsupported"
+          },
+          {
+            "geom": 32,
+            "reason": "excluded_prismatic_body_or_descendant_unsupported"
+          }
+        ],
+        "mesh_scope": "visual_mesh",
+        "represented_surface_area_native2": 0.908640078442838,
+        "source_xmls": [
+          {
+            "path": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/data/models/relay_robot_only_derived.xml",
+            "sha256": "6176b4140f7d8a35156dc20cdec4767609c740aea486323e2c2a9cb85c80ab94"
+          }
+        ],
+        "evidence_boundary": "Actual source mesh and compiled frame consistency at deterministic geometry-only random q. No grasp success, contact, tactile or real-robot execution measured.",
+        "q_to_cached_fk_verified": true,
+        "global_rot_to_q_projection_implemented": false
+      }
+    }
+  },
+  "failures": {},
+  "texts_count": 217,
+  "texts_sha256": "fda606c98c5bd7a6188827d309af7543ebd17297bbd06d6fe9f4d54ab15af0ed"
+}

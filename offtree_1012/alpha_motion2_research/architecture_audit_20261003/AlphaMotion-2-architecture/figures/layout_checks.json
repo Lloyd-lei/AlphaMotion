@@ -1,0 +1,72 @@
+[
+  {
+    "name": "01_implemented_systems",
+    "width_pt": 1140,
+    "height_pt": 900,
+    "min_font_pt": 11,
+    "layout_warnings": []
+  },
+  {
+    "name": "02_alphamotion1_layers",
+    "width_pt": 1140,
+    "height_pt": 1110,
+    "min_font_pt": 11,
+    "layout_warnings": []
+  },
+  {
+    "name": "03_unimate_layers",
+    "width_pt": 1140,
+    "height_pt": 1180,
+    "min_font_pt": 11,
+    "layout_warnings": []
+  },
+  {
+    "name": "04_umr_layers",
+    "width_pt": 1140,
+    "height_pt": 1100,
+    "min_font_pt": 11,
+    "layout_warnings": []
+  },
+  {
+    "name": "05_alphamotion2_proposed",
+    "width_pt": 1140,
+    "height_pt": 1120,
+    "min_font_pt": 11,
+    "layout_warnings": []
+  },
+  {
+    "name": "paper_01_comparison",
+    "width_pt": 510,
+    "height_pt": 500,
+    "min_font_pt": 7.1,
+    "layout_warnings": []
+  },
+  {
+    "name": "paper_02_alphamotion1",
+    "width_pt": 510,
+    "height_pt": 652,
+    "min_font_pt": 7.1,
+    "layout_warnings": []
+  },
+  {
+    "name": "paper_03_unimate",
+    "width_pt": 510,
+    "height_pt": 651,
+    "min_font_pt": 7.1,
+    "layout_warnings": []
+  },
+  {
+    "name": "paper_04_umr",
+    "width_pt": 510,
+    "height_pt": 565,
+    "min_font_pt": 7.1,
+    "layout_warnings": []
+  },
+  {
+    "name": "paper_05_alphamotion2_proposed",
+    "width_pt": 510,
+    "height_pt": 580,
+    "min_font_pt": 7.1,
+    "layout_warnings": []
+  }
+]

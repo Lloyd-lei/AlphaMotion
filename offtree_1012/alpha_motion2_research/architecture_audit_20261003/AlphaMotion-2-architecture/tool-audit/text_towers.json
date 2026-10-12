@@ -1,0 +1,206 @@
+{
+  "scope": "固定上游Transformers v4.51.3实现 + ArenaLabs checkpoint缓存config的依赖结构核查；不是已锁定历史runtime版本，也未运行模型加载/数值等价验证。",
+  "notation": "B为文本批次；L为token长度（不是动作帧数）；W[a→b]表示输入a、输出b的Linear。RMS(x)=gamma*x/sqrt(mean(x²)+1e-6)，不减均值、无beta；LN另减均值且有gamma/beta。所有公式按冻结eval路径写，dropout=identity。",
+  "runtime_executed": false,
+  "upstream_implementation": "Transformers v4.51.3",
+  "encoders": [
+    {
+      "name": "SigLIP text tower",
+      "checkpoint": "google/siglip-base-patch16-224",
+      "checkpoint_revision": "7fd15f0689c79d79e38b1c2e2e2370a7bf2761ed",
+      "config_source": "https://huggingface.co/google/siglip-base-patch16-224/blob/7fd15f0689c79d79e38b1c2e2e2370a7bf2761ed/config.json",
+      "config": {
+        "hidden": 768,
+        "ff": 3072,
+        "heads": 12,
+        "head_dim": 64,
+        "layers": 12,
+        "vocab": 32000,
+        "max_positions": 64,
+        "activation": "gelu_pytorch_tanh",
+        "ln_eps": 1e-06,
+        "attention_dropout": 0.0,
+        "projection": 768
+      },
+      "defaults_resolution": "cacheconfig未显式存layers/activation/epsilon；按v4.51.3 SiglipTextConfig缺省解析为12/gelu_pytorch_tanh/1e-6。projection_size缺省hidden_size。不是声称已验证历史runtime。",
+      "blocks": [
+        {
+          "name": "Token + learned position embedding",
+          "shape": "ids[B,64]→H[B,64,768]",
+          "computation": "H=Embed[32000,768](ids)+Pos[64,768](positions)",
+          "source": "https://github.com/huggingface/transformers/blob/v4.51.3/src/transformers/models/siglip/modeling_siglip.py#L318-L356"
+        },
+        {
+          "name": "Pre-LN self-attention ×12",
+          "shape": "Q,K,V[B,12,64,64]; A[B,12,64,64]",
+          "computation": "U=LN(H); Q=U Wq+bq,K=U Wk+bk,V=U Wv+bv; A=softmax(QK^T/8+M_padding); H←H+concat(A V) Wo+bo; 所有Linear768→768，双向无causal mask",
+          "source": "https://github.com/huggingface/transformers/blob/v4.51.3/src/transformers/models/siglip/modeling_siglip.py#L381-L509"
+        },
+        {
+          "name": "Pre-LN feedforward ×12",
+          "shape": "[B,64,768]→[B,64,3072]→[B,64,768]",
+          "computation": "H←H+W2 GELU_tanh(W1 LN(H)+b1)+b2；两次Linear均有bias",
+          "source": "https://github.com/huggingface/transformers/blob/v4.51.3/src/transformers/models/siglip/modeling_siglip.py#L453-L509"
+        },
+        {
+          "name": "Final LN, last-position head",
+          "shape": "[B,64,768]→[B,768]",
+          "computation": "Z=LN(H); e=Linear[768→768](Z[:,-1,:]); tokenizer sticky-EOS假设下取最后位置，非搜索argmax/EOS索引",
+          "source": "https://github.com/huggingface/transformers/blob/v4.51.3/src/transformers/models/siglip/modeling_siglip.py#L775-L839"
+        },
+        {
+          "name": "AlphaMotion normalization + cache",
+          "shape": "[B,768]",
+          "computation": "get_text_features仅返回上述head输出；调用端e←e/||e||₂，再按joint name缓存。图不应加入SigLIP vision tower。",
+          "source": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/semantics.py:36"
+        }
+      ],
+      "pseudocode": "H = token(ids) + position(ids)\nfor layer in layers_12:\n    H = H + layer.attn(layer.ln1(H), pad_mask)\n    H = H + layer.fc2(gelu_tanh(layer.fc1(layer.ln2(H))))\ne = head(final_ln(H)[:, -1])\nreturn normalize(e, dim=-1) # AlphaMotion caller"
+    },
+    {
+      "name": "FLAN-T5-base encoder only",
+      "checkpoint": "google/flan-t5-base",
+      "checkpoint_revision": "7bcac572ce56db69c1ea7c8af255c5d7c9672fc2",
+      "config_source": "https://huggingface.co/google/flan-t5-base/blob/7bcac572ce56db69c1ea7c8af255c5d7c9672fc2/config.json",
+      "config": {
+        "hidden": 768,
+        "ff": 2048,
+        "heads": 12,
+        "d_kv": 64,
+        "layers": 12,
+        "vocab": 32128,
+        "activation": "gated-gelu -> gelu_new",
+        "rms_eps": 1e-06,
+        "relative_buckets": 32,
+        "relative_max_distance": 128,
+        "dropout_config": 0.1,
+        "dropout_frozen_eval": 0.0
+      },
+      "blocks": [
+        {
+          "name": "Shared token embedding; no absolute position",
+          "shape": "ids[B,L]→H[B,L,768]",
+          "computation": "H=Embed[32128,768](ids); embedding dropout在eval为identity；只运行T5EncoderModel，无decoder/LMhead",
+          "source": "https://github.com/huggingface/transformers/blob/v4.51.3/src/transformers/models/t5/modeling_t5.py#L1997-L2019"
+        },
+        {
+          "name": "Pre-RMS self-attention ×12",
+          "shape": "Q,K,V[B,12,L,64]; scores[B,12,L,L]",
+          "computation": "U=RMS(H); Q=UWq,K=UWk,V=UWv; A=softmax(QK^T+R_bucket+M_padding); H←H+concat(A V) Wo；Q/K/V/O均768→768且无bias；没有除sqrt(64)",
+          "source": "https://github.com/huggingface/transformers/blob/v4.51.3/src/transformers/models/t5/modeling_t5.py#L351-L614"
+        },
+        {
+          "name": "Relative position bias once, reused ×12",
+          "shape": "Embedding[32,12]→R[1,12,L,L]",
+          "computation": "bucket(j−i)：双向各16桶，小距离0..7精确，大距离按max_distance128做对数分桶并截断到该方向的最后一桶；只有第一个block拥有表，其position_bias张量后续层复用",
+          "source": "https://github.com/huggingface/transformers/blob/v4.51.3/src/transformers/models/t5/modeling_t5.py#L404-L472"
+        },
+        {
+          "name": "Pre-RMS gated-GELU FFN ×12",
+          "shape": "two [B,L,768]→[B,L,2048] branches→[B,L,768]",
+          "computation": "U=RMS(H); G=GELU_new(U Wi0) ⊙ (U Wi1); H←H+G Wo；Wi0/Wi1:768→2048，Wo:2048→768，全部无bias",
+          "source": "https://github.com/huggingface/transformers/blob/v4.51.3/src/transformers/models/t5/modeling_t5.py#L304-L348"
+        },
+        {
+          "name": "Final RMS and caller pooling",
+          "shape": "[B,L,768]→[B,768] or token sequence",
+          "computation": "Z=RMS(H); pooled=sum_i(mask_i Z_i)/max(sum_i mask_i,1)；pool=False输出完整Z及调用方保留mask；空文本mask全0使pooled=0；无额外L2归一化",
+          "source": "https://github.com/Friedrich-M/UniMate/blob/2c5b384715aa63d8639b1ed7eb74bfe614570c7a/unimate/models/text_encoder/t5.py#L268-L294"
+        }
+      ],
+      "pseudocode": "H = token(ids)\nR = first_layer.relative_bias(bucket(j - i)) + pad_mask\nfor layer in encoder_layers_12:\n    U = rms1(H)\n    H = H + Wo(softmax(Q(U) @ K(U).T + R) @ V(U))\n    U = rms2(H)\n    H = H + Wffo(gelu_new(Wi0(U)) * Wi1(U))\nZ = final_rms(H)\nreturn Z if not pool else masked_mean(Z, mask)",
+      "notes": [
+        "缓存或cross-attention路径可先pool=False存token，再在adaLN分支求相同masked mean。",
+        "第一层bias共享证据：T5Stack第896行仅i==0，1153–1158行传递position_bias。",
+        "gated-gelu→gelu_new映射在configuration_t5.py:135–136；不是ReLU FFN，也不是SiLU SwiGLU。"
+      ]
+    },
+    {
+      "name": "Qwen3-Embedding-0.6B base model",
+      "checkpoint": "Qwen/Qwen3-Embedding-0.6B",
+      "checkpoint_revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "config_source": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B/blob/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3/config.json",
+      "config": {
+        "hidden": 1024,
+        "ff": 3072,
+        "layers": 28,
+        "q_heads": 16,
+        "kv_heads": 8,
+        "head_dim": 128,
+        "q_width": 2048,
+        "kv_width": 1024,
+        "groups": 2,
+        "vocab": 151669,
+        "activation": "silu",
+        "rms_eps": 1e-06,
+        "rope_theta": 1000000,
+        "rope_scaling": null,
+        "sliding_window": null,
+        "use_sliding_window": false,
+        "attention_bias": false,
+        "attention_dropout": 0
+      },
+      "blocks": [
+        {
+          "name": "Embedding",
+          "shape": "ids[B,L≤64]→H[B,L,1024]",
+          "computation": "Embed[151669,1024]；AlphaMotion左padding，所有样本最后位置都要求有效；无learned绝对position embedding",
+          "source": "https://github.com/huggingface/transformers/blob/v4.51.3/src/transformers/models/qwen3/modeling_qwen3.py#L467-L488"
+        },
+        {
+          "name": "Pre-RMS Q/K/V and per-head QK-RMS ×28",
+          "shape": "Q[B,16,L,128]; K,V[B,8,L,128]",
+          "computation": "U=RMS(H); Q=RMS_128(reshape(U Wq)); K=RMS_128(reshape(U Wk)); V=reshape(U Wv)。Wq:1024→2048；Wk,Wv:1024→1024；Q/K专用RMS各有128维gain、跨heads广播。",
+          "source": "https://github.com/huggingface/transformers/blob/v4.51.3/src/transformers/models/qwen3/modeling_qwen3.py#L170-L222"
+        },
+        {
+          "name": "RoPE then causal grouped-query attention ×28",
+          "shape": "K,V repeat2→[B,16,L,128]; scores[B,16,L,L]",
+          "computation": "先对Q/K施加RoPE(theta=1e6)，再重复K/V到16heads；A=softmax(Q_rot K_rot^T/sqrt(128)+M_causal+M_padding)；H←H+concat(A V) Wo，Wo:2048→1024。Q/K/V/O无bias。",
+          "source": "https://github.com/huggingface/transformers/blob/v4.51.3/src/transformers/models/qwen3/modeling_qwen3.py#L99-L253"
+        },
+        {
+          "name": "Pre-RMS SwiGLU ×28",
+          "shape": "two [B,L,1024]→[B,L,3072] branches→[B,L,1024]",
+          "computation": "U=RMS(H); H←H+Wdown(SiLU(Wgate U) ⊙ Wup U)；gate/up:1024→3072，down:3072→1024；均无bias。",
+          "source": "https://github.com/huggingface/transformers/blob/v4.51.3/src/transformers/models/qwen3/modeling_qwen3.py#L62-L95"
+        },
+        {
+          "name": "Final RMS, last token, caller L2",
+          "shape": "[B,L,1024]→[B,1024]",
+          "computation": "Z=RMS(H); e=Z[:,-1,:]; e←e/||e||₂。AutoModel返回hidden states，不运行词表LMhead；不使用mean pooling。",
+          "source": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/AlphaMotion1/semantics.py:52"
+        }
+      ],
+      "pseudocode": "H = token(left_padded_ids)\nfor layer in decoder_layers_28:\n    U = rms1(H)\n    Q = rope(q_norm(split16(Wq(U)))) # head_dim=128\n    K = rope(k_norm(split8(Wk(U))))\n    V = split8(Wv(U))\n    A = softmax(Q @ repeat2(K).T / sqrt(128) + causal_pad_mask)\n    H = H + Wo(concat(A @ repeat2(V)))\n    U = rms2(H)\n    H = H + Wdown(silu(Wgate(U)) * Wup(U))\nreturn normalize(final_rms(H)[:, -1], dim=-1)",
+      "notes": [
+        "不要用hidden_size/heads=64覆盖checkpoint显式head_dim128；Q总宽度确实大于residual hidden。",
+        "QK-RMS发生在head_dim轴、RoPE之前；V不做QK-RMS。",
+        "逐层预RMS与最终RMS都是1024维，Q/K专用RMS是128维。"
+      ]
+    }
+  ],
+  "source_files": [
+    {
+      "file": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/TextEncoders/configuration_siglip.py",
+      "sha256": "ff806d2c382516a92b9c443e80c925b07365349ca278e044e3484ab20d358d12"
+    },
+    {
+      "file": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/TextEncoders/modeling_qwen3.py",
+      "sha256": "704c914530530a1acb0b443add1f520404e3ac2c28c0ab7e16f80f86cfe8ccb2"
+    },
+    {
+      "file": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/TextEncoders/modeling_siglip.py",
+      "sha256": "e8972dfaa3903191b936a76f0887ccf2e6648aa26cbde6a148b24a0c5790ecd2"
+    },
+    {
+      "file": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/source-snapshot/TextEncoders/modeling_t5.py",
+      "sha256": "b7af4617c4e98ee9c53fcda511998cd3547d90962e513e658051a715ba776583"
+    },
+    {
+      "file": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/tool-audit/audit-source/configuration_t5_v4.51.3.py",
+      "sha256": "0dfc0d79ec2806dce9d55b01f38b8b5bd93437f9f03e4ecbeba49510354b4300",
+      "source": "https://github.com/huggingface/transformers/blob/v4.51.3/src/transformers/models/t5/configuration_t5.py#L123-L136"
+    }
+  ]
+}

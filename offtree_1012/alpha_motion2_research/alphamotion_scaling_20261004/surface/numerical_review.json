@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "tests_run": 17,
+  "failures": 0,
+  "errors": 0,
+  "metrics": {
+    "ablation_max_abs_output_delta": {
+      "rest_xyz": 0.059915751218795776,
+      "qwen_sem": 0.007973909378051758,
+      "drop_surface": 0.9005141258239746,
+      "static_only": 0.13472425937652588,
+      "no_patch_semantics": 0.19200235605239868,
+      "no_attachment_bias": 0.05504477024078369
+    },
+    "hidden_source_nan_delta": 0.0,
+    "patch_permutation_max_abs": 2.980232238769531e-07,
+    "fixture_cost": {
+      "source_joint_tokens": 4,
+      "source_patch_tokens_allocated": 8,
+      "source_patch_tokens_valid_in_batch": 16,
+      "encoder_tokens": 12,
+      "target_joint_queries": 4,
+      "target_static_patch_tokens": 8,
+      "target_patch_tokens_valid_in_batch": 16,
+      "position_fsq_slots": 4,
+      "rotation_fsq_slots": 8,
+      "condition_tokens": 2,
+      "encoder_attention_cells_per_layer_per_head": 144,
+      "target_patch_query_cells": 32,
+      "surface_ablation": "none"
+    },
+    "surface_loss_gradient_l1": {
+      "patch_geometry": 7.78526571393013,
+      "patch_semantic": 2.5129880160093307,
+      "patch_motion": 2.2013347819447517,
+      "target_surface_attention": 21.296324668542383,
+      "inp": 0.7715960294008255,
+      "hrot": 7.205006688833237
+    }
+  },
+  "evidence_scope": "CPU synthetic mesh patches, synthetic Qwen unit vectors and random model weights. Diagnostic backward only; no optimizer, real data, grasp or physical execution."
+}

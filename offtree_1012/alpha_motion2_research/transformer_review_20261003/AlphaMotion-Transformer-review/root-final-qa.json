@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "reviewed_by": "root",
+  "vector_figures": 4,
+  "vector_pdf_raster_counts": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "google_doc_total_pages": 61,
+  "edited_content_pages": [
+    18,
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "checks": [
+    "four figure renderings visually inspected",
+    "Google Docs figures plus captions remain on their respective pages",
+    "contact scope addendum rendered and visually inspected",
+    "editable Word export downloaded",
+    "source calculations independently checked before freezing"
+  ],
+  "scope": "Only UniMate and AlphaMotion-1 redrawn; UMR and AlphaMotion-2 figures await user style review."
+}

@@ -1,0 +1,435 @@
+{
+ "schema": "am2exp_j1_collision_binding_v1",
+ "body": "booster_k1",
+ "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/booster_k1/K1_serial.xml",
+ "xml_sha256": "8d3429c3271163050fdd20c5eef0f7ffeada1ffb4be2784e1039cbb067cb48da",
+ "mujoco_version": "3.6.0",
+ "am2_static_spec": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/megatron_scale_pilot_20261004/data_xwbc/static/booster_k1_spec.npz",
+ "am2_static_spec_sha256": "24218ad7224996a852e716b9cc3296b71772c5606cbbfd7a6c209dfd8dd6b12c",
+ "am2_joint_names": [
+  "Trunk",
+  "Head_1",
+  "Head_2",
+  "Left_Arm_1",
+  "Left_Arm_2",
+  "Left_Arm_3",
+  "left_hand_link",
+  "Right_Arm_1",
+  "Right_Arm_2",
+  "Right_Arm_3",
+  "right_hand_link",
+  "Left_Hip_Pitch",
+  "Left_Hip_Roll",
+  "Left_Hip_Yaw",
+  "Left_Shank",
+  "Left_Ankle_Cross",
+  "Right_Hip_Pitch",
+  "Right_Hip_Roll",
+  "Right_Hip_Yaw",
+  "Right_Shank",
+  "Right_Ankle_Cross"
+ ],
+ "node_body": [
+  "Trunk",
+  "Head_1",
+  "Head_2",
+  "Left_Arm_1",
+  "Left_Arm_2",
+  "Left_Arm_3",
+  "left_hand_link",
+  "Right_Arm_1",
+  "Right_Arm_2",
+  "Right_Arm_3",
+  "right_hand_link",
+  "Left_Hip_Pitch",
+  "Left_Hip_Roll",
+  "Left_Hip_Yaw",
+  "Left_Shank",
+  "Left_Ankle_Cross",
+  "Right_Hip_Pitch",
+  "Right_Hip_Roll",
+  "Right_Hip_Yaw",
+  "Right_Shank",
+  "Right_Ankle_Cross"
+ ],
+ "node_frame_body": [
+  "Trunk",
+  "Head_1",
+  "Head_2",
+  "Left_Arm_1",
+  "Left_Arm_2",
+  "Left_Arm_3",
+  "left_hand_link",
+  "Right_Arm_1",
+  "Right_Arm_2",
+  "Right_Arm_3",
+  "right_hand_link",
+  "Left_Hip_Pitch",
+  "Left_Hip_Roll",
+  "Left_Hip_Yaw",
+  "Left_Shank",
+  "left_foot_link",
+  "Right_Hip_Pitch",
+  "Right_Hip_Roll",
+  "Right_Hip_Yaw",
+  "Right_Shank",
+  "right_foot_link"
+ ],
+ "random_states": 16,
+ "fk_max_error_cm": 1.5226359913005815e-06,
+ "h2_node_map": null,
+ "h2_offset_residual_cm": null,
+ "h2_offset_residual_max_cm": null,
+ "n_geoms": 20,
+ "n_rigid": 20,
+ "n_chain": 0,
+ "n_approx": 0,
+ "chain_geoms": [],
+ "approx_residual_max_cm": 0.0,
+ "geoms": [
+  {
+   "geom": 2,
+   "body": "Trunk",
+   "node": "Trunk",
+   "region": "trunk",
+   "type": 6,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": 0.0,
+   "rest_centre_cm": [
+    0.0,
+    10.0,
+    0.0
+   ]
+  },
+  {
+   "geom": 3,
+   "body": "Trunk",
+   "node": "Trunk",
+   "region": "pelvis",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -11.000021213166871,
+   "rest_centre_cm": [
+    0.0,
+    -6.0,
+    0.0
+   ]
+  },
+  {
+   "geom": 5,
+   "body": "Head_1",
+   "node": "Head_1",
+   "region": "head",
+   "type": 7,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": 21.489999851476885,
+   "rest_centre_cm": [
+    0.1630637873480568,
+    24.73824256543261,
+    0.4434571650886607
+   ]
+  },
+  {
+   "geom": 7,
+   "body": "Head_2",
+   "node": "Head_2",
+   "region": "head",
+   "type": 7,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": 21.98286629187038,
+   "rest_centre_cm": [
+    0.001773674041697447,
+    33.036484287367124,
+    1.7711744253473005
+   ]
+  },
+  {
+   "geom": 10,
+   "body": "Left_Arm_2",
+   "node": "Left_Arm_2",
+   "region": "L_upper_arm",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": 13.599985575047425,
+   "rest_centre_cm": [
+    14.500000000000002,
+    17.099999999999998,
+    -0.45000000000000007
+   ]
+  },
+  {
+   "geom": 12,
+   "body": "Left_Arm_3",
+   "node": "Left_Arm_3",
+   "region": "L_forearm",
+   "type": 7,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": 13.700034156750124,
+   "rest_centre_cm": [
+    26.19385413459935,
+    16.984022549601754,
+    0.0878115419324629
+   ]
+  },
+  {
+   "geom": 14,
+   "body": "left_hand_link",
+   "node": "left_hand_link",
+   "region": "L_hand",
+   "type": 7,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": 13.998319870021803,
+   "rest_centre_cm": [
+    41.17617850399207,
+    17.55763003391834,
+    0.13843886866855806
+   ]
+  },
+  {
+   "geom": 17,
+   "body": "Right_Arm_2",
+   "node": "Right_Arm_2",
+   "region": "R_upper_arm",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": 13.599985575047425,
+   "rest_centre_cm": [
+    -14.500000000000002,
+    17.099999999999998,
+    -0.45000000000000007
+   ]
+  },
+  {
+   "geom": 19,
+   "body": "Right_Arm_3",
+   "node": "Right_Arm_3",
+   "region": "R_forearm",
+   "type": 7,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": 13.699914046184123,
+   "rest_centre_cm": [
+    -25.522746751295973,
+    17.01540140582515,
+    0.07586166667477968
+   ]
+  },
+  {
+   "geom": 21,
+   "body": "right_hand_link",
+   "node": "right_hand_link",
+   "region": "R_hand",
+   "type": 7,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": 13.998228748566767,
+   "rest_centre_cm": [
+    -41.17564572058507,
+    17.557915095798215,
+    0.15090197719116902
+   ]
+  },
+  {
+   "geom": 24,
+   "body": "Left_Hip_Roll",
+   "node": "Left_Hip_Roll",
+   "region": "L_thigh",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -12.400019940386757,
+   "rest_centre_cm": [
+    9.6,
+    -8.799999999999999,
+    0.0
+   ]
+  },
+  {
+   "geom": 26,
+   "body": "Left_Hip_Yaw",
+   "node": "Left_Hip_Yaw",
+   "region": "L_thigh",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -19.950000000000003,
+   "rest_centre_cm": [
+    9.6,
+    -16.650000000000002,
+    1.2
+   ]
+  },
+  {
+   "geom": 28,
+   "body": "Left_Shank",
+   "node": "Left_Shank",
+   "region": "L_shin",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -29.85001484920781,
+   "rest_centre_cm": [
+    9.6,
+    -25.35,
+    -0.2
+   ]
+  },
+  {
+   "geom": 29,
+   "body": "Left_Shank",
+   "node": "Left_Shank",
+   "region": "L_shin",
+   "type": 6,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -43.35,
+   "rest_centre_cm": [
+    9.6,
+    -38.35,
+    -0.2
+   ]
+  },
+  {
+   "geom": 32,
+   "body": "left_foot_link",
+   "node": "Left_Ankle_Cross",
+   "region": "L_foot",
+   "type": 6,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -52.269,
+   "rest_centre_cm": [
+    9.620000000000001,
+    -50.669,
+    1.2197060000000002
+   ]
+  },
+  {
+   "geom": 35,
+   "body": "Right_Hip_Roll",
+   "node": "Right_Hip_Roll",
+   "region": "R_thigh",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -12.400019940386757,
+   "rest_centre_cm": [
+    -9.6,
+    -8.799999999999999,
+    0.0
+   ]
+  },
+  {
+   "geom": 37,
+   "body": "Right_Hip_Yaw",
+   "node": "Right_Hip_Yaw",
+   "region": "R_thigh",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -19.950000000000003,
+   "rest_centre_cm": [
+    -9.6,
+    -16.650000000000002,
+    1.2
+   ]
+  },
+  {
+   "geom": 39,
+   "body": "Right_Shank",
+   "node": "Right_Shank",
+   "region": "R_shin",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -29.85001484920781,
+   "rest_centre_cm": [
+    -9.6,
+    -25.35,
+    -0.2
+   ]
+  },
+  {
+   "geom": 40,
+   "body": "Right_Shank",
+   "node": "Right_Shank",
+   "region": "R_shin",
+   "type": 6,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -43.35,
+   "rest_centre_cm": [
+    -9.6,
+    -38.35,
+    -0.2
+   ]
+  },
+  {
+   "geom": 43,
+   "body": "right_foot_link",
+   "node": "Right_Ankle_Cross",
+   "region": "R_foot",
+   "type": 6,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -52.269,
+   "rest_centre_cm": [
+    -9.620000000000001,
+    -50.669,
+    1.2197060000000002
+   ]
+  }
+ ],
+ "regions_present": [
+  "L_foot",
+  "L_forearm",
+  "L_hand",
+  "L_shin",
+  "L_thigh",
+  "L_upper_arm",
+  "R_foot",
+  "R_forearm",
+  "R_hand",
+  "R_shin",
+  "R_thigh",
+  "R_upper_arm",
+  "head",
+  "pelvis",
+  "trunk"
+ ],
+ "regions_missing": [],
+ "selfpen_pairs": 170,
+ "selfpen_candidate_pairs": 170,
+ "selfpen_excluded": [],
+ "selfpen_rule": "hop(anchor)>=2, rest distance > -0.5 cm at qpos0, penetrating (<-1cm) in <=50% of 32 random q",
+ "independence": "vendor MJCF collision geometry only; no visual surface, sole table, labels or loss",
+ "npz_sha256": "990691da288dff3d94efb26f9a62e3920415da2ebbc43f67598804dd8c0a8a9b"
+}

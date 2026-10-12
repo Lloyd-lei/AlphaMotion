@@ -1,0 +1,223 @@
+{
+  "checked_at_utc": "2026-10-04T06:16:46.051650+00:00",
+  "success": true,
+  "tests": [
+    {
+      "script": "test_pilot_model.py",
+      "return_code": 0,
+      "test_count": 20,
+      "seconds": 20.028285542037338,
+      "log": "offline_test_logs/test_pilot_model.py.log"
+    },
+    {
+      "script": "test_pilot_data.py",
+      "return_code": 0,
+      "test_count": 14,
+      "seconds": 4.893704499583691,
+      "log": "offline_test_logs/test_pilot_data.py.log"
+    },
+    {
+      "script": "test_endpoint_policy.py",
+      "return_code": 0,
+      "test_count": 6,
+      "seconds": 0.13819175027310848,
+      "log": "offline_test_logs/test_endpoint_policy.py.log"
+    },
+    {
+      "script": "test_train_pilot.py",
+      "return_code": 0,
+      "test_count": 12,
+      "seconds": 5.140661499928683,
+      "log": "offline_test_logs/test_train_pilot.py.log"
+    },
+    {
+      "script": "test_pilot_adapter.py",
+      "return_code": 0,
+      "test_count": 3,
+      "seconds": 1.812767583411187,
+      "log": "offline_test_logs/test_pilot_adapter.py.log"
+    },
+    {
+      "script": "test_analysis.py",
+      "return_code": 0,
+      "test_count": 4,
+      "seconds": 9.051522874739021,
+      "log": "offline_test_logs/test_analysis.py.log"
+    },
+    {
+      "script": "test_recipe_auxiliary.py",
+      "return_code": 0,
+      "test_count": 13,
+      "seconds": 5.023466082755476,
+      "log": "offline_test_logs/test_recipe_auxiliary.py.log"
+    },
+    {
+      "script": "test_recipe_ground.py",
+      "return_code": 0,
+      "test_count": 6,
+      "seconds": 1.9968805420212448,
+      "log": "offline_test_logs/test_recipe_ground.py.log"
+    },
+    {
+      "script": "test_recipe_training.py",
+      "return_code": 0,
+      "test_count": 7,
+      "seconds": 2.8143055830150843,
+      "log": "offline_test_logs/test_recipe_training.py.log"
+    },
+    {
+      "script": "test_recipe_gate.py",
+      "return_code": 0,
+      "test_count": 16,
+      "seconds": 1.7067012498155236,
+      "log": "offline_test_logs/test_recipe_gate.py.log"
+    }
+  ],
+  "total_tests": 101,
+  "wall_seconds": 54.08121258299798,
+  "parameters": 26009940,
+  "state_keys": 547,
+  "parameter_counts": {
+    "shared_model": 25743428,
+    "auxiliary_judge": 266512
+  },
+  "source_sha256": {
+    "analyze_pilot.py": "c83adc727370118a73b09fcbb1d2ebca4fac86bccfeeb078348f889c3b8fff90",
+    "audit_recipe.py": "7324bf74996d0b92e52dffc279e410311dfe53414b53215972c84fb3230daf9e",
+    "endpoint_policy.py": "fc40e143049d035fb900a4edba68f799c6e4610432ac2317a6bbb642833b09ca",
+    "extract_xwbc_pilot.py": "ba131c2bbad1960b54b8d1c301afff2fcd41f6d01e74d1297e1ab8320c9b0668",
+    "legacy/common.py": "007772a2498f4cef12bde35e2410e767c1dda285d4bcc3706e29d2863764ceb6",
+    "legacy/masking.py": "75dc05aa0bf8c8e2e67dfec60c5a49ccb584268a04b3791225a119efdb73c65b",
+    "legacy/model.py": "d717c185fcd0eee7b5cb216a8faba4bc89a4485c839e4c0e52c940ea9ccf45e0",
+    "legacy/model_dual.py": "ae1ebdd37d62805190ccc2e332177d7e790371997d91fa516ec5ec6099f563dd",
+    "pilot_adapter.py": "b4d6b0ee90e0fdbf65590c497b5ce427bac59a5b80f286fa078786962c6d9017",
+    "pilot_data.py": "69710bfeae20e8a01f66115fca6da8d4d83f3a2db8a014def77c9a6843f03a23",
+    "pilot_model.py": "df6033507084d7e9f5511537a206e4163930d0eb81fef00bf93d7b5dcb00ef35",
+    "recipe_auxiliary.py": "cb3060b25682073891abfffcea9c0ce804f2565d41a7292bac3a7a5e326f57a6",
+    "recipe_gate.py": "9e6df573354b70cad354b9a5de6542651d5a89b68e0b82018890828176b7d411",
+    "recipe_ground.py": "bb03a94cefb8db40a500970f6184106b032001cebb10ef0b865149906f80e8c9",
+    "recipe_training.py": "89782f8da9569ce3687751acc4fdc2e95d7184f4a91fd91fcdb5703c4bfbd8b5",
+    "reference_recipe/source/dual_common.py": "c8f43065efb0a0188796a572d9b549a55f16b83bf4c3a5d4a28f84d5ba0110cd",
+    "reference_recipe/source/masking.py": "75dc05aa0bf8c8e2e67dfec60c5a49ccb584268a04b3791225a119efdb73c65b",
+    "reference_recipe/source/train_dual.py": "de909574dc433e99080329c780a52fb3fe9dd91a7474f7d0f7abe58b4eced233",
+    "remote_state.py": "557a72548ee59c97f170704cb4ef04a313d0e3248776eb10af35cf395481b92e",
+    "seal_xwbc_static.py": "154163b2bf99b032296fab988ffe4516855a8a15aee04be6125974a9b0834b74",
+    "test_analysis.py": "92c2701972f038640c1c46c0ff6ba51d885731613673f65484d9f540ace5dcbb",
+    "test_endpoint_policy.py": "0d6f54029652eede7576f3f44779a8ecc67841f39d9e1870182dad036e2df3b2",
+    "test_pilot_adapter.py": "e9328c583b55f609947235f732bb519bda97c9780ffd3bbc2a18f5965137a073",
+    "test_pilot_data.py": "d7c9c70d1138921eaee0e1063d99aad5b4955399c02a86d0b0b71d5419b96ba4",
+    "test_pilot_model.py": "b6ca2675d53c2574562fda98b05c41cfc82962650402abe202cd291633adec16",
+    "test_recipe_auxiliary.py": "bcfcde4b8ef137bcda0325b4ef77cd8347345ef2136f3e0447781bc7abb76dde",
+    "test_recipe_gate.py": "35c0821f7b2091a1f591252fe6b3bffa7d0eeb56704711719e2f1ca48fe0819a",
+    "test_recipe_ground.py": "7a1e7156798fce3eecb266d6e5f0715ba7b2cffcc36054cf3bb7ab3d7c4638e6",
+    "test_recipe_training.py": "5654c982d53b7a1636ae396a0f1c77839e17c08d53da0373200be05f92e63a0c",
+    "test_train_pilot.py": "ac855623b9ed03b3d194d1152bff5a159c46f2cd96d3cf0ed31914f724d2b064",
+    "train_pilot.py": "105b9298b0708dd3d6fce9fc2105824155be0b909f7956e62274347f531de57c",
+    "xwbc_contract.py": "dfd4a20c15cb599470b079e4204e8f763b8ff3905378646e242a6d0cf5b75944",
+    "candidate_config.json": "3bdab08abf3dc068c7bed2e4f4585763b4ae29388d17df76bdb50a54e790df13"
+  },
+  "source_sha256_at_start": {
+    "analyze_pilot.py": "c83adc727370118a73b09fcbb1d2ebca4fac86bccfeeb078348f889c3b8fff90",
+    "audit_recipe.py": "7324bf74996d0b92e52dffc279e410311dfe53414b53215972c84fb3230daf9e",
+    "endpoint_policy.py": "fc40e143049d035fb900a4edba68f799c6e4610432ac2317a6bbb642833b09ca",
+    "extract_xwbc_pilot.py": "ba131c2bbad1960b54b8d1c301afff2fcd41f6d01e74d1297e1ab8320c9b0668",
+    "legacy/common.py": "007772a2498f4cef12bde35e2410e767c1dda285d4bcc3706e29d2863764ceb6",
+    "legacy/masking.py": "75dc05aa0bf8c8e2e67dfec60c5a49ccb584268a04b3791225a119efdb73c65b",
+    "legacy/model.py": "d717c185fcd0eee7b5cb216a8faba4bc89a4485c839e4c0e52c940ea9ccf45e0",
+    "legacy/model_dual.py": "ae1ebdd37d62805190ccc2e332177d7e790371997d91fa516ec5ec6099f563dd",
+    "pilot_adapter.py": "b4d6b0ee90e0fdbf65590c497b5ce427bac59a5b80f286fa078786962c6d9017",
+    "pilot_data.py": "69710bfeae20e8a01f66115fca6da8d4d83f3a2db8a014def77c9a6843f03a23",
+    "pilot_model.py": "df6033507084d7e9f5511537a206e4163930d0eb81fef00bf93d7b5dcb00ef35",
+    "recipe_auxiliary.py": "cb3060b25682073891abfffcea9c0ce804f2565d41a7292bac3a7a5e326f57a6",
+    "recipe_gate.py": "9e6df573354b70cad354b9a5de6542651d5a89b68e0b82018890828176b7d411",
+    "recipe_ground.py": "bb03a94cefb8db40a500970f6184106b032001cebb10ef0b865149906f80e8c9",
+    "recipe_training.py": "89782f8da9569ce3687751acc4fdc2e95d7184f4a91fd91fcdb5703c4bfbd8b5",
+    "reference_recipe/source/dual_common.py": "c8f43065efb0a0188796a572d9b549a55f16b83bf4c3a5d4a28f84d5ba0110cd",
+    "reference_recipe/source/masking.py": "75dc05aa0bf8c8e2e67dfec60c5a49ccb584268a04b3791225a119efdb73c65b",
+    "reference_recipe/source/train_dual.py": "de909574dc433e99080329c780a52fb3fe9dd91a7474f7d0f7abe58b4eced233",
+    "remote_state.py": "557a72548ee59c97f170704cb4ef04a313d0e3248776eb10af35cf395481b92e",
+    "seal_xwbc_static.py": "154163b2bf99b032296fab988ffe4516855a8a15aee04be6125974a9b0834b74",
+    "test_analysis.py": "92c2701972f038640c1c46c0ff6ba51d885731613673f65484d9f540ace5dcbb",
+    "test_endpoint_policy.py": "0d6f54029652eede7576f3f44779a8ecc67841f39d9e1870182dad036e2df3b2",
+    "test_pilot_adapter.py": "e9328c583b55f609947235f732bb519bda97c9780ffd3bbc2a18f5965137a073",
+    "test_pilot_data.py": "d7c9c70d1138921eaee0e1063d99aad5b4955399c02a86d0b0b71d5419b96ba4",
+    "test_pilot_model.py": "b6ca2675d53c2574562fda98b05c41cfc82962650402abe202cd291633adec16",
+    "test_recipe_auxiliary.py": "bcfcde4b8ef137bcda0325b4ef77cd8347345ef2136f3e0447781bc7abb76dde",
+    "test_recipe_gate.py": "35c0821f7b2091a1f591252fe6b3bffa7d0eeb56704711719e2f1ca48fe0819a",
+    "test_recipe_ground.py": "7a1e7156798fce3eecb266d6e5f0715ba7b2cffcc36054cf3bb7ab3d7c4638e6",
+    "test_recipe_training.py": "5654c982d53b7a1636ae396a0f1c77839e17c08d53da0373200be05f92e63a0c",
+    "test_train_pilot.py": "ac855623b9ed03b3d194d1152bff5a159c46f2cd96d3cf0ed31914f724d2b064",
+    "train_pilot.py": "105b9298b0708dd3d6fce9fc2105824155be0b909f7956e62274347f531de57c",
+    "xwbc_contract.py": "dfd4a20c15cb599470b079e4204e8f763b8ff3905378646e242a6d0cf5b75944",
+    "candidate_config.json": "3bdab08abf3dc068c7bed2e4f4585763b4ae29388d17df76bdb50a54e790df13"
+  },
+  "sources_unchanged_during_tests": true,
+  "data_scope": "CPU synthetic fixtures and independently audited original source/config. No current remote data, CUDA or actual old checkpoint loaded.",
+  "synthetic_optimizer_steps": 3,
+  "actual_pilot_training": false,
+  "real_checkpoint_loaded": false,
+  "actual_gpu_batch_verified": false,
+  "new_trained_checkpoint": false,
+  "training_recipe_gate": {
+    "train_allowed": false,
+    "implementation_revision": "restored_single_frame_recipe_v2",
+    "reference_run": "L_M20k_0903",
+    "reference_config_sha256": "0e61ed5b012420d5fa186bc09537e9cac32ed14fa4533182c6d44805f5e7ee58",
+    "source": "hash-matched actual run config, not CLI defaults",
+    "verified_active_reference_flags": {
+      "w_contrast": 0.5,
+      "tau": 0.1,
+      "contrast_sample": 6,
+      "reenc_consistency": 1.0,
+      "reenc_prob": 0.3,
+      "judge_mode": "grad",
+      "n_judges": 16,
+      "w_judge": 0.1,
+      "w_pen": 200.0,
+      "w_cgeo": 1.0,
+      "slip_pairs": true,
+      "w_slip_w": 2.0,
+      "w_hpair": 0.1
+    },
+    "blockers": [
+      "No matching real CUDA recipe-validation run; offline tests do not authorize data readiness"
+    ],
+    "temporal_exceptions": [
+      "World-slip and hpair disabled: sparse rows lack complete adjacent world-root/ground/time supervision."
+    ],
+    "online_requirements": [
+      "Hash-check actual original run config/checkpoint and pinned text vectors",
+      "Validate completed XWBC pairing, source-revalidated sole/contact/ground seal and all-frame FK",
+      "Validate UniMate payload and valid-only modality masks",
+      "Run all restored losses forward/backward on real CUDA payloads without optimizer updates",
+      "Persist current verified 16-body auxiliary-judge label map; head reinitialized, old labels not guessed"
+    ],
+    "no_config_override": true,
+    "does_not_require_new_user_permission": true
+  },
+  "remaining_online": [
+    "download and extraction process identity/ownership/exit verification",
+    "completed16body XWBC receipt, source static seal and actual sole/contact/ground backfill",
+    "all218 UniMate native motion FK audit and support/quarantine counts",
+    "pinned real reference/Qwen/SigLIP load",
+    "full restored8direction+aux real CUDA finite backward/batch128 capacity/time profile and hash-bound recipe-validation receipt",
+    "bounded training to checkpoint + heldout reference/initial/final evaluation",
+    "paired actual motion visual inspection",
+    "pending remote artifact archival"
+  ],
+  "targeted_followup": {
+    "changed_files": [
+      "recipe_ground.py",
+      "test_recipe_ground.py"
+    ],
+    "suites_rerun": [
+      "test_pilot_data.py",
+      "test_recipe_ground.py",
+      "test_train_pilot.py",
+      "test_recipe_training.py",
+      "test_recipe_gate.py"
+    ],
+    "seconds": 16.555413417052478,
+    "reason": "Final strict ground-geometry checks and direct old-source numeric/gradient parity test added after the initial full suite."
+  }
+}

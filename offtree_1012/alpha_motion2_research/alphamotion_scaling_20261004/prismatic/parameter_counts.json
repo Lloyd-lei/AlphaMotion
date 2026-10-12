@@ -1,0 +1,71 @@
+{
+  "S": {
+    "d_model": 128,
+    "n_heads": 8,
+    "layers": 6,
+    "A": {
+      "total": 6701777,
+      "main_excluding_judge": 6567365,
+      "judge_auxiliary": 134412,
+      "trainable_total": 6701777,
+      "trainable_judge": 134412,
+      "prismatic_shared_parameters": 18561
+    },
+    "B": {
+      "total": 6951649,
+      "main_excluding_judge": 6817237,
+      "judge_auxiliary": 134412,
+      "trainable_total": 6951649,
+      "trainable_judge": 134412,
+      "surface_added": 249872,
+      "shared_skeleton_main": 6567365,
+      "prismatic_shared_parameters": 18561
+    }
+  },
+  "M": {
+    "d_model": 256,
+    "n_heads": 8,
+    "layers": 6,
+    "A": {
+      "total": 26078801,
+      "main_excluding_judge": 25813317,
+      "judge_auxiliary": 265484,
+      "trainable_total": 26078801,
+      "trainable_judge": 265484,
+      "prismatic_shared_parameters": 69889
+    },
+    "B": {
+      "total": 26807777,
+      "main_excluding_judge": 26542293,
+      "judge_auxiliary": 265484,
+      "trainable_total": 26807777,
+      "trainable_judge": 265484,
+      "surface_added": 728976,
+      "shared_skeleton_main": 25813317,
+      "prismatic_shared_parameters": 69889
+    }
+  },
+  "L": {
+    "d_model": 384,
+    "n_heads": 8,
+    "layers": 8,
+    "A": {
+      "total": 75885617,
+      "main_excluding_judge": 75489061,
+      "judge_auxiliary": 396556,
+      "trainable_total": 75885617,
+      "trainable_judge": 396556,
+      "prismatic_shared_parameters": 153985
+    },
+    "B": {
+      "total": 77323073,
+      "main_excluding_judge": 76926517,
+      "judge_auxiliary": 396556,
+      "trainable_total": 77323073,
+      "trainable_judge": 396556,
+      "surface_added": 1437456,
+      "shared_skeleton_main": 75489061,
+      "prismatic_shared_parameters": 153985
+    }
+  }
+}

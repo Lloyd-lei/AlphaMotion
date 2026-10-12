@@ -1,0 +1,1314 @@
+{
+  "source_commit": "692bf7704ebc0d4e2b12678c1bc0c011d426fe0b",
+  "audit_type": "read-only metadata, tensor shape, spec and source audit; no data extraction or training",
+  "cache_metadata": [
+    {
+      "path": "/var/tmp/alphamotion/topo_exp/cache_lafan_v3",
+      "manifest_sha256": "6eccf6a013d4e3d3e263468520d1b162889a282fd32af6115740d3d783583c29",
+      "sequences_sha256": "f9e38be48f8aff361ec41267f20f53f67fe3a231d639b806d07a1e3f578b6573",
+      "rows": 496593,
+      "clips": 77
+    },
+    {
+      "path": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv_tfix",
+      "manifest_sha256": "f700308564757becbcd63ad1a2ef7b2c469b5cd7fa0a29b861e6b60a4681fb5e",
+      "sequences_sha256": "be8477a1ebf2d8e1cab4cde3c534e990af16330b441f0c9ae5be0ce5ba17f53d",
+      "rows": 4733703,
+      "clips": 13281
+    },
+    {
+      "path": "/var/tmp/alphamotion/topo_exp/cache_amass_heldout",
+      "manifest_sha256": "cf4e3080a9af2bdca9e2a6ba35365c36e58a07ae973fc5e9b81bd60e98f897ed",
+      "sequences_sha256": "f3c5774042a25be5059712955eaca685518eeb03f6cddc0d14b7bb2fe805e133",
+      "rows": 193140,
+      "clips": 600
+    }
+  ],
+  "source_pairing_evidence": "One shared sequences.json gives clip names and row intervals; prep code aligns each clip to the min length across embodiments then concatenates shared sorted clip chunks. This is provenance/row alignment evidence, not a frame-level quality validation.",
+  "skeletons": [
+    {
+      "body": "human_smpl",
+      "J": 22,
+      "joint_names": [
+        "Pelvis",
+        "L_Hip",
+        "R_Hip",
+        "Torso",
+        "L_Knee",
+        "R_Knee",
+        "Spine",
+        "L_Ankle",
+        "R_Ankle",
+        "Chest",
+        "L_Toe",
+        "R_Toe",
+        "Neck",
+        "L_Thorax",
+        "R_Thorax",
+        "Head",
+        "L_Shoulder",
+        "R_Shoulder",
+        "L_Elbow",
+        "R_Elbow",
+        "L_Wrist",
+        "R_Wrist"
+      ],
+      "tree_leaf_indices": [
+        10,
+        11,
+        15,
+        20,
+        21
+      ],
+      "hand_wrist_named_indices": [
+        20,
+        21
+      ],
+      "training_excluded_in_reference": false,
+      "lafan_spec_path": "/var/tmp/alphamotion/topo_exp/cache_lafan_v3/human_smpl_spec.npz",
+      "lafan_spec_sha256": "e8ba20509dd98e24b2972ed1618746bfcb594ce409780ac6b4dfde48f228b128",
+      "amass_spec_path": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv_tfix/human_smpl_spec.npz",
+      "amass_spec_sha256": "e8ba20509dd98e24b2972ed1618746bfcb594ce409780ac6b4dfde48f228b128",
+      "spec_parents_equal": true,
+      "spec_joint_names_equal": true,
+      "spec_rest_offsets_max_abs_difference": 0.0,
+      "paired_shapes": {
+        "cache_lafan_v3": [
+          496593,
+          22,
+          6
+        ],
+        "cache_amass_lconv_tfix": [
+          4733703,
+          22,
+          6
+        ]
+      },
+      "spec_nonroot_offsets_max_abs_difference": 0.0
+    },
+    {
+      "body": "booster_k1",
+      "J": 21,
+      "joint_names": [
+        "Trunk",
+        "Head_1",
+        "Head_2",
+        "Left_Arm_1",
+        "Left_Arm_2",
+        "Left_Arm_3",
+        "left_hand_link",
+        "Right_Arm_1",
+        "Right_Arm_2",
+        "Right_Arm_3",
+        "right_hand_link",
+        "Left_Hip_Pitch",
+        "Left_Hip_Roll",
+        "Left_Hip_Yaw",
+        "Left_Shank",
+        "Left_Ankle_Cross",
+        "Right_Hip_Pitch",
+        "Right_Hip_Roll",
+        "Right_Hip_Yaw",
+        "Right_Shank",
+        "Right_Ankle_Cross"
+      ],
+      "tree_leaf_indices": [
+        2,
+        6,
+        10,
+        15,
+        20
+      ],
+      "hand_wrist_named_indices": [
+        6,
+        10
+      ],
+      "training_excluded_in_reference": false,
+      "lafan_spec_path": "/var/tmp/alphamotion/topo_exp/cache_lafan_v3/booster_k1_spec.npz",
+      "lafan_spec_sha256": "24218ad7224996a852e716b9cc3296b71772c5606cbbfd7a6c209dfd8dd6b12c",
+      "amass_spec_path": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv_tfix/booster_k1_spec.npz",
+      "amass_spec_sha256": "7d220e30de932915cf7c495618433a5a4c849fe0750932ffa2186fe90ed6dae3",
+      "spec_parents_equal": true,
+      "spec_joint_names_equal": true,
+      "spec_rest_offsets_max_abs_difference": 20.45349884033203,
+      "paired_shapes": {
+        "cache_lafan_v3": [
+          496593,
+          21,
+          6
+        ],
+        "cache_amass_lconv_tfix": [
+          4733703,
+          21,
+          6
+        ]
+      },
+      "spec_nonroot_offsets_max_abs_difference": 0.0
+    },
+    {
+      "body": "booster_t1",
+      "J": 24,
+      "joint_names": [
+        "Trunk",
+        "H1",
+        "H2",
+        "AL1",
+        "AL2",
+        "AL3",
+        "left_hand_link",
+        "AR1",
+        "AR2",
+        "AR3",
+        "right_hand_link",
+        "Waist",
+        "Hip_Pitch_Left",
+        "Hip_Roll_Left",
+        "Hip_Yaw_Left",
+        "Shank_Left",
+        "Ankle_Cross_Left",
+        "left_foot_link",
+        "Hip_Pitch_Right",
+        "Hip_Roll_Right",
+        "Hip_Yaw_Right",
+        "Shank_Right",
+        "Ankle_Cross_Right",
+        "right_foot_link"
+      ],
+      "tree_leaf_indices": [
+        2,
+        6,
+        10,
+        17,
+        23
+      ],
+      "hand_wrist_named_indices": [
+        6,
+        10
+      ],
+      "training_excluded_in_reference": false,
+      "lafan_spec_path": "/var/tmp/alphamotion/topo_exp/cache_lafan_v3/booster_t1_spec.npz",
+      "lafan_spec_sha256": "239472183ef2e9a02ab58355da5d79fb187c6aa8b9c83f0a6ace5edb5c8e695e",
+      "amass_spec_path": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv_tfix/booster_t1_spec.npz",
+      "amass_spec_sha256": "28dff9b88b08fda4a61a8355a2effcc7e21392193fab1a20ed5df8d18cbb3b2e",
+      "spec_parents_equal": true,
+      "spec_joint_names_equal": true,
+      "spec_rest_offsets_max_abs_difference": 91.51460266113281,
+      "paired_shapes": {
+        "cache_lafan_v3": [
+          496593,
+          24,
+          6
+        ],
+        "cache_amass_lconv_tfix": [
+          4733703,
+          24,
+          6
+        ]
+      },
+      "spec_nonroot_offsets_max_abs_difference": 0.0
+    },
+    {
+      "body": "booster_t1_29dof",
+      "J": 32,
+      "joint_names": [
+        "Trunk",
+        "H1",
+        "H2",
+        "AL1",
+        "AL2",
+        "AL3",
+        "AL4",
+        "AL5",
+        "AL6",
+        "left_hand_link",
+        "AR1",
+        "AR2",
+        "AR3",
+        "AR4",
+        "AR5",
+        "AR6",
+        "right_hand_link",
+        "Waist",
+        "Hip_Pitch_Left",
+        "Hip_Roll_Left",
+        "Hip_Yaw_Left",
+        "Shank_Left",
+        "Ankle_Cross_Left",
+        "left_foot_link",
+        "left_toe_link",
+        "Hip_Pitch_Right",
+        "Hip_Roll_Right",
+        "Hip_Yaw_Right",
+        "Shank_Right",
+        "Ankle_Cross_Right",
+        "right_foot_link",
+        "right_toe_link"
+      ],
+      "tree_leaf_indices": [
+        2,
+        9,
+        16,
+        24,
+        31
+      ],
+      "hand_wrist_named_indices": [
+        9,
+        16
+      ],
+      "training_excluded_in_reference": false,
+      "lafan_spec_path": "/var/tmp/alphamotion/topo_exp/cache_lafan_v3/booster_t1_29dof_spec.npz",
+      "lafan_spec_sha256": "8f3719f9f81571b98cf53c5f52cfb3c098235164a71c4359bd802d61e86e6f51",
+      "amass_spec_path": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv_tfix/booster_t1_29dof_spec.npz",
+      "amass_spec_sha256": "35244ee79f769382e0cc89991c22ddeef18247adbf1c3291226bae1eaa04054e",
+      "spec_parents_equal": true,
+      "spec_joint_names_equal": true,
+      "spec_rest_offsets_max_abs_difference": 8.146881103515625,
+      "paired_shapes": {
+        "cache_lafan_v3": [
+          496593,
+          32,
+          6
+        ],
+        "cache_amass_lconv_tfix": [
+          4733703,
+          32,
+          6
+        ]
+      },
+      "spec_nonroot_offsets_max_abs_difference": 0.0
+    },
+    {
+      "body": "engineai_pm01",
+      "J": 25,
+      "joint_names": [
+        "LINK_BASE",
+        "LINK_HIP_PITCH_L",
+        "LINK_HIP_ROLL_L",
+        "LINK_HIP_YAW_L",
+        "LINK_KNEE_PITCH_L",
+        "LINK_ANKLE_PITCH_L",
+        "LINK_ANKLE_ROLL_L",
+        "LINK_HIP_PITCH_R",
+        "LINK_HIP_ROLL_R",
+        "LINK_HIP_YAW_R",
+        "LINK_KNEE_PITCH_R",
+        "LINK_ANKLE_PITCH_R",
+        "LINK_ANKLE_ROLL_R",
+        "LINK_TORSO_YAW",
+        "LINK_SHOULDER_PITCH_L",
+        "LINK_SHOULDER_ROLL_L",
+        "LINK_SHOULDER_YAW_L",
+        "LINK_ELBOW_PITCH_L",
+        "LINK_ELBOW_YAW_L",
+        "LINK_SHOULDER_PITCH_R",
+        "LINK_SHOULDER_ROLL_R",
+        "LINK_SHOULDER_YAW_R",
+        "LINK_ELBOW_PITCH_R",
+        "LINK_ELBOW_YAW_R",
+        "LINK_HEAD_YAW"
+      ],
+      "tree_leaf_indices": [
+        6,
+        12,
+        18,
+        23,
+        24
+      ],
+      "hand_wrist_named_indices": [],
+      "training_excluded_in_reference": true,
+      "lafan_spec_path": "/var/tmp/alphamotion/topo_exp/cache_lafan_v3/engineai_pm01_spec.npz",
+      "lafan_spec_sha256": "9c5ae0b38ba1dd8591ac3448de3dcc88109aeb951821e711e4b5903ccf2cf17a",
+      "amass_spec_path": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv_tfix/engineai_pm01_spec.npz",
+      "amass_spec_sha256": "178e796b00d31d4abb2eb97828fb2e81fd73972e3cc9606b96096e0070549b99",
+      "spec_parents_equal": true,
+      "spec_joint_names_equal": true,
+      "spec_rest_offsets_max_abs_difference": 10.725593566894531,
+      "paired_shapes": {
+        "cache_lafan_v3": [
+          496593,
+          25,
+          6
+        ],
+        "cache_amass_lconv_tfix": [
+          4733703,
+          25,
+          6
+        ]
+      },
+      "spec_nonroot_offsets_max_abs_difference": 0.0
+    },
+    {
+      "body": "fourier_gr3",
+      "J": 32,
+      "joint_names": [
+        "base_link",
+        "waist_yaw_link",
+        "waist_roll_link",
+        "torso_link",
+        "head_yaw_link",
+        "head_pitch_link",
+        "camera_link",
+        "right_upper_arm_pitch_link",
+        "right_upper_arm_roll_link",
+        "right_upper_arm_yaw_link",
+        "right_lower_arm_pitch_link",
+        "right_hand_yaw_link",
+        "right_hand_pitch_link",
+        "right_end_effector_link",
+        "left_upper_arm_pitch_link",
+        "left_upper_arm_roll_link",
+        "left_upper_arm_yaw_link",
+        "left_lower_arm_pitch_link",
+        "left_hand_yaw_link",
+        "left_hand_pitch_link",
+        "left_end_effector_link",
+        "right_thigh_pitch_link",
+        "right_thigh_roll_link",
+        "right_thigh_yaw_link",
+        "right_shank_pitch_link",
+        "right_foot_pitch_link",
+        "left_thigh_pitch_link",
+        "left_thigh_roll_link",
+        "left_thigh_yaw_link",
+        "left_shank_pitch_link",
+        "left_foot_pitch_link",
+        "imu_link"
+      ],
+      "tree_leaf_indices": [
+        6,
+        13,
+        20,
+        25,
+        30,
+        31
+      ],
+      "hand_wrist_named_indices": [
+        11,
+        12,
+        13,
+        18,
+        19,
+        20
+      ],
+      "training_excluded_in_reference": false,
+      "lafan_spec_path": "/var/tmp/alphamotion/topo_exp/cache_lafan_v3/fourier_gr3_spec.npz",
+      "lafan_spec_sha256": "1aa66ef1c03c807f753610a4dc583bcfa4a4470d9016d526a99514476ed54e6c",
+      "amass_spec_path": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv_tfix/fourier_gr3_spec.npz",
+      "amass_spec_sha256": "43639b37889b82f336612688cfb39b9676e24f65dfaba4d093fca61c2b7e9a11",
+      "spec_parents_equal": true,
+      "spec_joint_names_equal": true,
+      "spec_rest_offsets_max_abs_difference": 22.859283447265625,
+      "paired_shapes": {
+        "cache_lafan_v3": [
+          496593,
+          32,
+          6
+        ],
+        "cache_amass_lconv_tfix": [
+          4733703,
+          32,
+          6
+        ]
+      },
+      "spec_nonroot_offsets_max_abs_difference": 0.0
+    },
+    {
+      "body": "fourier_n1",
+      "J": 27,
+      "joint_names": [
+        "base_link",
+        "left_thigh_pitch_link",
+        "left_thigh_roll_link",
+        "left_thigh_yaw_link",
+        "left_shank_pitch_link",
+        "left_foot_roll_link",
+        "right_thigh_pitch_link",
+        "right_thigh_roll_link",
+        "right_thigh_yaw_link",
+        "right_shank_pitch_link",
+        "right_foot_roll_link",
+        "imu_link",
+        "waist_yaw_link",
+        "torso_link",
+        "camera_link",
+        "left_upper_arm_pitch_link",
+        "left_upper_arm_roll_link",
+        "left_upper_arm_yaw_link",
+        "left_lower_arm_pitch_link",
+        "left_hand_yaw_link",
+        "left_end_effector_link",
+        "right_upper_arm_pitch_link",
+        "right_upper_arm_roll_link",
+        "right_upper_arm_yaw_link",
+        "right_lower_arm_pitch_link",
+        "right_hand_yaw_link",
+        "right_end_effector_link"
+      ],
+      "tree_leaf_indices": [
+        5,
+        10,
+        11,
+        14,
+        20,
+        26
+      ],
+      "hand_wrist_named_indices": [
+        19,
+        20,
+        25,
+        26
+      ],
+      "training_excluded_in_reference": false,
+      "lafan_spec_path": "/var/tmp/alphamotion/topo_exp/cache_lafan_v3/fourier_n1_spec.npz",
+      "lafan_spec_sha256": "8234f03e686c7feea542b0ac69bb96a7c4899e37fd3bed59ee3e52433c9666f6",
+      "amass_spec_path": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv_tfix/fourier_n1_spec.npz",
+      "amass_spec_sha256": "41dd5e45077af49c221d1b05e3a4c7c643d5fee0a55c5e95568a888391e3518d",
+      "spec_parents_equal": true,
+      "spec_joint_names_equal": true,
+      "spec_rest_offsets_max_abs_difference": 0.0533905029296875,
+      "paired_shapes": {
+        "cache_lafan_v3": [
+          496593,
+          27,
+          6
+        ],
+        "cache_amass_lconv_tfix": [
+          4733703,
+          27,
+          6
+        ]
+      },
+      "spec_nonroot_offsets_max_abs_difference": 0.0
+    },
+    {
+      "body": "hightorque_hi",
+      "J": 26,
+      "joint_names": [
+        "base_link",
+        "waist_link",
+        "l_hip_pitch_link",
+        "l_hip_roll_link",
+        "l_thigh_link",
+        "l_calf_link",
+        "l_ankle_pitch_link",
+        "l_ankle_roll_link",
+        "r_hip_pitch_link",
+        "r_hip_roll_link",
+        "r_thigh_link",
+        "r_calf_link",
+        "r_ankle_pitch_link",
+        "r_ankle_roll_link",
+        "l_shoulder_pitch_link",
+        "l_shoulder_roll_link",
+        "l_upper_arm_link",
+        "l_elbow_link",
+        "l_wrist_link",
+        "r_shoulder_pitch_link",
+        "r_shoulder_roll_link",
+        "r_upper_arm_link",
+        "r_elbow_link",
+        "r_wrist_link",
+        "head_yaw_link",
+        "head_pitch_link"
+      ],
+      "tree_leaf_indices": [
+        7,
+        13,
+        18,
+        23,
+        25
+      ],
+      "hand_wrist_named_indices": [
+        18,
+        23
+      ],
+      "training_excluded_in_reference": false,
+      "lafan_spec_path": "/var/tmp/alphamotion/topo_exp/cache_lafan_v3/hightorque_hi_spec.npz",
+      "lafan_spec_sha256": "f5b7eb4b538cf91aac3dd2ddb52efb7fb671ec793a10a9683c8b60c0af3d7eed",
+      "amass_spec_path": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv_tfix/hightorque_hi_spec.npz",
+      "amass_spec_sha256": "d3e20463c2f5e575dc615561700e7eb1f1633fad15212dea36655acf14a4a262",
+      "spec_parents_equal": true,
+      "spec_joint_names_equal": true,
+      "spec_rest_offsets_max_abs_difference": 0.00499725341796875,
+      "paired_shapes": {
+        "cache_lafan_v3": [
+          496593,
+          26,
+          6
+        ],
+        "cache_amass_lconv_tfix": [
+          4733703,
+          26,
+          6
+        ]
+      },
+      "spec_nonroot_offsets_max_abs_difference": 0.0
+    },
+    {
+      "body": "kuavo_s45",
+      "J": 20,
+      "joint_names": [
+        "base_link",
+        "leg_l1_link",
+        "leg_l3_link",
+        "leg_l4_link",
+        "leg_l5_link",
+        "leg_r1_link",
+        "leg_r3_link",
+        "leg_r4_link",
+        "leg_r5_link",
+        "zarm_l1_link",
+        "zarm_l4_link",
+        "zarm_l5_link",
+        "zarm_l6_link",
+        "zarm_l7_link",
+        "zarm_r1_link",
+        "zarm_r4_link",
+        "zarm_r5_link",
+        "zarm_r6_link",
+        "zarm_r7_link",
+        "zhead_1_link"
+      ],
+      "tree_leaf_indices": [
+        4,
+        8,
+        13,
+        18,
+        19
+      ],
+      "hand_wrist_named_indices": [],
+      "training_excluded_in_reference": false,
+      "lafan_spec_path": "/var/tmp/alphamotion/topo_exp/cache_lafan_v3/kuavo_s45_spec.npz",
+      "lafan_spec_sha256": "85fcf8161c14b8a246737933e09fe24cce22c805e4819d6f0895446b564a3035",
+      "amass_spec_path": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv_tfix/kuavo_s45_spec.npz",
+      "amass_spec_sha256": "67710b95ba0ce9688e89d89e1fce58a9aa50d7a3b3aa0e76471c9926160150f1",
+      "spec_parents_equal": true,
+      "spec_joint_names_equal": true,
+      "spec_rest_offsets_max_abs_difference": 8.947059631347656,
+      "paired_shapes": {
+        "cache_lafan_v3": [
+          496593,
+          20,
+          6
+        ],
+        "cache_amass_lconv_tfix": [
+          4733703,
+          20,
+          6
+        ]
+      },
+      "spec_nonroot_offsets_max_abs_difference": 0.0
+    },
+    {
+      "body": "pal_talos",
+      "J": 33,
+      "joint_names": [
+        "body00",
+        "body01",
+        "body02",
+        "body03",
+        "body04",
+        "body05",
+        "body06",
+        "body07",
+        "body08",
+        "body09",
+        "body10",
+        "body11",
+        "body12",
+        "body13",
+        "body14",
+        "body15",
+        "body16",
+        "body17",
+        "body18",
+        "body19",
+        "body20",
+        "body21",
+        "body22",
+        "body23",
+        "body24",
+        "body25",
+        "body26",
+        "body27",
+        "body28",
+        "body29",
+        "body30",
+        "body31",
+        "body32"
+      ],
+      "tree_leaf_indices": [
+        16,
+        21,
+        22,
+        31,
+        32
+      ],
+      "hand_wrist_named_indices": [],
+      "training_excluded_in_reference": true,
+      "lafan_spec_path": "/var/tmp/alphamotion/topo_exp/cache_lafan_v3/pal_talos_spec.npz",
+      "lafan_spec_sha256": "9f4fa98106bd731851b6b84e1c2425fd695cf29d7046503088537a003340bf8e",
+      "amass_spec_path": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv_tfix/pal_talos_spec.npz",
+      "amass_spec_sha256": "0f9db300afbe60e4db962737b818ab40ca6c220ca7f76250bd3674c3d6a10961",
+      "spec_parents_equal": true,
+      "spec_joint_names_equal": true,
+      "spec_rest_offsets_max_abs_difference": 5.694061279296875,
+      "paired_shapes": {
+        "cache_lafan_v3": [
+          496593,
+          33,
+          6
+        ],
+        "cache_amass_lconv_tfix": [
+          4733703,
+          33,
+          6
+        ]
+      },
+      "spec_nonroot_offsets_max_abs_difference": 2.828647120622918e-05
+    },
+    {
+      "body": "pnd_adam_lite",
+      "J": 24,
+      "joint_names": [
+        "pelvis",
+        "hipPitchLeft",
+        "hipRollLeft",
+        "thighLeft",
+        "shinLeft",
+        "anklePitchLeft",
+        "hipPitchRight",
+        "hipRollRight",
+        "thighRight",
+        "shinRight",
+        "anklePitchRight",
+        "waistRoll",
+        "waistPitch",
+        "torso",
+        "shoulderPitchLeft",
+        "shoulderRollLeft",
+        "shoulderYawLeft",
+        "elbowLeft",
+        "wristYawLeft",
+        "shoulderPitchRight",
+        "shoulderRollRight",
+        "shoulderYawRight",
+        "elbowRight",
+        "wristYawRight"
+      ],
+      "tree_leaf_indices": [
+        5,
+        10,
+        18,
+        23
+      ],
+      "hand_wrist_named_indices": [
+        18,
+        23
+      ],
+      "training_excluded_in_reference": false,
+      "lafan_spec_path": "/var/tmp/alphamotion/topo_exp/cache_lafan_v3/pnd_adam_lite_spec.npz",
+      "lafan_spec_sha256": "4779fc633d7fac17c9ab7a3afc499b99fe7f37979bc3e0dc0cd20ccff475924b",
+      "amass_spec_path": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv_tfix/pnd_adam_lite_spec.npz",
+      "amass_spec_sha256": "eab6c6d74fdbab1c67459f7b86a9f31cddf9b42c6fcba5de51c381d32a4bfb2b",
+      "spec_parents_equal": true,
+      "spec_joint_names_equal": true,
+      "spec_rest_offsets_max_abs_difference": 9.433609008789062,
+      "paired_shapes": {
+        "cache_lafan_v3": [
+          496593,
+          24,
+          6
+        ],
+        "cache_amass_lconv_tfix": [
+          4733703,
+          24,
+          6
+        ]
+      },
+      "spec_nonroot_offsets_max_abs_difference": 0.0
+    },
+    {
+      "body": "tienkung",
+      "J": 22,
+      "joint_names": [
+        "Base_link",
+        "hip_roll_l_link",
+        "hip_pitch_l_link",
+        "hip_yaw_l_link",
+        "knee_pitch_l_link",
+        "ankle_pitch_l_link",
+        "hip_roll_r_link",
+        "hip_pitch_r_link",
+        "hip_yaw_r_link",
+        "knee_pitch_r_link",
+        "ankle_pitch_r_link",
+        "shoulder_pitch_l_link",
+        "shoulder_roll_l_link",
+        "shoulder_yaw_l_link",
+        "elbow_pitch_l_link",
+        "left_hand",
+        "shoulder_pitch_r_link",
+        "shoulder_roll_r_link",
+        "shoulder_yaw_r_link",
+        "elbow_pitch_r_link",
+        "right_hand",
+        "head"
+      ],
+      "tree_leaf_indices": [
+        5,
+        10,
+        15,
+        20,
+        21
+      ],
+      "hand_wrist_named_indices": [
+        15,
+        20
+      ],
+      "training_excluded_in_reference": false,
+      "lafan_spec_path": "/var/tmp/alphamotion/topo_exp/cache_lafan_v3/tienkung_spec.npz",
+      "lafan_spec_sha256": "c51220a5e9de3065bd07b2b426f20ae0547ad70d7c1f0aa6a176be7327345fcf",
+      "amass_spec_path": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv_tfix/tienkung_spec.npz",
+      "amass_spec_sha256": "70bf56d6b2f360b3439c62b2ae0d2a98143978f9e26e12bfe8c1939b28b6e32a",
+      "spec_parents_equal": true,
+      "spec_joint_names_equal": true,
+      "spec_rest_offsets_max_abs_difference": 8.967414855957031,
+      "paired_shapes": {
+        "cache_lafan_v3": [
+          496593,
+          22,
+          6
+        ],
+        "cache_amass_lconv_tfix": [
+          4733703,
+          22,
+          6
+        ]
+      },
+      "spec_nonroot_offsets_max_abs_difference": 0.0
+    },
+    {
+      "body": "unitree_g1_23dof",
+      "J": 36,
+      "joint_names": [
+        "pelvis",
+        "left_hip_pitch_link",
+        "left_hip_roll_link",
+        "left_hip_yaw_link",
+        "left_knee_link",
+        "left_ankle_pitch_link",
+        "left_ankle_roll_link",
+        "left_toe_link",
+        "right_hip_pitch_link",
+        "right_hip_roll_link",
+        "right_hip_yaw_link",
+        "right_knee_link",
+        "right_ankle_pitch_link",
+        "right_ankle_roll_link",
+        "right_toe_link",
+        "waist_yaw_link",
+        "waist_roll_link",
+        "head_link",
+        "head_mocap",
+        "imu_in_torso",
+        "left_shoulder_pitch_link",
+        "left_shoulder_roll_link",
+        "left_shoulder_yaw_link",
+        "left_elbow_link",
+        "left_wrist_roll_link",
+        "left_wrist_pitch_link",
+        "left_wrist_yaw_link",
+        "left_rubber_hand",
+        "right_shoulder_pitch_link",
+        "right_shoulder_roll_link",
+        "right_shoulder_yaw_link",
+        "right_elbow_link",
+        "right_wrist_roll_link",
+        "right_wrist_pitch_link",
+        "right_wrist_yaw_link",
+        "right_rubber_hand"
+      ],
+      "tree_leaf_indices": [
+        7,
+        14,
+        17,
+        18,
+        19,
+        27,
+        35
+      ],
+      "hand_wrist_named_indices": [
+        24,
+        25,
+        26,
+        27,
+        32,
+        33,
+        34,
+        35
+      ],
+      "training_excluded_in_reference": false,
+      "lafan_spec_path": "/var/tmp/alphamotion/topo_exp/cache_lafan_v3/unitree_g1_23dof_spec.npz",
+      "lafan_spec_sha256": "d531cfe47ee5c648220768a0368f0ff142e36f04ed9e7caac42782207f99c3be",
+      "amass_spec_path": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv_tfix/unitree_g1_23dof_spec.npz",
+      "amass_spec_sha256": "aadebf0cb5c3bb474a6f2db6773daf9f74eb6e177928374ed5fcd0f30cc8a987",
+      "spec_parents_equal": true,
+      "spec_joint_names_equal": true,
+      "spec_rest_offsets_max_abs_difference": 0.07271575927734375,
+      "paired_shapes": {
+        "cache_lafan_v3": [
+          496593,
+          36,
+          6
+        ],
+        "cache_amass_lconv_tfix": [
+          4733703,
+          36,
+          6
+        ]
+      },
+      "spec_nonroot_offsets_max_abs_difference": 0.0
+    },
+    {
+      "body": "unitree_g1_29dof",
+      "J": 36,
+      "joint_names": [
+        "pelvis",
+        "left_hip_pitch_link",
+        "left_hip_roll_link",
+        "left_hip_yaw_link",
+        "left_knee_link",
+        "left_ankle_pitch_link",
+        "left_ankle_roll_link",
+        "left_toe_link",
+        "right_hip_pitch_link",
+        "right_hip_roll_link",
+        "right_hip_yaw_link",
+        "right_knee_link",
+        "right_ankle_pitch_link",
+        "right_ankle_roll_link",
+        "right_toe_link",
+        "waist_yaw_link",
+        "waist_roll_link",
+        "head_link",
+        "head_mocap",
+        "imu_in_torso",
+        "left_shoulder_pitch_link",
+        "left_shoulder_roll_link",
+        "left_shoulder_yaw_link",
+        "left_elbow_link",
+        "left_wrist_roll_link",
+        "left_wrist_pitch_link",
+        "left_wrist_yaw_link",
+        "left_rubber_hand",
+        "right_shoulder_pitch_link",
+        "right_shoulder_roll_link",
+        "right_shoulder_yaw_link",
+        "right_elbow_link",
+        "right_wrist_roll_link",
+        "right_wrist_pitch_link",
+        "right_wrist_yaw_link",
+        "right_rubber_hand"
+      ],
+      "tree_leaf_indices": [
+        7,
+        14,
+        17,
+        18,
+        19,
+        27,
+        35
+      ],
+      "hand_wrist_named_indices": [
+        24,
+        25,
+        26,
+        27,
+        32,
+        33,
+        34,
+        35
+      ],
+      "training_excluded_in_reference": false,
+      "lafan_spec_path": "/var/tmp/alphamotion/topo_exp/cache_lafan_v3/unitree_g1_29dof_spec.npz",
+      "lafan_spec_sha256": "f40f7ec71faa70e5f260e781e97c315e247635846c2455fa5eee54cb5d60005d",
+      "amass_spec_path": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv_tfix/unitree_g1_29dof_spec.npz",
+      "amass_spec_sha256": "9852a3e69e001c4538d28ac30d1bf317408f2918d265c4bd0574d06e2bdf1b9d",
+      "spec_parents_equal": true,
+      "spec_joint_names_equal": true,
+      "spec_rest_offsets_max_abs_difference": 0.07271575927734375,
+      "paired_shapes": {
+        "cache_lafan_v3": [
+          496593,
+          36,
+          6
+        ],
+        "cache_amass_lconv_tfix": [
+          4733703,
+          36,
+          6
+        ]
+      },
+      "spec_nonroot_offsets_max_abs_difference": 0.0
+    },
+    {
+      "body": "unitree_h1",
+      "J": 20,
+      "joint_names": [
+        "pelvis",
+        "left_hip_yaw_link",
+        "left_hip_roll_link",
+        "left_hip_pitch_link",
+        "left_knee_link",
+        "left_ankle_link",
+        "right_hip_yaw_link",
+        "right_hip_roll_link",
+        "right_hip_pitch_link",
+        "right_knee_link",
+        "right_ankle_link",
+        "torso_link",
+        "left_shoulder_pitch_link",
+        "left_shoulder_roll_link",
+        "left_shoulder_yaw_link",
+        "left_elbow_link",
+        "right_shoulder_pitch_link",
+        "right_shoulder_roll_link",
+        "right_shoulder_yaw_link",
+        "right_elbow_link"
+      ],
+      "tree_leaf_indices": [
+        5,
+        10,
+        15,
+        19
+      ],
+      "hand_wrist_named_indices": [],
+      "training_excluded_in_reference": false,
+      "lafan_spec_path": "/var/tmp/alphamotion/topo_exp/cache_lafan_v3/unitree_h1_spec.npz",
+      "lafan_spec_sha256": "5bcbc57bb7455c1991f6a930e609842358a83cd7d2de901d289fb2264aebf14c",
+      "amass_spec_path": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv_tfix/unitree_h1_spec.npz",
+      "amass_spec_sha256": "94583053405f6830f6e8aefd64fad58e79758978fb781731ecac647e9441282b",
+      "spec_parents_equal": true,
+      "spec_joint_names_equal": true,
+      "spec_rest_offsets_max_abs_difference": 5.5800018310546875,
+      "paired_shapes": {
+        "cache_lafan_v3": [
+          496593,
+          20,
+          6
+        ],
+        "cache_amass_lconv_tfix": [
+          4733703,
+          20,
+          6
+        ]
+      },
+      "spec_nonroot_offsets_max_abs_difference": 0.0
+    },
+    {
+      "body": "unitree_h1_2",
+      "J": 26,
+      "joint_names": [
+        "pelvis",
+        "left_hip_yaw_link",
+        "left_hip_pitch_link",
+        "left_knee_link",
+        "left_ankle_pitch_link",
+        "left_ankle_roll_link",
+        "right_hip_yaw_link",
+        "right_hip_pitch_link",
+        "right_knee_link",
+        "right_ankle_pitch_link",
+        "right_ankle_roll_link",
+        "torso_link",
+        "left_shoulder_pitch_link",
+        "left_shoulder_roll_link",
+        "left_shoulder_yaw_link",
+        "left_elbow_link",
+        "left_wrist_roll_link",
+        "left_wrist_pitch_link",
+        "left_wrist_yaw_link",
+        "right_shoulder_pitch_link",
+        "right_shoulder_roll_link",
+        "right_shoulder_yaw_link",
+        "right_elbow_link",
+        "right_wrist_roll_link",
+        "right_wrist_pitch_link",
+        "right_wrist_yaw_link"
+      ],
+      "tree_leaf_indices": [
+        5,
+        10,
+        18,
+        25
+      ],
+      "hand_wrist_named_indices": [
+        16,
+        17,
+        18,
+        23,
+        24,
+        25
+      ],
+      "training_excluded_in_reference": false,
+      "lafan_spec_path": "/var/tmp/alphamotion/topo_exp/cache_lafan_v3/unitree_h1_2_spec.npz",
+      "lafan_spec_sha256": "0b7ab02dc3872ab03b2412f2d8d0211f18f95a1a3b5bb62e730f0414cffb3c8d",
+      "amass_spec_path": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv_tfix/unitree_h1_2_spec.npz",
+      "amass_spec_sha256": "7f2143da612fd9f1ea48dd19517951e0d9b9f78a080f9db4112f39279bd8bd82",
+      "spec_parents_equal": true,
+      "spec_joint_names_equal": true,
+      "spec_rest_offsets_max_abs_difference": 0.18000030517578125,
+      "paired_shapes": {
+        "cache_lafan_v3": [
+          496593,
+          26,
+          6
+        ],
+        "cache_amass_lconv_tfix": [
+          4733703,
+          26,
+          6
+        ]
+      },
+      "spec_nonroot_offsets_max_abs_difference": 0.0
+    },
+    {
+      "body": "unitree_h2",
+      "J": 32,
+      "joint_names": [
+        "body00",
+        "body01",
+        "body02",
+        "body03",
+        "body04",
+        "body05",
+        "body06",
+        "body07",
+        "body08",
+        "body09",
+        "body10",
+        "body11",
+        "body12",
+        "body13",
+        "body14",
+        "body15",
+        "body16",
+        "body17",
+        "body18",
+        "body19",
+        "body20",
+        "body21",
+        "body22",
+        "body23",
+        "body24",
+        "body25",
+        "body26",
+        "body27",
+        "body28",
+        "body29",
+        "body30",
+        "body31"
+      ],
+      "tree_leaf_indices": [
+        17,
+        20,
+        21,
+        30,
+        31
+      ],
+      "hand_wrist_named_indices": [],
+      "training_excluded_in_reference": false,
+      "lafan_spec_path": "/var/tmp/alphamotion/topo_exp/cache_lafan_v3/unitree_h2_spec.npz",
+      "lafan_spec_sha256": "b4f38ea06bd5267312514acde521d47c05965053f00eba6a5f5317929ce40a44",
+      "amass_spec_path": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv_tfix/unitree_h2_spec.npz",
+      "amass_spec_sha256": "285635fd02c07cb305e0d3e5746303326e2106f606c2ee53a1ce0b004d3902f8",
+      "spec_parents_equal": true,
+      "spec_joint_names_equal": true,
+      "spec_rest_offsets_max_abs_difference": 0.35221099853515625,
+      "paired_shapes": {
+        "cache_lafan_v3": [
+          496593,
+          32,
+          6
+        ],
+        "cache_amass_lconv_tfix": [
+          4733703,
+          32,
+          6
+        ]
+      },
+      "spec_nonroot_offsets_max_abs_difference": 1.1444091796875e-05
+    },
+    {
+      "body": "unitree_r1",
+      "J": 38,
+      "joint_names": [
+        "pelvis_link",
+        "left_hip_pitch_link",
+        "left_hip_roll_link",
+        "left_hip_yaw_link",
+        "left_knee_link",
+        "left_ankle_A_link",
+        "left_ankle_A_rod_link",
+        "left_ankle_B_link",
+        "left_ankle_B_rod_link",
+        "left_ankle_pitch_link",
+        "left_ankle_constraint_A_link",
+        "left_ankle_constraint_B_link",
+        "right_hip_pitch_link",
+        "right_hip_roll_link",
+        "right_hip_yaw_link",
+        "right_knee_link",
+        "right_ankle_A_link",
+        "right_ankle_A_rod_link",
+        "right_ankle_B_link",
+        "right_ankle_B_rod_link",
+        "right_ankle_pitch_link",
+        "right_ankle_constraint_A_link",
+        "right_ankle_constraint_B_link",
+        "imu_in_pelvis_link",
+        "waist_roll_link",
+        "waist_yaw_link",
+        "left_shoulder_pitch_link",
+        "left_shoulder_roll_link",
+        "left_shoulder_yaw_link",
+        "left_elbow_link",
+        "left_wrist_roll_link",
+        "right_shoulder_pitch_link",
+        "right_shoulder_roll_link",
+        "right_shoulder_yaw_link",
+        "right_elbow_link",
+        "right_wrist_roll_link",
+        "head_pitch_link",
+        "head_yaw_link"
+      ],
+      "tree_leaf_indices": [
+        6,
+        8,
+        10,
+        11,
+        17,
+        19,
+        21,
+        22,
+        23,
+        30,
+        35,
+        37
+      ],
+      "hand_wrist_named_indices": [
+        30,
+        35
+      ],
+      "training_excluded_in_reference": false,
+      "lafan_spec_path": "/var/tmp/alphamotion/topo_exp/cache_lafan_v3/unitree_r1_spec.npz",
+      "lafan_spec_sha256": "138ddfac6ab2de0582508980226cdd75e0fef55c76dfef71a7934ac6bec80296",
+      "amass_spec_path": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv_tfix/unitree_r1_spec.npz",
+      "amass_spec_sha256": "9751de0a5e8455aa7bdbc4ba1fa6d66d5b90c1e6e72246d599c97d54d520f898",
+      "spec_parents_equal": true,
+      "spec_joint_names_equal": true,
+      "spec_rest_offsets_max_abs_difference": 5.9192047119140625,
+      "paired_shapes": {
+        "cache_lafan_v3": [
+          496593,
+          38,
+          6
+        ],
+        "cache_amass_lconv_tfix": [
+          4733703,
+          38,
+          6
+        ]
+      },
+      "spec_nonroot_offsets_max_abs_difference": 0.0
+    }
+  ],
+  "source_evidence": [
+    {
+      "path": "/home/arenalabs/Desktop/\"be water, robot\"/pose_translator_design/exp_topo/prep_xwbc_cache.py",
+      "sha256": "cd718904b988a962ad777186a1af9c441cebd15c19f9884bffda79a64ca2e18e",
+      "line_start": 440,
+      "line_end": 450,
+      "snippet": "440: \n441:     # ---- 1. per-clip lengths (zip headers only) -> min-truncated row layout ----\n442:     key = {HUMAN_NAME: \"body_pos_w\"}\n443:     lengths = {e: [npz_shape(f\"{EXT}/{src_dir[e]}/{c}.npz\",\n444:                              key.get(e, \"joint_pos\"))[0] for c in clips]\n445:                for e in emb_all}\n446:     Ks = [min(lengths[e][i] for e in emb_all) for i in range(len(clips))]\n447:     spread = [max(lengths[e][i] for e in emb_all) - Ks[i] for i in range(len(clips))]\n448:     n_rows = int(sum(Ks))\n449:     print(f\"[align] rows={n_rows}  max tail spread={max(spread)} frames \"\n450:           f\"(truncated to per-clip min)\", flush=True)"
+    },
+    {
+      "path": "/home/arenalabs/Desktop/\"be water, robot\"/pose_translator_design/exp_topo/prep_xwbc_cache.py",
+      "sha256": "cd718904b988a962ad777186a1af9c441cebd15c19f9884bffda79a64ca2e18e",
+      "line_start": 479,
+      "line_end": 502,
+      "snippet": "479:     for e in emb_all:\n480:         spec = (build_human_spec(REF_CLIP) if e == HUMAN_NAME\n481:                 else build_data_spec(e, REF_CLIP) if e in DATA_TREE\n482:                 else load_robot(e)[2])\n483:         arr = np.concatenate([np.load(chunks[e][c]) for c in sorted(chunks[e])], 0)\n484:         assert arr.shape == (n_rows, spec.J, 6), (e, arr.shape, n_rows, spec.J)\n485:         torch.save(torch.from_numpy(arr), f\"{args.out}/{e}_paired_local6d.pt\")\n486:         PG.save_spec(spec, f\"{args.out}/{e}_spec.npz\")\n487:         stats[e][\"J\"] = spec.J\n488:         print(f\"[{e}] J={spec.J} rows={arr.shape[0]} fk_err={stats[e]['fk_err_cm']:.4f}cm \"\n489:               f\"drift={stats[e]['bone_drift_cm']:.4f}cm nan={stats[e]['nan_frames']}\",\n490:               flush=True)\n491: \n492:     # ---- 3. manifest / sequences / pilot lists ----\n493:     new_seq, start = [], 0\n494:     for (c, K) in clip_kl:\n495:         new_seq.append({\"name\": c, \"start\": start, \"len\": int(K)})\n496:         start += int(K)\n497:     json.dump(new_seq, open(f\"{args.out}/sequences.json\", \"w\"))\n498:     json.dump({\"schema\": 2, \"embodiments\": emb_all, \"rows\": n_rows,\n499:                \"clips\": len(clips), \"mode\": \"fps\", \"fps\": 30.0,\n500:                \"human_name\": HUMAN_NAME, \"src\": EXT,\n501:                \"dataset\": \"TonyZhang1999/xwbc-retarget-data (lafan)\",\n502:                \"excluded\": sorted(EXCLUDE), \"skipped\": skipped},"
+    },
+    {
+      "path": "/home/arenalabs/Desktop/\"be water, robot\"/pose_translator_design/exp_topo/ladder.sh",
+      "sha256": "a2e605f50fe3d0443e3ba8cb48c649180e97604496ce8543747f80073f6bac1c",
+      "line_start": 12,
+      "line_end": 25,
+      "snippet": "12: export AM_EXCLUDE_EMB=${AM_EXCLUDE_EMB:-pal_talos,engineai_pm01}\n13: if [ \"${LADDER_DATA:-full}\" = \"lafan\" ]; then\n14:   CACHE=$T/cache_lafan_v3; EXC=\"\"\n15: else\n16:   CACHE=$T/cache_lafan_v3,$T/cache_amass_lconv_tfix\n17:   EXC=\"--exclude_set $T/cache_amass_heldout/sequences.json\"\n18: fi\n19: STEPS1=${LADDER_STEPS1:-${LADDER_STEPS:-8000}}; STEPS2=${LADDER_STEPS2:-8000}\n20: # FZ5c 血统是两段 (0903 查明): 第一段 = F32 从零 8000 步 (lr 3e-4, 无脚滑/往返/手对, w_rootpos 1);\n21: # 第二段 = FZ5c 8000 步 (lr 1e-4, --init 第一段, 加 slip_pairs/reenc/hpair/slip_w, w_rootpos 3).\n22: # 只换宽深, 其余一字不改. 两段的 config 差异见 runs/F32_lv32_0902 vs FZ5c_*/config.json.\n23: BASE=\"--cache $CACHE $EXC --bs 256 --n_latent 128 --fsq_stages 1 --fsq_levels 32,32,32,32,32,32,32,32,32,32,32,32,32 --mask_prob 0.3 --mask_mix rand:0.25,ee:0.15,root:0.10,sparse:0.25,cask:0.15,cgive:0.10 --w_pos 5 --w_contrast 0.5 --combo_sample 8 --contrast_sample 6 --use_dof --judge_mode grad --w_judge 0.1 --fk_loss --contact_chan --w_pen 200 --w_cgeo 1 --n_latent_p 4 --root_pos --con_dropout 0.3 --reenc_prob 0.3 --eval_every 1000 --train_scope all --log_every 50\"\n24: STAGE1=\"$BASE --steps $STEPS1 --lr 3e-4 --w_rootpos 1\"\n25: STAGE2=\"$BASE --steps $STEPS2 --lr 1e-4 --w_rootpos 3 --slip_pairs --slip_frac 0.5 --reenc_consistency 1.0 --w_slip_w 2 --w_hpair 0.1\""
+    },
+    {
+      "path": "/home/arenalabs/Desktop/\"be water, robot\"/pose_translator_design/exp_topo/model.py",
+      "sha256": "d717c185fcd0eee7b5cb216a8faba4bc89a4485c839e4c0e52c940ea9ccf45e0",
+      "line_start": 213,
+      "line_end": 264,
+      "snippet": "213: class GraphBiasAttention(nn.Module):\n214:     \"\"\"MHA with additive per-head bias from clamped hop distance.\"\"\"\n215:     def __init__(self, d_model, n_heads, max_hop=16):\n216:         super().__init__()\n217:         self.h = n_heads; self.dk = d_model // n_heads\n218:         self.q = nn.Linear(d_model, d_model); self.k = nn.Linear(d_model, d_model)\n219:         self.v = nn.Linear(d_model, d_model); self.o = nn.Linear(d_model, d_model)\n220:         self.hop_emb = nn.Embedding(max_hop + 2, n_heads)  # +1 pad/unreachable bucket\n221:         self.max_hop = max_hop\n222: \n223:     def forward(self, x, hop, key_padding_mask=None):\n224:         B, J, D = x.shape\n225:         q = self.q(x).view(B, J, self.h, self.dk).transpose(1, 2)\n226:         k = self.k(x).view(B, J, self.h, self.dk).transpose(1, 2)\n227:         v = self.v(x).view(B, J, self.h, self.dk).transpose(1, 2)\n228:         att = (q @ k.transpose(-1, -2)) / (self.dk ** 0.5)  # [B,h,J,J]\n229:         hb = hop.clamp(max=self.max_hop + 1)               # [B,J,J]\n230:         bias = self.hop_emb(hb).permute(0, 3, 1, 2)         # [B,h,J,J]\n231:         att = att + bias\n232:         if key_padding_mask is not None:\n233:             att = att.masked_fill(key_padding_mask[:, None, None, :], float(\"-inf\"))\n234:         att = att.softmax(-1)\n235:         out = (att @ v).transpose(1, 2).reshape(B, J, D)\n236:         return self.o(out)\n237: \n238: \n239: class EncBlock(nn.Module):\n240:     def __init__(self, d, h):\n241:         super().__init__()\n242:         self.a = GraphBiasAttention(d, h); self.n1 = nn.LayerNorm(d)\n243:         self.ff = nn.Sequential(nn.Linear(d, 4 * d), nn.GELU(), nn.Linear(4 * d, d))\n244:         self.n2 = nn.LayerNorm(d)\n245: \n246:     def forward(self, x, hop, kpm):\n247:         x = x + self.a(self.n1(x), hop, kpm)\n248:         x = x + self.ff(self.n2(x))\n249:         return x\n250: \n251: \n252: class CrossBlock(nn.Module):\n253:     def __init__(self, d, h):\n254:         super().__init__()\n255:         self.mha = nn.MultiheadAttention(d, h, batch_first=True)\n256:         self.n1 = nn.LayerNorm(d); self.nq = nn.LayerNorm(d)\n257:         self.ff = nn.Sequential(nn.Linear(d, 4 * d), nn.GELU(), nn.Linear(4 * d, d))\n258:         self.n2 = nn.LayerNorm(d)\n259: \n260:     def forward(self, q, kv, key_padding_mask=None):\n261:         a, _ = self.mha(self.nq(q), self.n1(kv), self.n1(kv), key_padding_mask=key_padding_mask)\n262:         q = q + a\n263:         q = q + self.ff(self.n2(q))\n264:         return q"
+    },
+    {
+      "path": "/home/arenalabs/Desktop/\"be water, robot\"/pose_translator_design/exp_topo/dual_common.py",
+      "sha256": "c8f43065efb0a0188796a572d9b549a55f16b83bf4c3a5d4a28f84d5ba0110cd",
+      "line_start": 158,
+      "line_end": 242,
+      "snippet": "158: def load_paired_data(cache, device, max_rows=0, sem_encoder=\"siglip\", pose_device=None):\n159:     \"\"\"Load a paired cache -> per-embodiment dict. Consumes no RNG (see module doc).\n160:     Manifest schema 2 lists N embodiments; legacy manifests imply [soma77, g1_name].\n161:     max_rows > 0 truncates every embodiment to the first max_rows frames — SMOKE TESTS\n162:     ONLY (it changes N and therefore the split); 0 = the real, unchanged path.\n163:     sem_encoder picks the frozen joint-name text encoder (\"siglip\" 768 / \"qwen3\" 1024);\n164:     its disk cache must already exist or the load consumes RNG and breaks the split.\n165:     `cache` may be a comma list of caches with identical embodiment sets — rows are\n166:     concatenated in the listed order (lafan,amass_full for the 0809 arms).\n167:     pose_device: \"gpu\" = legacy resident-on-GPU fp32; \"cpu16\" = PoseStore; None = auto\n168:     (cpu16 once total rows exceed 2.5M, printed loudly).\"\"\"\n169:     import json, numpy as np, gc\n170:     from common import SkeletonSpec\n171:     caches = [c for c in str(cache).split(\",\") if c]\n172:     man = json.load(open(f\"{caches[0]}/manifest.json\"))\n173:     names = man.get(\"embodiments\") or [\"soma77\", man[\"g1_name\"]]\n174:     # 0831 lloyd: pal_talos 的 URDF 有问题(标签侧也测到 h0=15.8cm 全场最高、\n175:     # 16.9% 片段整段零接触), 整个语料层面剔除, 不训练也不当 holdout。\n176:     # 覆盖用 AM_EXCLUDE_EMB=a,b (留空则不排除任何具身)。\n177:     _ex = {x for x in os.environ.get(\"AM_EXCLUDE_EMB\", \"pal_talos\").split(\",\") if x}\n178:     if _ex:\n179:         names = [n for n in names if n not in _ex]\n180:     for c in caches[1:]:\n181:         m2 = json.load(open(f\"{c}/manifest.json\"))\n182:         n2 = m2.get(\"embodiments\") or [\"soma77\", m2[\"g1_name\"]]\n183:         n2 = [n for n in n2 if n not in _ex]          # 0903: 排除表对每个缓存同样生效\n184:         assert set(n2) == set(names), f\"embodiment mismatch: {c}\"\n185:     specs = {}\n186:     for name in names:\n187:         d = np.load(f\"{caches[0]}/{name}_spec.npz\", allow_pickle=True)\n188:         specs[name] = SkeletonSpec(str(d[\"name\"]), d[\"parents\"], d[\"rest_offsets\"],\n189:                                    list(d[\"joint_names\"]))\n190:     from semantics import build_name_embeddings, embed_matrix\n191:     lut = build_name_embeddings(sum([list(specs[n].joint_names) for n in names], []),\n192:                                 device=device, encoder=sem_encoder)\n193:     if pose_device is None:\n194:         pose_device = os.environ.get(\"POSE_DEVICE\") or None   # smoke-test override\n195:     if pose_device is None:\n196:         rows0 = sum(torch.load(f\"{c}/{names[0]}_paired_local6d.pt\", mmap=True).shape[0]\n197:                     for c in caches)\n198:         pose_device = \"cpu16\" if (rows0 if not max_rows else min(rows0, max_rows)) > 2_500_000 \\\n199:             else \"gpu\"\n200:         if pose_device == \"cpu16\":\n201:             print(f\"[load_paired_data] {rows0} rows -> pose resident fp16 on CPU \"\n202:                   f\"(PoseStore)\", flush=True)\n203:     data = {}; N = None\n204:     for name in names:\n205:         spec = specs[name]\n206:         st = static_cond(spec, device)\n207:         sem = embed_matrix(spec.joint_names, lut).to(device)     # [J,D] joint-name text semantics\n208:         if pose_device == \"cpu16\":\n209:             # 0903: 5.2M 行时 build_global 的 fp32 中间量 (list+cat+pose) 一台机器人就 20+GB,\n210:             # 叠在已驻留的 fp16 上被 OOM 杀 (anon-rss 50.8GB). 改成: 各缓存 mmap 读 (页缓存,\n211:             # 可回收, 不 cat), 分块 FK 直接写进预分配 fp16, 两遍 FK (第一遍只求 reach).\n212:             # 数值与原路径一致到 fp32 分块噪声 (build_global 自己换 chunk 也差 1e-6 比例的 1 ulp).\n213:             parts = [torch.load(f\"{c}/{name}_paired_local6d.pt\", mmap=True) for c in caches]\n214:             if max_rows: parts = [parts[0][:max_rows]]\n215:             pose16, reach = build_pose16(parts, spec, device)\n216:             entry = {\"spec\": spec, \"st\": st, \"pose\": PoseStore(pose16, device), \"reach\": reach, \"sem\": sem}\n217:             l6 = local6d = gr6 = gp = pose = None; N_ = pose16.shape[0]\n218:         else:\n219:             l6 = torch.cat([torch.load(f\"{c}/{name}_paired_local6d.pt\") for c in caches]) \\\n220:                 if len(caches) > 1 else torch.load(f\"{caches[0]}/{name}_paired_local6d.pt\")\n221:             local6d = l6[:max_rows].contiguous() if max_rows else l6; N_ = local6d.shape[0]\n222:             gr6, gp, reach = build_global(local6d, spec, device)\n223:             pose = torch.cat([gr6, gp / reach], -1)\n224:             entry = {\"spec\": spec, \"st\": st, \"pose\": pose.to(device), \"reach\": reach, \"sem\": sem}\n225:         dof_path = f\"{caches[0]}/{name}_dof.npz\"                 # mechanical spec (axes + limits)\n226:         if os.path.exists(dof_path):\n227:             entry[\"dof\"] = torch.as_tensor(np.load(dof_path)[\"dof\"], dtype=torch.float32, device=device)\n228:             from dof_head import build_kin                       # E25: precomputed hinge kinematics\n229:             entry[\"kin\"] = build_kin(caches[0], name, spec, device=device)\n230:         data[name] = entry\n231:         N = N_; print(f\"[{name}] J={spec.J} rows={N} reach={reach:.1f}cm sem={tuple(sem.shape)}\")\n232:         del l6, local6d, gr6, gp, pose\n233:         gc.collect()\n234:     return data, names, N\n235: \n236: \n237: def split_indices(N, max_val=5000):\n238:     \"\"\"The FIX train/val split. Call order contract in module docstring.\n239:     max_val caps eval size for big caches (251k rows -> 25k val OOMed the one-shot\n240:     eval encode); FIX-era caches (48k -> 4800) are below the cap, bitwise unchanged.\"\"\"\n241:     perm = torch.randperm(N); nval = min(max(128, N // 10), max_val)\n242:     return perm[:nval], perm[nval:]"
+    },
+    {
+      "path": "/home/arenalabs/Desktop/\"be water, robot\"/pose_translator_design/exp_topo/train_dual.py",
+      "sha256": "de909574dc433e99080329c780a52fb3fe9dd91a7474f7d0f7abe58b4eced233",
+      "line_start": 186,
+      "line_end": 242,
+      "snippet": "186:     if args.exclude_set:\n187:         # 语料外集合按片段名匹配各缓存的 sequences.json, 行号加上前置缓存的行偏移\n188:         # (与 load_paired_data / slip_pair_starts 的 concat 口径逐字一致)。\n189:         _ex_names = {q[\"name\"] for q in json.load(open(args.exclude_set))}\n190:         _exm = np.zeros(N, dtype=bool); _off = 0; _hit = 0\n191:         for _c in [c for c in str(args.cache).split(\",\") if c]:\n192:             _sq = json.load(open(f\"{_c}/sequences.json\"))\n193:             for q in _sq:\n194:                 if q[\"name\"] in _ex_names:\n195:                     a_, b_ = _off + q[\"start\"], _off + q[\"start\"] + q[\"len\"]\n196:                     if a_ < N:\n197:                         _exm[a_:min(b_, N)] = True; _hit += 1\n198:             _off += sum(q[\"len\"] for q in _sq)\n199:         _n0 = len(tr_idx) + len(val_idx)\n200:         tr_idx = tr_idx[~torch.as_tensor(_exm)[tr_idx]]\n201:         val_idx = val_idx[~torch.as_tensor(_exm)[val_idx]]\n202:         print(f\"[exclude_set] {len(_ex_names)} 段名单, 命中 {_hit} 段 / {int(_exm.sum())} 行; \"\n203:               f\"训练+验证行 {_n0} -> {len(tr_idx) + len(val_idx)}\", flush=True)\n204:         assert _hit > 0 or args.max_rows, f\"--exclude_set {args.exclude_set}: 没有任何片段名命中缓存\"\n205: \n206:     cfg = vars(args)\n207:     if args.judge_mode != \"off\":\n208:         cfg[\"n_judges\"] = len(names)                     # judges cover ALL embodiments incl. holdouts\n209:     emb_idx = {n: i for i, n in enumerate(names)}\n210:     model = build_model(cfg, device)\n211:     if args.init:\n212:         _sd = torch.load(args.init, map_location=device)\n213:         _tdec_ck = any(k.startswith(\"base.\") for k in _sd)\n214:         if not _tdec_ck:\n215:             model.load_state_dict(_sd)\n216:         print(f\"warm-start <- {args.init}\" + (\" (tdec ckpt)\" if _tdec_ck else \"\"))\n217:     if args.code_noise > 0:\n218:         for _m in (model.fsqp, getattr(model, \"fsqr\", None)):\n219:             if _m is not None: _m.noise = args.code_noise\n220:         print(f\"[code_noise] ±{args.code_noise} 格\", flush=True)\n221:     if args.tdec > 1:\n222:         from tdec import TemporalDecoder, window_starts, slip_world\n223:         model = TemporalDecoder(model, args.tdec, n_layers=args.tdec_layers).to(device)\n224:         if args.init and _tdec_ck:\n225:             model.load_state_dict(_sd)\n226:         assert args.bs % args.tdec == 0, \"--bs 必须是 --tdec 的倍数\"\n227:         assert not args.slip_pairs and not args.contact_balance, \"tdec 与 slip_pairs/contact_balance 不兼容\"\n228:         print(f\"[tdec] K={args.tdec} 层={args.tdec_layers} 窗/批={args.bs // args.tdec}\")\n229:     train_params = list(model.parameters())\n230:     if args.train_scope == \"decoder\":\n231:         DEC = (\"decp.\", \"decr.\", \"selfp.\", \"selfr.\", \"hrot\", \"hpos\",\n232:                \"fsqp.proj_out\", \"fsqr.proj_out\", \"tfp.\", \"tfr.\")\n233:         n_tr = 0\n234:         for nm, prm in model.named_parameters():\n235:             on = nm[5:].startswith(DEC) if nm.startswith(\"base.\") else nm.startswith(DEC)\n236:             prm.requires_grad_(on)\n237:             n_tr += prm.numel() if on else 0\n238:         train_params = [prm for prm in model.parameters() if prm.requires_grad]\n239:         print(f\"train_scope=decoder: {n_tr/1e6:.2f}M trainable, lattice frozen\")\n240:     print(f\"params {sum(p.numel() for p in model.parameters())/1e6:.2f}M dual-FSQ bits/frame={model.bits:.0f}\")\n241:     opt = torch.optim.AdamW(train_params, lr=args.lr, weight_decay=1e-4)\n242:     sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, args.steps)"
+    }
+  ],
+  "warnings": [
+    "Legacy unitree_h2 has J32 and body00..body31 anonymous names; do not bind it to official H2 J36 without an independently validated mapping.",
+    "Tree leaves include sensors and linkage rods; they are not automatically human-facing end effectors.",
+    "PM01 and Talos were excluded from reference training.",
+    "Shared-name raw captions or duplicate motions across datasets must group before train/test splitting.",
+    "Large total spec-offset differences are root offsets: nonroot differences are recorded separately. FK starts root at zero; JointFeature still receives raw root rest_offset from the first cache."
+  ],
+  "cache_transform_metadata": [
+    {
+      "path": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv_tfix/LCONV_meta.json",
+      "sha256": "0beb24cd7b5b206e2ef7873ba95357f75e1098f19e24acf821afe03c4f156e06",
+      "content": {
+        "src": "/var/tmp/alphamotion/topo_exp/cache_amass_v3",
+        "Q": "/home/arenalabs/tmp/dialect/Q_final.pt",
+        "spec": "lafan human_smpl",
+        "rows": 4733703,
+        "note": "AMASS human rewritten in LAFAN BVH frame dialect (robot-bridge fit + bone-direction snap)"
+      }
+    },
+    {
+      "path": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv_tfix/TIMEBASE_FIX_meta.json",
+      "sha256": "f14badd426364ccdd1238d4ffc16291b21655a5ada1074d0209282c0deebe89b",
+      "content": {
+        "src": "/var/tmp/alphamotion/topo_exp/cache_amass_lconv",
+        "lengths": "/home/arenalabs/tmp/xwbc_amass_lengths.json",
+        "tol": 0.05,
+        "rule": "robot_new[t] = robot[t / (nh/ng)] (linear, rot6d re-orthonormalized); human untouched",
+        "ratio_source": "unitree_g1_29dof npz frame counts (all robots share GMR sampling)",
+        "n_misaligned_clips": 4560,
+        "misaligned_rows": 1095344,
+        "by_dataset": {
+          "CMU": 503,
+          "DFaust": 1,
+          "DanceDB": 1,
+          "KIT": 3985,
+          "SSM": 1,
+          "TotalCapture": 35,
+          "WEIZMANN": 34
+        },
+        "note": "接触标签需用 contact_label.py 对本缓存重算"
+      }
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+ "body": "unitree_g1_23dof",
+ "delta_col_cm_report32": 0.04000000000000048,
+ "delta_col_cm": 0.04000000000000048,
+ "corpora": {
+  "lafan": {
+   "stride": 8,
+   "frames_sampled": 62075,
+   "stance_frames": 43279,
+   "feet_joints": [
+    "left_ankle_pitch_link",
+    "left_ankle_roll_link",
+    "left_toe_link",
+    "right_ankle_pitch_link",
+    "right_ankle_roll_link",
+    "right_toe_link"
+   ],
+   "report32_stance_gap_p50_cm": 1.22222900390625,
+   "reference_lowest_p50_cm": 1.2622290039062505,
+   "j1_stance_zmin_p50_cm": 0.6263697146054881,
+   "j1_stance_footregion_min_p50_cm": 0.656684897906473,
+   "j1_stance_zmin_p10_cm": -2.549313348727709,
+   "j1_stance_zmin_p90_cm": 2.269114506301918,
+   "diff_cm": -0.6358592893007624,
+   "pass_1cm": true,
+   "reference_lowest_p50_corrected_delta_cm": 1.2622290039062505,
+   "diff_corrected_delta_cm": -0.6358592893007624,
+   "pass_1cm_corrected_delta": true,
+   "diag_flat_stance_frames": 11366,
+   "diag_flat_stance_zmin_p50_cm": 1.0493028572107903,
+   "diag_flat_diff_cm": -0.21292614669546017,
+   "diag_stance_tilt_p50_deg": 5.036906420334795,
+   "diag_label_floor_joint": "right_ankle_roll_link",
+   "diag_label_sole_drop_cm": 3.54,
+   "diag_report32_true_drop_cm": 3.4999999999999996,
+   "diag_j1_static_drop_cm": 3.5,
+   "diag_reference_with_j1_static_drop_cm": 1.26222900390625,
+   "diag_diff_vs_j1_static_reference_cm": -0.635859289300762,
+   "synthetic_shift": {
+    "-5": {
+     "PenRate": 0.9978742577231452,
+     "FloatRate": 0.0,
+     "zmin_p50_cm": -4.413630285394513
+    },
+    "+0": {
+     "PenRate": 0.1995193973982763,
+     "FloatRate": 0.024422930289516857,
+     "zmin_p50_cm": 0.5863697146054876
+    },
+    "+5": {
+     "PenRate": 0.044363317082187666,
+     "FloatRate": 0.8791792786339795,
+     "zmin_p50_cm": 5.586369714605487
+    }
+   },
+   "shift_detected": true,
+   "shift_detected_v0": true,
+   "diag_flat_diff_vs_j1_static_reference_cm": -0.21292614669545973
+  },
+  "amass": {
+   "stride": 64,
+   "frames_sampled": 73965,
+   "stance_frames": 66653,
+   "feet_joints": [
+    "left_ankle_pitch_link",
+    "left_ankle_roll_link",
+    "left_toe_link",
+    "right_ankle_pitch_link",
+    "right_ankle_roll_link",
+    "right_toe_link"
+   ],
+   "report32_stance_gap_p50_cm": 0.65155029296875,
+   "reference_lowest_p50_cm": 0.6915502929687505,
+   "j1_stance_zmin_p50_cm": 0.2434210881740455,
+   "j1_stance_footregion_min_p50_cm": 0.2447047520339396,
+   "j1_stance_zmin_p10_cm": -1.2706742614308293,
+   "j1_stance_zmin_p90_cm": 1.8455280441778605,
+   "diff_cm": -0.44812920479470497,
+   "pass_1cm": true,
+   "reference_lowest_p50_corrected_delta_cm": 0.6915502929687505,
+   "diff_corrected_delta_cm": -0.44812920479470497,
+   "pass_1cm_corrected_delta": true,
+   "diag_flat_stance_frames": 5096,
+   "diag_flat_stance_zmin_p50_cm": 0.7052563607850715,
+   "diag_flat_diff_cm": 0.013706067816321,
+   "diag_stance_tilt_p50_deg": 9.187245511822686,
+   "diag_label_floor_joint": "right_ankle_roll_link",
+   "diag_label_sole_drop_cm": 3.54,
+   "diag_report32_true_drop_cm": 3.4999999999999996,
+   "diag_j1_static_drop_cm": 3.5,
+   "diag_reference_with_j1_static_drop_cm": 0.69155029296875,
+   "diag_diff_vs_j1_static_reference_cm": -0.4481292047947045,
+   "synthetic_shift": {
+    "-5": {
+     "PenRate": 0.9964442710755705,
+     "FloatRate": 0.0,
+     "zmin_p50_cm": -4.796578911825955
+    },
+    "+0": {
+     "PenRate": 0.12650593371641186,
+     "FloatRate": 0.022744662655844447,
+     "zmin_p50_cm": 0.20342108817404503
+    },
+    "+5": {
+     "PenRate": 0.001725353697507989,
+     "FloatRate": 0.936506983931706,
+     "zmin_p50_cm": 5.203421088174045
+    }
+   },
+   "shift_detected": true,
+   "shift_detected_v0": true,
+   "diag_flat_diff_vs_j1_static_reference_cm": 0.013706067816321443
+  }
+ },
+ "pass": true,
+ "pass_corrected_delta": true,
+ "pass_lafan_only": true,
+ "diag_pass_flat_j1ref": true,
+ "shift_detected": true
+}

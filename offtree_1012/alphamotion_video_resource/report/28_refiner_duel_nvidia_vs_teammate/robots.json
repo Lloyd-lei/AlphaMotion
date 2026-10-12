@@ -1,0 +1,66 @@
+[
+ {
+  "name": "h2",
+  "label": "Unitree H2",
+  "body": "unitree_h2",
+  "xml": "/home/arenalabs/tmp/greenwich_workbench_0911/h2_assets/H2_loop.xml",
+  "palm_frames": {
+   "left_wrist": {
+    "distal": [
+     1,
+     0,
+     0
+    ],
+    "normal": [
+     0,
+     -1,
+     0
+    ]
+   },
+   "right_wrist": {
+    "distal": [
+     1,
+     0,
+     0
+    ],
+    "normal": [
+     0,
+     1,
+     0
+    ]
+   }
+  }
+ },
+ {
+  "name": "g1",
+  "label": "Unitree G1",
+  "body": "unitree_g1_29dof",
+  "xml": "/var/tmp/alphamotion/config_harvest/GMR/assets/unitree_g1/g1_mocap_29dof.xml",
+  "palm_frames": {
+   "left_wrist": {
+    "distal": [
+     1,
+     0,
+     0
+    ],
+    "normal": [
+     0,
+     -1,
+     0
+    ]
+   },
+   "right_wrist": {
+    "distal": [
+     1,
+     0,
+     0
+    ],
+    "normal": [
+     0,
+     1,
+     0
+    ]
+   }
+  }
+ }
+]

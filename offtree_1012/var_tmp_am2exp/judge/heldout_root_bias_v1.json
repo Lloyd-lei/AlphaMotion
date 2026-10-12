@@ -1,0 +1,221 @@
+{
+ "schema": "am2exp_j1_heldout_root_bias_v1",
+ "model": "A0 = runs/A_S_seed0/checkpoint_step3000.pt",
+ "cases": "/var/tmp/alphamotion/am2exp/eval/cases_rootbias_v1.json",
+ "cases_sha256": "c87c9269da2b182ed14da766fe64f4bcf6bd045779c868c23b9acc4d634f9e1b",
+ "definition": "c_b = median over TRAIN-split windows of the per-window median, over GT stance frames (J1 GT, GT root convention: a foot region < 2.5 cm and no non-foot region < 2.5 cm), of zmin(A0 pred, raw predicted root) - zmin(GT).  Applied to EVERY arm as pred_root - c_b/100 for heldout bodies (sensor_on value for both modes).",
+ "bodies": {
+  "fourier_gr3": {
+   "applied_c_cm": -11.19206817964568,
+   "measured": {
+    "sensor_on": {
+     "c_cm": -11.19206817964568,
+     "windows": 11,
+     "stance_frames": 1407,
+     "per_window": {
+      "walk1_subject1@3855": -11.662506809859458,
+      "walk1_subject2@3855": -8.742735989708393,
+      "walk1_subject5@3855": -9.526594478102453,
+      "walk2_subject1@3508": -7.530529090756403,
+      "walk2_subject4@3508": -15.465108213071893,
+      "walk3_subject1@3635": -11.19206817964568,
+      "walk3_subject2@3635": -9.902879444193829,
+      "walk3_subject3@3635": -17.43823486368185,
+      "walk3_subject4@3635": -6.97949881786414,
+      "walk3_subject5@3635": -13.07686903077834,
+      "walk4_subject1@2394": -14.420532768500749
+     },
+     "iqr_cm": [
+      -13.748700899639545,
+      -9.134665233905423
+     ],
+     "pred_root_p50_m": 0.8179851770401001,
+     "gt_root_p50_m": 0.96875
+    },
+    "sensor_off": {
+     "c_cm": -12.60759150132742,
+     "windows": 11,
+     "stance_frames": 1407,
+     "per_window": {
+      "walk1_subject1@3855": -12.60759150132742,
+      "walk1_subject2@3855": -9.839653801315215,
+      "walk1_subject5@3855": -10.833214527431664,
+      "walk2_subject1@3508": -8.115275809106294,
+      "walk2_subject4@3508": -16.88665073865529,
+      "walk3_subject1@3635": -12.72962749871509,
+      "walk3_subject2@3635": -11.488282877634092,
+      "walk3_subject3@3635": -19.473987933552365,
+      "walk3_subject4@3635": -8.074574167994072,
+      "walk3_subject5@3635": -14.188992999047208,
+      "walk4_subject1@2394": -15.374895722566222
+     },
+     "iqr_cm": [
+      -14.781944360806715,
+      -10.33643416437344
+     ],
+     "pred_root_p50_m": 0.7982829511165619,
+     "gt_root_p50_m": 0.96875
+    }
+   }
+  },
+  "kuavo_s45": {
+   "applied_c_cm": 1.5727510567520184,
+   "measured": {
+    "sensor_on": {
+     "c_cm": 1.5727510567520184,
+     "windows": 11,
+     "stance_frames": 1228,
+     "per_window": {
+      "walk1_subject1@3855": 0.1963642381282682,
+      "walk1_subject2@3855": 4.798476647649352,
+      "walk1_subject5@3855": 4.978000524769399,
+      "walk2_subject1@3508": 8.709554443353795,
+      "walk2_subject4@3508": -4.708710104125245,
+      "walk3_subject1@3635": 1.068396933978164,
+      "walk3_subject2@3635": 4.256934066401968,
+      "walk3_subject3@3635": -3.703959406580239,
+      "walk3_subject4@3635": 7.461940424777161,
+      "walk3_subject5@3635": 1.4273802381008949,
+      "walk4_subject1@2394": 1.5727510567520184
+     },
+     "iqr_cm": [
+      0.6323805860532161,
+      4.888238586209376
+     ],
+     "pred_root_p50_m": 0.9060242772102356,
+     "gt_root_p50_m": 0.90185546875
+    },
+    "sensor_off": {
+     "c_cm": -0.16297044563245322,
+     "windows": 11,
+     "stance_frames": 1228,
+     "per_window": {
+      "walk1_subject1@3855": -1.3361089605667473,
+      "walk1_subject2@3855": 2.8459749821870943,
+      "walk1_subject5@3855": 3.313156940853929,
+      "walk2_subject1@3508": 7.892442736926455,
+      "walk2_subject4@3508": -7.091698522678556,
+      "walk3_subject1@3635": -0.8172164986751511,
+      "walk3_subject2@3635": 2.919617466256014,
+      "walk3_subject3@3635": -5.808386834132499,
+      "walk3_subject4@3635": 5.736281172640297,
+      "walk3_subject5@3635": -0.16297044563245322,
+      "walk4_subject1@2394": -0.4744913328817262
+     },
+     "iqr_cm": [
+      -1.0766627296209492,
+      3.1163872035549716
+     ],
+     "pred_root_p50_m": 0.8856123387813568,
+     "gt_root_p50_m": 0.90185546875
+    }
+   }
+  },
+  "unitree_h2": {
+   "applied_c_cm": -11.438670974256084,
+   "measured": {
+    "sensor_on": {
+     "c_cm": -11.438670974256084,
+     "windows": 11,
+     "stance_frames": 1401,
+     "per_window": {
+      "walk1_subject1@3855": -11.451030371317437,
+      "walk1_subject2@3855": -9.63623176858129,
+      "walk1_subject5@3855": -11.438670974256084,
+      "walk2_subject1@3508": -10.850289796078357,
+      "walk2_subject4@3508": -13.281920364763124,
+      "walk3_subject1@3635": -12.752916949418925,
+      "walk3_subject2@3635": -13.57168529562609,
+      "walk3_subject3@3635": -17.439016904658537,
+      "walk3_subject4@3635": -9.679885866362888,
+      "walk3_subject5@3635": -6.60960062588952,
+      "walk4_subject1@2394": -11.005462401136526
+     },
+     "iqr_cm": [
+      -13.017418657091024,
+      -10.265087831220622
+     ],
+     "pred_root_p50_m": 0.8498207926750183,
+     "gt_root_p50_m": 0.94873046875
+    },
+    "sensor_off": {
+     "c_cm": -11.744790512487462,
+     "windows": 11,
+     "stance_frames": 1401,
+     "per_window": {
+      "walk1_subject1@3855": -11.744790512487462,
+      "walk1_subject2@3855": -8.652156334385182,
+      "walk1_subject5@3855": -11.780494829144025,
+      "walk2_subject1@3508": -11.39901331416462,
+      "walk2_subject4@3508": -13.373512290404285,
+      "walk3_subject1@3635": -13.94281569775518,
+      "walk3_subject2@3635": -13.87557416676561,
+      "walk3_subject3@3635": -18.233296147246413,
+      "walk3_subject4@3635": -10.48556570273957,
+      "walk3_subject5@3635": -3.3457845278875666,
+      "walk4_subject1@2394": -9.527572556041449
+     },
+     "iqr_cm": [
+      -13.624543228584947,
+      -10.00656912939051
+     ],
+     "pred_root_p50_m": 0.8298348784446716,
+     "gt_root_p50_m": 0.94873046875
+    }
+   }
+  },
+  "unitree_r1": {
+   "applied_c_cm": 0.03797045800528309,
+   "measured": {
+    "sensor_on": {
+     "c_cm": 0.03797045800528309,
+     "windows": 11,
+     "stance_frames": 1407,
+     "per_window": {
+      "walk1_subject1@3855": 0.10815214839913523,
+      "walk1_subject2@3855": 1.6536295274939192,
+      "walk1_subject5@3855": -0.10465079573841507,
+      "walk2_subject1@3508": 2.903978485158575,
+      "walk2_subject4@3508": -3.2890991484442864,
+      "walk3_subject1@3635": 0.03797045800528309,
+      "walk3_subject2@3635": 0.025701410753541154,
+      "walk3_subject3@3635": -7.022960401973656,
+      "walk3_subject4@3635": 1.4732828146040404,
+      "walk3_subject5@3635": 0.623197671910372,
+      "walk4_subject1@2394": -1.706808173093986
+     },
+     "iqr_cm": [
+      -0.9057294844162005,
+      1.0482402432572062
+     ],
+     "pred_root_p50_m": 0.6834224462509155,
+     "gt_root_p50_m": 0.673095703125
+    },
+    "sensor_off": {
+     "c_cm": -0.5581048794919568,
+     "windows": 11,
+     "stance_frames": 1407,
+     "per_window": {
+      "walk1_subject1@3855": -0.5581048794919568,
+      "walk1_subject2@3855": 1.2753670214871597,
+      "walk1_subject5@3855": -1.2199631756971385,
+      "walk2_subject1@3508": 2.248763046259441,
+      "walk2_subject4@3508": -3.863981944189515,
+      "walk3_subject1@3635": -1.118760058253109,
+      "walk3_subject2@3635": -0.4647623002999808,
+      "walk3_subject3@3635": -7.932372596958238,
+      "walk3_subject4@3635": 0.4715511171450899,
+      "walk3_subject5@3635": 1.269436491830323,
+      "walk4_subject1@2394": -2.0234440012993886
+     },
+     "iqr_cm": [
+      -1.6217035884982636,
+      0.8704938044877064
+     ],
+     "pred_root_p50_m": 0.6646321713924408,
+     "gt_root_p50_m": 0.673095703125
+    }
+   }
+  }
+ }
+}

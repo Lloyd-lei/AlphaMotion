@@ -1,0 +1,93 @@
+{
+ "gpu": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+ "model": "ARDY-Core-RP-20FPS-Horizon40",
+ "model_load_s": 0.718320160987787,
+ "fps": 20,
+ "horizon_frames": 40,
+ "frames_per_token": 4,
+ "history_frames": 160,
+ "diffusion_steps": 10,
+ "duration_s": 10.0,
+ "prompts": {
+  "p1_box": {
+   "text": "A person walks forward three steps, stops, crouches down to pick up a heavy box with both hands, stands up slowly, turns around and walks back carrying the box.",
+   "frames": 200,
+   "windows": 5,
+   "text_encode_ms": 62.15633696410805,
+   "generation_ms": 255.8555849827826,
+   "generation_ms_per_window": 51.17111699655652,
+   "inverse_rep_ms": 4.22814697958529,
+   "rtf_generation": 0.02558555849827826,
+   "rtf_text_plus_generation": 0.03180119219468906,
+   "runs_ms": [
+    259.009498055093,
+    255.8555849827826,
+    255.41044992860407
+   ]
+  },
+  "p2_hurdle": {
+   "text": "A person jogs forward, jumps over a low obstacle, lands, stumbles slightly, regains balance and keeps walking.",
+   "frames": 200,
+   "windows": 5,
+   "text_encode_ms": 60.981257003732026,
+   "generation_ms": 255.49506698735058,
+   "generation_ms_per_window": 51.09901339747012,
+   "inverse_rep_ms": 1.2031730730086565,
+   "rtf_generation": 0.02554950669873506,
+   "rtf_text_plus_generation": 0.03164763239910826,
+   "runs_ms": [
+    257.15039495844394,
+    254.38425200991333,
+    255.49506698735058
+   ]
+  },
+  "p3_wave": {
+   "text": "A person waves hello with the right hand, bows deeply, steps to the left, then does a full spin turn and stops.",
+   "frames": 200,
+   "windows": 5,
+   "text_encode_ms": 59.749712934717536,
+   "generation_ms": 257.04315304756165,
+   "generation_ms_per_window": 51.40863060951233,
+   "inverse_rep_ms": 1.2074100086465478,
+   "rtf_generation": 0.025704315304756163,
+   "rtf_text_plus_generation": 0.03167928659822792,
+   "runs_ms": [
+    257.04315304756165,
+    256.7986820358783,
+    257.46878900099546
+   ]
+  },
+  "p4_kick": {
+   "text": "A person kicks a ball with the right foot, sidesteps to the right, crouches low, then stands up with both arms raised overhead.",
+   "frames": 200,
+   "windows": 5,
+   "text_encode_ms": 61.891801888123155,
+   "generation_ms": 262.1358470059931,
+   "generation_ms_per_window": 52.427169401198626,
+   "inverse_rep_ms": 1.6506030224263668,
+   "rtf_generation": 0.026213584700599313,
+   "rtf_text_plus_generation": 0.03240276488941163,
+   "runs_ms": [
+    261.6188919637352,
+    263.08169204276055,
+    262.1358470059931
+   ]
+  },
+  "p5_sit": {
+   "text": "A person walks in a circle while looking around, sits down on the floor cross-legged, rests for a moment, then stands back up.",
+   "frames": 200,
+   "windows": 5,
+   "text_encode_ms": 60.16110198106617,
+   "generation_ms": 256.80730398744345,
+   "generation_ms_per_window": 51.36146079748869,
+   "inverse_rep_ms": 1.242155092768371,
+   "rtf_generation": 0.025680730398744345,
+   "rtf_text_plus_generation": 0.03169684059685096,
+   "runs_ms": [
+    256.80730398744345,
+    257.21404899377376,
+    256.149212946184
+   ]
+  }
+ }
+}

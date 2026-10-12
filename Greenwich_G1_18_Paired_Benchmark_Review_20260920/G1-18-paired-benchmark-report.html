@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>G1 18-Motion Paired Benchmark — Review Draft</title>
+<style>
+:root{--ink:#172033;--muted:#667085;--line:#d9dee8;--green:#0b7a53;--red:#b42318;--blue:#2753d7;--paper:#fff;--wash:#f4f6fa}
+*{box-sizing:border-box} body{margin:0;background:var(--wash);font:15px/1.55 Inter,Segoe UI,Arial,sans-serif;color:var(--ink)}
+main{max-width:1220px;margin:auto;background:var(--paper);padding:48px 56px 80px;box-shadow:0 0 30px #27304418}
+h1{font-size:34px;line-height:1.15;margin:0 0 8px} h2{margin-top:44px;border-bottom:1px solid var(--line);padding-bottom:8px} h3{font-size:21px;margin:0 0 14px} h4{margin:0 0 4px}
+.kicker{text-transform:uppercase;letter-spacing:.12em;color:var(--blue);font-weight:700} .muted,small{color:var(--muted)}
+.notice{padding:14px 18px;border-left:4px solid #d97706;background:#fff7ed;margin:24px 0} .verdict{padding:20px;border-left:5px solid var(--blue);background:#eef3ff;font-size:17px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0} .card{border:1px solid var(--line);padding:14px;border-radius:10px} .card span,.card small{display:block} .card b{font-size:27px}
+table{border-collapse:collapse;width:100%;font-size:13px} th,td{padding:8px 9px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top} th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left} thead th{position:sticky;top:0;background:#edf1f7;z-index:1}
+.pass{color:var(--green);font-weight:700} .fail{color:var(--red);font-weight:700} a{color:var(--blue)}
+.motion{padding:26px 0;border-top:1px solid var(--line)} video{width:100%;max-height:560px;background:#111;border-radius:10px} .motion-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:14px} .motion-grid>div{background:#f7f8fb;padding:14px;border-radius:8px}
+.metric-note{font-size:13px;color:var(--muted)} code{background:#eef1f5;padding:2px 5px;border-radius:4px}
+@media(max-width:800px){main{padding:25px 18px}.cards{grid-template-columns:1fr 1fr}.motion-grid{grid-template-columns:1fr}table{font-size:11px}}
+</style></head><body><main>
+<div class='kicker'>Review draft · Seed 20260919</div>
+<h1>Greenwich vs Traditional Retargeting</h1>
+<p class='muted'>Paired G1 benchmark across 18 source motions · 50 Hz · identical BeyondMimic configuration · generated 20 September 2026</p>
+<div class='notice'><b>Interim evidence only.</b> All 36 jobs from seed 20260919 are complete and video-verified. Seeds 20260920 and 20260921 are currently running and are intentionally excluded from the numerical conclusions below.</div>
+<div class='cards'>
+      <div class='card'><span>QC pass</span><b>14/18</b><small>Greenwich</small></div>
+      <div class='card'><span>QC pass</span><b>16/18</b><small>Retargeting</small></div>
+      <div class='card'><span>Success @1500</span><b>93.5%</b><small>Greenwich mean</small></div>
+      <div class='card'><span>Success @1500</span><b>100.0%</b><small>Retargeting mean</small></div>
+    </div>
+<h2>Executive conclusion</h2><p class='verdict'>The current single-seed evidence does not yet support a claim that Greenwich is easier to train than traditional retargeting on this G1 set. Retargeting passes 16/18 versus Greenwich 14/18, has stronger 0–1500 learning AUC and success at iteration 1500, and has lower mean body, joint, and support-slip errors; the median first iteration reaching 90% success is tied at 500. Greenwich nevertheless demonstrates high absolute trainability across diverse motions, including jumping and dance: every motion reaches at least 96.9% best completion success and 14/18 pass the fixed multi-metric gate. The correct external claim today is therefore high cross-motion trainability, not superiority over retargeting. The two running additional seeds are required before a final comparative claim.</p>
+<h2>Aggregate comparison</h2>
+<table><thead><tr><th>Metric</th><th>Greenwich</th><th>Retargeting</th><th>Current edge</th></tr></thead><tbody><tr><td>QC pass rate</td><td>77.8%</td><td>88.9%</td><td>Retargeting</td></tr><tr><td>Best success rate</td><td>99.83%</td><td>100.00%</td><td>Retargeting</td></tr><tr><td>Success at iteration 1500</td><td>93.49%</td><td>100.00%</td><td>Retargeting</td></tr><tr><td>Learning AUC, 0–1500</td><td>68.80%</td><td>78.15%</td><td>Retargeting</td></tr><tr><td>Median iteration to 90%</td><td>500 it</td><td>500 it</td><td>Tie</td></tr><tr><td>Body tracking error</td><td>35.1 mm</td><td>26.7 mm</td><td>Retargeting</td></tr><tr><td>Joint tracking RMSE</td><td>0.133 rad</td><td>0.102 rad</td><td>Retargeting</td></tr><tr><td>Support-slip proxy</td><td>5.79%</td><td>4.06%</td><td>Retargeting</td></tr><tr><td>Actuator force p95</td><td>15.8 Nm</td><td>16.7 Nm</td><td>Greenwich</td></tr><tr><td>Median wall time / job</td><td>67.3 min</td><td>72.5 min</td><td>Greenwich</td></tr></tbody></table>
+<p class='metric-note'>Paired motion wins (Greenwich / ties / retargeting): body error 0/0/18, joint error 1/0/17, support-slip proxy 1/0/17, learning AUC 0–1500 2/1/15.</p>
+<h2>What is proven, and what is not</h2>
+<ul>
+ <li><b>Proven by the completed seed:</b> both pipelines produce broadly trainable G1 references under one frozen controller/reward configuration. Greenwich reaches ≥96.9% best episode success on all 18 motions; retargeting reaches 100% on all 18.</li>
+ <li><b>Not yet proven:</b> statistical superiority, GPU-cost superiority, or robust generalization across seeds. Two additional seeds are still running.</li>
+ <li><b>Not measurable from the present artifacts:</b> source-human semantic error, contact precision/recall/F1, exact foot contact area, self-collision count, penetration depth, torque saturation fraction, and exact per-job GPU cost. These require source annotations or additional simulator logging and are not inferred here.</li>
+ <li><b>Torque interpretation:</b> reported values are MuJoCo position-actuator forces in actuation space. The current logs store p95 and absolute maximum, not the fraction of frames above rated torque.</li>
+</ul>
+<h2>Protocol</h2>
+<p>Each paired motion uses the same G1 model, 4,096 environments, 50 Hz reference, PPO architecture, reward terms, domain randomization, evaluation schedule, and fixed quality gate. Evaluation uses 64 episodes across a full-clip phase and four fixed suffix phases; a trial ends at first failure with no reset splicing. Minimum training is 1,500 iterations, with continuation to 3,000 or 5,000 when the convergence gate is not met.</p>
+<p>Fixed quality gate: success ≥95%, body error ≤120 mm, joint RMSE ≤0.35 rad, anchor orientation error ≤0.4 rad, support-slip proxy ≤10%, plus phase-sliced completion requirements.</p>
+<h2>All 18 paired results</h2>
+<div style='overflow:auto'><table><thead><tr><th>#</th><th>Motion</th><th>G QC</th><th>G success</th><th>G 90% it</th><th>G body mm</th><th>G joint rad</th><th>G slip</th><th>R QC</th><th>R success</th><th>R 90% it</th><th>R body mm</th><th>R joint rad</th><th>R slip</th></tr></thead><tbody><tr><td>01</td><td><a href='#m01'>Body Stretch 1 002</a></td><td class='pass'>PASS</td><td>100.0%</td><td>500</td><td>24.0</td><td>0.094</td><td>0.9%</td><td class='pass'>PASS</td><td>100.0%</td><td>250</td><td>22.1</td><td>0.077</td><td>0.2%</td></tr><tr><td>02</td><td><a href='#m02'>Body Stretch 4 001</a></td><td class='pass'>PASS</td><td>100.0%</td><td>500</td><td>26.8</td><td>0.101</td><td>1.0%</td><td class='pass'>PASS</td><td>100.0%</td><td>250</td><td>25.4</td><td>0.095</td><td>0.8%</td></tr><tr><td>03</td><td><a href='#m03'>Crouch Ff Stop 270 001</a></td><td class='pass'>PASS</td><td>100.0%</td><td>1000</td><td>33.5</td><td>0.137</td><td>6.8%</td><td class='pass'>PASS</td><td>100.0%</td><td>500</td><td>17.7</td><td>0.086</td><td>3.0%</td></tr><tr><td>04</td><td><a href='#m04'>Crouch Walk Forward And Back Turn 360 To Idle R 002</a></td><td class='pass'>PASS</td><td>100.0%</td><td>750</td><td>32.6</td><td>0.124</td><td>3.7%</td><td class='pass'>PASS</td><td>100.0%</td><td>750</td><td>26.2</td><td>0.097</td><td>3.1%</td></tr><tr><td>05</td><td><a href='#m05'>Dance Basic Padeburee 270 R Loop Fast 002</a></td><td class='pass'>PASS</td><td>100.0%</td><td>500</td><td>38.6</td><td>0.125</td><td>5.1%</td><td class='pass'>PASS</td><td>100.0%</td><td>500</td><td>28.7</td><td>0.100</td><td>4.3%</td></tr><tr><td>06</td><td><a href='#m06'>Dance Fishin 002</a></td><td class='pass'>PASS</td><td>100.0%</td><td>500</td><td>28.7</td><td>0.129</td><td>5.6%</td><td class='pass'>PASS</td><td>100.0%</td><td>500</td><td>28.3</td><td>0.125</td><td>4.5%</td></tr><tr><td>07</td><td><a href='#m07'>Dance Hiphop Bart Simpson R Loop Fast 002</a></td><td class='pass'>PASS</td><td>100.0%</td><td>500</td><td>38.5</td><td>0.158</td><td>7.5%</td><td class='pass'>PASS</td><td>100.0%</td><td>500</td><td>28.1</td><td>0.113</td><td>7.0%</td></tr><tr><td>08</td><td><a href='#m08'>Dance Hiphop Hip Hop Iv R 002</a></td><td class='fail'>FAIL</td><td>100.0%</td><td>1500</td><td>46.9</td><td>0.146</td><td>12.9%</td><td class='fail'>FAIL</td><td>100.0%</td><td>1000</td><td>34.3</td><td>0.125</td><td>11.2%</td></tr><tr><td>09</td><td><a href='#m09'>Dance Hiphop Shuffle Sequence V 001 R 001</a></td><td class='fail'>FAIL</td><td>100.0%</td><td>4250</td><td>63.2</td><td>0.198</td><td>24.8%</td><td class='fail'>FAIL</td><td>100.0%</td><td>750</td><td>37.8</td><td>0.142</td><td>16.2%</td></tr><tr><td>10</td><td><a href='#m10'>Dance Latino Kick Kick Padeburee R 002</a></td><td class='fail'>FAIL</td><td>96.9%</td><td>4000</td><td>52.7</td><td>0.166</td><td>10.6%</td><td class='pass'>PASS</td><td>100.0%</td><td>1250</td><td>41.5</td><td>0.139</td><td>6.1%</td></tr><tr><td>11</td><td><a href='#m11'>Frog Jump 002</a></td><td class='fail'>FAIL</td><td>100.0%</td><td>500</td><td>49.3</td><td>0.379</td><td>4.6%</td><td class='pass'>PASS</td><td>100.0%</td><td>1000</td><td>36.9</td><td>0.262</td><td>3.1%</td></tr><tr><td>12</td><td><a href='#m12'>Idle One Foot Right 002</a></td><td class='pass'>PASS</td><td>100.0%</td><td>500</td><td>35.2</td><td>0.090</td><td>4.1%</td><td class='pass'>PASS</td><td>100.0%</td><td>250</td><td>28.6</td><td>0.073</td><td>3.5%</td></tr><tr><td>13</td><td><a href='#m13'>Injured Torso Walk Forward 002</a></td><td class='pass'>PASS</td><td>100.0%</td><td>500</td><td>22.3</td><td>0.071</td><td>5.3%</td><td class='pass'>PASS</td><td>100.0%</td><td>250</td><td>19.8</td><td>0.072</td><td>5.0%</td></tr><tr><td>14</td><td><a href='#m14'>Jog Arc Cw Start R Turn Jump 360 R Point Dir Horizontal Right Hand Head 090 R 002</a></td><td class='pass'>PASS</td><td>100.0%</td><td>750</td><td>37.5</td><td>0.145</td><td>0.8%</td><td class='pass'>PASS</td><td>100.0%</td><td>750</td><td>25.9</td><td>0.089</td><td>1.2%</td></tr><tr><td>15</td><td><a href='#m15'>Jog Backward Loop 001</a></td><td class='pass'>PASS</td><td>100.0%</td><td>250</td><td>28.5</td><td>0.085</td><td>6.9%</td><td class='pass'>PASS</td><td>100.0%</td><td>250</td><td>21.5</td><td>0.066</td><td>2.1%</td></tr><tr><td>16</td><td><a href='#m16'>Jump And Land Professional 003</a></td><td class='pass'>PASS</td><td>100.0%</td><td>750</td><td>20.8</td><td>0.067</td><td>0.7%</td><td class='pass'>PASS</td><td>100.0%</td><td>250</td><td>18.8</td><td>0.063</td><td>0.4%</td></tr><tr><td>17</td><td><a href='#m17'>Jump Ff 270</a></td><td class='pass'>PASS</td><td>100.0%</td><td>250</td><td>21.1</td><td>0.077</td><td>2.2%</td><td class='pass'>PASS</td><td>100.0%</td><td>500</td><td>17.0</td><td>0.055</td><td>0.7%</td></tr><tr><td>18</td><td><a href='#m18'>Legs Relax 001</a></td><td class='pass'>PASS</td><td>100.0%</td><td>500</td><td>32.1</td><td>0.101</td><td>0.7%</td><td class='pass'>PASS</td><td>100.0%</td><td>250</td><td>21.8</td><td>0.062</td><td>0.7%</td></tr></tbody></table></div>
+<h2>Per-motion video review</h2>
+<p class='muted'>Each clip is a side-by-side rendering of the trained policies for the same source motion. The report folder contains all 18 videos locally.</p>
+
+        <section class='motion' id='m01'>
+          <h3>01. Body Stretch 1 002</h3>
+          <video controls preload='metadata' src='videos/01_A039_body_stretch_1_002__Greenwich_vs_Retarget.mp4'></video>
+          <div class='motion-grid'>
+            <div><h4>Greenwich</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 500 · body 24.0 mm · joint 0.094 rad · slip 0.9% · p95 force 10.6 Nm</p></div>
+            <div><h4>Traditional retargeting</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 250 · body 22.1 mm · joint 0.077 rad · slip 0.2% · p95 force 10.3 Nm</p></div>
+          </div>
+        </section>
+        
+        <section class='motion' id='m02'>
+          <h3>02. Body Stretch 4 001</h3>
+          <video controls preload='metadata' src='videos/02_A037_body_stretch_4_001__Greenwich_vs_Retarget.mp4'></video>
+          <div class='motion-grid'>
+            <div><h4>Greenwich</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 500 · body 26.8 mm · joint 0.101 rad · slip 1.0% · p95 force 10.1 Nm</p></div>
+            <div><h4>Traditional retargeting</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 250 · body 25.4 mm · joint 0.095 rad · slip 0.8% · p95 force 10.7 Nm</p></div>
+          </div>
+        </section>
+        
+        <section class='motion' id='m03'>
+          <h3>03. Crouch Ff Stop 270 001</h3>
+          <video controls preload='metadata' src='videos/03_A125_M_crouch_ff_stop_270_001__Greenwich_vs_Retarget.mp4'></video>
+          <div class='motion-grid'>
+            <div><h4>Greenwich</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 1000 · body 33.5 mm · joint 0.137 rad · slip 6.8% · p95 force 31.6 Nm</p></div>
+            <div><h4>Traditional retargeting</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 500 · body 17.7 mm · joint 0.086 rad · slip 3.0% · p95 force 30.4 Nm</p></div>
+          </div>
+        </section>
+        
+        <section class='motion' id='m04'>
+          <h3>04. Crouch Walk Forward And Back Turn 360 To Idle R 002</h3>
+          <video controls preload='metadata' src='videos/04_A493_crouch_walk_forward_and_back_turn_360_to_idle_R_002__Greenwich_vs_Retarget.mp4'></video>
+          <div class='motion-grid'>
+            <div><h4>Greenwich</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 750 · body 32.6 mm · joint 0.124 rad · slip 3.7% · p95 force 23.1 Nm</p></div>
+            <div><h4>Traditional retargeting</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 750 · body 26.2 mm · joint 0.097 rad · slip 3.1% · p95 force 25.2 Nm</p></div>
+          </div>
+        </section>
+        
+        <section class='motion' id='m05'>
+          <h3>05. Dance Basic Padeburee 270 R Loop Fast 002</h3>
+          <video controls preload='metadata' src='videos/05_A323_M_dance_basic_padeburee_270_R_loop_fast_002__Greenwich_vs_Retarget.mp4'></video>
+          <div class='motion-grid'>
+            <div><h4>Greenwich</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 500 · body 38.6 mm · joint 0.125 rad · slip 5.1% · p95 force 16.3 Nm</p></div>
+            <div><h4>Traditional retargeting</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 500 · body 28.7 mm · joint 0.100 rad · slip 4.3% · p95 force 18.2 Nm</p></div>
+          </div>
+        </section>
+        
+        <section class='motion' id='m06'>
+          <h3>06. Dance Fishin 002</h3>
+          <video controls preload='metadata' src='videos/06_A466_dance_fishin_002__Greenwich_vs_Retarget.mp4'></video>
+          <div class='motion-grid'>
+            <div><h4>Greenwich</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 500 · body 28.7 mm · joint 0.129 rad · slip 5.6% · p95 force 14.2 Nm</p></div>
+            <div><h4>Traditional retargeting</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 500 · body 28.3 mm · joint 0.125 rad · slip 4.5% · p95 force 13.7 Nm</p></div>
+          </div>
+        </section>
+        
+        <section class='motion' id='m07'>
+          <h3>07. Dance Hiphop Bart Simpson R Loop Fast 002</h3>
+          <video controls preload='metadata' src='videos/07_A321_M_dance_hiphop_bart_simpson_R_loop_fast_002__Greenwich_vs_Retarget.mp4'></video>
+          <div class='motion-grid'>
+            <div><h4>Greenwich</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 500 · body 38.5 mm · joint 0.158 rad · slip 7.5% · p95 force 17.1 Nm</p></div>
+            <div><h4>Traditional retargeting</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 500 · body 28.1 mm · joint 0.113 rad · slip 7.0% · p95 force 18.3 Nm</p></div>
+          </div>
+        </section>
+        
+        <section class='motion' id='m08'>
+          <h3>08. Dance Hiphop Hip Hop Iv R 002</h3>
+          <video controls preload='metadata' src='videos/08_A318_dance_hiphop_hip_hop_iv_R_002__Greenwich_vs_Retarget.mp4'></video>
+          <div class='motion-grid'>
+            <div><h4>Greenwich</h4><p class='fail'>FAIL · support-slip proxy &gt;10%</p>
+              <p>Best success 100.0% · 90% at iteration 1500 · body 46.9 mm · joint 0.146 rad · slip 12.9% · p95 force 17.4 Nm</p></div>
+            <div><h4>Traditional retargeting</h4><p class='fail'>FAIL · support-slip proxy &gt;10%</p>
+              <p>Best success 100.0% · 90% at iteration 1000 · body 34.3 mm · joint 0.125 rad · slip 11.2% · p95 force 21.8 Nm</p></div>
+          </div>
+        </section>
+        
+        <section class='motion' id='m09'>
+          <h3>09. Dance Hiphop Shuffle Sequence V 001 R 001</h3>
+          <video controls preload='metadata' src='videos/09_A306_M_dance_hiphop_shuffle_sequence_v_001_R_001__Greenwich_vs_Retarget.mp4'></video>
+          <div class='motion-grid'>
+            <div><h4>Greenwich</h4><p class='fail'>FAIL · support-slip proxy &gt;10%</p>
+              <p>Best success 100.0% · 90% at iteration 4250 · body 63.2 mm · joint 0.198 rad · slip 24.8% · p95 force 20.7 Nm</p></div>
+            <div><h4>Traditional retargeting</h4><p class='fail'>FAIL · support-slip proxy &gt;10%</p>
+              <p>Best success 100.0% · 90% at iteration 750 · body 37.8 mm · joint 0.142 rad · slip 16.2% · p95 force 21.1 Nm</p></div>
+          </div>
+        </section>
+        
+        <section class='motion' id='m10'>
+          <h3>10. Dance Latino Kick Kick Padeburee R 002</h3>
+          <video controls preload='metadata' src='videos/10_A322_M_dance_latino_kick_kick_padeburee_R_002__Greenwich_vs_Retarget.mp4'></video>
+          <div class='motion-grid'>
+            <div><h4>Greenwich</h4><p class='fail'>FAIL · support-slip proxy &gt;10%</p>
+              <p>Best success 96.9% · 90% at iteration 4000 · body 52.7 mm · joint 0.166 rad · slip 10.6% · p95 force 19.9 Nm</p></div>
+            <div><h4>Traditional retargeting</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 1250 · body 41.5 mm · joint 0.139 rad · slip 6.1% · p95 force 19.2 Nm</p></div>
+          </div>
+        </section>
+        
+        <section class='motion' id='m11'>
+          <h3>11. Frog Jump 002</h3>
+          <video controls preload='metadata' src='videos/11_A360_M_frog_jump_002__Greenwich_vs_Retarget.mp4'></video>
+          <div class='motion-grid'>
+            <div><h4>Greenwich</h4><p class='fail'>FAIL · joint RMSE &gt;0.35 rad</p>
+              <p>Best success 100.0% · 90% at iteration 500 · body 49.3 mm · joint 0.379 rad · slip 4.6% · p95 force 20.2 Nm</p></div>
+            <div><h4>Traditional retargeting</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 1000 · body 36.9 mm · joint 0.262 rad · slip 3.1% · p95 force 23.9 Nm</p></div>
+          </div>
+        </section>
+        
+        <section class='motion' id='m12'>
+          <h3>12. Idle One Foot Right 002</h3>
+          <video controls preload='metadata' src='videos/12_A038_idle_one_foot_right_002__Greenwich_vs_Retarget.mp4'></video>
+          <div class='motion-grid'>
+            <div><h4>Greenwich</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 500 · body 35.2 mm · joint 0.090 rad · slip 4.1% · p95 force 10.6 Nm</p></div>
+            <div><h4>Traditional retargeting</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 250 · body 28.6 mm · joint 0.073 rad · slip 3.5% · p95 force 12.0 Nm</p></div>
+          </div>
+        </section>
+        
+        <section class='motion' id='m13'>
+          <h3>13. Injured Torso Walk Forward 002</h3>
+          <video controls preload='metadata' src='videos/13_A057_M_injured_torso_walk_forward_002__Greenwich_vs_Retarget.mp4'></video>
+          <div class='motion-grid'>
+            <div><h4>Greenwich</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 500 · body 22.3 mm · joint 0.071 rad · slip 5.3% · p95 force 15.9 Nm</p></div>
+            <div><h4>Traditional retargeting</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 250 · body 19.8 mm · joint 0.072 rad · slip 5.0% · p95 force 16.7 Nm</p></div>
+          </div>
+        </section>
+        
+        <section class='motion' id='m14'>
+          <h3>14. Jog Arc Cw Start R Turn Jump 360 R Point Dir Horizontal Right Hand Head 090 R 002</h3>
+          <video controls preload='metadata' src='videos/14_A477_M_jog_arc_cw_start_R_turn_jump_360_R_point_dir_horizontal__Greenwich_vs_Retarget.mp4'></video>
+          <div class='motion-grid'>
+            <div><h4>Greenwich</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 750 · body 37.5 mm · joint 0.145 rad · slip 0.8% · p95 force 14.3 Nm</p></div>
+            <div><h4>Traditional retargeting</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 750 · body 25.9 mm · joint 0.089 rad · slip 1.2% · p95 force 17.7 Nm</p></div>
+          </div>
+        </section>
+        
+        <section class='motion' id='m15'>
+          <h3>15. Jog Backward Loop 001</h3>
+          <video controls preload='metadata' src='videos/15_A028_jog_backward_loop_001__Greenwich_vs_Retarget.mp4'></video>
+          <div class='motion-grid'>
+            <div><h4>Greenwich</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 250 · body 28.5 mm · joint 0.085 rad · slip 6.9% · p95 force 14.6 Nm</p></div>
+            <div><h4>Traditional retargeting</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 250 · body 21.5 mm · joint 0.066 rad · slip 2.1% · p95 force 14.7 Nm</p></div>
+          </div>
+        </section>
+        
+        <section class='motion' id='m16'>
+          <h3>16. Jump And Land Professional 003</h3>
+          <video controls preload='metadata' src='videos/16_A002_M_jump_and_land_professional_003__Greenwich_vs_Retarget.mp4'></video>
+          <div class='motion-grid'>
+            <div><h4>Greenwich</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 750 · body 20.8 mm · joint 0.067 rad · slip 0.7% · p95 force 9.3 Nm</p></div>
+            <div><h4>Traditional retargeting</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 250 · body 18.8 mm · joint 0.063 rad · slip 0.4% · p95 force 9.5 Nm</p></div>
+          </div>
+        </section>
+        
+        <section class='motion' id='m17'>
+          <h3>17. Jump Ff 270</h3>
+          <video controls preload='metadata' src='videos/17_A047_jump_ff_270__Greenwich_vs_Retarget.mp4'></video>
+          <div class='motion-grid'>
+            <div><h4>Greenwich</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 250 · body 21.1 mm · joint 0.077 rad · slip 2.2% · p95 force 9.7 Nm</p></div>
+            <div><h4>Traditional retargeting</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 500 · body 17.0 mm · joint 0.055 rad · slip 0.7% · p95 force 8.2 Nm</p></div>
+          </div>
+        </section>
+        
+        <section class='motion' id='m18'>
+          <h3>18. Legs Relax 001</h3>
+          <video controls preload='metadata' src='videos/18_A124_legs_relax_001__Greenwich_vs_Retarget.mp4'></video>
+          <div class='motion-grid'>
+            <div><h4>Greenwich</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 500 · body 32.1 mm · joint 0.101 rad · slip 0.7% · p95 force 8.9 Nm</p></div>
+            <div><h4>Traditional retargeting</h4><p class='pass'>PASS · passed</p>
+              <p>Best success 100.0% · 90% at iteration 250 · body 21.8 mm · joint 0.062 rad · slip 0.7% · p95 force 9.2 Nm</p></div>
+          </div>
+        </section>
+        
+<h2>Recommended external wording after final 3-seed completion</h2>
+<p>Use a superiority claim only if the three-seed paired results support it. Until then, the defensible wording is: “The Greenwich integrated system generated trainable G1 reference motions across 18 diverse tasks without per-motion manual correction or robot-specific model fine-tuning; 14/18 passed a fixed multi-metric control-quality gate in the first completed seed.”</p>
+<h2>Files</h2><ul><li><code>data/paired-motion-results.csv</code> — auditable per-job metrics</li><li><code>videos/*.mp4</code> — 18 paired videos</li></ul>
+</main></body></html>

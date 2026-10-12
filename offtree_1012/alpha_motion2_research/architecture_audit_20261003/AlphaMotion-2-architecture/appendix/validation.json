@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "checks": {
+    "source_reference_count": 107,
+    "unique_source_files_verified": 25,
+    "all_source_line_ranges_valid": true,
+    "all_snapshot_hashes_match_manifest": true,
+    "megatron_key_tensor_shapes": 14,
+    "megatron_independent_hroot_absent": true,
+    "megatron_header_parameter_count": 17974772,
+    "effective_config_included": true,
+    "performance_reproduction_claimed": false
+  },
+  "outputs": {
+    "architecture_layers.md": "6e95dc799b321cc69ca61416d7c642b1a6eda5a4a1f3a25ea3a1dc5ac9d66954",
+    "layers.json": "b537032ba110f5cbef1244bb09a72c609a2f3044a4357df26d6da9d31136eff0"
+  }
+}

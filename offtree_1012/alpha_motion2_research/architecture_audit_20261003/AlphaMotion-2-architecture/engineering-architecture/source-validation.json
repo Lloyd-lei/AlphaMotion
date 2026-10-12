@@ -1,0 +1,94 @@
+{
+  "source_references": 44,
+  "source_hashes_and_line_ranges_valid": true,
+  "modules": 14,
+  "figures": [
+    {
+      "file": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/alphamotion2_cleaning_proposed.pdf",
+      "pages": 1,
+      "width_pt": 1640,
+      "height_pt": 1040,
+      "minimum_font_pt": 13.0,
+      "character_bounds_within_page": true,
+      "png_dimensions": [
+        1640,
+        1040
+      ],
+      "rendered_visual_review": "pass: no overflow, label collision, or clipped arrows",
+      "sha256": "0339d7ee7a9e9b91e9643d1f9312afd19038b82f876d082b2fb6f8631c84a285"
+    },
+    {
+      "file": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/alphamotion2_cleaning_proposed_doc.pdf",
+      "pages": 1,
+      "width_pt": 510,
+      "height_pt": 610,
+      "minimum_font_pt": 9.5,
+      "character_bounds_within_page": true,
+      "png_dimensions": [
+        780,
+        932
+      ],
+      "rendered_visual_review": "pass: no overflow, label collision, or clipped arrows",
+      "sha256": "07f0988540782cc81b5750c7ac4ddc5c10f7985500cff2220ed9f1a94af985cb"
+    },
+    {
+      "file": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/umr_engineering.pdf",
+      "pages": 1,
+      "width_pt": 1640,
+      "height_pt": 1040,
+      "minimum_font_pt": 13.0,
+      "character_bounds_within_page": true,
+      "png_dimensions": [
+        1640,
+        1040
+      ],
+      "rendered_visual_review": "pass: no overflow, label collision, or clipped arrows",
+      "sha256": "4794e691e09607874a0b4f40f8172f5e51ca2679a9239445cc5a0f9c82ee7c2a"
+    },
+    {
+      "file": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/umr_engineering_doc.pdf",
+      "pages": 1,
+      "width_pt": 510,
+      "height_pt": 610,
+      "minimum_font_pt": 9.5,
+      "character_bounds_within_page": true,
+      "png_dimensions": [
+        780,
+        932
+      ],
+      "rendered_visual_review": "pass: no overflow, label collision, or clipped arrows",
+      "sha256": "e4d7affd3f9824891a3ab9c922e8ebbf84226b65eec5fc9b002d766e9ec48461"
+    },
+    {
+      "file": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/unimate_engineering.pdf",
+      "pages": 1,
+      "width_pt": 1640,
+      "height_pt": 1040,
+      "minimum_font_pt": 13.0,
+      "character_bounds_within_page": true,
+      "png_dimensions": [
+        1640,
+        1040
+      ],
+      "rendered_visual_review": "pass: no overflow, label collision, or clipped arrows",
+      "sha256": "f2b5d48a232daa533199c6a262e2d9d65a25eaa99b95ac01e0d4c71b95381b33"
+    },
+    {
+      "file": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/engineering-architecture/unimate_engineering_doc.pdf",
+      "pages": 1,
+      "width_pt": 510,
+      "height_pt": 610,
+      "minimum_font_pt": 9.5,
+      "character_bounds_within_page": true,
+      "png_dimensions": [
+        780,
+        932
+      ],
+      "rendered_visual_review": "pass: no overflow, label collision, or clipped arrows",
+      "sha256": "c8e8c5e201e9bc8e5133e1ebbe5704c9419e7b3b57cf25f05b6274285aada236"
+    }
+  ],
+  "neural_model_changed": false,
+  "training_started": false,
+  "deployed": false
+}

@@ -1,0 +1,26 @@
+{
+ "arm": "B0",
+ "mode": "sensor_off",
+ "shard": "3/4",
+ "cases": 270,
+ "written": 270,
+ "skipped_existing": 0,
+ "shuffle_source": false,
+ "model": {
+  "checkpoint": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/alphamotion_scaling_20261004/runs/B_S_seed0/checkpoint_step3000.pt",
+  "checkpoint_sha256": "22d03269ccb38e08c8071759493273e101008dd46b716c1ebb4ab78508f9e85d",
+  "step": 3000,
+  "variant": "B",
+  "model_class": "surface.surface_model:SurfaceMegatron(max_patches=96)",
+  "model_kwargs_extra": {},
+  "geometry": null,
+  "run_id": "B_S_seed0"
+ },
+ "cases_file": "/var/tmp/alphamotion/am2exp/eval/cases_e1_v1.json",
+ "cases_sha256": "ebb05d74a156c35813691b13afae2c4b2be8de4329d1f9c483535adb9232aad0",
+ "load_seconds": 11.641223192214966,
+ "inference_seconds": 483.59521675109863,
+ "wall_seconds": 520.364893913269,
+ "threads": 2,
+ "geometry_record": null
+}

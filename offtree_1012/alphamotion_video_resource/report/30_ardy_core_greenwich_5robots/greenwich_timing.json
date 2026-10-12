@@ -1,0 +1,196 @@
+{
+ "megatron_load_s": 0.20912772591691464,
+ "gpu": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+ "prompts": {
+  "p1_box": {
+   "frames": 200,
+   "fps": 20.0,
+   "seconds": 10.0,
+   "encode_ms": 5.42783597484231,
+   "robots": {
+    "unitree_g1_29dof": {
+     "decode_ms": 12.088663992471993,
+     "project_ms": 213.22417701594532,
+     "stream_frame_ms_median": 36.43637103959918,
+     "stream_frame_ms_p95": 116.2906734040007
+    },
+    "unitree_h2": {
+     "decode_ms": 13.686899095773697,
+     "project_ms": 254.26566298119724,
+     "stream_frame_ms_median": 41.907625971361995,
+     "stream_frame_ms_p95": 138.43502602539957
+    },
+    "agibot_a3_t3d0": {
+     "decode_ms": 9.986747056245804,
+     "project_ms": 181.60889693535864,
+     "stream_frame_ms_median": 40.24155996739864,
+     "stream_frame_ms_p95": 101.82997812516987
+    },
+    "fourier_gr3": {
+     "decode_ms": 11.164359049871564,
+     "project_ms": 196.54351100325584,
+     "stream_frame_ms_median": 112.12507600430399,
+     "stream_frame_ms_p95": 133.9228268014267
+    },
+    "pnd_adam_lite": {
+     "decode_ms": 8.865584037266672,
+     "project_ms": 159.6587640233338,
+     "stream_frame_ms_median": 33.582280040718615,
+     "stream_frame_ms_p95": 91.9248235062696
+    }
+   }
+  },
+  "p2_hurdle": {
+   "frames": 200,
+   "fps": 20.0,
+   "seconds": 10.0,
+   "encode_ms": 5.344515084289014,
+   "robots": {
+    "unitree_g1_29dof": {
+     "decode_ms": 12.082722038030624,
+     "project_ms": 218.3600850403309,
+     "stream_frame_ms_median": 37.561110919341445,
+     "stream_frame_ms_p95": 121.77465616259724
+    },
+    "unitree_h2": {
+     "decode_ms": 13.715291977860034,
+     "project_ms": 110.40335905272514,
+     "stream_frame_ms_median": 40.420867037028074,
+     "stream_frame_ms_p95": 54.858346085529774
+    },
+    "agibot_a3_t3d0": {
+     "decode_ms": 9.935940033756196,
+     "project_ms": 172.9871790157631,
+     "stream_frame_ms_median": 35.30792600940913,
+     "stream_frame_ms_p95": 50.912920746486634
+    },
+    "fourier_gr3": {
+     "decode_ms": 11.188752017915249,
+     "project_ms": 191.3573369383812,
+     "stream_frame_ms_median": 109.91919098887593,
+     "stream_frame_ms_p95": 135.9706356539391
+    },
+    "pnd_adam_lite": {
+     "decode_ms": 8.826966979540884,
+     "project_ms": 157.6028660638258,
+     "stream_frame_ms_median": 29.926336952485144,
+     "stream_frame_ms_p95": 56.690958305262015
+    }
+   }
+  },
+  "p3_wave": {
+   "frames": 200,
+   "fps": 20.0,
+   "seconds": 10.0,
+   "encode_ms": 5.3293799282982945,
+   "robots": {
+    "unitree_g1_29dof": {
+     "decode_ms": 12.099150102585554,
+     "project_ms": 82.25887699518353,
+     "stream_frame_ms_median": 36.89947200473398,
+     "stream_frame_ms_p95": 53.310240502469235
+    },
+    "unitree_h2": {
+     "decode_ms": 13.75897997058928,
+     "project_ms": 87.46762794908136,
+     "stream_frame_ms_median": 42.90030396077782,
+     "stream_frame_ms_p95": 55.96208601491526
+    },
+    "agibot_a3_t3d0": {
+     "decode_ms": 10.00547397416085,
+     "project_ms": 68.02653602790087,
+     "stream_frame_ms_median": 33.648474025540054,
+     "stream_frame_ms_p95": 41.39690037118271
+    },
+    "fourier_gr3": {
+     "decode_ms": 11.16026402451098,
+     "project_ms": 226.83103301096708,
+     "stream_frame_ms_median": 110.96017004456371,
+     "stream_frame_ms_p95": 122.74818734731524
+    },
+    "pnd_adam_lite": {
+     "decode_ms": 8.851437945850194,
+     "project_ms": 67.77886091731489,
+     "stream_frame_ms_median": 29.8545389669016,
+     "stream_frame_ms_p95": 43.83445571875199
+    }
+   }
+  },
+  "p4_kick": {
+   "frames": 200,
+   "fps": 20.0,
+   "seconds": 10.0,
+   "encode_ms": 5.330233019776642,
+   "robots": {
+    "unitree_g1_29dof": {
+     "decode_ms": 12.149499962106347,
+     "project_ms": 222.6230619708076,
+     "stream_frame_ms_median": 44.07464200630784,
+     "stream_frame_ms_p95": 122.42730611469597
+    },
+    "unitree_h2": {
+     "decode_ms": 13.726938981562853,
+     "project_ms": 88.29389500897378,
+     "stream_frame_ms_median": 43.230321956798434,
+     "stream_frame_ms_p95": 56.3139914884232
+    },
+    "agibot_a3_t3d0": {
+     "decode_ms": 9.95736091863364,
+     "project_ms": 183.85490402579308,
+     "stream_frame_ms_median": 46.47872596979141,
+     "stream_frame_ms_p95": 100.54278138559312
+    },
+    "fourier_gr3": {
+     "decode_ms": 11.199453962035477,
+     "project_ms": 193.14134400337934,
+     "stream_frame_ms_median": 111.22719291597605,
+     "stream_frame_ms_p95": 132.443630893249
+    },
+    "pnd_adam_lite": {
+     "decode_ms": 8.864909061230719,
+     "project_ms": 149.11859994754195,
+     "stream_frame_ms_median": 33.002468990162015,
+     "stream_frame_ms_p95": 91.3436854723841
+    }
+   }
+  },
+  "p5_sit": {
+   "frames": 200,
+   "fps": 20.0,
+   "seconds": 10.0,
+   "encode_ms": 5.360151990316808,
+   "robots": {
+    "unitree_g1_29dof": {
+     "decode_ms": 12.103370972909033,
+     "project_ms": 215.4521340271458,
+     "stream_frame_ms_median": 116.93020001985133,
+     "stream_frame_ms_p95": 128.39966093888506
+    },
+    "unitree_h2": {
+     "decode_ms": 13.715674984268844,
+     "project_ms": 263.7841650284827,
+     "stream_frame_ms_median": 131.44460006151348,
+     "stream_frame_ms_p95": 160.26117093861103
+    },
+    "agibot_a3_t3d0": {
+     "decode_ms": 9.94351098779589,
+     "project_ms": 180.48630701377988,
+     "stream_frame_ms_median": 98.66795607376844,
+     "stream_frame_ms_p95": 101.92588336067274
+    },
+    "fourier_gr3": {
+     "decode_ms": 11.219868902117014,
+     "project_ms": 225.68969696294516,
+     "stream_frame_ms_median": 110.70806707721204,
+     "stream_frame_ms_p95": 130.24049000814554
+    },
+    "pnd_adam_lite": {
+     "decode_ms": 8.89189401641488,
+     "project_ms": 151.91312204115093,
+     "stream_frame_ms_median": 83.66823603864759,
+     "stream_frame_ms_p95": 95.24153479142115
+    }
+   }
+  }
+ }
+}

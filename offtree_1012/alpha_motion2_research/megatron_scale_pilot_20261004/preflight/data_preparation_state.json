@@ -1,0 +1,28 @@
+{
+  "started_at_utc": "2026-10-04T08:12:14.507323+00:00",
+  "pid": 3696754,
+  "start_ticks": "174880999",
+  "boot_id": "438a1cf6-b87e-4825-9786-844661433f9e",
+  "cmdline": "/home/arenalabs/miniconda3/envs/ardy/bin/python -u /home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/megatron_scale_pilot_20261004/preflight/prepare_real_data.py ",
+  "stages": [
+    {
+      "stage": "static_seal",
+      "returncode": 0,
+      "ended_at_utc": "2026-10-04T08:12:17.499311+00:00"
+    },
+    {
+      "stage": "ground_backfill",
+      "returncode": 0,
+      "ended_at_utc": "2026-10-04T08:13:04.472340+00:00"
+    },
+    {
+      "stage": "unimate_fk_adapter",
+      "returncode": 0,
+      "ended_at_utc": "2026-10-04T08:13:08.777473+00:00"
+    }
+  ],
+  "status": "completed",
+  "active_stage": "unimate_fk_adapter",
+  "exit_code": 0,
+  "ended_at_utc": "2026-10-04T08:13:08.777762+00:00"
+}

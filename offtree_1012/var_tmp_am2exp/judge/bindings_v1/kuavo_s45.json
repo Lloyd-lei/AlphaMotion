@@ -1,0 +1,632 @@
+{
+ "schema": "am2exp_j1_collision_binding_v1",
+ "body": "kuavo_s45",
+ "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/kuavo_s45/biped_s45_collision.xml",
+ "xml_sha256": "b1b4d76cdb37f8ff667205a3ff652dd19737671f807b4c321a7f26903d43c922",
+ "mujoco_version": "3.6.0",
+ "am2_static_spec": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/research/megatron_scale_pilot_20261004/data_xwbc/static/kuavo_s45_spec.npz",
+ "am2_static_spec_sha256": "85fcf8161c14b8a246737933e09fe24cce22c805e4819d6f0895446b564a3035",
+ "am2_joint_names": [
+  "base_link",
+  "leg_l1_link",
+  "leg_l3_link",
+  "leg_l4_link",
+  "leg_l5_link",
+  "leg_r1_link",
+  "leg_r3_link",
+  "leg_r4_link",
+  "leg_r5_link",
+  "zarm_l1_link",
+  "zarm_l4_link",
+  "zarm_l5_link",
+  "zarm_l6_link",
+  "zarm_l7_link",
+  "zarm_r1_link",
+  "zarm_r4_link",
+  "zarm_r5_link",
+  "zarm_r6_link",
+  "zarm_r7_link",
+  "zhead_1_link"
+ ],
+ "node_body": [
+  "base_link",
+  "leg_l1_link",
+  "leg_l3_link",
+  "leg_l4_link",
+  "leg_l5_link",
+  "leg_r1_link",
+  "leg_r3_link",
+  "leg_r4_link",
+  "leg_r5_link",
+  "zarm_l1_link",
+  "zarm_l4_link",
+  "zarm_l5_link",
+  "zarm_l6_link",
+  "zarm_l7_link",
+  "zarm_r1_link",
+  "zarm_r4_link",
+  "zarm_r5_link",
+  "zarm_r6_link",
+  "zarm_r7_link",
+  "zhead_1_link"
+ ],
+ "node_frame_body": [
+  "base_link",
+  "leg_l2_link",
+  "leg_l3_link",
+  "leg_l4_link",
+  "leg_l6_link",
+  "leg_r2_link",
+  "leg_r3_link",
+  "leg_r4_link",
+  "leg_r6_link",
+  "zarm_l3_link",
+  "zarm_l4_link",
+  "zarm_l5_link",
+  "zarm_l6_link",
+  "zarm_l7_link",
+  "zarm_r3_link",
+  "zarm_r4_link",
+  "zarm_r5_link",
+  "zarm_r6_link",
+  "zarm_r7_link",
+  "zhead_2_link"
+ ],
+ "random_states": 16,
+ "fk_max_error_cm": 2.1258689386379446e-06,
+ "h2_node_map": null,
+ "h2_offset_residual_cm": null,
+ "h2_offset_residual_max_cm": null,
+ "n_geoms": 28,
+ "n_rigid": 22,
+ "n_chain": 6,
+ "n_approx": 0,
+ "chain_geoms": [
+  {
+   "geom": 5,
+   "body": "leg_l1_link",
+   "node": "leg_l1_link",
+   "parent_node": "base_link",
+   "chain": [
+    "leg_l1_link",
+    "leg_l2_link"
+   ],
+   "verify_residual_cm": 2.9276137153728907e-07
+  },
+  {
+   "geom": 18,
+   "body": "leg_r1_link",
+   "node": "leg_r1_link",
+   "parent_node": "base_link",
+   "chain": [
+    "leg_r1_link",
+    "leg_r2_link"
+   ],
+   "verify_residual_cm": 2.535387945370885e-07
+  },
+  {
+   "geom": 31,
+   "body": "zarm_l1_link",
+   "node": "zarm_l1_link",
+   "parent_node": "base_link",
+   "chain": [
+    "zarm_l1_link",
+    "zarm_l2_link",
+    "zarm_l3_link"
+   ],
+   "verify_residual_cm": 1.460009739436636e-07
+  },
+  {
+   "geom": 33,
+   "body": "zarm_l2_link",
+   "node": "zarm_l1_link",
+   "parent_node": "base_link",
+   "chain": [
+    "zarm_l1_link",
+    "zarm_l2_link",
+    "zarm_l3_link"
+   ],
+   "verify_residual_cm": 1.9740524199471395e-07
+  },
+  {
+   "geom": 44,
+   "body": "zarm_r1_link",
+   "node": "zarm_r1_link",
+   "parent_node": "base_link",
+   "chain": [
+    "zarm_r1_link",
+    "zarm_r2_link",
+    "zarm_r3_link"
+   ],
+   "verify_residual_cm": 1.2644055619082312e-07
+  },
+  {
+   "geom": 46,
+   "body": "zarm_r2_link",
+   "node": "zarm_r1_link",
+   "parent_node": "base_link",
+   "chain": [
+    "zarm_r1_link",
+    "zarm_r2_link",
+    "zarm_r3_link"
+   ],
+   "verify_residual_cm": 2.2794394013215812e-07
+  }
+ ],
+ "approx_residual_max_cm": 2.9276137153728907e-07,
+ "geoms": [
+  {
+   "geom": 2,
+   "body": "base_link",
+   "node": "base_link",
+   "region": "trunk",
+   "type": 6,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": 1.7763568394002505e-15,
+   "rest_centre_cm": [
+    0.0,
+    15.000000000000002,
+    0.0
+   ]
+  },
+  {
+   "geom": 3,
+   "body": "base_link",
+   "node": "base_link",
+   "region": "trunk",
+   "type": 4,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": 29.000000000000007,
+   "rest_centre_cm": [
+    0.0,
+    42.00000000000001,
+    -2.0
+   ]
+  },
+  {
+   "geom": 5,
+   "body": "leg_l1_link",
+   "node": "leg_l1_link",
+   "region": "L_thigh",
+   "type": 5,
+   "approx": false,
+   "chain": true,
+   "residual_cm": 2.9276137153728907e-07,
+   "rest_lowest_cm": -12.600000000000001,
+   "rest_centre_cm": [
+    8.7,
+    -6.599999999999994,
+    -10.74999
+   ]
+  },
+  {
+   "geom": 8,
+   "body": "leg_l3_link",
+   "node": "leg_l3_link",
+   "region": "L_thigh",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -25.47,
+   "rest_centre_cm": [
+    8.6,
+    -19.47,
+    -0.1999545
+   ]
+  },
+  {
+   "geom": 9,
+   "body": "leg_l3_link",
+   "node": "leg_l3_link",
+   "region": "L_thigh",
+   "type": 3,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -50.47,
+   "rest_centre_cm": [
+    8.6,
+    -31.97,
+    -0.1999545
+   ]
+  },
+  {
+   "geom": 11,
+   "body": "leg_l4_link",
+   "node": "leg_l4_link",
+   "region": "L_shin",
+   "type": 3,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -85.86999999999999,
+   "rest_centre_cm": [
+    8.6,
+    -64.86999999999999,
+    -0.20682635
+   ]
+  },
+  {
+   "geom": 14,
+   "body": "leg_l6_link",
+   "node": "leg_l5_link",
+   "region": "L_foot",
+   "type": 6,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -87.47,
+   "rest_centre_cm": [
+    8.6,
+    -86.97,
+    3.75001005
+   ]
+  },
+  {
+   "geom": 15,
+   "body": "leg_l6_link",
+   "node": "leg_l5_link",
+   "region": "L_foot",
+   "type": 6,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -88.52,
+   "rest_centre_cm": [
+    8.6,
+    -88.02,
+    -4.74998995
+   ]
+  },
+  {
+   "geom": 16,
+   "body": "leg_l6_link",
+   "node": "leg_l5_link",
+   "region": "L_foot",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -88.52,
+   "rest_centre_cm": [
+    8.6,
+    -88.02,
+    11.95001005
+   ]
+  },
+  {
+   "geom": 18,
+   "body": "leg_r1_link",
+   "node": "leg_r1_link",
+   "region": "R_thigh",
+   "type": 5,
+   "approx": false,
+   "chain": true,
+   "residual_cm": 2.535387945370885e-07,
+   "rest_lowest_cm": -12.600000000000001,
+   "rest_centre_cm": [
+    -8.7,
+    -6.599999999999994,
+    -10.74999
+   ]
+  },
+  {
+   "geom": 21,
+   "body": "leg_r3_link",
+   "node": "leg_r3_link",
+   "region": "R_thigh",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -25.47,
+   "rest_centre_cm": [
+    -8.7,
+    -19.47,
+    -0.25487007000000006
+   ]
+  },
+  {
+   "geom": 22,
+   "body": "leg_r3_link",
+   "node": "leg_r3_link",
+   "region": "R_thigh",
+   "type": 3,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -50.47,
+   "rest_centre_cm": [
+    -8.7,
+    -31.97,
+    -0.25487007000000006
+   ]
+  },
+  {
+   "geom": 24,
+   "body": "leg_r4_link",
+   "node": "leg_r4_link",
+   "region": "R_shin",
+   "type": 3,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -85.86999999999999,
+   "rest_centre_cm": [
+    -8.7,
+    -64.86999999999999,
+    -0.24015617000000003
+   ]
+  },
+  {
+   "geom": 27,
+   "body": "leg_r6_link",
+   "node": "leg_r5_link",
+   "region": "R_foot",
+   "type": 6,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -87.47,
+   "rest_centre_cm": [
+    -8.7,
+    -86.97,
+    3.77182443
+   ]
+  },
+  {
+   "geom": 28,
+   "body": "leg_r6_link",
+   "node": "leg_r5_link",
+   "region": "R_foot",
+   "type": 6,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -88.52,
+   "rest_centre_cm": [
+    -8.7,
+    -88.02,
+    -4.728175569999999
+   ]
+  },
+  {
+   "geom": 29,
+   "body": "leg_r6_link",
+   "node": "leg_r5_link",
+   "region": "R_foot",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -88.52,
+   "rest_centre_cm": [
+    -8.7,
+    -88.02,
+    11.97182443
+   ]
+  },
+  {
+   "geom": 31,
+   "body": "zarm_l1_link",
+   "node": "zarm_l1_link",
+   "region": "L_upper_arm",
+   "type": 6,
+   "approx": false,
+   "chain": true,
+   "residual_cm": 1.460009739436636e-07,
+   "rest_lowest_cm": 40.449999999999996,
+   "rest_centre_cm": [
+    22.27,
+    42.449999999999996,
+    -1.74999
+   ]
+  },
+  {
+   "geom": 33,
+   "body": "zarm_l2_link",
+   "node": "zarm_l1_link",
+   "region": "L_upper_arm",
+   "type": 5,
+   "approx": false,
+   "chain": true,
+   "residual_cm": 1.9740524199471395e-07,
+   "rest_lowest_cm": 37.949999999999996,
+   "rest_centre_cm": [
+    29.270000000000003,
+    42.449999999999996,
+    -0.7499899999999998
+   ]
+  },
+  {
+   "geom": 35,
+   "body": "zarm_l3_link",
+   "node": "zarm_l1_link",
+   "region": "L_upper_arm",
+   "type": 3,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": 21.45000000000001,
+   "rest_centre_cm": [
+    29.270000000000003,
+    28.45000000000001,
+    -1.74999
+   ]
+  },
+  {
+   "geom": 37,
+   "body": "zarm_l4_link",
+   "node": "zarm_l4_link",
+   "region": "L_forearm",
+   "type": 3,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -9.920000000000007,
+   "rest_centre_cm": [
+    29.270000000000003,
+    2.5799999999999934,
+    -0.7499899999999998
+   ]
+  },
+  {
+   "geom": 41,
+   "body": "zarm_l7_link",
+   "node": "zarm_l7_link",
+   "region": "L_hand",
+   "type": 2,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -28.870050000000013,
+   "rest_centre_cm": [
+    26.270000000000003,
+    -28.370050000000013,
+    -1.72999
+   ]
+  },
+  {
+   "geom": 42,
+   "body": "zarm_l7_link",
+   "node": "zarm_l7_link",
+   "region": "L_hand",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -19.87005000000001,
+   "rest_centre_cm": [
+    29.270000000000003,
+    -17.12005000000001,
+    -1.72999
+   ]
+  },
+  {
+   "geom": 44,
+   "body": "zarm_r1_link",
+   "node": "zarm_r1_link",
+   "region": "R_upper_arm",
+   "type": 6,
+   "approx": false,
+   "chain": true,
+   "residual_cm": 1.2644055619082312e-07,
+   "rest_lowest_cm": 40.449999999999996,
+   "rest_centre_cm": [
+    -22.27,
+    42.449999999999996,
+    -1.74999
+   ]
+  },
+  {
+   "geom": 46,
+   "body": "zarm_r2_link",
+   "node": "zarm_r1_link",
+   "region": "R_upper_arm",
+   "type": 5,
+   "approx": false,
+   "chain": true,
+   "residual_cm": 2.2794394013215812e-07,
+   "rest_lowest_cm": 37.949999999999996,
+   "rest_centre_cm": [
+    -29.270000000000003,
+    42.449999999999996,
+    -0.7499899999999998
+   ]
+  },
+  {
+   "geom": 48,
+   "body": "zarm_r3_link",
+   "node": "zarm_r1_link",
+   "region": "R_upper_arm",
+   "type": 3,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": 21.45000000000001,
+   "rest_centre_cm": [
+    -29.270000000000003,
+    28.45000000000001,
+    -1.74999
+   ]
+  },
+  {
+   "geom": 50,
+   "body": "zarm_r4_link",
+   "node": "zarm_r4_link",
+   "region": "R_forearm",
+   "type": 3,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -9.920000000000007,
+   "rest_centre_cm": [
+    -29.270000000000003,
+    2.5799999999999934,
+    -0.7499899999999998
+   ]
+  },
+  {
+   "geom": 54,
+   "body": "zarm_r7_link",
+   "node": "zarm_r7_link",
+   "region": "R_hand",
+   "type": 2,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -28.87000000000002,
+   "rest_centre_cm": [
+    -26.270000000000003,
+    -28.37000000000002,
+    -1.74999
+   ]
+  },
+  {
+   "geom": 55,
+   "body": "zarm_r7_link",
+   "node": "zarm_r7_link",
+   "region": "R_hand",
+   "type": 5,
+   "approx": false,
+   "chain": false,
+   "residual_cm": 0.0,
+   "rest_lowest_cm": -19.87000000000001,
+   "rest_centre_cm": [
+    -29.270000000000003,
+    -17.12000000000001,
+    -1.74999
+   ]
+  }
+ ],
+ "regions_present": [
+  "L_foot",
+  "L_forearm",
+  "L_hand",
+  "L_shin",
+  "L_thigh",
+  "L_upper_arm",
+  "R_foot",
+  "R_forearm",
+  "R_hand",
+  "R_shin",
+  "R_thigh",
+  "R_upper_arm",
+  "trunk"
+ ],
+ "regions_missing": [
+  "pelvis",
+  "head"
+ ],
+ "selfpen_pairs": 325,
+ "selfpen_candidate_pairs": 325,
+ "selfpen_excluded": [],
+ "selfpen_rule": "hop(anchor)>=2, rest distance > -0.5 cm at qpos0, penetrating (<-1cm) in <=50% of 32 random q",
+ "independence": "vendor MJCF collision geometry only; no visual surface, sole table, labels or loss",
+ "npz_sha256": "38e3af973e6a94baa58fa91007f7ecf977d2584abcb9f18c243b5d6bd45ce1f8"
+}

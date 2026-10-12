@@ -1,0 +1,236 @@
+{
+ "T": 125,
+ "fps": 25.0,
+ "text": "scratch the left buttock with the left hand",
+ "ardy_fk_gauge_cm_mean": 0.6286997783980689,
+ "stance_frac": [
+  1.0,
+  1.0
+ ],
+ "source_g1": {
+  "metrics": {
+   "slip_v_p95_cm_s": 0.9624180327981112,
+   "drift_p95_cm": 1.129312048518263,
+   "pen_frac": 0.0,
+   "pen_p95_cm": 0.7848984169256377,
+   "float_frac": 0.0,
+   "contact_f1": 1.0,
+   "rooth_jump_frac": 0.0,
+   "joint_jit_p95_deg_s2": 12.096407492594087
+  },
+  "verdict": "needs_human",
+  "failed": []
+ },
+ "robots": {
+  "unitree_g1_29dof": {
+   "nocon": {
+    "metrics": {
+     "self_rot_deg": 4.876448631286621,
+     "self_hand_cm": 4.267823696136475,
+     "self_foot_cm": 3.4215941429138184,
+     "lowest_geom_cm_min": 1.2471114484126296,
+     "geom_pen_frac": 0.0,
+     "display_lift_cm_mean": 0.0,
+     "display_lift_cm_max": 0.0,
+     "root_h_cm": [
+      80.83592224121094,
+      81.66567993164062
+     ],
+     "contact_thr_cm": 3.108,
+     "slip_v_p95_cm_s": 4.778419514597438,
+     "drift_p95_cm": 1.1581373918132314,
+     "pen_frac": 0.0,
+     "pen_p95_cm": 0.0,
+     "float_frac": 0.0,
+     "contact_f1": 1.0,
+     "onset_abs_med_frames": 0.0,
+     "rooth_jump_frac": 0.0,
+     "joint_jit_p95_deg_s2": 27.610566121518147,
+     "joint_v_p95_deg_s": 53.94854145944505
+    },
+    "verdict": "needs_human",
+    "failed": [],
+    "not_evaluated": [
+     "slip_v_p95_cm_s",
+     "drift_p95_cm",
+     "rooth_err_cm",
+     "joint_jit_p95_deg_s2",
+     "rot_deg",
+     "hand_p95_cm"
+    ]
+   },
+   "con": {
+    "metrics": {
+     "self_rot_deg": 5.119761943817139,
+     "self_hand_cm": 4.5651535987854,
+     "self_foot_cm": 3.017921209335327,
+     "lowest_geom_cm_min": -0.7875548731162928,
+     "geom_pen_frac": 0.312,
+     "display_lift_cm_mean": 0.30124264619597013,
+     "display_lift_cm_max": 0.7875548731162928,
+     "root_h_cm": [
+      78.964599609375,
+      79.50163269042969
+     ],
+     "contact_thr_cm": 3.108,
+     "slip_v_p95_cm_s": 6.177722815880026,
+     "drift_p95_cm": 1.3162611693424382,
+     "pen_frac": 0.0,
+     "pen_p95_cm": 0.7236584525985501,
+     "float_frac": 0.0,
+     "contact_f1": 1.0,
+     "onset_abs_med_frames": 0.0,
+     "rooth_jump_frac": 0.0,
+     "joint_jit_p95_deg_s2": 22.44491558743013,
+     "joint_v_p95_deg_s": 50.93953226007354
+    },
+    "verdict": "needs_human",
+    "failed": [],
+    "not_evaluated": [
+     "slip_v_p95_cm_s",
+     "drift_p95_cm",
+     "rooth_err_cm",
+     "joint_jit_p95_deg_s2",
+     "rot_deg",
+     "hand_p95_cm"
+    ]
+   }
+  },
+  "unitree_h2": {
+   "nocon": {
+    "metrics": {
+     "lowest_geom_cm_min": -5.486038863432804,
+     "geom_pen_frac": 1.0,
+     "display_lift_cm_mean": 4.767031770565997,
+     "display_lift_cm_max": 5.486038863432804,
+     "root_h_cm": [
+      98.20925903320312,
+      99.10839080810547
+     ],
+     "contact_thr_cm": 3.94,
+     "slip_v_p95_cm_s": 7.138023010109983,
+     "drift_p95_cm": 1.077772606789983,
+     "pen_frac": 0.0,
+     "pen_p95_cm": 0.0,
+     "float_frac": 0.0,
+     "contact_f1": 1.0,
+     "onset_abs_med_frames": 0.0,
+     "rooth_jump_frac": 0.0,
+     "joint_jit_p95_deg_s2": 15.785772179138162,
+     "joint_v_p95_deg_s": 31.338256046626828
+    },
+    "verdict": "needs_human",
+    "failed": [],
+    "not_evaluated": [
+     "slip_v_p95_cm_s",
+     "drift_p95_cm",
+     "rooth_err_cm",
+     "joint_jit_p95_deg_s2",
+     "rot_deg",
+     "hand_p95_cm"
+    ]
+   },
+   "con": {
+    "metrics": {
+     "lowest_geom_cm_min": -7.058345034633476,
+     "geom_pen_frac": 1.0,
+     "display_lift_cm_mean": 6.280689516388862,
+     "display_lift_cm_max": 7.058345034633476,
+     "root_h_cm": [
+      96.41768646240234,
+      97.48541259765625
+     ],
+     "contact_thr_cm": 3.94,
+     "slip_v_p95_cm_s": 8.426478458130886,
+     "drift_p95_cm": 1.769402261420374,
+     "pen_frac": 0.0,
+     "pen_p95_cm": 1.3402881504213637,
+     "float_frac": 0.0,
+     "contact_f1": 1.0,
+     "onset_abs_med_frames": 0.0,
+     "rooth_jump_frac": 0.0,
+     "joint_jit_p95_deg_s2": 16.69444708261722,
+     "joint_v_p95_deg_s": 31.939371426975512
+    },
+    "verdict": "needs_human",
+    "failed": [],
+    "not_evaluated": [
+     "slip_v_p95_cm_s",
+     "drift_p95_cm",
+     "rooth_err_cm",
+     "joint_jit_p95_deg_s2",
+     "rot_deg",
+     "hand_p95_cm"
+    ]
+   }
+  },
+  "fourier_gr3": {
+   "nocon": {
+    "metrics": {
+     "lowest_geom_cm_min": 11.55963135684979,
+     "geom_pen_frac": 0.0,
+     "display_lift_cm_mean": 0.0,
+     "display_lift_cm_max": 0.0,
+     "root_h_cm": [
+      104.87443542480469,
+      105.42591857910156
+     ],
+     "contact_thr_cm": 3.436,
+     "slip_v_p95_cm_s": 6.1323748045363855,
+     "drift_p95_cm": 1.3075044354838343,
+     "pen_frac": 0.0,
+     "pen_p95_cm": 0.0,
+     "float_frac": 0.048,
+     "contact_f1": 0.9754098360655737,
+     "onset_abs_med_frames": 0.0,
+     "rooth_jump_frac": 0.0,
+     "joint_jit_p95_deg_s2": 22.333528443385084,
+     "joint_v_p95_deg_s": 52.216291786858456
+    },
+    "verdict": "needs_human",
+    "failed": [],
+    "not_evaluated": [
+     "slip_v_p95_cm_s",
+     "drift_p95_cm",
+     "rooth_err_cm",
+     "joint_jit_p95_deg_s2",
+     "rot_deg",
+     "hand_p95_cm"
+    ]
+   },
+   "con": {
+    "metrics": {
+     "lowest_geom_cm_min": 9.981229325370116,
+     "geom_pen_frac": 0.0,
+     "display_lift_cm_mean": 0.0,
+     "display_lift_cm_max": 0.0,
+     "root_h_cm": [
+      103.50737762451172,
+      104.10230255126953
+     ],
+     "contact_thr_cm": 3.436,
+     "slip_v_p95_cm_s": 7.870096752045136,
+     "drift_p95_cm": 1.5991077868889358,
+     "pen_frac": 0.0,
+     "pen_p95_cm": 0.0,
+     "float_frac": 0.0,
+     "contact_f1": 1.0,
+     "onset_abs_med_frames": 0.0,
+     "rooth_jump_frac": 0.0,
+     "joint_jit_p95_deg_s2": 22.64505819536493,
+     "joint_v_p95_deg_s": 48.597278713396506
+    },
+    "verdict": "needs_human",
+    "failed": [],
+    "not_evaluated": [
+     "slip_v_p95_cm_s",
+     "drift_p95_cm",
+     "rooth_err_cm",
+     "joint_jit_p95_deg_s2",
+     "rot_deg",
+     "hand_p95_cm"
+    ]
+   }
+  }
+ }
+}

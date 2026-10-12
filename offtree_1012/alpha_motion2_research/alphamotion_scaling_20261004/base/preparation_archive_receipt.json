@@ -1,0 +1,14 @@
+{
+  "created_at_utc": "2026-10-04T06:19:12.535552+00:00",
+  "archive": "/Users/yudonglei/.codex/visualizations/2026/10/04/01a10493-9b02-7710-8b73-b474e3192aeb/alphamotion-architecture/AlphaMotion-megatron-pilot-preparation.zip",
+  "bytes": 246223,
+  "sha256": "1a53ad421665f8ad39ab92b630a6473f009206aef7f59eeee441512650527e9b",
+  "zip_entries": 70,
+  "payload_count": 69,
+  "all_entry_hash_size_crc_verified": true,
+  "test_count": 101,
+  "tests_success": true,
+  "remote_uploaded": false,
+  "actual_training_started": false,
+  "real_data_cuda_validated": false
+}
