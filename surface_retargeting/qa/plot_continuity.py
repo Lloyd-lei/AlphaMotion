@@ -4,6 +4,7 @@ the quantity the continuity gate bounds), with flagged frames shaded.  Writes <o
 and prints/collects a JSON summary.
 Usage: plot_continuity.py <out_dir> <clip>__<robot> [...]     (reads results/parity/<clip>__<robot>.series.npz)
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import json
 import sys
 from pathlib import Path
@@ -13,7 +14,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 
-OUT = Path('/var/tmp/alphamotion/umr_factory/umr_gpu')
+OUT = Path(f'{SRCFG.work}')
 
 
 def stats(name):

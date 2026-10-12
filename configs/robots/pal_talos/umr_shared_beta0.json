@@ -1,7 +1,7 @@
 {
  "robot": {
   "name": "pal_talos",
-  "xml": "/home/arenalabs/umr_factory_data/robots/pal_talos/pal_talos.xml",
+  "xml": "${SR_DATA_ROOT}/robots/pal_talos/pal_talos.xml",
   "point_cloud_center": "body:torso_1_link",
   "tpose_qpos": {
    "arm_left_2_joint": 1.33097,
@@ -24,10 +24,10 @@
   "dataset": {
    "smpl_center": "bbox_ratio",
    "bbox_center_ratio": 0.657827,
-   "out": "/home/arenalabs/umr_factory_data/corr/pal_talos/beta0/correspondence_dataset.npz"
+   "out": "${SR_DATA_ROOT}/corr/pal_talos/beta0/correspondence_dataset.npz"
   },
   "train": {
-   "out_dir": "/home/arenalabs/umr_factory_data/corr/pal_talos/beta0/train",
+   "out_dir": "${SR_DATA_ROOT}/corr/pal_talos/beta0/train",
    "template_name": "auto",
    "device": "auto"
   },

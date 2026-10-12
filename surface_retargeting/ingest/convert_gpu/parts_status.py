@@ -1,11 +1,12 @@
 """Per extracted HiPHI part: clips, converted by CPU (smplx/hiphi qa.json), by GPU (smplx_gpu/hiphi qa.json), missing.
 Writes /home/arenalabs/umr_factory_data/smplx_gpu/hiphi/parts_status.json and parts_done.txt (parts whose every
 clip has a qa.json from either converter -> their extracted BVH is no longer needed by the converters)."""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import json
 import time
 from pathlib import Path
 
-DATA = Path("/home/arenalabs/umr_factory_data")
+DATA = Path(f'{SRCFG.data_root}')
 OUT = DATA / "smplx_gpu/hiphi"
 
 

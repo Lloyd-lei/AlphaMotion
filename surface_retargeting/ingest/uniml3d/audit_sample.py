@@ -1,11 +1,11 @@
 """Random-sample audit: how much of UniML3D reloads as grounded LBS point clouds."""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import sys, os, json, csv, random, subprocess, traceback
 import numpy as np
 from concurrent.futures import ThreadPoolExecutor
-sys.path.insert(0, os.path.dirname(__file__))
-from reload import *
+from surface_retargeting.ingest.uniml3d.reload import *
 
-HERE = os.path.dirname(os.path.abspath(__file__)); R = os.path.join(HERE, '../remote')
+HERE = os.path.dirname(os.path.abspath(__file__)); R = f'{SRCFG.factory_root}/uniml3d_reload/remote'  # data, not code
 CACHE = os.path.join(HERE, '../sample_cache'); os.makedirs(CACHE, exist_ok=True)
 HF = 'https://huggingface.co/datasets'
 N_OBJ, N_MIX, MAXF = int(sys.argv[1]), int(sys.argv[2]), 300

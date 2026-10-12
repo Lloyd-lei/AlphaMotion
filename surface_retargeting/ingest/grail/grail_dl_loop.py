@@ -6,6 +6,7 @@ recon and a USD (no textures/videos/robot/objects/bps). Pinned to the revision i
 aria2c reads the list (incl. the auth header) from stdin, so the token never hits disk or argv.
 Each aria2c round is bounded (--round-min); on network failure the driver sleeps and re-lists. Lifetime --max-hours.
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import argparse
 import json
 import os
@@ -13,7 +14,7 @@ import subprocess
 import sys
 import time
 
-ROOT = '/home/arenalabs/umr_factory_data/raw/grail'
+ROOT = f'{SRCFG.data_root}/raw/grail'
 REPO_URL = 'https://huggingface.co/datasets/nvidia/PhysicalAI-Robotics-Locomanipulation-GRAIL/resolve'
 
 ap = argparse.ArgumentParser()

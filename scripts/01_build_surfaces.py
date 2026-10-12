@@ -1,7 +1,6 @@
 """Build DATA/robots/<name>/surface.npz for all core robots + a region-coloured check image per robot."""
 import sys, time, json
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import numpy as np
 from surface_retargeting.robots import robots as R, surface as S
 from surface_retargeting.paths import ROBOTS

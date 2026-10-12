@@ -1,6 +1,7 @@
 """Build the production job list (jobs.jsonl): one job = (source, object asset, robot, <= N clips).
 Order: source by source (T0 = OmniContact), clip chunks interleaved over robots (G1, GR3, H2, A3 first).
 Only sources the GPU engine supports are listed: flat floor + rigid object with a prop trajectory (MJCF)."""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import argparse
 import glob
 import json
@@ -11,7 +12,7 @@ from pathlib import Path
 ROBOTS4 = ['unitree_g1_29dof', 'fourier_gr3', 'unitree_h2', 'agibot_a3_t3d0']
 
 
-def omnicontact(root='/home/arenalabs/umr_factory_data/smplx/omnicontact'):
+def omnicontact(root=f'{SRCFG.data_root}/smplx/omnicontact'):
     out = []
     for f in sorted(glob.glob(f'{root}/*/*/*/poses.npy')):
         d = os.path.dirname(f)
@@ -31,7 +32,7 @@ def omnicontact(root='/home/arenalabs/umr_factory_data/smplx/omnicontact'):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--out', default='/home/arenalabs/umr_factory_data/production/v1/_jobs/jobs.jsonl')
+    ap.add_argument('--out', default=f'{SRCFG.data_root}/production/v1/_jobs/jobs.jsonl')
     ap.add_argument('--clips-per-job', type=int, default=64)
     ap.add_argument('--robots', default=','.join(ROBOTS4))
     a = ap.parse_args()

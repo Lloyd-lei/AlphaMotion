@@ -5,6 +5,7 @@ human vertices within 1 cm of the floor green / of the object orange.  Text: fra
 point, contact point count, max penetration ground / object.  Also writes a 12-frame grid PNG.
 Usage: render_prod.py <production npz> [out_dir]
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import json
 import sys
 from pathlib import Path
@@ -16,15 +17,14 @@ import torch
 from PIL import Image, ImageDraw, ImageFont
 from scipy.spatial.transform import Rotation as Rot
 
-sys.path.insert(0, '/home/arenalabs/umr_gpu'); sys.path.insert(0, '/home/arenalabs/umr_gpu/eval')
-from judge import floor_model
-from render_compare import cam, draw_points, floor_grid, W, H, FONT
+from surface_retargeting.qa.judge import floor_model
+from surface_retargeting.qa.render_compare import cam, draw_points, floor_grid, W, H, FONT
 
-UMR = '/var/tmp/alphamotion/umr_factory/umr/UMR'
+UMR = f'{SRCFG.umr_root}'
 
 
 def main():
-    npz = Path(sys.argv[1]); outd = Path(sys.argv[2]) if len(sys.argv) > 2 else Path('/var/tmp/alphamotion/umr_factory/umr_gpu/videos/production')
+    npz = Path(sys.argv[1]); outd = Path(sys.argv[2]) if len(sys.argv) > 2 else Path(f'{SRCFG.work}/videos/production')
     outd.mkdir(parents=True, exist_ok=True)
     z = np.load(npz, allow_pickle=True)
     prov = json.loads(str(z['provenance']))

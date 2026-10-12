@@ -1,9 +1,10 @@
 """Integrity check of a dataset root: every manifest shard exists, whole-file sha256 == manifest, every blob sha256 ==
 its header, catalog references resolve.
 
-    python -m umr_dataset.verify --root /home/arenalabs/umr_dataset/data [--quick]   (--quick: size + header only)
+    python -m surface_retargeting.dataset.verify --root /home/arenalabs/umr_dataset/data [--quick]   (--quick: size + header only)
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import argparse
 import json
@@ -46,7 +47,7 @@ def verify(root: Path, quick=False, log=print) -> dict:
 
 def main(argv=None):
     ap = argparse.ArgumentParser()
-    ap.add_argument('--root', type=Path, default=Path('/home/arenalabs/umr_dataset/data'))
+    ap.add_argument('--root', type=Path, default=Path(f'{SRCFG.dataset_root}'))
     ap.add_argument('--quick', action='store_true')
     a = ap.parse_args(argv)
     r = verify(a.root, a.quick)

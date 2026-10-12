@@ -1,5 +1,6 @@
 """HTTP integration; source datasets remain read-only, reviews are explicit POSTs."""
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import asyncio
 from contextlib import asynccontextmanager
@@ -18,7 +19,7 @@ from .audit import AuditError, AuditStore, StaleSnapshotError, UI_VERSION, sha25
 from .wire import pack
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DATA_ROOT = Path('/home/arenalabs/umr_factory_data')
+DATA_ROOT = Path(f'{SRCFG.data_root}')
 
 
 def create_app(*, service=None, audit_root=None, data_root=DATA_ROOT, mode='production',

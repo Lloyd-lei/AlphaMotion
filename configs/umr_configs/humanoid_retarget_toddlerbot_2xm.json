@@ -1,7 +1,7 @@
 {
   "robot": {
     "name": "toddlerbot_2xm",
-    "xml": "/var/tmp/alphamotion/robot_models/menagerie/toddlerbot_2xm/toddlerbot_2xm.xml",
+    "xml": "${SR_ROBOT_ASSETS_ROOT}/menagerie/toddlerbot_2xm/toddlerbot_2xm.xml",
     "point_cloud_center": "body:torso",
     "tpose_qpos": {
       "left_shoulder_roll": 1.570796,

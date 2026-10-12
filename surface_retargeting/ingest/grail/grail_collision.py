@@ -9,6 +9,7 @@ Then every converted clip using that digest gets grail_object_collision_<i>.obj 
 format as UMR prepare_grail_object_mjcf.write_mjcf), a MuJoCo compile check, and metadata.json (asset_version 3) last.
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import json
 import os
@@ -18,8 +19,8 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, '/var/tmp/alphamotion/umr_factory/umr/UMR/scripts')
-OUT = Path('/home/arenalabs/umr_factory_data/smplx/grail')
+sys.path.insert(0, f'{SRCFG.umr_root}/scripts')
+OUT = Path(f'{SRCFG.data_root}/smplx/grail')
 MESH = OUT / '_meshes'
 COLL = OUT / '_collision_cache'
 ROWS = OUT / '_convert_rows.jsonl'

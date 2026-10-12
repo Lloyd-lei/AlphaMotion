@@ -19,10 +19,11 @@ Pipeline (all stages overlap):
   -> post thread (GPU stream 3: SMPL-X lowest-vertex floor QA, gpu_lowest.LeanLowest) -> io pool (npz / metadata / object tracks / qa.json).
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import os
 
-os.environ.setdefault("TORCHINDUCTOR_CACHE_DIR", "/home/arenalabs/gpu_convert/.inductor_cache")
+os.environ.setdefault("TORCHINDUCTOR_CACHE_DIR", f'{SRCFG.convert_work}/.inductor_cache')
 import argparse
 import collections
 import json
@@ -38,8 +39,7 @@ from pathlib import Path
 import numpy as np
 
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
-DATA = Path("/home/arenalabs/umr_factory_data")
+DATA = Path(f'{SRCFG.data_root}')
 FPS_SRC = 90.0
 
 
@@ -105,12 +105,12 @@ def rec_base(kind, src, meta):
 def _winit():
     os.environ["OMP_NUM_THREADS"] = "1"
     os.environ["CUDA_VISIBLE_DEVICES"] = ""   # workers never touch the GPU
-    import prep  # noqa: F401
+    from surface_retargeting.ingest.convert_gpu import prep  # noqa: F401
 
 
 def _prep_task(a):
     d, bvh, max_frames, beta_cpu = a
-    import prep
+    from surface_retargeting.ingest.convert_gpu import prep
     try:
         r = prep.prep_clip(bvh, max_frames=max_frames)
         if beta_cpu:   # upstream float32 LBFGS fit_betas, exactly as hiphi2smplx.pipeline.fit_bvh calls it
@@ -126,7 +126,7 @@ def _prep_task(a):
 
 
 def _write_task(job):
-    import prep
+    from surface_retargeting.ingest.convert_gpu import prep
     r = job.get("res")
     if r is not None and "pose22" in r:   # expand in the worker (keeps pickling + GIL work out of the GPU process)
         F = len(r["pose22"])
@@ -137,7 +137,7 @@ def _write_task(job):
 
 
 def _shape_task(a):
-    import prep
+    from surface_retargeting.ingest.convert_gpu import prep
     key, betas, targets, reference = a
     t0 = time.time()
     ft, rest = prep.shape_clip(betas, targets, reference)
@@ -291,11 +291,11 @@ def main():
         return
 
     import torch
-    import gpu_beta
-    import gpu_ik
-    import gpu_lowest
-    import prep
-    import seg_ik
+    from surface_retargeting.ingest.convert_gpu import gpu_beta
+    from surface_retargeting.ingest.convert_gpu import gpu_ik
+    from surface_retargeting.ingest.convert_gpu import gpu_lowest
+    from surface_retargeting.ingest.convert_gpu import prep
+    from surface_retargeting.ingest.convert_gpu import seg_ik
 
     dev = "cuda"
     B, K = args.lanes, args.K

@@ -1,4 +1,5 @@
 """Real template/link geometry only; no UMR optimization or motion retargeting."""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 from pathlib import Path
 import os
 os.environ.setdefault('MUJOCO_GL','egl')
@@ -10,10 +11,10 @@ from PIL import Image,ImageDraw
 from xml.sax.saxutils import escape
 
 HERE=Path(__file__).resolve().parent
-GEOM=Path('/home/arenalabs/Desktop/"be water, robot"/alpha_motion2/research/embodied_case_20261003/geometry')
+GEOM=Path(f'{SRCFG.research_root}/alpha_motion2/research/embodied_case_20261003/geometry')
 sys.path.insert(0,str(GEOM));import render_case as BASE
-SMPLX=Path('/home/arenalabs/Downloads/SMPLX_NEUTRAL.npz')
-G1=Path('/home/arenalabs/Desktop/"be water, robot"/alpha_motion2/external/GMR/assets/unitree_g1')
+SMPLX=Path(f'{SRCFG.smplx_neutral}')
+G1=Path(f'{SRCFG.gmr_root}/assets/unitree_g1')
 SPHERE_RADIUS=.03
 EXPECTED_GAP=.012
 BARY=np.array([.2,.3,.5])

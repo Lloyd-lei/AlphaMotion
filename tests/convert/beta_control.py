@@ -9,8 +9,7 @@ import numpy as np
 def one(d):
     import torch
     torch.set_num_threads(1)
-    sys.path.insert(0, "/home/arenalabs/gpu_convert")
-    import prep
+    from surface_retargeting.ingest.convert_gpu import prep
     from hiphi2smplx.beta_fitting import BetaFitConfig, fit_betas
     meta = json.load(open(os.path.join(d, "metadata.json")))
     r = prep.prep_clip(os.path.join(d, "motion_actor.bvh"), max_frames=1)

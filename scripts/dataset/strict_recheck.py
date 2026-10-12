@@ -10,6 +10,7 @@ too: `introduced_by_decode` (violation after decode but not in the source) must 
 
     PYTHONDONTWRITEBYTECODE=1 python scripts/strict_recheck.py --root data [--workers 8] [--max-frames 0]
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import sys
 sys.dont_write_bytecode = True
 import argparse          # noqa: E402
@@ -20,8 +21,6 @@ from pathlib import Path  # noqa: E402
 
 import numpy as np       # noqa: E402
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-sys.path.insert(0, '/home/arenalabs/umr_factory_code')
 
 PEN, CT = 5e-4, 1e-3
 
@@ -39,7 +38,7 @@ def check_entry(job):
     t0 = time.time()
     segs = rd.seg[(c, b)]
     e0 = segs[0][4]
-    st = json.load(open(f'/home/arenalabs/umr_factory_data/robots/{robot}/staging.json'))
+    st = json.load(open(f'{SRCFG.data_root}/robots/{robot}/staging.json'))
     m = mujoco.MjModel.from_xml_path(st['staged_mjcf'])
     surf = SF.load_surface(robot)
     floor = float(cat.e_floor[e0])
@@ -110,7 +109,7 @@ def check_entry(job):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--root', type=Path, default=Path('/home/arenalabs/umr_dataset/data'))
+    ap.add_argument('--root', type=Path, default=Path(f'{SRCFG.dataset_root}'))
     ap.add_argument('--workers', type=int, default=8)
     ap.add_argument('--every', type=int, default=1, help='check every n-th valid frame')
     ap.add_argument('--out', type=Path, default=None)
@@ -124,7 +123,7 @@ def main():
         print(json.dumps(r))
     agg = lambda f: {k: sum(r[f][k] for r in res) for k in res[0][f]}
     summ = dict(entries=len(res), frames_checked=sum(r['frames_checked'] for r in res),
-                factory_gauge_now='union visual+collision' if 'build_model' in open('/home/arenalabs/umr_factory_code/umrf/geometry.py').read() else 'visual',
+                factory_gauge_now='union visual+collision' if 'build_model' in open(f'{SRCFG.repo}/surface_retargeting/strict/geometry.py').read() else 'visual',
                 violations_decoded=agg('violations_decoded'), violations_source_same_frames=agg('violations_source_same_frames'),
                 introduced_by_decode=agg('introduced_by_decode'),
                 worst={k: max(r['worst'][k] for r in res) for k in res[0]['worst']})

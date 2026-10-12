@@ -1,5 +1,4 @@
 import sys, numpy as np, torch
-sys.path.insert(0, '/home/arenalabs/umr_gpu')
 from surface_retargeting.gpu.bank import Problem, Bank
 from surface_retargeting.gpu.solver import UMRSolver, LQRGPU
 from surface_retargeting.gpu.lqr_band import lqr_chains

@@ -1,5 +1,4 @@
 import sys, numpy as np, torch, time
-sys.path.insert(0, '/home/arenalabs/umr_gpu')
 from surface_retargeting.gpu.bank import Problem, Bank
 from surface_retargeting.gpu.solver import UMRSolver
 P = Problem(sys.argv[1]); bank = Bank([P]); sv = UMRSolver(bank)

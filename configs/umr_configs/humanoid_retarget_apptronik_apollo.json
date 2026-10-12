@@ -1,7 +1,7 @@
 {
   "robot": {
     "name": "apptronik_apollo",
-    "xml": "/var/tmp/alphamotion/robot_models/menagerie/apptronik_apollo/apptronik_apollo.xml",
+    "xml": "${SR_ROBOT_ASSETS_ROOT}/menagerie/apptronik_apollo/apptronik_apollo.xml",
     "point_cloud_center": "body:torso_roll_link",
     "tpose_qpos": {
       "l_shoulder_aa": 1.570796,

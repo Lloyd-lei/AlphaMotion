@@ -12,6 +12,7 @@ costs, args).  Per frame, on the GPU (identical formulas to UMR):
   q_init        pelvis position + hip heading on the zero-joint pose        (initial_qpos_for_frame)
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import json
 import sys
@@ -20,7 +21,7 @@ from pathlib import Path
 import numpy as np
 import torch
 
-UMR = Path('/var/tmp/alphamotion/umr_factory/umr/UMR')
+UMR = Path(f'{SRCFG.umr_root}')
 
 
 def _umr_path():

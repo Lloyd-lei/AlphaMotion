@@ -1,7 +1,7 @@
 {
  "name": "unitree_h1_2",
- "src_mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/unitree_h1_2/h1_2_handless.xml",
- "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/unitree_h1_2/unitree_h1_2.xml",
+ "src_mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/unitree_h1_2/h1_2_handless.xml",
+ "staged_mjcf": "${SR_DATA_ROOT}/robots/unitree_h1_2/unitree_h1_2.xml",
  "nq": 34,
  "nv": 33,
  "facing_plus_x": true,

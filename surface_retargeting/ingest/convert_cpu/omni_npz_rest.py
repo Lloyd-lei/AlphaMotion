@@ -1,5 +1,6 @@
 """Fetch the OmniContact processed npz files whose labels are not yet in g1_labels/, one by one
 (retrying), keep only the label arrays, delete each npz right away."""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import os
 os.environ.pop("HF_HUB_OFFLINE", None)
 import time
@@ -9,7 +10,7 @@ from pathlib import Path
 import numpy as np
 from huggingface_hub import HfApi, hf_hub_download
 
-R = Path("/home/arenalabs/umr_factory_data/raw/omnicontact")
+R = Path(f'{SRCFG.data_root}/raw/omnicontact')
 TMP = R / "_npz_tmp"
 api = HfApi()
 files = [f for f in api.list_repo_files("lightcone02/OmniContact-Dataset", repo_type="dataset")
@@ -29,7 +30,7 @@ def one(item):
     for attempt in range(5):
         try:
             lp = hf_hub_download("lightcone02/OmniContact-Dataset", f, repo_type="dataset", local_dir=str(TMP),
-                                 cache_dir="/home/arenalabs/umr_factory_data/hf_cache")
+                                 cache_dir=f'{SRCFG.data_root}/hf_cache')
             with np.load(lp, allow_pickle=False) as z:
                 keep = {k: z[k] for k in ("contact_info", "fps", "object_pos_w", "object_quat_w", "base_pos_w") if k in z.files}
             dst = R / "g1_labels" / dom / case / f"{cid}.npz"

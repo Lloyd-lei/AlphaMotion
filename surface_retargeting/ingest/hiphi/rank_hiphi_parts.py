@@ -2,9 +2,10 @@
 """Rank HiPHI archive parts by hours of original (non-mirror) motions that are
 human-object interaction (is_hoi) OR rich ground contact (knees/hands/hips/back on floor).
 Writes logs/hiphi_part_priority.csv. Stdlib only."""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import csv, re, collections, sys
-R = '/home/arenalabs/umr_factory_data/raw/hiphi'
-OUT = sys.argv[1] if len(sys.argv) > 1 else '/home/arenalabs/umr_factory_data/logs/hiphi_part_priority.csv'
+R = f'{SRCFG.data_root}/raw/hiphi'
+OUT = sys.argv[1] if len(sys.argv) > 1 else f'{SRCFG.data_root}/logs/hiphi_part_priority.csv'
 GC_LU = {'Body_movement-kneel', 'Change_posture-kneel_down', 'Change_posture-kneel_up',
          'Change_posture-lie_down', 'Change_posture-sit_down', 'Change_posture-sit_up',
          'Change_posture-sprawl', 'Change_posture-stand_up', 'Getting_up-get_up',

@@ -1,9 +1,10 @@
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 # Aggregate OmniContact + GRAIL diversity survey -> summary.json + summary.md (Chinese). Read-only on sources.
 import json, os, re, glob, collections, time, csv
 import numpy as np
 
-D = '/home/arenalabs/umr_factory_data/diversity/omnicontact_grail'
-F = '/home/arenalabs/umr_factory_data'
+D = f'{SRCFG.data_root}/diversity/omnicontact_grail'
+F = f'{SRCFG.data_root}'
 GM = f'{F}/smplx/grail/manifest.jsonl'
 NOW = time.strftime('%Y-%m-%d %H:%M:%S')
 

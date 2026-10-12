@@ -1,7 +1,7 @@
 {
  "name": "unitree_h2",
- "src_mjcf": "/var/tmp/alphamotion/robot_models/unitree_ros/robots/h2_description/unitree_h2_mjcf.xml",
- "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/unitree_h2/unitree_h2.xml",
+ "src_mjcf": "${SR_ROBOT_ASSETS_ROOT}/unitree_ros/robots/h2_description/unitree_h2_mjcf.xml",
+ "staged_mjcf": "${SR_DATA_ROOT}/robots/unitree_h2/unitree_h2.xml",
  "nq": 38,
  "nv": 37,
  "facing_plus_x": true,

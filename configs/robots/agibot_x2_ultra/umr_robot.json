@@ -1,7 +1,7 @@
 {
  "robot": {
   "name": "agibot_x2_ultra",
-  "xml": "/home/arenalabs/umr_factory_data/robots/agibot_x2_ultra/agibot_x2_ultra.xml",
+  "xml": "${SR_DATA_ROOT}/robots/agibot_x2_ultra/agibot_x2_ultra.xml",
   "point_cloud_center": "body:waist_yaw_link",
   "tpose_qpos": {
    "left_shoulder_roll_joint": 1.33767,

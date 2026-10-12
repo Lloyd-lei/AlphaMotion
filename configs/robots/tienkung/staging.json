@@ -1,7 +1,7 @@
 {
  "name": "tienkung",
- "src_mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/tienkung/mjcf/tienkung.xml",
- "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/tienkung/tienkung.xml",
+ "src_mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/tienkung/mjcf/tienkung.xml",
+ "staged_mjcf": "${SR_DATA_ROOT}/robots/tienkung/tienkung.xml",
  "nq": 27,
  "nv": 26,
  "facing_plus_x": true,

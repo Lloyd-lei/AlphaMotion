@@ -6,6 +6,7 @@ python run_capture.py --robot unitree_g1_29dof --kind hoi --data <UMR>/sample_da
 Stock UMR defaults are used (no solver overrides) unless --overrides json is given.  Robot model/config = the factory's
 staged MJCF + umr_robot.json (copied to OUT/robots/<robot>).  Correspondence caches go to OUT/corr (never the factory's).
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import argparse
 import hashlib
 import json
@@ -14,9 +15,9 @@ import subprocess
 import time
 from pathlib import Path
 
-UMR_ROOT = Path('/var/tmp/alphamotion/umr_factory/umr/UMR')
-UMR_PY = '/var/tmp/alphamotion/umr_factory/umr/env/bin/python'
-OUT = Path('/var/tmp/alphamotion/umr_factory/umr_gpu')
+UMR_ROOT = Path(f'{SRCFG.umr_root}')
+UMR_PY = f'{SRCFG.umr_python}'
+OUT = Path(f'{SRCFG.work}')
 HERE = Path(__file__).resolve().parent
 DEFAULTS = {'smplx': UMR_ROOT / 'humanoid_retarget_defaults.json',
             'hoi': UMR_ROOT / 'humanoid_retarget_defaults_hsi_hoi_standard.json'}

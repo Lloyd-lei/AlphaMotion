@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "surface-retargeting"
+version = "0.1.0"
+description = "UMR surface-based humanoid motion retargeting: CPU factory, GPU engine, strict post-pass, QA, dataset packer"
+requires-python = ">=3.10"
+# Heavy deps are pinned by env/umr_env.* (UMR env) and env/genmo-gem.* (GPU human converter); only the
+# light common core is declared so `pip install -e . --no-deps` into those envs never touches them.
+dependencies = ["numpy"]
+
+[project.optional-dependencies]
+cpu = ["scipy", "mujoco==3.3.7", "clarabel==0.11.1", "trimesh", "embreex"]
+gpu = ["torch", "warp-lang==1.18.0"]
+viewer = ["fastapi==0.115.12", "uvicorn==0.34.3", "httpx==0.28.1"]
+test = ["pytest"]
+
+[tool.setuptools.packages.find]
+include = ["surface_retargeting*"]
+
+[tool.setuptools.package-data]
+surface_retargeting = ["**/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-p no:cacheprovider"
+markers = [
+  "gpu: needs CUDA (never run on the shared workstation; cloud only)",
+  "data: needs factory data under SR_DATA_ROOT / SR_WORK",
+]

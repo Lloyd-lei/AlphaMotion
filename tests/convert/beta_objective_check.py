@@ -7,18 +7,18 @@ the CPU solution with gpu_beta.loss_body, and compare with the GPU solution's ob
 re-run betas are bitwise equal to the CPU converter's stored betas (so the state is the CPU path's state).
 usage: beta_objective_check.py clips.txt out.json [workers]
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import os, sys, json, multiprocessing as mp
 os.environ["OMP_NUM_THREADS"] = "1"
 import numpy as np
 
-DATA = "/home/arenalabs/umr_factory_data"
+DATA = f'{SRCFG.data_root}'
 
 
 def cpu_state(d):
     import torch
     torch.set_num_threads(1)
-    sys.path.insert(0, "/home/arenalabs/gpu_convert")
-    import prep
+    from surface_retargeting.ingest.convert_gpu import prep
     import h5py
     from pathlib import Path
     import hiphi2smplx.beta_fitting as BF
@@ -70,8 +70,7 @@ def main():
     with mp.get_context("spawn").Pool(int(sys.argv[3]) if len(sys.argv) > 3 else 8) as p:
         res = dict(p.map(cpu_state, clips, chunksize=1))
     import torch
-    sys.path.insert(0, "/home/arenalabs/gpu_convert")
-    import gpu_beta
+    from surface_retargeting.ingest.convert_gpu import gpu_beta
     bf = gpu_beta.BatchedBetaFit("cuda")
     X = np.stack([res[c]["target"] for c in clips])
     g = bf.fit(X)

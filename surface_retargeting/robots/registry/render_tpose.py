@@ -1,7 +1,9 @@
 """Render every inventoried robot in its proposed UMR T-pose (front view, floor-aligned). Visual QA only."""
 import json, os, sys, numpy as np, mujoco
 from PIL import Image, ImageDraw
-OUT = os.path.dirname(os.path.abspath(__file__))
+from surface_retargeting.config import CFG as SRCFG
+OUT = f'{SRCFG.factory_root}/robots'   # registry work dir (outputs); code lives in this package
+HERE = os.path.dirname(os.path.abspath(__file__))
 R = json.load(open(f'{OUT}/robots_raw.json'))
 tiles = []
 for r in R:

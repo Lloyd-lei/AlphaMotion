@@ -1,6 +1,5 @@
 """GPU self-collision (point-vs-SDF) vs MuJoCo mj_geomDistance on UMR output poses."""
 import sys, time, numpy as np, torch, mujoco
-sys.path.insert(0, '/home/arenalabs/umr_gpu')
 from surface_retargeting.gpu.kin import KinTree
 from surface_retargeting.gpu.geometry import SelfCollision
 z = np.load(sys.argv[1]); m = mujoco.MjModel.from_binary_path(str(z['mjb'])); d = mujoco.MjData(m)

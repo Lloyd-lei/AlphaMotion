@@ -14,6 +14,7 @@ Env:
                                    skip: return the warm start (problem capture only, no CPU solve)
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import inspect
 import json
@@ -24,7 +25,7 @@ from pathlib import Path
 
 import numpy as np
 
-UMR = Path('/var/tmp/alphamotion/umr_factory/umr/UMR')
+UMR = Path(f'{SRCFG.umr_root}')
 sys.path.insert(0, str(UMR / 'scripts'))
 sys.path.insert(0, str(UMR))
 

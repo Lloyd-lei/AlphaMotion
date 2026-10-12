@@ -7,13 +7,14 @@ re-run directory (default results/export_slip_v3).  Writes <newdir>/summary_slip
   root step max            cm/frame scaled to 30 fps (all frames / kept frames)
   slip speed max           ground_slip_speed max (m/s): old gauge (forward median, all frames) / new ruler all / kept
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import argparse
 import json
 from pathlib import Path
 
 import numpy as np
 
-OUT = Path('/var/tmp/alphamotion/umr_factory/umr_gpu/results')
+OUT = Path(f'{SRCFG.work}/results')
 
 
 def main():

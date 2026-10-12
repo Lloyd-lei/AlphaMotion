@@ -1,7 +1,7 @@
 {
   "robot": {
     "name": "tienkung",
-    "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/tienkung/mjcf/tienkung.xml",
+    "xml": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/tienkung/mjcf/tienkung.xml",
     "point_cloud_center": "body:Base_link",
     "tpose_qpos": {
       "shoulder_roll_l_joint": 1.570796,

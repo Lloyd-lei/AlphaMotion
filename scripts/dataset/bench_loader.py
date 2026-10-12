@@ -2,6 +2,7 @@
 
     python scripts/bench_loader.py --root data --window 64 --batch 256 --workers 0,4,8,16 --seconds 20 [--cold]
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import argparse
 import json
 import os
@@ -12,7 +13,6 @@ from pathlib import Path
 import numpy as np
 import torch
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from surface_retargeting.dataset.dataset import PairedWindows, collate        # noqa: E402
 
 
@@ -62,7 +62,7 @@ def run(root, mode, window, batch, workers, seconds, cold, seed, fields):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--root', default='/home/arenalabs/umr_dataset/data')
+    ap.add_argument('--root', default=f'{SRCFG.dataset_root}')
     ap.add_argument('--window', type=int, default=64)
     ap.add_argument('--batch', type=int, default=256)
     ap.add_argument('--workers', default='0,4,8,16')

@@ -11,10 +11,11 @@ Outputs (all under /home/arenalabs/umr_factory_data/diversity/hiphi/):
   hiphi_diversity_summary.json
   (markdown report written separately from the JSON)
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import json, os, re, glob, collections
 import pandas as pd
 
-ROOT = "/home/arenalabs/umr_factory_data"
+ROOT = f'{SRCFG.data_root}'
 RAW = f"{ROOT}/raw/hiphi"
 OUT = f"{ROOT}/diversity/hiphi"
 
@@ -315,7 +316,7 @@ def main():
     conv = set(os.path.basename(os.path.dirname(f)) for f in
                glob.glob(f"{ROOT}/smplx/hiphi/data/*/*/*/motion_actor_smplx.npz"))
     gpu = set(os.path.basename(os.path.dirname(f)) for f in
-              glob.glob("/home/arenalabs/gpu_convert/runs/bench4/hiphi/data/*/*/*/motion_actor_smplx.npz"))
+              glob.glob(f'{SRCFG.convert_work}/runs/bench4/hiphi/data/*/*/*/motion_actor_smplx.npz'))
     conv_log = [json.loads(l) for l in open(f"{ROOT}/logs/hiphi_convert.jsonl")]
     conv_ok = {os.path.basename(r["clip_id"]) for r in conv_log if r.get("ok")}
     # retargeted: look for any robot output referencing hiphi

@@ -3,13 +3,14 @@ skinning), but only the Y row of the per-vertex skinning transform is formed for
 then evaluated for the argmin vertex only. ~= smplx_qa.lowest_reduce(smplx forward) per frame, many clips per
 batch (per-frame betas)."""
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import numpy as np
 import smplx
 import torch
 from smplx.lbs import batch_rigid_transform, batch_rodrigues, blend_shapes, vertices2joints
 
-MODEL = "/home/arenalabs/Downloads/SMPLX_NEUTRAL.npz"
+MODEL = f'{SRCFG.smplx_neutral}'
 
 
 class LeanLowest:

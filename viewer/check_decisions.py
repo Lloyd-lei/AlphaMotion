@@ -5,6 +5,7 @@ Optional current-file validation applies to each item's *last* record. Old histo
 is retained by design, so earlier hashes may legitimately refer to replaced data.
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import argparse
 import json
@@ -30,11 +31,11 @@ def load_catalog(path):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description="只读校验 SCHEMA.md v1 人工判决；输出精确行号，不修复文件")
-    parser.add_argument("path", nargs="?", default="/home/arenalabs/umr_factory_data/audit/decisions.jsonl")
+    parser.add_argument("path", nargs="?", default=f'{SRCFG.data_root}/audit/decisions.jsonl')
     parser.add_argument("--kind", choices=("decision", "issue"), default="decision")
     parser.add_argument("--catalog", help="current catalog JSON or original queue JSONL (supplies item frames and paths)")
     parser.add_argument("--check-current", action="store_true", help="hash source npz files for each item's latest decision; requires --catalog")
-    parser.add_argument("--data-root", default="/home/arenalabs/umr_factory_data", help="allowlist root for optional source hashing")
+    parser.add_argument("--data-root", default=f'{SRCFG.data_root}', help="allowlist root for optional source hashing")
     parser.add_argument("--json", action="store_true", dest="as_json")
     args = parser.parse_args(argv)
     if args.check_current and (not args.catalog or args.kind != "decision"):

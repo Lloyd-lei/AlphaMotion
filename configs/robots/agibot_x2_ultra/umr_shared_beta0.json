@@ -1,7 +1,7 @@
 {
  "robot": {
   "name": "agibot_x2_ultra",
-  "xml": "/home/arenalabs/umr_factory_data/robots/agibot_x2_ultra/agibot_x2_ultra.xml",
+  "xml": "${SR_DATA_ROOT}/robots/agibot_x2_ultra/agibot_x2_ultra.xml",
   "point_cloud_center": "body:waist_yaw_link",
   "tpose_qpos": {
    "left_shoulder_roll_joint": 1.33767,
@@ -24,10 +24,10 @@
   "dataset": {
    "smpl_center": "bbox_ratio",
    "bbox_center_ratio": 0.562847,
-   "out": "/home/arenalabs/umr_factory_data/corr/agibot_x2_ultra/beta0/correspondence_dataset.npz"
+   "out": "${SR_DATA_ROOT}/corr/agibot_x2_ultra/beta0/correspondence_dataset.npz"
   },
   "train": {
-   "out_dir": "/home/arenalabs/umr_factory_data/corr/agibot_x2_ultra/beta0/train",
+   "out_dir": "${SR_DATA_ROOT}/corr/agibot_x2_ultra/beta0/train",
    "template_name": "auto",
    "device": "auto"
   },

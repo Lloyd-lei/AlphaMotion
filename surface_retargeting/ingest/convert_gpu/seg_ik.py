@@ -17,8 +17,8 @@ from __future__ import annotations
 import numpy as np
 import torch
 
-import gpu_ik
-from gpu_ik import NJ
+from surface_retargeting.ingest.convert_gpu import gpu_ik
+from surface_retargeting.ingest.convert_gpu.gpu_ik import NJ
 
 
 def build_schedule(Fs, B, W, P_min=64):

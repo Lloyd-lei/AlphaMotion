@@ -1,3 +1,4 @@
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 from pathlib import Path
 import os
 os.environ['MUJOCO_GL']='egl';os.environ['OPENBLAS_NUM_THREADS']='2';os.environ['OMP_NUM_THREADS']='2'
@@ -5,9 +6,9 @@ import json,hashlib,math
 import numpy as np,mujoco,trimesh
 from scipy.optimize import brentq
 from PIL import Image,ImageDraw,ImageFont
-ROOT=Path('/home/arenalabs/Desktop/"be water, robot"/alpha_motion2/research/hand_surface_case_20261004')
+ROOT=Path(f'{SRCFG.research_root}/alpha_motion2/research/hand_surface_case_20261004')
 OUT=ROOT/'derived';OUT.mkdir(exist_ok=True)
-PANDA=Path('/home/arenalabs/Desktop/"be water, robot"/alpha_motion2/research/embodied_case_20261003/geometry/assets/franka_emika_panda/hand.xml')
+PANDA=Path(f'{SRCFG.research_root}/alpha_motion2/research/embodied_case_20261003/geometry/assets/franka_emika_panda/hand.xml')
 RADIUS=.03;THRESHOLD=.002
 
 def dump(path,obj):path.write_text(json.dumps(obj,indent=2)+'\n')

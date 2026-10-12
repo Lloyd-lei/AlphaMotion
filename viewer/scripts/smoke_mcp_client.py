@@ -11,7 +11,7 @@ from mcp.client.stdio import StdioServerParameters
 
 PARAMS = StdioServerParameters(command='ssh', args=['-T', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=12',
     '-o', 'ServerAliveInterval=15', '-o', 'ServerAliveCountMax=2', 'arenalabs',
-    '/home/arenalabs/motion_audit_web/scripts/mcp_stdio.sh'])
+    str(Path(__file__).resolve().parent / 'mcp_stdio.sh')])
 
 
 def unpack(result):

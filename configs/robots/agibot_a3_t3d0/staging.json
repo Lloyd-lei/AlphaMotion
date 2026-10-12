@@ -1,7 +1,7 @@
 {
  "name": "agibot_a3_t3d0",
- "src_mjcf": "/var/tmp/alphamotion/robot_models/agibot_a3/a3_t3d0/mjcf/agibot_a3_t3d0_mjcf.xml",
- "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/agibot_a3_t3d0/agibot_a3_t3d0.xml",
+ "src_mjcf": "${SR_ROBOT_ASSETS_ROOT}/agibot_a3/a3_t3d0/mjcf/agibot_a3_t3d0_mjcf.xml",
+ "staged_mjcf": "${SR_DATA_ROOT}/robots/agibot_a3_t3d0/agibot_a3_t3d0.xml",
  "nq": 38,
  "nv": 37,
  "facing_plus_x": true,

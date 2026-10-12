@@ -1,10 +1,10 @@
 """GPU object motion + object-contact maps vs UMR-CPU capture (OmniContact soccer sample)."""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import sys, json, glob, numpy as np, torch
-sys.path.insert(0, '/home/arenalabs/umr_gpu')
 from surface_retargeting.gpu.bank import Problem
 from surface_retargeting.gpu.hoi import ObjectAsset, object_contact_maps
 P = Problem(sys.argv[1]); z = P.z; a = P.args
-d = '/var/tmp/alphamotion/umr_factory/umr/UMR/sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234'
+d = f'{SRCFG.umr_root}/sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234'
 xml = glob.glob(d + '/*.xml')[0]; prop = glob.glob(d + '/prop_*.csv')[0]
 import time; _t = time.time()
 asset = ObjectAsset(xml); print("asset", time.time() - _t, flush=True)

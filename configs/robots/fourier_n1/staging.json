@@ -1,7 +1,7 @@
 {
  "name": "fourier_n1",
- "src_mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/fourier_n1/n1_mocap.xml",
- "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/fourier_n1/fourier_n1.xml",
+ "src_mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/fourier_n1/n1_mocap.xml",
+ "staged_mjcf": "${SR_DATA_ROOT}/robots/fourier_n1/fourier_n1.xml",
  "nq": 30,
  "nv": 29,
  "facing_plus_x": true,

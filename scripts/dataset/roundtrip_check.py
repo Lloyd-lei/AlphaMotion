@@ -7,6 +7,7 @@ Robot: root pos / root rot / joint errors; FK displacement of the 4096 dense sur
 strict-label re-check on the decoded pose (pen <= 0.5 mm, contact regions within [-0.5, 1] mm); bit-exact labels.
 Human: SMPL-X param error + vertex displacement (smplx package, neutral model).  Objects: robot-frame round trip.
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import argparse
 import json
 import sys
@@ -16,7 +17,6 @@ from pathlib import Path
 import numpy as np
 import torch
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from surface_retargeting.dataset import schema as S                      # noqa: E402
 from surface_retargeting.dataset.dataset import Reader                    # noqa: E402
 from surface_retargeting.dataset.kinematics import TorchFK                # noqa: E402
@@ -36,9 +36,9 @@ def quat_angle(a, b):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--root', type=Path, default=Path('/home/arenalabs/umr_dataset/data'))
+    ap.add_argument('--root', type=Path, default=Path(f'{SRCFG.dataset_root}'))
     ap.add_argument('--device', default='cuda')
-    ap.add_argument('--smplx-model', default='/var/tmp/alphamotion/umr_factory/umr/UMR/smpl/SMPLX_NEUTRAL.npz')
+    ap.add_argument('--smplx-model', default=f'{SRCFG.umr_root}/smpl/SMPLX_NEUTRAL.npz')
     ap.add_argument('--out', type=Path, default=None)
     a = ap.parse_args()
     rd = Reader(a.root); cat = rd.cat

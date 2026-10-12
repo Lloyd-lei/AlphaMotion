@@ -5,11 +5,10 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 trimesh = pytest.importorskip('trimesh')
 pytest.importorskip('embreex')
-from assets import umr_reference as REF  # noqa: E402
-from assets import umr_sampler as U  # noqa: E402
+from surface_retargeting.robots.sampling_reference import umr_reference as REF  # noqa: E402
+from surface_retargeting.robots.sampling_reference import umr_sampler as U  # noqa: E402
 
 
 def _two_boxes():

@@ -1,7 +1,7 @@
 {
  "robot": {
   "name": "tienkung",
-  "xml": "/home/arenalabs/umr_factory_data/robots/tienkung/tienkung.xml",
+  "xml": "${SR_DATA_ROOT}/robots/tienkung/tienkung.xml",
   "point_cloud_center": "body:Base_link",
   "tpose_qpos": {
    "shoulder_roll_l_joint": 1.570796,

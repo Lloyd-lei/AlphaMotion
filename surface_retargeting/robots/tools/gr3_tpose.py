@@ -1,3 +1,4 @@
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import numpy as np, mujoco, json
 from scipy.optimize import least_squares
 xml='assets/fourier_gr3v2_1_1/mjcf/gr3v2_1_1_dummy_hand.xml'
@@ -28,4 +29,4 @@ for side,sgn in (('left',1),('right',-1)):
     r=best
     print(side, np.round(r.x,4), 'resid', np.round(np.linalg.norm(r.fun[:10]),4))
     out.update({j:float(v) for j,v in zip(J,r.x)})
-json.dump(out,open('/var/tmp/alphamotion/umr_factory/umr/tools/gr3_tpose.json','w'),indent=1)
+json.dump(out,open(f'{SRCFG.umr_tools}/gr3_tpose.json','w'),indent=1)

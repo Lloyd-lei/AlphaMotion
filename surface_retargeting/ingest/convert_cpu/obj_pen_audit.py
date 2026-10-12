@@ -12,8 +12,7 @@ import warnings
 warnings.filterwarnings("ignore")
 import trimesh
 
-sys.path.insert(0, str(Path(__file__).parent))
-import smplx_qa  # noqa: E402
+from surface_retargeting.ingest.convert_cpu import smplx_qa  # noqa: E402
 
 GROUP = {"hand": set(range(20, 22)) | set(range(25, 55)), "forearm": {18, 19}, "upper_arm": {16, 17},
          "torso": {0, 3, 6, 9, 12, 13, 14}, "head": {15, 22, 23, 24}, "leg": {1, 2, 4, 5}, "foot": {7, 8, 10, 11}}

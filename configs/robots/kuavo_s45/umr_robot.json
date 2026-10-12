@@ -1,7 +1,7 @@
 {
  "robot": {
   "name": "kuavo_s45",
-  "xml": "/home/arenalabs/umr_factory_data/robots/kuavo_s45/kuavo_s45.xml",
+  "xml": "${SR_DATA_ROOT}/robots/kuavo_s45/kuavo_s45.xml",
   "point_cloud_center": "body:base_link",
   "tpose_qpos": {
    "zarm_l2_joint": 1.570796,

@@ -1,10 +1,10 @@
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import sys, os, json, re, shutil, collections
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import pandas as pd, numpy as np
 import pyarrow.parquet as pq
-import taxo
+from surface_retargeting.census.core_sources.scripts import taxo
 
-D = "/home/arenalabs/umr_factory_data/diversity"
+D = f'{SRCFG.data_root}/diversity'
 C = taxo.CLASSES
 CT = taxo.CONTACTS
 r2 = lambda x: float(round(float(x), 2))
@@ -39,10 +39,10 @@ def obj_table(df, col="object_cats", h="hours"):
 
 # ================= BONES =================
 B = pd.read_csv(f"{D}/bones_seed/bones_clip_labels.csv.gz")
-meta = pq.read_table("/var/tmp/alphamotion/umr_factory/sources/bones_meta_v004.parquet").to_pandas()
+meta = pq.read_table(f'{SRCFG.factory_root}/sources/bones_meta_v004.parquet').to_pandas()
 bo, bm = B[~B.is_mirror], B[B.is_mirror]
 act = meta[~meta.is_mirror].drop_duplicates("actor_uid")
-acq = json.load(open('/home/arenalabs/Desktop/"be water, robot"/alpha_motion2/pretraining_foundation/logs/acquire_followup/queue_state.json'))
+acq = json.load(open(f'{SRCFG.research_root}/alpha_motion2/pretraining_foundation/logs/acquire_followup/queue_state.json'))
 bones = dict(
     source="BONES-SEED (bones-studio/seed, metadata v004)",
     fps=120,
@@ -150,8 +150,8 @@ json.dump(dict(amass=amass, lafan=lafan), open(f"{D}/xwbc_amass_lafan/xwbc_summa
 U = pd.read_csv(f"{D}/uniml3d_mixamo/uniml3d_clip_labels.csv.gz")
 mix = U[U.dataset == "mixamo"]
 ob = U[(U.dataset == "objaverse") & (U.category == "bipedal")]
-clips_all = pd.read_csv("/var/tmp/alphamotion/umr_factory/uniml3d_reload/remote/clips.csv")
-anim = pd.read_csv("/var/tmp/alphamotion/umr_factory/uniml3d_reload/remote/objxl_animations.csv")
+clips_all = pd.read_csv(f'{SRCFG.factory_root}/uniml3d_reload/remote/clips.csv')
+anim = pd.read_csv(f'{SRCFG.factory_root}/uniml3d_reload/remote/objxl_animations.csv')
 uni = dict(
     source="UniML3D (Linzhan/UniML3D) = Mixamo + Objaverse-XL 绑骨动画 + Truebones 动物",
     fps=30,

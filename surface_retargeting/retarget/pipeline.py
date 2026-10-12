@@ -1,5 +1,6 @@
 """Batch runner: UMR retarget (wrapped) -> strict post-pass -> labels -> npz + manifest row."""
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import hashlib
 import json
@@ -372,7 +373,7 @@ def postprocess(robot, kind, data, seq_key, umr_paths, inv, log_every=500):
     prov = dict(source_kind=kind, source_data=str(data), seq_key=seq_key, umr_commit='d1cdaed', umr_out=umr_paths['umr_out'],
                 human_slots=umr_paths['src_slots'], staged_mjcf=st['staged_mjcf'], exclusions=st['exclusions'],
                 solver_overrides=SOLVER_OVERRIDES, label_cfg=L.CFG, pen_tol_m=PP.PEN_TOL, contact_tol_m=PP.CONTACT_TOL,
-                code='/home/arenalabs/umr_factory_code', created=time.strftime('%Y-%m-%d %H:%M:%S'))
+                code=SRCFG.repo, created=time.strftime('%Y-%m-%d %H:%M:%S'))
     arr['provenance'] = np.array(json.dumps(prov))
     npz = od / f'{robot}.npz'
     np.savez_compressed(npz, **arr)

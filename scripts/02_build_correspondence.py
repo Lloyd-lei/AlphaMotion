@@ -4,7 +4,6 @@ HOI / HiPHI sources with their own body shape get their own cache on first use (
 Usage: python scripts/build_correspondence.py [robot1,robot2]"""
 import json, sys, time
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from surface_retargeting.retarget import pipeline as P
 from surface_retargeting.robots import robots as R
 from surface_retargeting.paths import CORR, UMR_ROOT

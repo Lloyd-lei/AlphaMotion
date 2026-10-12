@@ -1,10 +1,10 @@
 {
   "schema": "alphamotion-mcp-config-v1",
-  "data_root": "/home/arenalabs/umr_factory_data",
-  "cache_root": "/home/arenalabs/motion_audit_web/cache/arrays",
-  "state_root": "/home/arenalabs/motion_audit_web/agent_state",
+  "data_root": "${SR_DATA_ROOT}",
+  "cache_root": "${SR_VIEWER_HOME}/cache/arrays",
+  "state_root": "${SR_VIEWER_HOME}/agent_state",
   "evidence_roots": {
-    "workbench": "/home/arenalabs/motion_audit_web/qa"
+    "workbench": "${SR_VIEWER_HOME}/qa"
   },
   "reserve_bytes": 17179869184,
   "download_remaining_upper_bound_bytes": 200505865539,

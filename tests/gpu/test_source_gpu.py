@@ -1,6 +1,5 @@
 """GPU source preprocessing vs UMR-CPU captured solver inputs (same clip, same robot)."""
 import sys, time, json, numpy as np, torch
-sys.path.insert(0, '/home/arenalabs/umr_gpu')
 from surface_retargeting.gpu.bank import Problem
 from surface_retargeting.gpu.source_gpu import SMPLXForward, SourcePrep, load_smplx_sequence
 P = Problem(sys.argv[1]); z = P.z

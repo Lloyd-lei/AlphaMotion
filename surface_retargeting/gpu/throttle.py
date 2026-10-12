@@ -1,13 +1,14 @@
 """Duty-cycle throttle + network guard (RESOURCE_LIMITS.md: GPU util < ~70 %, power < ~350 W, pause when the
 network is down).  Call tick() between GPU work items: it synchronises, then sleeps so that the busy fraction since
 the previous tick is <= DUTY, and blocks while /home/arenalabs/umr_factory_data/logs/throttle.log reports net=down."""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import os
 import time
 
 import torch
 
 DUTY = float(os.environ.get('UMRG_DUTY', '1.0'))
-LOG = '/home/arenalabs/umr_factory_data/logs/throttle.log'
+LOG = f'{SRCFG.data_root}/logs/throttle.log'
 _last = [time.time()]
 _slept = [0.0]
 _net_check = [0.0]

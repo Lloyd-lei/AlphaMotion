@@ -16,6 +16,7 @@ from pathlib import Path
 import mujoco
 import numpy as np
 
+from surface_retargeting.config import CFG as SRCFG
 from surface_retargeting.paths import INVENTORY, DRAFT_CONFIGS, ROBOTS, add_umr_to_path
 
 LOCKED_JOINTS = {
@@ -34,7 +35,7 @@ MANUAL_EXCLUSIONS = {
 
 
 def load_inventory(tier='A_core20'):
-    d = json.load(open(INVENTORY))
+    d = SRCFG.load_json(INVENTORY)
     return [r for r in d['robots'] if tier is None or r['tier'] == tier]
 
 

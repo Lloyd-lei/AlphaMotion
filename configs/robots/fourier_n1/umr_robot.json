@@ -1,7 +1,7 @@
 {
  "robot": {
   "name": "fourier_n1",
-  "xml": "/home/arenalabs/umr_factory_data/robots/fourier_n1/fourier_n1.xml",
+  "xml": "${SR_DATA_ROOT}/robots/fourier_n1/fourier_n1.xml",
   "point_cloud_center": "body:waist_yaw_link",
   "tpose_qpos": {
    "left_shoulder_roll_joint": 1.570796,

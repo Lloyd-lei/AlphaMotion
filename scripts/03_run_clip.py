@@ -6,7 +6,6 @@ Each robot runs in sequence (one GPU correspondence job at a time). Updates OUT/
 """
 import argparse, json, sys, time, traceback
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from surface_retargeting.retarget import pipeline as P
 from surface_retargeting.robots import robots as R
 from surface_retargeting.paths import OUT

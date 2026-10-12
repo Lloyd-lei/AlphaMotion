@@ -6,6 +6,7 @@
 Benchmark corpus: --synthetic N_clips windows of random length/start cut from the UMR sample clip (same subject, so
 one static prep per robot).  Reports robot-frames/s and a stage breakdown; --save writes per (clip, robot) npz.
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import argparse
 import json
 import os
@@ -17,7 +18,6 @@ from pathlib import Path
 import numpy as np
 import torch
 
-sys.path.insert(0, '/home/arenalabs/umr_gpu')
 from surface_retargeting.gpu.bank import Problem, Bank
 from surface_retargeting.gpu.solver import UMRSolver
 from surface_retargeting.gpu.source_gpu import SMPLXForward, SourcePrep, load_smplx_sequence
@@ -30,7 +30,7 @@ from surface_retargeting.strict.strict_fp import strict_chains, hysteresis_t, dr
 from surface_retargeting.gpu import labels as L
 from surface_retargeting.gpu import throttle
 
-OUT = Path('/var/tmp/alphamotion/umr_factory/umr_gpu')
+OUT = Path(f'{SRCFG.work}')
 PROB = {'agibot_a3_t3d0': 'lafan1_smplx__dance1_subject2/agibot_a3_t3d0.stock.cpu.npz',
         'unitree_g1_29dof': 'lafan1_smplx__dance1_subject2/unitree_g1_29dof.stock.cpu.npz',
         'fourier_gr3': 'lafan1_smplx__dance1_subject2/fourier_gr3.stock.cpu.npz',

@@ -1,6 +1,5 @@
 """CollisionGround (analytic / support-vertex lowest points) vs brute force over dense shape samples + mesh vertices."""
 import sys, numpy as np, torch, mujoco
-sys.path.insert(0, '/home/arenalabs/umr_gpu')
 from surface_retargeting.gpu.kin import KinTree
 from surface_retargeting.gpu.geometry import CollisionGround, ShapeSet, robot_collision_geoms, mesh_verts
 z = np.load(sys.argv[1]); m = mujoco.MjModel.from_binary_path(str(z['mjb']))

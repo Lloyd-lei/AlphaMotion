@@ -1,7 +1,6 @@
 """Chunk-boundary error: chunked (Lc, Ov) vs unchunked GPU solve of the same clip, both fed by GPU preprocessing;
 plus end-to-end parity of the unchunked GPU run vs UMR-CPU (pre- and post-LQR)."""
 import sys, json, time, argparse, numpy as np, torch
-sys.path.insert(0, '/home/arenalabs/umr_gpu')
 from surface_retargeting.gpu.bank import Problem, Bank
 from surface_retargeting.gpu.solver import UMRSolver, LQRGPU
 from surface_retargeting.gpu.source_gpu import SourcePrep, load_smplx_sequence

@@ -1,0 +1,1 @@
+{"scope":"robot","target":"fourier_gr3","reasons":["other"],"note":"隔离界面验收：只测试系统性问题格式，不代表真实数据问题。","example_items":["scan/case3_kick_right__20260330000586_1_1775269234::fourier_gr3"],"reviewer":"QA-isolated-fixture","ts":"2026-10-05T07:00:57.956Z"}

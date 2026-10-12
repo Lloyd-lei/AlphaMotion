@@ -1,11 +1,11 @@
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import sys, os, re, json
-sys.path.insert(0, os.path.dirname(__file__))
 import pandas as pd
-import taxo
+from surface_retargeting.census.core_sources.scripts import taxo
 
-OUT = "/home/arenalabs/umr_factory_data/diversity/uniml3d_mixamo"
+OUT = f'{SRCFG.data_root}/diversity/uniml3d_mixamo'
 os.makedirs(OUT, exist_ok=True)
-REM = "/var/tmp/alphamotion/umr_factory/uniml3d_reload/remote"
+REM = f'{SRCFG.factory_root}/uniml3d_reload/remote'
 c = pd.read_csv(f"{REM}/clips.csv")
 c["hours"] = c.duration_sec / 3600
 S = os.path.expanduser("~/.cache/huggingface/hub/datasets--Linzhan--UniML3D/snapshots/053e8b4b06b6a8ba717a030e675dd5b7fd5be92e")

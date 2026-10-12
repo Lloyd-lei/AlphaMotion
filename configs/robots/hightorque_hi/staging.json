@@ -1,7 +1,7 @@
 {
  "name": "hightorque_hi",
- "src_mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/hightorque_hi/hi_25dof.xml",
- "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/hightorque_hi/hightorque_hi.xml",
+ "src_mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/hightorque_hi/hi_25dof.xml",
+ "staged_mjcf": "${SR_DATA_ROOT}/robots/hightorque_hi/hightorque_hi.xml",
  "nq": 32,
  "nv": 31,
  "facing_plus_x": true,

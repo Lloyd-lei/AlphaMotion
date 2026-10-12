@@ -2,7 +2,6 @@
 OUT/qa_summary.json (dataset-level before/after penetration, flagged frames, slip, agreement)."""
 import json, sys, glob
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from surface_retargeting.paths import OUT
 
 rows = []

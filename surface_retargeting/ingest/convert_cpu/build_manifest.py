@@ -1,10 +1,11 @@
 """Collect per-clip qa.json into /home/arenalabs/umr_factory_data/manifest_sources.json."""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import glob
 import json
 import time
 from pathlib import Path
 
-ROOT = Path("/home/arenalabs/umr_factory_data")
+ROOT = Path(f'{SRCFG.data_root}')
 LIC = {
     "OmniContact": "CC BY-NC 4.0 (lightcone02/OmniContact-Dataset); non-commercial, attribution",
     "HiPHI": "ModalityNet Open Research License v1.0 (Noitom); non-commercial only, no redistribution of raw data, "

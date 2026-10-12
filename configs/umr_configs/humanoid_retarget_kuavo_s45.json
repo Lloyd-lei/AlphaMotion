@@ -1,7 +1,7 @@
 {
   "robot": {
     "name": "kuavo_s45",
-    "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/kuavo_s45/biped_s45_collision.xml",
+    "xml": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/kuavo_s45/biped_s45_collision.xml",
     "point_cloud_center": "body:base_link",
     "tpose_qpos": {
       "zarm_l2_joint": 1.570796,

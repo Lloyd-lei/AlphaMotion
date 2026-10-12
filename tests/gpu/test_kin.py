@@ -1,7 +1,6 @@
 """KinTree vs MuJoCo: FK, geom poses, point Jacobians, integratePos/differentiatePos (fp64)."""
 import sys, json
 import mujoco, numpy as np, torch
-sys.path.insert(0, '/home/arenalabs/umr_gpu')
 from surface_retargeting.gpu.kin import KinTree
 
 def run(xml):

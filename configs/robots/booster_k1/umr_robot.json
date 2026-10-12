@@ -1,7 +1,7 @@
 {
  "robot": {
   "name": "booster_k1",
-  "xml": "/home/arenalabs/umr_factory_data/robots/booster_k1/booster_k1.xml",
+  "xml": "${SR_DATA_ROOT}/robots/booster_k1/booster_k1.xml",
   "point_cloud_center": "body:Trunk",
   "tpose_qpos": {}
  },

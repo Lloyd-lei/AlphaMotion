@@ -1,7 +1,8 @@
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 # summary.json -> summary.md (中文表格)
 import json
 
-D = '/home/arenalabs/umr_factory_data/diversity/omnicontact_grail'
+D = f'{SRCFG.data_root}/diversity/omnicontact_grail'
 S = json.load(open(f'{D}/summary.json'))
 oc, gr = S['omnicontact'], S['grail']
 TAXZH = {'locomotion': '行走类', 'dynamic': '动态', 'ground_contact': '贴地', 'sitting_on_object': '坐物体',

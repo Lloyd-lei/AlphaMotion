@@ -1,7 +1,8 @@
 """Markdown tables from results/parity/*.json (parity + strictness) -> stdout."""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import glob, json
 from pathlib import Path
-OUT = Path('/var/tmp/alphamotion/umr_factory/umr_gpu/results/parity')
+OUT = Path(f'{SRCFG.work}/results/parity')
 CL = {'case3_kick_right__20260330000586_1_1775269234_s3': 'Omni soccer 30fps', 'lafan1_smplx__dance1_subject2': 'LAFAN dance', 'hiphi_getup__getup0004_neutral_30fps': 'HiPHI get-up', 'case3_kick_right__20260330000586_1_1775269234': 'Omni soccer'}
 RB = {'unitree_g1_29dof': 'G1', 'fourier_gr3': 'GR3', 'unitree_h2': 'H2', 'agibot_a3_t3d0': 'A3'}
 rows = []

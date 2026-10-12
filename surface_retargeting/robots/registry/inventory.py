@@ -1,51 +1,32 @@
 """Robot MJCF inventory for the UMR data factory (read-only on all inputs).
 
-Run: /home/arenalabs/miniconda3/envs/ardy/bin/python inventory.py
-Writes robots.json + robots_table.md next to this file.  CPU only.
+Run (any python with mujoco, CPU only):  python -m surface_retargeting.robots.registry.inventory
+Writes robots_raw.json into {factory_root}/robots (the registry work dir, unchanged from before the move);
+finalize.py turns it into robots.json + robots_table.md + umr_configs there.  The versioned copy lives in
+configs/robots/registry.json (paths as ${SR_*} tokens).
+
+2026-10-12 migration: the candidate list used to be read from AlphaMotion's sole_audit.json (report 32) and rows
+were cross-filled from topo_exp / xwbc_lafan / am2exp caches.  Those inputs are AlphaMotion-side and partly
+deleted, so candidates now come from the committed registry and the cross fields are dropped.
 """
 import json, os, re, sys, glob, hashlib, traceback
 from pathlib import Path
 import numpy as np
 import mujoco
 
-OUT = Path(__file__).resolve().parent
-GMR = '/home/arenalabs/Desktop/"be water, robot"/alpha_motion2/external/GMR/assets'
-RM = '/var/tmp/alphamotion/robot_models'
-SOLE = '/home/arenalabs/Desktop/alphamotion video/resource/report/32_ground_gauge_audit/sole_audit.json'
-TOPO = '/var/tmp/alphamotion/topo_exp'
-XWBC_EXT = '/var/tmp/alphamotion/xwbc_lafan/extracted'
-SURF = '/var/tmp/alphamotion/am2exp/assets/surface_v2'
+from surface_retargeting.config import CFG as SRCFG
+
+OUT = SRCFG.path('factory_root') / 'robots'
+GMR = f'{SRCFG.gmr_root}/assets'
+RM = f'{SRCFG.robot_assets_root}'
 
 TRAIN = ['booster_k1', 'booster_t1', 'booster_t1_29dof', 'fourier_n1', 'hightorque_hi', 'pnd_adam_lite',
          'tienkung', 'unitree_g1_23dof', 'unitree_g1_29dof', 'unitree_h1', 'unitree_h1_2']
 HELDOUT = ['fourier_gr3', 'kuavo_s45', 'unitree_h2', 'unitree_r1']
 
-sole = json.load(open(SOLE))
-CAND = {}
-for b, v in sole.items():
-    if b == 'human_smpl':
-        continue
-    m = v.get('mjcf')
-    CAND[b] = dict(mjcf=m, source='sole_audit.json (report 32)')
-CAND['pal_talos'] = dict(mjcf=f'{GMR}/pal_talos/talos.xml', source='GMR params.py ROOT_XML_DICT[pal_talos] (sole_audit had None)')
-CAND['unitree_g1_29dof_dex3'] = dict(mjcf=f'{RM}/unitree_ros_official/robots/g1_description/g1_29dof_with_hand.xml',
-                                     source='unitree_ros_official (vendor G1 + Dex3 hands)')
-CAND['agibot_x2_ultra'] = dict(mjcf=f'{RM}/agibot_x2_urdf/X2_URDF-v1.4.0/agibot_x2_ultra_mjcf.xml', source='robot_models (used by prior X2 zero-shot code, 23 refs)')
-CAND['unitree_g1_29dof_vendor'] = dict(mjcf=f'{RM}/unitree_ros_official/robots/g1_description/g1_29dof.xml', source='unitree_ros_official vendor G1 29dof (alt. to GMR mocap XML)')
-CAND['unitree_g1_23dof_vendor'] = dict(mjcf=f'{RM}/unitree_ros_official/robots/g1_description/g1_23dof.xml', source='unitree_ros_official vendor G1 23dof (true 23-DoF tree)')
-CAND['agibot_a3_t3d0'] = dict(mjcf=f'{RM}/agibot_a3/a3_t3d0/mjcf/agibot_a3_t3d0_mjcf.xml', source='robot_models')
-CAND['agibot_a3_ultra_t3d0'] = dict(mjcf=f'{RM}/agibot_a3/a3_ultra_t3d0/mjcf/agibot_a3_ultra_t3d0_mjcf.xml', source='robot_models')
-CAND['agibot_a2'] = dict(mjcf=f'{RM}/agibot_a2_gmr/agibot_a2_gmr_mjcf.xml', source='robot_models (GMR agibot_a2 converted)')
-CAND['openloong'] = dict(mjcf=f'{GMR}/openloong/AzureLoong.xml', source='GMR assets (not in params.py dict)')
-CAND['berkeley_humanoid_lite'] = dict(mjcf=f'{GMR}/berkeley_humanoid_lite/berkeley_humanoid_lite.xml', source='GMR assets')
-CAND['stanford_toddy'] = dict(mjcf=f'{GMR}/stanford_toddy/toddy_mocap.xml', source='GMR assets')
-CAND['apptronik_apollo'] = dict(mjcf=f'{RM}/menagerie/apptronik_apollo/apptronik_apollo.xml', source='mujoco_menagerie')
-CAND['toddlerbot_2xm'] = dict(mjcf=f'{RM}/menagerie/toddlerbot_2xm/toddlerbot_2xm.xml', source='mujoco_menagerie')
-CAND['robotis_op3'] = dict(mjcf=f'{RM}/menagerie/robotis_op3/op3.xml', source='mujoco_menagerie')
-CAND['berkeley_humanoid'] = dict(mjcf=f'{RM}/menagerie/berkeley_humanoid/berkeley_humanoid.xml', source='mujoco_menagerie')
-CAND['galaxea_r1pro'] = dict(mjcf=f'{GMR}/galaxea_r1pro/r1_pro.xml', source='GMR assets (wheeled base)')
-CAND['agility_cassie'] = dict(mjcf=f'{RM}/menagerie/agility_cassie/cassie.xml', source='mujoco_menagerie (no arms)')
-CAND['rby1'] = dict(mjcf=f'{RM}/menagerie/rainbow_robotics_rby1/rby1m_1.3.xml', source='mujoco_menagerie (wheeled)')
+# candidates = every robot in the committed registry (mjcf + where it came from), in registry order
+CAND = {r['name']: dict(mjcf=r['mjcf'], source=r.get('mjcf_source', 'registry'))
+        for r in SRCFG.load_json(SRCFG.registry_json)['robots']}
 
 J = mujoco.mjtJoint
 G = mujoco.mjtGeom
@@ -387,14 +368,6 @@ def tpose_search(r):
     r['pcc_bbox_ratio_tpose'] = None if ratio is None else round(ratio, 4)
 
 
-def caches(name):
-    found = []
-    for c in sorted(glob.glob(f'{TOPO}/cache*')):
-        if glob.glob(f'{c}/{name}_spec*.npz') or glob.glob(f'{c}/{name}_paired_local6d.pt'):
-            found.append(os.path.basename(c))
-    return found
-
-
 def main():
     rows = []
     for name, info in CAND.items():
@@ -408,14 +381,7 @@ def main():
         r.pop('_m', None); r.pop('_pcc', None); r.pop('_sg', None)
         r['mjcf_source'] = info['source']
         base = {'unitree_g1_29dof_dex3': 'unitree_g1_29dof', 'agibot_x2_ultra_vendor': 'agibot_x2_ultra'}.get(name, name)
-        r['am2_role'] = 'xwbc_train' if base in TRAIN else ('xwbc_heldout' if base in HELDOUT else
-                        ('xwbc_data_only(not in AM2 lists)' if os.path.isdir(f'{XWBC_EXT}/{base}') else 'not_in_am2'))
-        r['xwbc_lafan_extracted'] = os.path.isdir(f'{XWBC_EXT}/{base}') and len(glob.glob(f'{XWBC_EXT}/{base}/*.npz'))
-        r['topo_exp_caches'] = caches(base)
-        r['surface_v2_asset'] = os.path.exists(f'{SURF}/{base}.npz')
-        sa = sole.get(base, {})
-        r['sole_audit_label_feet'] = sa.get('label_feet')
-        r['sole_audit_predicted_bias_cm'] = sa.get('predicted_bias_cm')
+        r['am2_role'] = 'xwbc_train' if base in TRAIN else ('xwbc_heldout' if base in HELDOUT else 'not_in_am2')
         rows.append(r)
         print(name, r.get('load_ok'), r.get('load_error', ''), flush=True)
     json.dump(rows, open(OUT / 'robots_raw.json', 'w'), indent=1, default=lambda o: o.item() if hasattr(o, 'item') else str(o))

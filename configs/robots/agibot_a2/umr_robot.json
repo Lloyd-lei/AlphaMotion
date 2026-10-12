@@ -1,7 +1,7 @@
 {
  "robot": {
   "name": "agibot_a2",
-  "xml": "/home/arenalabs/umr_factory_data/robots/agibot_a2/agibot_a2.xml",
+  "xml": "${SR_DATA_ROOT}/robots/agibot_a2/agibot_a2.xml",
   "point_cloud_center": "body:base_link",
   "tpose_qpos": {}
  },

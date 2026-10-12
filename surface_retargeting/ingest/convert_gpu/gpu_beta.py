@@ -14,6 +14,7 @@ This module returns the float64 minimiser (Newton with exact Hessians from torch
 monotone acceptance, fixed iteration budget with per-problem freezing at convergence).
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import os
 import pickle
@@ -24,11 +25,11 @@ import numpy as np
 import torch
 from torch.func import grad, hessian, jacfwd, vmap
 
-sys.path[:0] = ["/var/tmp/alphamotion/umr_factory/hiphi2smplx/src", "/var/tmp/alphamotion/umr_factory/h2s_shim"]
+SRCFG.add_hiphi2smplx_to_path()
 import hiphi2smplx.beta_fitting as BF  # noqa: E402
 
-MODEL = "/home/arenalabs/Downloads/SMPLX_NEUTRAL.npz"
-BETA_DATA = Path("/var/tmp/alphamotion/umr_factory/beta_fit")
+MODEL = f'{SRCFG.smplx_neutral}'
+BETA_DATA = Path(f'{SRCFG.beta_fit}')
 PARENTS = [-1, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 9, 12, 13, 14, 16, 17, 18, 19]
 ALIGN = list(BF._ALIGNMENT_JOINTS)
 ANG_IDX = list(BF._ANGLE_PRIOR_INDICES)

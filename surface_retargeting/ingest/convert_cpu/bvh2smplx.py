@@ -9,11 +9,12 @@ Spine/SpineMid/Spine1.  55-joint files use the stock `hiphi` map unchanged.
 Returns the hiphi2smplx MotionResult plus diagnostics.  Upstream code untouched.
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import os
 import sys
 
-sys.path[:0] = ["/var/tmp/alphamotion/umr_factory/hiphi2smplx/src", "/var/tmp/alphamotion/umr_factory/h2s_shim"]
+SRCFG.add_hiphi2smplx_to_path()
 
 import numpy as np  # noqa: E402
 
@@ -23,8 +24,8 @@ from hiphi2smplx.beta_fitting import BetaFitConfig  # noqa: E402
 from hiphi2smplx.bvh import load_bvh as _load_bvh  # noqa: E402
 from hiphi2smplx.pipeline import ConversionConfig  # noqa: E402
 
-MODEL = "/home/arenalabs/Downloads/SMPLX_NEUTRAL.npz"
-BETA_DATA = "/var/tmp/alphamotion/umr_factory/beta_fit"
+MODEL = f'{SRCFG.smplx_neutral}'
+BETA_DATA = f'{SRCFG.beta_fit}'
 
 OMNI51_MAP = dict(S.HIPHI_MAP)
 OMNI51_MAP.update({"spine": "Spine", "spine2": "SpineMid", "chest": "Spine1"})

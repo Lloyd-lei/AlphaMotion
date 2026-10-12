@@ -5,17 +5,18 @@ clip by clip, into raw/grail (HF local_dir layout data/<cat>/<sub>/<file>). Pinn
 raw/grail/_tree.json. Skips clips without both a recon pkl and a USD. Resumable (skips files with matching size).
 Per-clip completion is visible as: recon + usd present with the listed size.
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import argparse
 import json
 import os
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-os.environ.setdefault('HF_HOME', '/home/arenalabs/umr_factory_data/hf_cache/grail')
+os.environ.setdefault('HF_HOME', f'{SRCFG.data_root}/hf_cache/grail')
 os.environ.setdefault('HF_HUB_DISABLE_PROGRESS_BARS', '1')
 from huggingface_hub import hf_hub_download  # noqa: E402
 
-ROOT = '/home/arenalabs/umr_factory_data/raw/grail'
+ROOT = f'{SRCFG.data_root}/raw/grail'
 REPO = 'nvidia/PhysicalAI-Robotics-Locomanipulation-GRAIL'
 ap = argparse.ArgumentParser()
 ap.add_argument('--cats', default='pickup_table,pickup_ground,sitting,stair_p1,stair_p2,slope,curb')

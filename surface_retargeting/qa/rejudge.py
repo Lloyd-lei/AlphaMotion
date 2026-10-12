@@ -1,12 +1,12 @@
 """Re-run only the CPU judge on the trajectories stored in results/parity/<clip>__<robot>.series.npz (no GPU)."""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import json, sys
 from pathlib import Path
 import numpy as np
-sys.path.insert(0, '/home/arenalabs/umr_gpu'); sys.path.insert(0, '/home/arenalabs/umr_gpu/eval')
 from surface_retargeting.gpu.bank import Problem
-from judge import Judge, judge_clip, sphere_sdf
+from surface_retargeting.qa.judge import Judge, judge_clip, sphere_sdf
 from surface_retargeting.gpu.geometry import object_from_objpen
-OUT = Path('/var/tmp/alphamotion/umr_factory/umr_gpu')
+OUT = Path(f'{SRCFG.work}')
 clip, robot = sys.argv[1], sys.argv[2]
 S = dict(np.load(OUT / 'results' / 'parity' / f'{clip}__{robot}.series.npz', allow_pickle=True))
 res = json.load(open(OUT / 'results' / 'parity' / f'{clip}__{robot}.json'))

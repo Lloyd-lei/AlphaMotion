@@ -1,7 +1,7 @@
 {
  "robot": {
   "name": "openloong",
-  "xml": "/home/arenalabs/umr_factory_data/robots/openloong/openloong.xml",
+  "xml": "${SR_DATA_ROOT}/robots/openloong/openloong.xml",
   "point_cloud_center": "body:Link_waist_yaw",
   "tpose_qpos": {}
  },

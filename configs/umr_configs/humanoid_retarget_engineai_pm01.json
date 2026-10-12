@@ -1,7 +1,7 @@
 {
   "robot": {
     "name": "engineai_pm01",
-    "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/engineai_pm01/pm_v2.xml",
+    "xml": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/engineai_pm01/pm_v2.xml",
     "point_cloud_center": "body:LINK_TORSO_YAW",
     "tpose_qpos": {
       "J14_SHOULDER_ROLL_L": 1.570796,

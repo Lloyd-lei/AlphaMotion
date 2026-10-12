@@ -7,6 +7,7 @@ forward, betas difference, qa.json flag/field comparison; plus a betas-only erro
 control arm (CPU pose with the CPU path's own perturbed-input betas).
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import argparse
 import json
@@ -15,7 +16,6 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 
 def load(kind, d):
@@ -42,12 +42,12 @@ def qa_cmp(a, b):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--gpu-root", required=True)
-    ap.add_argument("--cpu-root", default="/home/arenalabs/umr_factory_data/smplx/hiphi")
+    ap.add_argument("--cpu-root", default=f'{SRCFG.data_root}/smplx/hiphi')
     ap.add_argument("--kind", default="hiphi")
     ap.add_argument("--out", required=True)
     ap.add_argument("--control", default=None)
     args = ap.parse_args()
-    import gpu_smplx
+    from surface_retargeting.ingest.convert_gpu import gpu_smplx
     sm = gpu_smplx.GpuSmplx("cuda")
     groot, croot = Path(args.gpu_root), Path(args.cpu_root)
     pat = "data/*/*/*/qa.json" if args.kind == "hiphi" else "*/*/*/qa.json"

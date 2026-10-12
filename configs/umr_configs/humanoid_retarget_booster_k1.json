@@ -1,7 +1,7 @@
 {
   "robot": {
     "name": "booster_k1",
-    "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/booster_k1/K1_serial.xml",
+    "xml": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/booster_k1/K1_serial.xml",
     "point_cloud_center": "body:Trunk",
     "tpose_qpos": {}
   },

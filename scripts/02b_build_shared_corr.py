@@ -2,7 +2,6 @@
 Usage: python scripts/build_shared_corr.py [robot1,robot2]"""
 import json, os, subprocess, sys, time
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import numpy as np
 from surface_retargeting.robots import robots as R
 from surface_retargeting.correspondence import shared_corr as SC

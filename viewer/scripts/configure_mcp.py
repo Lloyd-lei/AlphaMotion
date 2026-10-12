@@ -1,4 +1,5 @@
 """Write an explicit host recipe registry; never start training/downloads."""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 from pathlib import Path
 import argparse
 import json
@@ -35,7 +36,7 @@ def configure(app, alpha, python):
         ('simulate', 'simulate', 'No dynamics-validation workflow registered; kinematic replay does not satisfy this stage')]:
         workflows[name] = {'enabled': False, 'stage': stage, 'description': name,
                            'disabled_reason': reason, 'parameters': no_parameters}
-    return {'schema': 'alphamotion-mcp-config-v1', 'data_root': '/home/arenalabs/umr_factory_data',
+    return {'schema': 'alphamotion-mcp-config-v1', 'data_root': f'{SRCFG.data_root}',
             'cache_root': str(app / 'cache/arrays'), 'state_root': str(state), 'evidence_roots': roots,
             'reserve_bytes': 16 * 1024**3, 'download_remaining_upper_bound_bytes': 200505865539,
             'workflows': workflows}
@@ -44,8 +45,8 @@ def configure(app, alpha, python):
 if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--output', required=True, type=Path)
-    p.add_argument('--python', type=Path, default=Path('/home/arenalabs/miniconda3/bin/python'))
-    p.add_argument('--alpha-root', type=Path, default=Path('/home/arenalabs/Desktop/"be water, robot"/alpha_motion2'))
+    p.add_argument('--python', type=Path, default=Path(f'{SRCFG.base_python}'))
+    p.add_argument('--alpha-root', type=Path, default=Path(f'{SRCFG.research_root}/alpha_motion2'))
     a = p.parse_args()
     if a.output.exists():
         sys.exit('Config exists; inspect and edit deliberately, never overwrite a live registry')

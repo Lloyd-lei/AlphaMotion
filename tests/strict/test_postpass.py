@@ -6,9 +6,9 @@
  4. known-clean: feet exactly touching (0.3 mm), no requirement violated               -> qpos bit-identical
  5. runtime per frame on a 60-frame sequence.
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import json, sys, time
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import mujoco, numpy as np, trimesh
 from surface_retargeting.robots import surface as S, robots as R
 from surface_retargeting.strict import geometry as G, postpass as PP
@@ -108,6 +108,7 @@ info['ground_min_after_mm_min'] = round(min(gm) * 1000, 3)
 res['sequence_runtime'] = info
 print('sequence', json.dumps(info), flush=True)
 assert info['frames_flagged'] == 0
-out = Path('/home/arenalabs/umr_factory_data/out/tests'); out.mkdir(parents=True, exist_ok=True)
+import os
+out = Path(os.environ.get('SR_TEST_OUT') or f'{SRCFG.data_root}/out/tests'); out.mkdir(parents=True, exist_ok=True)
 json.dump(res, open(out / f'test_postpass_{name}.json', 'w'), indent=1, default=float)
 print('ALL TESTS PASSED', name)

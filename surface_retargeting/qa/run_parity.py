@@ -8,6 +8,7 @@ re-run never overwrites the reference exports.  --judge strict judges only the G
 the other candidates' trajectories are still stored in the series for the videos.
 Kept frames = flags & DROP_MASK == 0 (bit 256 follow_human_slip is informational).
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import argparse
 import json
 import sys
@@ -17,17 +18,16 @@ from pathlib import Path
 import numpy as np
 import torch
 
-sys.path.insert(0, '/home/arenalabs/umr_gpu'); sys.path.insert(0, '/home/arenalabs/umr_gpu/eval')
 from surface_retargeting.gpu.bank import Problem, Bank
 from surface_retargeting.gpu.pipeline import Retargeter
 from surface_retargeting.export import export_clip
 from surface_retargeting.gpu import labels as L
 from surface_retargeting.gpu.slip import DROP_MASK, FLAG_FOLLOW
-from judge import Judge, judge_clip, sphere_sdf
+from surface_retargeting.qa.judge import Judge, judge_clip, sphere_sdf
 
-OUT = Path('/var/tmp/alphamotion/umr_factory/umr_gpu')
-FACTORY = {('lafan1_smplx__dance1_subject2', 'unitree_g1_29dof'): '/var/tmp/alphamotion/umr_factory/lloyd_gpu_eval/cpu_unitree_g1_29dof.npz',
-           ('lafan1_smplx__dance1_subject2', 'fourier_gr3'): '/var/tmp/alphamotion/umr_factory/lloyd_gpu_eval/cpu_fourier_gr3.npz'}
+OUT = Path(f'{SRCFG.work}')
+FACTORY = {('lafan1_smplx__dance1_subject2', 'unitree_g1_29dof'): f'{SRCFG.factory_root}/lloyd_gpu_eval/cpu_unitree_g1_29dof.npz',
+           ('lafan1_smplx__dance1_subject2', 'fourier_gr3'): f'{SRCFG.factory_root}/lloyd_gpu_eval/cpu_fourier_gr3.npz'}
 
 
 def main():

@@ -4,9 +4,10 @@ Env:
   UMR_CAPTURE=path.npz   save scaled source surface slots [T,4096,3] (retarget frame, z-up, ground z=0)
   UMR_QP_FALLBACK=1      on Clarabel failure retry with all inequality rows softened (cost 1e3), then dq=0
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import os, sys, json, runpy, atexit
 import numpy as np
-SCRIPTS = '/var/tmp/alphamotion/umr_factory/umr/UMR/scripts'
+SCRIPTS = f'{SRCFG.umr_root}/scripts'
 sys.path.insert(0, SCRIPTS); sys.path.insert(0, os.path.dirname(SCRIPTS))
 import smpl_surface_retarget_common as common
 

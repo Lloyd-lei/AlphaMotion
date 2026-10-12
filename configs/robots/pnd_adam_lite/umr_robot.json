@@ -1,7 +1,7 @@
 {
  "robot": {
   "name": "pnd_adam_lite",
-  "xml": "/home/arenalabs/umr_factory_data/robots/pnd_adam_lite/pnd_adam_lite.xml",
+  "xml": "${SR_DATA_ROOT}/robots/pnd_adam_lite/pnd_adam_lite.xml",
   "point_cloud_center": "body:torso",
   "tpose_qpos": {
    "shoulderRoll_Left": 1.41738,

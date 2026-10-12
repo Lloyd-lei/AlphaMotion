@@ -1,7 +1,7 @@
 {
  "name": "agibot_x2_ultra",
- "src_mjcf": "/var/tmp/alphamotion/robot_models/agibot_x2_urdf/X2_URDF-v1.4.0/agibot_x2_ultra_mjcf.xml",
- "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/agibot_x2_ultra/agibot_x2_ultra.xml",
+ "src_mjcf": "${SR_ROBOT_ASSETS_ROOT}/agibot_x2_urdf/X2_URDF-v1.4.0/agibot_x2_ultra_mjcf.xml",
+ "staged_mjcf": "${SR_DATA_ROOT}/robots/agibot_x2_ultra/agibot_x2_ultra.xml",
  "nq": 38,
  "nv": 37,
  "facing_plus_x": true,

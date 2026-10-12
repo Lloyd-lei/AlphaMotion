@@ -2,7 +2,7 @@
  "robot": "unitree_g1_29dof",
  "version": "g1-pipeline-v1",
  "frozen": "2026-10-04 23:36:30",
- "spec": "/home/arenalabs/umr_factory_data/DATA_SPEC_v2.md",
+ "spec": "${SR_DATA_ROOT}/DATA_SPEC_v2.md",
  "spec_sha256": "61fd2a02991768f2d731bc0446719988033bbb1c281f080b6175df1265c1b3a4",
  "engine": {
   "code": "/home/arenalabs/umr_factory_code (shared, read-only for this pipeline)",
@@ -16,7 +16,7 @@
    "surface.py": "389754b1f9f8636224d14850c93c87e4a5b03c3e70f7fb3aa69aa33d74622d3f"
   },
   "umr_commit": "d1cdaed",
-  "umr_python": "/var/tmp/alphamotion/umr_factory/umr/env/bin/python",
+  "umr_python": "${SR_PYTHON_ENV}/bin/python",
   "solver_overrides": {
    "ground_penetration_hard_constraint": true,
    "robot_self_penetration_hard_constraint": true,
@@ -42,27 +42,27 @@
   "umr_device": "CPU (CUDA_VISIBLE_DEVICES=\"\" -- GPU reserved for EGL rendering)"
  },
  "assets": {
-  "mjcf": "/home/arenalabs/umr_factory_data/robots/unitree_g1_29dof/unitree_g1_29dof.xml",
+  "mjcf": "${SR_DATA_ROOT}/robots/unitree_g1_29dof/unitree_g1_29dof.xml",
   "mjcf_sha256": "602b38d10d9038a189858932191951e625d7c5f48b4fe5cf69d6dbef72369b76",
-  "mjcf_source": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/unitree_g1/g1_mocap_29dof.xml",
+  "mjcf_source": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/unitree_g1/g1_mocap_29dof.xml",
   "nq": 36,
   "nv": 35,
   "facing": "+x",
   "up": "+z",
-  "surface": "/home/arenalabs/umr_factory_data/robots/unitree_g1_29dof/surface.npz",
+  "surface": "${SR_DATA_ROOT}/robots/unitree_g1_29dof/surface.npz",
   "surface_sha256": "183bac15261f90e5c918b095844ef089c191d64b113f8dc2ca65305593c2e3f4",
   "n_dense_points": 4096,
-  "staging": "/home/arenalabs/umr_factory_data/robots/unitree_g1_29dof/staging.json",
+  "staging": "${SR_DATA_ROOT}/robots/unitree_g1_29dof/staging.json",
   "staging_sha256": "063018ccf7f8445d25376220c6c62a461184c96af3f1ad1b967e17a8b3026687",
-  "umr_robot": "/home/arenalabs/umr_factory_data/robots/unitree_g1_29dof/umr_robot.json",
+  "umr_robot": "${SR_DATA_ROOT}/robots/unitree_g1_29dof/umr_robot.json",
   "umr_robot_sha256": "89c502974348b1e092a34cc0818020f3bf7806c88b19f0f9038971d36cf1d91d",
-  "patches": "/home/arenalabs/umr_factory_data/robots/unitree_g1_29dof/pipeline/assets/patches.npz",
+  "patches": "${SR_DATA_ROOT}/robots/unitree_g1_29dof/pipeline/assets/patches.npz",
   "patches_sha256": "9a49aec9a071e08cee3210d5e22199af70af27e14fc94a340ada39b128acb860",
   "renders": [
-   "/home/arenalabs/umr_factory_data/robots/unitree_g1_29dof/pipeline/assets/tpose_regions.png",
-   "/home/arenalabs/umr_factory_data/robots/unitree_g1_29dof/pipeline/assets/rest_regions.png",
-   "/home/arenalabs/umr_factory_data/robots/unitree_g1_29dof/pipeline/assets/patches.png",
-   "/home/arenalabs/umr_factory_data/robots/unitree_g1_29dof/pipeline/assets/soles_from_below.png"
+   "${SR_DATA_ROOT}/robots/unitree_g1_29dof/pipeline/assets/tpose_regions.png",
+   "${SR_DATA_ROOT}/robots/unitree_g1_29dof/pipeline/assets/rest_regions.png",
+   "${SR_DATA_ROOT}/robots/unitree_g1_29dof/pipeline/assets/patches.png",
+   "${SR_DATA_ROOT}/robots/unitree_g1_29dof/pipeline/assets/soles_from_below.png"
   ]
  },
  "scale_and_correspondence": {
@@ -102,16 +102,16 @@
   "bbox_center_ratio": 0.5989156739931374,
   "human_scale": "per clip, computed by UMR (robot_height 1.32246 m from slots y-extent / SMPL-X height); stored as human_scale in every output npz",
   "smplx_plain": {
-   "dataset": "/home/arenalabs/umr_factory_data/corr/unitree_g1_29dof/smplx/correspondence_dataset.npz",
-   "slots": "/home/arenalabs/umr_factory_data/corr/unitree_g1_29dof/smplx/train/correspondence_slots_final.npz",
+   "dataset": "${SR_DATA_ROOT}/corr/unitree_g1_29dof/smplx/correspondence_dataset.npz",
+   "slots": "${SR_DATA_ROOT}/corr/unitree_g1_29dof/smplx/train/correspondence_slots_final.npz",
    "slots_sha256": "2a3b80f40db8b89a3d78c0db5fa47cc228ae23ffb685c4a70d5861d00d413d77",
    "note": "per-robot; used for kind=smplx clips (LAFAN)"
   },
   "hoi_shared_beta0": {
-   "dataset": "/home/arenalabs/umr_factory_data/corr/unitree_g1_29dof/beta0/correspondence_dataset.npz",
-   "slots": "/home/arenalabs/umr_factory_data/corr/unitree_g1_29dof/beta0/train/correspondence_slots_final.npz",
+   "dataset": "${SR_DATA_ROOT}/corr/unitree_g1_29dof/beta0/correspondence_dataset.npz",
+   "slots": "${SR_DATA_ROOT}/corr/unitree_g1_29dof/beta0/train/correspondence_slots_final.npz",
    "slots_sha256": "22ef9ed245522da0dc96ba0580141e04025a13cf588a2a884bdc1899930b5fcc",
-   "binding": "/home/arenalabs/umr_factory_data/corr/unitree_g1_29dof/beta0/smplx_surface_binding.npz",
+   "binding": "${SR_DATA_ROOT}/corr/unitree_g1_29dof/beta0/smplx_surface_binding.npz",
    "note": "beta-zero shared correspondence (UMR HiPHI mechanism) for every HOI clip: no per-clip training"
   }
  },
@@ -239,7 +239,7 @@
   "note": "knees = shin/thigh points near the knee anchor (patch L_knee/R_knee), elbows = upper_arm/forearm points near the elbow anchor, pelvis/torso = trunk; thighs are contact-capable for sitting on the floor"
  },
  "contact_patches": {
-  "file": "/home/arenalabs/umr_factory_data/robots/unitree_g1_29dof/pipeline/assets/patches.npz",
+  "file": "${SR_DATA_ROOT}/robots/unitree_g1_29dof/pipeline/assets/patches.npz",
   "counts": {
    "L_sole": 39,
    "L_foot_edge": 48,
@@ -476,7 +476,7 @@
   {
    "id": "qa_dance",
    "kind": "smplx",
-   "data": "/var/tmp/alphamotion/umr_factory/umr/UMR/sample_data/lafan1_smplx",
+   "data": "${SR_UMR_ROOT}/sample_data/lafan1_smplx",
    "seq": "dance1_subject2",
    "window": [
     1900,
@@ -488,7 +488,7 @@
   {
    "id": "qa_kick",
    "kind": "hoi",
-   "data": "/var/tmp/alphamotion/umr_factory/umr/UMR/sample_data/omnicontact/soccer/case3_kick_right",
+   "data": "${SR_UMR_ROOT}/sample_data/omnicontact/soccer/case3_kick_right",
    "seq": "20260330000586_1_1775269234",
    "window": [
     0,
@@ -501,7 +501,7 @@
   {
    "id": "qa_carry",
    "kind": "hoi",
-   "data": "/home/arenalabs/umr_factory_data/smplx/omnicontact/box/case1_carry",
+   "data": "${SR_DATA_ROOT}/smplx/omnicontact/box/case1_carry",
    "seq": "20260330000166_1_1775007076",
    "window": [
     0,
@@ -514,7 +514,7 @@
   {
    "id": "qa_ground",
    "kind": "hoi",
-   "data": "/home/arenalabs/umr_factory_data/robots/unitree_g1_29dof/pipeline/src/hiphi/data/Cause_motion/push",
+   "data": "${SR_DATA_ROOT}/robots/unitree_g1_29dof/pipeline/src/hiphi/data/Cause_motion/push",
    "seq": "Cause_motion-push_0211",
    "window": [
     900,
@@ -526,8 +526,8 @@
   }
  ],
  "outputs": {
-  "engine_runs": "/home/arenalabs/umr_factory_data/robots/unitree_g1_29dof/pipeline/runs",
-  "engine_out": "/home/arenalabs/umr_factory_data/robots/unitree_g1_29dof/pipeline/out",
-  "qa": "/home/arenalabs/umr_factory_data/qa/unitree_g1_29dof"
+  "engine_runs": "${SR_DATA_ROOT}/robots/unitree_g1_29dof/pipeline/runs",
+  "engine_out": "${SR_DATA_ROOT}/robots/unitree_g1_29dof/pipeline/out",
+  "qa": "${SR_DATA_ROOT}/qa/unitree_g1_29dof"
  }
 }

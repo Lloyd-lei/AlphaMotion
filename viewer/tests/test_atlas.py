@@ -3,6 +3,7 @@
 Synthetic fixtures live under qa/adapter-fixtures (project-local); real-data
 checks are read-only and skip when the source files are absent.
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 from pathlib import Path
 import json
 import tempfile
@@ -22,11 +23,11 @@ from backend.wire import pack, unpack
 PROJECT = Path(__file__).resolve().parents[1]
 FIXTURES = PROJECT / 'qa' / 'adapter-fixtures'
 FIXTURES.mkdir(parents=True, exist_ok=True)
-REAL_EXPORT = Path('/var/tmp/alphamotion/umr_factory/umr_gpu/results/export/'
+REAL_EXPORT = Path(f'{SRCFG.work}/results/export/'
                    'case3_kick_right__20260330000586_1_1775269234__unitree_g1_29dof.npz')
-REAL_PROBLEM = Path('/var/tmp/alphamotion/umr_factory/umr_gpu/problems/hiphi_getup__getup0004_neutral_30fps/'
+REAL_PROBLEM = Path(f'{SRCFG.work}/problems/hiphi_getup__getup0004_neutral_30fps/'
                     'unitree_g1_29dof.stock.cpu.npz')
-REAL_SOURCE = Path('/var/tmp/alphamotion/umr_factory/umr_gpu/sources/hiphi_getup/getup0004_neutral_30fps.npz')
+REAL_SOURCE = Path(f'{SRCFG.work}/sources/hiphi_getup/getup0004_neutral_30fps.npz')
 
 
 def make_gpu_fixture(base):
@@ -312,12 +313,12 @@ class ProductionLayoutTests(unittest.TestCase):
             self.assertNotIn('fixbot', r['matrix'].get('omnicontact', {}))
             self.assertIn('umr_gpu-abc123def456', r['production']['invalid_engines'])
 
-    @unittest.skipUnless(any(Path('/home/arenalabs/umr_factory_data/production/v1').glob('*/*/*.npz'))
-                         if Path('/home/arenalabs/umr_factory_data/production/v1').exists() else False,
+    @unittest.skipUnless(any(Path(f'{SRCFG.data_root}/production/v1').glob('*/*/*.npz'))
+                         if Path(f'{SRCFG.data_root}/production/v1').exists() else False,
                          'no production outputs on disk')
     def test_real_production_human_rebuild_matches_file_clearance(self):
         from backend.atlas_routes import atlas_services
-        data = Path('/home/arenalabs/umr_factory_data')
+        data = Path(f'{SRCFG.data_root}')
         with tempfile.TemporaryDirectory(dir=FIXTURES) as folder:
             gpu, human, _ = atlas_services(data, Path(folder))
             cat = gpu.catalog(pipeline='production_v1', limit=1)

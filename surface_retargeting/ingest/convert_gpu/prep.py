@@ -25,9 +25,8 @@ from pathlib import Path
 import numpy as np
 from scipy.spatial.transform import Rotation
 
-sys.path.insert(0, "/home/arenalabs/umr_factory_data/scripts")
-import bvh2smplx  # noqa: E402  (also patches the omni51 skeleton map)
-import smplx_qa  # noqa: E402
+from surface_retargeting.ingest.convert_cpu import bvh2smplx  # noqa: E402  (also patches the omni51 skeleton map)
+from surface_retargeting.ingest.convert_cpu import smplx_qa  # noqa: E402
 from hiphi2smplx import skeleton as S  # noqa: E402
 from hiphi2smplx.beta_fitting import _prepare_target_joints  # noqa: E402
 from hiphi2smplx.bvh import _BvhJoint, load_bvh as upstream_load_bvh  # noqa: E402
@@ -320,7 +319,7 @@ def _write_30fps(job, dst_master, arrays, objs, residuals, rec_master, stride=3)
 
 def write_omni(job):
     """convert_omni.py layout: flat .npy files + prop_<name>.csv + <name>.obj/.xml + qa.json."""
-    import convert_omni as CO  # noqa: E402  (only helper functions are used)
+    from surface_retargeting.ingest.convert_cpu import convert_omni as CO  # noqa: E402  (only helper functions are used)
     src = Path(job["src"])
     out_root = Path(job["out_root"])
     meta = job["meta"]

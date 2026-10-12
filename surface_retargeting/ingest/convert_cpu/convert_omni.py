@@ -4,6 +4,7 @@ usage: convert_omni.py <raw_capture_dir> [--max-frames N] [--force]
 out:   /home/arenalabs/umr_factory_data/smplx/omnicontact/<domain>/<case>/<capture_id>/
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import os
 os.environ.setdefault("OMP_NUM_THREADS", "1"); os.environ.setdefault("MKL_NUM_THREADS", "1")
@@ -19,12 +20,11 @@ import numpy as np
 import torch
 torch.set_num_threads(1)
 
-sys.path.insert(0, str(Path(__file__).parent))
-import bvh2smplx  # noqa: E402
-import smplx_qa  # noqa: E402
+from surface_retargeting.ingest.convert_cpu import bvh2smplx  # noqa: E402
+from surface_retargeting.ingest.convert_cpu import smplx_qa  # noqa: E402
 
-RAW = Path("/home/arenalabs/umr_factory_data/raw/omnicontact")
-OUT = Path("/home/arenalabs/umr_factory_data/smplx/omnicontact")
+RAW = Path(f'{SRCFG.data_root}/raw/omnicontact')
+OUT = Path(f'{SRCFG.data_root}/smplx/omnicontact')
 
 XML_TMPL = """<?xml version='1.0' encoding='utf-8'?>
 <mujoco model="{low}">

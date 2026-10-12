@@ -1,6 +1,6 @@
 """Frame-parallel strict pass on the UMR-CPU output of a clip: GPU flags + timing (warm)."""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import sys, time, json, numpy as np, torch
-sys.path.insert(0, '/home/arenalabs/umr_gpu')
 from surface_retargeting.gpu.bank import Problem, Bank
 from surface_retargeting.gpu.solver import UMRSolver
 from surface_retargeting.strict.strict import RobotPoints, StrictProjector
@@ -10,10 +10,10 @@ from surface_retargeting.gpu import labels as L
 from surface_retargeting.gpu.pipeline import Retargeter
 P = Problem(sys.argv[1]); robot = sys.argv[2]
 bank = Bank([P]); sv = UMRSolver(bank); dev = 'cuda'
-pts = RobotPoints(sv.kt, f'/var/tmp/alphamotion/umr_factory/umr_gpu/robots/{robot}/surface.npz', dev)
+pts = RobotPoints(sv.kt, f'{SRCFG.work}/robots/{robot}/surface.npz', dev)
 proj = StrictProjector(sv.kt, pts, SelfCollision(sv.kt, dev), None, lim_lo=sv.j_lo, lim_hi=sv.j_hi, jq=sv.jq, jd=sv.jd, k_ground=96, k_self=32)
 proj.qp_dtype = torch.float32; proj.qp_eps = 1e-6; proj.qp_iters = 24
-R = Retargeter(bank, f'/var/tmp/alphamotion/umr_factory/umr_gpu/robots/{robot}/surface.npz', strict=False)
+R = Retargeter(bank, f'{SRCFG.work}/robots/{robot}/surface.npz', strict=False)
 h = R.human(0)
 fin = torch.as_tensor(np.load(P.args['out'], allow_pickle=True)['qpos'].astype(np.float64), device=dev)
 T = len(fin); reps = int(sys.argv[3]) if len(sys.argv) > 3 else 1

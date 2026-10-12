@@ -1,17 +1,19 @@
-"""Fixed locations. Upstream UMR is used read-only; everything we write goes under DATA (on /home)."""
+"""Fixed locations (CPU factory). All machine paths come from surface_retargeting.config (configs/sr.toml + SR_* env).
+Upstream UMR is used read-only; everything we write goes under DATA."""
 from pathlib import Path
-import sys
 
-UMR_ROOT = Path('/var/tmp/alphamotion/umr_factory/umr/UMR')
+from surface_retargeting.config import CFG as SRCFG, REPO
+
+UMR_ROOT = SRCFG.path('umr_root')
 UMR_SCRIPTS = UMR_ROOT / 'scripts'
-UMR_PY = '/var/tmp/alphamotion/umr_factory/umr/env/bin/python'
-UMR_TOOLS = Path('/var/tmp/alphamotion/umr_factory/umr/tools')        # scout wrappers (umr_pipe.py / umr_run.py)
-INVENTORY = Path('/var/tmp/alphamotion/umr_factory/robots/robots.json')
-DRAFT_CONFIGS = Path('/var/tmp/alphamotion/umr_factory/robots/umr_configs')
-SURFACE_V2 = Path('/var/tmp/alphamotion/am2exp/assets/surface_v2')
+UMR_PY = SRCFG.umr_python
+UMR_TOOLS = Path(SRCFG.umr_tools)          # UMR wrappers (umr_pipe.py / umr_run.py), in this repo
+INVENTORY = Path(SRCFG.registry_json)      # ${SR_*} tokens: read with SRCFG.load_json
+DRAFT_CONFIGS = Path(SRCFG.draft_configs)  # ${SR_*} tokens: read with SRCFG.load_json
+SURFACE_V2 = SRCFG.path('am2exp_root') / 'assets' / 'surface_v2'
 
-CODE = Path('/home/arenalabs/umr_factory_code')
-DATA = Path('/home/arenalabs/umr_factory_data')
+CODE = REPO
+DATA = SRCFG.path('data_root')
 ROBOTS = DATA / 'robots'          # staged MJCF + UMR config + dense surface per robot
 CORR = DATA / 'corr'              # correspondence caches (dataset npz + trained slots)
 RUNS = DATA / 'runs'              # raw UMR outputs + captured human slots
@@ -20,6 +22,4 @@ LOGS = DATA / 'logs'
 
 
 def add_umr_to_path():
-    for p in (str(UMR_SCRIPTS), str(UMR_ROOT)):
-        if p not in sys.path:
-            sys.path.insert(0, p)
+    SRCFG.add_umr_to_path()

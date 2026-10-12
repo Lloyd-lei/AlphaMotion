@@ -1,0 +1,33 @@
+# surface-retargeting path config.
+#
+# Load order (later wins):
+#   1. this file (configs/sr.example.toml)   -- the values below are lloyd's workstation, 2026-10-12
+#   2. configs/sr.toml (gitignored)          -- copy this file there and edit for another machine
+#   3. env vars SR_<KEY_IN_UPPERCASE>        -- e.g. SR_DATA_ROOT=/data/umr python ...
+#
+# Values may reference other keys as {key}; {repo} is the repository root.
+# Inspect the resolved values with:  python surface_retargeting/config.py
+
+[paths]
+# --- the six primary knobs (plan 1.4) ---
+data_root         = "/home/arenalabs/umr_factory_data"              # SR_DATA_ROOT: factory data (raw, smplx, robots, corr, runs, out, logs)
+work              = "/var/tmp/alphamotion/umr_factory/umr_gpu"      # SR_WORK: GPU engine work dir (problems, results, videos, logs)
+umr_root          = "/var/tmp/alphamotion/umr_factory/umr/UMR"      # SR_UMR_ROOT: UMR checkout. Cloud: "{repo}/third_party/UMR" (+ GR3 assets + data/ caches)
+body_models       = "/home/arenalabs/Downloads"                     # SR_BODY_MODELS: dir holding SMPLX_NEUTRAL.npz (not redistributable)
+robot_assets_root = "/var/tmp/alphamotion/robot_models"             # SR_ROBOT_ASSETS_ROOT: vendor MJCF/URDF sources (menagerie, unitree_ros, agibot ...)
+python_env        = "/var/tmp/alphamotion/umr_factory/umr/env"      # SR_PYTHON_ENV: UMR python env prefix (bin/python is used for UMR subprocesses)
+
+# --- secondary locations (override with SR_<KEY> too) ---
+factory_root      = "/var/tmp/alphamotion/umr_factory"              # old scout tree: sources/, labels/, lloyd_gpu_eval/, uniml3d_reload/
+beta_fit          = "{factory_root}/beta_fit"                       # hiphi2smplx beta prior (gmm_08.pkl ...), not redistributable
+smplx_neutral     = "{body_models}/SMPLX_NEUTRAL.npz"
+hiphi2smplx_root  = "{repo}/third_party/hiphi2smplx"                # submodule @65e5131 (same commit as the old /var/tmp checkout)
+h2s_shim          = "{factory_root}/h2s_shim"                       # h5py stand-in for genmo-gem (no h5py there); drop once h5py is installed
+gmr_root          = "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR"   # GMR robot assets live under {gmr_root}/assets
+research_root     = "/home/arenalabs/Desktop/\"be water, robot\""   # AlphaMotion research repo (read-only references only)
+am2exp_root       = "/var/tmp/alphamotion/am2exp"                   # am2exp surface_v2 assets (optional cross-check)
+dataset_root      = "/home/arenalabs/umr_dataset/data"              # packed dataset shards/catalog (umr_dataset)
+convert_work      = "/home/arenalabs/gpu_convert"                   # GPU converter runs/ + .inductor_cache
+genmo_python      = "/home/arenalabs/miniconda3/envs/genmo-gem/bin/python"   # python used by the GPU human converter
+base_python       = "/home/arenalabs/miniconda3/bin/python"         # generic python (viewer MCP, misc tools)
+viewer_home       = "/home/arenalabs/motion_audit_web"              # viewer runtime state: cache/, agent_state/, qa/, logs/

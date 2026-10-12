@@ -1,7 +1,7 @@
 {
   "robot": {
     "name": "pal_talos",
-    "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/pal_talos/talos.xml",
+    "xml": "${SR_GMR_ROOT}/assets/pal_talos/talos.xml",
     "point_cloud_center": "body:torso_1_link",
     "tpose_qpos": {
       "arm_left_2_joint": 1.570796,

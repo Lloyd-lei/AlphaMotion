@@ -1,7 +1,7 @@
 {
   "robot": {
     "name": "stanford_toddy",
-    "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/stanford_toddy/toddy_mocap.xml",
+    "xml": "${SR_GMR_ROOT}/assets/stanford_toddy/toddy_mocap.xml",
     "point_cloud_center": "body:torso",
     "tpose_qpos": {
       "left_sho_roll": -1.570796,

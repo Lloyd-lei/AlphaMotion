@@ -1,9 +1,10 @@
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 # Read-only diversity scan of GRAIL converted SMPL-X clips (no GPU). Writes per-clip stats JSONL.
 import json, glob, os, sys, time, re
 import numpy as np, joblib
 
-ROOT = '/home/arenalabs/umr_factory_data/smplx/grail'
-OUT = '/home/arenalabs/umr_factory_data/diversity/omnicontact_grail/grail_clip_stats.jsonl'
+ROOT = f'{SRCFG.data_root}/smplx/grail'
+OUT = f'{SRCFG.data_root}/diversity/omnicontact_grail/grail_clip_stats.jsonl'
 CATS = ['curb', 'slope', 'sitting', 'stair_p1', 'stair_p2', 'pickup_table', 'pickup_ground']
 FPS = 24.0
 

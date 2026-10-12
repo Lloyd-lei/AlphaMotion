@@ -18,6 +18,7 @@ memory-mapped in place (ZIP_STORED) and shifted by ``floor_offset_removed``.
 Object mesh: the capture's ``objpen_mjb`` object geoms (already scaled).
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 from collections import OrderedDict
 import hashlib
@@ -34,7 +35,7 @@ from . import geometry, npzhead
 from .adapters import AdapterError, NpyArchive, SnapshotChanged, UnsupportedFormat, fingerprint
 from .human_smplx import reconstruct_slots
 
-GPU_ROOT = Path('/var/tmp/alphamotion/umr_factory/umr_gpu')
+GPU_ROOT = Path(f'{SRCFG.work}')
 EXPORT_DIRS = (GPU_ROOT / 'results' / 'export',)
 PROBLEMS = GPU_ROOT / 'problems'
 PRODUCTION_SUBDIR = Path('production') / 'v1'
@@ -144,7 +145,7 @@ class GpuService:
     """Catalog + snapshot reader for gpu_npz_v2 files; all compute bounded and CPU-only."""
 
     def __init__(self, data_root, cache_root, export_dirs=EXPORT_DIRS, problems=PROBLEMS,
-                 extra_roots=(Path('/var/tmp/alphamotion/umr_factory'),)):
+                 extra_roots=(Path(f'{SRCFG.factory_root}'),)):
         self.data_root = Path(data_root).resolve()
         self.cache_root = Path(cache_root).resolve()
         if self.cache_root == self.data_root or self.data_root in self.cache_root.parents:

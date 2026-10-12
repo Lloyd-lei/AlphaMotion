@@ -1,10 +1,11 @@
 """GPU batched G1-SMPL-X body (GRAIL overlay) — same template/posedirs scaling as UMR's smplx_model_loader."""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import sys
 from pathlib import Path
 import numpy as np
 import torch
 
-UMR = Path('/var/tmp/alphamotion/umr_factory/umr/UMR')
+UMR = Path(f'{SRCFG.umr_root}')
 OVERLAY = UMR / 'sample_data/grail/g1_smplx_model'
 sys.path.insert(0, str(UMR / 'scripts'))
 

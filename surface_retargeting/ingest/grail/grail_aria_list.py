@@ -1,8 +1,9 @@
 """Emit an aria2c input list (stdout) for GRAIL recon/meta/object_usd (no textures/videos/robot/objects),
 round-robin across categories by clip so every category progresses; files already present with the
 listed size are skipped. The auth header is only written to the pipe (never to disk/argv)."""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import json, os, sys
-ROOT = '/home/arenalabs/umr_factory_data/raw/grail'
+ROOT = f'{SRCFG.data_root}/raw/grail'
 tree = json.load(open(f'{ROOT}/_tree.json'))
 SHA = tree['_sha']
 cats = sys.argv[1].split(',') if len(sys.argv) > 1 else ['pickup_ground', 'sitting', 'slope', 'curb', 'pickup_table', 'stair_p1', 'stair_p2']

@@ -1,10 +1,11 @@
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 # Read-only diversity scan of OmniContact converted SMPL-X captures + raw BVH headers (no GPU).
 import json, glob, os, re, hashlib, csv, time
 import numpy as np
 
-S = '/home/arenalabs/umr_factory_data/smplx/omnicontact'
-R = '/home/arenalabs/umr_factory_data/raw/omnicontact'
-OUT = '/home/arenalabs/umr_factory_data/diversity/omnicontact_grail/omnicontact_clip_stats.jsonl'
+S = f'{SRCFG.data_root}/smplx/omnicontact'
+R = f'{SRCFG.data_root}/raw/omnicontact'
+OUT = f'{SRCFG.data_root}/diversity/omnicontact_grail/omnicontact_clip_stats.jsonl'
 
 
 def rodrigues(aa):

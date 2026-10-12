@@ -3,9 +3,9 @@
  "frozen": "2026-10-04 23:37:32",
  "engine": "CPU reference factory /home/arenalabs/umr_factory_code (run via pipeline/run_qa_clips.py)",
  "mjcf": {
-  "path": "/home/arenalabs/umr_factory_data/robots/unitree_h1/unitree_h1.xml",
+  "path": "${SR_DATA_ROOT}/robots/unitree_h1/unitree_h1.xml",
   "sha256": "8529c6e75156ff5e648f8bde2f8dda0e81614ec3c9d2d1a2b0b13f5be3b706f5",
-  "source": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/unitree_h1/h1.xml",
+  "source": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/unitree_h1/h1.xml",
   "nq": 26,
   "nv": 25,
   "n_hinge": 19,
@@ -13,7 +13,7 @@
   "up": "+z"
  },
  "surface": {
-  "path": "/home/arenalabs/umr_factory_data/robots/unitree_h1/surface.npz",
+  "path": "${SR_DATA_ROOT}/robots/unitree_h1/surface.npz",
   "sha256": "2f300154b888fec48451c7c6d50a9416422d532f32de6b9ec56e45018d114c87",
   "n_points": 4096,
   "points_per_region": {
@@ -38,7 +38,7 @@
   }
  },
  "umr_robot_config": {
-  "path": "/home/arenalabs/umr_factory_data/robots/unitree_h1/umr_robot.json",
+  "path": "${SR_DATA_ROOT}/robots/unitree_h1/umr_robot.json",
   "sha256": "352bf1651637a3fb3af5d6fdc759c2950b021f394f9df292556787181480b0d4",
   "tpose": {
    "left_shoulder_roll_joint": 1.5477,
@@ -55,7 +55,7 @@
  },
  "correspondence": {
   "smplx": {
-   "dir": "/home/arenalabs/umr_factory_data/corr/unitree_h1/smplx",
+   "dir": "${SR_DATA_ROOT}/corr/unitree_h1/smplx",
    "slot_names": [
     "smplx_neutral_betas_c4eb7419e9",
     "unitree_h1"
@@ -64,7 +64,7 @@
    "slots_sha256_16": "0f2745c9b21d342e"
   },
   "hoi_shared_beta0": {
-   "dir": "/home/arenalabs/umr_factory_data/corr/unitree_h1/beta0",
+   "dir": "${SR_DATA_ROOT}/corr/unitree_h1/beta0",
    "slot_names": [
     "smplx_neutral_betas_b80de5d138",
     "unitree_h1"
@@ -138,7 +138,7 @@
   "trunk"
  ],
  "contact_patches": {
-  "file": "/home/arenalabs/umr_factory_data/robots/unitree_h1/pipeline/contact_patches.npz",
+  "file": "${SR_DATA_ROOT}/robots/unitree_h1/pipeline/contact_patches.npz",
   "counts": {
    "L_foot": 89,
    "L_knee": 85,
@@ -322,7 +322,7 @@
   {
    "id": "dance",
    "kind": "smplx",
-   "data": "/var/tmp/alphamotion/umr_factory/umr/UMR/sample_data/lafan1_smplx",
+   "data": "${SR_UMR_ROOT}/sample_data/lafan1_smplx",
    "seq": "dance1_subject2",
    "start": 1900,
    "end": 2500,
@@ -333,7 +333,7 @@
   {
    "id": "kick",
    "kind": "hoi",
-   "data": "/var/tmp/alphamotion/umr_factory/umr/UMR/sample_data/omnicontact/soccer/case3_kick_right",
+   "data": "${SR_UMR_ROOT}/sample_data/omnicontact/soccer/case3_kick_right",
    "seq": "20260330000586_1_1775269234",
    "start": 300,
    "end": 1800,
@@ -345,7 +345,7 @@
   {
    "id": "box_carry",
    "kind": "hoi",
-   "data": "/home/arenalabs/umr_factory_data/smplx/omnicontact/box/case1_carry",
+   "data": "${SR_DATA_ROOT}/smplx/omnicontact/box/case1_carry",
    "seq": "20260330000166_1_1775007076",
    "start": 0,
    "end": 1800,
@@ -357,7 +357,7 @@
   {
    "id": "kneel",
    "kind": "hoi",
-   "data": "/home/arenalabs/umr_factory_data/smplx/hiphi/data/Change_posture/lean",
+   "data": "${SR_DATA_ROOT}/smplx/hiphi/data/Change_posture/lean",
    "seq": "Change_posture-lean_0025",
    "start": 600,
    "end": 2400,
@@ -368,8 +368,8 @@
   }
  ],
  "outputs": {
-  "runs": "/home/arenalabs/umr_factory_data/robots/unitree_h1/pipeline/runs",
-  "out": "/home/arenalabs/umr_factory_data/robots/unitree_h1/pipeline/out",
-  "qa": "/home/arenalabs/umr_factory_data/qa/unitree_h1"
+  "runs": "${SR_DATA_ROOT}/robots/unitree_h1/pipeline/runs",
+  "out": "${SR_DATA_ROOT}/robots/unitree_h1/pipeline/out",
+  "qa": "${SR_DATA_ROOT}/qa/unitree_h1"
  }
 }

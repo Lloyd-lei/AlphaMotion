@@ -1,16 +1,16 @@
 """IK step-time vs lane count. usage: bench_ik.py B [K] [steps]"""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import os
-os.environ.setdefault("TORCHINDUCTOR_CACHE_DIR", "/home/arenalabs/gpu_convert/.inductor_cache")
+os.environ.setdefault("TORCHINDUCTOR_CACHE_DIR", f'{SRCFG.convert_work}/.inductor_cache')
 import sys, time, json
 from pathlib import Path
 import numpy as np
 import torch
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-import prep, gpu_ik
+from surface_retargeting.ingest.convert_gpu import prep, gpu_ik
 
 B = int(sys.argv[1]); K = int(sys.argv[2]) if len(sys.argv) > 2 else 8; steps = int(sys.argv[3]) if len(sys.argv) > 3 else 64
-clip = "/home/arenalabs/umr_factory_data/raw/hiphi/extracted/part_0002/HiPHI/data/Adjusting/adjust/Adjusting-adjust_0078"
-cpu = "/home/arenalabs/umr_factory_data/smplx/hiphi/data/Adjusting/adjust/Adjusting-adjust_0078/motion_actor_smplx.npz"
+clip = f'{SRCFG.data_root}/raw/hiphi/extracted/part_0002/HiPHI/data/Adjusting/adjust/Adjusting-adjust_0078'
+cpu = f'{SRCFG.data_root}/smplx/hiphi/data/Adjusting/adjust/Adjusting-adjust_0078/motion_actor_smplx.npz'
 p = prep.prep_clip(clip + "/motion_actor.bvh")
 betas = np.load(cpu)["betas"]
 ft, rest = prep.shape_clip(betas, p["targets"], p["reference"])

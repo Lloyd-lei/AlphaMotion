@@ -1,7 +1,7 @@
 {
  "name": "booster_t1_29dof",
- "src_mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/booster_t1_29dof/t1_mocap.xml",
- "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/booster_t1_29dof/booster_t1_29dof.xml",
+ "src_mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/booster_t1_29dof/t1_mocap.xml",
+ "staged_mjcf": "${SR_DATA_ROOT}/robots/booster_t1_29dof/booster_t1_29dof.xml",
  "nq": 34,
  "nv": 33,
  "facing_plus_x": true,

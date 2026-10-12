@@ -1,4 +1,5 @@
 """Read-only comparison; writes evidence only inside the audit web project."""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -28,7 +29,7 @@ def main():
                  for name, old in baseline['source_documents'].items()]
     logs = []
     for name in ('decisions.jsonl', 'issues.jsonl'):
-        path = Path('/home/arenalabs/umr_factory_data/audit')/name
+        path = Path(f'{SRCFG.data_root}/audit')/name
         logs.append({'path': str(path), 'exists': path.exists(),
                      'bytes': path.stat().st_size if path.exists() else 0,
                      'sha256': digest(path) if path.exists() else None})

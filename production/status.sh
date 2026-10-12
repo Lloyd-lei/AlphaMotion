@@ -1,7 +1,10 @@
 #!/bin/bash
 # Progress: jobs done / total, robot-hours produced, kept fraction, throughput, last log lines.
-OUT=/home/arenalabs/umr_factory_data/production/v1
-/var/tmp/alphamotion/umr_factory/umr/env/bin/python - <<PY
+REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+eval "$(python3 "$REPO/surface_retargeting/config.py" --export)"   # SR_* paths from configs/sr.toml
+export PYTHONPATH="$REPO${PYTHONPATH:+:$PYTHONPATH}"
+OUT=$SR_DATA_ROOT/production/v1
+$SR_UMR_PYTHON - <<PY
 import json, os, glob, time
 out = '$OUT'
 jobs = [json.loads(l) for l in open(out + '/_jobs/jobs.jsonl')]

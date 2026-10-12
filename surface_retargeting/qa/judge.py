@@ -19,7 +19,6 @@ import mujoco
 import numpy as np
 from scipy.spatial.transform import Rotation as Rot
 
-sys.path.insert(0, '/home/arenalabs/umr_gpu')
 from surface_retargeting.gpu import labels as L                                    # noqa: E402  (pure numpy rules)
 from surface_retargeting.gpu.geometry import mujoco_collision_pairs, robot_collision_geoms    # noqa: E402  (pure python)
 

@@ -27,3 +27,6 @@ runs/
 out/
 problems/
 videos/
+# test outputs written by viewer tests
+viewer/qa/adapters-validation.json
+viewer/qa/adapter-fixtures/

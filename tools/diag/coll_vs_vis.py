@@ -1,9 +1,10 @@
 """Lowest point of robot COLLISION geoms vs lowest point of VISUAL meshes (hull vertices), qpos0 + 40 random poses.
 Analytic per primitive: sphere z-r; capsule/cylinder from axis endpoints; box corners; mesh (convex hull) vertices."""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import sys, json, numpy as np, mujoco
-sys.path.insert(0, '/home/arenalabs/umr_factory_code')
-from umrf import robots as R, surface as S, geometry as G
-from umrf.paths import ROBOTS
+from surface_retargeting.robots import robots as R, surface as S
+from surface_retargeting.strict import geometry as G
+from surface_retargeting.paths import ROBOTS
 T = mujoco.mjtGeom
 
 def coll_lowest(m, d, g):
@@ -51,4 +52,4 @@ for rec in R.load_inventory():
     out[n] = dict(qpos0_coll_minus_vis_mm=round(float(r[0]), 2), random_min_mm=round(float(r[1:].min()), 2),
                   random_p50_mm=round(float(np.median(r[1:])), 2), worst_geom=worst[1], worst_body=worst[2])
     print(n, out[n], flush=True)
-json.dump(out, open('/home/arenalabs/umr_factory_data/pilot/diag/coll_vs_vis.json', 'w'), indent=1)
+json.dump(out, open(f'{SRCFG.data_root}/pilot/diag/coll_vs_vis.json', 'w'), indent=1)

@@ -6,6 +6,7 @@ Pipeline per job (all on the GPU, one process):
   -> LQR per piece -> human labels (same ruler) -> strict pass (spec v2) -> export per clip (atomic writes).
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import hashlib
 import json
@@ -32,16 +33,18 @@ from surface_retargeting.strict.strict import RobotPoints, StrictProjector, seg_
 from surface_retargeting.strict.strict_fp import strict_seq_segmented, hysteresis_t, drop_short_t
 from surface_retargeting.gpu import slip as SL
 
-UMR = Path('/var/tmp/alphamotion/umr_factory/umr/UMR')
-GPUOUT = Path('/var/tmp/alphamotion/umr_factory/umr_gpu')
+UMR = Path(f'{SRCFG.umr_root}')
+GPUOUT = Path(f'{SRCFG.work}')
 SPEC_VERSION = 'DATA_SPEC_v2 (2026-10-04)'
 FEET = [L.RID['L_foot'], L.RID['R_foot']]
 
 
 def engine_version():
     h = hashlib.sha1()
-    root = Path(__file__).resolve().parent
-    for f in sorted(root.glob('*.py')):
+    # the old umr_gpu package = gpu/*.py + strict/strict.py + strict/strict_fp.py + export.py (hashed in basename order)
+    pkg = Path(__file__).resolve().parents[1]
+    files = list((pkg / 'gpu').glob('*.py')) + [pkg / 'strict' / 'strict.py', pkg / 'strict' / 'strict_fp.py', pkg / 'export.py']
+    for f in sorted(files, key=lambda p: p.name):
         h.update(f.read_bytes())
     return 'umr_gpu-' + h.hexdigest()[:12]
 

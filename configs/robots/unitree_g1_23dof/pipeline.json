@@ -4,35 +4,35 @@
  "frozen": "2026-10-05 00:10:15",
  "engine": {
   "reference": "CPU umrf (umr_factory_code: pipeline.run_umr -> postprocess), UMR d1cdaed",
-  "runner": "/home/arenalabs/umr_factory_data/robots/unitree_g1_23dof/pipeline/run_qa.py",
+  "runner": "${SR_DATA_ROOT}/robots/unitree_g1_23dof/pipeline/run_qa.py",
   "gpu_engine": "/home/arenalabs/umr_gpu (separate agent; must reproduce this config)",
-  "umr_python": "/var/tmp/alphamotion/umr_factory/umr/env/bin/python",
+  "umr_python": "${SR_PYTHON_ENV}/bin/python",
   "smplx_device": "cpu"
  },
  "assets": {
-  "mjcf": "/home/arenalabs/umr_factory_data/robots/unitree_g1_23dof/unitree_g1_23dof.xml",
+  "mjcf": "${SR_DATA_ROOT}/robots/unitree_g1_23dof/unitree_g1_23dof.xml",
   "mjcf_sha256": "de7a52e0894364a94b691066ccead92ccb5cf4197758e626c49e4fb0301ebf6c",
-  "source_mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/unitree_g1/g1_mocap_29dof.xml",
+  "source_mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/unitree_g1/g1_mocap_29dof.xml",
   "nq": 30,
   "nv": 29,
-  "surface": "/home/arenalabs/umr_factory_data/robots/unitree_g1_23dof/surface.npz",
+  "surface": "${SR_DATA_ROOT}/robots/unitree_g1_23dof/surface.npz",
   "surface_sha256": "183bac15261f90e5c918b095844ef089c191d64b113f8dc2ca65305593c2e3f4",
   "n_dense_points": 4096,
   "n_hull_vertices": 43315,
-  "staging": "/home/arenalabs/umr_factory_data/robots/unitree_g1_23dof/staging.json",
+  "staging": "${SR_DATA_ROOT}/robots/unitree_g1_23dof/staging.json",
   "staging_sha256": "f67b72a6c2a678efcb62d4fe6084223130276390589322fb6f89aec153505d89",
-  "umr_robot_json": "/home/arenalabs/umr_factory_data/robots/unitree_g1_23dof/umr_robot.json",
-  "contact_patches": "/home/arenalabs/umr_factory_data/robots/unitree_g1_23dof/pipeline/contact_patches.npz",
+  "umr_robot_json": "${SR_DATA_ROOT}/robots/unitree_g1_23dof/umr_robot.json",
+  "contact_patches": "${SR_DATA_ROOT}/robots/unitree_g1_23dof/pipeline/contact_patches.npz",
   "contact_patches_sha256": "06afddb12d31c5c1fd82f3a3d3f0c885b4ed5276b559ee357e0a9136ff397e49",
-  "asset_check": "/home/arenalabs/umr_factory_data/qa/unitree_g1_23dof/assets/assets_check.json"
+  "asset_check": "${SR_DATA_ROOT}/qa/unitree_g1_23dof/assets/assets_check.json"
  },
  "scale_and_correspondence": {
   "smpl_scale": "per clip by UMR = robot_height / human_height (robot_height 1.32246 m T-pose); dance 0.7155, box 0.7699 (stored per output as human_scale)",
   "point_cloud_center": "body:waist_yaw_link",
   "bbox_center_ratio": 0.598916,
   "smplx_plain": {
-   "dataset": "/home/arenalabs/umr_factory_data/corr/unitree_g1_23dof/smplx/correspondence_dataset.npz",
-   "slots": "/home/arenalabs/umr_factory_data/corr/unitree_g1_23dof/smplx/train/correspondence_slots_final.npz",
+   "dataset": "${SR_DATA_ROOT}/corr/unitree_g1_23dof/smplx/correspondence_dataset.npz",
+   "slots": "${SR_DATA_ROOT}/corr/unitree_g1_23dof/smplx/train/correspondence_slots_final.npz",
    "slots_sha256": "88f1d2772ff7ce4a",
    "names": [
     "smplx_neutral_betas_c4eb7419e9",
@@ -40,8 +40,8 @@
    ]
   },
   "shared_beta0": {
-   "dataset": "/home/arenalabs/umr_factory_data/corr/unitree_g1_23dof/beta0/correspondence_dataset.npz",
-   "slots": "/home/arenalabs/umr_factory_data/corr/unitree_g1_23dof/beta0/train/correspondence_slots_final.npz",
+   "dataset": "${SR_DATA_ROOT}/corr/unitree_g1_23dof/beta0/correspondence_dataset.npz",
+   "slots": "${SR_DATA_ROOT}/corr/unitree_g1_23dof/beta0/train/correspondence_slots_final.npz",
    "slots_sha256": "b4c31ad67a20da9b",
    "names": [
     "smplx_neutral_betas_b80de5d138",
@@ -555,7 +555,7 @@
   "dance": {
    "cid": "qa_v2__dance__lafan1_smplx__dance1_subject2__f1900-2500s1",
    "kind": "smplx",
-   "data": "/var/tmp/alphamotion/umr_factory/umr/UMR/sample_data/lafan1_smplx",
+   "data": "${SR_UMR_ROOT}/sample_data/lafan1_smplx",
    "seq": "dance1_subject2",
    "start": 1900,
    "end": 2500,
@@ -565,7 +565,7 @@
   "soccer": {
    "cid": "qa_v2__soccer__case3_kick_right__20260330000586_1_1775269234__f600-1800s3",
    "kind": "hoi",
-   "data": "/var/tmp/alphamotion/umr_factory/umr/UMR/sample_data/omnicontact/soccer/case3_kick_right",
+   "data": "${SR_UMR_ROOT}/sample_data/omnicontact/soccer/case3_kick_right",
    "seq": "20260330000586_1_1775269234",
    "start": 600,
    "end": 1800,
@@ -576,7 +576,7 @@
   "box": {
    "cid": "qa_v2__box__case1_carry__20260330000166_1_1775007076__f450-1950s3",
    "kind": "hoi",
-   "data": "/home/arenalabs/umr_factory_data/smplx/omnicontact/box/case1_carry",
+   "data": "${SR_DATA_ROOT}/smplx/omnicontact/box/case1_carry",
    "seq": "20260330000166_1_1775007076",
    "start": 450,
    "end": 1950,
@@ -588,7 +588,7 @@
    "cid": "qa_v2__getup__get_up__Getting_up-get_up_0004__f1000-2500s3",
    "kind": "hoi",
    "post_kind": "smplx",
-   "data": "/var/tmp/alphamotion/umr_factory/umr/UMR/sample_data/hiphi/data/Getting_up/get_up",
+   "data": "${SR_UMR_ROOT}/sample_data/hiphi/data/Getting_up/get_up",
    "seq": "Getting_up-get_up_0004",
    "start": 1000,
    "end": 2500,

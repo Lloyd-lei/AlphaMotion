@@ -1,22 +1,22 @@
 {
  "robot": "unitree_r1",
  "frozen_at": "2026-10-04 23:38:28",
- "spec": "/home/arenalabs/umr_factory_data/DATA_SPEC_v2.md",
+ "spec": "${SR_DATA_ROOT}/DATA_SPEC_v2.md",
  "assets": {
-  "mjcf": "/home/arenalabs/umr_factory_data/robots/unitree_r1/unitree_r1.xml",
+  "mjcf": "${SR_DATA_ROOT}/robots/unitree_r1/unitree_r1.xml",
   "mjcf_sha256": "0620cd91fcc718c8c3af1dde606a254e65a55e951f89c97a67e9eb91f1d6bb12",
-  "mjcf_source": "/var/tmp/alphamotion/robot_models/unitree_ros/robots/r1_description/unitree_r1_mjcf.xml",
+  "mjcf_source": "${SR_ROBOT_ASSETS_ROOT}/unitree_ros/robots/r1_description/unitree_r1_mjcf.xml",
   "nq": 33,
   "nv": 32,
-  "surface": "/home/arenalabs/umr_factory_data/robots/unitree_r1/surface.npz",
+  "surface": "${SR_DATA_ROOT}/robots/unitree_r1/surface.npz",
   "surface_sha256": "b2123ad93bed92d307b8c4fb1244f843f7e9bb72a48e573bfc105594c5dfc421",
   "n_dense_points": 4096,
   "surface_policy": "4096 exterior points (UMR first-hit sampler) on VISUAL meshes, bound to geoms; + 33863 convex-hull vertices of visual geoms (exact ground gauge)",
-  "umr_robot_json": "/home/arenalabs/umr_factory_data/robots/unitree_r1/umr_robot.json",
+  "umr_robot_json": "${SR_DATA_ROOT}/robots/unitree_r1/umr_robot.json",
   "umr_robot_json_sha256": "081586dce6591dc02614359bf1aca1a59827ca98c504e326bf9d7612c4c4e02f",
-  "staging_json": "/home/arenalabs/umr_factory_data/robots/unitree_r1/staging.json",
+  "staging_json": "${SR_DATA_ROOT}/robots/unitree_r1/staging.json",
   "staging_json_sha256": "e84c907729d33f5ca9e87fe53f2f81e70bed42cb9429b877e86647626c5796dd",
-  "patches": "/home/arenalabs/umr_factory_data/robots/unitree_r1/pipeline/patches.npz",
+  "patches": "${SR_DATA_ROOT}/robots/unitree_r1/pipeline/patches.npz",
   "patches_sha256": "c234338cecba7565f9d0bbbba02ca31741864971b5d3a64faa4003fe4042bc43"
  },
  "tpose": {
@@ -65,13 +65,13 @@
   "bbox_center_ratio": 0.6420154875189109,
   "human_scale": "UMR auto: robot_height / human_height per clip (smpl_scale), recorded per output as human_scale",
   "smplx_plain": {
-   "dir": "/home/arenalabs/umr_factory_data/corr/unitree_r1/smplx",
+   "dir": "${SR_DATA_ROOT}/corr/unitree_r1/smplx",
    "template": "smplx_neutral_betas_c4eb7419e9",
    "slots_sha256": "2223745fd635a46e",
    "used_for": "plain SMPL-X (LAFAN)"
   },
   "shared_beta0": {
-   "dir": "/home/arenalabs/umr_factory_data/corr/unitree_r1/beta0",
+   "dir": "${SR_DATA_ROOT}/corr/unitree_r1/beta0",
    "template": "smplx_neutral_betas_b80de5d138",
    "slots_sha256": "da491fecd0f4a57e",
    "used_for": "HOI / HiPHI with per-actor betas (reuse_across_smplx_betas, fixed face+bary transfer)"
@@ -379,9 +379,9 @@
   "solver_overrides": "pipeline.SOLVER_OVERRIDES (ground hard, self hard+slack, object hard for HOI)",
   "latch_pin": 0.0,
   "latch_note": "LATCH_PIN=0 reproduces UMR slip -> does NOT meet spec v2 no-slip",
-  "umr_python": "/var/tmp/alphamotion/umr_factory/umr/env/bin/python",
+  "umr_python": "${SR_PYTHON_ENV}/bin/python",
   "cuda": "disabled (CUDA_VISIBLE_DEVICES=\"\") for this robot run",
-  "runner": "/home/arenalabs/umr_factory_data/robots/unitree_r1/pipeline/run_qa_clips.py"
+  "runner": "${SR_DATA_ROOT}/robots/unitree_r1/pipeline/run_qa_clips.py"
  },
  "quirks": [
   "hands are fixed fists (wrist_roll_link, no finger DoF); hand contact = any fist point",
@@ -395,7 +395,7 @@
   {
    "id": "lafan_dance",
    "kind": "smplx",
-   "source": "/var/tmp/alphamotion/umr_factory/umr/UMR/sample_data/lafan1_smplx/dance1_subject2.npz",
+   "source": "${SR_UMR_ROOT}/sample_data/lafan1_smplx/dance1_subject2.npz",
    "window_frames": [
     1900,
     2500
@@ -407,7 +407,7 @@
   {
    "id": "soccer_kick",
    "kind": "hoi",
-   "data": "/var/tmp/alphamotion/umr_factory/umr/UMR/sample_data/omnicontact/soccer/case3_kick_right",
+   "data": "${SR_UMR_ROOT}/sample_data/omnicontact/soccer/case3_kick_right",
    "seq": "20260330000586_1_1775269234",
    "window_src_frames": [
     450,
@@ -420,7 +420,7 @@
   {
    "id": "box_carry",
    "kind": "hoi",
-   "data": "/home/arenalabs/umr_factory_data/smplx/omnicontact/box/case1_carry",
+   "data": "${SR_DATA_ROOT}/smplx/omnicontact/box/case1_carry",
    "seq": "20260330000166_1_1775007076",
    "window_src_frames": [
     450,
@@ -433,7 +433,7 @@
   {
    "id": "hiphi_kneel",
    "kind": "hoi",
-   "data": "/home/arenalabs/umr_factory_data/smplx/hiphi/data/Change_posture/lean",
+   "data": "${SR_DATA_ROOT}/smplx/hiphi/data/Change_posture/lean",
    "seq": "Change_posture-lean_0025",
    "window_src_frames": [
     450,

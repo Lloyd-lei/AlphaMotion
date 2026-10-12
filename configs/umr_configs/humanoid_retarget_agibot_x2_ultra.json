@@ -1,7 +1,7 @@
 {
   "robot": {
     "name": "agibot_x2_ultra",
-    "xml": "/var/tmp/alphamotion/robot_models/agibot_x2_urdf/X2_URDF-v1.4.0/agibot_x2_ultra_mjcf.xml",
+    "xml": "${SR_ROBOT_ASSETS_ROOT}/agibot_x2_urdf/X2_URDF-v1.4.0/agibot_x2_ultra_mjcf.xml",
     "point_cloud_center": "body:waist_yaw_link",
     "tpose_qpos": {
       "left_shoulder_roll_joint": 1.570796,

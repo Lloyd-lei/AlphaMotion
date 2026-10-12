@@ -1,7 +1,7 @@
 {
  "robot": {
   "name": "pnd_adam_lite",
-  "xml": "/home/arenalabs/umr_factory_data/robots/pnd_adam_lite/pnd_adam_lite.xml",
+  "xml": "${SR_DATA_ROOT}/robots/pnd_adam_lite/pnd_adam_lite.xml",
   "point_cloud_center": "body:torso",
   "tpose_qpos": {
    "shoulderRoll_Left": 1.41738,
@@ -20,10 +20,10 @@
   "dataset": {
    "smpl_center": "bbox_ratio",
    "bbox_center_ratio": 0.661814,
-   "out": "/home/arenalabs/umr_factory_data/corr/pnd_adam_lite/beta0/correspondence_dataset.npz"
+   "out": "${SR_DATA_ROOT}/corr/pnd_adam_lite/beta0/correspondence_dataset.npz"
   },
   "train": {
-   "out_dir": "/home/arenalabs/umr_factory_data/corr/pnd_adam_lite/beta0/train",
+   "out_dir": "${SR_DATA_ROOT}/corr/pnd_adam_lite/beta0/train",
    "template_name": "auto",
    "device": "auto"
   },

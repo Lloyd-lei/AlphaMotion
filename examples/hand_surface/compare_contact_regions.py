@@ -1,10 +1,11 @@
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 from pathlib import Path
 import os
 os.environ['MPLBACKEND']='Agg'
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import proj3d
 import numpy as np,json
-B=Path('/home/arenalabs/Desktop/"be water, robot"/alpha_motion2/research/hand_surface_case_20261004/derived')
+B=Path(f'{SRCFG.research_root}/alpha_motion2/research/hand_surface_case_20261004/derived')
 plt.rcParams.update({'font.size':10,'svg.fonttype':'none','axes.labelcolor':'#465360','text.color':'#253440'})
 fig=plt.figure(figsize=(13,6.5));fig.suptitle('Same object frame; different surface coverage',fontsize=20,x=.07,ha='left',y=.97)
 fig.text(.07,.895,'Constructed geometric illustration  ·  sphere radius 30 mm  ·  proximity threshold 2 mm',fontsize=11,color='#576876')

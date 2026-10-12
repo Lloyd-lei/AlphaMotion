@@ -1,5 +1,4 @@
 import sys, time, json, numpy as np, torch
-sys.path.insert(0, '/home/arenalabs/umr_gpu')
 from surface_retargeting.gpu.bank import Problem, Bank
 from surface_retargeting.gpu.pipeline import Retargeter
 P = Problem(sys.argv[1]); bank = Bank([P]); R = Retargeter(bank, sys.argv[2] + '/surface.npz')

@@ -7,8 +7,7 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).parent))
-import smplx_qa  # noqa: E402
+from surface_retargeting.ingest.convert_cpu import smplx_qa  # noqa: E402
 
 d = Path(sys.argv[1]); out = sys.argv[2]
 qa = json.loads((d / "qa.json").read_text())

@@ -1,7 +1,7 @@
 {
  "robot": {
   "name": "unitree_h2",
-  "xml": "/home/arenalabs/umr_factory_data/robots/unitree_h2/unitree_h2.xml",
+  "xml": "${SR_DATA_ROOT}/robots/unitree_h2/unitree_h2.xml",
   "point_cloud_center": "body:waist_yaw_link",
   "tpose_qpos": {
    "left_shoulder_roll_joint": 1.570796,
@@ -14,10 +14,10 @@
   "dataset": {
    "smpl_center": "bbox_ratio",
    "bbox_center_ratio": 0.616029,
-   "out": "/home/arenalabs/umr_factory_data/corr/unitree_h2/beta0/correspondence_dataset.npz"
+   "out": "${SR_DATA_ROOT}/corr/unitree_h2/beta0/correspondence_dataset.npz"
   },
   "train": {
-   "out_dir": "/home/arenalabs/umr_factory_data/corr/unitree_h2/beta0/train",
+   "out_dir": "${SR_DATA_ROOT}/corr/unitree_h2/beta0/train",
    "template_name": "auto",
    "device": "auto"
   },

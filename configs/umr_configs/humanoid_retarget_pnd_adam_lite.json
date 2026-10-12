@@ -1,7 +1,7 @@
 {
   "robot": {
     "name": "pnd_adam_lite",
-    "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/pnd_adam_lite/scene.xml",
+    "xml": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/pnd_adam_lite/scene.xml",
     "point_cloud_center": "body:torso",
     "tpose_qpos": {
       "shoulderRoll_Left": 1.570796,

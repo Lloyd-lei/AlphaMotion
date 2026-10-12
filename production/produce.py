@@ -7,6 +7,7 @@
   * failures: _jobs/<job>.failed (traceback); retried up to 2 times on later passes;
   * stop: touch <out>/_STOP (checked between jobs).
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import argparse
 import fcntl
 import json
@@ -17,9 +18,8 @@ import time
 import traceback
 from pathlib import Path
 
-sys.path.insert(0, '/home/arenalabs/umr_gpu')
-OUT = Path('/home/arenalabs/umr_factory_data/production/v1')
-LOCK = '/home/arenalabs/umr_factory_data/logs/gpu_heavy.lock'
+OUT = Path(f'{SRCFG.data_root}/production/v1')
+LOCK = f'{SRCFG.data_root}/logs/gpu_heavy.lock'
 
 
 def log(msg):
@@ -59,7 +59,7 @@ def main():
         asset_dir = OUT / '_assets' / r
         if not (asset_dir / 'surface.npz').exists():
             asset_dir.mkdir(parents=True, exist_ok=True)
-            src = Path('/var/tmp/alphamotion/umr_factory/umr_gpu/robots') / r
+            src = Path(f'{SRCFG.work}/robots') / r
             shutil.copy(src / 'surface.npz', asset_dir / 'surface.npz'); shutil.copy(src / f'{r}.xml', asset_dir / f'{r}.xml')
         with open(LOCK, 'a') as lf:
             log(f"waiting for GPU lock: {job['job_id']}")

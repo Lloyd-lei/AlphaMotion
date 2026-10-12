@@ -1,7 +1,7 @@
 {
  "robot": {
   "name": "unitree_h1",
-  "xml": "/home/arenalabs/umr_factory_data/robots/unitree_h1/unitree_h1.xml",
+  "xml": "${SR_DATA_ROOT}/robots/unitree_h1/unitree_h1.xml",
   "point_cloud_center": "body:torso_link",
   "tpose_qpos": {
    "left_shoulder_roll_joint": 1.5477,

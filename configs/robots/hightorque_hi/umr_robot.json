@@ -1,7 +1,7 @@
 {
  "robot": {
   "name": "hightorque_hi",
-  "xml": "/home/arenalabs/umr_factory_data/robots/hightorque_hi/hightorque_hi.xml",
+  "xml": "${SR_DATA_ROOT}/robots/hightorque_hi/hightorque_hi.xml",
   "point_cloud_center": "body:waist_link",
   "tpose_qpos": {
    "l_shoulder_roll_joint": 1.570796,

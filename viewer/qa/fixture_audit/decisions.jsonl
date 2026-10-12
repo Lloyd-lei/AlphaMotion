@@ -1,0 +1,1 @@
+{"item_id":"scan/case3_kick_right__20260330000586_1_1775269234::fourier_gr3","npz_sha256":"5c0a01df2ce80aafa7060efe0913e567ac6905974576925668de0773906a92e8","verdict":"needs_fix","frame_ranges":[[471,476]],"reasons":["other"],"note":"隔离界面验收：只测试提交格式，不代表真实人工判决。","reviewer":"QA-isolated-fixture","ts":"2026-10-05T06:55:25.199Z","ui_version":"1.0.0"}

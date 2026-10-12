@@ -1,7 +1,7 @@
 {
   "robot": {
     "name": "unitree_h1_2",
-    "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/unitree_h1_2/h1_2_handless.xml",
+    "xml": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/unitree_h1_2/h1_2_handless.xml",
     "point_cloud_center": "body:torso_link",
     "tpose_qpos": {
       "left_shoulder_roll_joint": 1.570796,

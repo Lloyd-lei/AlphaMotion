@@ -1,9 +1,10 @@
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 from pathlib import Path
 import os
 os.environ['OPENBLAS_NUM_THREADS']='2';os.environ['OMP_NUM_THREADS']='2'
 import numpy as np,mujoco,trimesh,json,time
 from scipy.optimize import least_squares
-R=Path('/home/arenalabs/Desktop/"be water, robot"/alpha_motion2/research/hand_surface_case_20261004')
+R=Path(f'{SRCFG.research_root}/alpha_motion2/research/hand_surface_case_20261004')
 m=mujoco.MjModel.from_xml_path(str(R/'source_assets/wonik_allegro/right_hand.xml'));d=mujoco.MjData(m);pose=json.loads((R/'constructed_pose.json').read_text());old=dict(pose)
 geoms=[]
 for g in range(m.ngeom):

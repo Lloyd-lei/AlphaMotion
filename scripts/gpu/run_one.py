@@ -1,6 +1,5 @@
 """Run the full GPU pipeline on one captured problem (whole clip) and save outputs."""
 import sys, json, time, argparse, numpy as np, torch
-sys.path.insert(0, '/home/arenalabs/umr_gpu')
 from surface_retargeting.gpu.bank import Problem, Bank
 from surface_retargeting.gpu.pipeline import Retargeter
 ap = argparse.ArgumentParser(); ap.add_argument('problem'); ap.add_argument('--robot-dir', required=True); ap.add_argument('--out', required=True)

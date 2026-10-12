@@ -5,14 +5,15 @@ the release tree and the collision metadata, and writes
   smplx/grail/manifest_summary.json   per-category clip/hour/frame totals, drop reasons, flag counts
 Hours are at the true 24 fps (source pkl says 30). src_valid_* = frames whose human source passes the v2 support check
 (penetration <= 10 mm and lowest non-arm body point within 20 mm of a support). Safe to run while the loops are running."""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import collections
 import csv
 import json
 import os
 from pathlib import Path
 
-OUT = Path('/home/arenalabs/umr_factory_data/smplx/grail')
-RAW = Path('/home/arenalabs/umr_factory_data/raw/grail')
+OUT = Path(f'{SRCFG.data_root}/smplx/grail')
+RAW = Path(f'{SRCFG.data_root}/raw/grail')
 FPS = 24.0
 LICENSE = ('CC BY-NC 4.0 (GRAIL, nvidia/PhysicalAI-Robotics-Locomanipulation-GRAIL); object USD per GRAIL README: '
            'RoboCasa-derived CC BY 4.0 (pickup_*), Hunyuan3D-2.1 output CC BY-NC 4.0 (sitting, stairs), procedural (curb, slope, stairs)')

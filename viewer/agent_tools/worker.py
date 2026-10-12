@@ -6,13 +6,14 @@ import subprocess
 import sys
 import traceback
 
+from surface_retargeting.config import CFG as SRCFG
 from .common import file_lock, identity, now, read_json, write_json
 from .jobs import Jobs
 
 
 def main():
     config, job_id = sys.argv[1:]
-    settings = read_json(config); jobs = Jobs(settings, config)
+    settings = SRCFG.expand(read_json(config)); jobs = Jobs(settings, config)
     folder = jobs.root / 'jobs' / job_id
     plan = read_json(folder / 'plan.json'); recipe = plan['recipe']
     state = {'job_id': job_id, 'status': 'waiting_for_slot', 'worker_identity': identity(os.getpid()),

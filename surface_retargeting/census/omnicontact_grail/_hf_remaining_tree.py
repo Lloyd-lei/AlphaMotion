@@ -1,3 +1,4 @@
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 # metadata-only listing of GRAIL subfolders not mirrored locally (robot/objects/video/bps)
 import os, json, time
 from huggingface_hub import HfApi
@@ -15,4 +16,4 @@ for c in cats:
         files = [(x.path.split('/')[-1], x.size) for x in items if getattr(x,'size',None) is not None]
         out[f'{c}/{sub}'] = {'n': len(files), 'bytes': sum(s for _,s in files), 'names': [f for f,_ in files]}
         print(c, sub, len(files), round(out[f'{c}/{sub}']['bytes']/1e9,3),'GB', f'{time.time()-t0:.1f}s', flush=True)
-json.dump(out, open('/home/arenalabs/umr_factory_data/diversity/omnicontact_grail/_hf_remaining_tree.json','w'))
+json.dump(out, open(f'{SRCFG.data_root}/diversity/omnicontact_grail/_hf_remaining_tree.json','w'))

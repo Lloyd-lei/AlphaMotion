@@ -1,11 +1,11 @@
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import sys, json, os, re, collections
-sys.path.insert(0, os.path.dirname(__file__))
 import pandas as pd, pyarrow.parquet as pq
-import taxo
+from surface_retargeting.census.core_sources.scripts import taxo
 
-OUT = "/home/arenalabs/umr_factory_data/diversity/bones_seed"
+OUT = f'{SRCFG.data_root}/diversity/bones_seed'
 os.makedirs(OUT, exist_ok=True)
-df = pq.read_table("/var/tmp/alphamotion/umr_factory/sources/bones_meta_v004.parquet").to_pandas()
+df = pq.read_table(f'{SRCFG.factory_root}/sources/bones_meta_v004.parquet').to_pandas()
 df["hours"] = df.move_duration_frames / 120 / 3600
 
 PKG_ALWAYS = {("Dances", "Dancing"): ["dynamic"], ("Sport", "Martial Arts"): ["dynamic"],

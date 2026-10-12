@@ -1,6 +1,7 @@
 """Compute robot bbox center ratio of point_cloud_center body in T-pose (UMR convention check)."""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import sys, json, numpy as np, mujoco
-sys.path.insert(0, '/var/tmp/alphamotion/umr_factory/umr/UMR/scripts')
+sys.path.insert(0, f'{SRCFG.umr_root}/scripts')
 from mujoco_geom_surface import surface_geom_ids  # noqa
 from retarget_smpl_to_humanoid_surface_vector import geom_local_mesh  # noqa
 

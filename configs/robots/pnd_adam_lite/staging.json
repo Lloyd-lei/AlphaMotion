@@ -1,7 +1,7 @@
 {
  "name": "pnd_adam_lite",
- "src_mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/pnd_adam_lite/scene.xml",
- "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/pnd_adam_lite/pnd_adam_lite.xml",
+ "src_mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/pnd_adam_lite/scene.xml",
+ "staged_mjcf": "${SR_DATA_ROOT}/robots/pnd_adam_lite/pnd_adam_lite.xml",
  "nq": 32,
  "nv": 31,
  "facing_plus_x": true,

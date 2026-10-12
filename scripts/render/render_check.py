@@ -4,7 +4,6 @@ Optional --mp4 renders a window as video.
 Usage: python scripts/render_check.py <clip> <robot> [--mp4 START END]"""
 import argparse, json, sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from PIL import Image, ImageDraw
 import mujoco, numpy as np
 from surface_retargeting.robots import surface as S

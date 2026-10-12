@@ -1,7 +1,7 @@
 {
   "robot": {
     "name": "unitree_g1_29dof_dex3",
-    "xml": "/var/tmp/alphamotion/robot_models/unitree_ros_official/robots/g1_description/g1_29dof_with_hand.xml",
+    "xml": "${SR_ROBOT_ASSETS_ROOT}/unitree_ros_official/robots/g1_description/g1_29dof_with_hand.xml",
     "point_cloud_center": "body:waist_yaw_link",
     "tpose_qpos": {
       "left_shoulder_roll_joint": 1.570796,

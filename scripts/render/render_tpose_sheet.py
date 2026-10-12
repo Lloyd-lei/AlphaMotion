@@ -3,7 +3,6 @@ Output: DATA/robots/tpose_contact_sheet.png"""
 import json, os, sys
 from pathlib import Path
 os.environ.setdefault('MUJOCO_GL', 'egl')
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import mujoco, numpy as np
 from PIL import Image, ImageDraw
 from surface_retargeting.robots import robots as R

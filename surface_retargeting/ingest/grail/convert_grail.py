@@ -17,6 +17,7 @@ Fixes vs. feeding the raw GRAIL files to UMR (all verified on data, see report):
     (terrain + plane are the support), object cats shift the whole scene rigidly (human-object relations preserved).
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import hashlib
 import json
@@ -28,12 +29,11 @@ from pathlib import Path
 import numpy as np
 
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
-sys.path.insert(0, '/var/tmp/alphamotion/umr_factory/umr/UMR/scripts')
+sys.path.insert(0, f'{SRCFG.umr_root}/scripts')
 
-RAW = Path('/home/arenalabs/umr_factory_data/raw/grail/data')
-TREE = Path('/home/arenalabs/umr_factory_data/raw/grail/_tree.json')
-OUT = Path('/home/arenalabs/umr_factory_data/smplx/grail')
+RAW = Path(f'{SRCFG.data_root}/raw/grail/data')
+TREE = Path(f'{SRCFG.data_root}/raw/grail/_tree.json')
+OUT = Path(f'{SRCFG.data_root}/smplx/grail')
 MESH_CACHE = OUT / '_meshes'
 USD_INDEX = OUT / '_meshes' / '_usd_index'
 CATS = ['pickup_ground', 'sitting', 'slope', 'curb', 'pickup_table', 'stair_p1', 'stair_p2']
@@ -168,7 +168,7 @@ _BODY = None
 def _body():
     global _BODY
     if _BODY is None:
-        from g1smplx import G1SMPLX
+        from surface_retargeting.ingest.grail.g1smplx import G1SMPLX
         _BODY = G1SMPLX('cuda')
     return _BODY
 
@@ -179,8 +179,8 @@ def convert_clip(cat, key):
     from scipy.spatial import cKDTree
     from scipy.spatial.transform import Rotation as Rot
     from humanoid_retarget_pipeline_hsi_hoi import load_grail_pickle, safe_name
-    from floorcal import calibrate, foot_tracks
-    from floorcal2 import Scene, calibrate_v2, register_xy
+    from surface_retargeting.ingest.grail.floorcal import calibrate, foot_tracks
+    from surface_retargeting.ingest.grail.floorcal2 import Scene, calibrate_v2, register_xy
     t0 = time.time()
     row = {'clip': key, 'category': cat, 'status': 'ok', 'flags': [], 'converter_version': CONVERTER_VERSION}
     rp = RAW / cat / 'recon' / f'{key}.pkl'

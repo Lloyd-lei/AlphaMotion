@@ -4,6 +4,7 @@ No imports from the factory pipeline (some helpers write beside source assets).
 All expanded NPY members live in the application's content-addressed cache.
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 from collections import OrderedDict
 from pathlib import Path
@@ -263,7 +264,7 @@ class FactoryService:
 
     def _bind(self, snap, path):
         path = Path(path).resolve()
-        allowed = (self.data_root, Path('/var/tmp/alphamotion/umr_factory/umr').resolve())
+        allowed = (self.data_root, Path(f'{SRCFG.factory_root}/umr').resolve())
         if not any(path == root or root in path.parents for root in allowed):
             raise AdapterError('关联资产路径不在本任务只读数据源 allowlist 内')
         stamp = fingerprint(path)
@@ -459,7 +460,7 @@ class FactoryService:
             tag = hashlib.sha1(f'{p["source_kind"]}:{p["source_data"]}:{p["seq_key"]}'.encode()).hexdigest()[:10] if p['source_kind'] == 'hoi' else 'smplx'
             folder = self.data_root / 'corr' / r / tag
             ds_path, sl_path = folder / 'correspondence_dataset.npz', folder / 'train/correspondence_slots_final.npz'
-        segpath = Path('/var/tmp/alphamotion/umr_factory/umr/UMR/assets/smplx_parts_segm.pkl')
+        segpath = Path(f'{SRCFG.umr_root}/assets/smplx_parts_segm.pkl')
         for path in (ds_path, sl_path, segpath):
             self._bind(snap, path)
         ds = NpyArchive(ds_path, self.cache_root); sl = NpyArchive(sl_path, self.cache_root)

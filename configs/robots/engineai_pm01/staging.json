@@ -1,7 +1,7 @@
 {
  "name": "engineai_pm01",
- "src_mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/engineai_pm01/pm_v2.xml",
- "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/engineai_pm01/engineai_pm01.xml",
+ "src_mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/engineai_pm01/pm_v2.xml",
+ "staged_mjcf": "${SR_DATA_ROOT}/robots/engineai_pm01/engineai_pm01.xml",
  "nq": 31,
  "nv": 30,
  "facing_plus_x": true,

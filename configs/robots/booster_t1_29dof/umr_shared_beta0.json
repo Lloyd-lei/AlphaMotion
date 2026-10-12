@@ -1,7 +1,7 @@
 {
  "robot": {
   "name": "booster_t1_29dof",
-  "xml": "/home/arenalabs/umr_factory_data/robots/booster_t1_29dof/booster_t1_29dof.xml",
+  "xml": "${SR_DATA_ROOT}/robots/booster_t1_29dof/booster_t1_29dof.xml",
   "point_cloud_center": "body:Trunk",
   "tpose_qpos": {}
  },
@@ -9,10 +9,10 @@
   "dataset": {
    "smpl_center": "bbox_ratio",
    "bbox_center_ratio": 0.577629,
-   "out": "/home/arenalabs/umr_factory_data/corr/booster_t1_29dof/beta0/correspondence_dataset.npz"
+   "out": "${SR_DATA_ROOT}/corr/booster_t1_29dof/beta0/correspondence_dataset.npz"
   },
   "train": {
-   "out_dir": "/home/arenalabs/umr_factory_data/corr/booster_t1_29dof/beta0/train",
+   "out_dir": "${SR_DATA_ROOT}/corr/booster_t1_29dof/beta0/train",
    "template_name": "auto",
    "device": "auto"
   },

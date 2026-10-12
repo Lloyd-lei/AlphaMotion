@@ -1,9 +1,9 @@
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import sys, json, os, re, collections, glob
-sys.path.insert(0, os.path.dirname(__file__))
 import pandas as pd, numpy as np
-import taxo
+from surface_retargeting.census.core_sources.scripts import taxo
 
-OUT = "/home/arenalabs/umr_factory_data/diversity/xwbc_amass_lafan"
+OUT = f'{SRCFG.data_root}/diversity/xwbc_amass_lafan'
 os.makedirs(OUT, exist_ok=True)
 SCR = os.path.dirname(__file__)
 
@@ -33,7 +33,7 @@ def nk(s):
 
 
 babel = {}
-BD = '/home/arenalabs/Desktop/"be water, robot"/data/babel/babel_v1.0_release'
+BD = f'{SRCFG.research_root}/data/babel/babel_v1.0_release'
 for f in ["train.json", "val.json", "test.json", "extra_train.json", "extra_val.json"]:
     for k, v in json.load(open(os.path.join(BD, f))).items():
         parts = v["feat_p"].replace("\\", "/").split("/")

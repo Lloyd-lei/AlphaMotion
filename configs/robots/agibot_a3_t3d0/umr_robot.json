@@ -1,7 +1,7 @@
 {
  "robot": {
   "name": "agibot_a3_t3d0",
-  "xml": "/home/arenalabs/umr_factory_data/robots/agibot_a3_t3d0/agibot_a3_t3d0.xml",
+  "xml": "${SR_DATA_ROOT}/robots/agibot_a3_t3d0/agibot_a3_t3d0.xml",
   "point_cloud_center": "body:waist_yaw_Link",
   "tpose_qpos": {
    "left_shoulder_roll_joint": 1.570796,

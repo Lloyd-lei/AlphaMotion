@@ -5,6 +5,7 @@
 Record sizes come from schema.robot_dtype / human_dtype with each staged robot's real joint count; per-entry header
 overhead is measured on the existing shards.  Factory npz sizes are measured on /home/arenalabs/umr_factory_data/out.
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import argparse
 import glob
 import json
@@ -13,7 +14,6 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from surface_retargeting.dataset import schema as S                               # noqa: E402
 from surface_retargeting.dataset.container import read_header                    # noqa: E402
 
@@ -28,8 +28,8 @@ CORPUS = {
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--root', type=Path, default=Path('/home/arenalabs/umr_dataset/data'))
-    ap.add_argument('--robots-staged', type=Path, default=Path('/home/arenalabs/umr_factory_data/robots'))
+    ap.add_argument('--root', type=Path, default=Path(f'{SRCFG.dataset_root}'))
+    ap.add_argument('--robots-staged', type=Path, default=Path(f'{SRCFG.data_root}/robots'))
     a = ap.parse_args()
     specs = {p.parent.name: json.load(open(p)) for p in sorted((a.root / 'robots').glob('*/spec.json'))}
     assert len(specs) == 21, len(specs)
@@ -66,7 +66,7 @@ def main():
     print('mean MB per robot-hour at 30 fps:', {k: round(v, 2) for k, v in mean.items()})
     # factory npz for comparison
     sizes = []
-    for f in glob.glob('/home/arenalabs/umr_factory_data/out/*/*.npz'):
+    for f in glob.glob(f'{SRCFG.data_root}/out/*/*.npz'):
         z = np.load(f)
         T = len(z['qpos']); fps = float(z['fps'])
         sizes.append(Path(f).stat().st_size / (T / fps / 3600) / 1e6)

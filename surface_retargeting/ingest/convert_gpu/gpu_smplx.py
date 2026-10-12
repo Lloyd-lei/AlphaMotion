@@ -1,11 +1,12 @@
 """SMPL-X (neutral, flat_hand_mean, no PCA, 10 betas - same as smplx_qa / UMR) forward on the GPU, chunked."""
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import numpy as np
 import smplx
 import torch
 
-MODEL = "/home/arenalabs/Downloads/SMPLX_NEUTRAL.npz"
+MODEL = f'{SRCFG.smplx_neutral}'
 
 
 class GpuSmplx:

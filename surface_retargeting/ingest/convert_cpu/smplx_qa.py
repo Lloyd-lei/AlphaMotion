@@ -7,13 +7,14 @@ Conventions (verified against HiPHI docs/data_format.md and OmniContact raw file
 SMPL-X: neutral, flat_hand_mean=True, use_pca=False, 10 betas (same as UMR's loader).
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import numpy as np
 import torch
 import smplx
 from scipy.spatial.transform import Rotation
 
-MODEL = "/home/arenalabs/Downloads/SMPLX_NEUTRAL.npz"
+MODEL = f'{SRCFG.smplx_neutral}'
 _MODEL = {}
 
 

@@ -1,7 +1,7 @@
 {
  "name": "fourier_gr3",
- "src_mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/fourier_gr3v2_1_1/mjcf/gr3v2_1_1_dummy_hand.xml",
- "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/fourier_gr3/fourier_gr3.xml",
+ "src_mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/fourier_gr3v2_1_1/mjcf/gr3v2_1_1_dummy_hand.xml",
+ "staged_mjcf": "${SR_DATA_ROOT}/robots/fourier_gr3/fourier_gr3.xml",
  "nq": 38,
  "nv": 37,
  "facing_plus_x": true,

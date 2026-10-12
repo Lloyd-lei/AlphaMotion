@@ -1,7 +1,7 @@
 {
   "robot": {
     "name": "agibot_a2",
-    "xml": "/var/tmp/alphamotion/robot_models/agibot_a2_gmr/agibot_a2_gmr_mjcf.xml",
+    "xml": "${SR_ROBOT_ASSETS_ROOT}/agibot_a2_gmr/agibot_a2_gmr_mjcf.xml",
     "point_cloud_center": "body:base_link",
     "tpose_qpos": {}
   },

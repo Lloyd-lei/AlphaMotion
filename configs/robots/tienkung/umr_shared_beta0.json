@@ -1,7 +1,7 @@
 {
  "robot": {
   "name": "tienkung",
-  "xml": "/home/arenalabs/umr_factory_data/robots/tienkung/tienkung.xml",
+  "xml": "${SR_DATA_ROOT}/robots/tienkung/tienkung.xml",
   "point_cloud_center": "body:Base_link",
   "tpose_qpos": {
    "shoulder_roll_l_joint": 1.570796,
@@ -12,10 +12,10 @@
   "dataset": {
    "smpl_center": "bbox_ratio",
    "bbox_center_ratio": 0.571024,
-   "out": "/home/arenalabs/umr_factory_data/corr/tienkung/beta0/correspondence_dataset.npz"
+   "out": "${SR_DATA_ROOT}/corr/tienkung/beta0/correspondence_dataset.npz"
   },
   "train": {
-   "out_dir": "/home/arenalabs/umr_factory_data/corr/tienkung/beta0/train",
+   "out_dir": "${SR_DATA_ROOT}/corr/tienkung/beta0/train",
    "template_name": "auto",
    "device": "auto"
   },

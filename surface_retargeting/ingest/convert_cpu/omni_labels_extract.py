@@ -2,13 +2,14 @@
 the caller deletes npz/.  Out: raw/omnicontact/g1_labels/<domain>/<case>/<capture_id>.npz with
 contact_info [T,4,1] (left_ankle,right_ankle,left_wrist,right_wrist), fps, object_pos_w,
 object_quat_w (wxyz), base_pos_w, and the frame count, plus a summary json."""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import json
 import sys
 from pathlib import Path
 
 import numpy as np
 
-R = Path("/home/arenalabs/umr_factory_data/raw/omnicontact")
+R = Path(f'{SRCFG.data_root}/raw/omnicontact')
 out = R / "g1_labels"
 summ = {}
 for f in sorted((R / "npz").glob("*/*/*.npz")):

@@ -8,6 +8,7 @@ Mirrors UMR d1cdaed loaders (read-only replica, verified on the factory outputs)
                   motion_actor_smplx.npz (HiPHI), or the flat *.npy layout (OmniContact).
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import json
 import shutil
@@ -16,7 +17,7 @@ from pathlib import Path
 
 import numpy as np
 
-UMR_SCRIPTS = Path('/var/tmp/alphamotion/umr_factory/umr/UMR/scripts')
+UMR_SCRIPTS = Path(f'{SRCFG.umr_root}/scripts')
 
 
 def _scalar(z, key, default=None):

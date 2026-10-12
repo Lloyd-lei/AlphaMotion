@@ -14,6 +14,7 @@ from typing import Any, Literal
 
 from mcp.server import MCPServer
 from mcp.types import CallToolResult, ImageContent, TextContent, ToolAnnotations
+from surface_retargeting.config import CFG as SRCFG
 from .common import digest, file_lock, inside, now, read_json, write_json
 from .jobs import Jobs
 from . import visual
@@ -21,7 +22,7 @@ from . import visual
 
 def create_server(config_path, service=None):
     config_path = Path(config_path).resolve()
-    settings = read_json(config_path)
+    settings = SRCFG.expand(read_json(config_path))   # ${SR_*} tokens -> configs/sr.toml paths
     jobs = Jobs(settings, config_path)
     roots = {**settings.get('evidence_roots', {}), 'agent_state': str(jobs.root)}
     lock = threading.RLock()

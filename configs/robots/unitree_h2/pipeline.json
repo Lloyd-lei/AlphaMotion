@@ -1,25 +1,25 @@
 {
  "robot": "unitree_h2",
  "frozen": "2026-10-04 23:43:44",
- "spec": "/home/arenalabs/umr_factory_data/DATA_SPEC_v2.md",
+ "spec": "${SR_DATA_ROOT}/DATA_SPEC_v2.md",
  "engine": {
   "cpu_reference": "/home/arenalabs/umr_factory_code (umrf.pipeline.run_umr + umrf.pipeline.postprocess, called by pipeline/run_qa.py with outputs redirected to this robot)",
   "gpu_engine": "/home/arenalabs/umr_gpu (separate agent; not used here)",
   "umr_commit": "d1cdaed",
-  "python": "/var/tmp/alphamotion/umr_factory/umr/env/bin/python",
+  "python": "${SR_PYTHON_ENV}/bin/python",
   "umr_device": "cpu (CUDA_VISIBLE_DEVICES=\"\")"
  },
  "assets": {
-  "mjcf": "/home/arenalabs/umr_factory_data/robots/unitree_h2/unitree_h2.xml",
+  "mjcf": "${SR_DATA_ROOT}/robots/unitree_h2/unitree_h2.xml",
   "mjcf_sha256": "900a4fe92f14ad196f20b2e8847d773e6665f82a5754d33b4e8a0f59187001a5",
-  "src_mjcf": "/var/tmp/alphamotion/robot_models/unitree_ros/robots/h2_description/unitree_h2_mjcf.xml",
-  "surface": "/home/arenalabs/umr_factory_data/robots/unitree_h2/surface.npz",
+  "src_mjcf": "${SR_ROBOT_ASSETS_ROOT}/unitree_ros/robots/h2_description/unitree_h2_mjcf.xml",
+  "surface": "${SR_DATA_ROOT}/robots/unitree_h2/surface.npz",
   "surface_sha256": "1c1ad8375076af50bdc660058d86464be3444b00a13f47dc8a3736020bbdc145",
   "n_dense_points": 4096,
-  "umr_robot_json": "/home/arenalabs/umr_factory_data/robots/unitree_h2/umr_robot.json",
+  "umr_robot_json": "${SR_DATA_ROOT}/robots/unitree_h2/umr_robot.json",
   "umr_robot_json_sha256": "d1c6a2dcf16abae6137b8d5ca616abd725da40e9adce3b580a4059ff1e86b5af",
-  "staging_json": "/home/arenalabs/umr_factory_data/robots/unitree_h2/staging.json",
-  "contact_patches": "/home/arenalabs/umr_factory_data/robots/unitree_h2/pipeline/contact_patches.npz",
+  "staging_json": "${SR_DATA_ROOT}/robots/unitree_h2/staging.json",
+  "contact_patches": "${SR_DATA_ROOT}/robots/unitree_h2/pipeline/contact_patches.npz",
   "contact_patches_sha256": "66f0aee25601158512070fa9d4993edaf35291630ecf5d20df09f2fabce1cd3a",
   "nq": 38,
   "nv": 37
@@ -60,9 +60,9 @@
    "pass": true
   },
   "smplx_corr": {
-   "dataset": "/home/arenalabs/umr_factory_data/corr/unitree_h2/smplx/correspondence_dataset.npz",
+   "dataset": "${SR_DATA_ROOT}/corr/unitree_h2/smplx/correspondence_dataset.npz",
    "dataset_exists": true,
-   "slots": "/home/arenalabs/umr_factory_data/corr/unitree_h2/smplx/train/correspondence_slots_final.npz",
+   "slots": "${SR_DATA_ROOT}/corr/unitree_h2/smplx/train/correspondence_slots_final.npz",
    "slots_exists": true,
    "slots_names": [
     "smplx_neutral_betas_c4eb7419e9",
@@ -72,9 +72,9 @@
    "slots_sha256": "f790710d351a0359280656569c00412c20a9ecee80873489c5746d4898be7a7b"
   },
   "shared_beta0_corr": {
-   "dataset": "/home/arenalabs/umr_factory_data/corr/unitree_h2/beta0/correspondence_dataset.npz",
+   "dataset": "${SR_DATA_ROOT}/corr/unitree_h2/beta0/correspondence_dataset.npz",
    "dataset_exists": true,
-   "slots": "/home/arenalabs/umr_factory_data/corr/unitree_h2/beta0/train/correspondence_slots_final.npz",
+   "slots": "${SR_DATA_ROOT}/corr/unitree_h2/beta0/train/correspondence_slots_final.npz",
    "slots_exists": true,
    "slots_names": [
     "smplx_neutral_betas_b80de5d138",
@@ -317,7 +317,7 @@
   {
    "id": "dance",
    "kind": "smplx",
-   "data": "/var/tmp/alphamotion/umr_factory/umr/UMR/sample_data/lafan1_smplx",
+   "data": "${SR_UMR_ROOT}/sample_data/lafan1_smplx",
    "seq": "dance1_subject2",
    "start": 1900,
    "end": 2500,
@@ -327,7 +327,7 @@
   {
    "id": "soccer_kick",
    "kind": "hoi",
-   "data": "/var/tmp/alphamotion/umr_factory/umr/UMR/sample_data/omnicontact/soccer/case3_kick_right",
+   "data": "${SR_UMR_ROOT}/sample_data/omnicontact/soccer/case3_kick_right",
    "seq": "20260330000586_1_1775269234",
    "start": 3150,
    "end": 4650,
@@ -338,7 +338,7 @@
   {
    "id": "box_carry",
    "kind": "hoi",
-   "data": "/home/arenalabs/umr_factory_data/smplx/omnicontact/box/case1_carry",
+   "data": "${SR_DATA_ROOT}/smplx/omnicontact/box/case1_carry",
    "seq": "20260330000166_1_1775007076",
    "start": 0,
    "end": 1800,
@@ -349,7 +349,7 @@
   {
    "id": "hiphi_kneel",
    "kind": "hoi",
-   "data": "/home/arenalabs/umr_factory_data/robots/unitree_h2/pipeline/src/hiphi/data/Change_posture/lean",
+   "data": "${SR_DATA_ROOT}/robots/unitree_h2/pipeline/src/hiphi/data/Change_posture/lean",
    "seq": "Change_posture-lean_0025",
    "start": 600,
    "end": 2100,
@@ -360,8 +360,8 @@
   }
  ],
  "outputs": {
-  "pipeline_dir": "/home/arenalabs/umr_factory_data/robots/unitree_h2/pipeline",
-  "qa_dir": "/home/arenalabs/umr_factory_data/qa/unitree_h2",
+  "pipeline_dir": "${SR_DATA_ROOT}/robots/unitree_h2/pipeline",
+  "qa_dir": "${SR_DATA_ROOT}/qa/unitree_h2",
   "disk_budget_gb": 2
  }
 }

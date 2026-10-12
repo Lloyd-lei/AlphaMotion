@@ -9,6 +9,7 @@ column also prints the root step of this frame (cm/frame at 30 fps) and, for the
 UMR and the step excess over UMR (the temporal-continuity gate quantity).
 Usage: render_compare.py <clip> <robot> [--out-fps 30] [--frames a:b] [--cols cpu|umr] [--slow k] [--tag name]
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import argparse
 import json
 import sys
@@ -20,11 +21,10 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 from scipy.spatial.transform import Rotation as Rot
 
-sys.path.insert(0, '/home/arenalabs/umr_gpu'); sys.path.insert(0, '/home/arenalabs/umr_gpu/eval')
 from surface_retargeting.gpu import labels as L
-from judge import floor_model
+from surface_retargeting.qa.judge import floor_model
 
-OUT = Path('/var/tmp/alphamotion/umr_factory/umr_gpu')
+OUT = Path(f'{SRCFG.work}')
 W, H = 640, 1080
 FONT = '/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc'
 
@@ -108,7 +108,6 @@ def main():
     pose = S['obj_pose'] if S['obj_pose'].size else None
     obj = None
     if pose is not None:
-        sys.path.insert(0, '/home/arenalabs/umr_gpu')
         from surface_retargeting.gpu.geometry import object_from_objpen
         V, F, _ = object_from_objpen(str(P['objpen_mjb']), P['objpen_object_geoms'])
         c = V.mean(0); r = np.linalg.norm(V - c, axis=1).mean()

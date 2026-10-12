@@ -2,9 +2,9 @@
 Usage: python scripts/stage_robots.py [--only name1,name2]
 Writes DATA/robots/<name>/{<name>.xml, umr_robot.json, staging.json} and DATA/robots/staging_summary.json
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import argparse, json, sys, time
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import mujoco, numpy as np
 from surface_retargeting.robots import robots as R
 from surface_retargeting.paths import ROBOTS, DRAFT_CONFIGS
@@ -20,7 +20,7 @@ summary = {}
 for rec in inv:
     t0 = time.time(); name = rec['name']
     src = rec['mjcf']
-    draft = json.load(open(DRAFT_CONFIGS / f'humanoid_retarget_{name}.json'))['robot']
+    draft = SRCFG.load_json(DRAFT_CONFIGS / f'humanoid_retarget_{name}.json')['robot']
     p, m = R.write_staged(src, name)
     # facing convention: left hand must be on +y at qpos0
     d = mujoco.MjData(m); mujoco.mj_resetData(m, d); mujoco.mj_forward(m, d)

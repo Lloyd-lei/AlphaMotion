@@ -1,18 +1,18 @@
 """Segmentation parity: SegRunner (B lanes, warm-up W) with the CPU path's own betas vs the CPU npz outputs.
 usage: test_seg.py clips.txt B W1,W2,... [K]"""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import os
-os.environ.setdefault("TORCHINDUCTOR_CACHE_DIR", "/home/arenalabs/gpu_convert/.inductor_cache")
+os.environ.setdefault("TORCHINDUCTOR_CACHE_DIR", f'{SRCFG.convert_work}/.inductor_cache')
 import sys, json, time
 import multiprocessing as mp
 from pathlib import Path
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-DATA = Path("/home/arenalabs/umr_factory_data")
+DATA = Path(f'{SRCFG.data_root}')
 
 
 def _p(d):
-    import prep
+    from surface_retargeting.ingest.convert_gpu import prep
     meta = json.loads((Path(d) / "metadata.json").read_text())
     cdir = DATA / "smplx/hiphi/data" / meta["frame"] / meta["lu"] / meta["motion_id"]
     z = np.load(cdir / "motion_actor_smplx.npz")

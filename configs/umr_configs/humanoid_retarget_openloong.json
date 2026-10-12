@@ -1,7 +1,7 @@
 {
   "robot": {
     "name": "openloong",
-    "xml": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/openloong/AzureLoong.xml",
+    "xml": "${SR_GMR_ROOT}/assets/openloong/AzureLoong.xml",
     "point_cloud_center": "body:Link_waist_yaw",
     "tpose_qpos": {}
   },

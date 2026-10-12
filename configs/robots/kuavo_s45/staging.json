@@ -1,7 +1,7 @@
 {
  "name": "kuavo_s45",
- "src_mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/kuavo_s45/biped_s45_collision.xml",
- "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/kuavo_s45/kuavo_s45.xml",
+ "src_mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/kuavo_s45/biped_s45_collision.xml",
+ "staged_mjcf": "${SR_DATA_ROOT}/robots/kuavo_s45/kuavo_s45.xml",
  "nq": 35,
  "nv": 34,
  "facing_plus_x": true,

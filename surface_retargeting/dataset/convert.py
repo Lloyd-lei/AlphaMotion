@@ -1,6 +1,6 @@
 """Factory npz -> UMRS shards, incremental (safe to re-run / run in --watch mode while the factory writes).
 
-    python -m umr_dataset.convert --root /home/arenalabs/umr_dataset/data [--src .../out] [--tier core|standard|full]
+    python -m surface_retargeting.dataset.convert --root /home/arenalabs/umr_dataset/data [--src .../out] [--tier core|standard|full]
                                   [--fps 30] [--workers 8] [--settle 120] [--watch --interval 300 --lifetime 43200]
 
 * An (clip, robot) npz is (re)ingested when its (size, mtime_ns) differs from the catalog's live entry AND its
@@ -17,6 +17,7 @@
   source frame k * stride  ==> robots and human are aligned by k.
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import argparse
 import fcntl
@@ -36,8 +37,8 @@ from .container import write_shard, file_sha256
 from . import catalog as CAT
 from . import sources as SRC
 
-DEFAULT_SRC = Path('/home/arenalabs/umr_factory_data/out')
-DEFAULT_ROOT = Path('/home/arenalabs/umr_dataset/data')
+DEFAULT_SRC = Path(f'{SRCFG.data_root}/out')
+DEFAULT_ROOT = Path(f'{SRCFG.dataset_root}')
 
 ROBOT_KEYS_CORE = ['qpos', 'fps', 'floor_offset_removed', 'human_scale', 'flags', 'provenance', 'joint_names', 'regions',
                    'ground_contact', 'ground_slip', 'human_ground_contact', 'human_ground_slip']

@@ -1,7 +1,6 @@
 """Teacher-forced parity over a whole clip (windows of W frames solved as a batch; window-start frames excluded
 because UMR's latched ground anchors are history dependent)."""
 import sys, json, numpy as np, torch
-sys.path.insert(0, '/home/arenalabs/umr_gpu')
 from surface_retargeting.gpu.bank import Problem, Bank
 from surface_retargeting.gpu.solver import UMRSolver
 P = Problem(sys.argv[1]); bank = Bank([P]); sv = UMRSolver(bank)

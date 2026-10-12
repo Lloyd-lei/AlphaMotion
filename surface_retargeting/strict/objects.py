@@ -5,6 +5,7 @@ analytic SDF (exact); anything else falls back to trimesh (closest point + windi
 slower).  The object mesh is in the *retarget* frame and size UMR used (y-up -> z-up, scaled by smpl_scale).
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import numpy as np
 import trimesh
@@ -211,7 +212,7 @@ def _mjcf_geoms_local(xml, smpl_scale):
     root = ET.parse(xml).getroot()
     rs.make_mjcf_mesh_paths_absolute(root, Path(xml))
     rs.scale_mjcf_mesh_assets(root, smpl_scale)
-    with tempfile.NamedTemporaryFile('w', suffix='.xml', delete=False, dir='/home/arenalabs/umr_factory_data/pilot/tmp') as f:
+    with tempfile.NamedTemporaryFile('w', suffix='.xml', delete=False, dir=f'{SRCFG.data_root}/pilot/tmp') as f:
         f.write(ET.tostring(root, encoding='unicode')); tmp = f.name
     try:
         m = mujoco.MjModel.from_xml_path(tmp)

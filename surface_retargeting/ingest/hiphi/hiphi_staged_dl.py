@@ -17,9 +17,10 @@
 * Lifetime: hard deadline LIFETIME_H (default 36 h); also wrapped by `timeout` in the launcher.
 Status: logs/hiphi_streamc_status.json (every 30 s), events: logs/hiphi_streamc_events.jsonl.
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import csv, fcntl, glob, hashlib, json, os, shutil, signal, subprocess, sys, threading, time
 
-ROOT = '/home/arenalabs/umr_factory_data'
+ROOT = f'{SRCFG.data_root}'
 DATA = f'{ROOT}/raw/hiphi/data'
 EXT = f'{ROOT}/raw/hiphi/extracted'
 LOGS = f'{ROOT}/logs'

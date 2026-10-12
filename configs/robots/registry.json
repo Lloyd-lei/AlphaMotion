@@ -3,12 +3,12 @@
  "generated": "2026-10-04",
  "mujoco": "3.6.0 (ardy env, read-only)",
  "code": [
-  "/var/tmp/alphamotion/umr_factory/robots/inventory.py",
-  "/var/tmp/alphamotion/umr_factory/robots/finalize.py",
-  "/var/tmp/alphamotion/umr_factory/robots/render_tpose.py"
+  "${SR_FACTORY_ROOT}/robots/inventory.py",
+  "${SR_FACTORY_ROOT}/robots/finalize.py",
+  "${SR_FACTORY_ROOT}/robots/render_tpose.py"
  ],
- "tpose_contact_sheet": "/var/tmp/alphamotion/umr_factory/robots/png/contact_sheet_tpose.png",
- "umr_reference_configs": "/var/tmp/alphamotion/umr_factory/robots/umr_ref",
+ "tpose_contact_sheet": "${SR_FACTORY_ROOT}/robots/png/contact_sheet_tpose.png",
+ "umr_reference_configs": "${SR_FACTORY_ROOT}/robots/umr_ref",
  "not_found_locally": {
   "booster_t3": "no MJCF/URDF anywhere on / (bounded find); needs vendor download",
   "engineai_t800 / hightorque_pipluspro": "only in UMR repo assets (not cloned locally; /var/tmp/alphamotion/umr_factory/umr/UMR is empty)",
@@ -17,7 +17,7 @@
  "robots": [
   {
    "name": "booster_k1",
-   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/booster_k1/K1_serial.xml",
+   "mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/booster_k1/K1_serial.xml",
    "mjcf_sha256": "8d3429c327116305",
    "load_ok": true,
    "nq": 29,
@@ -156,7 +156,7 @@
   },
   {
    "name": "booster_t1",
-   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/booster_t1/T1_serial.xml",
+   "mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/booster_t1/T1_serial.xml",
    "mjcf_sha256": "7cbbe63c8664e5fd",
    "load_ok": true,
    "nq": 30,
@@ -294,7 +294,7 @@
   },
   {
    "name": "booster_t1_29dof",
-   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/booster_t1_29dof/t1_mocap.xml",
+   "mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/booster_t1_29dof/t1_mocap.xml",
    "mjcf_sha256": "813027d701c167d3",
    "load_ok": true,
    "nq": 34,
@@ -440,7 +440,7 @@
   },
   {
    "name": "engineai_pm01",
-   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/engineai_pm01/pm_v2.xml",
+   "mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/engineai_pm01/pm_v2.xml",
    "mjcf_sha256": "a6ba73d3afe744e7",
    "load_ok": true,
    "nq": 31,
@@ -584,7 +584,7 @@
   },
   {
    "name": "fourier_gr3",
-   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/fourier_gr3v2_1_1/mjcf/gr3v2_1_1_dummy_hand.xml",
+   "mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/fourier_gr3v2_1_1/mjcf/gr3v2_1_1_dummy_hand.xml",
    "mjcf_sha256": "811393ee295496d0",
    "load_ok": true,
    "nq": 38,
@@ -732,7 +732,7 @@
   },
   {
    "name": "fourier_n1",
-   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/fourier_n1/n1_mocap.xml",
+   "mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/fourier_n1/n1_mocap.xml",
    "mjcf_sha256": "d2bbf71eec5921a4",
    "load_ok": true,
    "nq": 30,
@@ -876,7 +876,7 @@
   },
   {
    "name": "hightorque_hi",
-   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/hightorque_hi/hi_25dof.xml",
+   "mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/hightorque_hi/hi_25dof.xml",
    "mjcf_sha256": "3d33aaa5cad01913",
    "load_ok": true,
    "nq": 32,
@@ -1016,7 +1016,7 @@
   },
   {
    "name": "kuavo_s45",
-   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/kuavo_s45/biped_s45_collision.xml",
+   "mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/kuavo_s45/biped_s45_collision.xml",
    "mjcf_sha256": "b1b4d76cdb37f8ff",
    "load_ok": true,
    "nq": 35,
@@ -1166,7 +1166,7 @@
   },
   {
    "name": "pal_talos",
-   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/pal_talos/talos.xml",
+   "mjcf": "${SR_GMR_ROOT}/assets/pal_talos/talos.xml",
    "mjcf_sha256": "953d0a84ade71af6",
    "load_ok": true,
    "nq": 37,
@@ -1313,7 +1313,7 @@
   },
   {
    "name": "pnd_adam_lite",
-   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/pnd_adam_lite/scene.xml",
+   "mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/pnd_adam_lite/scene.xml",
    "mjcf_sha256": "b358da0ad62b25eb",
    "load_ok": true,
    "nq": 32,
@@ -1464,7 +1464,7 @@
   },
   {
    "name": "tienkung",
-   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/tienkung/mjcf/tienkung.xml",
+   "mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/tienkung/mjcf/tienkung.xml",
    "mjcf_sha256": "e42ae617c0c98e9b",
    "load_ok": true,
    "nq": 27,
@@ -1603,7 +1603,7 @@
   },
   {
    "name": "unitree_g1_23dof",
-   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/unitree_g1/g1_mocap_29dof.xml",
+   "mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/unitree_g1/g1_mocap_29dof.xml",
    "mjcf_sha256": "85a25128d42ad3cc",
    "load_ok": true,
    "nq": 36,
@@ -1757,7 +1757,7 @@
   },
   {
    "name": "unitree_g1_29dof",
-   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/unitree_g1/g1_mocap_29dof.xml",
+   "mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/unitree_g1/g1_mocap_29dof.xml",
    "mjcf_sha256": "85a25128d42ad3cc",
    "load_ok": true,
    "nq": 36,
@@ -1911,7 +1911,7 @@
   },
   {
    "name": "unitree_h1",
-   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/unitree_h1/h1.xml",
+   "mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/unitree_h1/h1.xml",
    "mjcf_sha256": "94e522d91104252e",
    "load_ok": true,
    "nq": 26,
@@ -2050,7 +2050,7 @@
   },
   {
    "name": "unitree_h1_2",
-   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/general_motion_retargeting/../assets/unitree_h1_2/h1_2_handless.xml",
+   "mjcf": "${SR_GMR_ROOT}/general_motion_retargeting/../assets/unitree_h1_2/h1_2_handless.xml",
    "mjcf_sha256": "18bae2cc5ab6aeed",
    "load_ok": true,
    "nq": 34,
@@ -2199,7 +2199,7 @@
   },
   {
    "name": "unitree_h2",
-   "mjcf": "/var/tmp/alphamotion/robot_models/unitree_ros/robots/h2_description/unitree_h2_mjcf.xml",
+   "mjcf": "${SR_ROBOT_ASSETS_ROOT}/unitree_ros/robots/h2_description/unitree_h2_mjcf.xml",
    "mjcf_sha256": "8254a2ce7ca7bec5",
    "load_ok": true,
    "nq": 38,
@@ -2346,7 +2346,7 @@
   },
   {
    "name": "unitree_r1",
-   "mjcf": "/var/tmp/alphamotion/robot_models/unitree_ros/robots/r1_description/unitree_r1_mjcf.xml",
+   "mjcf": "${SR_ROBOT_ASSETS_ROOT}/unitree_ros/robots/r1_description/unitree_r1_mjcf.xml",
    "mjcf_sha256": "513b534baa0f654a",
    "load_ok": true,
    "nq": 33,
@@ -2487,7 +2487,7 @@
   },
   {
    "name": "unitree_g1_29dof_dex3",
-   "mjcf": "/var/tmp/alphamotion/robot_models/unitree_ros_official/robots/g1_description/g1_29dof_with_hand.xml",
+   "mjcf": "${SR_ROBOT_ASSETS_ROOT}/unitree_ros_official/robots/g1_description/g1_29dof_with_hand.xml",
    "mjcf_sha256": "7b73b894c01c0be4",
    "load_ok": true,
    "nq": 50,
@@ -2661,7 +2661,7 @@
   },
   {
    "name": "agibot_x2_ultra",
-   "mjcf": "/var/tmp/alphamotion/robot_models/agibot_x2_urdf/X2_URDF-v1.4.0/agibot_x2_ultra_mjcf.xml",
+   "mjcf": "${SR_ROBOT_ASSETS_ROOT}/agibot_x2_urdf/X2_URDF-v1.4.0/agibot_x2_ultra_mjcf.xml",
    "mjcf_sha256": "bdc42a3cb899998d",
    "load_ok": true,
    "nq": 38,
@@ -2797,7 +2797,7 @@
   },
   {
    "name": "unitree_g1_29dof_vendor",
-   "mjcf": "/var/tmp/alphamotion/robot_models/unitree_ros_official/robots/g1_description/g1_29dof.xml",
+   "mjcf": "${SR_ROBOT_ASSETS_ROOT}/unitree_ros_official/robots/g1_description/g1_29dof.xml",
    "mjcf_sha256": "dfcfd8b41d098069",
    "load_ok": true,
    "nq": 36,
@@ -2934,7 +2934,7 @@
   },
   {
    "name": "unitree_g1_23dof_vendor",
-   "mjcf": "/var/tmp/alphamotion/robot_models/unitree_ros_official/robots/g1_description/g1_23dof.xml",
+   "mjcf": "${SR_ROBOT_ASSETS_ROOT}/unitree_ros_official/robots/g1_description/g1_23dof.xml",
    "mjcf_sha256": "aaca282f79cc4cdd",
    "load_ok": true,
    "nq": 30,
@@ -3067,7 +3067,7 @@
   },
   {
    "name": "agibot_a3_t3d0",
-   "mjcf": "/var/tmp/alphamotion/robot_models/agibot_a3/a3_t3d0/mjcf/agibot_a3_t3d0_mjcf.xml",
+   "mjcf": "${SR_ROBOT_ASSETS_ROOT}/agibot_a3/a3_t3d0/mjcf/agibot_a3_t3d0_mjcf.xml",
    "mjcf_sha256": "0ace3ccf62c73fb3",
    "load_ok": true,
    "nq": 38,
@@ -3203,7 +3203,7 @@
   },
   {
    "name": "agibot_a3_ultra_t3d0",
-   "mjcf": "/var/tmp/alphamotion/robot_models/agibot_a3/a3_ultra_t3d0/mjcf/agibot_a3_ultra_t3d0_mjcf.xml",
+   "mjcf": "${SR_ROBOT_ASSETS_ROOT}/agibot_a3/a3_ultra_t3d0/mjcf/agibot_a3_ultra_t3d0_mjcf.xml",
    "mjcf_sha256": "333b14774fefeb1e",
    "load_ok": true,
    "nq": 70,
@@ -3372,7 +3372,7 @@
   },
   {
    "name": "agibot_a2",
-   "mjcf": "/var/tmp/alphamotion/robot_models/agibot_a2_gmr/agibot_a2_gmr_mjcf.xml",
+   "mjcf": "${SR_ROBOT_ASSETS_ROOT}/agibot_a2_gmr/agibot_a2_gmr_mjcf.xml",
    "mjcf_sha256": "8a421fd255ec0914",
    "load_ok": true,
    "nq": 27,
@@ -3494,7 +3494,7 @@
   },
   {
    "name": "openloong",
-   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/openloong/AzureLoong.xml",
+   "mjcf": "${SR_GMR_ROOT}/assets/openloong/AzureLoong.xml",
    "mjcf_sha256": "6bdfef45affea906",
    "load_ok": true,
    "nq": 38,
@@ -3625,7 +3625,7 @@
   },
   {
    "name": "berkeley_humanoid_lite",
-   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/berkeley_humanoid_lite/berkeley_humanoid_lite.xml",
+   "mjcf": "${SR_GMR_ROOT}/assets/berkeley_humanoid_lite/berkeley_humanoid_lite.xml",
    "mjcf_sha256": "78431404f7ab19d3",
    "load_ok": true,
    "nq": 29,
@@ -3756,7 +3756,7 @@
   },
   {
    "name": "stanford_toddy",
-   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/stanford_toddy/toddy_mocap.xml",
+   "mjcf": "${SR_GMR_ROOT}/assets/stanford_toddy/toddy_mocap.xml",
    "mjcf_sha256": "b4c7c27f39d3c1bf",
    "load_ok": true,
    "nq": 29,
@@ -3885,7 +3885,7 @@
   },
   {
    "name": "apptronik_apollo",
-   "mjcf": "/var/tmp/alphamotion/robot_models/menagerie/apptronik_apollo/apptronik_apollo.xml",
+   "mjcf": "${SR_ROBOT_ASSETS_ROOT}/menagerie/apptronik_apollo/apptronik_apollo.xml",
    "mjcf_sha256": "1b9f77a9e743088e",
    "load_ok": true,
    "nq": 39,
@@ -4025,7 +4025,7 @@
   },
   {
    "name": "toddlerbot_2xm",
-   "mjcf": "/var/tmp/alphamotion/robot_models/menagerie/toddlerbot_2xm/toddlerbot_2xm.xml",
+   "mjcf": "${SR_ROBOT_ASSETS_ROOT}/menagerie/toddlerbot_2xm/toddlerbot_2xm.xml",
    "mjcf_sha256": "0599ae55c3562408",
    "load_ok": true,
    "nq": 51,
@@ -4164,7 +4164,7 @@
   },
   {
    "name": "robotis_op3",
-   "mjcf": "/var/tmp/alphamotion/robot_models/menagerie/robotis_op3/op3.xml",
+   "mjcf": "${SR_ROBOT_ASSETS_ROOT}/menagerie/robotis_op3/op3.xml",
    "mjcf_sha256": "02e07fe80bb0352a",
    "load_ok": true,
    "nq": 27,
@@ -4302,7 +4302,7 @@
   },
   {
    "name": "berkeley_humanoid",
-   "mjcf": "/var/tmp/alphamotion/robot_models/menagerie/berkeley_humanoid/berkeley_humanoid.xml",
+   "mjcf": "${SR_ROBOT_ASSETS_ROOT}/menagerie/berkeley_humanoid/berkeley_humanoid.xml",
    "mjcf_sha256": "e5b9396bf23dea75",
    "load_ok": true,
    "nq": 19,
@@ -4376,7 +4376,7 @@
   },
   {
    "name": "galaxea_r1pro",
-   "mjcf": "/home/arenalabs/Desktop/\"be water, robot\"/alpha_motion2/external/GMR/assets/galaxea_r1pro/r1_pro.xml",
+   "mjcf": "${SR_GMR_ROOT}/assets/galaxea_r1pro/r1_pro.xml",
    "mjcf_sha256": "28f62844efc69538",
    "load_ok": true,
    "nq": 27,
@@ -4492,7 +4492,7 @@
   },
   {
    "name": "agility_cassie",
-   "mjcf": "/var/tmp/alphamotion/robot_models/menagerie/agility_cassie/cassie.xml",
+   "mjcf": "${SR_ROBOT_ASSETS_ROOT}/menagerie/agility_cassie/cassie.xml",
    "mjcf_sha256": "92ec84d23a0f62a8",
    "load_ok": true,
    "nq": 35,
@@ -4600,7 +4600,7 @@
   },
   {
    "name": "rby1",
-   "mjcf": "/var/tmp/alphamotion/robot_models/menagerie/rainbow_robotics_rby1/rby1m_1.3.xml",
+   "mjcf": "${SR_ROBOT_ASSETS_ROOT}/menagerie/rainbow_robotics_rby1/rby1m_1.3.xml",
    "mjcf_sha256": "fa6d736f76e27de5",
    "load_ok": true,
    "nq": 37,

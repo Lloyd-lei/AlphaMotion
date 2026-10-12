@@ -1,6 +1,5 @@
 """One-step (teacher-forced) parity: each frame starts from UMR-CPU's own warm start/history."""
 import sys, time, numpy as np, torch
-sys.path.insert(0, '/home/arenalabs/umr_gpu')
 from surface_retargeting.gpu.bank import Problem, Bank
 from surface_retargeting.gpu.solver import UMRSolver
 path = sys.argv[1]; n = int(sys.argv[2]) if len(sys.argv) > 2 else 200

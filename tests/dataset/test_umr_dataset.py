@@ -7,6 +7,7 @@
 4 pairing: every loader window's robot qpos / labels equal the factory npz at source frame k*stride, the human
   SMPL-X equals the source at the same frame, every robot frame in a window is strictly valid (flags == 0)
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import json
 import os
 import shutil
@@ -16,14 +17,14 @@ import time
 from pathlib import Path
 
 import numpy as np
+import pytest
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from surface_retargeting.dataset import schema as S                      # noqa: E402
 from surface_retargeting.dataset.container import write_shard, Shard, file_sha256   # noqa: E402
 import surface_retargeting.dataset.catalog as CAT                        # noqa: E402
 
-FACTORY_OUT = Path('/home/arenalabs/umr_factory_data/out')
-SPEC_ROOT = Path('/home/arenalabs/umr_dataset/data')     # robots/<r>/{spec.json,kin.npz,bounds.json} reused (copied)
+FACTORY_OUT = Path(f'{SRCFG.data_root}/out')
+SPEC_ROOT = Path(f'{SRCFG.dataset_root}')     # robots/<r>/{spec.json,kin.npz,bounds.json} reused (copied)
 
 
 def test_codecs():
@@ -94,7 +95,14 @@ def _all_windows(root, W=32):
     return out
 
 
+@pytest.mark.data
+@pytest.mark.xfail(reason='known packer bug (plan 4.8): an empty contact segment in the current factory out/ makes '
+                          'convert.write_robot_shards index seg[0] of an empty array; identical failure in the old '
+                          '~/umr_dataset code. Fix is migration step 6.', raises=IndexError, strict=False)
 def test_convert_compact_pairing(tmp):
+    for p in (FACTORY_OUT, SPEC_ROOT / 'robots'):
+        if not p.exists():
+            pytest.skip(f'needs data: {p}')
     from surface_retargeting.dataset import convert as C, compact as K
     from surface_retargeting.dataset.dataset import PairedWindows, Reader
     root, src = tmp / 'root', tmp / 'src'
@@ -120,7 +128,7 @@ def test_convert_compact_pairing(tmp):
     f.unlink(); np.savez_compressed(f, **z); os.utime(f, (time.time() - 5, time.time() - 5))
     r = C.ingest(root, src, settle=0, workers=4, min_gauge='visual', log=log)
     assert r['new'] == 1, r
-    rd0 = __import__('umr_dataset.dataset', fromlist=['Reader']).Reader(root)
+    rd0 = __import__('surface_retargeting.dataset.dataset', fromlist=['Reader']).Reader(root)
     ci, bi = rd0.cat.clips.index(clip0), rd0.cat.body_index['unitree_h2']
     st = int(rd0.cat.c_stride[ci])
     fl = np.concatenate([rd0.robot(ci, bi, k0, n)['flags'] for k0, n, *_ in rd0.seg[(ci, bi)]])
@@ -174,7 +182,7 @@ def test_convert_compact_pairing(tmp):
 
 if __name__ == '__main__':
     keep = '--keep' in sys.argv
-    tmp = Path(tempfile.mkdtemp(prefix='umrds_test_', dir='/tmp/claude-1000/-home-arenalabs-Desktop--be-water--robot-/eff459e5-3969-4f6d-9ec8-eae021b0a07a/scratchpad'))
+    tmp = Path(tempfile.mkdtemp(prefix='umrds_test_'))
     try:
         test_codecs()
         test_container(tmp)

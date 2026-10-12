@@ -2,22 +2,22 @@
 + optional table (grey) + floor plane z=0 (checker), MuJoCo offscreen (EGL). Side camera at low elevation so
 floating/sinking is visible; per-panel text: lowest foot gap to support, lowest body point, hand-object distance.
 usage: render_grid.py <cat> <key> <out.png> [--src converted|raw] [--dz MM]"""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import argparse, json, os, sys
 os.environ.setdefault('MUJOCO_GL', 'egl')
 import numpy as np
 import mujoco
 from PIL import Image, ImageDraw, ImageFont
-sys.path.insert(0, os.path.dirname(__file__))
-sys.path.insert(0, '/var/tmp/alphamotion/umr_factory/umr/UMR/scripts')
+sys.path.insert(0, f'{SRCFG.umr_root}/scripts')
 from humanoid_retarget_pipeline_hsi_hoi import load_grail_pickle, safe_name  # noqa: E402
 from pathlib import Path  # noqa: E402
 import trimesh  # noqa: E402
 from scipy.spatial import cKDTree  # noqa: E402
-from g1smplx import G1SMPLX  # noqa: E402
-from floorcal import foot_tracks, support_height, TERRAIN  # noqa: E402
+from surface_retargeting.ingest.grail.g1smplx import G1SMPLX  # noqa: E402
+from surface_retargeting.ingest.grail.floorcal import foot_tracks, support_height, TERRAIN  # noqa: E402
 
-OUT = Path('/home/arenalabs/umr_factory_data/smplx/grail')
-RAW = Path('/home/arenalabs/umr_factory_data/raw/grail/data')
+OUT = Path(f'{SRCFG.data_root}/smplx/grail')
+RAW = Path(f'{SRCFG.data_root}/raw/grail/data')
 
 
 def load_obj(p):
@@ -70,8 +70,7 @@ def main():
         fps = float(x['human_data']['mocap_frame_rate'])
     else:
         x = load_grail_pickle(RAW / a.cat / 'recon' / f'{a.key}.pkl')
-        sys.path.insert(0, os.path.dirname(__file__))
-        from convert_grail import usd_mesh, effective_scale  # noqa
+        from surface_retargeting.ingest.grail.convert_grail import usd_mesh, effective_scale  # noqa
         V, F = usd_mesh(RAW / a.cat / 'object_usd' / f'{a.key}.usd')
         ov_l, of = V * effective_scale(a.cat, x)[None], F
         x['human_data']['trans'] = x['human_data']['trans'] - np.array([0, 0, a.dz / 1000.0])

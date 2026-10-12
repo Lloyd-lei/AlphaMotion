@@ -1,7 +1,7 @@
 {
  "name": "agibot_a2",
- "src_mjcf": "/var/tmp/alphamotion/robot_models/agibot_a2_gmr/agibot_a2_gmr_mjcf.xml",
- "staged_mjcf": "/home/arenalabs/umr_factory_data/robots/agibot_a2/agibot_a2.xml",
+ "src_mjcf": "${SR_ROBOT_ASSETS_ROOT}/agibot_a2_gmr/agibot_a2_gmr_mjcf.xml",
+ "staged_mjcf": "${SR_DATA_ROOT}/robots/agibot_a2/agibot_a2.xml",
  "nq": 27,
  "nv": 26,
  "facing_plus_x": true,

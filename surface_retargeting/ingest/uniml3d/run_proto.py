@@ -1,12 +1,12 @@
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import sys, glob, json, os
 import numpy as np
-sys.path.insert(0, os.path.dirname(__file__))
-from reload import *
+from surface_retargeting.ingest.uniml3d.reload import *
 import matplotlib; matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-R = os.path.join(os.path.dirname(__file__), '../remote/')
-OUT = os.path.join(os.path.dirname(__file__), 'out'); os.makedirs(OUT, exist_ok=True)
+R = f'{SRCFG.factory_root}/uniml3d_reload/remote/'  # data, not code
+OUT = f'{SRCFG.factory_root}/uniml3d_reload/proto/out'; os.makedirs(OUT, exist_ok=True)
 FPS = 30.0
 CASES = {
     'objaverse_quadruped_e457402d_Walk': (R + 'glb/e457402d4b2e4681b5a5f88b747aea4a.glb', glob.glob(R + 'export/objaverse/motions/*/e457402d*-Walk_Object_4.npz')[0]),

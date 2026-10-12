@@ -1,7 +1,7 @@
 {
   "robot": {
     "name": "robotis_op3",
-    "xml": "/var/tmp/alphamotion/robot_models/menagerie/robotis_op3/op3.xml",
+    "xml": "${SR_ROBOT_ASSETS_ROOT}/menagerie/robotis_op3/op3.xml",
     "point_cloud_center": "body:body_link",
     "tpose_qpos": {}
   },

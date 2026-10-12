@@ -7,6 +7,7 @@ Export (needs mujoco, run once per robot):  build_spec(robot) -> <root>/robots/<
 Use (numpy + torch only):                   fk = TorchFK.load(<root>/robots/<robot>/kin.npz, device='cuda')
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import hashlib
 import json
@@ -14,7 +15,7 @@ from pathlib import Path
 
 import numpy as np
 
-STAGED = Path('/home/arenalabs/umr_factory_data/robots')
+STAGED = Path(f'{SRCFG.data_root}/robots')
 JOINT_MARGIN = 1e-3            # rad (m for slides) added outside the MJCF limits
 UNLIMITED_HALF_RANGE = 2 * np.pi
 

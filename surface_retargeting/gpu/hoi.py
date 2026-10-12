@@ -9,6 +9,7 @@
                  active and are skipped (exactly equivalent for the solver).
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import sys
 import xml.etree.ElementTree as ET
@@ -21,7 +22,7 @@ import warp as wp
 
 from surface_retargeting.gpu.geometry import ObjectSDF, mesh_verts
 
-UMR = Path('/var/tmp/alphamotion/umr_factory/umr/UMR')
+UMR = Path(f'{SRCFG.umr_root}')
 wp.init()
 
 

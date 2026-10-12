@@ -2,6 +2,7 @@
 """Five synthesis charts for REPORT.md. Read-only inputs; writes PNGs into charts/.
 Run: OMP_NUM_THREADS=2 taskset -c 0-15 nice -n 10 python3 make_charts.py
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import json
 import numpy as np
 import matplotlib
@@ -10,7 +11,7 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager
 from matplotlib.colors import LogNorm, LinearSegmentedColormap
 
-D = '/home/arenalabs/umr_factory_data/diversity'
+D = f'{SRCFG.data_root}/diversity'
 C = f'{D}/charts'
 FONT = '/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc'
 font_manager.fontManager.addfont(FONT)

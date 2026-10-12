@@ -1,5 +1,6 @@
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import json, os
-D = "/home/arenalabs/umr_factory_data/diversity"
+D = f'{SRCFG.data_root}/diversity'
 CN = {"locomotion": "移动", "dynamic": "动态", "ground_contact": "地面接触", "sitting_on_object": "坐物体",
       "upper_body_manipulation": "上身操作", "whole_body_object": "全身+物体", "gesture_social": "手势社交",
       "idle_posture": "站姿/调整", "other": "其他"}

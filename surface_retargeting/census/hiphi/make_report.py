@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Render the Chinese markdown report from hiphi_diversity_summary.json + CSVs."""
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import json
 import pandas as pd
 
-OUT = "/home/arenalabs/umr_factory_data/diversity/hiphi"
+OUT = f'{SRCFG.data_root}/diversity/hiphi'
 s = json.load(open(f"{OUT}/hiphi_diversity_summary.json"))
 lu = pd.read_csv(f"{OUT}/hiphi_lu_mapping.csv")
 c = pd.read_csv(f"{OUT}/hiphi_clips_labeled.csv", dtype={"part": str})

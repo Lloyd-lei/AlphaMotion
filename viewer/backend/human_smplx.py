@@ -14,6 +14,7 @@
   foot-region slots (computed here, labelled as UI-computed).
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 from collections import OrderedDict
 import csv
@@ -29,9 +30,9 @@ import numpy as np
 
 from . import npzhead
 
-DATA_ROOT = Path('/home/arenalabs/umr_factory_data')
-SMPLX_MODEL = Path('/var/tmp/alphamotion/umr_factory/umr/UMR/smpl/SMPLX_NEUTRAL.npz')
-PROBLEMS = Path('/var/tmp/alphamotion/umr_factory/umr_gpu/problems')
+DATA_ROOT = Path(f'{SRCFG.data_root}')
+SMPLX_MODEL = Path(f'{SRCFG.umr_root}/smpl/SMPLX_NEUTRAL.npz')
+PROBLEMS = Path(f'{SRCFG.work}/problems')
 SLOT_PROBLEM_PREFERENCE = ('lafan1_smplx__dance1_subject2/unitree_g1_29dof.stock.cpu.npz',
                            'hiphi_getup__getup0004_neutral_30fps/unitree_g1_29dof.stock.cpu.npz')
 REGIONS = ['trunk', 'L_thigh', 'R_thigh', 'L_shin', 'R_shin', 'L_foot', 'R_foot',

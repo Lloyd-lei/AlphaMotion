@@ -2,13 +2,14 @@
 robot quantisation ranges are per-robot constants, so no re-encoding).  Human shards carry a per-shard axis-angle
 scale and are only dropped when dead, never rewritten.
 
-    python -m umr_dataset.compact --root /home/arenalabs/umr_dataset/data [--target-rows 2000000] [--grace-hours 6]
+    python -m surface_retargeting.dataset.compact --root /home/arenalabs/umr_dataset/data [--target-rows 2000000] [--grace-hours 6]
 
 Takes the converter lock.  Replaced files stay at their path (listed in <root>/pending_delete.json) and are deleted by a later
 run once older than --grace-hours, so a training job that still holds the previous catalog keeps reading (reload the
 catalog per epoch).  --grace-hours 0 deletes immediately.
 """
 from __future__ import annotations
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 
 import argparse
 import fcntl
@@ -149,7 +150,7 @@ def compact(root: Path, target_rows=2_000_000, min_live_frac=0.6, grace_hours=6.
 
 def main(argv=None):
     ap = argparse.ArgumentParser()
-    ap.add_argument('--root', type=Path, default=Path('/home/arenalabs/umr_dataset/data'))
+    ap.add_argument('--root', type=Path, default=Path(f'{SRCFG.dataset_root}'))
     ap.add_argument('--target-rows', type=int, default=2_000_000)
     ap.add_argument('--min-live-frac', type=float, default=0.6)
     ap.add_argument('--grace-hours', type=float, default=6.0)

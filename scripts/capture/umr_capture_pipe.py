@@ -1,11 +1,12 @@
 """Run an upstream UMR pipeline module, routing its retarget subprocess through umr_capture_run.py.
 Usage: umr_capture_pipe.py <pipeline_module_name> [pipeline args...]   (UMR env python)
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import importlib
 import sys
 from pathlib import Path
 
-UMR = '/var/tmp/alphamotion/umr_factory/umr/UMR'
+UMR = f'{SRCFG.umr_root}'
 WRAP = str(Path(__file__).resolve().parent / 'umr_capture_run.py')
 sys.path.insert(0, UMR + '/scripts'); sys.path.insert(0, UMR)
 base = importlib.import_module('humanoid_retarget_pipeline')

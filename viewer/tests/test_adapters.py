@@ -2,6 +2,7 @@
 
 Run using the factory Python; no writes to decisions/issues or factory sources.
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 from pathlib import Path
 import gc
 import json
@@ -17,7 +18,7 @@ from backend import geometry
 from backend.wire import pack, unpack
 
 PROJECT = Path(__file__).resolve().parents[1]
-DATA_ROOT = Path(os.getenv('MOTION_AUDIT_DATA_ROOT', '/home/arenalabs/umr_factory_data'))
+DATA_ROOT = Path(os.getenv('MOTION_AUDIT_DATA_ROOT', f'{SRCFG.data_root}'))
 FIXTURES = PROJECT / 'qa' / 'adapter-fixtures'
 FIXTURES.mkdir(parents=True, exist_ok=True)
 

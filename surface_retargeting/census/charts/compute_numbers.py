@@ -2,11 +2,12 @@
 """Synthesis numbers for REPORT.md (read-only; reads per-source summaries + per-clip CSVs).
 Writes charts/synthesis_numbers.json. Run:  taskset -c 0-15 nice -n 10 env OMP_NUM_THREADS=2 python3 compute_numbers.py
 """
+from surface_retargeting.config import CFG as SRCFG  # machine paths: configs/sr.toml
 import csv, gzip, json, os, re
 from collections import defaultdict
 
-D = '/home/arenalabs/umr_factory_data/diversity'
-F = '/home/arenalabs/umr_factory_data'
+D = f'{SRCFG.data_root}/diversity'
+F = f'{SRCFG.data_root}'
 OUT = f'{D}/charts/synthesis_numbers.json'
 CLASSES = ['locomotion', 'dynamic', 'ground_contact', 'sitting_on_object', 'upper_body_manipulation',
            'whole_body_object', 'gesture_social', 'idle_posture', 'other']
